@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fonda La Abuela — Comida casera en Coyoacán, CDMX</title>
+  <meta name="description" content="La mejor comida casera de Coyoacán desde 1998. Menú del día, pozole los viernes, caldo tlalpeño. Ven a visitarnos en Francisco Sosa 142." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #2c1810;
+      background: #fff;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --cafe: #5C2E0A;
+      --cafe-medio: #8B4513;
+      --naranja: #D4702A;
+      --naranja-claro: #F4A261;
+      --crema: #FFF8F0;
+      --crema-oscuro: #F5E6D3;
+      --texto: #2c1810;
+      --gris: #6b5a52;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ============ NAV ============ */
+    nav {
+      background: var(--cafe);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .nav-logo { color: #fff; font-size: 1.3rem; font-weight: 800; }
+    .nav-logo span { color: var(--naranja-claro); }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-wa {
+      background: #25D366;
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.85rem !important;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      background: linear-gradient(180deg, var(--cafe) 0%, var(--cafe-medio) 100%);
+      color: #fff;
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-emoji { font-size: 4rem; margin-bottom: 16px; }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .hero h1 em { font-style: normal; color: var(--naranja-claro); }
+    .hero-sub {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+    .hero-years {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 32px;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn-wa { background: #25D366; color: #fff; }
+    .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+    .btn-outline { border: 2px solid rgba(255,255,255,0.5); color: #fff; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* ============ INFO RÁPIDA ============ */
+    .info-rapida { background: var(--naranja); }
+    .info-rapida .inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+    .info-item strong { font-weight: 700; display: block; font-size: 0.95rem; }
+    .info-item span { opacity: 0.85; font-size: 0.8rem; }
+    .info-icon { font-size: 1.4rem; }
+
+    /* ============ NOSOTROS ============ */
+    .nosotros { background: var(--crema); padding: 72px 0; }
+    .nosotros .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .nosotros h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--cafe);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .nosotros p { color: var(--gris); margin-bottom: 16px; font-size: 0.98rem; }
+    .valores { list-style: none; margin-top: 24px; }
+    .valores li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--crema-oscuro);
+    }
+    .valores li:last-child { border: none; }
+    .v-dot {
+      width: 8px; height: 8px;
+      background: var(--naranja);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .foto-placeholder {
+      background: linear-gradient(135deg, var(--cafe) 0%, var(--cafe-medio) 100%);
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      color: #fff;
+    }
+    .foto-placeholder .emoji { font-size: 4rem; margin-bottom: 16px; }
+    .foto-placeholder h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .foto-placeholder p { opacity: 0.75; font-size: 0.9rem; }
+
+    /* ============ MENÚ ============ */
+    .menu { background: #fff; padding: 72px 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title .tag {
+      display: inline-block;
+      background: var(--crema-oscuro);
+      color: var(--cafe-medio);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--cafe);
+      margin-bottom: 12px;
+    }
+    .section-title p { color: var(--gris); max-width: 480px; margin: 0 auto; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .menu-card {
+      background: var(--crema);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--crema-oscuro);
+      transition: box-shadow 0.2s;
+    }
+    .menu-card:hover { box-shadow: 0 4px 20px rgba(92,46,10,0.1); }
+    .menu-emoji { font-size: 2.2rem; margin-bottom: 12px; }
+    .menu-card h3 { font-weight: 700; color: var(--cafe); margin-bottom: 6px; }
+    .menu-card p { color: var(--gris); font-size: 0.88rem; margin-bottom: 12px; }
+    .menu-precio {
+      font-weight: 800;
+      color: var(--naranja);
+      font-size: 1.1rem;
+    }
+    .menu-badge {
+      display: inline-block;
+      background: var(--naranja);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ============ ESPECIALES ============ */
+    .especiales { background: var(--crema-oscuro); padding: 72px 0; }
+    .especiales-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .especial-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .especial-card .dia {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--naranja);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .especial-card .emoji { font-size: 2rem; margin: 8px 0; }
+    .especial-card h3 { font-weight: 700; color: var(--cafe); font-size: 1rem; }
+    .especial-card p { color: var(--gris); font-size: 0.82rem; margin-top: 6px; }
+
+    /* ============ UBICACIÓN ============ */
+    .ubicacion { background: #fff; padding: 72px 0; }
+    .ubicacion-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .ubicacion h2 { font-size: 2rem; font-weight: 800; color: var(--cafe); margin-bottom: 24px; }
+    .dato {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+    .dato-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: var(--crema);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dato strong { display: block; font-weight: 700; color: var(--cafe); margin-bottom: 2px; }
+    .dato span { color: var(--gris); font-size: 0.9rem; }
+    .mapa-placeholder {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      border-radius: 16px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 2px dashed #4caf50;
+    }
+    .mapa-placeholder .m-icon { font-size: 3rem; margin-bottom: 12px; }
+    .mapa-placeholder h3 { color: #2e7d32; font-weight: 700; }
+    .mapa-placeholder p { color: #4caf50; font-size: 0.85rem; margin: 4px 0 16px; }
+    .mapa-btn {
+      display: inline-block;
+      background: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* ============ CTA FINAL ============ */
+    .cta-final {
+      background: linear-gradient(135deg, var(--cafe) 0%, var(--cafe-medio) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 72px 0;
+    }
+    .cta-final h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin: 12px 0 16px; }
+    .cta-final p { opacity: 0.85; font-size: 1.05rem; margin-bottom: 32px; }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: #1a0a04;
+      color: #fff;
+      padding: 36px 0;
+      text-align: center;
+    }
+    .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+    .footer-logo span { color: var(--naranja-claro); }
+    footer p { opacity: 0.5; font-size: 0.8rem; margin-top: 8px; }
+
+    /* CRÉDITO BROTA */
+    .brota-credit {
+      background: #0f0604;
+      padding: 16px;
+      text-align: center;
+    }
+    .brota-credit a {
+      color: var(--naranja-claro);
+      font-size: 0.82rem;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .brota-credit a:hover { opacity: 1; }
+
+    /* WHATSAPP FLOTANTE */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      z-index: 999;
+      background: #25D366;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      transition: transform 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+
+    @media (max-width: 768px) {
+      .nosotros .grid,
+      .ubicacion-grid { grid-template-columns: 1fr; gap: 36px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <div class="nav-logo">Fonda <span>La Abuela</span></div>
+      <div class="nav-links">
+        <a href="#menu">Menú</a>
+        <a href="#ubicacion">Cómo llegar</a>
+        <a href="https://wa.me/5215500000000?text=Hola,%20quiero%20hacer%20una%20reservación" class="nav-wa" target="_blank">📲 Reservar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-emoji">🍲</div>
+      <h1>La cocina de siempre,<br><em>hecha con amor</em></h1>
+      <p class="hero-sub">Comida casera mexicana en el corazón de Coyoacán</p>
+      <span class="hero-years">⭐ Más de 25 años alimentando familias</span>
+      <div class="hero-btns">
+        <a href="https://wa.me/5215500000000?text=Hola,%20quiero%20reservar%20una%20mesa" class="btn btn-wa" target="_blank">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Reservar mesa
+        </a>
+        <a href="#menu" class="btn btn-outline">Ver menú del día</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO RÁPIDA -->
+  <div class="info-rapida">
+    <div class="inner">
+      <div class="info-item">
+        <span class="info-icon">🕐</span>
+        <div>
+          <strong>Horario</strong>
+          <span>Lun–Sáb 8am–5pm · Dom 9am–3pm</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <span class="info-icon">📍</span>
+        <div>
+          <strong>Ubicación</strong>
+          <span>Francisco Sosa 142, Coyoacán</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <span class="info-icon">🍽️</span>
+        <div>
+          <strong>Menú del día</strong>
+          <span>Sopa · Guisado · Postre · $95 MXN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOSOTROS -->
+  <section class="nosotros" id="nosotros">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <h2>25 años cocinando<br>como en casa</h2>
+          <p>La Fonda La Abuela nació en 1998 de las manos de Doña Carmen, que decidió compartir sus recetas de toda la vida con el vecindario de Coyoacán. Lo que empezó como un pequeño comedor, hoy es el lugar favorito de familias enteras.</p>
+          <p>Usamos ingredientes frescos del mercado cada mañana. Nada congelado, nada precocido. La misma receta de siempre, preparada con el mismo cariño de siempre.</p>
+          <ul class="valores">
+            <li><div class="v-dot"></div> Ingredientes frescos del mercado local</li>
+            <li><div class="v-dot"></div> Recetas originales sin conservadores</li>
+            <li><div class="v-dot"></div> Servicio familiar y sin prisa</li>
+            <li><div class="v-dot"></div> Precios justos, siempre</li>
+          </ul>
+        </div>
+        <div>
+          <div class="foto-placeholder">
+            <div class="emoji">👩‍🍳</div>
+            <h3>Doña Carmen</h3>
+            <p>Fundadora y cocinera principal desde 1998</p>
+            <p style="margin-top:16px;font-size:0.8rem;opacity:0.6;">[Aquí va tu foto del negocio]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENÚ -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="section-title">
+        <div class="tag">Lo que servimos</div>
+        <h2>Menú del día y platillos</h2>
+        <p>Cocinamos fresco cada mañana. El menú del día cambia según el mercado — siempre casero, siempre rico.</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="menu-emoji">🍲</div>
+          <h3>Menú del día <span class="menu-badge">HOY</span></h3>
+          <p>Sopa de fideos · Guisado del día · Agua fresca · Postre de la casa</p>
+          <div class="menu-precio">$95 MXN</div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-emoji">🌮</div>
+          <h3>Enchiladas verdes</h3>
+          <p>Tres enchiladas con pollo, crema, queso y cebolla. Servidas con arroz y frijoles.</p>
+          <div class="menu-precio">$110 MXN</div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-emoji">🥘</div>
+          <h3>Mole de olla</h3>
+          <p>Caldo de res con verduras de temporada, chile ancho y epazote. Receta de la abuela.</p>
+          <div class="menu-precio">$130 MXN</div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-emoji">🍳</div>
+          <h3>Desayuno completo</h3>
+          <p>Huevos al gusto + frijoles + jugo + café o té. Servido hasta las 12pm.</p>
+          <div class="menu-precio">$85 MXN</div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-emoji">🫔</div>
+          <h3>Tamales de rajas</h3>
+          <p>Tamales de maíz con rajas y queso, masa hecha a mano. Disponibles los fines de semana.</p>
+          <div class="menu-precio">$35 MXN c/u</div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-emoji">🍮</div>
+          <h3>Postres de la casa</h3>
+          <p>Flan napolitano, arroz con leche o gelatina de cajeta. Cambian según el día.</p>
+          <div class="menu-precio">$35 MXN</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALES DE LA SEMANA -->
+  <section class="especiales">
+    <div class="container">
+      <div class="section-title">
+        <div class="tag">Tradición</div>
+        <h2>Especiales de la semana</h2>
+        <p>Cada día tiene su platillo especial. Ven a conocerlos.</p>
+      </div>
+      <div class="especiales-grid">
+        <div class="especial-card">
+          <div class="dia">Lunes</div>
+          <div class="emoji">🍜</div>
+          <h3>Caldo tlalpeño</h3>
+          <p>Con garbanzos y chile chipotle</p>
+        </div>
+        <div class="especial-card">
+          <div class="dia">Miércoles</div>
+          <div class="emoji">🐟</div>
+          <h3>Bacalao a la vizcaína</h3>
+          <p>Receta original de Doña Carmen</p>
+        </div>
+        <div class="especial-card">
+          <div class="dia">Viernes</div>
+          <div class="emoji">🍵</div>
+          <h3>Pozole rojo</h3>
+          <p>Con tostadas, orégano y limón</p>
+        </div>
+        <div class="especial-card">
+          <div class="dia">Domingo</div>
+          <div class="emoji">🥩</div>
+          <h3>Barbacoa de olla</h3>
+          <p>Con consomé, salsa verde y tortillas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="ubicacion" id="ubicacion">
+    <div class="container">
+      <div class="ubicacion-grid">
+        <div>
+          <h2>¿Cómo llegamos?</h2>
+          <div class="dato">
+            <div class="dato-icon">📍</div>
+            <div>
+              <strong>Dirección</strong>
+              <span>Francisco Sosa 142, Col. Villa Coyoacán<br>CDMX · A 5 min del Metro Viveros</span>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="dato-icon">🕐</div>
+            <div>
+              <strong>Horarios</strong>
+              <span>Lunes a Sábado: 8:00am – 5:00pm<br>Domingos: 9:00am – 3:00pm</span>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="dato-icon">📞</div>
+            <div>
+              <strong>Teléfono y WhatsApp</strong>
+              <span>55 0000-0000 · También por WhatsApp</span>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="dato-icon">🅿️</div>
+            <div>
+              <strong>Estacionamiento</strong>
+              <span>En la calle Francisco Sosa (zona azul)<br>O en el estacionamiento de Viveros</span>
+            </div>
+          </div>
+          <a href="https://wa.me/5215500000000?text=Hola,%20quiero%20reservar%20una%20mesa" class="btn btn-wa" style="margin-top:12px;" target="_blank">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Reservar por WhatsApp
+          </a>
+        </div>
+        <div>
+          <div class="mapa-placeholder">
+            <div class="m-icon">🗺️</div>
+            <h3>Ver en Google Maps</h3>
+            <p>Francisco Sosa 142, Coyoacán</p>
+            <a href="https://maps.google.com" class="mapa-btn" target="_blank">Abrir en Maps →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="font-size:2.5rem;margin-bottom:12px;">🍽️</div>
+      <h2>Ven a comer con nosotros</h2>
+      <p>Reserva tu mesa o pregúntanos por los especiales del día. Estamos listos para atenderte.</p>
+      <a href="https://wa.me/5215500000000?text=Hola,%20quiero%20reservar%20una%20mesa%20en%20La%20Abuela" class="btn btn-wa" style="font-size:1rem;padding:14px 28px;" target="_blank">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Reservar mesa por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Fonda <span>La Abuela</span></div>
+    <p>Francisco Sosa 142, Coyoacán · CDMX · Lun–Sáb 8am–5pm</p>
+  </footer>
+
+  <!-- CRÉDITO BROTA DIGITAL -->
+  <div class="brota-credit">
+    <a href="index.html">Página web por Brota Digital · ¿Quieres una página para tu negocio? →</a>
+  </div>
+
+  <!-- WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/5215500000000?text=Hola,%20quiero%20reservar%20una%20mesa" class="wa-float" target="_blank">
+    <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+</body>
+</html>

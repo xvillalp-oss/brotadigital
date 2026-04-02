@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brota Digital — Páginas web para negocios en CDMX</title>
+  <meta name="description" content="Tu negocio merece aparecer en Google. Páginas web profesionales para negocios en CDMX. $2,500 MXN, entrega en 7 días, garantía de satisfacción." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1a1a2e;
+      background: #fff;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --navy:      #0F1F3D;
+      --navy-mid:  #1B3461;
+      --navy-soft: #243B6E;
+      --azul:      #2563EB;
+      --azul-hover:#1D4ED8;
+      --gris-bg:   #F5F7FA;
+      --gris-linea:#E2E8F0;
+      --gris-texto:#64748B;
+      --texto:     #1E293B;
+      --blanco:    #ffffff;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.15; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      letter-spacing: -0.01em;
+    }
+    .btn-primary { background: var(--navy); color: #fff; }
+    .btn-primary:hover { background: var(--navy-soft); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--gris-linea); }
+    .btn-ghost:hover { border-color: var(--navy); }
+    .btn-azul { background: var(--azul); color: #fff; }
+    .btn-azul:hover { background: var(--azul-hover); transform: translateY(-1px); }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--azul);
+      margin-bottom: 14px;
+    }
+
+    section { padding: 96px 0; }
+
+    /* NAV */
+    nav {
+      background: var(--blanco);
+      border-bottom: 1px solid var(--gris-linea);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo { font-size: 1.25rem; font-weight: 800; color: var(--navy); letter-spacing: -0.04em; }
+    .logo span { color: var(--azul); }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-link { font-size: 0.88rem; color: var(--gris-texto); font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: var(--navy); }
+    .nav-cta { background: var(--navy); color: #fff; padding: 9px 18px; border-radius: 6px; font-weight: 600; font-size: 0.88rem; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--navy-soft); }
+
+    /* HERO */
+    .hero { background: var(--blanco); padding: 110px 0 96px; border-bottom: 1px solid var(--gris-linea); }
+    .hero-inner { display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+    .hero-dot { width: 6px; height: 6px; background: var(--azul); border-radius: 50%; }
+    .hero-eyebrow span { font-size: 0.82rem; font-weight: 600; color: var(--gris-texto); letter-spacing: 0.04em; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 800; color: var(--navy); margin-bottom: 22px; }
+    .hero h1 em { font-style: normal; color: var(--azul); }
+    .hero-desc { font-size: 1.08rem; color: var(--gris-texto); margin-bottom: 40px; max-width: 460px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-trust { display: flex; gap: 24px; margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--gris-linea); flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 8px; }
+    .trust-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; flex-shrink: 0; }
+    .trust-item span { font-size: 0.85rem; color: var(--gris-texto); }
+    .trust-item strong { color: var(--texto); }
+
+    .hero-card { background: var(--navy); border-radius: 16px; padding: 40px 32px; color: #fff; }
+    .hero-card-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .hero-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .hero-card-price { font-size: 3rem; font-weight: 800; letter-spacing: -0.04em; margin: 16px 0 8px; }
+    .hero-card-price sup { font-size: 1.3rem; vertical-align: top; margin-top: 10px; }
+    .hero-card-price span { font-size: 1rem; font-weight: 400; opacity: 0.6; }
+    .hero-card-sub { font-size: 0.82rem; opacity: 0.55; margin-bottom: 28px; }
+    .hero-card-items { list-style: none; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-bottom: 28px; }
+    .hero-card-items li { font-size: 0.88rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; gap: 10px; opacity: 0.85; }
+    .hero-card-items li:last-child { border: none; }
+    .li-check { color: #22c55e; font-size: 0.75rem; font-weight: bold; }
+    .garantia-mini { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 16px; font-size: 0.82rem; opacity: 0.75; display: flex; gap: 10px; align-items: center; }
+
+    /* SOCIAL PROOF */
+    .social-proof { background: var(--gris-bg); padding: 40px 0; border-top: 1px solid var(--gris-linea); border-bottom: 1px solid var(--gris-linea); }
+    .proof-inner { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .proof-label { font-size: 0.8rem; color: var(--gris-texto); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    .proof-item { background: #fff; border: 1px solid var(--gris-linea); border-radius: 8px; padding: 10px 20px; font-size: 0.85rem; font-weight: 600; color: var(--gris-texto); }
+
+    /* PROBLEMA */
+    .problema { background: var(--blanco); }
+    .section-header { max-width: 620px; margin-bottom: 64px; }
+    .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+    .section-header p { font-size: 1rem; color: var(--gris-texto); line-height: 1.7; }
+    .problemas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gris-linea); border: 1px solid var(--gris-linea); border-radius: 12px; overflow: hidden; }
+    .problema-card { background: var(--blanco); padding: 40px 32px; }
+    .problema-num { font-size: 0.72rem; font-weight: 700; color: var(--azul); letter-spacing: 0.06em; margin-bottom: 20px; }
+    .problema-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .problema-card p { color: var(--gris-texto); font-size: 0.9rem; line-height: 1.65; }
+
+    /* SOLUCIÓN */
+    .solucion { background: var(--gris-bg); }
+    .solucion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .solucion-lista { list-style: none; margin-top: 32px; }
+    .solucion-lista li { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--gris-linea); align-items: flex-start; }
+    .solucion-lista li:last-child { border: none; }
+    .s-num { font-size: 0.75rem; font-weight: 700; color: var(--azul); width: 24px; flex-shrink: 0; margin-top: 3px; }
+    .solucion-lista li strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 0.95rem; }
+    .solucion-lista li span { color: var(--gris-texto); font-size: 0.88rem; }
+
+    .demo-window { border: 1px solid var(--gris-linea); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(15,31,61,0.08); background: var(--blanco); }
+    .demo-topbar { background: var(--gris-bg); border-bottom: 1px solid var(--gris-linea); padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
+    .d-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .d-dot.r { background: #f87171; } .d-dot.y { background: #fbbf24; } .d-dot.g { background: #4ade80; }
+    .url-bar { background: var(--blanco); border: 1px solid var(--gris-linea); border-radius: 4px; padding: 5px 12px; font-size: 0.75rem; color: var(--gris-texto); margin-left: 8px; flex: 1; }
+    .demo-body { background: var(--navy); padding: 48px 32px; text-align: center; color: #fff; }
+    .demo-body .d-emoji { font-size: 3rem; margin-bottom: 12px; }
+    .demo-body h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+    .demo-body p { font-size: 0.85rem; opacity: 0.65; }
+    .demo-footer { padding: 16px 24px; border-top: 1px solid var(--gris-linea); display: flex; justify-content: space-between; align-items: center; }
+    .demo-footer span { font-size: 0.8rem; color: var(--gris-texto); }
+    .demo-footer a { font-size: 0.8rem; font-weight: 600; color: var(--azul); }
+
+    /* PROCESO */
+    .proceso { background: var(--blanco); }
+    .proceso-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; position: relative; margin-top: 56px; }
+    .proceso-grid::before { content: ''; position: absolute; top: 22px; left: calc(16.66% + 16px); right: calc(16.66% + 16px); height: 1px; background: var(--gris-linea); }
+    .paso { text-align: center; }
+    .paso-circle { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; margin: 0 auto 20px; position: relative; z-index: 1; }
+    .paso h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .paso p { font-size: 0.88rem; color: var(--gris-texto); line-height: 1.65; }
+
+    /* PRECIO */
+    .precio { background: var(--gris-bg); }
+    .precio-inner { display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: start; }
+    .precio-card { background: var(--blanco); border: 1px solid var(--gris-linea); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(15,31,61,0.07); }
+    .precio-card-header { background: var(--navy); padding: 36px; color: #fff; }
+    .precio-card-header h3 { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.55; margin-bottom: 12px; }
+    .precio-monto { font-size: 3.8rem; font-weight: 800; letter-spacing: -0.04em; }
+    .precio-monto sup { font-size: 1.4rem; vertical-align: top; margin-top: 12px; }
+    .precio-monto span { font-size: 1rem; font-weight: 400; opacity: 0.55; }
+    .precio-sub { font-size: 0.82rem; opacity: 0.5; margin-top: 6px; }
+    .precio-body { padding: 32px 36px; }
+    .precio-list { list-style: none; margin-bottom: 28px; }
+    .precio-list li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--gris-linea); font-size: 0.9rem; color: var(--texto); }
+    .precio-list li:last-child { border: none; }
+    .p-check { color: #22c55e; font-weight: 700; font-size: 0.8rem; }
+    .garantia-box { background: var(--gris-bg); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; font-size: 0.88rem; color: var(--gris-texto); border-left: 3px solid var(--navy); }
+    .garantia-box strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 0.9rem; }
+    .precio-btn { width: 100%; justify-content: center; padding: 15px; border-radius: 8px; font-size: 0.95rem; }
+    .precio-nota { font-size: 0.82rem; color: var(--gris-texto); margin-top: 12px; text-align: center; }
+
+    .precio-reasons h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--navy); margin: 14px 0 32px; }
+    .reason-list { list-style: none; }
+    .reason-list li { display: flex; gap: 16px; margin-bottom: 28px; align-items: flex-start; }
+    .reason-icon { width: 40px; height: 40px; background: var(--gris-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; border: 1px solid var(--gris-linea); }
+    .reason-list strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 0.95rem; }
+    .reason-list p { font-size: 0.88rem; color: var(--gris-texto); }
+
+    /* GARANTÍA */
+    .garantia-section { background: var(--navy); color: #fff; padding: 96px 0; }
+    .garantia-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .garantia-section h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; margin: 14px 0 20px; }
+    .garantia-section p { opacity: 0.7; font-size: 1rem; line-height: 1.7; margin-bottom: 36px; }
+    .garantia-steps { list-style: none; }
+    .garantia-steps li { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1); align-items: flex-start; }
+    .garantia-steps li:last-child { border: none; }
+    .g-num { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; width: 24px; flex-shrink: 0; margin-top: 2px; }
+    .garantia-steps strong { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 3px; }
+    .garantia-steps span { font-size: 0.85rem; opacity: 0.6; }
+
+    /* CTA FINAL */
+    .cta-final { background: var(--gris-bg); padding: 112px 0; text-align: center; border-top: 1px solid var(--gris-linea); }
+    .cta-final h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--navy); max-width: 600px; margin: 12px auto 20px; }
+    .cta-final p { color: var(--gris-texto); font-size: 1.05rem; margin-bottom: 40px; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .cta-sub { margin-top: 20px; font-size: 0.83rem; color: var(--gris-texto); }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 48px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-logo { font-size: 1.2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+    .footer-logo span { color: var(--azul); }
+    footer p { font-size: 0.82rem; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+
+    /* WA FLOTANTE */
+    .wa-float { position: fixed; bottom: 28px; right: 24px; z-index: 999; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.08); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-inner, .solucion-grid, .precio-inner, .garantia-inner { grid-template-columns: 1fr; gap: 48px; }
+      .problemas-grid, .proceso-grid { grid-template-columns: 1fr; }
+      .proceso-grid::before { display: none; }
+      .hero { padding: 72px 0 64px; }
+      section { padding: 72px 0; }
+      .nav-right .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <div class="logo">Brota<span>Digital</span></div>
+      <div class="nav-right">
+        <a href="#precio" class="nav-link">Precio</a>
+        <a href="demo-restaurante.html" class="nav-link" target="_blank">Ver ejemplo</a>
+        <a href="https://wa.me/525564131634?text=Hola,%20quiero%20información%20sobre%20mi%20página%20web" class="nav-cta" target="_blank">Quiero mi página</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-eyebrow">
+            <div class="hero-dot"></div>
+            <span>Para negocios en CDMX</span>
+          </div>
+          <h1>Tu negocio existe.<br><em>En Google, no aparece.</em></h1>
+          <p class="hero-desc">Cada día sin página web, tus clientes potenciales encuentran a tu competencia. Te ponemos en el mapa en 7 días, sin complicaciones.</p>
+          <div class="hero-btns">
+            <a href="https://wa.me/525564131634?text=Hola,%20quiero%20información%20sobre%20mi%20página%20web" class="btn btn-primary" target="_blank">Quiero mi página web →</a>
+            <a href="demo-restaurante.html" class="btn btn-ghost" target="_blank">Ver ejemplo real</a>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-item"><div class="trust-dot"></div><span><strong>$2,500 MXN</strong> pago único</span></div>
+            <div class="trust-item"><div class="trust-dot"></div><span>Entrega en <strong>7 días</strong></span></div>
+            <div class="trust-item"><div class="trust-dot"></div><span><strong>Garantía</strong> de satisfacción</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="hero-card">
+            <div class="hero-card-tag">Paquete único</div>
+            <h3>Página Web Profesional</h3>
+            <div class="hero-card-price"><sup>$</sup>2,500<span> MXN</span></div>
+            <p class="hero-card-sub">Pago único · Sin mensualidades</p>
+            <ul class="hero-card-items">
+              <li><span class="li-check">✓</span> Diseño personalizado</li>
+              <li><span class="li-check">✓</span> Adaptada para celular</li>
+              <li><span class="li-check">✓</span> Dominio .mx incluido</li>
+              <li><span class="li-check">✓</span> Hosting 1er año incluido</li>
+              <li><span class="li-check">✓</span> Botón de WhatsApp</li>
+              <li><span class="li-check">✓</span> Google Maps + contacto</li>
+            </ul>
+            <div class="garantia-mini">🛡️&nbsp; Si no te gusta el borrador, no pagas nada.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <div class="social-proof">
+    <div class="container">
+      <div class="proof-inner">
+        <span class="proof-label">Ideal para →</span>
+        <span class="proof-item">🍽️ Restaurantes y fondas</span>
+        <span class="proof-item">💇 Estéticas y salones</span>
+        <span class="proof-item">🛒 Tiendas y abarrotes</span>
+        <span class="proof-item">🔧 Talleres y servicios</span>
+        <span class="proof-item">🏥 Consultorios</span>
+        <span class="proof-item">🏠 Cualquier negocio local</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMA -->
+  <section class="problema">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">El problema</span>
+        <h2>Sin página web, estás perdiendo clientes que ya te están buscando</h2>
+        <p>Cada semana, personas en tu colonia buscan en Google el tipo de negocio que tienes. Si no apareces, ese cliente se va a quien sí está ahí.</p>
+      </div>
+      <div class="problemas-grid">
+        <div class="problema-card">
+          <div class="problema-num">01</div>
+          <h3>No existes en Google</h3>
+          <p>Cuando alguien busca tu tipo de negocio en Google, tus competidores aparecen y tú no. Ese cliente nunca va a saber que existes.</p>
+        </div>
+        <div class="problema-card">
+          <div class="problema-num">02</div>
+          <h3>Tu negocio se ve informal</h3>
+          <p>En 2025, un negocio sin página web genera desconfianza. Aunque lleves 20 años operando, sin presencia digital pareces improvisado.</p>
+        </div>
+        <div class="problema-card">
+          <div class="problema-num">03</div>
+          <h3>Depender de redes es un riesgo</h3>
+          <p>Facebook e Instagram cambian sus algoritmos cuando quieren. Una página web es tuya para siempre — nadie te la puede quitar ni esconder.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUCIÓN -->
+  <section class="solucion">
+    <div class="container">
+      <div class="solucion-grid">
+        <div>
+          <span class="tag">Lo que hacemos</span>
+          <h2 style="font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;color:var(--navy);margin:14px 0 8px;">Una página que trabaja por tu negocio, 24/7</h2>
+          <ul class="solucion-lista">
+            <li>
+              <span class="s-num">01</span>
+              <div><strong>Diseño que representa tu negocio</strong><span>No usamos plantillas genéricas. Tu página refleja quién eres y genera confianza desde el primer segundo.</span></div>
+            </li>
+            <li>
+              <span class="s-num">02</span>
+              <div><strong>Apareces en búsquedas locales de Google</strong><span>Configuramos todo para que te encuentren personas en tu colonia y zona.</span></div>
+            </li>
+            <li>
+              <span class="s-num">03</span>
+              <div><strong>Tus clientes te contactan directo</strong><span>Botón de WhatsApp, mapa, horarios y teléfono — todo en un clic desde el celular.</span></div>
+            </li>
+            <li>
+              <span class="s-num">04</span>
+              <div><strong>Se ve bien en cualquier dispositivo</strong><span>El 90% de tus clientes te van a buscar desde el teléfono. Tu página se adapta perfectamente.</span></div>
+            </li>
+            <li>
+              <span class="s-num">05</span>
+              <div><strong>Lista en 7 días hábiles</strong><span>Fecha de entrega real. Sin esperas indefinidas, sin excusas.</span></div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="demo-window">
+            <div class="demo-topbar">
+              <div class="d-dot r"></div><div class="d-dot y"></div><div class="d-dot g"></div>
+              <div class="url-bar">fondalaabuela.mx</div>
+            </div>
+            <div class="demo-body">
+              <div class="d-emoji">🍽️</div>
+              <h3>Fonda La Abuela</h3>
+              <p>Comida casera en Coyoacán desde 1998</p>
+            </div>
+            <div class="demo-footer">
+              <span>Ejemplo de página real →</span>
+              <a href="demo-restaurante.html" target="_blank">Ver completa ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="proceso">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Cómo funciona</span>
+        <h2>Tres pasos y tu negocio está en internet</h2>
+        <p>Sin tecnicismos, sin reuniones largas. Tú me das la información y yo me encargo de todo lo demás.</p>
+      </div>
+      <div class="proceso-grid">
+        <div class="paso">
+          <div class="paso-circle">1</div>
+          <h3>Llenas el brief</h3>
+          <p>Un formulario sencillo con datos de tu negocio: nombre, fotos, servicios y horarios. 15 minutos de tu tiempo.</p>
+        </div>
+        <div class="paso">
+          <div class="paso-circle">2</div>
+          <h3>Revisas el borrador</h3>
+          <p>En máximo 5 días hábiles te muestro cómo queda tu página. Si algo no te convence, lo ajustamos.</p>
+        </div>
+        <div class="paso">
+          <div class="paso-circle">3</div>
+          <h3>Sale en vivo</h3>
+          <p>Das tu aprobación y en 2 días tu negocio ya aparece en Google con dominio propio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRECIO -->
+  <section class="precio" id="precio">
+    <div class="container">
+      <div class="precio-inner">
+        <div class="precio-reasons">
+          <span class="tag">Precio</span>
+          <h2>Sin mensualidades.<br>Sin sorpresas.</h2>
+          <ul class="reason-list">
+            <li>
+              <div class="reason-icon">📱</div>
+              <div><strong>Diseño mobile-first</strong><p>Tu página se ve perfecta en celular, donde el 90% de tus clientes te van a buscar.</p></div>
+            </li>
+            <li>
+              <div class="reason-icon">🌐</div>
+              <div><strong>Dominio y hosting incluidos</strong><p>El primer año de tu dominio .mx y el hosting ya están incluidos en el precio. Sin costos extra.</p></div>
+            </li>
+            <li>
+              <div class="reason-icon">💬</div>
+              <div><strong>Comunicación por WhatsApp</strong><p>Sin reuniones ni llamadas largas. Todo se maneja por WhatsApp, en tu tiempo.</p></div>
+            </li>
+            <li>
+              <div class="reason-icon">🛡️</div>
+              <div><strong>Garantía de satisfacción</strong><p>Primero te muestro el borrador. Si no te gusta, no hay cobro. El riesgo es cero.</p></div>
+            </li>
+          </ul>
+        </div>
+        <div class="precio-card">
+          <div class="precio-card-header">
+            <h3>Página Web Profesional</h3>
+            <div class="precio-monto"><sup>$</sup>2,500<span> MXN</span></div>
+            <p class="precio-sub">Pago único · Sin mensualidades</p>
+          </div>
+          <div class="precio-body">
+            <ul class="precio-list">
+              <li><span class="p-check">✓</span> Diseño personalizado para tu negocio</li>
+              <li><span class="p-check">✓</span> Adaptada para celular y computadora</li>
+              <li><span class="p-check">✓</span> Google Maps + datos de contacto</li>
+              <li><span class="p-check">✓</span> Botón de WhatsApp directo</li>
+              <li><span class="p-check">✓</span> Dominio .mx incluido (1er año)</li>
+              <li><span class="p-check">✓</span> Hosting incluido (1er año)</li>
+              <li><span class="p-check">✓</span> Entrega en 7 días hábiles</li>
+              <li><span class="p-check">✓</span> Una ronda de ajustes incluida</li>
+            </ul>
+            <div class="garantia-box">
+              <strong>Garantía de satisfacción</strong>
+              Te muestro un borrador antes de cualquier cobro. Si no te convence, no pagas.
+            </div>
+            <a href="https://wa.me/525564131634?text=Hola,%20quiero%20contratar%20mi%20página%20web" class="btn btn-primary precio-btn" target="_blank">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Quiero empezar ahora
+            </a>
+            <p class="precio-nota">Respondo en menos de 2 horas · Lun–Vie 9am–7pm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTÍA -->
+  <section class="garantia-section">
+    <div class="container">
+      <div class="garantia-inner">
+        <div>
+          <span class="tag" style="color:rgba(255,255,255,0.4);">Garantía</span>
+          <h2>Si no te gusta el borrador,<br>no pagas.</h2>
+          <p>Antes de publicar y antes de cualquier cobro, te muestro exactamente cómo va a quedar. Si no te convence, cancelamos sin costo ni explicaciones.</p>
+          <a href="https://wa.me/525564131634?text=Hola,%20quiero%20información%20sobre%20mi%20página%20web" class="btn btn-azul" target="_blank">Empezar sin riesgo →</a>
+        </div>
+        <div>
+          <ul class="garantia-steps">
+            <li><span class="g-num">01</span><div><strong>Llenas el brief</strong><span>Me compartes la información de tu negocio por WhatsApp</span></div></li>
+            <li><span class="g-num">02</span><div><strong>Construyo el borrador</strong><span>En 5 días hábiles tienes la primera versión para revisar</span></div></li>
+            <li><span class="g-num">03</span><div><strong>Apruebas o cancelamos</strong><span>Si te gusta, pagamos y publicamos. Si no, no hay cobro.</span></div></li>
+            <li><span class="g-num">04</span><div><strong>Tu página sale en vivo</strong><span>Con dominio propio, en 2 días tu negocio aparece en Google</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <span class="tag">¿Listo para empezar?</span>
+      <h2>Tu competencia ya está en internet. Tú también puedes.</h2>
+      <p>Mándame un WhatsApp. En 10 minutos sabes exactamente qué incluye tu página y cuándo la tienes lista.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/525564131634?text=Hola,%20me%20interesa%20tener%20mi%20página%20web%20con%20Brota%20Digital" class="btn btn-primary" style="padding:15px 32px;font-size:1rem;" target="_blank">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escríbeme por WhatsApp
+        </a>
+        <a href="demo-restaurante.html" class="btn btn-ghost" target="_blank">Ver ejemplo primero</a>
+      </div>
+      <p class="cta-sub">Cualquier negocio en CDMX · Lun–Vie 9am–7pm · Respuesta en menos de 2 horas</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Brota<span>Digital</span></div>
+        <p>© 2025 Brota Digital · Páginas web para negocios en CDMX</p>
+        <div class="footer-links">
+          <a href="demo-restaurante.html" target="_blank">Ver ejemplo</a>
+          <a href="https://wa.me/525564131634" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/525564131634?text=Hola,%20quiero%20información%20sobre%20mi%20página%20web" class="wa-float" target="_blank">
+    <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+</body>
+</html>
