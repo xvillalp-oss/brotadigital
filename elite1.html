@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Élite 1 Seguridad Privada — CDMX</title>
-  <meta name="description" content="Empresa líder en seguridad privada en CDMX. Más de 10 años de experiencia. Permiso estatal vigente, Alta patronal IMSS, Cumplimiento REPSE. Cotiza ahora." />
+  <title>Élite 1 Seguridad Privada — CDMX | +10 Años Protegiendo lo que Importa</title>
+  <meta name="description" content="Empresa líder en seguridad privada en CDMX. Más de 10 años de experiencia, 200+ elementos operativos, 80+ clientes satisfechos. Permiso estatal vigente, IMSS, REPSE. Cotiza gratis." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: #1a1a2e;
+      color: #1E293B;
       background: #fff;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
@@ -27,723 +27,976 @@
       --gris-texto:#64748B;
       --texto:     #1E293B;
       --dorado:    #C9A84C;
+      --dorado-dark:#A8882A;
       --blanco:    #ffffff;
+      --verde:     #22c55e;
     }
 
     .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
     h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.15; }
-    section { padding: 96px 0; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 26px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 6px; font-weight: 700;
+      font-size: 0.95rem; cursor: pointer; transition: all 0.2s; border: none;
     }
-    .btn-primary { background: var(--dorado); color: #fff; }
-    .btn-primary:hover { background: #b8941f; transform: translateY(-1px); }
-    .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
-    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
-    .btn-dark { background: var(--navy); color: #fff; }
-    .btn-dark:hover { background: var(--navy-mid); transform: translateY(-1px); }
-    .btn-wa { background: #25D366; color: #fff; }
-    .btn-wa:hover { background: #1ebe5d; transform: translateY(-1px); }
+    .btn-gold  { background: var(--dorado); color: #fff; }
+    .btn-gold:hover  { background: var(--dorado-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+    .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+    .btn-wa    { background: #25D366; color: #fff; }
+    .btn-wa:hover    { background: #1ebe5d; transform: translateY(-2px); }
+    .btn-dark  { background: var(--navy); color: #fff; }
+    .btn-dark:hover  { background: var(--navy-mid); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: #fff; }
 
     .tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      margin-bottom: 14px;
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dorado); margin-bottom: 14px;
     }
 
-    /* NAV */
+    /* ── NAV ─────────────────────────────────────────── */
     nav {
-      background: var(--negro);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: var(--negro); position: sticky; top: 0; z-index: 200;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    nav .inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px;
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; max-width: 1080px; margin: 0 auto; padding: 0 24px;
     }
-    .logo { font-size: 1.3rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; }
-    .logo span { color: var(--dorado); }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-link { font-size: 0.88rem; color: rgba(255,255,255,0.6); font-weight: 500; transition: color 0.2s; }
+    .logo { font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+    .logo em { font-style: normal; color: var(--dorado); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-size: 0.85rem; color: rgba(255,255,255,0.6); font-weight: 500; transition: color 0.2s; }
     .nav-link:hover { color: #fff; }
     .nav-cta {
-      background: var(--dorado);
-      color: #fff;
-      padding: 9px 20px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.88rem;
-      transition: background 0.2s;
+      background: var(--dorado); color: #fff;
+      padding: 9px 20px; border-radius: 6px; font-weight: 700;
+      font-size: 0.85rem; transition: background 0.2s;
     }
-    .nav-cta:hover { background: #b8941f; }
+    .nav-cta:hover { background: var(--dorado-dark); }
+    .nav-phone { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .nav-phone strong { color: #fff; }
 
-    /* HERO */
+    /* ── HERO ─────────────────────────────────────────── */
     .hero {
       background: var(--negro);
+      background-image:
+        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(201,168,76,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(15,31,61,0.8) 0%, transparent 70%);
       color: #fff;
-      padding: 120px 0 100px;
+      padding: 100px 0 90px;
       position: relative;
       overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(201,168,76,0.07) 0%, transparent 60%);
-    }
     .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
+      display: grid; grid-template-columns: 1fr 400px; gap: 72px; align-items: center;
     }
-    .hero-badges {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-    }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
     .hero-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.8);
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 0.77rem; font-weight: 600; color: rgba(255,255,255,0.75);
     }
-    .badge-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; }
-    .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 800; margin-bottom: 22px; }
+    .bdot { width: 6px; height: 6px; background: var(--verde); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800;
+      margin-bottom: 20px; color: #fff;
+    }
     .hero h1 em { font-style: normal; color: var(--dorado); }
-    .hero-desc { font-size: 1.08rem; color: rgba(255,255,255,0.65); margin-bottom: 40px; max-width: 480px; line-height: 1.7; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-desc {
+      font-size: 1.08rem; color: rgba(255,255,255,0.6); margin-bottom: 38px;
+      max-width: 500px; line-height: 1.75;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+    .hero-proof {
+      display: flex; gap: 28px; align-items: center;
+      padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .proof-item { font-size: 0.83rem; color: rgba(255,255,255,0.5); }
+    .proof-item strong { display: block; font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 2px; }
+    .proof-item strong em { font-style: normal; color: var(--dorado); }
 
-    /* HERO STATS CARD */
+    /* Hero card */
     .hero-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 40px 32px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 36px 28px; backdrop-filter: blur(8px);
     }
-    .hero-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado); margin-bottom: 28px; }
-    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    .stat-item { }
-    .stat-num { font-size: 2.4rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; }
-    .stat-num span { font-size: 1.2rem; color: var(--dorado); }
-    .stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 6px; }
-    .stat-divider { grid-column: 1 / -1; height: 1px; background: rgba(255,255,255,0.08); }
+    .hero-card-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dorado); margin-bottom: 24px; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .stat-num { font-size: 2.2rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; }
+    .stat-num sup { font-size: 1rem; color: var(--dorado); }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
+    .stat-div { grid-column: 1/-1; height: 1px; background: rgba(255,255,255,0.08); }
+    .card-cta {
+      margin-top: 28px; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .card-cta a {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--dorado); color: #fff;
+      border-radius: 8px; padding: 14px 20px;
+      font-weight: 700; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .card-cta a:hover { background: var(--dorado-dark); transform: translateY(-2px); }
 
-    /* CERTIFICACIONES */
-    .certs {
-      background: var(--dorado);
-      padding: 20px 0;
+    /* ── CERT BAR ─────────────────────────────────────── */
+    .cert-bar { background: var(--dorado); padding: 16px 0; }
+    .cert-bar-inner {
+      display: flex; justify-content: center; align-items: center;
+      gap: 40px; flex-wrap: wrap; max-width: 1080px; margin: 0 auto; padding: 0 24px;
     }
-    .certs-inner {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .cert-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
+    .cert-item { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.82rem; color: var(--negro); }
     .cert-icon { font-size: 1.1rem; }
 
-    /* NOSOTROS */
-    .nosotros { background: var(--gris-bg); }
-    .nosotros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .nosotros h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--navy); margin: 14px 0 20px; }
-    .nosotros p { color: var(--gris-texto); font-size: 0.97rem; line-height: 1.7; margin-bottom: 16px; }
-    .valores-lista { list-style: none; margin-top: 8px; }
-    .valores-lista li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--gris-linea); font-size: 0.9rem; color: var(--texto); }
-    .valores-lista li:last-child { border: none; }
-    .v-check { color: var(--dorado); font-weight: bold; }
-    .nosotros-visual {
-      background: var(--navy);
-      border-radius: 16px;
-      padding: 48px 36px;
-      color: #fff;
-      text-align: center;
+    /* ── CONTEXTO ─────────────────────────────────────── */
+    .contexto { background: var(--gris-bg); padding: 80px 0; }
+    .contexto-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 48px; }
+    .ctx-card {
+      background: #fff; border-radius: 12px; padding: 32px 28px;
+      border: 1px solid var(--gris-linea);
+      border-top: 3px solid var(--dorado);
     }
-    .nosotros-visual .big-icon { font-size: 4rem; margin-bottom: 20px; }
-    .nosotros-visual h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
-    .nosotros-visual p { opacity: 0.6; font-size: 0.88rem; }
+    .ctx-icon { font-size: 2rem; margin-bottom: 16px; }
+    .ctx-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--negro); margin-bottom: 12px; }
+    .ctx-card p { font-size: 0.9rem; color: var(--gris-texto); line-height: 1.7; }
 
-    /* SERVICIOS */
-    .servicios { background: var(--blanco); }
-    .section-header { max-width: 620px; margin-bottom: 64px; }
-    .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--navy); margin-bottom: 16px; }
-    .section-header p { font-size: 1rem; color: var(--gris-texto); line-height: 1.7; }
-    .servicios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gris-linea); border: 1px solid var(--gris-linea); border-radius: 12px; overflow: hidden; }
-    .servicio-card { background: var(--blanco); padding: 36px 28px; transition: background 0.2s; }
-    .servicio-card:hover { background: var(--gris-bg); }
-    .servicio-icon { font-size: 2rem; margin-bottom: 16px; }
-    .servicio-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .servicio-card p { color: var(--gris-texto); font-size: 0.88rem; line-height: 1.65; }
+    /* ── SERVICIOS ────────────────────────────────────── */
+    .servicios { padding: 96px 0; background: #fff; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--negro); margin-bottom: 14px; }
+    .section-header p { font-size: 1.05rem; color: var(--gris-texto); max-width: 560px; margin: 0 auto; }
+    .serv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .serv-card {
+      border-radius: 12px; padding: 32px 24px; border: 1.5px solid var(--gris-linea);
+      transition: all 0.25s; cursor: default;
+    }
+    .serv-card:hover { border-color: var(--dorado); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.08); }
+    .serv-icon {
+      width: 52px; height: 52px; border-radius: 10px;
+      background: rgba(201,168,76,0.12); display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 18px;
+    }
+    .serv-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--negro); margin-bottom: 10px; }
+    .serv-card p { font-size: 0.88rem; color: var(--gris-texto); line-height: 1.7; margin-bottom: 16px; }
+    .serv-list { list-style: none; }
+    .serv-list li { font-size: 0.83rem; color: var(--gris-texto); padding: 3px 0; display: flex; align-items: center; gap: 7px; }
+    .serv-list li::before { content: '✓'; color: var(--dorado); font-weight: 700; font-size: 0.8rem; }
 
-    /* PROCESO */
-    .proceso { background: var(--negro); color: #fff; }
+    /* ── PROCESO ──────────────────────────────────────── */
+    .proceso { background: var(--negro); padding: 96px 0; color: #fff; }
+    .proceso .tag { color: var(--dorado); }
     .proceso .section-header h2 { color: #fff; }
     .proceso .section-header p { color: rgba(255,255,255,0.55); }
-    .proceso-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; position: relative; margin-top: 56px; }
-    .proceso-grid::before { content: ''; position: absolute; top: 20px; left: calc(10% + 16px); right: calc(10% + 16px); height: 1px; background: rgba(255,255,255,0.1); }
-    .paso { text-align: center; }
-    .paso-circle { width: 40px; height: 40px; border-radius: 50%; background: var(--dorado); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; margin: 0 auto 16px; position: relative; z-index: 1; }
-    .paso h3 { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .paso p { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.55; }
-
-    /* TESTIMONIOS */
-    .testimonios { background: var(--gris-bg); }
-    .testimonios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .testimonio-card {
-      background: var(--blanco);
-      border: 1px solid var(--gris-linea);
-      border-radius: 12px;
-      padding: 28px;
+    .proceso-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 56px; position: relative; }
+    .proceso-steps::before {
+      content: ''; position: absolute; top: 32px; left: 15%; right: 15%;
+      height: 1px; background: linear-gradient(90deg, var(--dorado), rgba(201,168,76,0.2));
     }
-    .stars { color: var(--dorado); font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
-    .testimonio-card p { color: var(--gris-texto); font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-    .testimonio-autor { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--gris-linea); padding-top: 16px; }
-    .autor-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
-    .autor-nombre { font-weight: 700; font-size: 0.88rem; color: var(--navy); }
-    .autor-empresa { font-size: 0.78rem; color: var(--gris-texto); }
+    .step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+    .step-num {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--dorado); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 800;
+      margin: 0 auto 20px; border: 3px solid var(--negro);
+      box-shadow: 0 0 0 2px var(--dorado);
+    }
+    .step h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .step p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
 
-    /* CONTACTO */
-    .contacto { background: var(--blanco); }
-    .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .contacto h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--navy); margin: 14px 0 20px; }
-    .contacto-desc { color: var(--gris-texto); margin-bottom: 36px; font-size: 0.97rem; line-height: 1.7; }
-    .contacto-datos { list-style: none; margin-bottom: 32px; }
-    .contacto-dato { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
-    .dato-icon { width: 44px; height: 44px; background: var(--gris-bg); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; border: 1px solid var(--gris-linea); }
-    .dato-label { font-size: 0.75rem; font-weight: 700; color: var(--gris-texto); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px; }
-    .dato-valor { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
-    .dato-sub { font-size: 0.82rem; color: var(--gris-texto); }
-    .contacto-wa { display: flex; align-items: center; gap: 12px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 16px 20px; color: #166534; font-weight: 600; font-size: 0.9rem; transition: background 0.2s; }
-    .contacto-wa:hover { background: #dcfce7; }
+    /* ── POR QUÉ ELITE1 ───────────────────────────────── */
+    .porque { padding: 96px 0; background: var(--gris-bg); }
+    .porque-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .porque-left h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--negro); margin-bottom: 16px; }
+    .porque-left p { font-size: 1rem; color: var(--gris-texto); line-height: 1.75; margin-bottom: 28px; }
+    .diff-list { list-style: none; }
+    .diff-item {
+      display: flex; gap: 16px; padding: 20px 0;
+      border-bottom: 1px solid var(--gris-linea);
+    }
+    .diff-item:last-child { border: none; }
+    .diff-icon {
+      width: 44px; height: 44px; flex-shrink: 0; border-radius: 8px;
+      background: var(--negro); display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem;
+    }
+    .diff-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--negro); margin-bottom: 4px; }
+    .diff-item p  { font-size: 0.87rem; color: var(--gris-texto); line-height: 1.6; }
+    .porque-right {
+      background: var(--negro); border-radius: 16px; padding: 40px 36px; color: #fff;
+    }
+    .porque-right h3 { font-size: 1.1rem; font-weight: 700; color: var(--dorado); margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.78rem; }
+    .cert-list { list-style: none; }
+    .cert-list li {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.92rem; color: rgba(255,255,255,0.8);
+    }
+    .cert-list li:last-child { border: none; }
+    .cert-check { color: var(--verde); font-size: 1rem; font-weight: 700; }
+    .cert-num { font-size: 0.78rem; color: rgba(255,255,255,0.4); display: block; margin-top: 1px; }
 
-    /* FORM */
-    .form-card { background: var(--gris-bg); border: 1px solid var(--gris-linea); border-radius: 12px; padding: 36px; }
-    .form-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 24px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    /* ── SECTORES ─────────────────────────────────────── */
+    .sectores { padding: 80px 0; background: #fff; }
+    .sectores-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; margin-top: 48px; }
+    .sector-card {
+      text-align: center; padding: 28px 16px; border-radius: 12px;
+      border: 1.5px solid var(--gris-linea); transition: all 0.2s;
+    }
+    .sector-card:hover { border-color: var(--dorado); background: rgba(201,168,76,0.04); }
+    .sector-icon { font-size: 2rem; margin-bottom: 12px; }
+    .sector-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--negro); }
+
+    /* ── TESTIMONIALES ────────────────────────────────── */
+    .testimoniales { background: var(--gris-bg); padding: 96px 0; }
+    .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    .test-card {
+      background: #fff; border-radius: 12px; padding: 32px 28px;
+      border: 1px solid var(--gris-linea); position: relative;
+    }
+    .test-quote { font-size: 3rem; line-height: 1; color: var(--dorado); margin-bottom: 8px; }
+    .test-text { font-size: 0.92rem; color: var(--texto); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+    .test-author { display: flex; align-items: center; gap: 14px; }
+    .test-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy); display: flex; align-items: center;
+      justify-content: center; color: var(--dorado); font-weight: 800; font-size: 0.9rem;
+    }
+    .test-name { font-weight: 700; font-size: 0.9rem; color: var(--negro); }
+    .test-role { font-size: 0.8rem; color: var(--gris-texto); }
+    .test-years { position: absolute; top: 24px; right: 24px; font-size: 0.75rem; font-weight: 700; color: var(--dorado); background: rgba(201,168,76,0.1); padding: 4px 10px; border-radius: 20px; }
+
+    /* ── CLIENTES ─────────────────────────────────────── */
+    .clientes { padding: 64px 0; background: #fff; border-top: 1px solid var(--gris-linea); border-bottom: 1px solid var(--gris-linea); }
+    .clientes-header { text-align: center; margin-bottom: 40px; }
+    .clientes-header p { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris-texto); }
+    .clientes-logos {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 16px;
+    }
+    .logo-pill {
+      background: var(--gris-bg); border: 1px solid var(--gris-linea);
+      border-radius: 8px; padding: 12px 22px;
+      font-size: 0.88rem; font-weight: 700; color: var(--gris-texto);
+    }
+
+    /* ── VIDEO ────────────────────────────────────────── */
+    .video-section { background: var(--negro); padding: 80px 0; }
+    .video-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .video-text .tag { color: var(--dorado); }
+    .video-text h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .video-text p { font-size: 0.97rem; color: rgba(255,255,255,0.58); line-height: 1.75; margin-bottom: 28px; }
+    .video-frame {
+      border-radius: 12px; overflow: hidden;
+      aspect-ratio: 16/9; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-frame iframe { width: 100%; height: 100%; border: none; }
+    .video-placeholder {
+      text-align: center; color: rgba(255,255,255,0.3); padding: 40px;
+    }
+    .video-placeholder .play-icon { font-size: 3rem; margin-bottom: 12px; }
+    .video-placeholder p { font-size: 0.85rem; }
+
+    /* ── CTA FINAL ────────────────────────────────────── */
+    .cta-final {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--negro) 100%);
+      padding: 96px 0; color: #fff; text-align: center;
+    }
+    .cta-final h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 16px; }
+    .cta-final h2 em { font-style: normal; color: var(--dorado); }
+    .cta-final p { font-size: 1.05rem; color: rgba(255,255,255,0.6); margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-detail { margin-top: 24px; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+
+    /* ── FORMULARIO ───────────────────────────────────── */
+    .cotizacion { padding: 96px 0; background: var(--gris-bg); }
+    .cotiza-grid { display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: start; }
+    .cotiza-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--negro); margin-bottom: 16px; }
+    .cotiza-info p { font-size: 1rem; color: var(--gris-texto); line-height: 1.75; margin-bottom: 28px; }
+    .cotiza-bullets { list-style: none; }
+    .cotiza-bullets li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; font-size: 0.92rem; color: var(--texto); }
+    .cotiza-bullets li::before { content: '✓'; color: var(--verde); font-weight: 700; font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .form-card {
+      background: #fff; border-radius: 16px; padding: 36px 32px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08); border: 1px solid var(--gris-linea);
+    }
+    .form-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--negro); margin-bottom: 24px; }
     .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--texto); margin-bottom: 6px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--negro); margin-bottom: 6px; }
     .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1px solid var(--gris-linea);
-      border-radius: 6px;
-      font-size: 0.9rem;
-      color: var(--texto);
-      background: var(--blanco);
-      transition: border-color 0.2s;
+      width: 100%; padding: 11px 14px; border: 1.5px solid var(--gris-linea);
+      border-radius: 8px; font-size: 0.92rem; color: var(--negro);
+      background: var(--gris-bg); transition: border-color 0.2s;
       font-family: inherit;
     }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      outline: none;
-      border-color: var(--navy);
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--dorado); background: #fff;
     }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-submit { width: 100%; justify-content: center; padding: 14px; border-radius: 8px; font-size: 0.95rem; margin-top: 8px; }
-
-    /* MAPA */
-    .mapa-placeholder {
-      background: var(--gris-bg);
-      border: 1px solid var(--gris-linea);
-      border-radius: 12px;
-      height: 220px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-bottom: 20px;
-      cursor: pointer;
-      transition: background 0.2s;
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%; padding: 14px; background: var(--dorado); color: #fff;
+      border: none; border-radius: 8px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s, transform 0.2s;
     }
-    .mapa-placeholder:hover { background: #e8edf5; }
-    .mapa-placeholder .m-icon { font-size: 2.5rem; margin-bottom: 10px; }
-    .mapa-placeholder h3 { color: var(--navy); font-size: 0.95rem; font-weight: 700; }
-    .mapa-placeholder p { color: var(--gris-texto); font-size: 0.82rem; margin-top: 4px; }
+    .form-submit:hover { background: var(--dorado-dark); transform: translateY(-2px); }
+    .form-note { text-align: center; font-size: 0.78rem; color: var(--gris-texto); margin-top: 12px; }
 
-    /* RRHH */
-    .rrhh { background: var(--gris-bg); border-top: 1px solid var(--gris-linea); padding: 72px 0; }
-    .rrhh-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .rrhh h2 { font-size: 1.8rem; font-weight: 800; color: var(--navy); margin: 14px 0 16px; }
-    .rrhh p { color: var(--gris-texto); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.7; }
-    .beneficios-lista { list-style: none; margin-bottom: 28px; }
-    .beneficios-lista li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.9rem; border-bottom: 1px solid var(--gris-linea); }
-    .beneficios-lista li:last-child { border: none; }
-    .b-check { color: #22c55e; font-weight: bold; }
+    /* ── RECLUTAMIENTO ────────────────────────────────── */
+    .recluta { background: var(--navy); padding: 72px 0; color: #fff; }
+    .recluta-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+    .recluta h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
+    .recluta p { color: rgba(255,255,255,0.55); font-size: 0.95rem; }
+    .recluta-req { display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+    .req-tag {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; color: rgba(255,255,255,0.7);
+    }
 
-    /* FOOTER */
-    footer { background: var(--negro); color: rgba(255,255,255,0.5); padding: 56px 0 32px; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-logo { font-size: 1.3rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 12px; }
-    .footer-logo span { color: var(--dorado); }
-    .footer-desc { font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
-    .footer-social { display: flex; gap: 10px; margin-top: 20px; }
-    .social-btn { width: 36px; height: 36px; background: rgba(255,255,255,0.07); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: background 0.2s; color: rgba(255,255,255,0.7); }
-    .social-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
-    .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 10px; }
-    .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
-    .footer-links a:hover { color: #fff; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { font-size: 0.8rem; }
-    .footer-certs { display: flex; gap: 16px; }
-    .footer-cert { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--negro); color: rgba(255,255,255,0.5);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-brand .logo { font-size: 1.2rem; margin-bottom: 12px; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 9px; }
+    .footer-col a { font-size: 0.88rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.82rem; }
+    .footer-bottom a { color: var(--dorado); font-size: 0.82rem; }
 
-    /* WA FLOTANTE */
-    .wa-float { position: fixed; bottom: 28px; right: 24px; z-index: 999; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; }
-    .wa-float:hover { transform: scale(1.08); }
+    /* ── FLOAT WA ─────────────────────────────────────── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45); transition: transform 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero-inner, .nosotros-grid, .contacto-grid, .rrhh-inner { grid-template-columns: 1fr; gap: 48px; }
-      .servicios-grid, .proceso-grid, .testimonios-grid { grid-template-columns: 1fr; }
-      .proceso-grid::before { display: none; }
-      .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .hero { padding: 80px 0 64px; }
-      section { padding: 72px 0; }
-      .nav-links .nav-link { display: none; }
-      .form-row { grid-template-columns: 1fr; }
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero-inner, .porque-grid, .video-inner, .cotiza-grid,
+      .proceso-steps, .recluta-inner, .footer-inner { grid-template-columns: 1fr; }
+      .serv-grid, .contexto-grid, .test-grid { grid-template-columns: 1fr; }
+      .sectores-grid { grid-template-columns: repeat(2,1fr); }
+      .nav-links { display: none; }
+      .proceso-steps::before { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="inner">
-      <div class="logo">Élite<span>1</span> Seguridad</div>
-      <div class="nav-links">
-        <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#nosotros" class="nav-link">Nosotros</a>
-        <a href="#testimonios" class="nav-link">Clientes</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
-        <a href="#contacto" class="nav-cta">Cotizar ahora</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div>
-          <div class="hero-badges">
-            <span class="hero-badge"><span class="badge-dot"></span> Permiso estatal vigente</span>
-            <span class="hero-badge"><span class="badge-dot"></span> Alta patronal IMSS</span>
-            <span class="hero-badge"><span class="badge-dot"></span> REPSE</span>
-          </div>
-          <h1>Protegemos<br>lo que más <em>importa</em></h1>
-          <p class="hero-desc">Seguridad estructurada para empresas, industrias y residencias en CDMX. Más de 10 años con operación supervisada, personal certificado y cumplimiento legal total.</p>
-          <div class="hero-btns">
-            <a href="#contacto" class="btn btn-primary">Solicitar cotización →</a>
-            <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20cotizar%20seguridad%20privada" class="btn btn-ghost" target="_blank">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              WhatsApp
-            </a>
-          </div>
-        </div>
-        <div>
-          <div class="hero-card">
-            <div class="hero-card-label">Nuestra experiencia</div>
-            <div class="stat-grid">
-              <div class="stat-item">
-                <div class="stat-num">10<span>+</span></div>
-                <div class="stat-label">Años de operación</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-num">200<span>+</span></div>
-                <div class="stat-label">Elementos activos</div>
-              </div>
-              <div class="stat-divider"></div>
-              <div class="stat-item">
-                <div class="stat-num">80<span>+</span></div>
-                <div class="stat-label">Clientes activos</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-num">5</div>
-                <div class="stat-label">Sectores atendidos</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICACIONES -->
-  <div class="certs">
-    <div class="certs-inner">
-      <div class="cert-item"><span class="cert-icon">✓</span> Permiso estatal vigente</div>
-      <div class="cert-item"><span class="cert-icon">✓</span> Alta patronal e IMSS</div>
-      <div class="cert-item"><span class="cert-icon">✓</span> Cumplimiento REPSE</div>
-      <div class="cert-item"><span class="cert-icon">✓</span> Supervisión operativa permanente</div>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Élite <em>1</em></div>
+    <div class="nav-links">
+      <a href="#servicios"    class="nav-link">Servicios</a>
+      <a href="#proceso"      class="nav-link">Proceso</a>
+      <a href="#nosotros"     class="nav-link">Nosotros</a>
+      <a href="#testimoniales" class="nav-link">Clientes</a>
+      <a href="tel:5552455130" class="nav-phone"><strong>55 5245 5130</strong></a>
+      <a href="#cotizacion" class="nav-cta">Cotizar ahora</a>
     </div>
   </div>
+</nav>
 
-  <!-- NOSOTROS -->
-  <section class="nosotros" id="nosotros">
-    <div class="container">
-      <div class="nosotros-grid">
-        <div>
-          <span class="tag">Quiénes somos</span>
-          <h2>Más de 10 años construyendo confianza</h2>
-          <p>Nacimos con una convicción clara: la seguridad no solo protege instalaciones, protege la continuidad de tu negocio y la tranquilidad de las personas que lo forman.</p>
-          <p>Cada operación que diseñamos parte de un análisis real del entorno. No mandamos personal sin criterio — asignamos el perfil correcto para cada riesgo específico.</p>
-          <ul class="valores-lista">
-            <li><span class="v-check">✓</span> Personal capacitado y certificado</li>
-            <li><span class="v-check">✓</span> Supervisión operativa los 365 días</li>
-            <li><span class="v-check">✓</span> Cumplimiento legal total — sin riesgos para tu empresa</li>
-            <li><span class="v-check">✓</span> Comunicación directa con mandos operativos</li>
-            <li><span class="v-check">✓</span> Protocolo de actuación ante cualquier incidente</li>
-          </ul>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badges">
+          <div class="hero-badge"><span class="bdot"></span> Permiso estatal vigente</div>
+          <div class="hero-badge">Alta patronal IMSS</div>
+          <div class="hero-badge">Cumplimiento REPSE</div>
         </div>
-        <div>
-          <div class="nosotros-visual">
-            <div class="big-icon">🛡️</div>
-            <h3>Seguridad estructurada</h3>
-            <p style="margin-top:12px;">Operamos con consignas claras, supervisión constante y cumplimiento legal en cada servicio.</p>
+        <h1>Protegemos<br>lo que más<br><em>te importa</em></h1>
+        <p class="hero-desc">Más de 10 años resguardando corporativos, residenciales, eventos e industria en CDMX. Personal certificado, operación 24/7 y supervisión continua.</p>
+        <div class="hero-btns">
+          <a href="#cotizacion" class="btn btn-gold">📋 Cotización gratuita</a>
+          <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20una%20cotización%20de%20seguridad%20privada"
+             target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-item"><strong>10<em>+</em></strong>años de experiencia</div>
+          <div class="proof-item"><strong>200<em>+</em></strong>elementos operativos</div>
+          <div class="proof-item"><strong>80<em>+</em></strong>clientes activos</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <p class="hero-card-title">Nuestros números</p>
+        <div class="stat-grid">
+          <div>
+            <div class="stat-num">10<sup>+</sup></div>
+            <div class="stat-label">Años en operación</div>
+          </div>
+          <div>
+            <div class="stat-num">200<sup>+</sup></div>
+            <div class="stat-label">Elementos certificados</div>
+          </div>
+          <div class="stat-div"></div>
+          <div>
+            <div class="stat-num">80<sup>+</sup></div>
+            <div class="stat-label">Clientes satisfechos</div>
+          </div>
+          <div>
+            <div class="stat-num">5</div>
+            <div class="stat-label">Sectores atendidos</div>
+          </div>
+          <div class="stat-div"></div>
+          <div>
+            <div class="stat-num">24<sup>/7</sup></div>
+            <div class="stat-label">Cobertura continua</div>
+          </div>
+          <div>
+            <div class="stat-num">0</div>
+            <div class="stat-label">Incidentes sin atención</div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section class="servicios" id="servicios">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag">Servicios</span>
-        <h2>Seguridad especializada para cada sector</h2>
-        <p>Diseñamos esquemas operativos adaptados al entorno específico de cada cliente. No existe un modelo único — existe el modelo correcto para ti.</p>
-      </div>
-      <div class="servicios-grid">
-        <div class="servicio-card">
-          <div class="servicio-icon">🏢</div>
-          <h3>Corporativo</h3>
-          <p>Control de accesos, supervisión de áreas sensibles y presencia disuasiva en oficinas y edificios corporativos.</p>
-        </div>
-        <div class="servicio-card">
-          <div class="servicio-icon">🏭</div>
-          <h3>Sector Industrial</h3>
-          <p>Esquemas que contemplan flujos de personal, proveedores y accesos vehiculares en instalaciones de alta actividad.</p>
-        </div>
-        <div class="servicio-card">
-          <div class="servicio-icon">🏨</div>
-          <h3>Residencial y Hotelería</h3>
-          <p>Discreción, protocolo y atención al huésped. Seguridad que no interrumpe la experiencia del espacio.</p>
-        </div>
-        <div class="servicio-card">
-          <div class="servicio-icon">🛒</div>
-          <h3>Retail y Centros Comerciales</h3>
-          <p>Resguardo de mercancía, instalaciones y personas mediante control de flujo y detección temprana.</p>
-        </div>
-        <div class="servicio-card">
-          <div class="servicio-icon">🏛️</div>
-          <h3>Gobierno</h3>
-          <p>Acompañamiento a instituciones que requieren orden, continuidad y cumplimiento de protocolos específicos.</p>
-        </div>
-        <div class="servicio-card" style="background:var(--gris-bg);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:36px;">
-          <p style="font-size:0.9rem;color:var(--gris-texto);margin-bottom:16px;">¿Tu sector no está en la lista?</p>
-          <a href="#contacto" class="btn btn-dark" style="font-size:0.85rem;padding:10px 20px;">Platícanos tu caso →</a>
+        <div class="card-cta">
+          <a href="tel:5552455130">📞 &nbsp;Llamar ahora: 55 5245 5130</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PROCESO -->
-  <section class="proceso" id="proceso">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag" style="color:var(--dorado);">Cómo trabajamos</span>
-        <h2>Un proceso estructurado antes, durante y después</h2>
-        <p style="color:rgba(255,255,255,0.55);">No improvisamos la seguridad. Cada servicio sigue un proceso definido que garantiza resultados desde el primer día.</p>
+<!-- CERT BAR -->
+<div class="cert-bar">
+  <div class="cert-bar-inner">
+    <div class="cert-item"><span class="cert-icon">🛡️</span>Permiso Estatal Vigente</div>
+    <div class="cert-item"><span class="cert-icon">✅</span>Alta Patronal IMSS</div>
+    <div class="cert-item"><span class="cert-icon">📋</span>Cumplimiento REPSE</div>
+    <div class="cert-item"><span class="cert-icon">🏅</span>+10 Años de Trayectoria</div>
+    <div class="cert-item"><span class="cert-icon">⚡</span>Respuesta 24/7</div>
+  </div>
+</div>
+
+<!-- CONTEXTO / POR QUÉ IMPORTA -->
+<section class="contexto" id="nosotros">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">¿Por qué actuar hoy?</div>
+      <h2>La seguridad no puede esperar</h2>
+      <p>Cada día sin protección profesional es un riesgo innecesario para tu patrimonio, tu equipo y tu operación.</p>
+    </div>
+    <div class="contexto-grid">
+      <div class="ctx-card">
+        <div class="ctx-icon">🏢</div>
+        <h3>Empresas sin custodia profesional</h3>
+        <p>Las instalaciones sin vigilancia certificada son el blanco más frecuente de robos y sabotajes. Un guardia sin capacitación cuesta más de lo que protege.</p>
       </div>
-      <div class="proceso-grid">
-        <div class="paso">
-          <div class="paso-circle">1</div>
-          <h3>Análisis previo</h3>
-          <p>Evaluamos el entorno, riesgos y alcances antes de proponer cualquier esquema.</p>
-        </div>
-        <div class="paso">
-          <div class="paso-circle">2</div>
-          <h3>Reclutamiento</h3>
-          <p>Seleccionamos personal conforme al perfil y nivel de riesgo requerido.</p>
-        </div>
-        <div class="paso">
-          <div class="paso-circle">3</div>
-          <h3>Capacitación</h3>
-          <p>Cada elemento recibe lineamientos específicos alineados a las consignas del cliente.</p>
-        </div>
-        <div class="paso">
-          <div class="paso-circle">4</div>
-          <h3>Activación</h3>
-          <p>Iniciamos operación con personal dado de alta, alcances definidos y comunicación directa.</p>
-        </div>
-        <div class="paso">
-          <div class="paso-circle">5</div>
-          <h3>Supervisión</h3>
-          <p>Monitoreo continuo por mandos especializados durante toda la operación.</p>
-        </div>
+      <div class="ctx-card">
+        <div class="ctx-icon">📜</div>
+        <h3>Riesgos legales por personal sin registro</h3>
+        <p>Contratar guardias no registrados ante la SSC puede generar multas y responsabilidad penal para tu empresa. Elite 1 cumple con todas las obligaciones legales.</p>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-icon">🔍</div>
+        <h3>Falta de supervisión continua</h3>
+        <p>Muchas empresas descubren fallas en su seguridad cuando ya es tarde. Nosotros realizamos supervisiones constantes para garantizar el cumplimiento del servicio.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TESTIMONIOS -->
-  <section class="testimonios" id="testimonios">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag">Clientes</span>
-        <h2>Lo que dicen quienes ya confían en nosotros</h2>
-        <p>Empresas de distintos sectores que eligieron Élite 1 y llevan años con nosotros.</p>
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Nuestros servicios</div>
+      <h2>Soluciones de seguridad a la medida</h2>
+      <p>Diseñamos estrategias específicas para cada cliente. No ofrecemos soluciones genéricas; analizamos tu operación y te proponemos el esquema ideal.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv-card">
+        <div class="serv-icon">🏢</div>
+        <h3>Seguridad Corporativa</h3>
+        <p>Protección integral para oficinas, corporativos y parques empresariales con control de acceso y protocolos personalizados.</p>
+        <ul class="serv-list">
+          <li>Control de acceso y registro de visitantes</li>
+          <li>Rondines y vigilancia perimetral</li>
+          <li>Coordinación con áreas de facilities</li>
+          <li>Protocolos de emergencia</li>
+        </ul>
       </div>
-      <div class="testimonios-grid">
-        <div class="testimonio-card">
-          <div class="stars">★★★★★</div>
-          <p>"Llevamos 3 años con Élite 1 en nuestras instalaciones corporativas. La coordinación con los mandos es directa y los elementos siempre están presentables y capacitados. No hemos tenido un solo incidente."</p>
-          <div class="testimonio-autor">
-            <div class="autor-avatar">RG</div>
+      <div class="serv-card">
+        <div class="serv-icon">🏘️</div>
+        <h3>Seguridad Residencial</h3>
+        <p>Guardias capacitados para conjuntos habitacionales, condominios y casas que brindan tranquilidad a los residentes.</p>
+        <ul class="serv-list">
+          <li>Acceso controlado las 24 horas</li>
+          <li>Rondines nocturnos y diurnos</li>
+          <li>Atención a residentes y visitantes</li>
+          <li>Coordinación con vecinos y administración</li>
+        </ul>
+      </div>
+      <div class="serv-card">
+        <div class="serv-icon">🎪</div>
+        <h3>Seguridad en Eventos</h3>
+        <p>Personal especializado en control de multitudes, acceso VIP y manejo de situaciones de riesgo en todo tipo de eventos.</p>
+        <ul class="serv-list">
+          <li>Control de acceso y filtros de seguridad</li>
+          <li>Protección VIP y escoltas</li>
+          <li>Manejo de multitudes</li>
+          <li>Coordinación con autoridades locales</li>
+        </ul>
+      </div>
+      <div class="serv-card">
+        <div class="serv-icon">🏭</div>
+        <h3>Seguridad Industrial</h3>
+        <p>Guardias entrenados para entornos industriales, plantas de producción y bodegas con altos estándares de seguridad operacional.</p>
+        <ul class="serv-list">
+          <li>Custodia de instalaciones y maquinaria</li>
+          <li>Control de entrada de proveedores</li>
+          <li>Prevención de robo de inventario</li>
+          <li>Cumplimiento de normas de seguridad industrial</li>
+        </ul>
+      </div>
+      <div class="serv-card">
+        <div class="serv-icon">🏛️</div>
+        <h3>Seguridad Gubernamental</h3>
+        <p>Apoyo a dependencias gubernamentales con personal certificado y con los más altos estándares de confiabilidad.</p>
+        <ul class="serv-list">
+          <li>Personal con filtros de confianza</li>
+          <li>Protección de instalaciones públicas</li>
+          <li>Atención ciudadana y control de acceso</li>
+          <li>Coordinación con fuerzas de seguridad pública</li>
+        </ul>
+      </div>
+      <div class="serv-card">
+        <div class="serv-icon">🚐</div>
+        <h3>Custodia y Escoltas</h3>
+        <p>Protección de personas, bienes y mercancías en traslados dentro de CDMX y área metropolitana.</p>
+        <ul class="serv-list">
+          <li>Escoltas para ejecutivos y directivos</li>
+          <li>Custodia de valores y mercancías</li>
+          <li>Traslados de riesgo</li>
+          <li>Vehículos y personal equipado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Cómo trabajamos</div>
+      <h2>Un proceso claro, sin sorpresas</h2>
+      <p>Desde el primer contacto hasta la supervisión continua, acompañamos cada etapa.</p>
+    </div>
+    <div class="proceso-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Diagnóstico</h3>
+        <p>Visitamos tus instalaciones y analizamos vulnerabilidades. Sin costo y sin compromiso.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Propuesta</h3>
+        <p>Te presentamos un esquema de seguridad a la medida con personal, turnos y costos detallados.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Implementación</h3>
+        <p>Asignamos elementos capacitados, uniformados y con todos sus documentos en regla desde el primer día.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Supervisión</h3>
+        <p>Supervisores visitan las instalaciones de forma continua para garantizar la calidad del servicio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ ELITE1 -->
+<section class="porque">
+  <div class="container">
+    <div class="porque-grid">
+      <div class="porque-left">
+        <div class="tag">Nuestra diferencia</div>
+        <h2>Lo que nos distingue de las demás empresas</h2>
+        <p>En Elite 1 no solo colocamos guardias. Implementamos esquemas de seguridad con supervisión real, personal confiable y respaldo legal completo.</p>
+        <ul class="diff-list">
+          <li class="diff-item">
+            <div class="diff-icon">🔎</div>
             <div>
-              <div class="autor-nombre">Roberto G.</div>
-              <div class="autor-empresa">Director de Operaciones — Empresa logística</div>
+              <h4>Supervisiones sin previo aviso</h4>
+              <p>Nuestros supervisores visitan cada instalación de forma sorpresiva para verificar que el servicio se cumpla al 100%.</p>
             </div>
-          </div>
-        </div>
-        <div class="testimonio-card">
-          <div class="stars">★★★★★</div>
-          <p>"Lo que más valoro es que cumplen con todo lo legal. Muchos proveedores de seguridad representan un riesgo laboral para la empresa. Con Élite 1 tenemos tranquilidad total en ese aspecto."</p>
-          <div class="testimonio-autor">
-            <div class="autor-avatar">ML</div>
+          </li>
+          <li class="diff-item">
+            <div class="diff-icon">🧪</div>
             <div>
-              <div class="autor-nombre">Mónica L.</div>
-              <div class="autor-empresa">Gerente de RRHH — Centro comercial</div>
+              <h4>Personal con filtros rigurosos</h4>
+              <p>Cada elemento pasa por examen médico, toxicológico, psicométrico y estudio socioeconómico antes de ser asignado.</p>
             </div>
-          </div>
-        </div>
-        <div class="testimonio-card">
-          <div class="stars">★★★★★</div>
-          <p>"Tenemos guardias de Élite 1 en nuestra planta industrial. El análisis previo que hicieron fue muy profesional — identificaron riesgos que nosotros no habíamos contemplado."</p>
-          <div class="testimonio-autor">
-            <div class="autor-avatar">CH</div>
+          </li>
+          <li class="diff-item">
+            <div class="diff-icon">📊</div>
             <div>
-              <div class="autor-nombre">Carlos H.</div>
-              <div class="autor-empresa">Gerente de Planta — Sector industrial</div>
+              <h4>Estudio de riesgo por escrito</h4>
+              <p>Entregamos un reporte de vulnerabilidades de tu instalación para que conozcas exactamente qué se está protegiendo y cómo.</p>
             </div>
+          </li>
+          <li class="diff-item">
+            <div class="diff-icon">📞</div>
+            <div>
+              <h4>Atención directa 24/7</h4>
+              <p>Siempre habrá alguien de Elite 1 disponible para atenderte. Sin call centers, sin tiempos de espera.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="porque-right">
+        <h3>Nuestras certificaciones y registros</h3>
+        <ul class="cert-list">
+          <li>
+            <span class="cert-check">✓</span>
+            <div>
+              Permiso Estatal de Seguridad Privada
+              <span class="cert-num">Secretaría de Seguridad Ciudadana — Vigente</span>
+            </div>
+          </li>
+          <li>
+            <span class="cert-check">✓</span>
+            <div>
+              Alta Patronal ante el IMSS
+              <span class="cert-num">Todos los elementos asegurados</span>
+            </div>
+          </li>
+          <li>
+            <span class="cert-check">✓</span>
+            <div>
+              Registro REPSE vigente
+              <span class="cert-num">Régimen de Subcontratación Especializada</span>
+            </div>
+          </li>
+          <li>
+            <span class="cert-check">✓</span>
+            <div>
+              Pago puntual de nómina y prestaciones
+              <span class="cert-num">IMSS, INFONAVIT, vacaciones y aguinaldo</span>
+            </div>
+          </li>
+          <li>
+            <span class="cert-check">✓</span>
+            <div>
+              Uniformes, equipo y radio-comunicación
+              <span class="cert-num">Provistos por Elite 1</span>
+            </div>
+          </li>
+          <li>
+            <span class="cert-check">✓</span>
+            <div>
+              Seguro de responsabilidad civil
+              <span class="cert-num">Cobertura completa por incidentes</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORES -->
+<section class="sectores">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Sectores que atendemos</div>
+      <h2>Experiencia en múltiples industrias</h2>
+      <p>Conocemos las necesidades específicas de cada sector y adaptamos nuestros protocolos en consecuencia.</p>
+    </div>
+    <div class="sectores-grid">
+      <div class="sector-card"><div class="sector-icon">🏢</div><h4>Corporativo</h4></div>
+      <div class="sector-card"><div class="sector-icon">🏭</div><h4>Industrial</h4></div>
+      <div class="sector-card"><div class="sector-icon">🏘️</div><h4>Residencial</h4></div>
+      <div class="sector-card"><div class="sector-icon">🎪</div><h4>Eventos</h4></div>
+      <div class="sector-card"><div class="sector-icon">🏛️</div><h4>Gobierno</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALES -->
+<section class="testimoniales" id="testimoniales">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Lo que dicen nuestros clientes</div>
+      <h2>La confianza se construye con hechos</h2>
+      <p>Llevamos años protegiendo empresas y familias en CDMX. Estos son algunos de sus testimonios.</p>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <span class="test-years">3 años con Elite 1</span>
+        <div class="test-quote">"</div>
+        <p class="test-text">Desde que contratamos a Elite 1 no hemos tenido un solo incidente. Su personal es puntual, bien presentado y profesional. Los supervisores aparecen sin avisar y eso nos da mucha tranquilidad.</p>
+        <div class="test-author">
+          <div class="test-avatar">MR</div>
+          <div>
+            <div class="test-name">Miguel R.</div>
+            <div class="test-role">Director de Operaciones — Corporativo en Tlalpan</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <span class="test-years">5 años con Elite 1</span>
+        <div class="test-quote">"</div>
+        <p class="test-text">Nuestra empresa de manufactura necesitaba guardias con experiencia en planta. Elite 1 nos asignó personal capacitado en menos de una semana y la transición fue perfecta. Excelente servicio.</p>
+        <div class="test-author">
+          <div class="test-avatar">LC</div>
+          <div>
+            <div class="test-name">Laura C.</div>
+            <div class="test-role">Gerente General — Empresa Industrial, CDMX</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <span class="test-years">2 años con Elite 1</span>
+        <div class="test-quote">"</div>
+        <p class="test-text">Lo que más nos convenció fue el estudio de riesgo que hicieron de nuestra propiedad. Identificaron vulnerabilidades que no habíamos visto. Hoy nos sentimos realmente protegidos.</p>
+        <div class="test-author">
+          <div class="test-avatar">JM</div>
+          <div>
+            <div class="test-name">Javier M.</div>
+            <div class="test-role">Presidente de Consejo — Condominio Residencial</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACTO -->
-  <section class="contacto" id="contacto">
-    <div class="container">
-      <div class="contacto-grid">
-        <div>
-          <span class="tag">Contacto</span>
-          <h2>Solicite su cotización</h2>
-          <p class="contacto-desc">Complete el formulario o contáctenos directamente. Un asesor especializado se comunicará con usted en menos de 24 horas.</p>
-          <div class="contacto-datos">
-            <div class="contacto-dato">
-              <div class="dato-icon">📞</div>
-              <div>
-                <div class="dato-label">Teléfono</div>
-                <a href="tel:+525552455130" class="dato-valor">55 5245 5130</a>
-              </div>
-            </div>
-            <div class="contacto-dato">
-              <div class="dato-icon">✉️</div>
-              <div>
-                <div class="dato-label">Correo</div>
-                <a href="mailto:contacto@elite1.mx" class="dato-valor">contacto@elite1.mx</a>
-              </div>
-            </div>
-            <div class="contacto-dato">
-              <div class="dato-icon">📍</div>
-              <div>
-                <div class="dato-label">Dirección</div>
-                <a href="https://maps.google.com/?q=Carr.+Picacho-Ajusco+130,+Jardines+de+la+Monta%C3%B1a,+Tlalpan,+14210+CDMX" target="_blank" class="dato-valor" style="color:var(--navy);">Picacho-Ajusco 130 int. 302</a>
-                <div class="dato-sub">Jardines de la Montaña, Tlalpan · C.P. 14210</div>
-              </div>
-            </div>
-            <div class="contacto-dato">
-              <div class="dato-icon">🕐</div>
-              <div>
-                <div class="dato-label">Horario de atención</div>
-                <div class="dato-valor">Lunes a Viernes, 9:00 – 18:00</div>
-              </div>
-            </div>
-          </div>
+<!-- CLIENTES -->
+<section class="clientes">
+  <div class="container">
+    <div class="clientes-header">
+      <p>Más de 80 clientes confían en Elite 1</p>
+    </div>
+    <div class="clientes-logos">
+      <!-- SUGERIR AL CLIENTE: reemplazar con logos reales -->
+      <div class="logo-pill">Corporativo A</div>
+      <div class="logo-pill">Residencial B</div>
+      <div class="logo-pill">Industria C</div>
+      <div class="logo-pill">Gobierno D</div>
+      <div class="logo-pill">Empresa E</div>
+      <div class="logo-pill">Corporativo F</div>
+      <div class="logo-pill">Hospital G</div>
+      <div class="logo-pill">Plaza H</div>
+      <div class="logo-pill">Oficinas I</div>
+      <div class="logo-pill">Consorcio J</div>
+    </div>
+  </div>
+</section>
 
-          <!-- MAPA -->
-          <a href="https://maps.google.com/?q=Carr.+Picacho-Ajusco+130,+Jardines+de+la+Monta%C3%B1a,+Tlalpan,+14210+CDMX" target="_blank" class="mapa-placeholder">
-            <div class="m-icon">🗺️</div>
-            <h3>Ver en Google Maps</h3>
-            <p>Picacho-Ajusco 130, Tlalpan, CDMX</p>
-          </a>
-
-          <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20cotizar%20seguridad%20privada" class="contacto-wa" target="_blank">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Escríbenos por WhatsApp — respuesta inmediata
-          </a>
-        </div>
-
-        <div class="form-card">
-          <div class="form-title">Solicitar cotización</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Nombre completo *</label>
-              <input type="text" placeholder="Su nombre" />
-            </div>
-            <div class="form-group">
-              <label>Teléfono *</label>
-              <input type="tel" placeholder="55 1234 5678" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Correo electrónico *</label>
-            <input type="email" placeholder="correo@empresa.com" />
-          </div>
-          <div class="form-group">
-            <label>Empresa</label>
-            <input type="text" placeholder="Nombre de su empresa" />
-          </div>
-          <div class="form-group">
-            <label>Tipo de servicio</label>
-            <select>
-              <option value="">Seleccione un sector</option>
-              <option>Corporativo</option>
-              <option>Sector Industrial</option>
-              <option>Residencial / Hotelería</option>
-              <option>Retail / Centros Comerciales</option>
-              <option>Gobierno</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Mensaje (opcional)</label>
-            <textarea placeholder="Cuéntenos sobre sus necesidades de seguridad..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit">Solicitar cotización →</button>
+<!-- VIDEO -->
+<section class="video-section">
+  <div class="container">
+    <div class="video-inner">
+      <div class="video-text">
+        <div class="tag">Conoce Elite 1</div>
+        <h2>Seguridad con experiencia y resultados comprobados</h2>
+        <p>Conoce cómo operamos, quiénes somos y por qué más de 80 empresas y familias han decidido confiar en nosotros durante más de 10 años.</p>
+        <a href="#cotizacion" class="btn btn-gold">Solicitar cotización gratuita</a>
+      </div>
+      <div class="video-frame">
+        <!-- SUGERIR AL CLIENTE: reemplazar con ID real de YouTube -->
+        <!-- <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" allowfullscreen></iframe> -->
+        <div class="video-placeholder">
+          <div class="play-icon">▶️</div>
+          <p>Video corporativo<br><small>Solicitar al cliente el enlace de YouTube</small></p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- RRHH -->
-  <section class="rrhh" id="rrhh">
-    <div class="container">
-      <div class="rrhh-inner">
-        <div>
-          <span class="tag">Únete al equipo</span>
-          <h2>¿Quieres trabajar con nosotros?</h2>
-          <p>En Élite 1 valoramos a cada elemento. Ofrecemos estabilidad, prestaciones completas desde el primer día y crecimiento interno real.</p>
-          <ul class="beneficios-lista">
-            <li><span class="b-check">✓</span> Estabilidad laboral</li>
-            <li><span class="b-check">✓</span> Capacitación continua</li>
-            <li><span class="b-check">✓</span> Crecimiento interno</li>
-            <li><span class="b-check">✓</span> Pagos puntuales y prestaciones de ley</li>
-          </ul>
-          <p style="font-size:0.88rem;">Envía tu CV a <a href="mailto:contacto@elite1.mx" style="color:var(--navy);font-weight:600;">contacto@elite1.mx</a> con el asunto "Solicitud de empleo"</p>
+<!-- COTIZACIÓN -->
+<section class="cotizacion" id="cotizacion">
+  <div class="container">
+    <div class="cotiza-grid">
+      <div class="cotiza-info">
+        <div class="tag">Cotización sin costo</div>
+        <h2>Hablemos de tu seguridad hoy</h2>
+        <p>Cuéntanos qué necesitas proteger y te enviamos una propuesta personalizada en menos de 24 horas. Sin compromisos, sin letra chica.</p>
+        <ul class="cotiza-bullets">
+          <li>Diagnóstico de instalaciones sin costo</li>
+          <li>Propuesta detallada con personal, turnos y costos</li>
+          <li>Personal disponible desde el primer día acordado</li>
+          <li>Contratos transparentes con SLA de servicio</li>
+          <li>Supervisión continua incluida en el servicio</li>
+        </ul>
+        <br>
+        <p>O contáctanos directamente:</p>
+        <br>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="tel:5552455130" class="btn btn-dark">📞 55 5245 5130</a>
+          <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20una%20cotización"
+             target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+          <a href="mailto:contacto@elite1.mx" class="btn btn-outline">✉️ contacto@elite1.mx</a>
         </div>
-        <div style="background:var(--blanco);border:1px solid var(--gris-linea);border-radius:12px;padding:36px;text-align:center;">
-          <div style="font-size:3rem;margin-bottom:16px;">👮</div>
-          <h3 style="color:var(--navy);font-weight:700;margin-bottom:8px;">Guardias · Supervisores · Escoltas</h3>
-          <p style="color:var(--gris-texto);font-size:0.88rem;margin-bottom:24px;">Posiciones abiertas para personal con y sin experiencia previa en seguridad privada.</p>
-          <a href="mailto:contacto@elite1.mx?subject=Solicitud%20de%20empleo" class="btn btn-dark" style="width:100%;justify-content:center;">Enviar mi CV →</a>
+      </div>
+      <div class="form-card">
+        <h3>Solicita tu cotización</h3>
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Tu nombre">
         </div>
+        <div class="form-group">
+          <label>Empresa u organización</label>
+          <input type="text" placeholder="Nombre de tu empresa">
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" placeholder="55 1234 5678">
+        </div>
+        <div class="form-group">
+          <label>Tipo de servicio</label>
+          <select>
+            <option value="">Selecciona un servicio</option>
+            <option>Seguridad Corporativa</option>
+            <option>Seguridad Residencial</option>
+            <option>Seguridad en Eventos</option>
+            <option>Seguridad Industrial</option>
+            <option>Seguridad Gubernamental</option>
+            <option>Custodia y Escoltas</option>
+            <option>No sé, necesito asesoría</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntanos brevemente qué necesitas</label>
+          <textarea placeholder="¿Qué quieres proteger? ¿Cuántas personas necesitas? ¿Cuántos turnos?"></textarea>
+        </div>
+        <button
+          class="form-submit"
+          onclick="window.open('https://wa.me/525540449956?text=Hola,%20quiero%20una%20cotización%20de%20seguridad%20privada','_blank')">
+          Enviar por WhatsApp →
+        </button>
+        <p class="form-note">🔒 Tu información es confidencial. Te respondemos en menos de 2 horas.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-top">
-        <div>
-          <div class="footer-logo">Élite<span>1</span> Seguridad</div>
-          <p class="footer-desc">Empresa líder en seguridad privada en CDMX. Más de 10 años protegiendo empresas, industrias y residencias con cumplimiento legal total.</p>
-          <div class="footer-social">
-            <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn">in</a>
-            <a href="https://instagram.com" target="_blank" class="social-btn" title="Instagram">ig</a>
-            <a href="https://wa.me/525540449956" target="_blank" class="social-btn" title="WhatsApp">wa</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Servicios</h4>
-          <ul class="footer-links">
-            <li><a href="#servicios">Corporativo</a></li>
-            <li><a href="#servicios">Sector Industrial</a></li>
-            <li><a href="#servicios">Residencial / Hotelería</a></li>
-            <li><a href="#servicios">Retail / Centros Comerciales</a></li>
-            <li><a href="#servicios">Gobierno</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Empresa</h4>
-          <ul class="footer-links">
-            <li><a href="#nosotros">Quiénes somos</a></li>
-            <li><a href="#proceso">Cómo trabajamos</a></li>
-            <li><a href="#testimonios">Clientes</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <li><a href="#rrhh">Trabaja con nosotros</a></li>
-          </ul>
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2>¿Listo para <em>proteger lo que importa</em>?</h2>
+    <p>Más de 80 empresas y familias en CDMX ya confían en Elite 1. Únete a ellas hoy.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/525540449956?text=Hola,%20quiero%20una%20cotización%20de%20seguridad%20privada"
+         target="_blank" class="btn btn-wa" style="padding:16px 32px; font-size:1rem;">💬 Cotizar por WhatsApp</a>
+      <a href="tel:5552455130" class="btn btn-ghost" style="padding:16px 32px; font-size:1rem;">📞 Llamar ahora</a>
+    </div>
+    <p class="cta-detail">Carr. Picacho-Ajusco 130 Int. 302, Tlalpan, CDMX &nbsp;|&nbsp; contacto@elite1.mx</p>
+  </div>
+</section>
+
+<!-- RECLUTAMIENTO -->
+<section class="recluta">
+  <div class="container">
+    <div class="recluta-inner">
+      <div>
+        <h2>¿Quieres trabajar con nosotros?</h2>
+        <p>Buscamos personas comprometidas, honestas y con vocación de servicio para integrarse a nuestro equipo operativo en CDMX.</p>
+        <div class="recluta-req">
+          <span class="req-tag">Mayor de 22 años</span>
+          <span class="req-tag">Preparatoria concluida</span>
+          <span class="req-tag">Sin antecedentes penales</span>
+          <span class="req-tag">Disponibilidad de horario</span>
+          <span class="req-tag">Actitud proactiva</span>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 Élite 1 Seguridad Privada · CDMX · Todos los derechos reservados.</p>
-        <div class="footer-certs">
-          <span class="footer-cert">Permiso estatal vigente</span>
-          <span class="footer-cert">IMSS</span>
-          <span class="footer-cert">REPSE</span>
-        </div>
+      <div>
+        <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20trabajar%20en%20Elite%201%20como%20guardia"
+           target="_blank" class="btn btn-gold" style="padding:16px 28px; white-space:nowrap;">
+          Enviar solicitud →
+        </a>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- WA FLOTANTE -->
-  <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20cotizar%20seguridad%20privada" class="wa-float" target="_blank">
-    <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Élite <em style="color:var(--dorado)">1</em></div>
+        <p>Empresa de seguridad privada con más de 10 años de experiencia en CDMX. Personal certificado, operación 24/7 y supervisión continua.</p>
+        <br>
+        <div style="display:flex; gap:12px; margin-top:4px;">
+          <a href="https://www.facebook.com/elite1seguridad" target="_blank" style="color:rgba(255,255,255,0.4); font-size:0.85rem;">Facebook</a>
+          <a href="https://www.instagram.com/elite1seguridadprivada" target="_blank" style="color:rgba(255,255,255,0.4); font-size:0.85rem;">Instagram</a>
+          <a href="https://www.linkedin.com/company/elite1seguridad" target="_blank" style="color:rgba(255,255,255,0.4); font-size:0.85rem;">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Seguridad Corporativa</a></li>
+          <li><a href="#servicios">Seguridad Residencial</a></li>
+          <li><a href="#servicios">Eventos</a></li>
+          <li><a href="#servicios">Industrial</a></li>
+          <li><a href="#servicios">Custodia y Escoltas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#nosotros">Quiénes somos</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#testimoniales">Clientes</a></li>
+          <li><a href="#cotizacion">Cotización</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:5552455130">55 5245 5130</a></li>
+          <li><a href="mailto:contacto@elite1.mx">contacto@elite1.mx</a></li>
+          <li><a href="https://wa.me/525540449956" target="_blank">WhatsApp</a></li>
+          <li style="color:rgba(255,255,255,0.35); font-size:0.82rem; padding-top:6px;">Carr. Picacho-Ajusco 130 Int. 302<br>Tlalpan, 14210 CDMX</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Élite 1 Seguridad Privada. Todos los derechos reservados.</p>
+      <a href="index.html">Página web por Brota Digital</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOAT WHATSAPP -->
+<a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20una%20cotización%20de%20seguridad%20privada"
+   target="_blank" class="wa-float" title="Chatea con nosotros">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
 
 </body>
 </html>
