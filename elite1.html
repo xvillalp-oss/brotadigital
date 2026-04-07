@@ -376,6 +376,7 @@
     /* ── SERVICIOS ────────────────────────────────────── */
     .servicios { padding: 104px 0; background: #fff; }
     .serv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 1024px) { .serv-grid { grid-template-columns: repeat(2,1fr); } }
     .serv-card {
       border-radius: var(--radius-lg); padding: 32px 26px;
       border: 1.5px solid var(--gris-linea);
@@ -411,9 +412,9 @@
 
     /* ── PROCESO ──────────────────────────────────────── */
     .proceso { background: var(--black); padding: 104px 0; color: #fff; }
-    .proceso-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 64px; position: relative; }
+    .proceso-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; margin-top: 64px; position: relative; }
     .proceso-line {
-      position: absolute; top: 36px; left: calc(12.5% + 18px); right: calc(12.5% + 18px);
+      position: absolute; top: 36px; left: calc(10% + 18px); right: calc(10% + 18px);
       height: 2px;
       background: linear-gradient(90deg, var(--dorado) 0%, rgba(201,168,76,0.2) 100%);
     }
@@ -434,6 +435,28 @@
       border-radius: 40px; padding: 4px 12px;
       font-size: 0.72rem; font-weight: 600; color: var(--dorado);
     }
+
+    /* ── NO IMPROVISAMOS ─────────────────────────────── */
+    .no-improv {
+      background: var(--black-soft);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 72px 0; color: #fff; text-align: center;
+    }
+    .no-improv h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900;
+      letter-spacing: -0.04em; margin-bottom: 14px;
+    }
+    .no-improv p { font-size: 1.05rem; color: rgba(255,255,255,0.5); margin-bottom: 36px; }
+    .improv-badges {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 40px;
+    }
+    .improv-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 40px; padding: 8px 18px;
+      font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.75);
+    }
+    .improv-badge span { color: var(--dorado); font-size: 1rem; }
 
     /* ── POR QUÉ ELITE1 ───────────────────────────────── */
     .porque { padding: 104px 0; background: var(--gris-bg); }
@@ -637,8 +660,8 @@
       border-top: 1px solid rgba(255,255,255,0.06);
     }
     .footer-inner {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 56px; margin-bottom: 48px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
     }
     .footer-logo { font-size: 1.3rem; font-weight: 900; color: #fff; letter-spacing: -0.04em; margin-bottom: 14px; }
     .footer-logo em { font-style: normal; color: var(--dorado); }
@@ -734,13 +757,14 @@
       .recluta-inner { grid-template-columns: 1fr; gap: 28px; }
 
       .proceso-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .proceso-line { display: none; }
+      .proceso-line  { display: none; }
+      .no-improv .improv-badges { flex-direction: column; align-items: center; }
 
       .serv-grid { grid-template-columns: 1fr; }
       .contexto-grid { grid-template-columns: 1fr; }
       .sectores-grid { grid-template-columns: repeat(3, 1fr); }
 
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
       .footer-brand { grid-column: 1 / -1; }
 
       .form-card { padding: 28px 24px; position: static; }
@@ -896,13 +920,13 @@
   </div>
 </div>
 
-<!-- CONTEXTO -->
+<!-- QUIÉNES SOMOS / CONTEXTO -->
 <section class="contexto" id="nosotros" aria-labelledby="contexto-heading">
   <div class="container">
     <div class="section-header reveal">
-      <div class="tag">¿Por qué actuar hoy?</div>
-      <h2 id="contexto-heading">La seguridad no puede esperar</h2>
-      <p>Cada día sin protección profesional es un riesgo innecesario para tu patrimonio, tu equipo y tu operación.</p>
+      <div class="tag">Quiénes Somos</div>
+      <h2 id="contexto-heading">Más de 10 años construyendo confianza</h2>
+      <p>En Élite 1 Seguridad Privada nacimos con una convicción clara: la seguridad no solo protege instalaciones, <strong>protege la continuidad de lo que cada cliente se ha construido.</strong></p>
     </div>
     <div class="contexto-grid">
       <div class="ctx-card reveal delay-1">
@@ -930,72 +954,72 @@
     <div class="section-header reveal">
       <div class="tag">Nuestros servicios</div>
       <h2 id="servicios-heading">Soluciones de seguridad a la medida</h2>
-      <p>Diseñamos estrategias específicas para cada cliente. No ofrecemos soluciones genéricas; analizamos tu operación y te proponemos el esquema ideal.</p>
+      <p>Nuestro método parte de un análisis previo del riesgo y las condiciones del sitio, para definir consignas, perfiles de personal y esquemas de operación adecuados a cada caso.</p>
     </div>
     <div class="serv-grid">
       <div class="serv-card reveal delay-1">
         <div class="serv-icon">🏢</div>
-        <h3>Seguridad Corporativa</h3>
-        <p>Protección integral para oficinas, corporativos y parques empresariales con control de acceso y protocolos personalizados.</p>
+        <h3>01 — Corporativo</h3>
+        <p>Servicios orientados a controlar accesos, supervisar áreas sensibles y mantener una presencia profesional que se integre a los procesos internos, minimizando riesgos operativos, laborales y de seguridad.</p>
         <ul class="serv-list">
           <li>Control de acceso y registro de visitantes</li>
+          <li>Supervisión de áreas sensibles</li>
           <li>Rondines y vigilancia perimetral</li>
-          <li>Coordinación con áreas de facilities</li>
           <li>Protocolos de emergencia</li>
         </ul>
       </div>
       <div class="serv-card reveal delay-2">
-        <div class="serv-icon">🏘️</div>
-        <h3>Seguridad Residencial</h3>
-        <p>Guardias capacitados para conjuntos habitacionales, condominios y casas que brindan tranquilidad a los residentes.</p>
+        <div class="serv-icon">🏭</div>
+        <h3>02 — Sector Industrial</h3>
+        <p>Los entornos industriales demandan esquemas de seguridad que consideren flujos de personal, proveedores, activos críticos y cumplimiento normativo. Priorizamos la continuidad operativa y el orden en instalaciones de alta actividad.</p>
         <ul class="serv-list">
-          <li>Acceso controlado las 24 horas</li>
-          <li>Rondines nocturnos y diurnos</li>
-          <li>Atención a residentes y visitantes</li>
-          <li>Coordinación con administración</li>
+          <li>Control de flujos de personal y proveedores</li>
+          <li>Custodia de activos críticos</li>
+          <li>Cumplimiento normativo</li>
+          <li>Prevención de robo de inventario</li>
         </ul>
       </div>
       <div class="serv-card reveal delay-3">
-        <div class="serv-icon">🎪</div>
-        <h3>Seguridad en Eventos</h3>
-        <p>Personal especializado en control de multitudes, acceso VIP y manejo de situaciones de riesgo en todo tipo de eventos.</p>
+        <div class="serv-icon">🏘️</div>
+        <h3>03 — Residencial / Hotelería</h3>
+        <p>Nos integramos a espacios donde la confianza, la discreción y la atención son clave, manteniendo un entorno seguro sin romper la dinámica del lugar.</p>
         <ul class="serv-list">
-          <li>Control de acceso y filtros de seguridad</li>
-          <li>Protección VIP y escoltas</li>
-          <li>Manejo de multitudes</li>
-          <li>Coordinación con autoridades locales</li>
+          <li>Acceso controlado 24 horas</li>
+          <li>Atención a residentes y huéspedes</li>
+          <li>Rondines nocturnos y diurnos</li>
+          <li>Coordinación con administración</li>
         </ul>
       </div>
       <div class="serv-card reveal delay-4">
-        <div class="serv-icon">🏭</div>
-        <h3>Seguridad Industrial</h3>
-        <p>Guardias entrenados para entornos industriales, plantas de producción y bodegas con altos estándares operacionales.</p>
+        <div class="serv-icon">🛒</div>
+        <h3>04 — Retail / Centros Comerciales</h3>
+        <p>Nuestros servicios permiten resguardar mercancía, instalaciones y personas, mediante esquemas de control visibles, rondines periódicos y coordinación con los equipos internos del establecimiento.</p>
         <ul class="serv-list">
-          <li>Custodia de instalaciones y maquinaria</li>
-          <li>Control de entrada de proveedores</li>
-          <li>Prevención de robo de inventario</li>
-          <li>Cumplimiento de normas industriales</li>
+          <li>Resguardo de mercancía e instalaciones</li>
+          <li>Control visible en áreas de afluencia</li>
+          <li>Rondines periódicos</li>
+          <li>Coordinación con equipos internos</li>
         </ul>
       </div>
       <div class="serv-card reveal delay-5">
         <div class="serv-icon">🏛️</div>
-        <h3>Seguridad Gubernamental</h3>
-        <p>Apoyo a dependencias gubernamentales con personal certificado y con los más altos estándares de confiabilidad.</p>
+        <h3>05 — Gobierno</h3>
+        <p>Apoyo a instituciones que demandan orden, continuidad y cumplimiento, adaptándonos a las particularidades de cada operación con personal certificado y con los más altos estándares de confiabilidad.</p>
         <ul class="serv-list">
           <li>Personal con filtros de confianza</li>
           <li>Protección de instalaciones públicas</li>
           <li>Atención ciudadana y control de acceso</li>
-          <li>Coordinación con fuerzas públicas</li>
+          <li>Coordinación con fuerzas de seguridad pública</li>
         </ul>
       </div>
       <div class="serv-card reveal delay-6">
         <div class="serv-icon">🚐</div>
-        <h3>Custodia y Escoltas</h3>
-        <p>Protección de personas, bienes y mercancías en traslados dentro de CDMX y área metropolitana.</p>
+        <h3>06 — Custodia y Escoltas</h3>
+        <p>Protección de personas, bienes y mercancías en traslados dentro de CDMX y área metropolitana con personal y vehículos especializados.</p>
         <ul class="serv-list">
           <li>Escoltas para ejecutivos y directivos</li>
           <li>Custodia de valores y mercancías</li>
-          <li>Traslados de riesgo</li>
+          <li>Traslados de alto riesgo</li>
           <li>Vehículos y personal equipado</li>
         </ul>
       </div>
@@ -1015,28 +1039,51 @@
       <div class="proceso-line" aria-hidden="true"></div>
       <div class="step reveal delay-1" role="listitem">
         <div class="step-num" aria-hidden="true">1</div>
-        <h3>Diagnóstico</h3>
-        <p>Visitamos tus instalaciones y analizamos vulnerabilidades. Sin costo y sin compromiso.</p>
-        <span class="step-tag">Gratis</span>
+        <h3>Análisis previo</h3>
+        <p>Análisis integral del entorno para identificar riesgos, definir alcances y estructurar la operación.</p>
+        <span class="step-tag">Sin costo</span>
       </div>
       <div class="step reveal delay-2" role="listitem">
         <div class="step-num" aria-hidden="true">2</div>
-        <h3>Propuesta</h3>
-        <p>Te presentamos un esquema de seguridad a la medida con personal, turnos y costos detallados.</p>
-        <span class="step-tag">24 hrs</span>
+        <h3>Reclutamiento</h3>
+        <p>Seleccionamos personal conforme al perfil operativo requerido y al nivel de riesgo del entorno.</p>
+        <span class="step-tag">Filtros rigurosos</span>
       </div>
       <div class="step reveal delay-3" role="listitem">
         <div class="step-num" aria-hidden="true">3</div>
-        <h3>Implementación</h3>
-        <p>Asignamos elementos capacitados, uniformados y con todos sus documentos en regla desde el primer día.</p>
-        <span class="step-tag">Inmediato</span>
+        <h3>Capacitación</h3>
+        <p>Cada elemento recibe lineamientos específicos: protocolos de actuación, prevención de riesgos y procedimientos internos.</p>
+        <span class="step-tag">Antes de iniciar</span>
       </div>
       <div class="step reveal delay-4" role="listitem">
         <div class="step-num" aria-hidden="true">4</div>
-        <h3>Supervisión</h3>
-        <p>Supervisores visitan las instalaciones de forma continua para garantizar la calidad del servicio.</p>
-        <span class="step-tag">Continuo</span>
+        <h3>Activación</h3>
+        <p>Iniciamos operación únicamente con consignas claras, personal dado de alta y marco legal cumplido.</p>
+        <span class="step-tag">Día 1</span>
       </div>
+      <div class="step reveal delay-5" role="listitem">
+        <div class="step-num" aria-hidden="true">5</div>
+        <h3>Supervisión</h3>
+        <p>Monitoreo operativo continuo por mandos especializados para garantizar la calidad del servicio.</p>
+        <span class="step-tag">Permanente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NO IMPROVISAMOS -->
+<section class="no-improv" aria-labelledby="noi-heading">
+  <div class="container">
+    <div class="reveal">
+      <h2 id="noi-heading">NO IMPROVISAMOS LA SEGURIDAD.</h2>
+      <p>Operamos con estructura, criterio y control.</p>
+      <div class="improv-badges">
+        <div class="improv-badge"><span>🛡️</span> Permiso estatal vigente</div>
+        <div class="improv-badge"><span>✅</span> Alta patronal e IMSS</div>
+        <div class="improv-badge"><span>📋</span> Cumplimiento REPSE</div>
+        <div class="improv-badge"><span>👁️</span> Supervisión operativa permanente</div>
+      </div>
+      <a href="#cotizacion" class="btn btn-gold btn-lg">Solicitar Cotización</a>
     </div>
   </div>
 </section>
@@ -1139,12 +1186,13 @@
       <h2 id="sectores-heading">Experiencia en múltiples industrias</h2>
       <p>Conocemos las necesidades específicas de cada sector y adaptamos nuestros protocolos en consecuencia.</p>
     </div>
-    <div class="sectores-grid">
+    <div class="sectores-grid" style="grid-template-columns: repeat(3,1fr); max-width:780px; margin:0 auto;">
       <div class="sector-card reveal delay-1"><div class="sector-icon">🏢</div><h4>Corporativo</h4></div>
-      <div class="sector-card reveal delay-2"><div class="sector-icon">🏭</div><h4>Industrial</h4></div>
-      <div class="sector-card reveal delay-3"><div class="sector-icon">🏘️</div><h4>Residencial</h4></div>
-      <div class="sector-card reveal delay-4"><div class="sector-icon">🎪</div><h4>Eventos</h4></div>
+      <div class="sector-card reveal delay-2"><div class="sector-icon">🏭</div><h4>Sector Industrial</h4></div>
+      <div class="sector-card reveal delay-3"><div class="sector-icon">🏘️</div><h4>Residencial / Hotelería</h4></div>
+      <div class="sector-card reveal delay-4"><div class="sector-icon">🛒</div><h4>Retail / Centros Comerciales</h4></div>
       <div class="sector-card reveal delay-5"><div class="sector-icon">🏛️</div><h4>Gobierno</h4></div>
+      <div class="sector-card reveal delay-6"><div class="sector-icon">🚐</div><h4>Custodia y Escoltas</h4></div>
     </div>
   </div>
 </section>
@@ -1192,11 +1240,15 @@
              target="_blank" rel="noopener noreferrer" class="btn btn-wa">💬 WhatsApp</a>
           <a href="mailto:contacto@elite1.mx" class="btn btn-outline">✉️ Email</a>
         </div>
+        <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--gris-linea);">
+          <p style="font-size:0.82rem; color:var(--gris-texto); margin-bottom:6px;">📍 Carr. Picacho-Ajusco 130 int. 302, Jardines de la Montaña, Tlalpan, C.P. 14210, Ciudad de México</p>
+          <p style="font-size:0.82rem; color:var(--gris-texto);">🕐 Lunes a Viernes, 9:00 – 18:00</p>
+        </div>
       </div>
 
       <div class="form-card reveal-right" role="form" aria-label="Formulario de cotización">
-        <h3>Solicita tu cotización</h3>
-        <p class="form-subtitle">Te respondemos en menos de 2 horas</p>
+        <h3>Solicite su Cotización</h3>
+        <p class="form-subtitle">Un asesor especializado se comunicará con usted en menos de 2 horas · Lun–Vie 9:00–18:00</p>
 
         <div class="form-group">
           <label for="form-nombre">Nombre completo <span class="req-mark" aria-hidden="true">*</span></label>
@@ -1264,8 +1316,8 @@
   <div class="container">
     <div class="recluta-inner">
       <div class="reveal-left">
-        <h2 id="recluta-heading">¿Quieres trabajar con nosotros?</h2>
-        <p>Buscamos personas comprometidas, honestas y con vocación de servicio para integrarse a nuestro equipo operativo en CDMX.</p>
+        <h2 id="recluta-heading">¿Por qué trabajar con nosotros?</h2>
+        <p>En ELITE 1 valoramos a cada miembro de nuestro equipo. Ofrecemos un ambiente de trabajo profesional, capacitación constante y todas las prestaciones de ley.</p>
         <div class="recluta-req" role="list" aria-label="Requisitos">
           <span class="req-tag" role="listitem">Mayor de 22 años</span>
           <span class="req-tag" role="listitem">Preparatoria concluida</span>
@@ -1301,20 +1353,20 @@
       <div class="footer-col">
         <h4>Servicios</h4>
         <ul>
-          <li><a href="#servicios">Seguridad Corporativa</a></li>
-          <li><a href="#servicios">Seguridad Residencial</a></li>
-          <li><a href="#servicios">Eventos</a></li>
-          <li><a href="#servicios">Industrial</a></li>
-          <li><a href="#servicios">Custodia y Escoltas</a></li>
+          <li><a href="#servicios">Corporativo</a></li>
+          <li><a href="#servicios">Sector Industrial</a></li>
+          <li><a href="#servicios">Residencial / Hotelería</a></li>
+          <li><a href="#servicios">Retail / Centros Comerciales</a></li>
+          <li><a href="#servicios">Gobierno</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Empresa</h4>
         <ul>
-          <li><a href="#nosotros">Quiénes somos</a></li>
-          <li><a href="#proceso">Cómo trabajamos</a></li>
-          <li><a href="#cotizacion">Cotización</a></li>
-          <li><a href="#reclutamiento">Trabaja con nosotros</a></li>
+          <li><a href="#nosotros">Quiénes Somos</a></li>
+          <li><a href="#proceso">Nuestro Proceso</a></li>
+          <li><a href="#nosotros">Cumplimiento Legal</a></li>
+          <li><a href="#cotizacion">Contacto</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1324,14 +1376,28 @@
           <li><a href="mailto:contacto@elite1.mx">contacto@elite1.mx</a></li>
           <li><a href="https://wa.me/525540449956" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
           <li style="color:rgba(255,255,255,0.3); font-size:0.82rem; margin-top:8px; line-height:1.6;">
-            Carr. Picacho-Ajusco 130 Int. 302<br>Tlalpan, 14210 CDMX
+            Carr. Picacho-Ajusco 130 int. 302,<br>Jardines de la Montaña,<br>Tlalpan, C.P. 14210, CDMX
           </li>
+          <li style="color:rgba(255,255,255,0.3); font-size:0.82rem; margin-top:4px;">Lun–Vie 9:00–18:00</li>
         </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Certificaciones</h4>
+        <ul>
+          <li><a href="#nosotros">IMSS</a></li>
+          <li><a href="#nosotros">REPSE</a></li>
+          <li><a href="#nosotros">RC — Resp. Civil</a></li>
+          <li><a href="#nosotros">Permisos SSC</a></li>
+        </ul>
+        <p style="font-size:0.77rem; color:rgba(255,255,255,0.25); margin-top:12px; line-height:1.5;">Empresa legalmente constituida con todos los permisos vigentes.</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Élite 1 Seguridad Privada. Todos los derechos reservados.</p>
-      <a href="index.html">Página web por Brota Digital</a>
+      <p>© 2026 Elite 1 Seguridad Privada. Todos los derechos reservados.</p>
+      <div style="display:flex; gap:16px; align-items:center;">
+        <a href="#" style="color:rgba(255,255,255,0.4); font-size:0.82rem;">Aviso de Privacidad</a>
+        <a href="index.html" style="color:var(--dorado); font-size:0.82rem;">Página web por Brota Digital</a>
+      </div>
     </div>
   </div>
 </footer>
