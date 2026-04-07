@@ -18,19 +18,92 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
 
+    /* ── DESIGN TOKENS ───────────────────────────────── */
     :root {
+      /* Brand palette */
       --negro:     #0A0E1A;
       --navy:      #0F1F3D;
       --navy-mid:  #1B3461;
-      --gris-bg:   #F5F7FA;
-      --gris-linea:#E2E8F0;
-      --gris-texto:#64748B;
-      --texto:     #1E293B;
       --dorado:    #C9A84C;
       --dorado-dark:#A8882A;
-      --blanco:    #ffffff;
       --verde:     #22c55e;
+
+      /* Semantic – dark mode default */
+      --bg-primary:   #0A0E1A;
+      --bg-secondary: #0F1F3D;
+      --bg-surface:   rgba(255,255,255,0.05);
+      --bg-card:      rgba(255,255,255,0.05);
+      --text-primary: #ffffff;
+      --text-muted:   rgba(255,255,255,0.55);
+      --border-color: rgba(255,255,255,0.10);
+
+      /* Light sections (always) */
+      --gris-bg:    #F5F7FA;
+      --gris-linea: #E2E8F0;
+      --gris-texto: #64748B;
+      --texto:      #1E293B;
+      --blanco:     #ffffff;
+
+      /* Shadow tokens */
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.12);
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.14);
+      --shadow-lg:  0 12px 36px rgba(0,0,0,0.18);
+      --shadow-gold:0 8px 24px rgba(201,168,76,0.35);
+
+      /* Transition tokens */
+      --t-fast:   150ms ease;
+      --t-normal: 250ms ease;
+      --t-slow:   400ms ease;
     }
+
+    /* ── LIGHT THEME OVERRIDES ───────────────────────── */
+    [data-theme="light"] {
+      --bg-primary:   #F5F7FA;
+      --bg-secondary: #E8EDF4;
+      --bg-surface:   #ffffff;
+      --bg-card:      #ffffff;
+      --text-primary: #1E293B;
+      --text-muted:   #64748B;
+      --border-color: #E2E8F0;
+    }
+    [data-theme="light"] nav        { background: var(--negro); }
+    [data-theme="light"] .hero      { background: linear-gradient(135deg, var(--navy) 0%, var(--negro) 100%); }
+    [data-theme="light"] .proceso   { background: var(--navy); }
+    [data-theme="light"] .cta-final { background: linear-gradient(135deg, var(--navy) 0%, var(--negro) 100%); }
+    [data-theme="light"] .recluta   { background: var(--navy); }
+    [data-theme="light"] footer     { background: var(--negro); }
+    [data-theme="light"] .video-section { background: var(--navy); }
+    [data-theme="light"] .ctx-card  { background: #fff; }
+    [data-theme="light"] .porque    { background: #EFF3F9; }
+    [data-theme="light"] .porque-right { background: var(--negro); }
+
+    /* System preference */
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg-primary:   #F5F7FA;
+        --bg-secondary: #E8EDF4;
+      }
+    }
+
+    /* ── THEME TOGGLE COMPONENT ─────────────────────── */
+    .theme-toggle {
+      display: inline-flex; align-items: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px; padding: 3px;
+      gap: 2px;
+    }
+    .theme-btn {
+      padding: 5px 10px; border-radius: 20px;
+      font-size: 0.72rem; font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      background: transparent; border: none;
+      cursor: pointer; transition: all var(--t-fast);
+      line-height: 1;
+    }
+    .theme-btn:hover  { color: rgba(255,255,255,0.85); }
+    .theme-btn.active { background: var(--dorado); color: #fff; }
+    .theme-btn:focus-visible { outline: 2px solid var(--dorado); outline-offset: 2px; border-radius: 20px; }
 
     .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
     h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.15; }
@@ -38,14 +111,15 @@
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 13px 26px; border-radius: 6px; font-weight: 700;
-      font-size: 0.95rem; cursor: pointer; transition: all 0.2s; border: none;
+      font-size: 0.95rem; cursor: pointer; transition: all var(--t-normal); border: none;
     }
+    .btn:focus-visible { outline: 2px solid var(--dorado); outline-offset: 3px; }
     .btn-gold  { background: var(--dorado); color: #fff; }
-    .btn-gold:hover  { background: var(--dorado-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+    .btn-gold:hover  { background: var(--dorado-dark); transform: translateY(-2px); box-shadow: var(--shadow-gold); }
     .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); }
     .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
     .btn-wa    { background: #25D366; color: #fff; }
-    .btn-wa:hover    { background: #1ebe5d; transform: translateY(-2px); }
+    .btn-wa:hover    { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.35); }
     .btn-dark  { background: var(--navy); color: #fff; }
     .btn-dark:hover  { background: var(--navy-mid); transform: translateY(-2px); }
     .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
@@ -383,6 +457,32 @@
     .footer-bottom p { font-size: 0.82rem; }
     .footer-bottom a { color: var(--dorado); font-size: 0.82rem; }
 
+    /* ── FOCUS STYLES (WCAG AA) ─────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--dorado);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .nav-link:focus-visible { border-radius: 4px; }
+    .nav-cta:focus-visible  { outline-offset: 2px; }
+    .form-group input:focus-visible,
+    .form-group select:focus-visible,
+    .form-group textarea:focus-visible {
+      outline: none;
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+    }
+    .form-submit:focus-visible { outline: 2px solid var(--dorado); outline-offset: 2px; }
+
+    /* ── REDUCED MOTION ─────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
     /* ── FLOAT WA ─────────────────────────────────────── */
     .wa-float {
       position: fixed; bottom: 28px; right: 28px; z-index: 999;
@@ -406,23 +506,36 @@
 </head>
 <body>
 
+<!-- SKIP TO CONTENT -->
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--dorado);color:#fff;padding:8px 16px;border-radius:4px;font-weight:700;text-decoration:none;">Saltar al contenido</a>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--dorado);color:#fff;padding:8px 16px;border-radius:4px;font-weight:700;text-decoration:none;" onfocus="this.style.left='4px'" onblur="this.style.left='-9999px'">Saltar al contenido</a>
+
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="Navegación principal">
   <div class="nav-inner">
-    <div class="logo">Élite <em>1</em></div>
+    <div class="logo" aria-label="Élite 1 Seguridad Privada">Élite <em>1</em></div>
     <div class="nav-links">
-      <a href="#servicios"    class="nav-link">Servicios</a>
-      <a href="#proceso"      class="nav-link">Proceso</a>
-      <a href="#nosotros"     class="nav-link">Nosotros</a>
       <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#proceso"   class="nav-link">Proceso</a>
+      <a href="#nosotros"  class="nav-link">Nosotros</a>
+      <a href="#cotizacion" class="nav-link">Contacto</a>
       <a href="tel:5552455130" class="nav-phone"><strong>55 5245 5130</strong></a>
+
+      <!-- Theme Toggle -->
+      <div class="theme-toggle" role="radiogroup" aria-label="Tema de color">
+        <button class="theme-btn" data-theme="light" role="radio" aria-checked="false" title="Tema claro">☀</button>
+        <button class="theme-btn active" data-theme="dark" role="radio" aria-checked="true" title="Tema oscuro">🌙</button>
+        <button class="theme-btn" data-theme="system" role="radio" aria-checked="false" title="Sistema">💻</button>
+      </div>
+
       <a href="#cotizacion" class="nav-cta">Cotizar ahora</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<main id="main-content">
+<section class="hero" aria-labelledby="hero-heading">
   <div class="container">
     <div class="hero-inner">
       <div>
@@ -431,12 +544,12 @@
           <div class="hero-badge">Alta patronal IMSS</div>
           <div class="hero-badge">Cumplimiento REPSE</div>
         </div>
-        <h1>Protegemos<br>lo que más<br><em>te importa</em></h1>
+        <h1 id="hero-heading">Protegemos<br>lo que más<br><em>te importa</em></h1>
         <p class="hero-desc">Más de 10 años resguardando corporativos, residenciales, eventos e industria en CDMX. Personal certificado, operación 24/7 y supervisión continua.</p>
         <div class="hero-btns">
           <a href="#cotizacion" class="btn btn-gold">📋 Cotización gratuita</a>
           <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20una%20cotización%20de%20seguridad%20privada"
-             target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+             target="_blank" rel="noopener noreferrer" class="btn btn-wa">💬 WhatsApp</a>
         </div>
         <div class="hero-proof">
           <div class="proof-item"><strong>10<em>+</em></strong>años de experiencia</div>
@@ -461,8 +574,8 @@
             <div class="stat-label">Sectores atendidos</div>
           </div>
           <div>
-            <div class="stat-num">5</div>
-            <div class="stat-label">Sectores atendidos</div>
+            <div class="stat-num">100<sup>%</sup></div>
+            <div class="stat-label">Cumplimiento legal</div>
           </div>
           <div class="stat-div"></div>
           <div>
@@ -494,11 +607,11 @@
 </div>
 
 <!-- CONTEXTO / POR QUÉ IMPORTA -->
-<section class="contexto" id="nosotros">
+<section class="contexto" id="nosotros" aria-labelledby="contexto-heading">
   <div class="container">
     <div class="section-header">
       <div class="tag">¿Por qué actuar hoy?</div>
-      <h2>La seguridad no puede esperar</h2>
+      <h2 id="contexto-heading">La seguridad no puede esperar</h2>
       <p>Cada día sin protección profesional es un riesgo innecesario para tu patrimonio, tu equipo y tu operación.</p>
     </div>
     <div class="contexto-grid">
@@ -522,11 +635,11 @@
 </section>
 
 <!-- SERVICIOS -->
-<section class="servicios" id="servicios">
+<section class="servicios" id="servicios" aria-labelledby="servicios-heading">
   <div class="container">
     <div class="section-header">
       <div class="tag">Nuestros servicios</div>
-      <h2>Soluciones de seguridad a la medida</h2>
+      <h2 id="servicios-heading">Soluciones de seguridad a la medida</h2>
       <p>Diseñamos estrategias específicas para cada cliente. No ofrecemos soluciones genéricas; analizamos tu operación y te proponemos el esquema ideal.</p>
     </div>
     <div class="serv-grid">
@@ -765,12 +878,12 @@
 </section>
 
 <!-- COTIZACIÓN -->
-<section class="cotizacion" id="cotizacion">
+<section class="cotizacion" id="cotizacion" aria-labelledby="cotizacion-heading">
   <div class="container">
     <div class="cotiza-grid">
       <div class="cotiza-info">
         <div class="tag">Cotización sin costo</div>
-        <h2>Hablemos de tu seguridad hoy</h2>
+        <h2 id="cotizacion-heading">Hablemos de tu seguridad hoy</h2>
         <p>Cuéntanos qué necesitas proteger y te enviamos una propuesta personalizada en menos de 24 horas. Sin compromisos, sin letra chica.</p>
         <ul class="cotiza-bullets">
           <li>Diagnóstico de instalaciones sin costo</li>
@@ -785,27 +898,27 @@
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
           <a href="tel:5552455130" class="btn btn-dark">📞 55 5245 5130</a>
           <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20una%20cotización"
-             target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+             target="_blank" rel="noopener noreferrer" class="btn btn-wa">💬 WhatsApp</a>
           <a href="mailto:contacto@elite1.mx" class="btn btn-outline">✉️ contacto@elite1.mx</a>
         </div>
       </div>
-      <div class="form-card">
+      <div class="form-card" role="form" aria-label="Formulario de cotización">
         <h3>Solicita tu cotización</h3>
         <div class="form-group">
-          <label>Nombre completo</label>
-          <input type="text" placeholder="Tu nombre">
+          <label for="form-nombre">Nombre completo <span aria-hidden="true" style="color:var(--dorado)">*</span></label>
+          <input type="text" id="form-nombre" name="nombre" placeholder="Tu nombre" required autocomplete="name" aria-required="true">
         </div>
         <div class="form-group">
-          <label>Empresa u organización</label>
-          <input type="text" placeholder="Nombre de tu empresa">
+          <label for="form-empresa">Empresa u organización</label>
+          <input type="text" id="form-empresa" name="empresa" placeholder="Nombre de tu empresa" autocomplete="organization">
         </div>
         <div class="form-group">
-          <label>Teléfono / WhatsApp</label>
-          <input type="tel" placeholder="55 1234 5678">
+          <label for="form-tel">Teléfono / WhatsApp <span aria-hidden="true" style="color:var(--dorado)">*</span></label>
+          <input type="tel" id="form-tel" name="telefono" placeholder="55 1234 5678" required autocomplete="tel" aria-required="true">
         </div>
         <div class="form-group">
-          <label>Tipo de servicio</label>
-          <select>
+          <label for="form-servicio">Tipo de servicio</label>
+          <select id="form-servicio" name="servicio" aria-label="Selecciona el tipo de servicio que necesitas">
             <option value="">Selecciona un servicio</option>
             <option>Seguridad Corporativa</option>
             <option>Seguridad Residencial</option>
@@ -817,12 +930,14 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Cuéntanos brevemente qué necesitas</label>
-          <textarea placeholder="¿Qué quieres proteger? ¿Cuántas personas necesitas? ¿Cuántos turnos?"></textarea>
+          <label for="form-mensaje">Cuéntanos brevemente qué necesitas</label>
+          <textarea id="form-mensaje" name="mensaje" placeholder="¿Qué quieres proteger? ¿Cuántas personas necesitas? ¿Cuántos turnos?"></textarea>
         </div>
         <button
+          type="button"
           class="form-submit"
-          onclick="window.open('https://wa.me/525540449956?text=Hola,%20quiero%20una%20cotización%20de%20seguridad%20privada','_blank')">
+          aria-label="Enviar solicitud de cotización por WhatsApp"
+          onclick="sendWhatsApp()">
           Enviar por WhatsApp →
         </button>
         <p class="form-note">🔒 Tu información es confidencial. Te respondemos en menos de 2 horas.</p>
@@ -870,8 +985,10 @@
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -899,7 +1016,7 @@
         <ul>
           <li><a href="#nosotros">Quiénes somos</a></li>
           <li><a href="#proceso">Cómo trabajamos</a></li>
-          <li><a href="#testimoniales">Clientes</a></li>
+          <li><a href="#cotizacion">Cotización</a></li>
           <li><a href="#cotizacion">Cotización</a></li>
         </ul>
       </div>
@@ -922,11 +1039,89 @@
 
 <!-- FLOAT WHATSAPP -->
 <a href="https://wa.me/525540449956?text=Hola,%20me%20interesa%20una%20cotización%20de%20seguridad%20privada"
-   target="_blank" class="wa-float" title="Chatea con nosotros">
+   target="_blank" rel="noopener noreferrer"
+   class="wa-float"
+   title="Chatea con nosotros por WhatsApp"
+   aria-label="Abrir WhatsApp para chatear con Elite 1">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
   </svg>
 </a>
 
+<script>
+  /* ── ThemeManager (ArchitectUX pattern) ──────────────── */
+  class ThemeManager {
+    constructor() {
+      this.stored  = localStorage.getItem('elite1-theme');
+      this.current = this.stored || 'dark';
+      this.applyTheme(this.current);
+      this.bindToggle();
+      // Listen for system preference changes
+      window.matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', () => {
+          if (this.current === 'system') this.applyTheme('system');
+        });
+    }
+
+    applyTheme(theme) {
+      if (theme === 'system') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.removeItem('elite1-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('elite1-theme', theme);
+      }
+      this.current = theme;
+      this.updateUI();
+    }
+
+    bindToggle() {
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.addEventListener('click', () => this.applyTheme(btn.dataset.theme));
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.applyTheme(btn.dataset.theme);
+          }
+        });
+      });
+    }
+
+    updateUI() {
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        const active = btn.dataset.theme === this.current;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-checked', active ? 'true' : 'false');
+      });
+    }
+  }
+
+  /* ── WhatsApp form helper ──────────────────────────── */
+  function sendWhatsApp() {
+    const nombre   = document.getElementById('form-nombre')?.value.trim()   || '';
+    const empresa  = document.getElementById('form-empresa')?.value.trim()  || '';
+    const tel      = document.getElementById('form-tel')?.value.trim()      || '';
+    const servicio = document.getElementById('form-servicio')?.value.trim() || '';
+    const mensaje  = document.getElementById('form-mensaje')?.value.trim()  || '';
+
+    if (!nombre || !tel) {
+      alert('Por favor ingresa tu nombre y teléfono.');
+      return;
+    }
+
+    const text = encodeURIComponent(
+      `Hola, me interesa una cotización de seguridad privada.\n\n` +
+      `📋 *Nombre:* ${nombre}\n` +
+      (empresa  ? `🏢 *Empresa:* ${empresa}\n`    : '') +
+      `📞 *Teléfono:* ${tel}\n` +
+      (servicio ? `🛡️ *Servicio:* ${servicio}\n`  : '') +
+      (mensaje  ? `\n💬 *Mensaje:* ${mensaje}`     : '')
+    );
+    window.open(`https://wa.me/525540449956?text=${text}`, '_blank');
+  }
+
+  /* ── Init ──────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', () => new ThemeManager());
+</script>
 </body>
 </html>
