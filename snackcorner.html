@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -30,7 +30,7 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', system-ui, sans-serif;
       background: var(--white);
       color: var(--dark);
       overflow-x: hidden;
@@ -46,8 +46,9 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-size: 1.2rem; font-weight: 800; color: var(--dark);
-      letter-spacing: -0.5px; text-decoration: none;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--dark);
+      letter-spacing: 0.5px; text-decoration: none;
     }
     .nav-logo span { color: var(--green); }
     .nav-links { display: flex; gap: 36px; }
@@ -79,9 +80,10 @@
       margin-bottom: 24px;
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 800; line-height: 1.1;
-      letter-spacing: -1.5px; margin-bottom: 20px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 600; line-height: 1.08;
+      letter-spacing: 0px; margin-bottom: 20px;
     }
     .hero h1 em {
       font-style: normal; color: var(--green);
@@ -126,7 +128,7 @@
       align-items: center; justify-content: center;
       font-size: 1.2rem;
     }
-    .hero-pill strong { font-size: 1rem; font-weight: 800; display: block; }
+    .hero-pill strong { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; font-weight: 700; display: block; }
     .hero-pill span { font-size: 0.75rem; color: var(--gray); }
     .hero-pill2 {
       position: absolute; top: 20px; right: -16px;
@@ -149,7 +151,7 @@
       border-right: 1px solid var(--border);
     }
     .stat:last-child { border-right: none; }
-    .stat-num { font-size: 2rem; font-weight: 800; color: var(--green); }
+    .stat-num { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.4rem; font-weight: 600; color: var(--green); }
     .stat-label { font-size: 0.8rem; color: var(--gray); margin-top: 4px; font-weight: 500; }
 
     /* ── SECTIONS ── */
@@ -162,8 +164,9 @@
       margin-bottom: 12px;
     }
     .section-title {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 800; letter-spacing: -1px; line-height: 1.15;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 600; letter-spacing: 0px; line-height: 1.1;
     }
     .section-sub {
       font-size: 1rem; color: var(--gray);
@@ -207,7 +210,8 @@
       margin-bottom: 10px; width: fit-content;
     }
     .svc-name {
-      font-size: 1.3rem; font-weight: 800; color: #fff; line-height: 1.2;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem; font-weight: 600; color: #fff; line-height: 1.2;
     }
     .svc-desc {
       font-size: 0.82rem; color: rgba(255,255,255,0.72);
@@ -219,8 +223,9 @@
       background: var(--green); padding: 72px 48px; text-align: center;
     }
     .cta-strip h2 {
-      font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800;
-      color: #fff; letter-spacing: -1px; max-width: 640px; margin: 0 auto 12px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 600;
+      color: #fff; letter-spacing: 0; max-width: 640px; margin: 0 auto 12px;
     }
     .cta-strip p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 32px; }
     .btn-white {
@@ -263,7 +268,7 @@
     .del-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
     .del-card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
     .del-body { padding: 18px; }
-    .del-name { font-size: 1rem; font-weight: 700; }
+    .del-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; font-weight: 600; }
     .del-desc { font-size: 0.8rem; color: var(--gray); margin-top: 5px; line-height: 1.5; }
     .del-chip {
       display: inline-block; margin-top: 12px;
@@ -308,7 +313,7 @@
       background: var(--yellow); border-radius: 16px;
       padding: 14px 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     }
-    .contact-badge strong { font-size: 1.1rem; font-weight: 800; display: block; }
+    .contact-badge strong { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4rem; font-weight: 700; display: block; }
     .contact-badge span   { font-size: 0.75rem; color: #555; }
 
     /* ── FOOTER ── */
@@ -351,7 +356,7 @@
     }
     @media (max-width: 480px) {
       .delicias-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.2rem; }
+      .hero h1 { font-size: 2.8rem; }
     }
   </style>
 
