@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lappe Sabor a Familia | Comida congelada lista en 10 minutos</title>
+  <meta name="description" content="Lappe Sabor a Familia – Comida congelada empaquetada al alto vacío. Quesadillas, tacos árabes, salsas y más. Lista en 10 minutos. CDMX a tu puerta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-white: #FFFFFF;
+      --bg-light: #FBF7F2;
+      --bg-dark: #1a1a1a;
+      --bg-card: #FFFFFF;
+      --accent: #C8562A;
+      --accent-light: #faeee8;
+      --accent-hover: #a8441f;
+      --green: #2D6A4F;
+      --green-light: #e8f4ee;
+      --text-dark: #1a1a1a;
+      --text-muted: #6b6b6b;
+      --font: 'Plus Jakarta Sans', sans-serif;
+      --radius: 16px;
+      --radius-img: 20px;
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.07);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================================
+       UTILITY
+    ========================================= */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    /* =========================================
+       FADE-IN ANIMATION
+    ========================================= */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .nav-logo-main {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo-sub {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 100px;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-hover);
+      transform: scale(1.04);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu {
+      display: none;
+      background: #222;
+      padding: 20px 24px;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .mobile-menu .nav-cta {
+      width: fit-content;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      background: var(--bg-white);
+      padding: 72px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(200, 86, 42, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(200, 86, 42, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200, 86, 42, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 100px;
+      border: 2px solid rgba(0,0,0,0.12);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 24px;
+      transform: rotate(2deg);
+      box-shadow: 12px 20px 60px rgba(200, 86, 42, 0.22), 0 4px 24px rgba(0,0,0,0.10);
+      transition: transform 0.5s ease;
+    }
+
+    .hero-image-wrap:hover img {
+      transform: rotate(1deg) scale(1.02);
+    }
+
+    .hero-image-badge {
+      position: absolute;
+      bottom: 24px;
+      left: -20px;
+      background: var(--bg-dark);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-image-badge .badge-icon {
+      font-size: 1.6rem;
+    }
+
+    .hero-image-badge .badge-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .hero-image-badge .badge-text span {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    /* =========================================
+       STATS BAR
+    ========================================= */
+    .stats-bar {
+      background: var(--accent);
+      padding: 36px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 8px 24px;
+      position: relative;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .stat-value {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.82);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* =========================================
+       PRODUCTOS
+    ========================================= */
+    .productos {
+      background: var(--bg-light);
+      padding: 96px 0;
+    }
+
+    .productos-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .productos-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .product-card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .product-card-body {
+      padding: 24px;
+    }
+
+    .product-card-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .product-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .product-card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       HOW IT WORKS
+    ========================================= */
+    .how-it-works {
+      background: var(--bg-white);
+      padding: 96px 0;
+    }
+
+    .how-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .how-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: 16.6%;
+      right: 16.6%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-light), var(--accent), var(--accent-light));
+      z-index: 0;
+    }
+
+    .step-card {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-icon {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 3px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+      background: #fff;
+    }
+
+    .step-number {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 26px;
+      height: 26px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       COTIZADOR
+    ========================================= */
+    .cotizador {
+      background: var(--bg-light);
+      padding: 96px 0;
+    }
+
+    .cotizador-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .cotizador-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .cotizador-card {
+      background: var(--bg-white);
+      border-radius: 24px;
+      box-shadow: var(--shadow-md);
+      padding: 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Occasion selector */
+    .cot-section-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .occasion-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .occasion-btn {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .occasion-btn input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .occasion-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 10px;
+      border: 2px solid #E8E2DB;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      text-align: center;
+    }
+
+    .occasion-label .occ-emoji {
+      font-size: 1.5rem;
+    }
+
+    .occasion-label .occ-text {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    .occasion-btn input:checked + .occasion-label {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      box-shadow: 0 0 0 3px rgba(200, 86, 42, 0.12);
+    }
+
+    /* People slider */
+    .slider-wrap {
+      margin-bottom: 36px;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .slider-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .slider-value span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .people-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 100px;
+      background: #E8E2DB;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .people-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(200, 86, 42, 0.35);
+      transition: transform var(--transition);
+    }
+
+    .people-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .people-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 8px rgba(200, 86, 42, 0.35);
+    }
+
+    /* Products selector */
+    .products-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .product-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 2px solid #E8E2DB;
+      border-radius: 12px;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .product-row.active {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .product-row-check {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--accent);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .product-row-info {
+      flex: 1;
+    }
+
+    .product-row-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .product-row-price {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+
+    .product-row.active .qty-control {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .qty-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition), color var(--transition);
+      line-height: 1;
+    }
+
+    .qty-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .qty-num {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      min-width: 24px;
+      text-align: center;
+    }
+
+    /* Total */
+    .cotizador-total {
+      background: var(--bg-dark);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .total-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .total-amount {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .total-amount span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .btn-whatsapp-cot {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: 100px;
+      transition: background var(--transition), transform var(--transition);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp-cot:hover {
+      background: #1fba58;
+      transform: translateY(-2px);
+    }
+
+    /* =========================================
+       GALLERY / CONGELADOS
+    ========================================= */
+    .gallery-section {
+      background: var(--bg-white);
+      padding: 80px 0;
+    }
+
+    .gallery-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .gallery-image-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .gallery-content .section-sub {
+      margin-bottom: 28px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 700;
+    }
+
+    .feature-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* =========================================
+       TESTIMONIALS
+    ========================================= */
+    .testimonials {
+      background: var(--bg-light);
+      padding: 96px 0;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .testimonials-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-stars span {
+      color: #F4A535;
+      font-size: 1rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .author-avatar {
+      width: 38px;
+      height: 38px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+    }
+
+    .author-loc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    .footer {
+      background: var(--bg-dark);
+      padding: 64px 0 36px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand .footer-logo-main {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .footer-brand .footer-logo-sub {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-col-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .footer-col-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col-links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      transition: color var(--transition);
+    }
+
+    .footer-col-links a:hover {
+      color: #fff;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .social-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .footer-bottom {
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .footer-bottom a {
+      color: var(--accent);
+    }
+
+    /* =========================================
+       FLOATING WHATSAPP
+    ========================================= */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .wa-float:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+    }
+
+    .wa-float svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+    }
+
+    .wa-pulse {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      background: #ff4444;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .occasion-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding: 48px 0 60px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-image-wrap img {
+        height: 340px;
+        transform: rotate(1deg);
+      }
+
+      .hero-image-badge {
+        left: 10px;
+        bottom: 10px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .stat-item::after {
+        display: none;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .steps-grid::before {
+        display: none;
+      }
+
+      .gallery-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cotizador-card {
+        padding: 28px 20px;
+      }
+
+      .cotizador-total {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary, .btn-secondary {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .occasion-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================
+       NAVIGATION
+  ====================================== -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <span class="nav-logo-main">LAPPE</span>
+          <span class="nav-logo-sub">sabor a familia</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#cotizador">Cotizar</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+        </ul>
+        <a href="https://wa.me/5215538546333?text=Hola!%20Me%20interesa%20hacer%20un%20pedido%20de%20Lappe%20%F0%9F%8D%BD%EF%B8%8F"
+           target="_blank" class="nav-cta">
+          Pedir ahora &nbsp;&#128172;
+        </a>
+        <div class="nav-hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#productos" onclick="closeMenu()">Productos</a>
+      <a href="#como-funciona" onclick="closeMenu()">Como funciona</a>
+      <a href="#cotizador" onclick="closeMenu()">Cotizar</a>
+      <a href="#testimonios" onclick="closeMenu()">Testimonios</a>
+      <a href="https://wa.me/5215538546333?text=Hola!%20Me%20interesa%20hacer%20un%20pedido%20de%20Lappe%20%F0%9F%8D%BD%EF%B8%8F"
+         target="_blank" class="nav-cta">Pedir ahora &#128172;</a>
+    </div>
+  </nav>
+
+  <!-- ======================================
+       HERO
+  ====================================== -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content fade-up">
+          <div class="hero-badge">
+            &#128293; Listo en 10 minutos
+          </div>
+          <h1 class="hero-title">
+            La comida <span>de siempre</span>, sin complicaciones
+          </h1>
+          <p class="hero-sub">
+            Comida congelada empaquetada al alto vacio. Lista para calentar y disfrutar con tu familia, sin horas en la cocina.
+          </p>
+          <div class="hero-actions">
+            <a href="#cotizador" class="btn-primary">
+              &#127860; Cotizar mi pedido
+            </a>
+            <a href="#productos" class="btn-secondary">
+              Ver productos
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-wrap fade-up" style="transition-delay: 0.15s;">
+          <img src="lappe-hero.jpg" alt="Comida Lappe Sabor a Familia" />
+          <div class="hero-image-badge">
+            <span class="badge-icon">&#127968;</span>
+            <div class="badge-text">
+              Pedidos a domicilio
+              <span>CDMX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       STATS BAR
+  ====================================== -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-up">
+          <div class="stat-value">10 min</div>
+          <div class="stat-label">Listo en la mesa</div>
+        </div>
+        <div class="stat-item fade-up" style="transition-delay: 0.1s;">
+          <div class="stat-value">Alto Vacio</div>
+          <div class="stat-label">Empaque profesional</div>
+        </div>
+        <div class="stat-item fade-up" style="transition-delay: 0.2s;">
+          <div class="stat-value">CDMX</div>
+          <div class="stat-label">A tu puerta</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       PRODUCTOS
+  ====================================== -->
+  <section class="productos" id="productos">
+    <div class="container">
+      <div class="productos-header fade-up">
+        <span class="section-label">Menu</span>
+        <h2 class="section-heading">Lo que tenemos para ti</h2>
+        <p class="section-sub">Todos nuestros platillos estan preparados con ingredientes frescos y empacados al alto vacio para que conserven todo su sabor.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card fade-up">
+          <img src="lappe-quesadillas.jpg" alt="Quesadillas Lappe" class="product-card-img" />
+          <div class="product-card-body">
+            <p class="product-card-tag">Clasico</p>
+            <h3 class="product-card-title">Quesadillas</h3>
+            <p class="product-card-desc">Queso, papa, chicharron, hongos. Variedad de rellenos. Tamanos para compartir, listas para el comal o sarten.</p>
+          </div>
+        </div>
+        <div class="product-card fade-up" style="transition-delay: 0.1s;">
+          <img src="lappe-tacos.jpg" alt="Tacos Arabes Lappe" class="product-card-img" />
+          <div class="product-card-body">
+            <p class="product-card-tag">Estrella</p>
+            <h3 class="product-card-title">Tacos Arabes</h3>
+            <p class="product-card-desc">Con todo incluido. En menos de 10 minutos en el sarten o microondas. El favorito para reuniones y eventos.</p>
+          </div>
+        </div>
+        <div class="product-card fade-up" style="transition-delay: 0.2s;">
+          <img src="lappe-salsas.jpg" alt="Salsas Lappe" class="product-card-img" />
+          <div class="product-card-body">
+            <p class="product-card-tag">Complementos</p>
+            <h3 class="product-card-title">Salsas &amp; Mas</h3>
+            <p class="product-card-desc">El complemento perfecto para tus platillos. Salsas artesanales hechas con receta de casa para elevar cada bocado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       HOW IT WORKS
+  ====================================== -->
+  <section class="how-it-works" id="como-funciona">
+    <div class="container">
+      <div class="how-header fade-up">
+        <span class="section-label">El proceso</span>
+        <h2 class="section-heading">Tan facil como 1, 2, 3</h2>
+        <p class="section-sub">Sin complicaciones. Tu solo elige, nosotros preparamos y tu calientas.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card fade-up">
+          <div class="step-icon">
+            <span>&#128203;</span>
+            <div class="step-number">1</div>
+          </div>
+          <h3 class="step-title">Elige tu pedido</h3>
+          <p class="step-desc">Dinos que productos quieres, cuantas personas son y para que ocasion. Tambien puedes usar nuestro cotizador.</p>
+        </div>
+        <div class="step-card fade-up" style="transition-delay: 0.12s;">
+          <div class="step-icon">
+            <span>&#127873;</span>
+            <div class="step-number">2</div>
+          </div>
+          <h3 class="step-title">Lo recibimos y empacamos</h3>
+          <p class="step-desc">Preparamos tu pedido con ingredientes frescos y lo empacamos al alto vacio para que llegue en perfecto estado.</p>
+        </div>
+        <div class="step-card fade-up" style="transition-delay: 0.24s;">
+          <div class="step-icon">
+            <span>&#127859;</span>
+            <div class="step-number">3</div>
+          </div>
+          <h3 class="step-title">Calienta y disfruta</h3>
+          <p class="step-desc">En menos de 10 minutos en el sarten, comal o microondas. Listo para comer sin ensuciar casi nada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       COTIZADOR INTERACTIVO
+  ====================================== -->
+  <section class="cotizador" id="cotizador">
+    <div class="container">
+      <div class="cotizador-header fade-up">
+        <span class="section-label">Calculadora</span>
+        <h2 class="section-heading">Cotiza tu pedido</h2>
+        <p class="section-sub">Para tu reunion, evento o menu semanal. Arma tu pedido y te contactamos para confirmar.</p>
+      </div>
+
+      <div class="cotizador-card fade-up">
+        <!-- Occasion -->
+        <p class="cot-section-title">Ocasion</p>
+        <div class="occasion-grid">
+          <label class="occasion-btn">
+            <input type="radio" name="occasion" value="Reunion/Fiesta" checked />
+            <div class="occasion-label">
+              <span class="occ-emoji">&#127881;</span>
+              <span class="occ-text">Reunion / Fiesta</span>
+            </div>
+          </label>
+          <label class="occasion-btn">
+            <input type="radio" name="occasion" value="Menu Semanal" />
+            <div class="occasion-label">
+              <span class="occ-emoji">&#128197;</span>
+              <span class="occ-text">Menu Semanal</span>
+            </div>
+          </label>
+          <label class="occasion-btn">
+            <input type="radio" name="occasion" value="Vacaciones" />
+            <div class="occasion-label">
+              <span class="occ-emoji">&#9992;&#65039;</span>
+              <span class="occ-text">Vacaciones</span>
+            </div>
+          </label>
+          <label class="occasion-btn">
+            <input type="radio" name="occasion" value="Evento especial" />
+            <div class="occasion-label">
+              <span class="occ-emoji">&#127882;</span>
+              <span class="occ-text">Evento especial</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- People slider -->
+        <div class="slider-wrap">
+          <p class="cot-section-title">Numero de personas</p>
+          <div class="slider-header">
+            <span style="font-size:0.88rem; color:var(--text-muted); font-weight:600;">Cuantas personas?</span>
+            <div class="slider-value" id="sliderDisplay">8 <span>personas</span></div>
+          </div>
+          <input type="range" min="2" max="50" value="8" class="people-slider" id="peopleSlider" />
+          <div style="display:flex; justify-content:space-between; margin-top:6px;">
+            <span style="font-size:0.75rem; color:var(--text-muted);">2 personas</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">50 personas</span>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <p class="cot-section-title">Productos</p>
+        <div class="products-selector">
+          <div class="product-row" id="row-quesadillas">
+            <input type="checkbox" class="product-row-check" id="chk-quesadillas" data-price="80" data-name="Quesadillas" />
+            <div class="product-row-info">
+              <p class="product-row-name">Quesadillas</p>
+              <p class="product-row-price">$80 / pieza</p>
+            </div>
+            <div class="qty-control" id="qty-quesadillas">
+              <button class="qty-btn" onclick="changeQty('quesadillas', -1)">&#8722;</button>
+              <span class="qty-num" id="num-quesadillas">1</span>
+              <button class="qty-btn" onclick="changeQty('quesadillas', 1)">&#43;</button>
+            </div>
+          </div>
+
+          <div class="product-row" id="row-tacos">
+            <input type="checkbox" class="product-row-check" id="chk-tacos" data-price="95" data-name="Tacos Arabes" />
+            <div class="product-row-info">
+              <p class="product-row-name">Tacos Arabes</p>
+              <p class="product-row-price">$95 / pieza</p>
+            </div>
+            <div class="qty-control" id="qty-tacos">
+              <button class="qty-btn" onclick="changeQty('tacos', -1)">&#8722;</button>
+              <span class="qty-num" id="num-tacos">1</span>
+              <button class="qty-btn" onclick="changeQty('tacos', 1)">&#43;</button>
+            </div>
+          </div>
+
+          <div class="product-row" id="row-salsas">
+            <input type="checkbox" class="product-row-check" id="chk-salsas" data-price="65" data-name="Salsas" />
+            <div class="product-row-info">
+              <p class="product-row-name">Salsas</p>
+              <p class="product-row-price">$65 / frasco</p>
+            </div>
+            <div class="qty-control" id="qty-salsas">
+              <button class="qty-btn" onclick="changeQty('salsas', -1)">&#8722;</button>
+              <span class="qty-num" id="num-salsas">1</span>
+              <button class="qty-btn" onclick="changeQty('salsas', 1)">&#43;</button>
+            </div>
+          </div>
+
+          <div class="product-row" id="row-platillo">
+            <input type="checkbox" class="product-row-check" id="chk-platillo" data-price="120" data-name="Platillo del dia" />
+            <div class="product-row-info">
+              <p class="product-row-name">Platillo del dia</p>
+              <p class="product-row-price">$120 / pieza</p>
+            </div>
+            <div class="qty-control" id="qty-platillo">
+              <button class="qty-btn" onclick="changeQty('platillo', -1)">&#8722;</button>
+              <span class="qty-num" id="num-platillo">1</span>
+              <button class="qty-btn" onclick="changeQty('platillo', 1)">&#43;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total & CTA -->
+        <div class="cotizador-total">
+          <div>
+            <p class="total-label">Total estimado</p>
+            <p class="total-amount" id="totalAmount">$0 <span>MXN</span></p>
+            <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">*Sujeto a confirmacion de disponibilidad</p>
+          </div>
+          <button class="btn-whatsapp-cot" id="whatsappBtn">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff;">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Solicitar cotizacion por WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       GALLERY / CONGELADOS
+  ====================================== -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-inner">
+        <div class="gallery-image-wrap fade-up">
+          <img src="lappe-congelados.jpg" alt="Empaque al alto vacio Lappe" />
+        </div>
+        <div class="gallery-content fade-up" style="transition-delay: 0.15s;">
+          <span class="section-label">Por que Lappe</span>
+          <h2 class="section-heading">Calidad que se nota en cada bocado</h2>
+          <p class="section-sub" style="margin-bottom: 28px;">Nuestro proceso de empaque al alto vacio conserva los sabores, texturas y nutrientes de cada platillo como si acabara de salir de la cocina.</p>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <div class="feature-icon">&#10003;</div>
+              <div>
+                <strong>Empaque al alto vacio</strong>
+                <p>Tecnologia profesional que preserva frescura hasta 6 meses en congelacion.</p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <div class="feature-icon">&#10003;</div>
+              <div>
+                <strong>Sin conservadores artificiales</strong>
+                <p>Solo ingredientes naturales y recetas de casa para el sabor de siempre.</p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <div class="feature-icon">&#10003;</div>
+              <div>
+                <strong>Ideal para eventos y reuniones</strong>
+                <p>Pedidos a granel con entrega a domicilio en toda la CDMX.</p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <div class="feature-icon">&#10003;</div>
+              <div>
+                <strong>Menu semanal disponible</strong>
+                <p>Suscribete a nuestro menu y nunca te quedes sin que comer entre semana.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       TESTIMONIALS
+  ====================================== -->
+  <section class="testimonials" id="testimonios">
+    <div class="container">
+      <div class="testimonials-header fade-up">
+        <span class="section-label">Testimonios</span>
+        <h2 class="section-heading">Lo que dicen nuestros clientes</h2>
+        <p class="section-sub">Familias y anfitriones que ya confian en Lappe para sus reuniones y comidas del dia a dia.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <p class="testimonial-text">"Pedi para una reunion de 20 personas y fue un exito total. Los tacos arabes volaron en minutos y nadie podia creer que eran congelados. Super recomendado para eventos!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <p class="author-name">Mariana R.</p>
+              <p class="author-loc">Coyoacan, CDMX</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up" style="transition-delay: 0.1s;">
+          <div class="testimonial-stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <p class="testimonial-text">"Tengo 3 ninos y trabajo todo el dia. El menu semanal de Lappe fue un cambio de vida. En 10 minutos tengo la cena lista y sabe igual que comida recien hecha. No lo cambio por nada."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <p class="author-name">Sofia M.</p>
+              <p class="author-loc">Tlalpan, CDMX</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up" style="transition-delay: 0.2s;">
+          <div class="testimonial-stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <p class="testimonial-text">"Me llevaron pedido para las vacaciones en la playa. Tener quesadillas y salsas de Lappe ahi fue lo mejor. El empaque llego perfecto y duro toda la semana. Ya soy cliente permanente."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">C</div>
+            <div>
+              <p class="author-name">Carlos V.</p>
+              <p class="author-loc">Benito Juarez, CDMX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       FOOTER
+  ====================================== -->
+  <footer class="footer" id="contacto">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <p class="footer-logo-main">LAPPE</p>
+          <p class="footer-logo-sub">sabor a familia</p>
+          <p>Comida congelada empaquetada al alto vacio. El sabor de siempre, listo en 10 minutos. CDMX a tu puerta.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/lappesabor" target="_blank" class="social-btn" title="Instagram @lappesabor">
+              <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/5215538546333" target="_blank" class="social-btn" title="WhatsApp">
+              <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-title">Menu</p>
+          <ul class="footer-col-links">
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#cotizador">Cotizador</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Contacto</p>
+          <ul class="footer-col-links">
+            <li><a href="https://wa.me/5215538546333" target="_blank">WhatsApp: 55 3854 6333</a></li>
+            <li><a href="https://instagram.com/lappesabor" target="_blank">Instagram: @lappesabor</a></li>
+            <li><a href="#">CDMX, Mexico</a></li>
+            <li><a href="#cotizador">Hacer un pedido</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Lappe Sabor a Familia. Todos los derechos reservados.</p>
+        <p>Hecho con sabor en <a href="#">CDMX</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================
+       FLOATING WHATSAPP
+  ====================================== -->
+  <a href="https://wa.me/5215538546333?text=Hola!%20Me%20interesa%20hacer%20un%20pedido%20de%20Lappe%20%F0%9F%8D%BD%EF%B8%8F"
+     target="_blank"
+     class="wa-float"
+     title="Pedir por WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <div class="wa-pulse"></div>
+  </a>
+
+  <!-- ======================================
+       JAVASCRIPT
+  ====================================== -->
+  <script>
+    // ---- Scroll animations ----
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ---- Mobile nav ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') mobileMenu.classList.toggle('open');
+    });
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // ---- Cotizador logic ----
+    const quantities = {
+      quesadillas: 1,
+      tacos: 1,
+      salsas: 1,
+      platillo: 1
+    };
+
+    const prices = {
+      quesadillas: 80,
+      tacos: 95,
+      salsas: 65,
+      platillo: 120
+    };
+
+    const names = {
+      quesadillas: 'Quesadillas',
+      tacos: 'Tacos Arabes',
+      salsas: 'Salsas',
+      platillo: 'Platillo del dia'
+    };
+
+    const units = {
+      quesadillas: 'pza',
+      tacos: 'pza',
+      salsas: 'frasco',
+      platillo: 'pza'
+    };
+
+    function changeQty(product, delta) {
+      const newVal = Math.max(1, quantities[product] + delta);
+      quantities[product] = newVal;
+      document.getElementById('num-' + product).textContent = newVal;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const products = ['quesadillas', 'tacos', 'salsas', 'platillo'];
+      let total = 0;
+      products.forEach(p => {
+        const chk = document.getElementById('chk-' + p);
+        const row = document.getElementById('row-' + p);
+        if (chk.checked) {
+          total += prices[p] * quantities[p];
+          row.classList.add('active');
+        } else {
+          row.classList.remove('active');
+        }
+      });
+      document.getElementById('totalAmount').innerHTML = '$' + total.toLocaleString('es-MX') + ' <span>MXN</span>';
+    }
+
+    // Checkbox listeners
+    ['quesadillas', 'tacos', 'salsas', 'platillo'].forEach(p => {
+      document.getElementById('chk-' + p).addEventListener('change', updateTotal);
+    });
+
+    // Slider
+    const slider = document.getElementById('peopleSlider');
+    const sliderDisplay = document.getElementById('sliderDisplay');
+    slider.addEventListener('input', () => {
+      sliderDisplay.innerHTML = slider.value + ' <span>personas</span>';
+    });
+
+    // Update slider track fill
+    function updateSliderFill() {
+      const val = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+      slider.style.background = `linear-gradient(to right, #C8562A ${val}%, #E8E2DB ${val}%)`;
+    }
+    slider.addEventListener('input', updateSliderFill);
+    updateSliderFill();
+
+    // WhatsApp button
+    document.getElementById('whatsappBtn').addEventListener('click', () => {
+      const occasion = document.querySelector('input[name="occasion"]:checked')?.value || 'No especificada';
+      const people = slider.value;
+      const products = ['quesadillas', 'tacos', 'salsas', 'platillo'];
+      const selectedProducts = [];
+      let total = 0;
+
+      products.forEach(p => {
+        const chk = document.getElementById('chk-' + p);
+        if (chk.checked) {
+          const qty = quantities[p];
+          const subtotal = prices[p] * qty;
+          total += subtotal;
+          selectedProducts.push(`- ${names[p]}: ${qty} ${units[p]} x $${prices[p]} = $${subtotal.toLocaleString('es-MX')}`);
+        }
+      });
+
+      const productList = selectedProducts.length > 0
+        ? selectedProducts.join('\n')
+        : '- Aun no seleccionaste productos';
+
+      const message = `Hola! Me interesa hacer un pedido de Lappe 🍽️\n\nOcasion: ${occasion}\nPersonas: ${people}\nProductos:\n${productList}\n\nTotal estimado: $${total.toLocaleString('es-MX')} MXN\n\n¿Pueden confirmar disponibilidad?`;
+
+      const encoded = encodeURIComponent(message);
+      window.open(`https://wa.me/5215538546333?text=${encoded}`, '_blank');
+    });
+  </script>
+</body>
+</html>
