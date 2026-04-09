@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latiendo Studio · Vestidos en línea | México</title>
+  <meta name="description" content="Latiendo Studio — Vestidos de noche, boda, coctel y casual. Compra en línea y recibe en todo México." />
+  <meta property="og:title" content="Latiendo Studio · Vestidos México" />
+  <meta property="og:description" content="Vestidos de noche, boda, coctel y casual. Envíos a todo México." />
+  <meta property="og:image" content="latiendo-hero.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #B81C2E;
+      --red-dark:  #8E1522;
+      --red-light: #FAF0F1;
+      --black:     #0D0D0D;
+      --white:     #FFFFFF;
+      --cream:     #FAF8F5;
+      --gray:      #6B6B6B;
+      --border:    #E8E0D8;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; height: 72px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.5rem; font-weight: 600;
+      color: var(--black); letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.5px;
+      color: var(--gray); text-decoration: none;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta {
+      background: var(--red); color: #fff;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; padding: 11px 26px; border-radius: 2px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column;
+      justify-content: center; padding: 80px 64px;
+      background: var(--cream);
+    }
+    .hero-tag {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+    }
+    .hero-tag::before {
+      content: ''; width: 28px; height: 1px; background: var(--red);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3rem, 5vw, 5rem); font-weight: 600;
+      line-height: 1.05; letter-spacing: -0.5px; margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: var(--red); }
+    .hero p {
+      font-size: 1rem; color: var(--gray);
+      line-height: 1.75; max-width: 420px; margin-bottom: 44px;
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-red {
+      background: var(--red); color: #fff;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; padding: 15px 34px;
+      border-radius: 2px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-red:hover { background: var(--red-dark); }
+    .btn-outline {
+      background: transparent; color: var(--black);
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; padding: 15px 34px;
+      border-radius: 2px; border: 1.5px solid var(--black);
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--black); color: #fff; }
+
+    .hero-right {
+      position: relative; overflow: hidden;
+    }
+    .hero-right img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .hero-badge {
+      position: absolute; bottom: 40px; left: -1px;
+      background: var(--red); color: #fff;
+      padding: 16px 28px;
+    }
+    .hero-badge strong {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem; font-weight: 600; display: block; line-height: 1;
+    }
+    .hero-badge span { font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.85; }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--black); overflow: hidden;
+      padding: 16px 0;
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: scroll 20s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem; font-style: italic;
+      color: rgba(255,255,255,0.5); padding: 0 32px;
+      display: flex; align-items: center; gap: 32px;
+    }
+    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--red); display: inline-block; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── COLECCIONES ── */
+    .colecciones { padding: 100px 52px; background: var(--white); }
+    .col-inner { max-width: 1200px; margin: 0 auto; }
+    .section-head {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 52px; flex-wrap: wrap; gap: 20px;
+    }
+    .section-tag {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+    }
+    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--red); }
+    .section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600;
+      line-height: 1.1;
+    }
+    .section-link {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--black);
+      text-decoration: none; border-bottom: 1px solid var(--black);
+      padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .section-link:hover { color: var(--red); border-color: var(--red); }
+
+    .col-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    .col-card {
+      position: relative; overflow: hidden;
+      border-radius: 2px; cursor: pointer;
+    }
+    .col-card:first-child { grid-row: span 2; }
+    .col-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s ease;
+      min-height: 280px;
+    }
+    .col-card:hover img { transform: scale(1.04); }
+    .col-card:first-child img { min-height: 560px; }
+    .col-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 20px 20px;
+      background: linear-gradient(0deg, rgba(13,13,13,0.75) 0%, transparent 100%);
+    }
+    .col-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem; font-weight: 600; color: #fff;
+    }
+    .col-sub { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 4px; letter-spacing: 0.5px; }
+
+    /* ── RED STRIP ── */
+    .red-strip {
+      background: var(--red); padding: 80px 52px; text-align: center;
+    }
+    .red-strip h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600;
+      color: #fff; line-height: 1.1; max-width: 680px;
+      margin: 0 auto 14px;
+    }
+    .red-strip h2 em { font-style: italic; opacity: 0.8; }
+    .red-strip p { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 36px; font-weight: 300; }
+    .btn-white {
+      background: #fff; color: var(--red);
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 14px 36px;
+      border-radius: 2px; text-decoration: none;
+      display: inline-block; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+    /* ── LOOKS ── */
+    .looks { padding: 100px 52px; background: var(--cream); }
+    .looks-inner { max-width: 1200px; margin: 0 auto; }
+    .looks-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 52px;
+    }
+    .look-card {
+      position: relative; overflow: hidden; border-radius: 2px;
+    }
+    .look-card img {
+      width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block;
+      transition: transform 0.5s;
+    }
+    .look-card:hover img { transform: scale(1.05); }
+    .look-overlay {
+      position: absolute; inset: 0;
+      background: rgba(13,13,13,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s;
+    }
+    .look-card:hover .look-overlay { background: rgba(13,13,13,0.35); }
+    .look-btn {
+      background: #fff; color: var(--black);
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 10px 20px;
+      text-decoration: none; opacity: 0;
+      transform: translateY(10px); transition: opacity 0.3s, transform 0.3s;
+    }
+    .look-card:hover .look-btn { opacity: 1; transform: translateY(0); }
+
+    /* ── ENVIOS ── */
+    .envios { padding: 80px 52px; background: var(--white); }
+    .envios-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; border: 1.5px solid var(--border);
+    }
+    .envio-item {
+      padding: 40px 36px; border-right: 1.5px solid var(--border);
+      text-align: center;
+    }
+    .envio-item:last-child { border-right: none; }
+    .envio-icon {
+      font-size: 2rem; margin-bottom: 16px; display: block;
+    }
+    .envio-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.2rem; font-weight: 600; margin-bottom: 8px;
+    }
+    .envio-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.6; font-weight: 300; }
+
+    /* ── CONTACTO ── */
+    .contacto { padding: 100px 52px; background: var(--black); }
+    .contacto-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: center;
+    }
+    .contacto-left .section-tag { color: rgba(255,255,255,0.4); }
+    .contacto-left .section-tag::before { background: rgba(255,255,255,0.3); }
+    .contacto-left .section-title { color: #fff; margin-bottom: 16px; }
+    .contacto-p { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 40px; font-weight: 300; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; }
+    .c-link {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none; color: #fff;
+      font-weight: 500; font-size: 0.9rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .c-link:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.2); }
+    .c-icon {
+      width: 42px; height: 42px; border-radius: 2px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .c-icon.ig   { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+    .c-icon svg  { width: 20px; height: 20px; fill: #fff; }
+    .c-info small { font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.35); display: block; margin-bottom: 2px; }
+
+    .contacto-right { position: relative; }
+    .contacto-img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      display: block; border-radius: 2px;
+    }
+    .contacto-badge {
+      position: absolute; top: 28px; right: -20px;
+      background: var(--red); color: #fff; padding: 16px 22px;
+    }
+    .contacto-badge strong {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem; font-weight: 600; display: block; line-height: 1;
+    }
+    .contacto-badge span { font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808; color: rgba(255,255,255,0.35);
+      text-align: center; padding: 28px 52px;
+      font-size: 0.78rem; letter-spacing: 0.3px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer strong { color: rgba(255,255,255,0.7); }
+    footer a { color: var(--red); text-decoration: none; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { height: 55vw; }
+      .col-grid { grid-template-columns: 1fr 1fr; }
+      .col-card:first-child { grid-row: auto; grid-column: span 2; }
+      .col-card:first-child img { min-height: 360px; }
+      .looks-grid { grid-template-columns: repeat(2, 1fr); }
+      .contacto-inner { grid-template-columns: 1fr; gap: 60px; }
+      .contacto-right { display: none; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-left { padding: 60px 24px; }
+      .colecciones, .looks, .envios, .contacto { padding: 72px 20px; }
+      .col-grid { grid-template-columns: 1fr; }
+      .col-card:first-child { grid-column: auto; }
+      .looks-grid { grid-template-columns: repeat(2, 1fr); }
+      .envios-inner { grid-template-columns: 1fr; }
+      .envio-item { border-right: none; border-bottom: 1.5px solid var(--border); }
+      .envio-item:last-child { border-bottom: none; }
+      .red-strip { padding: 60px 20px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "name": "Latiendo Studio",
+    "description": "Vestidos de noche, boda, coctel y casual. Venta en línea con envíos a toda la República Mexicana.",
+    "address": { "@type": "PostalAddress", "addressCountry": "MX" },
+    "sameAs": ["https://www.instagram.com/latiendomx"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Latiendo<span>.</span></a>
+    <div class="nav-links">
+      <a href="#colecciones">Colecciones</a>
+      <a href="#looks">Looks</a>
+      <a href="#envios">Envíos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="https://www.instagram.com/latiendomx" target="_blank" class="nav-cta">Ver catálogo</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left reveal">
+      <div class="hero-tag">Latiendo Studio</div>
+      <h1>El vestido<br>que te hace<br><em>brillar.</em></h1>
+      <p>Vestidos de noche, boda, coctel y casual. Envíos a toda la República Mexicana — directo a tu puerta.</p>
+      <div class="hero-btns">
+        <a href="https://www.instagram.com/latiendomx" target="_blank" class="btn-red">Ver colección</a>
+        <a href="#envios" class="btn-outline">Cómo comprar</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="latiendo-hero.jpg" alt="Latiendo Studio vestidos" />
+      <div class="hero-badge">
+        <strong>Envíos</strong>
+        <span>a todo México</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Vestidos de Noche <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Vestidos de Boda <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Vestidos de Coctel <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Vestidos Casuales <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Envíos a México <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Latiendo Studio <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Vestidos de Noche <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Vestidos de Boda <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Vestidos de Coctel <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Vestidos Casuales <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Envíos a México <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Latiendo Studio <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- COLECCIONES -->
+  <section class="colecciones" id="colecciones">
+    <div class="col-inner">
+      <div class="section-head">
+        <div class="reveal">
+          <div class="section-tag">Colecciones</div>
+          <h2 class="section-title">Para cada<br>momento especial</h2>
+        </div>
+        <a href="https://www.instagram.com/latiendomx" target="_blank" class="section-link reveal">Ver todo el catálogo</a>
+      </div>
+      <div class="col-grid">
+        <div class="col-card reveal">
+          <img src="latiendo-noche.jpg" alt="Vestidos de noche" />
+          <div class="col-info">
+            <div class="col-name">Noche</div>
+            <div class="col-sub">Glamour para cada celebración</div>
+          </div>
+        </div>
+        <div class="col-card reveal">
+          <img src="latiendo-boda.jpg" alt="Vestidos de boda" />
+          <div class="col-info">
+            <div class="col-name">Boda</div>
+            <div class="col-sub">El vestido de tus sueños</div>
+          </div>
+        </div>
+        <div class="col-card reveal">
+          <img src="latiendo-red.jpg" alt="Vestidos de coctel" />
+          <div class="col-info">
+            <div class="col-name">Coctel</div>
+            <div class="col-sub">Elegancia sin esfuerzo</div>
+          </div>
+        </div>
+        <div class="col-card reveal">
+          <img src="latiendo-casual.jpg" alt="Vestidos casuales" />
+          <div class="col-info">
+            <div class="col-name">Casual</div>
+            <div class="col-sub">Para el día a día con estilo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RED STRIP -->
+  <div class="red-strip">
+    <h2 class="reveal">¿No encuentras el vestido<br><em>que buscas?</em></h2>
+    <p class="reveal">Escríbenos en Instagram y te ayudamos a encontrar el ideal para ti.</p>
+    <a href="https://www.instagram.com/latiendomx" target="_blank" class="btn-white reveal">Escribir a Instagram</a>
+  </div>
+
+  <!-- LOOKS -->
+  <section class="looks" id="looks">
+    <div class="looks-inner">
+      <div class="section-head">
+        <div class="reveal">
+          <div class="section-tag">Looks</div>
+          <h2 class="section-title">Inspírate</h2>
+        </div>
+        <a href="https://www.instagram.com/latiendomx" target="_blank" class="section-link reveal">Ver más en Instagram</a>
+      </div>
+      <div class="looks-grid">
+        <div class="look-card reveal">
+          <img src="latiendo-fashion.jpg" alt="Look 1" loading="lazy" />
+          <div class="look-overlay">
+            <a href="https://www.instagram.com/latiendomx" target="_blank" class="look-btn">Ver más</a>
+          </div>
+        </div>
+        <div class="look-card reveal">
+          <img src="latiendo-red.jpg" alt="Look 2" loading="lazy" />
+          <div class="look-overlay">
+            <a href="https://www.instagram.com/latiendomx" target="_blank" class="look-btn">Ver más</a>
+          </div>
+        </div>
+        <div class="look-card reveal">
+          <img src="latiendo-noche.jpg" alt="Look 3" loading="lazy" />
+          <div class="look-overlay">
+            <a href="https://www.instagram.com/latiendomx" target="_blank" class="look-btn">Ver más</a>
+          </div>
+        </div>
+        <div class="look-card reveal">
+          <img src="latiendo-look.jpg" alt="Look 4" loading="lazy" />
+          <div class="look-overlay">
+            <a href="https://www.instagram.com/latiendomx" target="_blank" class="look-btn">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENVIOS -->
+  <section class="envios" id="envios">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-tag">Cómo comprar</div>
+          <h2 class="section-title">Fácil, rápido<br>y seguro</h2>
+        </div>
+      </div>
+      <div class="envios-inner reveal">
+        <div class="envio-item">
+          <span class="envio-icon">📸</span>
+          <div class="envio-title">Elige tu vestido</div>
+          <div class="envio-desc">Explora nuestro catálogo en Instagram y elige el que más te guste.</div>
+        </div>
+        <div class="envio-item">
+          <span class="envio-icon">💬</span>
+          <div class="envio-title">Escríbenos</div>
+          <div class="envio-desc">Mándanos un DM en Instagram con el vestido que quieres y tu talla.</div>
+        </div>
+        <div class="envio-item">
+          <span class="envio-icon">📦</span>
+          <div class="envio-title">Recíbelo en casa</div>
+          <div class="envio-desc">Hacemos envíos a toda la República Mexicana. Rápido y seguro.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="contacto-inner">
+      <div class="reveal">
+        <div class="section-tag">Contacto</div>
+        <h2 class="section-title">Encuentra<br>tu vestido ideal</h2>
+        <p class="contacto-p">Estamos para ayudarte a encontrar el vestido perfecto para cada ocasión. Escríbenos y con gusto te asesoramos.</p>
+        <div class="contact-links">
+          <a href="https://www.instagram.com/latiendomx" target="_blank" class="c-link">
+            <div class="c-icon ig">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </div>
+            <div class="c-info">
+              <small>Instagram</small>
+              @latiendomx
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contacto-right reveal">
+        <img class="contacto-img" src="latiendo-fashion.jpg" alt="Latiendo Studio" loading="lazy" />
+        <div class="contacto-badge">
+          <strong>100%</strong>
+          <span>en línea</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>Latiendo Studio</strong> · Vestidos · México &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/latiendomx" target="_blank">@latiendomx</a>
+    </p>
+    <p style="margin-top:8px">Diseño web por <a href="https://www.instagram.com/brotadigital" target="_blank">Brota Digital</a></p>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
