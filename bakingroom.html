@@ -555,103 +555,122 @@
     /* ============================================
        MENU
     ============================================ */
+    /* ── MENU ── */
     .menu-section {
       padding: var(--section-padding) 0;
-      background-color: var(--white);
+      background-color: var(--cream);
     }
-
     .menu-section__header {
       text-align: center;
       max-width: 600px;
-      margin: 0 auto 56px;
+      margin: 0 auto 48px;
     }
-
     .menu-section__title {
       font-family: var(--font-serif);
       font-size: clamp(36px, 5vw, 56px);
       font-weight: 500;
       color: var(--espresso);
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
-
     .menu-section__sub {
       font-size: 15px;
       color: var(--text-muted);
       line-height: 1.7;
     }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 40px;
+      border-bottom: 2px solid var(--border);
+      flex-wrap: wrap;
     }
-
-    .menu-card {
-      background-color: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .menu-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .menu-card__img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .menu-card__body {
-      padding: 20px 22px 22px;
-    }
-
-    .menu-card__name {
+    .menu-tab {
       font-family: var(--font-serif);
-      font-size: 22px;
+      font-size: 17px;
       font-weight: 600;
-      color: var(--espresso);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    .menu-card__desc {
-      font-size: 13px;
       color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 16px;
+      background: none;
+      border: none;
+      padding: 14px 32px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.25s;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
     }
-
-    .menu-card__link {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--pink);
-      letter-spacing: 0.04em;
-      transition: gap var(--transition), opacity var(--transition);
-      display: inline-flex;
+    .menu-tab::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 2px;
+      background: var(--pink);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+    .menu-tab.active { color: var(--pink); }
+    .menu-tab.active::after { transform: scaleX(1); }
+    .menu-tab:hover { color: var(--espresso); }
+    .menu-panel { display: none; max-width: 720px; margin: 0 auto; }
+    .menu-panel.active { display: block; }
+    .accord-item { border-bottom: 1px solid var(--border); }
+    .accord-item:first-child { border-top: 1px solid var(--border); }
+    .accord-btn {
+      width: 100%;
+      display: flex;
       align-items: center;
-      gap: 4px;
+      justify-content: space-between;
+      padding: 22px 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
     }
-
-    .menu-card__link:hover {
-      opacity: 0.75;
-      gap: 8px;
+    .accord-name {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--espresso);
+      transition: color 0.2s;
     }
-
+    .accord-btn:hover .accord-name,
+    .accord-btn[aria-expanded="true"] .accord-name { color: var(--pink); }
+    .accord-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.3s;
+      font-size: 18px; line-height: 1; color: var(--espresso);
+    }
+    .accord-btn[aria-expanded="true"] .accord-icon {
+      background: var(--pink); border-color: var(--pink);
+      color: #fff; transform: rotate(45deg);
+    }
+    .accord-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .accord-body.open { max-height: 200px; }
+    .accord-body-inner {
+      padding: 0 4px 22px;
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+    }
+    .accord-body-inner a {
+      display: inline-block; margin-top: 12px;
+      font-size: 13px; font-weight: 600;
+      color: var(--pink); letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .accord-body-inner a:hover { opacity: 0.75; }
     .menu-section__footer {
-      margin-top: 52px;
-      text-align: center;
+      margin-top: 52px; text-align: center;
     }
-
     .menu-section__footer p {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
+      font-size: 15px; color: var(--text-muted); margin-bottom: 20px;
     }
 
     /* ============================================
@@ -1268,129 +1287,162 @@
     <div class="container">
 
       <div class="menu-section__header">
-        <span class="section-label fade-up">inhouse creations</span>
+        <span class="section-label fade-up">Pasteles personalizados, galletas y brownies</span>
         <h2 class="menu-section__title fade-up fade-up-delay-1" id="menu-title">Nuestro Menú</h2>
         <p class="menu-section__sub fade-up fade-up-delay-2">
-          Cada pieza es diseñada y elaborada con ingredientes de calidad. Trabajamos bajo pedido para garantizar frescura y perfección.
+          Cada pieza es elaborada bajo pedido con ingredientes de calidad. Da clic en cada sabor para conocer más.
         </p>
       </div>
 
-      <div class="menu-grid">
+      <!-- Tabs -->
+      <div class="menu-tabs fade-up" role="tablist">
+        <button class="menu-tab active" role="tab" aria-selected="true" data-panel="classics">The Classics</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-panel="inhouse">Inhouse Creations</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-panel="chocolate">Chocolate World</button>
+      </div>
 
-        <!-- Card 1: Chocolate Fudge -->
-        <article class="menu-card fade-up">
-          <img
-            class="menu-card__img"
-            src="bakery-chocolate-fudge.jpg"
-            alt="Chocolate Fudge Cake"
-            loading="lazy"
-            width="400"
-            height="240"
-          />
-          <div class="menu-card__body">
-            <h3 class="menu-card__name">Chocolate Fudge Cake</h3>
-            <p class="menu-card__desc">Pan de chocolate fudge relleno de ganache de chocolate semi amargo, cubierto de nuestro cream cheese frosting ó ganache. Profundo y denso sabor a chocolate.</p>
-            <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="menu-card__link">
-              Cotizar <span aria-hidden="true">→</span>
-            </a>
+      <!-- Panel: The Classics -->
+      <div class="menu-panel active" id="panel-classics" role="tabpanel">
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">Carrot Cake</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Esponjoso pan de zanahoria con especias, relleno y cubierto de nuestro cream cheese frosting artesanal. Un clásico reconfortante en su mejor versión.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar → </a>
+            </div>
           </div>
-        </article>
-
-        <!-- Card 2: Oreo Chocolate Fudge -->
-        <article class="menu-card fade-up fade-up-delay-1">
-          <img
-            class="menu-card__img"
-            src="bakery-cake1.jpg"
-            alt="Oreo Chocolate Fudge"
-            loading="lazy"
-            width="400"
-            height="240"
-          />
-          <div class="menu-card__body">
-            <h3 class="menu-card__name">Oreo Chocolate Fudge</h3>
-            <p class="menu-card__desc">Pan de chocolate fudge relleno de ganache de chocolate, frosting de cookies & cream y chunks de galleta Oreo. Cubierto de cream cheese frosting.</p>
-            <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="menu-card__link">
-              Cotizar <span aria-hidden="true">→</span>
-            </a>
+        </div>
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">Red Velvet</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Nuestro clásico más amado. Bizcocho aterciopelado de color rojo intenso, relleno y cubierto de cream cheese frosting inhouse. Suave, húmedo y elegante.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
           </div>
-        </article>
-
-        <!-- Card 3: English Banana -->
-        <article class="menu-card fade-up fade-up-delay-2">
-          <img
-            class="menu-card__img"
-            src="bakery-banana.jpg"
-            alt="English Banana"
-            loading="lazy"
-            width="400"
-            height="240"
-          />
-          <div class="menu-card__body">
-            <h3 class="menu-card__name">English Banana</h3>
-            <p class="menu-card__desc">Receta antigua inglesa de pan de plátano y betún de vainilla. Dentro de lo clásico encontrarás un pastel suave y elegante con notas refinadas de plátano y vainilla.</p>
-            <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="menu-card__link">
-              Cotizar <span aria-hidden="true">→</span>
-            </a>
+        </div>
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">Birthday Cake</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              El pastel de cumpleaños perfecto. Pan de vainilla suave con betún de mantequilla y sprinkles. Festivo, clásico y delicioso.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
           </div>
-        </article>
-
-        <!-- Card 4: Signature Cookies -->
-        <article class="menu-card fade-up fade-up-delay-1">
-          <img
-            class="menu-card__img"
-            src="bakery-cookies.jpg"
-            alt="Signature Cookies"
-            loading="lazy"
-            width="400"
-            height="240"
-          />
-          <div class="menu-card__body">
-            <h3 class="menu-card__name">Signature Cookies</h3>
-            <p class="menu-card__desc">Nuestras cookies artesanales. Crujientes por fuera, suaves por dentro. Perfectas para regalar o consentirte.</p>
-            <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="menu-card__link">
-              Cotizar <span aria-hidden="true">→</span>
-            </a>
+        </div>
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">Plátano & Dulce de Leche</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Pan de plátano húmedo con capas de dulce de leche artesanal. Una combinación irresistible que equilibra lo dulce con el sabor natural del plátano.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
           </div>
-        </article>
+        </div>
+      </div>
 
-        <!-- Card 5: Red Velvet -->
-        <article class="menu-card fade-up fade-up-delay-2">
-          <img
-            class="menu-card__img"
-            src="bakery-redvelvet.jpg"
-            alt="Red Velvet Signature"
-            loading="lazy"
-            width="400"
-            height="240"
-          />
-          <div class="menu-card__body">
-            <h3 class="menu-card__name">Red Velvet Signature</h3>
-            <p class="menu-card__desc">Nuestro clásico más amado. Bizcocho aterciopelado con cream cheese frosting inhouse.</p>
-            <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="menu-card__link">
-              Cotizar <span aria-hidden="true">→</span>
-            </a>
+      <!-- Panel: Inhouse Creations -->
+      <div class="menu-panel" id="panel-inhouse" role="tabpanel">
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">American Cherry Chocolate Cake</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Pan de chocolate con cerezas americanas, relleno de ganache y compota de cereza. Una creación intensa, frutal y profunda.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
           </div>
-        </article>
-
-        <!-- Card 6: Mini Cakes & Cupcakes -->
-        <article class="menu-card fade-up fade-up-delay-3">
-          <img
-            class="menu-card__img"
-            src="bakery-cupcakes.jpg"
-            alt="Mini Cakes y Cupcakes"
-            loading="lazy"
-            width="400"
-            height="240"
-          />
-          <div class="menu-card__body">
-            <h3 class="menu-card__name">Mini Cakes &amp; Cupcakes</h3>
-            <p class="menu-card__desc">Para reuniones íntimas o como detalle especial. Desde 6 piezas.</p>
-            <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="menu-card__link">
-              Cotizar <span aria-hidden="true">→</span>
-            </a>
+        </div>
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">Cotton Candy Cake</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Pan esponjoso con sabor a algodón de azúcar, cubierto de frosting pastel y decorado con algodón de feria. Mágico y divertido.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
           </div>
-        </article>
+        </div>
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">English Banana</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Receta antigua inglesa de pan de plátano con betún de vainilla. Suave, elegante y con notas refinadas. Un clásico que siempre sorprende.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
+          </div>
+        </div>
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">American Breakfast</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Inspirado en el desayuno americano: pan de arándano y maple, con capas de betún de mantequilla. Dulce, tierno y único.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Panel: Chocolate World -->
+      <div class="menu-panel" id="panel-chocolate" role="tabpanel">
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">Chocolate Fudge Cake</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Pan de chocolate fudge relleno de ganache de chocolate semi amargo, cubierto de cream cheese frosting o ganache. Denso, profundo e intenso.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
+          </div>
+        </div>
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">Chocolate Fudge Nutella Crunch</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Pan de chocolate fudge con capas de Nutella, crunch de avellana y ganache. Para los que creen que el chocolate siempre puede ser mejor.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
+          </div>
+        </div>
+        <div class="accord-item">
+          <button class="accord-btn" aria-expanded="false">
+            <span class="accord-name">Chocolate Oreo Cookies & Cream</span>
+            <span class="accord-icon">+</span>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              Pan de chocolate fudge relleno de ganache y frosting de cookies & cream con chunks de Oreo. Cubierto de cream cheese frosting. El favorito de muchos.
+              <br><a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Cotizar →</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="menu-section__footer fade-up">
@@ -1662,6 +1714,33 @@
     );
 
     sections.forEach(s => sectionObserver.observe(s));
+
+    // ── Menu tabs ──
+    document.querySelectorAll('.menu-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.menu-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected','true');
+        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    // ── Accordion ──
+    document.querySelectorAll('.accord-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        // close all in same panel
+        btn.closest('.menu-panel').querySelectorAll('.accord-btn').forEach(b => {
+          b.setAttribute('aria-expanded','false');
+          b.nextElementSibling.classList.remove('open');
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded','true');
+          btn.nextElementSibling.classList.add('open');
+        }
+      });
+    });
   </script>
 
 </body>
