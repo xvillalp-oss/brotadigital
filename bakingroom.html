@@ -612,23 +612,26 @@
     .menu-tab.active { color: var(--pink); }
     .menu-tab.active::after { transform: scaleX(1); }
     .menu-tab:hover { color: var(--espresso); }
-    .menu-panel { display: none; max-width: 720px; margin: 0 auto 12px; }
+    .menu-panel { display: none; max-width: 640px; margin: 0 auto; }
     .menu-panel.active { display: block; }
     .menu-category-title {
       font-family: var(--font-serif);
-      font-size: 13px; font-weight: 600;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--pink); margin-bottom: 4px; margin-top: 40px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--pink);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--pink);
+      margin-bottom: 0;
+      margin-top: 48px;
     }
-    .menu-panel:first-of-type .menu-category-title { margin-top: 0; }
+    #panel-classics .menu-category-title { margin-top: 0; }
     .accord-item { border-bottom: 1px solid var(--border); }
-    .accord-item:first-child { border-top: 1px solid var(--border); }
     .accord-btn {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 4px;
+      padding: 18px 0;
       background: none;
       border: none;
       cursor: pointer;
@@ -637,7 +640,7 @@
     }
     .accord-name {
       font-family: var(--font-serif);
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 500;
       color: var(--espresso);
       transition: color 0.2s;
@@ -645,17 +648,14 @@
     .accord-btn:hover .accord-name,
     .accord-btn[aria-expanded="true"] .accord-name { color: var(--pink); }
     .accord-icon {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      border: 1.5px solid var(--border);
+      width: 22px; height: 22px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.25s, border-color 0.25s, transform 0.3s;
-      font-size: 18px; line-height: 1; color: var(--espresso);
+      font-size: 20px; line-height: 1;
+      color: var(--border);
+      transition: color 0.25s, transform 0.3s;
     }
     .accord-btn[aria-expanded="true"] .accord-icon {
-      background: var(--pink); border-color: var(--pink);
-      color: #fff; transform: rotate(45deg);
+      color: var(--pink); transform: rotate(45deg);
     }
     .accord-body {
       max-height: 0; overflow: hidden;
@@ -663,14 +663,14 @@
     }
     .accord-body.open { max-height: 200px; }
     .accord-body-inner {
-      padding: 0 4px 22px;
+      padding: 0 0 20px;
       font-size: 14px; color: var(--text-muted); line-height: 1.75;
     }
     .accord-body-inner a {
-      display: inline-block; margin-top: 12px;
-      font-size: 13px; font-weight: 600;
-      color: var(--pink); letter-spacing: 0.04em;
-      text-decoration: none;
+      display: inline-block; margin-top: 10px;
+      font-size: 12px; font-weight: 600;
+      color: var(--pink); letter-spacing: 0.06em;
+      text-decoration: none; text-transform: uppercase;
     }
     .accord-body-inner a:hover { opacity: 0.75; }
     .menu-section__footer {
