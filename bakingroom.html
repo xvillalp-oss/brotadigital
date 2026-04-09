@@ -612,8 +612,15 @@
     .menu-tab.active { color: var(--pink); }
     .menu-tab.active::after { transform: scaleX(1); }
     .menu-tab:hover { color: var(--espresso); }
-    .menu-panel { display: none; max-width: 720px; margin: 0 auto; }
+    .menu-panel { display: none; max-width: 720px; margin: 0 auto 12px; }
     .menu-panel.active { display: block; }
+    .menu-category-title {
+      font-family: var(--font-serif);
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--pink); margin-bottom: 4px; margin-top: 40px;
+    }
+    .menu-panel:first-of-type .menu-category-title { margin-top: 0; }
     .accord-item { border-bottom: 1px solid var(--border); }
     .accord-item:first-child { border-top: 1px solid var(--border); }
     .accord-btn {
@@ -1294,15 +1301,9 @@
         </p>
       </div>
 
-      <!-- Tabs -->
-      <div class="menu-tabs fade-up" role="tablist">
-        <button class="menu-tab active" role="tab" aria-selected="true" data-panel="classics">The Classics</button>
-        <button class="menu-tab" role="tab" aria-selected="false" data-panel="inhouse">Inhouse Creations</button>
-        <button class="menu-tab" role="tab" aria-selected="false" data-panel="chocolate">Chocolate World</button>
-      </div>
-
       <!-- Panel: The Classics -->
       <div class="menu-panel active" id="panel-classics" role="tabpanel">
+        <p class="menu-category-title">The Classics</p>
         <div class="accord-item">
           <button class="accord-btn" aria-expanded="false">
             <span class="accord-name">Carrot Cake</span>
@@ -1354,7 +1355,8 @@
       </div>
 
       <!-- Panel: Inhouse Creations -->
-      <div class="menu-panel" id="panel-inhouse" role="tabpanel">
+      <div class="menu-panel active" id="panel-inhouse" role="tabpanel">
+        <p class="menu-category-title">Inhouse Creations</p>
         <div class="accord-item">
           <button class="accord-btn" aria-expanded="false">
             <span class="accord-name">American Cherry Chocolate Cake</span>
@@ -1406,7 +1408,8 @@
       </div>
 
       <!-- Panel: Chocolate World -->
-      <div class="menu-panel" id="panel-chocolate" role="tabpanel">
+      <div class="menu-panel active" id="panel-chocolate" role="tabpanel">
+        <p class="menu-category-title">Chocolate World</p>
         <div class="accord-item">
           <button class="accord-btn" aria-expanded="false">
             <span class="accord-name">Chocolate Fudge Cake</span>
