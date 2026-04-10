@@ -87,8 +87,8 @@
       --shadow-md: 0 8px 32px rgba(28, 16, 9, 0.12);
       --shadow-lg: 0 20px 60px rgba(28, 16, 9, 0.16);
 
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 
       --max-width: 1200px;
       --section-padding: clamp(64px, 10vw, 120px);
@@ -1159,10 +1159,70 @@
         justify-content: center;
       }
     }
+
+    /* ── UX PRO MAX: Accessibility & Touch ── */
+
+    /* Focus states — keyboard navigation */
+    :focus-visible {
+      outline: 2px solid var(--pink);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* Touch targets min 44px */
+    .btn, .nav__links a, .nav__cta, .menu-tab,
+    .accord-btn, .nav__hamburger {
+      min-height: 44px;
+    }
+    .accord-btn { min-height: 52px; }
+
+    /* Cursor pointer on all interactive elements */
+    .btn, .nav__links a, .nav__cta, .menu-tab,
+    .accord-btn, .nav__hamburger, a, button,
+    [role="tab"], [role="button"] {
+      cursor: pointer;
+    }
+
+    /* Smooth hover transitions (150-300ms) */
+    a, button { transition: opacity var(--transition), color var(--transition); }
+
+    /* prefers-reduced-motion — disable animations */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .fade-up { opacity: 1; transform: none; }
+    }
+
+    /* Skip to main content link (accessibility) */
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--pink); color: #fff;
+      padding: 8px 16px; border-radius: 4px;
+      font-size: 14px; font-weight: 600; z-index: 9999;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* Better mobile spacing for accordion (touch-friendly) */
+    @media (max-width: 768px) {
+      .accord-btn { padding: 20px 0; }
+      .menu-tab { padding: 14px 20px; font-size: 15px; }
+      .menu-category-title { margin-top: 36px; }
+    }
+
+    /* Improve contrast on muted text */
+    .section-label, .menu-section__sub,
+    .about__text, .proceso__step p {
+      color: #5A4A42;
+    }
   </style>
 </head>
 
 <body>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
 
   <!-- ============================================
        NAVIGATION
@@ -1237,7 +1297,7 @@
   <!-- ============================================
        HERO
   ============================================ -->
-  <section class="hero" aria-label="Inicio">
+  <section class="hero" id="main" aria-label="Inicio">
     <div class="container">
       <div class="hero__grid">
 
