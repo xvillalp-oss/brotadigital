@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mejía Luna Abogados | Litigio Mercantil y Penal · CDMX</title>
+  <meta name="description" content="Despacho de abogados litigantes en materias mercantil y penal. Lomas de Chapultepec, CDMX." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & tokens ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0B1F3A;
+      --navy-2: #152B50;
+      --gold:   #B8972A;
+      --gold-lt:#D4AF37;
+      --white:  #FFFFFF;
+      --off:    #F4F2EE;
+      --gray:   #6B7280;
+      --dark:   #111827;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max: 1200px;
+      --section-py: clamp(64px, 8vw, 120px);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
+    .sr-only { position: absolute; width: 1px; height: 1px; clip: rect(0,0,0,0); overflow: hidden; }
+
+    /* ── Skip link ─────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 9999;
+      background: var(--gold); color: var(--white); padding: 8px 16px;
+      font-size: 14px; border-radius: 4px; transition: top .2s;
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* ── Nav ───────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(184,151,42,.25);
+      transition: box-shadow .3s;
+    }
+    .nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.35); }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 18px; font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+    .nav__logo span { display: block; font-size: 10px; font-weight: 400; font-family: var(--font-sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .nav__menu {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav__menu a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,.78);
+      transition: color .2s;
+    }
+    .nav__menu a:hover { color: var(--gold); }
+    .nav__cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--white);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 2px;
+      transition: background .2s;
+      min-height: 44px;
+    }
+    .nav__cta:hover { background: var(--gold-lt); }
+    .nav__burger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 8px; border: none; background: transparent;
+      min-width: 44px; min-height: 44px; align-items: center; justify-content: center;
+    }
+    .nav__burger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
+    .nav__mobile {
+      display: none; flex-direction: column;
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,.1);
+      padding: 16px 0;
+    }
+    .nav__mobile.open { display: flex; }
+    .nav__mobile a {
+      padding: 12px clamp(20px,4vw,60px);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,.78);
+    }
+
+    /* ── Hero ──────────────────────────────────────── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: var(--navy);
+      position: relative; overflow: hidden;
+      padding-top: 72px;
+    }
+    .hero__bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg, rgba(11,31,58,.96) 0%, rgba(11,31,58,.75) 60%, rgba(21,43,80,.85) 100%);
+    }
+    /* decorative diagonal lines */
+    .hero__lines {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .hero__lines::before,
+    .hero__lines::after {
+      content: '';
+      position: absolute;
+      background: rgba(184,151,42,.07);
+    }
+    .hero__lines::before {
+      width: 1px; height: 120%;
+      top: -10%; right: 30%;
+      transform: rotate(15deg);
+      box-shadow: 80px 0 0 rgba(184,151,42,.04), 160px 0 0 rgba(184,151,42,.03);
+    }
+    .hero__lines::after {
+      width: 60%; height: 1px;
+      bottom: 28%; left: -10%;
+      transform: rotate(-8deg);
+    }
+    .hero__content {
+      position: relative; z-index: 2;
+      max-width: 780px;
+    }
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero__eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+    }
+    .hero__h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700; line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .hero__h1 em { font-style: italic; color: var(--gold-lt); }
+    .hero__sub {
+      font-size: clamp(15px, 1.6vw, 18px);
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 44px;
+    }
+    .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--white);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 14px 32px; border-radius: 2px;
+      transition: background .2s, transform .15s;
+      min-height: 48px;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,.35); color: var(--white);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 14px 32px; border-radius: 2px;
+      transition: border-color .2s, background .2s;
+      min-height: 48px;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(184,151,42,.1); }
+    .hero__scroll {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,.4); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .hero__scroll-line {
+      width: 1px; height: 40px; background: rgba(184,151,42,.5);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%,100% { opacity: .3; transform: scaleY(.5); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ── Stats bar ─────────────────────────────────── */
+    .stats {
+      background: var(--navy-2);
+      border-top: 1px solid rgba(184,151,42,.2);
+      border-bottom: 1px solid rgba(184,151,42,.2);
+      padding: 36px 0;
+    }
+    .stats__grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat {
+      text-align: center; padding: 12px 20px;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .stat:last-child { border-right: none; }
+    .stat__num {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat__label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,.6);
+    }
+
+    /* ── Section labels ────────────────────────────── */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--gold);
+    }
+    .section-h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 3.8vw, 48px); font-weight: 700;
+      line-height: 1.15; color: var(--navy); margin-bottom: 20px;
+    }
+    .section-h2.light { color: var(--white); }
+    .section-lead {
+      font-size: clamp(15px, 1.5vw, 17px); color: var(--gray);
+      line-height: 1.7; max-width: 560px;
+    }
+    .section-lead.light { color: rgba(255,255,255,.7); }
+
+    /* ── Nosotros ──────────────────────────────────── */
+    .nosotros { padding: var(--section-py) 0; background: var(--off); }
+    .nosotros__grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .nosotros__text { }
+    .nosotros__quote {
+      font-family: var(--font-serif);
+      font-size: clamp(20px, 2.5vw, 30px); font-weight: 400;
+      font-style: italic; line-height: 1.45;
+      color: var(--navy); border-left: 3px solid var(--gold);
+      padding-left: 28px; margin: 36px 0;
+    }
+    .nosotros__body {
+      font-size: 15px; color: var(--gray); line-height: 1.75; margin-bottom: 16px;
+    }
+    .nosotros__values {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
+    }
+    .value-tag {
+      display: inline-block;
+      border: 1px solid rgba(11,31,58,.2);
+      font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--navy-2);
+      padding: 7px 14px; border-radius: 2px;
+    }
+    .nosotros__visual {
+      position: relative;
+    }
+    .nosotros__card {
+      background: var(--navy);
+      padding: 48px 40px;
+      border-left: 3px solid var(--gold);
+    }
+    .nosotros__card-head {
+      font-family: var(--font-serif);
+      font-size: 22px; font-weight: 700; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .nosotros__card-sub {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .nosotros__card-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nosotros__card-item:last-child { border-bottom: none; }
+    .item-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: rgba(184,151,42,.15); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .item-icon svg { width: 16px; height: 16px; color: var(--gold); fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .nosotros__card-item p {
+      font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.55;
+    }
+    .nosotros__card-item strong {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--white); margin-bottom: 3px;
+    }
+
+    /* ── Servicios ─────────────────────────────────── */
+    .servicios { padding: var(--section-py) 0; background: var(--white); }
+    .servicios__intro {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 40px; margin-bottom: 64px;
+    }
+    .servicios__grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    }
+    .servicio-card {
+      background: var(--off); padding: 52px 44px;
+      border-top: 3px solid transparent;
+      transition: border-color .25s, background .25s;
+      cursor: default;
+    }
+    .servicio-card:hover { border-top-color: var(--gold); background: #EDE9E1; }
+    .servicio-card__number {
+      font-family: var(--font-serif); font-size: 56px; font-weight: 700;
+      color: rgba(11,31,58,.08); line-height: 1;
+      margin-bottom: 20px;
+    }
+    .servicio-card__title {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 2.5vw, 30px); font-weight: 700;
+      color: var(--navy); margin-bottom: 14px;
+    }
+    .servicio-card__desc {
+      font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 28px;
+    }
+    .servicio-card__list {
+      list-style: none; display: flex; flex-direction: column; gap: 8px;
+    }
+    .servicio-card__list li {
+      font-size: 13px; color: var(--dark);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .servicio-card__list li::before {
+      content: ''; display: block; width: 20px; height: 1px; background: var(--gold); flex-shrink: 0;
+    }
+
+    /* ── Equipo ────────────────────────────────────── */
+    .equipo { padding: var(--section-py) 0; background: var(--navy); }
+    .equipo__intro { margin-bottom: 64px; }
+    .equipo__grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    }
+    .attorney-card {
+      background: var(--navy-2); padding: 36px 28px;
+      border-top: 2px solid rgba(184,151,42,.2);
+      transition: border-top-color .25s, background .25s;
+    }
+    .attorney-card:hover { border-top-color: var(--gold); background: #1a3060; }
+    .attorney-card__initials {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(184,151,42,.15);
+      border: 1px solid rgba(184,151,42,.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif); font-size: 20px; font-weight: 700;
+      color: var(--gold); margin-bottom: 20px;
+    }
+    .attorney-card__name {
+      font-family: var(--font-serif);
+      font-size: 17px; font-weight: 700;
+      color: var(--white); line-height: 1.25;
+      margin-bottom: 6px;
+    }
+    .attorney-card__title {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .attorney-card__bio {
+      font-size: 13px; color: rgba(255,255,255,.62); line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .attorney-card__contact {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .attorney-card__contact a {
+      font-size: 12px; color: rgba(255,255,255,.5);
+      display: flex; align-items: center; gap: 8px;
+      transition: color .2s;
+    }
+    .attorney-card__contact a:hover { color: var(--gold); }
+    .attorney-card__contact svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* ── CTA Banner ────────────────────────────────── */
+    .cta-banner {
+      background: var(--gold);
+      padding: clamp(48px, 6vw, 80px) 0;
+    }
+    .cta-banner__inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cta-banner__text h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3vw, 38px); font-weight: 700;
+      color: var(--white); margin-bottom: 10px;
+    }
+    .cta-banner__text p {
+      font-size: 15px; color: rgba(255,255,255,.85);
+    }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--navy);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 14px 36px; border-radius: 2px;
+      transition: background .2s; white-space: nowrap;
+      min-height: 48px;
+    }
+    .btn-white:hover { background: var(--off); }
+
+    /* ── Contacto ──────────────────────────────────── */
+    .contacto { padding: var(--section-py) 0; background: var(--off); }
+    .contacto__grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .contacto__info { }
+    .contacto__item {
+      display: flex; gap: 18px; margin-bottom: 28px;
+    }
+    .contacto__icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--navy); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contacto__icon svg { width: 18px; height: 18px; color: var(--gold); fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .contacto__item-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
+    }
+    .contacto__item-value { font-size: 14px; color: var(--dark); line-height: 1.55; }
+    .contacto__item-value a { color: var(--navy); transition: color .2s; }
+    .contacto__item-value a:hover { color: var(--gold); }
+    .contacto__social {
+      display: flex; gap: 12px; margin-top: 36px;
+    }
+    .social-btn {
+      width: 44px; height: 44px; border-radius: 2px;
+      background: var(--navy); display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .social-btn:hover { background: var(--gold); }
+    .social-btn svg { width: 18px; height: 18px; color: var(--white); fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .contacto__form-wrap {
+      background: var(--white); padding: 48px 40px;
+      box-shadow: 0 2px 40px rgba(0,0,0,.08);
+    }
+    .contacto__form-wrap h3 {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 700;
+      color: var(--navy); margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--navy); margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid #D1C9BE; background: var(--off);
+      font-family: var(--font-sans); font-size: 14px; color: var(--dark);
+      border-radius: 2px; outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); background: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-form {
+      width: 100%; padding: 14px;
+      background: var(--navy); color: var(--white);
+      font-family: var(--font-sans); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      border: none; border-radius: 2px; cursor: pointer;
+      transition: background .2s; min-height: 48px;
+    }
+    .btn-form:hover { background: var(--gold); }
+
+    /* ── Footer ────────────────────────────────────── */
+    .footer { background: var(--navy); padding: clamp(48px, 6vw, 80px) 0 0; }
+    .footer__grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer__brand { }
+    .footer__logo {
+      font-family: var(--font-serif);
+      font-size: 20px; font-weight: 700; color: var(--white);
+      margin-bottom: 6px;
+    }
+    .footer__logo-sub {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .footer__tagline {
+      font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.7; max-width: 280px;
+    }
+    .footer__col h4 {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer__col ul a { font-size: 13px; color: rgba(255,255,255,.55); transition: color .2s; }
+    .footer__col ul a:hover { color: var(--white); }
+    .footer__bottom {
+      padding: 20px 0; text-align: center;
+      font-size: 12px; color: rgba(255,255,255,.3);
+    }
+    .footer__bottom span { color: rgba(184,151,42,.6); }
+
+    /* ── Animations ────────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+      .reveal.visible { opacity: 1; transform: none; }
+    }
+
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .nosotros__grid,
+      .contacto__grid { grid-template-columns: 1fr; gap: 48px; }
+      .equipo__grid { grid-template-columns: repeat(2, 1fr); }
+      .stats__grid { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .stat { border-bottom: 1px solid rgba(255,255,255,.1); }
+      .stat:last-child, .stat:nth-last-child(2) { border-bottom: none; }
+    }
+    @media (max-width: 768px) {
+      .nav__menu, .nav__cta { display: none; }
+      .nav__burger { display: flex; }
+      .servicios__grid { grid-template-columns: 1fr; }
+      .servicio-card { padding: 36px 28px; }
+      .equipo__grid { grid-template-columns: 1fr; }
+      .servicios__intro { flex-direction: column; align-items: flex-start; }
+      .footer__grid { grid-template-columns: 1fr; gap: 36px; }
+      .form-row { grid-template-columns: 1fr; }
+      .nosotros__card { padding: 32px 24px; }
+      .cta-banner__inner { flex-direction: column; text-align: center; }
+      .hero__actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo" aria-label="Mejía Luna Abogados inicio">
+          Mejía Luna
+          <span>Abogados · S.C.</span>
+        </a>
+        <ul class="nav__menu" role="list">
+          <li><a href="#nosotros">El Despacho</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="https://wa.me/525648527428" target="_blank" rel="noopener" class="nav__cta">
+          Consulta inicial
+        </a>
+        <button class="nav__burger" aria-label="Abrir menú" id="burger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav__mobile" id="mobileMenu" role="menu">
+      <a href="#nosotros">El Despacho</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__bg"></div>
+      <div class="hero__lines" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Despacho de abogados litigantes · CDMX</p>
+          <h1 class="hero__h1" id="hero-heading">
+            Lo difícil lo resolvemos<br>
+            <em>inmediatamente.</em>
+          </h1>
+          <p class="hero__sub">
+            Especialistas en litigio mercantil y penal. Estrategia sólida,
+            resultados concretos. Lomas de Chapultepec, Ciudad de México.
+          </p>
+          <div class="hero__actions">
+            <a href="https://wa.me/525648527428" target="_blank" rel="noopener" class="btn-primary">
+              Agenda una consulta
+            </a>
+            <a href="#servicios" class="btn-outline">
+              Nuestros servicios
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" aria-label="Cifras del despacho">
+      <div class="container">
+        <div class="stats__grid">
+          <div class="stat">
+            <div class="stat__num">+10</div>
+            <div class="stat__label">Años de experiencia</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">2</div>
+            <div class="stat__label">Especialidades</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">4</div>
+            <div class="stat__label">Abogados especializados</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">100%</div>
+            <div class="stat__label">Enfoque en resultados</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="nosotros" id="nosotros" aria-labelledby="nosotros-heading">
+      <div class="container">
+        <div class="nosotros__grid">
+          <div class="nosotros__text reveal">
+            <p class="section-label">El Despacho</p>
+            <h2 class="section-h2" id="nosotros-heading">Resolución efectiva.<br>Sin complicaciones.</h2>
+            <blockquote class="nosotros__quote">
+              "Nuestro propósito es resolver a tu favor, siempre, el problema por el cual acudiste con nosotros."
+            </blockquote>
+            <p class="nosotros__body">
+              Mejía Luna, S.C. es un despacho de abogados litigantes con especialización
+              en materias mercantil y penal. Brindamos asesoría estratégica y representación
+              en juicio, con un equipo comprometido con la excelencia y los resultados.
+            </p>
+            <p class="nosotros__body">
+              Nos distingue la agilidad para actuar, la creatividad para construir estrategias
+              y el compromiso absoluto con los intereses de nuestros clientes.
+            </p>
+            <div class="nosotros__values">
+              <span class="value-tag">Servicio al cliente</span>
+              <span class="value-tag">Compromiso</span>
+              <span class="value-tag">Excelencia</span>
+              <span class="value-tag">Creatividad</span>
+              <span class="value-tag">Agilidad</span>
+            </div>
+          </div>
+          <div class="nosotros__visual reveal">
+            <div class="nosotros__card">
+              <div class="nosotros__card-head">Visión del Despacho</div>
+              <div class="nosotros__card-sub">Problema resuelto.</div>
+              <div class="nosotros__card-item">
+                <div class="item-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <p>
+                  <strong>Estrategia personalizada</strong>
+                  Cada caso requiere un enfoque único. Analizamos, diseñamos y ejecutamos la estrategia legal más efectiva.
+                </p>
+              </div>
+              <div class="nosotros__card-item">
+                <div class="item-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <p>
+                  <strong>Respuesta inmediata</strong>
+                  Lo difícil lo resolvemos de inmediato. Atención urgente disponible para casos críticos.
+                </p>
+              </div>
+              <div class="nosotros__card-item">
+                <div class="item-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <p>
+                  <strong>Equipo especializado</strong>
+                  Abogados con formación de élite y experiencia en litigios mercantiles y penales complejos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="servicios" id="servicios" aria-labelledby="servicios-heading">
+      <div class="container">
+        <div class="servicios__intro">
+          <div class="reveal">
+            <p class="section-label">Práctica Legal</p>
+            <h2 class="section-h2" id="servicios-heading">Nuestros servicios</h2>
+          </div>
+          <p class="section-lead reveal" style="max-width:360px">
+            Especialización profunda en dos áreas del derecho donde la experiencia
+            y la estrategia son determinantes.
+          </p>
+        </div>
+        <div class="servicios__grid">
+          <div class="servicio-card reveal">
+            <div class="servicio-card__number">01</div>
+            <h3 class="servicio-card__title">Litigio Mercantil</h3>
+            <p class="servicio-card__desc">
+              Representación y asesoría en controversias comerciales, bancarias, financieras
+              y bursátiles. Diseñamos estrategias para recuperación de adeudos, defensa
+              de intereses empresariales y resolución de conflictos patrimoniales.
+            </p>
+            <ul class="servicio-card__list">
+              <li>Seguros, bancario y bursátil</li>
+              <li>Títulos de crédito y Fintech</li>
+              <li>Juicios ejecutivos y ordinarios</li>
+              <li>Requerimientos extrajudiciales</li>
+              <li>Embargos precautorios</li>
+              <li>Mediación y negociación</li>
+              <li>Arbitraje comercial internacional</li>
+              <li>Juicios de amparo</li>
+            </ul>
+          </div>
+          <div class="servicio-card reveal">
+            <div class="servicio-card__number">02</div>
+            <h3 class="servicio-card__title">Litigio Penal</h3>
+            <p class="servicio-card__desc">
+              Defensa penal en casos de alta complejidad y representación de víctimas.
+              Estrategia agresiva para la resolución de conflictos penales, patrimoniales
+              y financieros con profundo conocimiento del proceso acusatorio.
+            </p>
+            <ul class="servicio-card__list">
+              <li>Defensa penal en casos complejos</li>
+              <li>Representación de víctimas</li>
+              <li>Delitos financieros y patrimoniales</li>
+              <li>Juicios orales</li>
+              <li>Medios preparatorios</li>
+              <li>Retención de personas</li>
+              <li>Negociación penal</li>
+              <li>Proceso penal acusatorio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="equipo" id="equipo" aria-labelledby="equipo-heading">
+      <div class="container">
+        <div class="equipo__intro reveal">
+          <p class="section-label">El Equipo</p>
+          <h2 class="section-h2 light" id="equipo-heading">Abogados especializados</h2>
+          <p class="section-lead light">
+            Profesionales con formación de élite y experiencia comprobada en litigios complejos.
+          </p>
+        </div>
+        <div class="equipo__grid">
+          <div class="attorney-card reveal">
+            <div class="attorney-card__initials">RM</div>
+            <div class="attorney-card__name">Rodrigo Mejía Luna</div>
+            <div class="attorney-card__title">Socio</div>
+            <p class="attorney-card__bio">
+              Tecnológico de Monterrey. Diplomados en Juicios Orales Mercantiles,
+              Litigación Oral y Arbitraje Comercial Internacional. Especialidad en
+              Proceso Penal por INACIPE.
+            </p>
+            <div class="attorney-card__contact">
+              <a href="tel:5648527428">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.48 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 15.3 16l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                56 4852 7428
+              </a>
+              <a href="mailto:r@mejialuna.mx">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                r@mejialuna.mx
+              </a>
+            </div>
+          </div>
+          <div class="attorney-card reveal">
+            <div class="attorney-card__initials">SG</div>
+            <div class="attorney-card__name">Sebastián García Espinosa</div>
+            <div class="attorney-card__title">Abogado</div>
+            <p class="attorney-card__bio">
+              Especialista en derecho penal con estrategia agresiva en litigación
+              criminal. Experto en resolución de conflictos financieros y patrimoniales.
+            </p>
+            <div class="attorney-card__contact">
+              <a href="tel:5583366833">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.48 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 15.3 16l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                55 8336 6833
+              </a>
+              <a href="mailto:sgarcia@mejialuna.mx">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                sgarcia@mejialuna.mx
+              </a>
+            </div>
+          </div>
+          <div class="attorney-card reveal">
+            <div class="attorney-card__initials">HM</div>
+            <div class="attorney-card__name">Héctor Mariano Molina</div>
+            <div class="attorney-card__title">Abogado</div>
+            <p class="attorney-card__bio">
+              Especialista en litigio civil y mercantil. Experiencia en despachos
+              de alto nivel diseñando estrategias para litigios complejos.
+            </p>
+            <div class="attorney-card__contact">
+              <a href="tel:5511832727">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.48 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 15.3 16l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                55 1183 2727
+              </a>
+              <a href="mailto:hmariano@mejialuna.mx">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                hmariano@mejialuna.mx
+              </a>
+            </div>
+          </div>
+          <div class="attorney-card reveal">
+            <div class="attorney-card__initials">PM</div>
+            <div class="attorney-card__name">Pablo Alejandro Martínez</div>
+            <div class="attorney-card__title">Abogado</div>
+            <p class="attorney-card__bio">
+              Tecnológico de Monterrey. Más de 10 años de experiencia en litigación
+              mercantil y asesoría empresarial de alto nivel.
+            </p>
+            <div class="attorney-card__contact">
+              <a href="tel:5540552751">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.48 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 15.3 16l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                55 4055 2751
+              </a>
+              <a href="mailto:payala@mejialuna.mx">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                payala@mejialuna.mx
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner" aria-label="Llamado a la acción">
+      <div class="container">
+        <div class="cta-banner__inner">
+          <div class="cta-banner__text">
+            <h2>¿Tiene un problema legal urgente?</h2>
+            <p>Lo imposible sólo toma un poco más de tiempo. Contáctenos hoy.</p>
+          </div>
+          <a href="https://wa.me/525648527428" target="_blank" rel="noopener" class="btn-white">
+            Consulta por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto" aria-labelledby="contacto-heading">
+      <div class="container">
+        <div style="margin-bottom:52px" class="reveal">
+          <p class="section-label">Contacto</p>
+          <h2 class="section-h2" id="contacto-heading">Estamos para resolverlo</h2>
+        </div>
+        <div class="contacto__grid">
+          <div class="contacto__info reveal">
+            <div class="contacto__item">
+              <div class="contacto__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contacto__item-label">Dirección</div>
+                <div class="contacto__item-value">
+                  Av. Cordillera de los Andes 210<br>
+                  Lomas de Chapultepec, C.P. 11000<br>
+                  Ciudad de México
+                </div>
+              </div>
+            </div>
+            <div class="contacto__item">
+              <div class="contacto__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.48 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69A16 16 0 0 0 15.3 16l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contacto__item-label">Teléfono</div>
+                <div class="contacto__item-value">
+                  <a href="tel:5648527428">56 4852 7428</a>
+                </div>
+              </div>
+            </div>
+            <div class="contacto__item">
+              <div class="contacto__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contacto__item-label">Email</div>
+                <div class="contacto__item-value">
+                  <a href="mailto:r@mejialuna.mx">r@mejialuna.mx</a>
+                </div>
+              </div>
+            </div>
+            <div class="contacto__item">
+              <div class="contacto__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="contacto__item-label">Horario</div>
+                <div class="contacto__item-value">
+                  Lunes – Viernes: 8:00 a.m. – 8:00 p.m.<br>
+                  Sábado – Domingo: Casos urgentes
+                </div>
+              </div>
+            </div>
+            <div class="contacto__social" aria-label="Redes sociales">
+              <a href="https://wa.me/525648527428" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/mejialunaabogados/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/mej%C3%ADa-luna-abogados/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61578329002276" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="contacto__form-wrap reveal">
+            <h3>Cuéntenos su caso</h3>
+            <form onsubmit="handleForm(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" placeholder="Su nombre" required />
+                </div>
+                <div class="form-group">
+                  <label for="telefono">Teléfono</label>
+                  <input type="tel" id="telefono" name="telefono" placeholder="55 0000 0000" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="su@correo.com" required />
+              </div>
+              <div class="form-group">
+                <label for="materia">Materia</label>
+                <select id="materia" name="materia">
+                  <option value="">Seleccione una materia</option>
+                  <option>Litigio Mercantil</option>
+                  <option>Litigio Penal</option>
+                  <option>Mediación / Arbitraje</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Describa brevemente su caso</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Cuéntenos en qué podemos ayudarle..." required></textarea>
+              </div>
+              <button type="submit" class="btn-form">Enviar consulta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-label="Pie de página">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">Mejía Luna</div>
+          <div class="footer__logo-sub">Abogados · S.C.</div>
+          <p class="footer__tagline">
+            Despacho de abogados litigantes especializado en materias
+            mercantil y penal. Problema resuelto.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#servicios">Litigio Mercantil</a></li>
+            <li><a href="#servicios">Litigio Penal</a></li>
+            <li><a href="#servicios">Mediación</a></li>
+            <li><a href="#servicios">Arbitraje Comercial</a></li>
+            <li><a href="#servicios">Juicios de Amparo</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Despacho</h4>
+          <ul>
+            <li><a href="#nosotros">El Despacho</a></li>
+            <li><a href="#equipo">Equipo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="https://wa.me/525648527428">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2025 Mejía Luna, S.C. · Todos los derechos reservados · Lomas de Chapultepec, CDMX
+        · Diseño por <span>Brota Digital</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Burger
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => io.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add('visible'));
+    }
+
+    // Form
+    function handleForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-form');
+      btn.textContent = 'Mensaje enviado ✓';
+      btn.style.background = '#2a7a4b';
+      btn.disabled = true;
+      const wa = 'https://wa.me/525648527428?text=' + encodeURIComponent(
+        'Hola, me interesa una consulta en Mejía Luna Abogados.'
+      );
+      setTimeout(() => window.open(wa, '_blank'), 1200);
+    }
+  </script>
+</body>
+</html>
