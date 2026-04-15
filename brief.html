@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Brief de Proyecto — Brota Digital</title>
+  <meta name="description" content="Cuéntanos sobre tu negocio para comenzar tu proyecto digital."/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --coral:#E85D3A; --coral-d:#C94828;
+      --black:#1A1A1A; --cream:#FDFAF5; --cream-2:#F5EFE4;
+      --gray:#6B6B6B; --white:#fff; --border:#E5DDD4;
+      --font-head:'Plus Jakarta Sans',sans-serif;
+      --font-body:'DM Sans',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--cream-2);color:var(--black);-webkit-font-smoothing:antialiased;min-height:100vh}
+
+    /* HEADER */
+    .header{background:var(--black);padding:20px 0}
+    .header__inner{max-width:680px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+    .header__logo{font-family:var(--font-head);font-size:20px;font-weight:800;color:#fff}
+    .header__logo span{color:var(--coral)}
+    .header__tag{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+
+    /* HERO */
+    .hero{background:var(--coral);padding:48px 24px 56px;text-align:center}
+    .hero h1{font-family:var(--font-head);font-size:clamp(24px,4vw,36px);font-weight:800;color:#fff;margin-bottom:12px;line-height:1.2}
+    .hero p{font-size:15px;color:rgba(255,255,255,.8);max-width:480px;margin:0 auto;line-height:1.7}
+    .hero__steps{display:flex;justify-content:center;gap:8px;margin-top:24px;flex-wrap:wrap}
+    .step-pill{background:rgba(255,255,255,.15);color:#fff;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:100px;display:flex;align-items:center;gap:6px}
+    .step-pill .num{background:rgba(255,255,255,.25);width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+
+    /* FORM WRAPPER */
+    .form-wrap{max-width:680px;margin:-24px auto 48px;padding:0 16px;position:relative;z-index:2}
+    .form-card{background:var(--white);border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.1);overflow:hidden}
+
+    /* SECTIONS */
+    .form-section{padding:32px 36px;border-bottom:1px solid var(--cream-2)}
+    .form-section:last-of-type{border-bottom:none}
+    .form-section-title{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+    .form-section-num{width:28px;height:28px;border-radius:50%;background:var(--coral);color:#fff;font-family:var(--font-head);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .form-section-title h2{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--black)}
+    .form-section-title p{font-size:12px;color:var(--gray);margin-top:2px}
+
+    /* FIELDS */
+    .field{margin-bottom:20px}
+    .field:last-child{margin-bottom:0}
+    .field label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--black);margin-bottom:8px}
+    .field label .req{color:var(--coral)}
+    .field input,.field textarea,.field select{
+      width:100%;padding:12px 16px;
+      border:1.5px solid var(--border);background:var(--cream);
+      font-family:var(--font-body);font-size:14px;color:var(--black);
+      border-radius:10px;outline:none;transition:border-color .2s,background .2s;
+      appearance:none;
+    }
+    .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--coral);background:var(--white)}
+    .field textarea{resize:vertical;min-height:90px;line-height:1.6}
+    .field .hint{font-size:11px;color:var(--gray);margin-top:6px;line-height:1.5}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+    /* RADIO / CHECK GROUPS */
+    .option-group{display:flex;flex-direction:column;gap:8px}
+    .option-group.horizontal{flex-direction:row;flex-wrap:wrap;gap:8px}
+    .opt-label{display:flex;align-items:center;gap:10px;cursor:pointer}
+    .opt-label input[type=radio],.opt-label input[type=checkbox]{display:none}
+    .opt-box{
+      padding:10px 16px;border-radius:100px;border:1.5px solid var(--border);
+      font-size:13px;font-weight:500;color:var(--gray);
+      transition:.2s;background:var(--cream);cursor:pointer;
+      display:flex;align-items:center;gap:8px;
+    }
+    .opt-label input:checked + .opt-box{
+      background:rgba(232,93,58,.08);border-color:var(--coral);color:var(--coral);font-weight:600;
+    }
+    .opt-box .check{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.2s}
+    .opt-label input:checked + .opt-box .check{background:var(--coral);border-color:var(--coral)}
+    .opt-label input:checked + .opt-box .check::after{content:'✓';font-size:9px;color:#fff;font-weight:800}
+
+    /* PRESUPUESTO SLIDER */
+    .budget-display{font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--coral);margin-bottom:10px}
+    input[type=range]{width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;border:none;padding:0;appearance:none;cursor:pointer}
+    input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;background:var(--coral);cursor:pointer;box-shadow:0 2px 8px rgba(232,93,58,.4)}
+    .budget-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-top:6px}
+
+    /* SUBMIT */
+    .form-footer{background:var(--cream-2);padding:28px 36px}
+    .submit-btn{
+      width:100%;padding:16px;background:var(--coral);
+      color:#fff;font-family:var(--font-head);font-size:14px;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:100px;
+      cursor:pointer;transition:.2s;min-height:52px;
+      display:flex;align-items:center;justify-content:center;gap:8px;
+    }
+    .submit-btn:hover{background:var(--coral-d);transform:translateY(-1px)}
+    .submit-note{text-align:center;font-size:12px;color:var(--gray);margin-top:12px;line-height:1.6}
+
+    /* SUCCESS */
+    .success{display:none;text-align:center;padding:60px 36px}
+    .success.show{display:block}
+    .success-icon{font-size:52px;margin-bottom:16px}
+    .success h2{font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--black);margin-bottom:8px}
+    .success p{font-size:15px;color:var(--gray);line-height:1.7;margin-bottom:24px}
+    .success-wa{display:inline-flex;align-items:center;gap:10px;background:var(--coral);color:#fff;font-family:var(--font-head);font-size:13px;font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;transition:.2s}
+    .success-wa:hover{background:var(--coral-d)}
+
+    /* PROGRESS */
+    .progress-bar{height:3px;background:rgba(232,93,58,.15);position:sticky;top:0;z-index:10}
+    .progress-fill{height:100%;background:var(--coral);width:0%;transition:width .3s}
+
+    /* FOOTER */
+    .footer{text-align:center;padding:24px;font-size:12px;color:rgba(0,0,0,.3)}
+    .footer span{color:var(--coral);font-weight:700}
+
+    @media(max-width:540px){
+      .form-section{padding:24px 20px}
+      .form-footer{padding:24px 20px}
+      .field-row{grid-template-columns:1fr}
+      .option-group.horizontal{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+  <div class="header">
+    <div class="header__inner">
+      <div class="header__logo">brota<span>.</span> digital</div>
+      <div class="header__tag">Brief de proyecto</div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>¡Empecemos a hacer crecer tu negocio! 🌱</h1>
+    <p>Completa este formulario para que podamos preparar tu propuesta personalizada. Solo toma 3 minutos.</p>
+    <div class="hero__steps">
+      <div class="step-pill"><span class="num">1</span> Llenar brief</div>
+      <div class="step-pill"><span class="num">2</span> Recibe propuesta</div>
+      <div class="step-pill"><span class="num">3</span> Tu negocio crece</div>
+    </div>
+  </div>
+
+  <div class="form-wrap">
+    <div class="form-card" id="formCard">
+
+      <form id="briefForm" novalidate>
+
+        <!-- 1. DATOS DE CONTACTO -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <div class="form-section-num">1</div>
+            <div>
+              <h2>Tus datos de contacto</h2>
+              <p>Para poder enviarte tu propuesta</p>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Nombre completo <span class="req">*</span></label>
+              <input type="text" name="nombre" placeholder="Tu nombre" required/>
+            </div>
+            <div class="field">
+              <label>Nombre del negocio <span class="req">*</span></label>
+              <input type="text" name="negocio" placeholder="Ej. Panadería Los Arcos" required/>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>WhatsApp <span class="req">*</span></label>
+              <input type="tel" name="whatsapp" placeholder="55 0000 0000" required/>
+            </div>
+            <div class="field">
+              <label>Correo electrónico</label>
+              <input type="email" name="email" placeholder="tu@correo.com"/>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿Cómo nos conociste?</label>
+            <select name="fuente">
+              <option value="">Selecciona una opción</option>
+              <option>Instagram @brotadigital</option>
+              <option>Recomendación de un amigo</option>
+              <option>Google</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 2. TU NEGOCIO -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <div class="form-section-num">2</div>
+            <div>
+              <h2>Tu negocio</h2>
+              <p>Cuéntanos qué haces y a quién le vendes</p>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿A qué se dedica tu negocio? <span class="req">*</span></label>
+            <textarea name="giro" placeholder="Ej. Vendemos pasteles y postres personalizados para eventos en CDMX..." required></textarea>
+          </div>
+          <div class="field">
+            <label>¿Quién es tu cliente ideal?</label>
+            <input type="text" name="cliente" placeholder="Ej. Mamás de 25-45 años que organizan fiestas de cumpleaños"/>
+          </div>
+          <div class="field">
+            <label>¿Dónde estás ubicado / en qué ciudad operas?</label>
+            <input type="text" name="ciudad" placeholder="Ej. CDMX, Guadalajara, en línea..."/>
+          </div>
+          <div class="field">
+            <label>¿Tienes página web actualmente?</label>
+            <div class="option-group horizontal">
+              <label class="opt-label">
+                <input type="radio" name="tieneweb" value="No, es mi primera página"/>
+                <div class="opt-box"><div class="check"></div>No, es mi primera página</div>
+              </label>
+              <label class="opt-label">
+                <input type="radio" name="tieneweb" value="Sí, quiero mejorarla"/>
+                <div class="opt-box"><div class="check"></div>Sí, quiero mejorarla</div>
+              </label>
+              <label class="opt-label">
+                <input type="radio" name="tieneweb" value="Sí, quiero una nueva"/>
+                <div class="opt-box"><div class="check"></div>Sí, quiero una nueva</div>
+              </label>
+            </div>
+          </div>
+          <div class="field" id="urlField" style="display:none">
+            <label>URL de tu página actual</label>
+            <input type="url" name="urlactual" placeholder="https://tunegocio.com"/>
+          </div>
+        </div>
+
+        <!-- 3. SERVICIO -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <div class="form-section-num">3</div>
+            <div>
+              <h2>¿Qué necesitas?</h2>
+              <p>Puedes elegir más de uno</p>
+            </div>
+          </div>
+          <div class="field">
+            <label>Servicios de interés <span class="req">*</span></label>
+            <div class="option-group">
+              <label class="opt-label">
+                <input type="checkbox" name="servicio" value="Página web (landing page)"/>
+                <div class="opt-box"><div class="check"></div>🌐 Página web (landing page) — desde $3,500 MXN</div>
+              </label>
+              <label class="opt-label">
+                <input type="checkbox" name="servicio" value="Identidad de marca (logo + colores)"/>
+                <div class="opt-box"><div class="check"></div>🎨 Identidad de marca (logo + colores) — desde $2,500 MXN</div>
+              </label>
+              <label class="opt-label">
+                <input type="checkbox" name="servicio" value="Gestión de redes sociales"/>
+                <div class="opt-box"><div class="check"></div>📱 Gestión de redes sociales — desde $3,000 MXN/mes</div>
+              </label>
+              <label class="opt-label">
+                <input type="checkbox" name="servicio" value="Paquete completo (web + marca + redes)"/>
+                <div class="opt-box"><div class="check"></div>⭐ Paquete completo (web + marca + redes) — desde $12,000 MXN</div>
+              </label>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿Qué quieres que la gente haga al ver tu página?</label>
+            <div class="option-group">
+              <label class="opt-label">
+                <input type="checkbox" name="objetivo" value="Llamarme o escribirme por WhatsApp"/>
+                <div class="opt-box"><div class="check"></div>Llamarme o escribirme por WhatsApp</div>
+              </label>
+              <label class="opt-label">
+                <input type="checkbox" name="objetivo" value="Comprar un producto"/>
+                <div class="opt-box"><div class="check"></div>Comprar un producto</div>
+              </label>
+              <label class="opt-label">
+                <input type="checkbox" name="objetivo" value="Hacer una reservación o cita"/>
+                <div class="opt-box"><div class="check"></div>Hacer una reservación o cita</div>
+              </label>
+              <label class="opt-label">
+                <input type="checkbox" name="objetivo" value="Conocer mis servicios o menú"/>
+                <div class="opt-box"><div class="check"></div>Conocer mis servicios o menú</div>
+              </label>
+              <label class="opt-label">
+                <input type="checkbox" name="objetivo" value="Llegar a mi ubicación"/>
+                <div class="opt-box"><div class="check"></div>Llegar a mi ubicación</div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. IDENTIDAD -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <div class="form-section-num">4</div>
+            <div>
+              <h2>Tu identidad visual</h2>
+              <p>Para saber con qué contamos</p>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿Tienes logo?</label>
+            <div class="option-group horizontal">
+              <label class="opt-label"><input type="radio" name="logo" value="Sí, tengo logo"/><div class="opt-box"><div class="check"></div>Sí, tengo logo</div></label>
+              <label class="opt-label"><input type="radio" name="logo" value="Tengo algo pero no me convence"/><div class="opt-box"><div class="check"></div>Tengo algo pero no me convence</div></label>
+              <label class="opt-label"><input type="radio" name="logo" value="No tengo logo"/><div class="opt-box"><div class="check"></div>No tengo logo</div></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿Tienes fotos profesionales de tu negocio/productos?</label>
+            <div class="option-group horizontal">
+              <label class="opt-label"><input type="radio" name="fotos" value="Sí, tengo fotos"/><div class="opt-box"><div class="check"></div>Sí, tengo fotos</div></label>
+              <label class="opt-label"><input type="radio" name="fotos" value="Solo fotos de celular"/><div class="opt-box"><div class="check"></div>Solo fotos de celular</div></label>
+              <label class="opt-label"><input type="radio" name="fotos" value="No tengo fotos"/><div class="opt-box"><div class="check"></div>No tengo fotos</div></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿Tienes colores o estilo de marca definidos?</label>
+            <input type="text" name="colores" placeholder="Ej. Rosa palo y dorado, o 'no sé, tú propón'"/>
+          </div>
+          <div class="field">
+            <label>¿Tienes páginas de referencia o inspiración?</label>
+            <input type="text" name="referencias" placeholder="URLs o nombres de marcas que te gusten"/>
+            <div class="hint">Puede ser de competidores, marcas que admiras, o cualquier página que te parezca bonita</div>
+          </div>
+        </div>
+
+        <!-- 5. PRESUPUESTO Y TIEMPO -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <div class="form-section-num">5</div>
+            <div>
+              <h2>Presupuesto y tiempos</h2>
+              <p>Para enviarte la propuesta correcta</p>
+            </div>
+          </div>
+          <div class="field">
+            <label>Presupuesto aproximado</label>
+            <div class="budget-display" id="budgetDisplay">$3,500 MXN</div>
+            <input type="range" id="budgetSlider" name="presupuesto" min="3500" max="20000" step="500" value="3500"/>
+            <div class="budget-labels"><span>$3,500</span><span>$10,000</span><span>$20,000+</span></div>
+          </div>
+          <div class="field">
+            <label>¿Cuándo necesitas tener listo el proyecto?</label>
+            <div class="option-group horizontal">
+              <label class="opt-label"><input type="radio" name="urgencia" value="Lo antes posible"/><div class="opt-box"><div class="check"></div>Lo antes posible</div></label>
+              <label class="opt-label"><input type="radio" name="urgencia" value="En 2-4 semanas"/><div class="opt-box"><div class="check"></div>En 2-4 semanas</div></label>
+              <label class="opt-label"><input type="radio" name="urgencia" value="En 1-2 meses"/><div class="opt-box"><div class="check"></div>En 1-2 meses</div></label>
+              <label class="opt-label"><input type="radio" name="urgencia" value="Sin prisa"/><div class="opt-box"><div class="check"></div>Sin prisa</div></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿Algo más que quieras contarnos?</label>
+            <textarea name="extra" placeholder="Cualquier detalle extra, pregunta, o algo que quieras que sepamos..."></textarea>
+          </div>
+        </div>
+
+        <!-- FOOTER DEL FORM -->
+        <div class="form-footer">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            Enviar mi brief 🌱
+          </button>
+          <div class="submit-note">
+            En menos de 24 horas recibirás tu propuesta personalizada por WhatsApp.<br>
+            <strong>Sin compromiso.</strong>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- SUCCESS -->
+      <div class="success" id="successMsg">
+        <div class="success-icon">🌱</div>
+        <h2>¡Brief recibido!</h2>
+        <p>Gracias por confiar en nosotros. Revisaremos tu información y te enviaremos tu propuesta personalizada en menos de 24 horas por WhatsApp.</p>
+        <a href="#" class="success-wa" id="successWa">
+          Confirmar por WhatsApp 💬
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    brota<span>.</span> digital · @brotadigital · 2025
+  </div>
+
+  <script>
+    // Progress bar
+    function updateProgress() {
+      const form = document.getElementById('briefForm');
+      const inputs = form.querySelectorAll('input[required], textarea[required]');
+      let filled = 0;
+      inputs.forEach(inp => { if (inp.value.trim()) filled++; });
+      const pct = Math.min(100, Math.round((filled / inputs.length) * 100));
+      document.getElementById('progress').style.width = pct + '%';
+    }
+    document.getElementById('briefForm').addEventListener('input', updateProgress);
+
+    // Budget slider
+    const slider = document.getElementById('budgetSlider');
+    const display = document.getElementById('budgetDisplay');
+    slider.addEventListener('input', () => {
+      const val = parseInt(slider.value);
+      display.textContent = val >= 20000 ? '$20,000+ MXN' : '$' + val.toLocaleString('es-MX') + ' MXN';
+    });
+
+    // Show URL field if has website
+    document.querySelectorAll('input[name=tieneweb]').forEach(r => {
+      r.addEventListener('change', () => {
+        const show = r.value.includes('Sí');
+        document.getElementById('urlField').style.display = show ? 'block' : 'none';
+      });
+    });
+
+    // SUBMIT
+    document.getElementById('briefForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Collect data
+      const fd = new FormData(this);
+      const data = {};
+      fd.forEach((v, k) => {
+        if (data[k]) {
+          data[k] = Array.isArray(data[k]) ? [...data[k], v] : [data[k], v];
+        } else {
+          data[k] = v;
+        }
+      });
+
+      // Build WhatsApp message
+      const servicios = [].concat(data.servicio || []).join(', ') || 'No especificado';
+      const objetivos = [].concat(data.objetivo || []).join(', ') || 'No especificado';
+      const msg = `🌱 *Nuevo Brief — Brota Digital*
+
+*Nombre:* ${data.nombre || ''}
+*Negocio:* ${data.negocio || ''}
+*WhatsApp:* ${data.whatsapp || ''}
+*Email:* ${data.email || 'No proporcionado'}
+*Cómo nos conoció:* ${data.fuente || 'No especificado'}
+
+*NEGOCIO*
+${data.giro || ''}
+*Cliente ideal:* ${data.cliente || 'No especificado'}
+*Ciudad:* ${data.ciudad || 'No especificado'}
+*Tiene web:* ${data.tieneweb || 'No especificado'}
+${data.urlactual ? '*URL actual:* ' + data.urlactual : ''}
+
+*SERVICIOS SOLICITADOS*
+${servicios}
+*Objetivo de la página:* ${objetivos}
+
+*IDENTIDAD*
+*Logo:* ${data.logo || 'No especificado'}
+*Fotos:* ${data.fotos || 'No especificado'}
+*Colores:* ${data.colores || 'No especificado'}
+*Referencias:* ${data.referencias || 'No especificado'}
+
+*PRESUPUESTO Y TIEMPOS*
+*Presupuesto:* ${data.presupuesto ? '$' + parseInt(data.presupuesto).toLocaleString('es-MX') + ' MXN' : 'No especificado'}
+*Urgencia:* ${data.urgencia || 'No especificado'}
+
+*Notas extra:* ${data.extra || 'Ninguna'}`;
+
+      // Show success
+      document.getElementById('briefForm').style.display = 'none';
+      const success = document.getElementById('successMsg');
+      success.classList.add('show');
+
+      // Set WA link
+      const waLink = 'https://wa.me/525564131634?text=' + encodeURIComponent(msg);
+      document.getElementById('successWa').href = waLink;
+
+      // Auto open WA after 1.5s
+      setTimeout(() => window.open(waLink, '_blank'), 1500);
+    });
+  </script>
+</body>
+</html>
