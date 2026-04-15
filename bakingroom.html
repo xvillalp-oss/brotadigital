@@ -96,10 +96,10 @@
       --font-sans: 'Glacial Indifference', 'Inter', system-ui, sans-serif;
       --text-transform: uppercase;
 
-      --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
-      --radius-pill: 999px;
+      --radius-sm: 0px;
+      --radius-md: 0px;
+      --radius-lg: 0px;
+      --radius-pill: 2px;
 
       --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
       --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -219,28 +219,30 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      padding: 14px 28px;
-      border-radius: var(--radius-pill);
-      border: 1.5px solid transparent;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 0;
+      border: 1px solid transparent;
       cursor: pointer;
-      transition: opacity var(--transition), transform var(--transition), background-color var(--transition), border-color var(--transition);
+      transition: background-color var(--transition), color var(--transition), border-color var(--transition);
       white-space: nowrap;
     }
 
-    .btn:hover {
-      opacity: 0.88;
-      transform: translateY(-1px);
-    }
+    .btn:hover { opacity: 1; }
 
     .btn-primary {
       background-color: var(--pink);
       color: var(--white);
       border-color: var(--pink);
+    }
+    .btn-primary:hover {
+      background-color: #c41258;
+      border-color: #c41258;
     }
 
     .btn-outline {
@@ -248,7 +250,6 @@
       color: var(--espresso);
       border-color: var(--espresso);
     }
-
     .btn-outline:hover {
       background-color: var(--espresso);
       color: var(--white);
@@ -257,13 +258,11 @@
     .btn-outline-white {
       background-color: transparent;
       color: var(--white);
-      border-color: rgba(255, 255, 255, 0.6);
+      border-color: rgba(255, 255, 255, 0.5);
     }
-
     .btn-outline-white:hover {
       background-color: var(--white);
       color: var(--espresso);
-      opacity: 1;
     }
 
     /* ============================================
@@ -480,34 +479,42 @@
     .hero__label {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
       color: var(--pink);
-      background-color: var(--pink-light);
-      border: 1px solid rgba(232, 25, 106, 0.2);
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      margin-bottom: 24px;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--pink);
+      padding: 0 0 4px;
+      border-radius: 0;
+      margin-bottom: 32px;
+      text-transform: uppercase;
     }
 
     .hero__h1 {
       font-family: var(--font-serif);
-      font-size: clamp(40px, 6vw, 72px);
-      font-weight: 500;
-      line-height: 1.05;
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 400;
+      line-height: 1.0;
       color: var(--espresso);
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .hero__h1 em {
+      font-style: italic;
+      color: var(--pink);
     }
 
     .hero__sub {
-      font-size: clamp(15px, 1.8vw, 17px);
-      color: var(--text-body);
-      line-height: 1.7;
-      max-width: 440px;
-      margin-bottom: 36px;
+      font-size: clamp(14px, 1.5vw, 16px);
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 400px;
+      margin-bottom: 40px;
+      text-transform: none;
+      letter-spacing: 0;
     }
 
     .hero__ctas {
@@ -538,22 +545,28 @@
       object-position: center top;
     }
 
-    /* Seriously Good divider */
+    /* Seriously Good divider — editorial marquee style */
     .seriously-good {
-      background-color: var(--cream);
-      padding: clamp(24px, 4vw, 40px) 0;
+      background-color: var(--white);
+      padding: clamp(32px, 5vw, 56px) 0;
       text-align: center;
+      border-top: 1px solid var(--espresso);
+      border-bottom: 1px solid var(--espresso);
+      overflow: hidden;
     }
 
     .seriously-good__text {
-      font-family: var(--font-sans);
-      font-style: normal;
-      font-size: clamp(18px, 3vw, 28px);
-      font-weight: 300;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 400;
       color: var(--espresso);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
+      letter-spacing: 0.06em;
       line-height: 1;
+    }
+    .seriously-good__text span {
+      color: var(--pink);
+      font-style: normal;
     }
 
     /* ============================================
@@ -609,16 +622,20 @@
     }
     .menu-section__title {
       font-family: var(--font-serif);
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 500;
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 400;
+      font-style: italic;
       color: var(--espresso);
-      line-height: 1.1;
+      line-height: 1.0;
       margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }
     .menu-section__sub {
-      font-size: 15px;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--text-muted);
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     /* Category block */
@@ -789,18 +806,22 @@
 
     .about__title {
       font-family: var(--font-serif);
-      font-size: clamp(36px, 4.5vw, 54px);
-      font-weight: 500;
+      font-size: clamp(44px, 5.5vw, 68px);
+      font-weight: 400;
+      font-style: italic;
       color: var(--espresso);
-      line-height: 1.1;
-      margin-bottom: 20px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
     }
 
     .about__body {
       font-size: 15px;
       color: var(--text-body);
-      line-height: 1.75;
+      line-height: 1.8;
       margin-bottom: 14px;
+      text-transform: none;
+      letter-spacing: 0;
     }
 
     .about__body:last-of-type {
@@ -814,15 +835,15 @@
     }
 
     .about__badge {
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--espresso);
-      background-color: var(--cream-dark);
-      border: 1px solid rgba(0, 0, 0, 0.15);
+      background-color: transparent;
+      border: 1px solid var(--espresso);
       padding: 8px 16px;
-      border-radius: var(--radius-pill);
+      border-radius: 0;
     }
 
     /* ============================================
@@ -907,11 +928,13 @@
 
     .contacto__title {
       font-family: var(--font-serif);
-      font-size: clamp(32px, 4.5vw, 52px);
-      font-weight: 500;
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 400;
+      font-style: italic;
       color: var(--espresso);
-      line-height: 1.1;
+      line-height: 1.05;
       margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }
 
     .contacto__sub {
@@ -929,19 +952,19 @@
 
     .contacto__card {
       background-color: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 24px;
+      border: 1px solid var(--espresso);
+      border-radius: 0;
+      padding: 28px 24px;
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      transition: border-color var(--transition), box-shadow var(--transition);
+      transition: border-color var(--transition), background-color var(--transition);
       text-decoration: none;
     }
 
     .contacto__card:hover {
       border-color: var(--pink);
-      box-shadow: var(--shadow-sm);
+      background-color: var(--pink-light);
     }
 
     .contacto__card-icon {
@@ -1448,10 +1471,10 @@
         <!-- Left: text -->
         <div class="hero__text fade-up">
           <div class="hero__label">
-            <span aria-hidden="true">✨</span> inhouse creations · Ciudad de México
+            Repostería artesanal · Ciudad de México
           </div>
-          <h1 class="hero__h1">El pastel que celebra tus momentos</h1>
-          <p class="hero__sub">Repostería artesanal bajo pedido. Diseños únicos hechos con amor para las ocasiones que no se olvidan.</p>
+          <h1 class="hero__h1">El pastel que<br><em>no se olvida</em></h1>
+          <p class="hero__sub">Diseños únicos, hechos a mano y bajo pedido. Cada pieza es una expresión de quién eres y qué quieres celebrar.</p>
           <div class="hero__ctas">
             <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
               Agendar mi pastel
@@ -1481,7 +1504,7 @@
 
   <!-- Seriously Good divider -->
   <div class="seriously-good" aria-hidden="true">
-    <p class="seriously-good__text">Seriously Good</p>
+    <p class="seriously-good__text"><em>Seriously</em> &nbsp;<span>Good</span></p>
   </div>
 
 
