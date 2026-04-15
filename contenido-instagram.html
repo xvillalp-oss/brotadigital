@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Brota Digital · Contenido Instagram — Semana 1 & 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root {
+    --coral:#E85D3A;
+    --black:#1A1A1A;
+    --cream:#FDFAF5;
+    --cream2:#F5EFE4;
+    --gold:#F5C97A;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#f0ece4;font-family:'DM Sans',sans-serif;color:var(--black);}
+
+  /* ── PAGE HEADER ── */
+  .page-header{background:var(--black);color:var(--white);padding:40px;text-align:center;}
+  .page-header h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;font-weight:800;}
+  .page-header h1 span{color:var(--coral);}
+  .page-header p{color:#aaa;margin-top:8px;font-size:.95rem;}
+  .instructions{background:var(--coral);color:var(--white);padding:16px 40px;font-size:.9rem;text-align:center;}
+  .instructions strong{font-weight:700;}
+
+  /* ── LAYOUT ── */
+  .week-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;
+    padding:40px 40px 20px;color:var(--black);border-bottom:2px solid var(--coral);
+    display:flex;align-items:center;gap:12px;}
+  .week-label span{background:var(--coral);color:#fff;padding:4px 14px;border-radius:20px;font-size:.85rem;}
+  .posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(560px,1fr));gap:40px;padding:40px;}
+
+  /* ── POST CARD ── */
+  .post-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);}
+  .post-meta{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #f0ece4;}
+  .post-meta .day{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.85rem;}
+  .post-meta .format{font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:20px;}
+  .format.reel{background:#ffeee9;color:var(--coral);}
+  .format.carrusel{background:#fff3e0;color:#e67e22;}
+  .format.grafico{background:#e8f5e9;color:#27ae60;}
+  .format.foto{background:#e3f2fd;color:#1976d2;}
+
+  /* ── POST VISUAL (the screenshot-able part) ── */
+  .post-visual{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;cursor:pointer;}
+  .post-visual:hover::after{content:'📸 Click para enfocar';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    background:rgba(0,0,0,.6);color:#fff;padding:10px 20px;border-radius:8px;font-size:.85rem;pointer-events:none;}
+
+  /* ── CAPTION BOX ── */
+  .caption-box{padding:20px;}
+  .caption-box h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.8rem;text-transform:uppercase;
+    letter-spacing:.06em;color:#888;margin-bottom:10px;}
+  .caption-text{font-size:.85rem;line-height:1.6;color:#333;white-space:pre-wrap;background:var(--cream);
+    padding:14px;border-radius:8px;max-height:180px;overflow-y:auto;}
+  .btn-row{margin-top:10px;display:flex;gap:8px;}
+  .copy-btn{background:var(--black);color:#fff;border:none;padding:8px 18px;
+    border-radius:6px;font-size:.8rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;}
+  .copy-btn:hover{background:var(--coral);}
+  .copy-btn.copied{background:#27ae60;}
+  .dl-btn{background:var(--coral);color:#fff;border:none;padding:8px 18px;
+    border-radius:6px;font-size:.8rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;display:flex;align-items:center;gap:6px;}
+  .dl-btn:hover{background:#c94a28;}
+  .dl-btn.loading{opacity:.7;cursor:wait;}
+
+  /* ══════════════════════════════════════════
+     SLIDE CAROUSEL NAVIGATION
+  ══════════════════════════════════════════ */
+  .carousel{position:relative;width:100%;aspect-ratio:1/1;}
+  .carousel .slide{position:absolute;inset:0;opacity:0;transition:opacity .3s;}
+  .carousel .slide.active{opacity:1;}
+  .carousel-nav{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+    display:flex;gap:6px;z-index:10;}
+  .carousel-nav button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.5);cursor:pointer;padding:0;}
+  .carousel-nav button.active{background:#fff;}
+  .carousel-arrows{position:absolute;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;padding:0 14px;z-index:10;pointer-events:none;}
+  .carousel-arrows button{pointer-events:all;background:rgba(0,0,0,.35);color:#fff;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+
+  /* ══════════════════════════════════════════
+     DESIGN SYSTEM — reusable slide styles
+  ══════════════════════════════════════════ */
+  .s-coral{background:var(--coral);}
+  .s-black{background:var(--black);}
+  .s-cream{background:var(--cream);}
+  .s-cream2{background:var(--cream2);}
+  .logo-tag{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.02em;}
+  .logo-tag .dot{color:var(--coral);}
+  .logo-tag-white{color:#fff;}
+  .logo-tag-white .dot{color:var(--coral);}
+  .logo-tag-dark .dot{color:var(--coral);}
+
+  /* ── SHARED SLIDE LAYOUT ── */
+  .slide-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:36px;text-align:center;position:relative;}
+  .slide-top{position:absolute;top:20px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;}
+  .slide-bottom{position:absolute;bottom:20px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .tag{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:.65rem;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;}
+  .tag-dark{background:rgba(0,0,0,.08);color:var(--black);}
+  .tag-coral{background:var(--coral);color:#fff;}
+
+  /* ── TYPOGRAPHY SYSTEM ── */
+  .h-xl{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.1;}
+  .h-lg{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(1.4rem,4vw,2rem);line-height:1.15;}
+  .h-md{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(1.1rem,3vw,1.5rem);line-height:1.2;}
+  .h-sm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(.9rem,2.5vw,1.1rem);line-height:1.3;}
+  .body-lg{font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(.8rem,2vw,1rem);line-height:1.6;}
+  .body-sm{font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(.7rem,1.8vw,.85rem);line-height:1.5;}
+  .text-white{color:#fff;}
+  .text-coral{color:var(--coral);}
+  .text-gold{color:var(--gold);}
+  .text-black{color:var(--black);}
+  .text-gray{color:#888;}
+  .mt-sm{margin-top:10px;}
+  .mt-md{margin-top:18px;}
+  .mt-lg{margin-top:28px;}
+
+  /* ── DIVIDER ── */
+  .divider{width:48px;height:3px;background:var(--coral);margin:14px auto;}
+  .divider-white{background:rgba(255,255,255,.5);}
+  .divider-gold{background:var(--gold);}
+
+  /* ── NUMBER BADGE ── */
+  .num-badge{width:48px;height:48px;border-radius:50%;background:var(--coral);color:#fff;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.2rem;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+  .num-badge-outline{background:transparent;border:2px solid var(--coral);color:var(--coral);}
+  .num-badge-white{background:rgba(255,255,255,.2);color:#fff;border:2px solid rgba(255,255,255,.4);}
+
+  /* ── CHECK LIST ── */
+  .check-list{list-style:none;text-align:left;width:100%;}
+  .check-list li{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:.82rem;}
+  .check-list li .icon{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--coral);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-size:.65rem;margin-top:1px;}
+  .check-list li .icon-gold{background:var(--gold);color:var(--black);}
+
+  /* ── PRICE BADGE ── */
+  .price-badge{background:var(--coral);color:#fff;padding:12px 24px;border-radius:12px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;display:inline-block;}
+
+  /* ── BEFORE/AFTER ── */
+  .ba-container{display:flex;width:100%;height:100%;gap:2px;}
+  .ba-half{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;}
+  .ba-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:12px;}
+
+  /* ── QUOTE ── */
+  .quote-mark{font-size:5rem;line-height:.8;opacity:.2;font-family:Georgia,serif;}
+
+  /* ── ICON CIRCLE ── */
+  .icon-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 10px;}
+
+  /* ── STEP ITEM ── */
+  .step-item{display:flex;align-items:flex-start;gap:12px;text-align:left;margin-bottom:10px;width:100%;}
+  .step-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--coral);color:#fff;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.75rem;
+    display:flex;align-items:center;justify-content:center;}
+
+  /* FULL-SCREEN OVERLAY */
+  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;
+    align-items:center;justify-content:center;}
+  .overlay.open{display:flex;}
+  .overlay-inner{width:min(90vw,540px);aspect-ratio:1/1;border-radius:12px;overflow:hidden;position:relative;}
+  .overlay-close{position:absolute;top:-36px;right:0;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>@brotadigital<span>.</span> — Contenido Instagram</h1>
+  <p>14 posts listos · Semana 1 & 2 · Haz clic en la imagen para enfocar, luego screenshot</p>
+</div>
+<div class="instructions">
+  <strong>Cómo usar:</strong> Haz clic en cualquier diseño para verlo en pantalla completa → screenshot → ¡listo para subir! Copia el caption con el botón azul.
+</div>
+
+<!-- ═══════════════════════════════════════════ SEMANA 1 ═══ -->
+<div class="week-label">Semana 1 <span>Días 1–7</span></div>
+<div class="posts-grid">
+
+<!-- ───────────────── DÍA 1 · REEL COVER ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 1 — Lunes</span>
+    <span class="format reel">🎬 Reel</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d1')">
+    <div id="d1" style="width:100%;height:100%;background:var(--coral);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px;text-align:center;position:relative;">
+      <div class="slide-top">
+        <span class="logo-tag text-white">brota<span class="dot">.</span></span>
+        <span class="tag">Presentación</span>
+      </div>
+      <div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:20px;">🌱</div>
+      <h2 class="h-xl text-white">Hola,<br/>somos<br/>Brota Digital.</h2>
+      <div class="divider" style="background:rgba(255,255,255,.5);"></div>
+      <p class="body-lg text-white" style="opacity:.9;max-width:280px;">La agencia de marketing digital para pequeños negocios que quieren crecer.</p>
+      <div class="slide-bottom">
+        <p class="body-sm text-white" style="opacity:.7;">CDMX · México</p>
+        <p class="body-sm text-white" style="opacity:.7;">web desde $3,500 MXN</p>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap1">Hola, somos Brota Digital. 🌱
+
+Y sí, somos nuevos — pero no llegamos sin preparación.
+
+Llegamos porque vimos algo que se repite: negocios increíbles en CDMX que no consiguen clientes nuevos porque en digital son invisibles. El restaurante que está lleno los fines de semana pero tiene 80 seguidores. La boutique con ropa hermosa pero sin página web. El coach que lo sabe todo pero nadie lo encuentra en Google.
+
+Eso tiene solución. Y no cuesta una fortuna.
+
+En Brota Digital creamos páginas web desde $3,500 MXN, identidad de marca y gestión de redes para pequeños negocios.
+
+Bienvenido a la comunidad. 👇
+
+Dale, escríbenos al WA y platicamos: wa.me/525564131634
+
+#BrotaDigital #AgenciaDigitalCDMX #MarketingDigitalMexico #PequenaEmpresa #EmprendedorMexicano #NegociosCDMX #MarketingDigital #PaginaWebMexico #DisenoWebMexico #BrandingMexico #RedesSocialesMexico #CreceEnDigital #NegocioLocal #MarketingPYME #EmprendimientoMexico #AgenciaCDMX #DigitalMexico #PaginaWebEconomica #MarketingParaRestaurantes #MarcaPersonalMexico</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap1',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d1','dia1-presentacion.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 2 · CARRUSEL ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 2 — Martes</span>
+    <span class="format carrusel">📊 Carrusel</span>
+  </div>
+  <div class="post-visual">
+    <div class="carousel" id="car2">
+      <!-- Slide 1 -->
+      <div class="slide active" style="background:var(--black);">
+        <div class="slide-inner">
+          <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span><span class="tag">Educación</span></div>
+          <p class="body-sm text-white" style="opacity:.6;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">¿Sabías que...?</p>
+          <h2 class="h-lg text-white" style="max-width:320px;">5 razones por las que tu negocio necesita una página web <span class="text-coral">hoy</span></h2>
+          <div class="divider divider-gold"></div>
+          <p class="body-sm text-white" style="opacity:.7;">Desliza → el #3 sorprende a todos</p>
+          <div class="slide-bottom"><span class="logo-tag text-white" style="font-size:.75rem;opacity:.5;">brotadigital.mx</span></div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide" style="background:var(--cream);">
+        <div class="slide-inner">
+          <div class="slide-top"><div class="num-badge">1</div></div>
+          <div style="margin-top:20px;">
+            <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Razón #1</p>
+            <h3 class="h-md text-black" style="margin-top:6px;">Google existe y tu competencia ya está ahí</h3>
+            <div class="divider"></div>
+            <p class="body-lg text-black" style="opacity:.75;max-width:320px;">El 97% de las personas busca negocios locales en Google antes de comprar. Si no tienes web, no existes para ellos.</p>
+          </div>
+          <div class="slide-bottom"><span class="logo-tag" style="font-size:.7rem;color:#aaa;">brota<span style="color:var(--coral)">.</span></span></div>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="slide" style="background:var(--coral);">
+        <div class="slide-inner">
+          <div style="margin-top:20px;text-align:center;">
+            <span style="font-size:2.5rem;">⚠️</span>
+            <p class="body-sm text-white" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:8px;">Razón #2</p>
+            <h3 class="h-md text-white" style="margin-top:6px;">Instagram puede desaparecer (o bloquearte)</h3>
+            <div class="divider" style="background:rgba(255,255,255,.4);"></div>
+            <p class="body-lg text-white" style="opacity:.9;max-width:300px;">Si solo tienes redes, tu negocio depende de plataformas que no controlas. Tu web es tuya para siempre.</p>
+          </div>
+          <div class="slide-bottom"><span class="logo-tag text-white" style="font-size:.7rem;opacity:.5;">brota<span class="dot">.</span></span></div>
+        </div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="slide" style="background:var(--black);">
+        <div class="slide-inner">
+          <div class="slide-top"><div class="num-badge">3</div></div>
+          <div style="margin-top:20px;">
+            <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Razón #3 — la que sorprende</p>
+            <h3 class="h-md text-white" style="margin-top:6px;">El 75% juzga tu credibilidad por tu sitio web</h3>
+            <div class="divider divider-gold"></div>
+            <p class="body-lg text-white" style="opacity:.75;max-width:300px;">Sin web, muchos clientes potenciales asumen que eres menos profesional — aunque seas el mejor en lo tuyo.</p>
+          </div>
+          <div class="slide-bottom"><span class="logo-tag text-white" style="font-size:.7rem;opacity:.5;">brotadigital.mx</span></div>
+        </div>
+      </div>
+      <!-- Slide 5 -->
+      <div class="slide" style="background:var(--cream2);">
+        <div class="slide-inner">
+          <div style="font-size:2.5rem;margin-bottom:10px;">🌙</div>
+          <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Razón #4</p>
+          <h3 class="h-md text-black" style="margin-top:6px;">Vende mientras duermes</h3>
+          <div class="divider"></div>
+          <p class="body-lg text-black" style="opacity:.75;max-width:300px;">Tu web trabaja 24/7. Un cliente puede ver tus servicios, precios y contactarte a las 11pm sin que tú hagas nada.</p>
+          <div class="slide-bottom"><span class="logo-tag" style="font-size:.7rem;color:#aaa;">brota<span style="color:var(--coral)">.</span></span></div>
+        </div>
+      </div>
+      <!-- Slide 6 · CTA -->
+      <div class="slide" style="background:var(--coral);">
+        <div class="slide-inner">
+          <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span></div>
+          <h2 class="h-lg text-white" style="margin-top:20px;">Tu web<br/>desde<br/><span style="font-size:2.5rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;">$3,500</span><br/>MXN</h2>
+          <div class="divider" style="background:rgba(255,255,255,.5);"></div>
+          <p class="body-lg text-white" style="opacity:.9;">Entrega en 10-15 días. Sin mensualidades ocultas.</p>
+          <div style="margin-top:16px;background:#fff;color:var(--coral);padding:10px 22px;border-radius:8px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.85rem;">
+            Cotiza hoy → wa.me/525564131634
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav" id="nav2"></div>
+      <div class="carousel-arrows">
+        <button onclick="prevSlide('car2')">‹</button>
+        <button onclick="nextSlide('car2')">›</button>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap2">"Con Instagram me basta" — lo hemos escuchado mucho. Pero la realidad es otra. 👉 (desliza)
+
+Una página web no es un lujo. Es la diferencia entre que alguien te encuentre en Google a las 11pm cuando tiene hambre, necesita un salón o busca un regalo — o que encuentre a tu competencia.
+
+Te damos 5 razones concretas. Spoiler: la #3 sorprende a todos.
+
+¿Tu negocio ya tiene web? Cuéntanos en los comentarios.
+
+Un mensaje y te cotizamos hoy mismo: wa.me/525564131634
+
+#PaginaWebMexico #PorQueNecesitasWeb #MarketingDigitalMexico #NegociosCDMX #EmprendedorMexicano #PaginaWebEconomica #DisenoWebMexico #CreceEnDigital #TipsDeMarketing #MarketingParaPYMES #AgenciaDigitalCDMX #BrandingMexico #NegocioLocal #MarcaEnLinea #PresenciaDigital #TipsNegocio #WebsiteDesign #MarketingMexico #DigitalMexico #BrotaDigital</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap2',this)">Copiar caption</button><button class="dl-btn" onclick="downloadCarousel('car2','dia2',6,this)">⬇ Descargar carrusel</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 3 · GRÁFICO ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 3 — Miércoles</span>
+    <span class="format grafico">🖼 Gráfico</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d3')">
+    <div id="d3" style="width:100%;height:100%;background:var(--cream);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:44px;text-align:center;position:relative;">
+      <div class="slide-top">
+        <span class="logo-tag">brota<span class="dot">.</span></span>
+        <span class="tag tag-dark" style="font-size:.65rem;font-weight:700;">Reflexión</span>
+      </div>
+      <div style="font-size:3.5rem;opacity:.15;font-family:Georgia,serif;line-height:.8;margin-bottom:-10px;">"</div>
+      <h2 class="h-lg text-black" style="max-width:320px;margin-top:10px;">El negocio funciona.<br/>Los clientes que llegan quedan felices.<br/>Pero <span class="text-coral">siempre son los mismos.</span></h2>
+      <div class="divider"></div>
+      <p class="body-lg text-black" style="opacity:.65;max-width:300px;">Eso no es un problema de tu producto. Es un problema de visibilidad.</p>
+      <div class="slide-bottom">
+        <p class="body-sm text-black" style="opacity:.4;">@brotadigital</p>
+        <p class="body-sm text-coral" style="font-weight:600;">Tiene solución →</p>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap3">El negocio funciona, los clientes que llegan quedan felices. Pero... siempre son los mismos clientes.
+
+Eso no es un problema de tu producto. Es un problema de visibilidad.
+
+Si nadie nuevo te encuentra, no puedes crecer. Y no encontrarte no significa que no eres bueno — significa que todavía no estás donde la gente te busca.
+
+Eso tiene solución. Y se llama presencia digital.
+
+¿Te suena familiar? Cuéntanos en comentarios. 👇
+
+Platica con nosotros sin compromiso: wa.me/525564131634
+
+#EmprendedorMexicano #NegociosCDMX #MarketingDigitalMexico #CrecerEnDigital #VisibilidadOnline #PequenaEmpresa #TipsNegocio #MarketingMexico #NegocioLocal #EmprendimientoMexico #RedesSocialesMexico #BrotaDigital #AgenciaDigitalCDMX #MarketingParaPYMES #DigitalMexico #TransformacionDigital #MarcaPersonalMexico #VentasOnline #NegocioRentable #CreceConDigital</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap3',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d3','dia3-visibilidad.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 4 · REEL COVER ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 4 — Jueves</span>
+    <span class="format reel">🎬 Reel</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d4')">
+    <div id="d4" style="width:100%;height:100%;background:var(--black);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px;text-align:center;position:relative;">
+      <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span><span class="tag">Branding 101</span></div>
+      <p class="body-sm text-white" style="opacity:.5;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;">En 60 segundos</p>
+      <h2 class="h-xl text-white">¿Qué es el<br/><span class="text-coral">branding</span><br/>y por qué<br/>lo necesitas?</h2>
+      <div class="divider divider-gold"></div>
+      <p class="body-lg text-white" style="opacity:.7;max-width:260px;">Spoiler: no es solo el logo.</p>
+      <div class="slide-bottom">
+        <p class="body-sm text-white" style="opacity:.4;">@brotadigital</p>
+        <div style="background:var(--coral);color:#fff;padding:6px 14px;border-radius:20px;font-size:.7rem;font-weight:700;">▶ Ver reel</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap4">"Branding" suena a algo de empresas grandes. Pero no lo es. 🎯
+
+Si alguna vez alguien te pidió el logo "en PNG sin fondo" y mandaste una foto de tu tarjeta escaneada... este reel es para ti. Sin juicio, lo prometo.
+
+El branding es la razón por la que preferimos un café sobre otro aunque el sabor sea igual. Es lo que hace que tu salón se vea más profesional. Es lo que convierte compradores de una vez en clientes que regresan.
+
+¿Tienes logo o tienes marca? Di "logo" o "marca" en comentarios. 👇
+
+¿Listo para crecer? Escríbenos: wa.me/525564131634
+
+#BrandingMexico #IdentidadDeMarca #LogoDesign #DisenoGraficoMexico #MarketingDigitalMexico #BrandingCDMX #PequenaEmpresa #EmprendedorMexicano #MarcaPersonalMexico #AgenciaDigitalCDMX #BrotaDigital #DisenoMexico #BrandingParaPYMES #TipsDeMarketing #CreceEnDigital #NegociosCDMX #LogoMexico #VisualBranding #IdentidadVisual #MarcaEnLinea</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap4',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d4','dia4-branding.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 5 · CARRUSEL ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 5 — Viernes</span>
+    <span class="format carrusel">📊 Carrusel</span>
+  </div>
+  <div class="post-visual">
+    <div class="carousel" id="car5">
+      <div class="slide active" style="background:var(--cream2);">
+        <div class="slide-inner">
+          <div class="slide-top"><span class="logo-tag">brota<span class="dot">.</span></span><span class="tag tag-coral">Servicios</span></div>
+          <div style="margin-top:20px;">
+            <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Transparencia total</p>
+            <h2 class="h-lg text-black" style="margin-top:8px;">¿Qué incluye tu web desde <span class="text-coral">$3,500</span> MXN?</h2>
+            <div class="divider"></div>
+            <p class="body-sm text-black" style="opacity:.6;">Desliza y ve exactamente qué llevas</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--black);">
+        <div class="slide-inner">
+          <div class="num-badge num-badge-white">1</div>
+          <h3 class="h-sm text-white" style="margin-top:4px;">Diseño personalizado</h3>
+          <div class="divider divider-gold"></div>
+          <p class="body-lg text-white" style="opacity:.8;max-width:280px;">Acorde a tu identidad de marca. Nada de plantillas genéricas — tu negocio merece algo propio.</p>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--coral);">
+        <div class="slide-inner">
+          <div class="num-badge" style="background:rgba(255,255,255,.2);color:#fff;">2</div>
+          <h3 class="h-sm text-white" style="margin-top:4px;">Hasta 5 secciones</h3>
+          <div class="divider" style="background:rgba(255,255,255,.4);"></div>
+          <ul class="check-list" style="color:#fff;max-width:280px;">
+            <li><span class="icon" style="background:rgba(255,255,255,.25);color:#fff;">✓</span>Inicio (hero)</li>
+            <li><span class="icon" style="background:rgba(255,255,255,.25);color:#fff;">✓</span>Servicios / productos</li>
+            <li><span class="icon" style="background:rgba(255,255,255,.25);color:#fff;">✓</span>Sobre ti / nosotros</li>
+            <li><span class="icon" style="background:rgba(255,255,255,.25);color:#fff;">✓</span>Galería</li>
+            <li><span class="icon" style="background:rgba(255,255,255,.25);color:#fff;">✓</span>Contacto</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--cream);">
+        <div class="slide-inner">
+          <div class="num-badge">3</div>
+          <h3 class="h-sm text-black" style="margin-top:4px;">Botón de WhatsApp + formulario</h3>
+          <div class="divider"></div>
+          <p class="body-lg text-black" style="opacity:.75;max-width:280px;">Tu cliente llega a la web y te contacta al instante. Más clics = más ventas.</p>
+          <div style="margin-top:16px;background:var(--black);color:#fff;padding:8px 20px;border-radius:8px;font-size:.8rem;font-weight:600;">💬 Escríbenos</div>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--black);">
+        <div class="slide-inner">
+          <div class="num-badge num-badge-white">4</div>
+          <h3 class="h-sm text-white" style="margin-top:4px;">100% optimizada para celular</h3>
+          <div class="divider divider-coral" style="background:var(--coral);"></div>
+          <p class="body-lg text-white" style="opacity:.8;max-width:280px;">El 80% del tráfico viene de teléfonos. Tu web se verá perfecta en cualquier pantalla.</p>
+          <span style="font-size:2.5rem;margin-top:14px;">📱</span>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--coral);">
+        <div class="slide-inner">
+          <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span></div>
+          <div style="margin-top:20px;">
+            <p class="body-sm text-white" style="opacity:.8;text-transform:uppercase;letter-spacing:.06em;">Todo eso desde</p>
+            <div class="price-badge" style="margin:10px 0;font-size:2rem;">$3,500 MXN</div>
+            <p class="body-sm text-white" style="opacity:.8;">Entrega en 10-15 días · Sin costos ocultos</p>
+            <div style="margin-top:14px;background:#fff;color:var(--coral);padding:8px 20px;border-radius:8px;font-weight:700;font-size:.8rem;">Cotiza hoy → wa.me/525564131634</div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav" id="nav5"></div>
+      <div class="carousel-arrows">
+        <button onclick="prevSlide('car5')">‹</button>
+        <button onclick="nextSlide('car5')">›</button>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap5">"Eso debe ser algo muy básico por ese precio..." — y entendemos la duda. Por eso te mostramos exactamente qué incluye. 👉 Desliza.
+
+Transparencia total: sabemos que para un pequeño negocio cada peso importa. Por eso diseñamos paquetes que den resultados reales sin tronar el presupuesto.
+
+¿Tienes preguntas sobre lo que incluye? Escríbenos directo, te respondemos hoy mismo.
+
+Un mensaje y te cotizamos hoy: wa.me/525564131634
+
+#PaginaWebMexico #WebsiteDesign #DisenoWebMexico #PaginaWebEconomica #MarketingDigitalMexico #AgenciaDigitalCDMX #BrotaDigital #NegociosCDMX #PymesDigitales #EmprendedorMexicano #SitioWebProfesional #DisenoWebProfesional #WebDesignMexico #PaginaWebNegocio #CotizacionWeb #PresenciaDigital #DigitalMexico #NegocioLocal #CreceEnDigital #MarketingMexico</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap5',this)">Copiar caption</button><button class="dl-btn" onclick="downloadCarousel('car5','dia5',6,this)">⬇ Descargar carrusel</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 6 · FOTO FRAME ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 6 — Sábado</span>
+    <span class="format foto">📸 Foto/Texto</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d6')">
+    <div id="d6" style="width:100%;height:100%;background:var(--black);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px;text-align:center;position:relative;">
+      <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span><span class="tag">Nuestra historia</span></div>
+      <div class="divider divider-gold" style="margin-bottom:18px;"></div>
+      <h2 class="h-md text-white" style="max-width:300px;margin-bottom:14px;">Fundamos Brota Digital porque los negocios pequeños <span class="text-coral">merecen la misma atención</span> que los grandes.</h2>
+      <p class="body-sm text-white" style="opacity:.6;max-width:280px;">Detrás de cada negocio hay una persona que le mete todo. Eso merece respeto.</p>
+      <div class="divider" style="background:rgba(255,255,255,.2);"></div>
+      <div style="display:flex;gap:24px;margin-top:8px;">
+        <div style="text-align:center;"><p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.3rem;color:var(--gold);">100%</p><p class="body-sm text-white" style="opacity:.6;font-size:.7rem;">dedicación</p></div>
+        <div style="text-align:center;"><p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.3rem;color:var(--gold);">5 días</p><p class="body-sm text-white" style="opacity:.6;font-size:.7rem;">entrega</p></div>
+        <div style="text-align:center;"><p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.3rem;color:var(--gold);">$3,500</p><p class="body-sm text-white" style="opacity:.6;font-size:.7rem;">desde</p></div>
+      </div>
+      <div class="slide-bottom"><p class="body-sm text-white" style="opacity:.3;">@brotadigital · brotadigital.mx</p></div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap6">Antes de abrir Brota Digital, trabajamos con agencias donde los clientes más chicos siempre quedaban al final de la fila.
+
+El restaurante familiar esperaba semanas para actualizar el menú de su web. La coach independiente pagaba lo mismo que una empresa grande pero recibía la mitad de atención. El salón con 10 años de experiencia tenía un Instagram que daba lástima porque nadie le había enseñado cómo usarlo bien.
+
+Eso nos molestó. Y de ese molesto nació Brota Digital.
+
+Somos la agencia que trata a los pequeños negocios con la misma seriedad que a los grandes — porque sabemos que detrás de cada negocio hay una persona que le mete todo.
+
+Este es nuestro por qué. ¿Cuál es el tuyo? 🌱
+
+Dale, escríbenos al WA y platicamos: wa.me/525564131634
+
+#BrotaDigital #AgenciaDigitalCDMX #EmprendedorMexicano #MarketingDigitalMexico #PequenaEmpresa #NegociosCDMX #OrgullosamenteMexicano #AgenciaConProposito #MarketingMexico #DigitalMexico #NegocioLocal #EmprendimientoMexico #MarcaPersonalMexico #CreceEnDigital #PymesMexicanas #NegocioConAlma</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap6',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d6','dia6-historia.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 7 · FRASE ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 7 — Domingo</span>
+    <span class="format grafico">🖼 Gráfico</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d7')">
+    <div id="d7" style="width:100%;height:100%;background:var(--coral);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:44px;text-align:center;position:relative;">
+      <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot" style="color:rgba(255,255,255,.6);">.</span></span></div>
+      <div style="font-size:4rem;opacity:.15;font-family:Georgia,serif;line-height:.8;margin-bottom:-8px;">"</div>
+      <h2 class="h-lg text-white" style="max-width:320px;line-height:1.2;margin-top:12px;">Tu negocio<br/>ya es bueno.</h2>
+      <div class="divider" style="background:rgba(255,255,255,.5);"></div>
+      <h3 class="h-md text-white" style="max-width:300px;opacity:.9;">Solo necesita que más gente lo conozca.</h3>
+      <div style="margin-top:24px;font-size:1.5rem;">🌱</div>
+      <div class="slide-bottom"><p class="body-sm text-white" style="opacity:.5;">Guarda este post para cuando lo necesites</p></div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap7">"Tu negocio ya es bueno. Solo necesita que más gente lo conozca."
+
+Guárdalo para cuando necesites recordarlo. 🌱
+
+Y si ya estás listo para ese siguiente paso, aquí estamos.
+
+Platica con nosotros sin compromiso: wa.me/525564131634
+
+#EmprendedorMexicano #FrasesDeNegocio #MotivaciónEmprendedor #NegociosCDMX #MarketingDigitalMexico #PequenaEmpresa #CrecerEnDigital #FrasesEmprendimiento #EmprendimientoMexico #NegocioLocal #MarketingMexico #BrotaDigital #DigitalMexico #VisionDeNegocio #CreceConDigital #PymesMexicanas #MentalidadEmprendedora #TransformacionDigital</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap7',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d7','dia7-frase.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+</div><!-- /posts-grid semana 1 -->
+
+<!-- ═══════════════════════════════════════════ SEMANA 2 ═══ -->
+<div class="week-label">Semana 2 <span>Días 8–14</span></div>
+<div class="posts-grid">
+
+<!-- ───────────────── DÍA 8 · REEL COVER ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 8 — Lunes</span>
+    <span class="format reel">🎬 Reel</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d8')">
+    <div id="d8" style="width:100%;height:100%;background:var(--black);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px;text-align:center;position:relative;">
+      <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span><span class="tag" style="background:#ff4444;color:#fff;">🚨 Errores</span></div>
+      <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Si tu Instagram no vende...</p>
+      <h2 class="h-xl text-white" style="max-width:300px;">3 errores que frenan tu negocio en redes</h2>
+      <div class="divider divider-gold"></div>
+      <p class="body-lg text-white" style="opacity:.7;max-width:260px;">El #3 es el más común y nadie lo menciona.</p>
+      <div class="slide-bottom">
+        <p class="body-sm text-white" style="opacity:.4;">@brotadigital</p>
+        <div style="background:var(--coral);color:#fff;padding:6px 14px;border-radius:20px;font-size:.7rem;font-weight:700;">▶ Ver reel</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap8">Si tu Instagram no te está trayendo clientes, probablemente es por uno de estos 3 errores. 🚨 (el tercero es el más común)
+
+Error 1: Publicar sin estrategia — el algoritmo no premia la cantidad, premia la consistencia con intención.
+
+Error 2: Bio vacía o confusa — tienes 3 segundos para que alguien decida si te sigue. Tu bio debe decir quién eres, a quién ayudas y qué tiene que hacer.
+
+Error 3: No tener un CTA claro — cada post debe decirle a la gente qué sigue. Sin CTA, el engagement muere ahí.
+
+¿Cuál de estos estás cometiendo? Cuéntanos abajo, sin pena. 👇
+
+¿Listo para crecer? Escríbenos: wa.me/525564131634
+
+#MarketingDigitalMexico #TipsDeMarketing #InstagramParaNegociosMexico #RedesSocialesMexico #EstrategiaDigital #AgenciaDigitalCDMX #BrotaDigital #EmprendedorMexicano #NegociosCDMX #SocialMediaMexico #TipsInstagram #InstagramMarketing #CreceEnDigital #MarketingMexico #PymesDigitales #GestionDeRedes #ContentMarketing #MarketingParaPYMES #DigitalMexico #NegocioLocal</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap8',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d8','dia8-errores.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 9 · CARRUSEL ANTES/DESPUÉS ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 9 — Martes</span>
+    <span class="format carrusel">📊 Carrusel</span>
+  </div>
+  <div class="post-visual">
+    <div class="carousel" id="car9">
+      <div class="slide active" style="background:var(--cream);">
+        <div class="slide-inner">
+          <div class="slide-top"><span class="logo-tag">brota<span class="dot">.</span></span><span class="tag tag-coral">Transformación</span></div>
+          <div style="margin-top:20px;">
+            <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Antes → Después</p>
+            <h2 class="h-lg text-black" style="margin-top:8px;">Esto es lo que pasa cuando un negocio se toma en serio su presencia digital</h2>
+            <div class="divider"></div>
+            <p class="body-sm text-black" style="opacity:.6;">Desliza para ver la transformación →</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--black);">
+        <div class="ba-container">
+          <div class="ba-half" style="background:#2a2a2a;border-right:2px solid var(--coral);">
+            <p class="ba-label text-white" style="opacity:.5;font-size:.85rem;">ANTES</p>
+            <div style="width:80px;height:80px;border-radius:8px;background:#3a3a3a;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:10px;">📱</div>
+            <ul style="list-style:none;text-align:left;width:100%;">
+              <li class="body-sm text-white" style="opacity:.5;margin-bottom:6px;">❌ Sin página web</li>
+              <li class="body-sm text-white" style="opacity:.5;margin-bottom:6px;">❌ Logo en Word</li>
+              <li class="body-sm text-white" style="opacity:.5;margin-bottom:6px;">❌ 80 seguidores</li>
+              <li class="body-sm text-white" style="opacity:.5;margin-bottom:6px;">❌ 0 reseñas Google</li>
+            </ul>
+          </div>
+          <div class="ba-half" style="background:var(--coral);">
+            <p class="ba-label text-white" style="font-size:.85rem;">DESPUÉS</p>
+            <div style="width:80px;height:80px;border-radius:8px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:10px;">🚀</div>
+            <ul style="list-style:none;text-align:left;width:100%;">
+              <li class="body-sm text-white" style="margin-bottom:6px;">✅ Web en 15 días</li>
+              <li class="body-sm text-white" style="margin-bottom:6px;">✅ Marca completa</li>
+              <li class="body-sm text-white" style="margin-bottom:6px;">✅ +500 seguidores</li>
+              <li class="body-sm text-white" style="margin-bottom:6px;">✅ Clientes nuevos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--cream2);">
+        <div class="slide-inner">
+          <span style="font-size:2.5rem;margin-bottom:10px;">💡</span>
+          <h3 class="h-md text-black">No es magia.</h3>
+          <div class="divider"></div>
+          <p class="body-lg text-black" style="opacity:.75;max-width:300px;">Es estrategia, diseño y ejecución. El resultado habla solo.</p>
+          <p class="body-lg text-coral" style="font-weight:700;margin-top:16px;max-width:280px;">¿Quieres ver cómo se vería tu negocio?</p>
+          <div style="margin-top:14px;background:var(--coral);color:#fff;padding:8px 20px;border-radius:8px;font-weight:700;font-size:.8rem;">Cotiza hoy → wa.me/525564131634</div>
+        </div>
+      </div>
+      <div class="carousel-nav" id="nav9"></div>
+      <div class="carousel-arrows">
+        <button onclick="prevSlide('car9')">‹</button>
+        <button onclick="nextSlide('car9')">›</button>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap9">Esto es lo que pasa cuando un negocio decide tomarse en serio su presencia digital. 👉 Desliza para ver la transformación.
+
+No es magia. Es estrategia, diseño y ejecución. Pero el resultado habla solo.
+
+Si tu negocio todavía se ve como el "antes", es momento de cambiar eso.
+
+Un mensaje y te cotizamos hoy mismo: wa.me/525564131634
+
+#AntesDespues #BrandingMexico #TransformacionDigital #IdentidadDeMarca #DisenoWebMexico #AgenciaDigitalCDMX #BrotaDigital #MarketingDigitalMexico #NegociosCDMX #ResultadosReales #DisenoGraficoMexico #PaginaWebMexico #NegocioLocal #EmprendedorMexicano #CreceEnDigital #BrandingParaPYMES #MarcaPersonalMexico #PresenciaDigital</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap9',this)">Copiar caption</button><button class="dl-btn" onclick="downloadCarousel('car9','dia9',3,this)">⬇ Descargar carrusel</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 10 · REEL COVER ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 10 — Miércoles</span>
+    <span class="format reel">🎬 Reel</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d10')">
+    <div id="d10" style="width:100%;height:100%;display:flex;background:var(--black);">
+      <div style="flex:1;background:#222;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;border-right:2px solid var(--coral);">
+        <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.75rem;color:#666;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Antes</p>
+        <p style="font-size:1.8rem;margin-bottom:8px;">😬</p>
+        <p class="body-sm text-white" style="opacity:.5;text-align:center;font-size:.72rem;">Publicando cuando me acuerdo</p>
+        <p class="body-sm text-white" style="opacity:.4;text-align:center;font-size:.68rem;margin-top:4px;">Sin plan · Sin resultados</p>
+      </div>
+      <div style="flex:1;background:var(--coral);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;">
+        <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.75rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Después</p>
+        <p style="font-size:1.8rem;margin-bottom:8px;">🚀</p>
+        <p class="body-sm text-white" style="text-align:center;font-size:.72rem;">Clientes nuevos cada semana</p>
+        <p class="body-sm text-white" style="text-align:center;font-size:.68rem;opacity:.8;margin-top:4px;">Con estrategia</p>
+      </div>
+      <div style="position:absolute;bottom:16px;left:0;right:0;text-align:center;">
+        <span class="logo-tag text-white" style="font-size:.75rem;opacity:.4;">brota<span class="dot">.</span></span>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap10">Antes: publicar el martes porque "ya tenía tiempo sin subir nada". 😬
+Después: contenido que genera mensajes de nuevos clientes cada semana.
+
+La diferencia no es suerte. Es saber qué publicar, cuándo y para quién.
+
+¿En cuál de los dos estás ahorita? Cuéntanos abajo. 👇
+
+Dale, escríbenos al WA y platicamos: wa.me/525564131634
+
+#EstrategiaDeContenido #MarketingDigitalMexico #RedesSocialesMexico #InstagramParaNegociosMexico #GestionDeRedes #AgenciaDigitalCDMX #BrotaDigital #EmprendedorMexicano #NegociosCDMX #SocialMediaMarketing #ContentMarketing #TipsInstagram #CreceEnDigital #MarketingMexico #PymesDigitales #DigitalMexico #TipsDeMarketing</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap10',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d10','dia10-antes-despues.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 11 · GRÁFICO ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 11 — Jueves</span>
+    <span class="format grafico">🖼 Gráfico</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d11')">
+    <div id="d11" style="width:100%;height:100%;background:var(--cream2);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:36px;text-align:center;position:relative;">
+      <div class="slide-top"><span class="logo-tag">brota<span class="dot">.</span></span><span class="tag tag-dark">Branding 101</span></div>
+      <div style="display:flex;width:100%;gap:10px;margin-top:24px;">
+        <div style="flex:1;background:var(--black);border-radius:12px;padding:16px;text-align:center;">
+          <p style="font-size:1.5rem;margin-bottom:8px;">🖼</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.85rem;color:var(--white);">Logo</p>
+          <div style="width:30px;height:2px;background:var(--coral);margin:8px auto;"></div>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.6);line-height:1.4;">Un archivo.<br/>Una imagen.<br/>Sin contexto.</p>
+        </div>
+        <div style="display:flex;align-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:var(--coral);font-size:1.2rem;">≠</div>
+        <div style="flex:1;background:var(--coral);border-radius:12px;padding:16px;text-align:center;">
+          <p style="font-size:1.5rem;margin-bottom:8px;">✨</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.85rem;color:#fff;">Marca</p>
+          <div style="width:30px;height:2px;background:rgba(255,255,255,.5);margin:8px auto;"></div>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.85);line-height:1.4;">Colores, fuentes,<br/>tono, voz, emoción.<br/>Una experiencia.</p>
+        </div>
+      </div>
+      <p class="body-sm text-black" style="opacity:.6;margin-top:16px;max-width:280px;">Cuando tienes marca, la gente te reconoce sin ver tu nombre. Eso genera confianza. La confianza genera ventas.</p>
+      <div class="slide-bottom"><p class="body-sm text-black" style="opacity:.4;">@brotadigital</p></div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap11">Tener logo no es lo mismo que tener marca. Y esa diferencia le cuesta ventas a muchísimos negocios sin que se den cuenta.
+
+El logo es la imagen.
+La marca es la experiencia completa: los colores, las fuentes, el tono con el que hablas, cómo se ve tu feed, cómo se siente tu empaque, qué siente alguien cuando te ve por primera vez.
+
+Cuando tienes una identidad de marca sólida, la gente te reconoce sin ver tu nombre. Eso genera confianza — y la confianza genera ventas.
+
+¿Tu negocio tiene logo o tiene marca? Cuéntanos en comentarios. 🎨
+
+¿Listo para crecer? Escríbenos: wa.me/525564131634
+
+#BrandingMexico #IdentidadDeMarca #LogoDesign #DisenoGraficoMexico #MarcaPersonalMexico #AgenciaDigitalCDMX #BrotaDigital #MarketingDigitalMexico #NegociosCDMX #EmprendedorMexicano #VisualBranding #IdentidadVisual #BrandingParaPYMES #DisenoMexico #TipsDeMarketing #CreceEnDigital</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap11',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d11','dia11-logo-vs-marca.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 12 · CARRUSEL ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 12 — Viernes</span>
+    <span class="format carrusel">📊 Carrusel</span>
+  </div>
+  <div class="post-visual">
+    <div class="carousel" id="car12">
+      <div class="slide active" style="background:var(--black);">
+        <div class="slide-inner">
+          <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span></div>
+          <div style="margin-top:16px;">
+            <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Nadie habla de esto</p>
+            <h2 class="h-lg text-white" style="margin-top:8px;max-width:300px;">Cuánto te está costando <span class="text-coral">NO tener</span> presencia digital</h2>
+            <div class="divider divider-gold"></div>
+            <p class="body-sm text-white" style="opacity:.6;">Haz las cuentas. Desliza →</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--cream);">
+        <div class="slide-inner">
+          <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;">El ejercicio</p>
+          <div class="divider"></div>
+          <div style="background:var(--black);border-radius:12px;padding:16px;margin-top:8px;width:100%;max-width:300px;">
+            <p class="body-sm text-white" style="opacity:.7;margin-bottom:8px;">Si pierdes solo <strong style="color:var(--gold);">5 clientes/mes</strong> por no tener web y cada uno vale <strong style="color:var(--gold);">$500 MXN</strong>:</p>
+            <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.6rem;color:var(--coral);">= $2,500/mes<br/>perdidos</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--coral);">
+        <div class="slide-inner">
+          <p class="body-sm text-white" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;opacity:.8;">En 12 meses</p>
+          <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:3rem;color:#fff;line-height:1;margin:10px 0;">$30,000</h2>
+          <p class="h-sm text-white" style="opacity:.9;">pesos perdidos por no tener visibilidad</p>
+          <div class="divider" style="background:rgba(255,255,255,.4);"></div>
+          <p class="body-sm text-white" style="opacity:.8;max-width:260px;">Y eso con solo 5 clientes al mes. ¿Cuántos crees que pasan de largo sin encontrarte?</p>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--cream2);">
+        <div class="slide-inner">
+          <p class="body-sm text-coral" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;">La solución</p>
+          <div style="background:var(--black);border-radius:12px;padding:16px;margin-top:12px;width:100%;max-width:300px;text-align:center;">
+            <p class="body-sm text-white" style="opacity:.7;margin-bottom:6px;">Una página web cuesta desde</p>
+            <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2rem;color:var(--coral);">$3,500 MXN</p>
+            <p class="body-sm text-white" style="opacity:.7;margin-top:6px;">Recuperas la inversión con <strong style="color:var(--gold);">2 clientes nuevos.</strong></p>
+          </div>
+          <p class="body-sm text-black" style="opacity:.6;margin-top:14px;">La pregunta no es si puedes pagarlo.<br/>Es si puedes seguir sin ello.</p>
+        </div>
+      </div>
+      <div class="slide" style="background:var(--black);">
+        <div class="slide-inner">
+          <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span></div>
+          <div style="margin-top:16px;">
+            <h3 class="h-md text-white">Haz que tu negocio trabaje por ti.</h3>
+            <div class="divider divider-gold"></div>
+            <p class="body-lg text-white" style="opacity:.7;max-width:260px;">Cotización sin compromiso en menos de 24 horas.</p>
+            <div style="margin-top:16px;background:var(--coral);color:#fff;padding:10px 20px;border-radius:8px;font-weight:700;font-size:.85rem;">wa.me/525564131634</div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav" id="nav12"></div>
+      <div class="carousel-arrows">
+        <button onclick="prevSlide('car12')">‹</button>
+        <button onclick="nextSlide('car12')">›</button>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap12">Nadie habla de esto: no estar en digital tiene un costo. Y es mayor que invertir en tu página web. 👉 Desliza y haz las cuentas.
+
+Si te asusta el precio de una página web, este carrusel va a cambiar tu perspectiva. Los números no mienten.
+
+¿Cuántos clientes potenciales crees que pierdes al mes? Déjanos tu número en comentarios. 👇
+
+Platica con nosotros sin compromiso: wa.me/525564131634
+
+#MarketingDigitalMexico #InversionEnDigital #PaginaWebMexico #CrecerEnDigital #EmprendedorMexicano #NegociosCDMX #TipsNegocio #MarketingMexico #PymesDigitales #AgenciaDigitalCDMX #BrotaDigital #ROIMarketing #NegocioRentable #PresenciaDigital #DigitalMexico #NegocioLocal #VentasOnline #TransformacionDigital</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap12',this)">Copiar caption</button><button class="dl-btn" onclick="downloadCarousel('car12','dia12',5,this)">⬇ Descargar carrusel</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 13 · REEL COVER ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 13 — Sábado</span>
+    <span class="format reel">🎬 Reel</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d13')">
+    <div id="d13" style="width:100%;height:100%;background:var(--coral);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:36px;text-align:center;position:relative;">
+      <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot" style="color:rgba(255,255,255,.6);">.</span></span><span class="tag">Proceso</span></div>
+      <p class="body-sm text-white" style="opacity:.8;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Así funciona</p>
+      <h2 class="h-xl text-white" style="max-width:280px;">¿Cómo se crea tu web con Brota?</h2>
+      <div class="divider" style="background:rgba(255,255,255,.5);"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:280px;text-align:left;margin-top:4px;">
+        <div class="step-item">
+          <span class="step-num" style="background:rgba(255,255,255,.25);color:#fff;">1</span>
+          <p class="body-sm text-white" style="opacity:.9;">Llamada de diagnóstico</p>
+        </div>
+        <div class="step-item">
+          <span class="step-num" style="background:rgba(255,255,255,.25);color:#fff;">2</span>
+          <p class="body-sm text-white" style="opacity:.9;">Diseño personalizado</p>
+        </div>
+        <div class="step-item">
+          <span class="step-num" style="background:rgba(255,255,255,.25);color:#fff;">3</span>
+          <p class="body-sm text-white" style="opacity:.9;">Revisión y ajustes</p>
+        </div>
+        <div class="step-item">
+          <span class="step-num" style="background:rgba(255,255,255,.25);color:#fff;">4</span>
+          <p class="body-sm text-white" style="opacity:.9;">🚀 Lanzamiento</p>
+        </div>
+      </div>
+      <div class="slide-bottom"><p class="body-sm text-white" style="opacity:.6;">En 10-15 días hábiles · @brotadigital</p></div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap13">Mucha gente nos pregunta: ¿cuánto tiempo tarda y cómo es el proceso? Aquí te lo mostramos en menos de 60 segundos. ⚡
+
+Paso 1: Llamada de diagnóstico — entendemos tu negocio, tu cliente ideal y tus objetivos.
+Paso 2: Propuesta — sin letra chica.
+Paso 3: Diseño y desarrollo — te presentamos el avance antes de publicar.
+Paso 4: Revisión y ajustes — hasta que quede perfecto.
+Paso 5: Lanzamiento — tu web en vivo, lista para traer clientes.
+
+Todo en 10-15 días hábiles. Sin complicaciones.
+
+¿Tienes dudas del proceso? Pregunta en comentarios. 👇
+
+Un mensaje y te cotizamos hoy mismo: wa.me/525564131634
+
+#PaginaWebMexico #ProcesoCreativo #DisenoWebMexico #AgenciaDigitalCDMX #BrotaDigital #WebDesignMexico #NegociosCDMX #EmprendedorMexicano #MarketingDigitalMexico #SitioWebProfesional #CreceEnDigital #DisenoWebProfesional #DigitalMexico #NegocioLocal #PaginaWebEconomica #MarketingMexico #TransformacionDigital #PymesDigitales</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap13',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d13','dia13-proceso.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+<!-- ───────────────── DÍA 14 · CIERRE ───────────────── -->
+<div class="post-card">
+  <div class="post-meta">
+    <span class="day">📅 Día 14 — Domingo</span>
+    <span class="format grafico">🖼 Gráfico</span>
+  </div>
+  <div class="post-visual" onclick="openOverlay('d14')">
+    <div id="d14" style="width:100%;height:100%;background:var(--black);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px;text-align:center;position:relative;">
+      <div class="slide-top"><span class="logo-tag text-white">brota<span class="dot">.</span></span></div>
+      <div style="width:64px;height:64px;border-radius:50%;background:rgba(232,93,58,.15);border:2px solid var(--coral);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:16px auto 12px;">🌱</div>
+      <h2 class="h-md text-white" style="max-width:300px;">Esto es para <span class="text-coral">ti</span>, emprendedor.</h2>
+      <div class="divider divider-gold"></div>
+      <p class="body-lg text-white" style="opacity:.7;max-width:280px;margin-bottom:16px;">Restaurante, boutique, salón, coach, freelancer — si llevas un negocio en México con ganas de crecer: bienvenido a la comunidad.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+        <span style="background:rgba(232,93,58,.2);color:var(--coral);padding:4px 10px;border-radius:20px;font-size:.72rem;font-weight:600;">CDMX</span>
+        <span style="background:rgba(232,93,58,.2);color:var(--coral);padding:4px 10px;border-radius:20px;font-size:.72rem;font-weight:600;">México</span>
+        <span style="background:rgba(232,93,58,.2);color:var(--coral);padding:4px 10px;border-radius:20px;font-size:.72rem;font-weight:600;">Pequeños negocios</span>
+        <span style="background:rgba(232,93,58,.2);color:var(--coral);padding:4px 10px;border-radius:20px;font-size:.72rem;font-weight:600;">Grandes sueños</span>
+      </div>
+      <div class="slide-bottom"><p class="body-sm text-white" style="opacity:.3;">@brotadigital · brotadigital.mx</p></div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <h4>Caption</h4>
+    <div class="caption-text" id="cap14">Dos semanas publicando y ya hay algo claro: hay muchísimos negocios en México con un producto increíble que merecen más visibilidad.
+
+Este perfil no es solo para vender — es para que aprendas, te inspires y sientas que no estás solo en el camino de crecer tu negocio.
+
+Si eres dueño de restaurante, boutique, salón, si eres coach, freelancer o llevas un pequeño negocio en CDMX o cualquier rincón de México: bienvenido. Esto es para ti. 🌱
+
+Guárdanos, compártenos con alguien que lo necesite y cuéntanos: ¿a qué te dedicas? 👇
+
+Dale, escríbenos al WA y platicamos: wa.me/525564131634
+
+#EmprendedorMexicano #NegociosCDMX #ComunidadEmprendedora #MarketingDigitalMexico #BrotaDigital #AgenciaDigitalCDMX #PequenaEmpresa #PymesMexicanas #NegocioLocal #EmprendimientoMexico #OrgullosamenteMexicano #DigitalMexico #CreceEnDigital #MarketingMexico #NegocioFamiliar #RestaurantesMexico #BoutiqueMexico #CoachMexico #FreelancerMexico</div>
+    <div class="btn-row"><button class="copy-btn" onclick="copyCaption('cap14',this)">Copiar caption</button><button class="dl-btn" onclick="downloadPost('d14','dia14-comunidad.png',this)">⬇ Descargar imagen</button></div>
+  </div>
+</div>
+
+</div><!-- /posts-grid semana 2 -->
+
+<!-- ══════ FULLSCREEN OVERLAY ══════ -->
+<div class="overlay" id="overlay" onclick="closeOverlay()">
+  <div class="overlay-inner" id="overlay-inner" onclick="event.stopPropagation()">
+    <button class="overlay-close" onclick="closeOverlay()">✕</button>
+  </div>
+</div>
+
+<script>
+// ── Copy caption ──
+function copyCaption(id, btn) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copiado!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copiar caption'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ── Download single post as 1080x1080 PNG ──
+async function downloadPost(elId, filename, btn) {
+  btn.textContent = '⏳ Generando...';
+  btn.classList.add('loading');
+  const el = document.getElementById(elId);
+  // Temporarily expand to fixed size for high-res render
+  const origW = el.style.width, origH = el.style.height;
+  el.style.width = '540px';
+  el.style.height = '540px';
+  try {
+    const canvas = await html2canvas(el, {
+      scale: 2, // 2x = 1080x1080 output
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: null,
+      logging: false
+    });
+    el.style.width = origW;
+    el.style.height = origH;
+    const link = document.createElement('a');
+    link.download = filename;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } catch(e) {
+    el.style.width = origW;
+    el.style.height = origH;
+    alert('Error al generar imagen. Intenta de nuevo.');
+  }
+  btn.textContent = '⬇ Descargar imagen';
+  btn.classList.remove('loading');
+}
+
+// ── Download carousel: renders each slide as separate PNG ──
+async function downloadCarousel(carId, prefix, count, btn) {
+  btn.textContent = '⏳ Generando...';
+  btn.classList.add('loading');
+  const car = document.getElementById(carId);
+  const slides = car.querySelectorAll('.slide');
+  for (let i = 0; i < slides.length; i++) {
+    // Show only this slide
+    slides.forEach(s => s.style.opacity = '0');
+    slides[i].style.opacity = '1';
+    await new Promise(r => setTimeout(r, 100));
+    try {
+      const canvas = await html2canvas(car, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: null,
+        logging: false
+      });
+      const link = document.createElement('a');
+      link.download = `${prefix}-slide-${i+1}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      await new Promise(r => setTimeout(r, 400));
+    } catch(e) { console.error(e); }
+  }
+  // Restore original active state
+  slides.forEach(s => s.style.opacity = '0');
+  slides[0].style.opacity = '1';
+  goToSlide(carId, 0);
+  btn.textContent = '⬇ Descargar carrusel';
+  btn.classList.remove('loading');
+}
+
+// ── Carousel ──
+function initCarousel(carId, navId) {
+  const car = document.getElementById(carId);
+  if (!car) return;
+  const slides = car.querySelectorAll('.slide');
+  const nav = document.getElementById(navId);
+  slides.forEach((_, i) => {
+    const btn = document.createElement('button');
+    if (i === 0) btn.classList.add('active');
+    btn.onclick = () => goToSlide(carId, i);
+    nav.appendChild(btn);
+  });
+}
+
+function getSlides(carId) {
+  return document.getElementById(carId).querySelectorAll('.slide');
+}
+function getCurrentSlide(carId) {
+  const slides = getSlides(carId);
+  for (let i = 0; i < slides.length; i++) if (slides[i].classList.contains('active')) return i;
+  return 0;
+}
+function goToSlide(carId, idx) {
+  const slides = getSlides(carId);
+  const navBtns = document.getElementById('nav' + carId.replace('car','')).querySelectorAll('button');
+  slides.forEach(s => s.classList.remove('active'));
+  navBtns.forEach(b => b.classList.remove('active'));
+  slides[idx].classList.add('active');
+  if (navBtns[idx]) navBtns[idx].classList.add('active');
+}
+function nextSlide(carId) {
+  const slides = getSlides(carId);
+  const cur = getCurrentSlide(carId);
+  goToSlide(carId, (cur + 1) % slides.length);
+}
+function prevSlide(carId) {
+  const slides = getSlides(carId);
+  const cur = getCurrentSlide(carId);
+  goToSlide(carId, (cur - 1 + slides.length) % slides.length);
+}
+
+// ── Fullscreen overlay ──
+function openOverlay(id) {
+  const src = document.getElementById(id);
+  const overlay = document.getElementById('overlay');
+  const inner = document.getElementById('overlay-inner');
+  const clone = src.cloneNode(true);
+  clone.style.width = '100%';
+  clone.style.height = '100%';
+  clone.removeAttribute('id');
+  const closeBtn = inner.querySelector('.overlay-close');
+  inner.innerHTML = '';
+  inner.appendChild(closeBtn || (() => {
+    const b = document.createElement('button');
+    b.className = 'overlay-close';
+    b.textContent = '✕';
+    b.onclick = closeOverlay;
+    return b;
+  })());
+  inner.appendChild(clone);
+  overlay.classList.add('open');
+}
+function closeOverlay() {
+  document.getElementById('overlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+
+// ── Init ──
+window.onload = () => {
+  ['2','5','9','12'].forEach(n => initCarousel('car'+n, 'nav'+n));
+};
+</script>
+</body>
+</html>
