@@ -83,14 +83,14 @@
       --pink: #E8196A;
       --pink-light: rgba(232, 25, 106, 0.08);
       --pink-mid: rgba(232, 25, 106, 0.15);
-      --cream: #F5EDE3;
-      --cream-dark: #EDE0D1;
-      --espresso: #1C1009;
-      --espresso-light: #2e1a0e;
+      --cream: #ffffff;
+      --cream-dark: #F0F0F0;
+      --espresso: #000000;
+      --espresso-light: #1A1A1A;
       --white: #ffffff;
-      --text-body: #4a3728;
-      --text-muted: #9b7e6b;
-      --border: rgba(28, 16, 9, 0.1);
+      --text-body: #111111;
+      --text-muted: #666666;
+      --border: rgba(0, 0, 0, 0.1);
 
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Glacial Indifference', 'Inter', system-ui, sans-serif;
@@ -101,9 +101,9 @@
       --radius-lg: 20px;
       --radius-pill: 999px;
 
-      --shadow-sm: 0 2px 12px rgba(28, 16, 9, 0.08);
-      --shadow-md: 0 8px 32px rgba(28, 16, 9, 0.12);
-      --shadow-lg: 0 20px 60px rgba(28, 16, 9, 0.16);
+      --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.12);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.16);
 
       --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       --transition-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
@@ -671,7 +671,7 @@
 
     /* Each flavor is a <details> element */
     .flavor-item {
-      border-bottom: 1px solid rgba(28,16,9,.07);
+      border-bottom: 1px solid rgba(0,0,0,.07);
     }
     .flavor-item:last-child { border-bottom: none; }
 
@@ -820,7 +820,7 @@
       text-transform: uppercase;
       color: var(--espresso);
       background-color: var(--cream-dark);
-      border: 1px solid rgba(28, 16, 9, 0.15);
+      border: 1px solid rgba(0, 0, 0, 0.15);
       padding: 8px 16px;
       border-radius: var(--radius-pill);
     }
@@ -1282,8 +1282,86 @@
     /* Improve contrast on muted text */
     .section-label, .menu-section__sub,
     .about__text, .proceso__step p {
-      color: #5A4A42;
+      color: #666666;
     }
+
+    /* ============================================
+       AVISO DE PRIVACIDAD MODAL
+    ============================================ */
+    .privacy-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .privacy-overlay.open { display: flex; }
+    .privacy-modal {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      max-width: 640px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: clamp(28px, 5vw, 48px);
+      position: relative;
+    }
+    .privacy-modal h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 500;
+      color: var(--espresso);
+      margin-bottom: 8px;
+    }
+    .privacy-modal .privacy-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .privacy-modal h3 {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--espresso);
+      margin: 24px 0 6px;
+    }
+    .privacy-modal p {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.7;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .privacy-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--text-muted);
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+      transition: color 0.2s;
+    }
+    .privacy-close:hover { color: var(--pink); }
+    .privacy-link {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.04em;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--font-sans);
+      transition: color 0.2s;
+    }
+    .privacy-link:hover { color: var(--white); }
   </style>
 </head>
 
@@ -1302,7 +1380,7 @@
           <div class="nav__logo-inner">
             <span class="logo-the">The</span>
             <span class="logo-baking">Baking</span>
-            <span class="logo-room">Room</span>
+            <span class="logo-room">Room<sup style="font-size:9px;vertical-align:super;font-family:var(--font-sans);">®</sup></span>
           </div>
         </a>
 
@@ -1767,7 +1845,7 @@
           <div class="footer__logo-inner">
             <span class="logo-the">The</span>
             <span class="logo-baking">Baking</span>
-            <span class="logo-room">Room</span>
+            <span class="logo-room">Room<sup style="font-size:9px;vertical-align:super;font-family:var(--font-sans);">®</sup></span>
           </div>
         </a>
 
@@ -1800,13 +1878,44 @@
       </div>
 
       <div class="footer__bottom">
-        <p class="footer__copy">© 2026 The Baking Room®. Todos los derechos reservados.</p>
-        <p class="footer__credit">Diseño web por Brota Digital</p>
+        <p class="footer__copy">© 2026 The Baking Room®. Todos los derechos reservados. Marca registrada.</p>
+        <p class="footer__credit">
+          <button class="privacy-link" onclick="document.getElementById('privacyModal').classList.add('open')">Aviso de Privacidad</button>
+          &nbsp;·&nbsp; Diseño web por Brota Digital
+        </p>
       </div>
 
     </div>
   </footer>
 
+  <!-- ============================================
+       AVISO DE PRIVACIDAD MODAL
+  ============================================ -->
+  <div class="privacy-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="privacy-modal">
+      <button class="privacy-close" onclick="document.getElementById('privacyModal').classList.remove('open')" aria-label="Cerrar">×</button>
+      <h2 id="privacyTitle">Aviso de Privacidad</h2>
+      <p class="privacy-subtitle">The Baking Room® · Ciudad de México</p>
+
+      <h3>Identidad del Responsable</h3>
+      <p>The Baking Room® es responsable del tratamiento de tus datos personales. Puedes contactarnos en <strong>hola@thebakingroom.mx</strong>.</p>
+
+      <h3>Datos que Recabamos</h3>
+      <p>Recabamos únicamente los datos necesarios para atender tu pedido: nombre, correo electrónico, número de teléfono y detalles del pedido. No recabamos datos sensibles.</p>
+
+      <h3>Finalidades del Tratamiento</h3>
+      <p>Tus datos se utilizan exclusivamente para: procesar y confirmar tu pedido, coordinar entregas, enviarte información sobre el estado de tu pedido y, con tu consentimiento, comunicarte promociones o novedades.</p>
+
+      <h3>Transferencia de Datos</h3>
+      <p>No transferimos tus datos personales a terceros sin tu consentimiento, salvo las excepciones previstas en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).</p>
+
+      <h3>Derechos ARCO</h3>
+      <p>Tienes derecho a Acceder, Rectificar, Cancelar u Oponerte al tratamiento de tus datos (derechos ARCO). Para ejercerlos, escríbenos a <strong>hola@thebakingroom.mx</strong> indicando el derecho que deseas ejercer.</p>
+
+      <h3>Cambios al Aviso</h3>
+      <p>Nos reservamos el derecho de modificar este aviso en cualquier momento. Cualquier cambio será notificado a través de nuestro sitio web o por correo electrónico.</p>
+    </div>
+  </div>
 
   <!-- ============================================
        JAVASCRIPT
