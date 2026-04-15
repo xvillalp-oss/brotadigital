@@ -1007,6 +1007,11 @@ async function downloadCarousel(carId, prefix, count, btn) {
   btn.classList.add('loading');
   const car = document.getElementById(carId);
   const slides = car.querySelectorAll('.slide');
+
+  // Hide navigation UI before capturing
+  const uiEls = car.querySelectorAll('.carousel-nav, .carousel-arrows');
+  uiEls.forEach(el => el.style.visibility = 'hidden');
+
   for (let i = 0; i < slides.length; i++) {
     // Show only this slide
     slides.forEach(s => s.style.opacity = '0');
@@ -1027,6 +1032,10 @@ async function downloadCarousel(carId, prefix, count, btn) {
       await new Promise(r => setTimeout(r, 400));
     } catch(e) { console.error(e); }
   }
+
+  // Restore navigation UI
+  uiEls.forEach(el => el.style.visibility = '');
+
   // Restore original active state
   slides.forEach(s => s.style.opacity = '0');
   slides[0].style.opacity = '1';
