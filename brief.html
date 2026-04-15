@@ -370,15 +370,6 @@
 
       </form>
 
-      <!-- SUCCESS -->
-      <div class="success" id="successMsg">
-        <div class="success-icon">🌱</div>
-        <h2>¡Brief recibido!</h2>
-        <p>Gracias por confiar en nosotros. Revisaremos tu información y te enviaremos tu propuesta personalizada en menos de 24 horas por WhatsApp.</p>
-        <a href="#" class="success-wa" id="successWa">
-          Confirmar por WhatsApp 💬
-        </a>
-      </div>
 
     </div>
   </div>
@@ -464,17 +455,11 @@ ${servicios}
 
 *Notas extra:* ${data.extra || 'Ninguna'}`;
 
-      // Show success
-      document.getElementById('briefForm').style.display = 'none';
-      const success = document.getElementById('successMsg');
-      success.classList.add('show');
-
-      // Set WA link
+      // Build WA link
       const waLink = 'https://wa.me/525564131634?text=' + encodeURIComponent(msg);
-      document.getElementById('successWa').href = waLink;
 
-      // Auto open WA after 1.5s
-      setTimeout(() => window.open(waLink, '_blank'), 1500);
+      // Go directly to WhatsApp — no popup blocker issues
+      window.location.href = waLink;
     });
   </script>
 </body>
