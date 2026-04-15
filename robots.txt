@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xvillalp-oss.github.io/brotadigital/sitemap.xml
