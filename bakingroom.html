@@ -163,13 +163,15 @@
     }
 
     /* Logo — protegido permanentemente */
+    .nav__logo .logo-the,
     .nav__logo .logo-baking,
     .nav__logo .logo-room,
+    .footer__logo .logo-the,
     .footer__logo .logo-baking,
     .footer__logo .logo-room {
       text-transform: none !important;
-      letter-spacing: normal !important;
-      font-family: var(--font-serif) !important;
+      letter-spacing: 0 !important;
+      font-family: var(--font-sans) !important;
     }
 
     .section-label {
@@ -289,8 +291,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid var(--pink);
-      padding: 6px 10px;
+      border: 3px solid var(--pink);
+      padding: 8px 12px;
       flex-shrink: 0;
       text-decoration: none;
     }
@@ -299,36 +301,47 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      line-height: 1.1;
+      line-height: 1.05;
     }
 
     .nav__logo .logo-the {
       font-family: var(--font-sans);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
       color: var(--espresso);
+      line-height: 1.05;
     }
 
     .nav__logo .logo-baking {
-      font-family: var(--font-serif);
-      font-size: 18px;
+      font-family: var(--font-sans);
+      font-size: 13px;
       font-weight: 700;
-      color: var(--pink);
-      line-height: 1;
+      color: var(--espresso);
+      line-height: 1.05;
       text-transform: none;
-      letter-spacing: normal;
+      letter-spacing: 0;
     }
 
     .nav__logo .logo-room {
-      font-family: var(--font-serif);
-      font-size: 18px;
+      font-family: var(--font-sans);
+      font-size: 13px;
       font-weight: 700;
       color: var(--espresso);
-      line-height: 1;
+      line-height: 1.05;
       text-transform: none;
-      letter-spacing: normal;
+      letter-spacing: 0;
+    }
+
+    .nav__logo .logo-tagline {
+      font-family: var(--font-sans);
+      font-size: 7px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--espresso);
+      margin-top: 3px;
     }
 
     /* Nav links */
@@ -1020,44 +1033,55 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid var(--pink);
-      padding: 8px 12px;
+      border: 3px solid var(--pink);
+      padding: 10px 14px;
     }
 
     .footer__logo-inner {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      line-height: 1.1;
+      line-height: 1.05;
     }
 
     .footer__logo .logo-the {
       font-family: var(--font-sans);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.7);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--white);
+      line-height: 1.05;
     }
 
     .footer__logo .logo-baking {
-      font-family: var(--font-serif);
-      font-size: 20px;
+      font-family: var(--font-sans);
+      font-size: 15px;
       font-weight: 700;
-      color: var(--pink);
-      line-height: 1;
+      color: var(--white);
+      line-height: 1.05;
       text-transform: none;
-      letter-spacing: normal;
+      letter-spacing: 0;
     }
 
     .footer__logo .logo-room {
-      font-family: var(--font-serif);
-      font-size: 20px;
+      font-family: var(--font-sans);
+      font-size: 15px;
       font-weight: 700;
       color: var(--white);
-      line-height: 1;
+      line-height: 1.05;
       text-transform: none;
-      letter-spacing: normal;
+      letter-spacing: 0;
+    }
+
+    .footer__logo .logo-tagline {
+      font-family: var(--font-sans);
+      font-size: 7px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 3px;
     }
 
     .footer__tagline {
@@ -1407,7 +1431,8 @@
           <div class="nav__logo-inner">
             <span class="logo-the">The</span>
             <span class="logo-baking">Baking</span>
-            <span class="logo-room">Room<sup style="font-size:9px;vertical-align:super;font-family:var(--font-sans);">®</sup></span>
+            <span class="logo-room">Room<sup style="font-size:7px;vertical-align:super;">®</sup></span>
+            <span class="logo-tagline">Seriously Good</span>
           </div>
         </a>
 
@@ -1872,7 +1897,8 @@
           <div class="footer__logo-inner">
             <span class="logo-the">The</span>
             <span class="logo-baking">Baking</span>
-            <span class="logo-room">Room<sup style="font-size:9px;vertical-align:super;font-family:var(--font-sans);">®</sup></span>
+            <span class="logo-room">Room<sup style="font-size:7px;vertical-align:super;">®</sup></span>
+            <span class="logo-tagline">Seriously Good</span>
           </div>
         </a>
 
