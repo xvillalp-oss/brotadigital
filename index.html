@@ -1,536 +1,598 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brota Digital — Páginas web para negocios en CDMX</title>
-  <meta name="description" content="Tu negocio merece aparecer en Google. Páginas web profesionales para negocios en CDMX. $3,500 MXN, entrega en 7 días, garantía de satisfacción." />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Brota Digital — Agencia de Marketing para Pequeños Negocios</title>
+  <meta name="description" content="Hacemos crecer tu negocio con presencia digital profesional. Landing pages, redes sociales y estrategia desde $3,500 MXN."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      color: #1a1a2e;
-      background: #fff;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --coral:   #E85D3A;
+      --coral-d: #C94828;
+      --black:   #1A1A1A;
+      --cream:   #FDFAF5;
+      --cream-2: #F5EFE4;
+      --gold:    #F5C97A;
+      --gray:    #6B6B6B;
+      --white:   #FFFFFF;
+      --font-head: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --max: 1160px;
+      --py: clamp(64px,8vw,112px);
     }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--cream);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+    .sr-only{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden}
 
-    :root {
-      --navy:      #0F1F3D;
-      --navy-mid:  #1B3461;
-      --navy-soft: #243B6E;
-      --azul:      #2563EB;
-      --azul-hover:#1D4ED8;
-      --gris-bg:   #F5F7FA;
-      --gris-linea:#E2E8F0;
-      --gris-texto:#64748B;
-      --texto:     #1E293B;
-      --blanco:    #ffffff;
-    }
-
-    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-    h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.15; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 26px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
-      letter-spacing: -0.01em;
-    }
-    .btn-primary { background: var(--navy); color: #fff; }
-    .btn-primary:hover { background: var(--navy-soft); transform: translateY(-1px); }
-    .btn-ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--gris-linea); }
-    .btn-ghost:hover { border-color: var(--navy); }
-    .btn-azul { background: var(--azul); color: #fff; }
-    .btn-azul:hover { background: var(--azul-hover); transform: translateY(-1px); }
-
-    .tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--azul);
-      margin-bottom: 14px;
-    }
-
-    section { padding: 96px 0; }
+    .skip{position:absolute;top:-100px;left:16px;z-index:9999;background:var(--coral);color:#fff;padding:8px 16px;border-radius:2px;font-size:14px;transition:top .2s}
+    .skip:focus{top:16px}
 
     /* NAV */
-    nav {
-      background: var(--blanco);
-      border-bottom: 1px solid var(--gris-linea);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav .inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .logo img { height: 38px; width: auto; display: block; }
-    .nav-right { display: flex; align-items: center; gap: 28px; }
-    .nav-link { font-size: 0.88rem; color: var(--gris-texto); font-weight: 500; transition: color 0.2s; }
-    .nav-link:hover { color: var(--navy); }
-    .nav-cta { background: var(--navy); color: #fff; padding: 9px 18px; border-radius: 6px; font-weight: 600; font-size: 0.88rem; transition: background 0.2s; }
-    .nav-cta:hover { background: var(--navy-soft); }
+    .nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--cream);border-bottom:1px solid rgba(0,0,0,.08);transition:box-shadow .3s}
+    .nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav__logo{font-family:var(--font-head);font-size:20px;font-weight:800;color:var(--black);letter-spacing:-.01em}
+    .nav__logo span{color:var(--coral)}
+    .nav__links{display:flex;gap:32px;list-style:none}
+    .nav__links a{font-size:13px;font-weight:500;color:var(--gray);transition:color .2s}
+    .nav__links a:hover{color:var(--coral)}
+    .nav__cta{background:var(--coral);color:#fff;font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 24px;border-radius:100px;transition:background .2s;min-height:44px;display:inline-flex;align-items:center}
+    .nav__cta:hover{background:var(--coral-d)}
+    .nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+    .nav__burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:.3s}
+    .nav__mobile{display:none;flex-direction:column;background:var(--cream);border-top:1px solid rgba(0,0,0,.06);padding:16px 0}
+    .nav__mobile.open{display:flex}
+    .nav__mobile a{padding:12px clamp(20px,4vw,56px);font-size:14px;font-weight:500;color:var(--gray)}
 
     /* HERO */
-    .hero { background: var(--blanco); padding: 110px 0 96px; border-bottom: 1px solid var(--gris-linea); }
-    .hero-inner { display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; }
-    .hero-eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
-    .hero-dot { width: 6px; height: 6px; background: var(--azul); border-radius: 50%; }
-    .hero-eyebrow span { font-size: 0.82rem; font-weight: 600; color: var(--gris-texto); letter-spacing: 0.04em; text-transform: uppercase; }
-    .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 800; color: var(--navy); margin-bottom: 22px; }
-    .hero h1 em { font-style: normal; color: var(--azul); }
-    .hero-desc { font-size: 1.08rem; color: var(--gris-texto); margin-bottom: 40px; max-width: 460px; line-height: 1.7; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .hero-trust { display: flex; gap: 24px; margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--gris-linea); flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 8px; }
-    .trust-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; flex-shrink: 0; }
-    .trust-item span { font-size: 0.85rem; color: var(--gris-texto); }
-    .trust-item strong { color: var(--texto); }
+    .hero{min-height:100vh;display:flex;align-items:center;padding-top:68px;background:var(--cream);position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-120px;right:-80px;width:min(600px,90vw);height:min(600px,90vw);background:radial-gradient(circle,rgba(232,93,58,.12) 0%,transparent 70%);pointer-events:none}
+    .hero::after{content:'';position:absolute;bottom:-60px;left:-40px;width:300px;height:300px;background:radial-gradient(circle,rgba(245,201,122,.15) 0%,transparent 70%);pointer-events:none}
+    .hero__inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
+    .hero__eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(232,93,58,.1);color:var(--coral);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:24px}
+    .hero__h1{font-family:var(--font-head);font-size:clamp(36px,5vw,64px);font-weight:800;line-height:1.05;color:var(--black);margin-bottom:24px;letter-spacing:-.02em}
+    .hero__h1 em{font-style:normal;color:var(--coral)}
+    .hero__sub{font-size:clamp(15px,1.5vw,18px);color:var(--gray);line-height:1.7;margin-bottom:36px;max-width:440px}
+    .hero__actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn-coral{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px 28px;border-radius:100px;transition:background .2s,transform .15s;min-height:48px}
+    .btn-coral:hover{background:var(--coral-d);transform:translateY(-1px)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(0,0,0,.2);color:var(--black);font-family:var(--font-head);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px 28px;border-radius:100px;transition:border-color .2s;min-height:48px}
+    .btn-ghost:hover{border-color:var(--coral);color:var(--coral)}
+    .hero__trust{display:flex;align-items:center;gap:12px;margin-top:32px}
+    .hero__trust p{font-size:12px;color:var(--gray)}
+    .hero__trust strong{color:var(--black)}
+    .trust-dots{display:flex;gap:4px}
+    .trust-dot{width:8px;height:8px;border-radius:50%;background:var(--coral);opacity:.3}
+    .trust-dot.active{opacity:1}
+    .hero__visual{position:relative}
+    .hero__card{background:var(--white);border-radius:16px;padding:32px;box-shadow:0 16px 48px rgba(0,0,0,.1);position:relative;z-index:2}
+    .hero__card-top{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+    .hero__card-avatar{width:40px;height:40px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:14px;font-weight:800;color:#fff}
+    .hero__card-name{font-size:13px;font-weight:700;color:var(--black)}
+    .hero__card-handle{font-size:11px;color:var(--gray)}
+    .hero__card-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--cream-2),var(--gold));border-radius:10px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+    .hero__card-img-inner{text-align:center}
+    .hero__card-img-inner .big{font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--coral)}
+    .hero__card-img-inner .sm{font-size:11px;color:var(--gray);letter-spacing:.14em;text-transform:uppercase}
+    .hero__card-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .stat-mini{text-align:center;background:var(--cream);border-radius:8px;padding:10px 6px}
+    .stat-mini .num{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--coral)}
+    .stat-mini .lbl{font-size:10px;color:var(--gray);letter-spacing:.08em}
+    .hero__badge{position:absolute;top:-16px;right:-16px;background:var(--coral);color:#fff;border-radius:12px;padding:12px 16px;font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.08em;text-align:center;box-shadow:0 8px 24px rgba(232,93,58,.35);z-index:3}
+    .hero__badge .big{font-size:22px;display:block}
 
-    .hero-card { background: var(--navy); border-radius: 16px; padding: 40px 32px; color: #fff; }
-    .hero-card-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
-    .hero-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
-    .hero-card-price { font-size: 3rem; font-weight: 800; letter-spacing: -0.04em; margin: 16px 0 8px; }
-    .hero-card-price sup { font-size: 1.3rem; vertical-align: top; margin-top: 10px; }
-    .hero-card-price span { font-size: 1rem; font-weight: 400; opacity: 0.6; }
-    .hero-card-sub { font-size: 0.82rem; opacity: 0.55; margin-bottom: 28px; }
-    .hero-card-items { list-style: none; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-bottom: 28px; }
-    .hero-card-items li { font-size: 0.88rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; gap: 10px; opacity: 0.85; }
-    .hero-card-items li:last-child { border: none; }
-    .li-check { color: #22c55e; font-size: 0.75rem; font-weight: bold; }
-    .garantia-mini { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 16px; font-size: 0.82rem; opacity: 0.75; display: flex; gap: 10px; align-items: center; }
+    /* MARQUEE */
+    .logos{padding:28px 0;background:var(--black);overflow:hidden}
+    .logos__track{display:flex;gap:48px;align-items:center;white-space:nowrap;animation:marquee 22s linear infinite}
+    .logos__track span{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+    .logos__track .dot{width:4px;height:4px;border-radius:50%;background:var(--coral);flex-shrink:0;display:inline-block;vertical-align:middle;margin:0 4px}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* SOCIAL PROOF */
-    .social-proof { background: var(--gris-bg); padding: 40px 0; border-top: 1px solid var(--gris-linea); border-bottom: 1px solid var(--gris-linea); }
-    .proof-inner { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .proof-label { font-size: 0.8rem; color: var(--gris-texto); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
-    .proof-item { background: #fff; border: 1px solid var(--gris-linea); border-radius: 8px; padding: 10px 20px; font-size: 0.85rem; font-weight: 600; color: var(--gris-texto); }
+    /* LABELS */
+    .label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
+    .label::before{content:'';display:block;width:24px;height:2px;background:var(--coral);border-radius:2px}
+    .h2{font-family:var(--font-head);font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--black);margin-bottom:16px}
+    .h2.light{color:var(--white)}
+    .lead{font-size:clamp(15px,1.5vw,17px);color:var(--gray);line-height:1.7;max-width:520px}
+    .lead.light{color:rgba(255,255,255,.65)}
 
-    /* PROBLEMA */
-    .problema { background: var(--blanco); }
-    .section-header { max-width: 620px; margin-bottom: 64px; }
-    .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--navy); margin-bottom: 16px; }
-    .section-header p { font-size: 1rem; color: var(--gris-texto); line-height: 1.7; }
-    .problemas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gris-linea); border: 1px solid var(--gris-linea); border-radius: 12px; overflow: hidden; }
-    .problema-card { background: var(--blanco); padding: 40px 32px; }
-    .problema-num { font-size: 0.72rem; font-weight: 700; color: var(--azul); letter-spacing: 0.06em; margin-bottom: 20px; }
-    .problema-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .problema-card p { color: var(--gris-texto); font-size: 0.9rem; line-height: 1.65; }
-
-    /* SOLUCIÓN */
-    .solucion { background: var(--gris-bg); }
-    .solucion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .solucion-lista { list-style: none; margin-top: 32px; }
-    .solucion-lista li { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--gris-linea); align-items: flex-start; }
-    .solucion-lista li:last-child { border: none; }
-    .s-num { font-size: 0.75rem; font-weight: 700; color: var(--azul); width: 24px; flex-shrink: 0; margin-top: 3px; }
-    .solucion-lista li strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 0.95rem; }
-    .solucion-lista li span { color: var(--gris-texto); font-size: 0.88rem; }
-
-    .demo-window { border: 1px solid var(--gris-linea); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(15,31,61,0.08); background: var(--blanco); }
-    .demo-topbar { background: var(--gris-bg); border-bottom: 1px solid var(--gris-linea); padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
-    .d-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .d-dot.r { background: #f87171; } .d-dot.y { background: #fbbf24; } .d-dot.g { background: #4ade80; }
-    .url-bar { background: var(--blanco); border: 1px solid var(--gris-linea); border-radius: 4px; padding: 5px 12px; font-size: 0.75rem; color: var(--gris-texto); margin-left: 8px; flex: 1; }
-    .demo-body { background: var(--navy); padding: 48px 32px; text-align: center; color: #fff; }
-    .demo-body .d-emoji { font-size: 3rem; margin-bottom: 12px; }
-    .demo-body h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
-    .demo-body p { font-size: 0.85rem; opacity: 0.65; }
-    .demo-footer { padding: 16px 24px; border-top: 1px solid var(--gris-linea); display: flex; justify-content: space-between; align-items: center; }
-    .demo-footer span { font-size: 0.8rem; color: var(--gris-texto); }
-    .demo-footer a { font-size: 0.8rem; font-weight: 600; color: var(--azul); }
+    /* SERVICIOS */
+    .servicios{padding:var(--py) 0;background:var(--cream)}
+    .servicios__top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:60px}
+    .servicios__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .serv-card{background:var(--white);border-radius:16px;padding:36px 28px;transition:box-shadow .25s,transform .25s;cursor:default;border:1.5px solid transparent}
+    .serv-card:hover{box-shadow:0 12px 40px rgba(232,93,58,.12);border-color:rgba(232,93,58,.15);transform:translateY(-4px)}
+    .serv-icon{width:48px;height:48px;border-radius:12px;background:rgba(232,93,58,.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+    .serv-icon svg{width:22px;height:22px;color:var(--coral);fill:none;stroke:currentColor;stroke-width:1.8}
+    .serv-card h3{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--black);margin-bottom:10px;letter-spacing:-.01em}
+    .serv-card p{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:20px}
+    .serv-price{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--coral)}
+    .serv-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:12px}
+    .serv-list li{font-size:13px;color:var(--black);display:flex;align-items:center;gap:8px}
+    .serv-list li::before{content:'';width:16px;height:1.5px;background:var(--coral);flex-shrink:0;border-radius:2px}
 
     /* PROCESO */
-    .proceso { background: var(--blanco); }
-    .proceso-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; position: relative; margin-top: 56px; }
-    .proceso-grid::before { content: ''; position: absolute; top: 22px; left: calc(16.66% + 16px); right: calc(16.66% + 16px); height: 1px; background: var(--gris-linea); }
-    .paso { text-align: center; }
-    .paso-circle { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; margin: 0 auto 20px; position: relative; z-index: 1; }
-    .paso h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .paso p { font-size: 0.88rem; color: var(--gris-texto); line-height: 1.65; }
+    .proceso{padding:var(--py) 0;background:var(--black)}
+    .proceso__top{text-align:center;margin-bottom:64px}
+    .proceso__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+    .paso{background:rgba(255,255,255,.04);padding:36px 24px;position:relative;transition:background .25s}
+    .paso:hover{background:rgba(232,93,58,.08)}
+    .paso__num{font-family:var(--font-head);font-size:52px;font-weight:800;color:rgba(232,93,58,.15);line-height:1;margin-bottom:16px}
+    .paso h3{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--white);margin-bottom:8px}
+    .paso p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65}
+    .paso__arrow{position:absolute;top:36px;right:-12px;z-index:2;background:var(--coral);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px}
+    .paso:last-child .paso__arrow{display:none}
 
-    /* PRECIO */
-    .precio { background: var(--gris-bg); }
-    .precio-inner { display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: start; }
-    .precio-card { background: var(--blanco); border: 1px solid var(--gris-linea); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(15,31,61,0.07); }
-    .precio-card-header { background: var(--navy); padding: 36px; color: #fff; }
-    .precio-card-header h3 { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.55; margin-bottom: 12px; }
-    .precio-monto { font-size: 3.8rem; font-weight: 800; letter-spacing: -0.04em; }
-    .precio-monto sup { font-size: 1.4rem; vertical-align: top; margin-top: 12px; }
-    .precio-monto span { font-size: 1rem; font-weight: 400; opacity: 0.55; }
-    .precio-sub { font-size: 0.82rem; opacity: 0.5; margin-top: 6px; }
-    .precio-body { padding: 32px 36px; }
-    .precio-list { list-style: none; margin-bottom: 28px; }
-    .precio-list li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--gris-linea); font-size: 0.9rem; color: var(--texto); }
-    .precio-list li:last-child { border: none; }
-    .p-check { color: #22c55e; font-weight: 700; font-size: 0.8rem; }
-    .garantia-box { background: var(--gris-bg); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; font-size: 0.88rem; color: var(--gris-texto); border-left: 3px solid var(--navy); }
-    .garantia-box strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 0.9rem; }
-    .precio-btn { width: 100%; justify-content: center; padding: 15px; border-radius: 8px; font-size: 0.95rem; }
-    .precio-nota { font-size: 0.82rem; color: var(--gris-texto); margin-top: 12px; text-align: center; }
+    /* PAQUETES */
+    .paquetes{padding:var(--py) 0;background:var(--cream-2)}
+    .paquetes__top{text-align:center;margin-bottom:60px}
+    .paquetes__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+    .pkg{background:var(--white);border-radius:20px;padding:36px 28px;border:1.5px solid transparent;transition:border-color .25s,box-shadow .25s}
+    .pkg:hover{border-color:rgba(232,93,58,.2);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+    .pkg.featured{background:var(--coral);border-color:var(--coral)}
+    .pkg__label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
+    .pkg.featured .pkg__label{color:rgba(255,255,255,.7)}
+    .pkg__name{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--black);margin-bottom:8px;letter-spacing:-.01em}
+    .pkg.featured .pkg__name{color:#fff}
+    .pkg__price{font-family:var(--font-head);font-size:36px;font-weight:800;color:var(--black);line-height:1;margin-bottom:4px;letter-spacing:-.02em}
+    .pkg.featured .pkg__price{color:#fff}
+    .pkg__price span{font-size:16px;font-weight:500}
+    .pkg__note{font-size:12px;color:var(--gray);margin-bottom:24px}
+    .pkg.featured .pkg__note{color:rgba(255,255,255,.6)}
+    .pkg__divider{height:1px;background:rgba(0,0,0,.08);margin-bottom:24px}
+    .pkg.featured .pkg__divider{background:rgba(255,255,255,.2)}
+    .pkg__list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+    .pkg__list li{font-size:13px;color:var(--black);display:flex;align-items:flex-start;gap:10px;line-height:1.45}
+    .pkg.featured .pkg__list li{color:rgba(255,255,255,.9)}
+    .pkg__list li::before{content:'✓';color:var(--coral);font-weight:800;font-size:13px;flex-shrink:0;margin-top:1px}
+    .pkg.featured .pkg__list li::before{color:rgba(255,255,255,.9)}
+    .btn-pkg{width:100%;padding:13px;border:none;border-radius:100px;font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;min-height:48px}
+    .btn-pkg-outline{background:transparent;border:1.5px solid rgba(0,0,0,.15);color:var(--black)}
+    .btn-pkg-outline:hover{border-color:var(--coral);color:var(--coral)}
+    .btn-pkg-white{background:#fff;color:var(--coral)}
+    .btn-pkg-white:hover{background:var(--cream)}
 
-    .precio-reasons h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--navy); margin: 14px 0 32px; }
-    .reason-list { list-style: none; }
-    .reason-list li { display: flex; gap: 16px; margin-bottom: 28px; align-items: flex-start; }
-    .reason-icon { width: 40px; height: 40px; background: var(--gris-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; border: 1px solid var(--gris-linea); }
-    .reason-list strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 0.95rem; }
-    .reason-list p { font-size: 0.88rem; color: var(--gris-texto); }
-
-    /* GARANTÍA */
-    .garantia-section { background: var(--navy); color: #fff; padding: 96px 0; }
-    .garantia-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .garantia-section h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; margin: 14px 0 20px; }
-    .garantia-section p { opacity: 0.7; font-size: 1rem; line-height: 1.7; margin-bottom: 36px; }
-    .garantia-steps { list-style: none; }
-    .garantia-steps li { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1); align-items: flex-start; }
-    .garantia-steps li:last-child { border: none; }
-    .g-num { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; width: 24px; flex-shrink: 0; margin-top: 2px; }
-    .garantia-steps strong { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 3px; }
-    .garantia-steps span { font-size: 0.85rem; opacity: 0.6; }
+    /* TESTIMONIOS */
+    .testimonios{padding:var(--py) 0;background:var(--white)}
+    .testimonios__top{text-align:center;margin-bottom:56px}
+    .testimonios__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .testi{background:var(--cream);border-radius:16px;padding:28px 24px}
+    .testi__stars{color:var(--coral);font-size:14px;margin-bottom:14px;letter-spacing:2px}
+    .testi__text{font-size:14px;color:var(--black);line-height:1.7;margin-bottom:20px;font-style:italic}
+    .testi__author{display:flex;align-items:center;gap:12px}
+    .testi__avatar{width:36px;height:36px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+    .testi__name{font-size:13px;font-weight:700;color:var(--black)}
+    .testi__biz{font-size:11px;color:var(--gray)}
 
     /* CTA FINAL */
-    .cta-final { background: var(--gris-bg); padding: 112px 0; text-align: center; border-top: 1px solid var(--gris-linea); }
-    .cta-final h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--navy); max-width: 600px; margin: 12px auto 20px; }
-    .cta-final p { color: var(--gris-texto); font-size: 1.05rem; margin-bottom: 40px; }
-    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .cta-sub { margin-top: 20px; font-size: 0.83rem; color: var(--gris-texto); }
+    .cta-final{padding:var(--py) 0;background:var(--coral);text-align:center}
+    .cta-final h2{font-family:var(--font-head);font-size:clamp(28px,4vw,52px);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
+    .cta-final p{font-size:16px;color:rgba(255,255,255,.8);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
+    .btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--coral);font-family:var(--font-head);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:16px 36px;border-radius:100px;transition:.2s;min-height:52px}
+    .btn-white:hover{background:var(--cream);transform:translateY(-2px)}
 
     /* FOOTER */
-    footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 48px 0; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .footer-logo img { height: 32px; width: auto; display: block; filter: brightness(0) invert(1); }
-    footer p { font-size: 0.82rem; }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
-    .footer-links a:hover { color: #fff; }
+    .footer{background:var(--black);padding:clamp(48px,6vw,72px) 0 0}
+    .footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .footer__logo{font-family:var(--font-head);font-size:22px;font-weight:800;color:#fff;margin-bottom:4px}
+    .footer__logo span{color:var(--coral)}
+    .footer__tagline{font-size:13px;color:rgba(255,255,255,.4);line-height:1.65;max-width:260px;margin-top:10px}
+    .footer__col h4{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:18px}
+    .footer__col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .footer__col ul a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+    .footer__col ul a:hover{color:#fff}
+    .footer__bottom{padding:20px 0;text-align:center;font-size:12px;color:rgba(255,255,255,.25)}
+    .footer__bottom span{color:var(--coral)}
+    .footer__social{display:flex;gap:10px;margin-top:20px}
+    .soc{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;transition:background .2s}
+    .soc:hover{background:var(--coral)}
+    .soc svg{width:16px;height:16px;color:#fff;fill:none;stroke:currentColor;stroke-width:1.8}
 
-    /* WA FLOTANTE */
-    .wa-float { position: fixed; bottom: 28px; right: 24px; z-index: 999; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; }
-    .wa-float:hover { transform: scale(1.08); }
+    /* REVEAL */
+    @media(prefers-reduced-motion:no-preference){
+      .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+      .reveal.visible{opacity:1;transform:none}
+    }
 
     /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero-inner, .solucion-grid, .precio-inner, .garantia-inner { grid-template-columns: 1fr; gap: 48px; }
-      .problemas-grid, .proceso-grid { grid-template-columns: 1fr; }
-      .proceso-grid::before { display: none; }
-      .hero { padding: 72px 0 64px; }
-      section { padding: 72px 0; }
-      .nav-right .nav-link { display: none; }
+    @media(max-width:1024px){
+      .hero__inner{grid-template-columns:1fr;gap:48px}
+      .hero__visual{display:none}
+      .servicios__grid,.paquetes__grid{grid-template-columns:repeat(2,1fr)}
+      .proceso__grid{grid-template-columns:repeat(2,1fr)}
+      .footer__grid{grid-template-columns:1fr 1fr;gap:36px}
+    }
+    @media(max-width:768px){
+      .nav__links,.nav__cta{display:none}
+      .nav__burger{display:flex}
+      .servicios__top{flex-direction:column;align-items:flex-start}
+      .servicios__grid,.paquetes__grid,.testimonios__grid{grid-template-columns:1fr}
+      .proceso__grid{grid-template-columns:1fr}
+      .paso__arrow{display:none}
+      .footer__grid{grid-template-columns:1fr}
+      .hero__actions{flex-direction:column}
     }
   </style>
 </head>
 <body>
+  <a href="#main" class="skip">Saltar al contenido</a>
 
-  <!-- NAV -->
-  <nav>
-    <div class="inner">
-      <div class="logo"><a href="index.html"><img src="logo-brota.png" alt="Brota Digital"></a></div>
-      <div class="nav-right">
-        <a href="#precio" class="nav-link">Precio</a>
-        <a href="demo-restaurante.html" class="nav-link" target="_blank">Ver ejemplo</a>
-        <a href="https://wa.me/525564131634?text=Hola,%20quiero%20información%20sobre%20mi%20página%20web" class="nav-cta" target="_blank">Quiero mi página</a>
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo">brota<span>.</span></a>
+        <ul class="nav__links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#paquetes">Precios</a></li>
+          <li><a href="#proceso">Cómo funciona</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="https://wa.me/525564131634" class="nav__cta">Empezar</a>
+        <button class="nav__burger" id="burger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="#servicios">Servicios</a>
+      <a href="#paquetes">Precios</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div>
-          <div class="hero-eyebrow">
-            <div class="hero-dot"></div>
-            <span>Para negocios en CDMX</span>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__inner">
+          <div>
+            <div class="hero__eyebrow">🌱 Agencia de marketing digital</div>
+            <h1 class="hero__h1">
+              Tu negocio merece<br>
+              <em>crecer en línea.</em>
+            </h1>
+            <p class="hero__sub">
+              Creamos páginas web, identidad de marca y estrategia digital
+              para pequeños negocios que quieren verse profesionales sin gastar una fortuna.
+            </p>
+            <div class="hero__actions">
+              <a href="https://wa.me/525564131634" class="btn-coral">Quiero mi página web</a>
+              <a href="#paquetes" class="btn-ghost">Ver precios</a>
+            </div>
+            <div class="hero__trust">
+              <div class="trust-dots">
+                <div class="trust-dot active"></div>
+                <div class="trust-dot active"></div>
+                <div class="trust-dot active"></div>
+                <div class="trust-dot"></div>
+                <div class="trust-dot"></div>
+              </div>
+              <p><strong>Desde $3,500 MXN</strong> · Entrega en 5-7 días</p>
+            </div>
           </div>
-          <h1>Tu negocio existe.<br><em>En Google, no aparece.</em></h1>
-          <p class="hero-desc">Cada día sin página web, tus clientes potenciales encuentran a tu competencia. Te ponemos en el mapa en 7 días, sin complicaciones.</p>
-          <div class="hero-btns">
-            <a href="https://wa.me/525564131634?text=Hola,%20quiero%20información%20sobre%20mi%20página%20web" class="btn btn-primary" target="_blank">Quiero mi página web →</a>
-            <a href="demo-restaurante.html" class="btn btn-ghost" target="_blank">Ver ejemplo real</a>
-          </div>
-          <div class="hero-trust">
-            <div class="trust-item"><div class="trust-dot"></div><span><strong>$3,500 MXN</strong> pago único</span></div>
-            <div class="trust-item"><div class="trust-dot"></div><span>Entrega en <strong>7 días</strong></span></div>
-            <div class="trust-item"><div class="trust-dot"></div><span><strong>Garantía</strong> de satisfacción</span></div>
+          <div class="hero__visual">
+            <div class="hero__badge">
+              <span class="big">+3x</span>
+              más clientes
+            </div>
+            <div class="hero__card">
+              <div class="hero__card-top">
+                <div class="hero__card-avatar">B</div>
+                <div>
+                  <div class="hero__card-name">Tu negocio</div>
+                  <div class="hero__card-handle">nueva página lista ✓</div>
+                </div>
+              </div>
+              <div class="hero__card-img">
+                <div class="hero__card-img-inner">
+                  <div class="big">brota<span style="color:#1a1a1a">.</span></div>
+                  <div class="sm">tu marca aquí</div>
+                </div>
+              </div>
+              <div class="hero__card-stats">
+                <div class="stat-mini"><div class="num">↑82%</div><div class="lbl">Visitas</div></div>
+                <div class="stat-mini"><div class="num">5d</div><div class="lbl">Entrega</div></div>
+                <div class="stat-mini"><div class="num">100%</div><div class="lbl">Tuyo</div></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <div class="hero-card">
-            <div class="hero-card-tag">Paquete único</div>
-            <h3>Página Web Profesional</h3>
-            <div class="hero-card-price"><sup>$</sup>3,500<span> MXN</span></div>
-            <p class="hero-card-sub">Pago único · Sin mensualidades</p>
-            <ul class="hero-card-items">
-              <li><span class="li-check">✓</span> Diseño personalizado</li>
-              <li><span class="li-check">✓</span> Adaptada para celular</li>
-              <li><span class="li-check">✓</span> Dominio .mx incluido</li>
-              <li><span class="li-check">✓</span> Hosting 1er año incluido</li>
-              <li><span class="li-check">✓</span> Botón de WhatsApp</li>
-              <li><span class="li-check">✓</span> Google Maps + contacto</li>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="logos" aria-hidden="true">
+      <div class="logos__track">
+        <span>Páginas Web</span><span class="dot"></span>
+        <span>Identidad de Marca</span><span class="dot"></span>
+        <span>Redes Sociales</span><span class="dot"></span>
+        <span>Landing Pages</span><span class="dot"></span>
+        <span>Estrategia Digital</span><span class="dot"></span>
+        <span>Diseño Gráfico</span><span class="dot"></span>
+        <span>Páginas Web</span><span class="dot"></span>
+        <span>Identidad de Marca</span><span class="dot"></span>
+        <span>Redes Sociales</span><span class="dot"></span>
+        <span>Landing Pages</span><span class="dot"></span>
+        <span>Estrategia Digital</span><span class="dot"></span>
+        <span>Diseño Gráfico</span><span class="dot"></span>
+      </div>
+    </div>
+
+    <!-- SERVICIOS -->
+    <section class="servicios" id="servicios">
+      <div class="container">
+        <div class="servicios__top">
+          <div class="reveal">
+            <p class="label">Lo que hacemos</p>
+            <h2 class="h2">Todo lo que tu negocio<br>necesita para crecer</h2>
+          </div>
+          <p class="lead reveal" style="max-width:320px">Sin complicaciones, sin tecnicismos. Tú enfócate en tu negocio, nosotros en lo digital.</p>
+        </div>
+        <div class="servicios__grid">
+          <div class="serv-card reveal">
+            <div class="serv-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            </div>
+            <h3>Página Web</h3>
+            <p>Landing page profesional que convierte visitantes en clientes. Diseño único, rápida y en tu dominio.</p>
+            <div class="serv-price">Desde $3,500 MXN</div>
+            <ul class="serv-list">
+              <li>Diseño personalizado</li>
+              <li>Optimizada para celular</li>
+              <li>Formulario de contacto</li>
+              <li>Link a WhatsApp</li>
             </ul>
-            <div class="garantia-mini">🛡️&nbsp; Si no te gusta el borrador, no pagas nada.</div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL PROOF -->
-  <div class="social-proof">
-    <div class="container">
-      <div class="proof-inner">
-        <span class="proof-label">Ideal para →</span>
-        <span class="proof-item">🍽️ Restaurantes y fondas</span>
-        <span class="proof-item">💇 Estéticas y salones</span>
-        <span class="proof-item">🛒 Tiendas y abarrotes</span>
-        <span class="proof-item">🔧 Talleres y servicios</span>
-        <span class="proof-item">🏥 Consultorios</span>
-        <span class="proof-item">🏠 Cualquier negocio local</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROBLEMA -->
-  <section class="problema">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag">El problema</span>
-        <h2>Sin página web, estás perdiendo clientes que ya te están buscando</h2>
-        <p>Cada semana, personas en tu colonia buscan en Google el tipo de negocio que tienes. Si no apareces, ese cliente se va a quien sí está ahí.</p>
-      </div>
-      <div class="problemas-grid">
-        <div class="problema-card">
-          <div class="problema-num">01</div>
-          <h3>No existes en Google</h3>
-          <p>Cuando alguien busca tu tipo de negocio en Google, tus competidores aparecen y tú no. Ese cliente nunca va a saber que existes.</p>
-        </div>
-        <div class="problema-card">
-          <div class="problema-num">02</div>
-          <h3>Tu negocio se ve informal</h3>
-          <p>En 2025, un negocio sin página web genera desconfianza. Aunque lleves 20 años operando, sin presencia digital pareces improvisado.</p>
-        </div>
-        <div class="problema-card">
-          <div class="problema-num">03</div>
-          <h3>Depender de redes es un riesgo</h3>
-          <p>Facebook e Instagram cambian sus algoritmos cuando quieren. Una página web es tuya para siempre — nadie te la puede quitar ni esconder.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUCIÓN -->
-  <section class="solucion">
-    <div class="container">
-      <div class="solucion-grid">
-        <div>
-          <span class="tag">Lo que hacemos</span>
-          <h2 style="font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;color:var(--navy);margin:14px 0 8px;">Una página que trabaja por tu negocio, 24/7</h2>
-          <ul class="solucion-lista">
-            <li>
-              <span class="s-num">01</span>
-              <div><strong>Diseño que representa tu negocio</strong><span>No usamos plantillas genéricas. Tu página refleja quién eres y genera confianza desde el primer segundo.</span></div>
-            </li>
-            <li>
-              <span class="s-num">02</span>
-              <div><strong>Apareces en búsquedas locales de Google</strong><span>Configuramos todo para que te encuentren personas en tu colonia y zona.</span></div>
-            </li>
-            <li>
-              <span class="s-num">03</span>
-              <div><strong>Tus clientes te contactan directo</strong><span>Botón de WhatsApp, mapa, horarios y teléfono — todo en un clic desde el celular.</span></div>
-            </li>
-            <li>
-              <span class="s-num">04</span>
-              <div><strong>Se ve bien en cualquier dispositivo</strong><span>El 90% de tus clientes te van a buscar desde el teléfono. Tu página se adapta perfectamente.</span></div>
-            </li>
-            <li>
-              <span class="s-num">05</span>
-              <div><strong>Lista en 7 días hábiles</strong><span>Fecha de entrega real. Sin esperas indefinidas, sin excusas.</span></div>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <div class="demo-window">
-            <div class="demo-topbar">
-              <div class="d-dot r"></div><div class="d-dot y"></div><div class="d-dot g"></div>
-              <div class="url-bar">fondalaabuela.mx</div>
+          <div class="serv-card reveal">
+            <div class="serv-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
             </div>
-            <div class="demo-body">
-              <div class="d-emoji">🍽️</div>
-              <h3>Fonda La Abuela</h3>
-              <p>Comida casera en Coyoacán desde 1998</p>
-            </div>
-            <div class="demo-footer">
-              <span>Ejemplo de página real →</span>
-              <a href="demo-restaurante.html" target="_blank">Ver completa ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESO -->
-  <section class="proceso">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag">Cómo funciona</span>
-        <h2>Tres pasos y tu negocio está en internet</h2>
-        <p>Sin tecnicismos, sin reuniones largas. Tú me das la información y yo me encargo de todo lo demás.</p>
-      </div>
-      <div class="proceso-grid">
-        <div class="paso">
-          <div class="paso-circle">1</div>
-          <h3>Llenas el brief</h3>
-          <p>Un formulario sencillo con datos de tu negocio: nombre, fotos, servicios y horarios. 15 minutos de tu tiempo.</p>
-        </div>
-        <div class="paso">
-          <div class="paso-circle">2</div>
-          <h3>Revisas el borrador</h3>
-          <p>En máximo 5 días hábiles te muestro cómo queda tu página. Si algo no te convence, lo ajustamos.</p>
-        </div>
-        <div class="paso">
-          <div class="paso-circle">3</div>
-          <h3>Sale en vivo</h3>
-          <p>Das tu aprobación y en 2 días tu negocio ya aparece en Google con dominio propio.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRECIO -->
-  <section class="precio" id="precio">
-    <div class="container">
-      <div class="precio-inner">
-        <div class="precio-reasons">
-          <span class="tag">Precio</span>
-          <h2>Sin mensualidades.<br>Sin sorpresas.</h2>
-          <ul class="reason-list">
-            <li>
-              <div class="reason-icon">📱</div>
-              <div><strong>Diseño mobile-first</strong><p>Tu página se ve perfecta en celular, donde el 90% de tus clientes te van a buscar.</p></div>
-            </li>
-            <li>
-              <div class="reason-icon">🌐</div>
-              <div><strong>Dominio y hosting incluidos</strong><p>El primer año de tu dominio .mx y el hosting ya están incluidos en el precio. Sin costos extra.</p></div>
-            </li>
-            <li>
-              <div class="reason-icon">💬</div>
-              <div><strong>Comunicación por WhatsApp</strong><p>Sin reuniones ni llamadas largas. Todo se maneja por WhatsApp, en tu tiempo.</p></div>
-            </li>
-            <li>
-              <div class="reason-icon">🛡️</div>
-              <div><strong>Garantía de satisfacción</strong><p>Primero te muestro el borrador. Si no te gusta, no hay cobro. El riesgo es cero.</p></div>
-            </li>
-          </ul>
-        </div>
-        <div class="precio-card">
-          <div class="precio-card-header">
-            <h3>Página Web Profesional</h3>
-            <div class="precio-monto"><sup>$</sup>3,500<span> MXN</span></div>
-            <p class="precio-sub">Pago único · Sin mensualidades</p>
-          </div>
-          <div class="precio-body">
-            <ul class="precio-list">
-              <li><span class="p-check">✓</span> Diseño personalizado para tu negocio</li>
-              <li><span class="p-check">✓</span> Adaptada para celular y computadora</li>
-              <li><span class="p-check">✓</span> Google Maps + datos de contacto</li>
-              <li><span class="p-check">✓</span> Botón de WhatsApp directo</li>
-              <li><span class="p-check">✓</span> Dominio .mx incluido (1er año)</li>
-              <li><span class="p-check">✓</span> Hosting incluido (1er año)</li>
-              <li><span class="p-check">✓</span> Entrega en 7 días hábiles</li>
-              <li><span class="p-check">✓</span> Una ronda de ajustes incluida</li>
+            <h3>Identidad de Marca</h3>
+            <p>Logo, paleta de colores y tipografía para que tu negocio tenga una imagen consistente y profesional.</p>
+            <div class="serv-price">Desde $2,500 MXN</div>
+            <ul class="serv-list">
+              <li>Logo en alta resolución</li>
+              <li>Paleta de colores</li>
+              <li>Guía de uso de marca</li>
+              <li>Kit para redes sociales</li>
             </ul>
-            <div class="garantia-box">
-              <strong>Garantía de satisfacción</strong>
-              Te muestro un borrador antes de cualquier cobro. Si no te convence, no pagas.
+          </div>
+          <div class="serv-card reveal">
+            <div class="serv-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </div>
-            <a href="https://wa.me/525564131634?text=Hola,%20quiero%20contratar%20mi%20página%20web" class="btn btn-primary precio-btn" target="_blank">
-              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Quiero empezar ahora
-            </a>
-            <p class="precio-nota">Respondo en menos de 2 horas · Lun–Vie 9am–7pm</p>
+            <h3>Gestión de Redes</h3>
+            <p>Contenido mensual para Instagram y Facebook. Publicaciones diseñadas para atraer a tus clientes ideales.</p>
+            <div class="serv-price">Desde $3,000 MXN/mes</div>
+            <ul class="serv-list">
+              <li>12 publicaciones/mes</li>
+              <li>Diseño + copy incluido</li>
+              <li>Historias semanales</li>
+              <li>Reporte mensual</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- GARANTÍA -->
-  <section class="garantia-section">
-    <div class="container">
-      <div class="garantia-inner">
-        <div>
-          <span class="tag" style="color:rgba(255,255,255,0.4);">Garantía</span>
-          <h2>Si no te gusta el borrador,<br>no pagas.</h2>
-          <p>Antes de publicar y antes de cualquier cobro, te muestro exactamente cómo va a quedar. Si no te convence, cancelamos sin costo ni explicaciones.</p>
-          <a href="https://wa.me/525564131634?text=Hola,%20quiero%20información%20sobre%20mi%20página%20web" class="btn btn-azul" target="_blank">Empezar sin riesgo →</a>
+    <!-- PROCESO -->
+    <section class="proceso" id="proceso">
+      <div class="container">
+        <div class="proceso__top reveal">
+          <p class="label" style="justify-content:center">Cómo funciona</p>
+          <h2 class="h2 light">Simple, rápido y sin sorpresas</h2>
+          <p class="lead light" style="margin:0 auto">Tu página lista en menos de una semana.</p>
         </div>
-        <div>
-          <ul class="garantia-steps">
-            <li><span class="g-num">01</span><div><strong>Llenas el brief</strong><span>Me compartes la información de tu negocio por WhatsApp</span></div></li>
-            <li><span class="g-num">02</span><div><strong>Construyo el borrador</strong><span>En 5 días hábiles tienes la primera versión para revisar</span></div></li>
-            <li><span class="g-num">03</span><div><strong>Apruebas o cancelamos</strong><span>Si te gusta, pagamos y publicamos. Si no, no hay cobro.</span></div></li>
-            <li><span class="g-num">04</span><div><strong>Tu página sale en vivo</strong><span>Con dominio propio, en 2 días tu negocio aparece en Google</span></div></li>
-          </ul>
+        <div class="proceso__grid">
+          <div class="paso reveal">
+            <div class="paso__num">01</div>
+            <h3>Briefing</h3>
+            <p>Me cuentas sobre tu negocio: qué vendes, a quién le vendes y qué quieres transmitir.</p>
+            <div class="paso__arrow">→</div>
+          </div>
+          <div class="paso reveal">
+            <div class="paso__num">02</div>
+            <h3>Propuesta + 50%</h3>
+            <p>Te mando la propuesta de diseño. Con el 50% de anticipo arrancamos.</p>
+            <div class="paso__arrow">→</div>
+          </div>
+          <div class="paso reveal">
+            <div class="paso__num">03</div>
+            <h3>Diseño</h3>
+            <p>En 3-5 días tienes la primera versión lista para revisar con 2 rondas de cambios incluidas.</p>
+            <div class="paso__arrow">→</div>
+          </div>
+          <div class="paso reveal">
+            <div class="paso__num">04</div>
+            <h3>Entrega + 50%</h3>
+            <p>Aprobado el diseño, se paga el resto y tu página queda en línea lista para recibir clientes.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA FINAL -->
-  <section class="cta-final">
-    <div class="container">
-      <span class="tag">¿Listo para empezar?</span>
-      <h2>Tu competencia ya está en internet. Tú también puedes.</h2>
-      <p>Mándame un WhatsApp. En 10 minutos sabes exactamente qué incluye tu página y cuándo la tienes lista.</p>
-      <div class="cta-btns">
-        <a href="https://wa.me/525564131634?text=Hola,%20me%20interesa%20tener%20mi%20página%20web%20con%20Brota%20Digital" class="btn btn-primary" style="padding:15px 32px;font-size:1rem;" target="_blank">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Escríbeme por WhatsApp
+    <!-- PAQUETES -->
+    <section class="paquetes" id="paquetes">
+      <div class="container">
+        <div class="paquetes__top reveal">
+          <p class="label" style="justify-content:center">Precios</p>
+          <h2 class="h2">Planes para cada etapa</h2>
+          <p class="lead" style="margin:0 auto">Sin letra chica. Sin costos ocultos.</p>
+        </div>
+        <div class="paquetes__grid">
+          <div class="pkg reveal">
+            <div class="pkg__label">Semilla</div>
+            <div class="pkg__name">Starter</div>
+            <div class="pkg__price"><span>$</span>3,500</div>
+            <div class="pkg__note">MXN · pago único</div>
+            <div class="pkg__divider"></div>
+            <ul class="pkg__list">
+              <li>Landing page de 1 página</li>
+              <li>Diseño personalizado</li>
+              <li>Formulario de contacto</li>
+              <li>Botón de WhatsApp</li>
+              <li>Adaptada a celular</li>
+              <li>2 rondas de cambios</li>
+            </ul>
+            <button class="btn-pkg btn-pkg-outline" onclick="window.open('https://wa.me/525564131634','_blank')">Quiero este plan</button>
+          </div>
+          <div class="pkg featured reveal">
+            <div class="pkg__label">⭐ Más popular</div>
+            <div class="pkg__name">Brote</div>
+            <div class="pkg__price"><span>$</span>6,500</div>
+            <div class="pkg__note">MXN · pago único</div>
+            <div class="pkg__divider"></div>
+            <ul class="pkg__list">
+              <li>Landing page completa (5-6 secciones)</li>
+              <li>Diseño premium personalizado</li>
+              <li>Galería / Menú / Portfolio</li>
+              <li>Integración Google Maps</li>
+              <li>Redes sociales enlazadas</li>
+              <li>3 rondas de cambios</li>
+            </ul>
+            <button class="btn-pkg btn-pkg-white" onclick="window.open('https://wa.me/525564131634','_blank')">Quiero este plan</button>
+          </div>
+          <div class="pkg reveal">
+            <div class="pkg__label">Raíz</div>
+            <div class="pkg__name">Full</div>
+            <div class="pkg__price"><span>$</span>12,000</div>
+            <div class="pkg__note">MXN · incluye 1 mes</div>
+            <div class="pkg__divider"></div>
+            <ul class="pkg__list">
+              <li>Todo el plan Brote</li>
+              <li>Logo + identidad de marca</li>
+              <li>Gestión redes 1 mes</li>
+              <li>12 publicaciones diseñadas</li>
+              <li>Estrategia de contenido</li>
+              <li>Soporte prioritario</li>
+            </ul>
+            <button class="btn-pkg btn-pkg-outline" onclick="window.open('https://wa.me/525564131634','_blank')">Quiero este plan</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonios" id="clientes">
+      <div class="container">
+        <div class="testimonios__top reveal">
+          <p class="label" style="justify-content:center">Clientes</p>
+          <h2 class="h2">Negocios que ya brotaron</h2>
+        </div>
+        <div class="testimonios__grid">
+          <div class="testi reveal">
+            <div class="testi__stars">★★★★★</div>
+            <p class="testi__text">"Mi restaurante duplicó las llamadas el primer mes de tener la página. Vale cada peso."</p>
+            <div class="testi__author">
+              <div class="testi__avatar">LC</div>
+              <div>
+                <div class="testi__name">Luis C.</div>
+                <div class="testi__biz">Restaurante · CDMX</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi reveal">
+            <div class="testi__stars">★★★★★</div>
+            <p class="testi__text">"Súper rápidas y profesionales. En 5 días ya tenía mi página y mis clientes no podían creer lo bonita."</p>
+            <div class="testi__author">
+              <div class="testi__avatar">MR</div>
+              <div>
+                <div class="testi__name">Mariana R.</div>
+                <div class="testi__biz">Boutique de ropa · Guadalajara</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi reveal">
+            <div class="testi__stars">★★★★★</div>
+            <p class="testi__text">"Por fin mi negocio se ve tan bueno como el servicio que doy. Recomendado al 100%."</p>
+            <div class="testi__author">
+              <div class="testi__avatar">AP</div>
+              <div>
+                <div class="testi__name">Andrea P.</div>
+                <div class="testi__biz">Salón de belleza · Monterrey</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final" id="contacto">
+      <div class="container">
+        <h2 class="reveal">¿Lista para que tu negocio brote?</h2>
+        <p class="reveal">Escríbenos hoy y en menos de 24 hrs tienes tu propuesta.</p>
+        <a href="https://wa.me/525564131634" class="btn-white reveal" target="_blank" rel="noopener">
+          Escribir por WhatsApp 💬
         </a>
-        <a href="demo-restaurante.html" class="btn btn-ghost" target="_blank">Ver ejemplo primero</a>
       </div>
-      <p class="cta-sub">Cualquier negocio en CDMX · Lun–Vie 9am–7pm · Respuesta en menos de 2 horas</p>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- FOOTER -->
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo"><img src="logo-brota.png" alt="Brota Digital"></div>
-        <p>© 2025 Brota Digital · Páginas web para negocios en CDMX</p>
-        <div class="footer-links">
-          <a href="demo-restaurante.html" target="_blank">Ver ejemplo</a>
-          <a href="https://wa.me/525564131634" target="_blank">WhatsApp</a>
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">brota<span>.</span> digital</div>
+          <p class="footer__tagline">Hacemos crecer pequeños negocios con presencia digital profesional y accesible.</p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/brotadigital" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/525564131634" target="_blank" rel="noopener" class="soc" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+          </div>
         </div>
+        <div class="footer__col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#servicios">Página Web</a></li>
+            <li><a href="#servicios">Identidad de Marca</a></li>
+            <li><a href="#servicios">Gestión de Redes</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Información</h4>
+          <ul>
+            <li><a href="#proceso">Cómo funciona</a></li>
+            <li><a href="#paquetes">Precios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2025 <span>Brota Digital</span> · Todos los derechos reservados · CDMX, México
       </div>
     </div>
   </footer>
 
-  <!-- WHATSAPP FLOTANTE -->
-  <a href="https://wa.me/525564131634?text=Hola,%20quiero%20información%20sobre%20mi%20página%20web" class="wa-float" target="_blank">
-    <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
-
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), {passive:true});
+    const burger = document.getElementById('burger');
+    const mm = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      const open = mm.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mm.classList.remove('open')));
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+      }, {threshold: 0.1});
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+  </script>
 </body>
 </html>
