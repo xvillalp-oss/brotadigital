@@ -35,21 +35,21 @@
     .skip:focus{top:16px}
 
     /* NAV */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--cream);border-bottom:1px solid rgba(0,0,0,.08);transition:box-shadow .3s}
-    .nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--black);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
+    .nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.3)}
     .nav__inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-    .nav__logo{font-family:var(--font-head);font-size:20px;font-weight:800;color:var(--black);letter-spacing:-.01em}
+    .nav__logo{font-family:var(--font-head);font-size:22px;font-weight:800;color:#fff;letter-spacing:-.01em}
     .nav__logo span{color:var(--coral)}
     .nav__links{display:flex;gap:32px;list-style:none}
-    .nav__links a{font-size:13px;font-weight:500;color:var(--gray);transition:color .2s}
+    .nav__links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
     .nav__links a:hover{color:var(--coral)}
     .nav__cta{background:var(--coral);color:#fff;font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 24px;border-radius:100px;transition:background .2s;min-height:44px;display:inline-flex;align-items:center}
     .nav__cta:hover{background:var(--coral-d)}
     .nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;align-items:center;justify-content:center}
-    .nav__burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:.3s}
-    .nav__mobile{display:none;flex-direction:column;background:var(--cream);border-top:1px solid rgba(0,0,0,.06);padding:16px 0}
+    .nav__burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+    .nav__mobile{display:none;flex-direction:column;background:var(--black);border-top:1px solid rgba(255,255,255,.08);padding:16px 0}
     .nav__mobile.open{display:flex}
-    .nav__mobile a{padding:12px clamp(20px,4vw,56px);font-size:14px;font-weight:500;color:var(--gray)}
+    .nav__mobile a{padding:12px clamp(20px,4vw,56px);font-size:14px;font-weight:500;color:rgba(255,255,255,.6)}
 
     /* HERO */
     .hero{min-height:100vh;display:flex;align-items:center;padding-top:68px;background:var(--cream);position:relative;overflow:hidden}

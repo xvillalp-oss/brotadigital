@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Brota Digital — Brand Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --coral:#E85D3A; --coral-d:#C94828; --coral-lt:#F5A08A;
+      --black:#1A1A1A; --cream:#FDFAF5; --cream-2:#F5EFE4;
+      --gold:#F5C97A; --gray:#6B6B6B; --white:#fff;
+      --font-head:'Plus Jakarta Sans',sans-serif;
+      --font-body:'DM Sans',sans-serif;
+    }
+    body{font-family:var(--font-body);background:#F0EBE3;color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased}
+    .page{max-width:900px;margin:0 auto;padding:clamp(24px,4vw,60px) clamp(16px,4vw,40px)}
+
+    /* HEADER */
+    .kit-header{background:var(--black);border-radius:16px;padding:40px 40px 36px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .kit-logo{font-family:var(--font-head);font-size:36px;font-weight:800;color:#fff}
+    .kit-logo span{color:var(--coral)}
+    .kit-header-right{text-align:right}
+    .kit-title{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px}
+    .kit-version{font-size:12px;color:rgba(255,255,255,.25)}
+
+    /* SECTION */
+    .section{background:var(--white);border-radius:16px;padding:36px;margin-bottom:16px}
+    .section-title{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:24px;display:flex;align-items:center;gap:8px}
+    .section-title::before{content:'';display:block;width:20px;height:2px;background:var(--coral);border-radius:2px}
+
+    /* LOGOS */
+    .logo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .logo-box{border-radius:12px;padding:32px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:140px}
+    .logo-box.dark{background:var(--black)}
+    .logo-box.light{background:var(--cream);border:1px solid rgba(0,0,0,.06)}
+    .logo-box.coral{background:var(--coral)}
+    .logo-box.outline{background:transparent;border:1.5px dashed rgba(0,0,0,.15)}
+    .logo-main{font-family:var(--font-head);font-size:32px;font-weight:800;line-height:1}
+    .logo-main span{color:var(--coral)}
+    .logo-main.white{color:#fff}
+    .logo-main.white span{color:var(--coral-lt)}
+    .logo-main.on-coral{color:#fff}
+    .logo-main.on-coral span{color:rgba(255,255,255,.6)}
+    .logo-main.dark-text{color:var(--black)}
+    .logo-sub{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+    .logo-sub.muted{color:rgba(255,255,255,.35)}
+    .logo-sub.muted-dark{color:rgba(0,0,0,.3)}
+    .logo-sub.on-coral{color:rgba(255,255,255,.5)}
+    .logo-label{font-size:11px;color:var(--gray);margin-top:6px;text-align:center}
+
+    /* ICON */
+    .icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:4px}
+    .icon-box{border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+    .icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:20px;font-weight:800}
+    .icon-label{font-size:10px;color:var(--gray);text-align:center}
+
+    /* COLORES */
+    .color-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .color-chip{border-radius:12px;overflow:hidden}
+    .color-swatch{height:80px}
+    .color-info{padding:12px;background:var(--cream);border:1px solid rgba(0,0,0,.06);border-top:none;border-radius:0 0 12px 12px}
+    .color-name{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--black);margin-bottom:2px}
+    .color-hex{font-size:11px;color:var(--gray);font-family:monospace;display:flex;align-items:center;gap:6px;cursor:pointer}
+    .copy-badge{font-size:9px;background:var(--coral);color:#fff;padding:2px 6px;border-radius:100px;opacity:0;transition:opacity .2s}
+    .color-hex:hover .copy-badge{opacity:1}
+    .color-use{font-size:10px;color:var(--gray);margin-top:4px}
+
+    /* TIPOGRAFIA */
+    .type-row{padding:20px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+    .type-row:last-child{border-bottom:none}
+    .type-sample{font-family:var(--font-head);font-weight:800;color:var(--black);line-height:1.1;margin-bottom:6px}
+    .type-meta{display:flex;gap:16px;flex-wrap:wrap}
+    .type-tag{font-size:10px;background:var(--cream-2);color:var(--gray);padding:3px 10px;border-radius:100px;font-family:monospace}
+
+    /* VOZ */
+    .voz-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .voz-card{background:var(--cream);border-radius:12px;padding:20px}
+    .voz-card h4{font-family:var(--font-head);font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .voz-card ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+    .voz-card ul li{font-size:13px;color:var(--gray);display:flex;align-items:flex-start;gap:8px}
+    .voz-card ul li::before{content:'→';color:var(--coral);font-weight:700;flex-shrink:0}
+    .voz-card.do{border-left:3px solid #22C55E}
+    .voz-card.dont{border-left:3px solid #EF4444}
+
+    /* INSTAGRAM TEMPLATES */
+    .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .ig-post{aspect-ratio:1;border-radius:12px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;text-align:center}
+    .ig-post.t1{background:var(--black)}
+    .ig-post.t2{background:var(--coral)}
+    .ig-post.t3{background:var(--cream)}
+    .ig-post.t4{background:var(--cream-2)}
+    .ig-post.t5{background:var(--gold)}
+    .ig-post.t6{background:var(--black);border:2px solid var(--coral)}
+    .ig-tag{font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px;opacity:.6}
+    .ig-title{font-family:var(--font-head);font-size:16px;font-weight:800;line-height:1.2}
+    .ig-sub{font-size:9px;margin-top:6px;opacity:.65;letter-spacing:.08em;text-transform:uppercase}
+    .ig-logo{position:absolute;bottom:12px;right:14px;font-family:var(--font-head);font-size:10px;font-weight:800;opacity:.5}
+    .ig-logo span{color:var(--coral)}
+    .ig-logo-light span{color:rgba(255,255,255,.5)}
+
+    /* SPECS */
+    .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .spec-card{background:var(--cream);border-radius:12px;padding:20px}
+    .spec-card h4{font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
+    .spec-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:12px}
+    .spec-row:last-child{border-bottom:none}
+    .spec-row .key{color:var(--gray)}
+    .spec-row .val{font-weight:600;color:var(--black);font-family:monospace;font-size:11px}
+
+    @media(max-width:600px){
+      .logo-grid,.color-grid{grid-template-columns:repeat(2,1fr)}
+      .ig-grid{grid-template-columns:repeat(2,1fr)}
+      .voz-grid,.spec-grid{grid-template-columns:1fr}
+      .icon-grid{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="kit-header">
+    <div class="kit-logo">brota<span>.</span> digital</div>
+    <div class="kit-header-right">
+      <div class="kit-title">Brand Kit</div>
+      <div class="kit-version">Versión 1.0 · 2025</div>
+    </div>
+  </div>
+
+  <!-- LOGOS -->
+  <div class="section">
+    <div class="section-title">Logo — Variaciones</div>
+    <div class="logo-grid">
+      <div>
+        <div class="logo-box dark">
+          <div class="logo-main white">brota<span>.</span></div>
+          <div class="logo-sub muted">Digital</div>
+        </div>
+        <div class="logo-label">Principal · Fondo oscuro</div>
+      </div>
+      <div>
+        <div class="logo-box light">
+          <div class="logo-main dark-text">brota<span>.</span></div>
+          <div class="logo-sub muted-dark">Digital</div>
+        </div>
+        <div class="logo-label">Fondo claro</div>
+      </div>
+      <div>
+        <div class="logo-box coral">
+          <div class="logo-main on-coral">brota<span>.</span></div>
+          <div class="logo-sub on-coral">Digital</div>
+        </div>
+        <div class="logo-label">Fondo coral</div>
+      </div>
+      <div>
+        <div class="logo-box outline">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:var(--coral)">brota<span style="color:var(--black)">.</span></div>
+          <div class="logo-sub muted-dark">Digital</div>
+        </div>
+        <div class="logo-label">Solo coral (accent)</div>
+      </div>
+    </div>
+
+    <!-- ICONOS -->
+    <div style="margin-top:24px">
+      <div style="font-size:12px;color:var(--gray);margin-bottom:12px;font-weight:500">Ícono / Avatar</div>
+      <div class="icon-grid">
+        <div class="icon-box" style="background:var(--black);border-radius:12px">
+          <div class="icon" style="background:var(--coral);color:#fff">B.</div>
+          <div class="icon-label" style="color:rgba(255,255,255,.4)">Principal</div>
+        </div>
+        <div class="icon-box" style="background:var(--coral);border-radius:12px">
+          <div class="icon" style="background:#fff;color:var(--coral)">B.</div>
+          <div class="icon-label" style="color:rgba(255,255,255,.4)">Invertido</div>
+        </div>
+        <div class="icon-box" style="background:var(--cream);border-radius:12px">
+          <div class="icon" style="background:var(--black);color:var(--coral)">B.</div>
+          <div class="icon-label">Claro</div>
+        </div>
+        <div class="icon-box" style="background:var(--cream-2);border-radius:12px">
+          <div class="icon" style="background:var(--coral);color:#fff;border-radius:50%">B.</div>
+          <div class="icon-label">Circular</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;background:var(--cream);border-radius:10px;padding:14px 16px;font-size:12px;color:var(--gray)">
+        💡 <strong style="color:var(--black)">Para Instagram:</strong> usa el ícono circular <strong>B.</strong> en coral como foto de perfil. Fondo negro o crema.
+      </div>
+    </div>
+  </div>
+
+  <!-- COLORES -->
+  <div class="section">
+    <div class="section-title">Paleta de colores</div>
+    <div class="color-grid">
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#E85D3A"></div>
+        <div class="color-info">
+          <div class="color-name">Coral Principal</div>
+          <div class="color-hex" onclick="navigator.clipboard.writeText('#E85D3A')">#E85D3A <span class="copy-badge">copiar</span></div>
+          <div class="color-use">CTAs · acentos · logo</div>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#C94828"></div>
+        <div class="color-info">
+          <div class="color-name">Coral Oscuro</div>
+          <div class="color-hex" onclick="navigator.clipboard.writeText('#C94828')">#C94828 <span class="copy-badge">copiar</span></div>
+          <div class="color-use">Hover · sombras</div>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#1A1A1A"></div>
+        <div class="color-info">
+          <div class="color-name">Negro</div>
+          <div class="color-hex" onclick="navigator.clipboard.writeText('#1A1A1A')">#1A1A1A <span class="copy-badge">copiar</span></div>
+          <div class="color-use">Nav · texto · fondos</div>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#FDFAF5;border:1px solid #e5e0d8"></div>
+        <div class="color-info">
+          <div class="color-name">Crema</div>
+          <div class="color-hex" onclick="navigator.clipboard.writeText('#FDFAF5')">#FDFAF5 <span class="copy-badge">copiar</span></div>
+          <div class="color-use">Fondo · hero</div>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#F5C97A"></div>
+        <div class="color-info">
+          <div class="color-name">Dorado</div>
+          <div class="color-hex" onclick="navigator.clipboard.writeText('#F5C97A')">#F5C97A <span class="copy-badge">copiar</span></div>
+          <div class="color-use">Detalles · calidez</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+      <div style="background:var(--cream-2);border-radius:8px;padding:10px 16px;font-size:12px;color:var(--gray)">
+        <strong style="color:var(--black)">Instagram:</strong> usa coral + negro en stories. Crema de fondo en posts informativos.
+      </div>
+      <div style="background:var(--cream-2);border-radius:8px;padding:10px 16px;font-size:12px;color:var(--gray)">
+        <strong style="color:var(--black)">No mezclar</strong> coral con dorado en el mismo elemento.
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPOGRAFIA -->
+  <div class="section">
+    <div class="section-title">Tipografía</div>
+
+    <div class="type-row">
+      <div class="type-sample" style="font-size:38px">Plus Jakarta Sans</div>
+      <div style="font-size:13px;color:var(--gray);margin-bottom:8px">Titulares, logo, botones, menú — todo lo que lidera</div>
+      <div class="type-meta">
+        <span class="type-tag">Google Fonts</span>
+        <span class="type-tag">800 · Bold · SemiBold</span>
+        <span class="type-tag">Headings · Logo · CTAs</span>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;color:var(--black)">Aa</span>
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:700;color:var(--coral)">Bb</span>
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:600;color:var(--gray)">Cc</span>
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--black);align-self:center">ABCDEFG 0123</span>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-sample" style="font-size:32px;font-family:'DM Sans',sans-serif;font-weight:400">DM Sans</div>
+      <div style="font-size:13px;color:var(--gray);margin-bottom:8px">Cuerpo de texto, descripciones, subtítulos — legible y cálido</div>
+      <div class="type-meta">
+        <span class="type-tag">Google Fonts</span>
+        <span class="type-tag">300 · 400 · 500</span>
+        <span class="type-tag">Body · Descriptions · Labels</span>
+      </div>
+      <div style="margin-top:14px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--gray);line-height:1.7;max-width:520px">
+        Hacemos crecer pequeños negocios con presencia digital profesional y accesible. Sin complicaciones, sin tecnicismos.
+      </div>
+    </div>
+
+    <div style="margin-top:16px;background:var(--cream);border-radius:10px;padding:16px 20px">
+      <div style="font-size:12px;font-weight:700;color:var(--black);margin-bottom:8px">Jerarquía para Instagram</div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--black)">Título del post</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:var(--gray)">Descripción o subtítulo del contenido</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral)">@brotadigital</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOZ Y TONO -->
+  <div class="section">
+    <div class="section-title">Voz y tono</div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--black);margin-bottom:4px">"Como una amiga que sabe de marketing."</div>
+    <div style="font-size:14px;color:var(--gray);margin-bottom:20px">Directa, cercana, sin rodeos. Nunca condescendiente.</div>
+    <div class="voz-grid">
+      <div class="voz-card do">
+        <h4>✅ Sí decimos</h4>
+        <ul>
+          <li>Tu negocio merece verse profesional</li>
+          <li>En 5 días, en línea y listo</li>
+          <li>Sin letra chica, sin sorpresas</li>
+          <li>Escríbenos hoy</li>
+          <li>Hacemos crecer tu marca</li>
+        </ul>
+      </div>
+      <div class="voz-card dont">
+        <h4>❌ No decimos</h4>
+        <ul>
+          <li>Soluciones integrales de marketing</li>
+          <li>Potenciamos tu ROI digitalmente</li>
+          <li>Ecosistema de marca omnicanal</li>
+          <li>Transformación digital 360°</li>
+          <li>Sinergia con tu audiencia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATES INSTAGRAM -->
+  <div class="section">
+    <div class="section-title">Templates de Instagram</div>
+    <div style="font-size:13px;color:var(--gray);margin-bottom:16px">Esquema de colores para posts. Alterna entre fondos para variedad visual.</div>
+    <div class="ig-grid">
+
+      <div class="ig-post t1">
+        <div class="ig-tag" style="color:rgba(255,255,255,.5)">Tip de marketing</div>
+        <div class="ig-title" style="color:#fff">¿Por qué tu negocio necesita una página web?</div>
+        <div class="ig-sub" style="color:rgba(255,255,255,.5)">Lee más →</div>
+        <div class="ig-logo">brota<span>.</span></div>
+      </div>
+
+      <div class="ig-post t2">
+        <div class="ig-tag" style="color:rgba(255,255,255,.6)">Portafolio</div>
+        <div class="ig-title" style="color:#fff">Nueva página lista ✨</div>
+        <div class="ig-sub" style="color:rgba(255,255,255,.6)">Cliente · Restaurante CDMX</div>
+        <div class="ig-logo" style="color:rgba(255,255,255,.5)">brota<span style="color:rgba(255,255,255,.3)">.</span></div>
+      </div>
+
+      <div class="ig-post t3" style="border:1px solid rgba(0,0,0,.06)">
+        <div class="ig-tag" style="color:var(--coral)">Precios</div>
+        <div class="ig-title" style="color:var(--black)">Desde<br><span style="color:var(--coral);font-size:24px">$3,500</span><br>MXN</div>
+        <div class="ig-sub" style="color:var(--gray)">Página web profesional</div>
+        <div class="ig-logo" style="color:var(--black)">brota<span style="color:var(--coral)">.</span></div>
+      </div>
+
+      <div class="ig-post t4">
+        <div class="ig-tag" style="color:var(--coral)">Proceso</div>
+        <div class="ig-title" style="color:var(--black)">Tu página en 5 días 🚀</div>
+        <div class="ig-sub" style="color:var(--gray)">Así trabajamos</div>
+        <div class="ig-logo" style="color:var(--black)">brota<span style="color:var(--coral)">.</span></div>
+      </div>
+
+      <div class="ig-post t5">
+        <div class="ig-tag" style="color:rgba(0,0,0,.4)">Cliente feliz</div>
+        <div class="ig-title" style="color:var(--black)">"Vale cada peso, mi negocio creció."</div>
+        <div class="ig-sub" style="color:rgba(0,0,0,.4)">Testimonio real</div>
+        <div class="ig-logo" style="color:var(--black)">brota<span style="color:var(--coral)">.</span></div>
+      </div>
+
+      <div class="ig-post t6">
+        <div class="ig-tag" style="color:var(--coral)">¿Te identificas?</div>
+        <div class="ig-title" style="color:#fff">Tu negocio es bueno.<br>Solo falta que<br><span style="color:var(--coral)">lo vean.</span></div>
+        <div class="ig-logo">brota<span>.</span></div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:16px;background:var(--cream);border-radius:10px;padding:16px 20px;font-size:12px;color:var(--gray);line-height:1.7">
+      <strong style="color:var(--black)">Bio de Instagram sugerida:</strong><br>
+      🌱 Agencia de marketing digital<br>
+      Páginas web para pequeños negocios · CDMX<br>
+      Desde $3,500 MXN · Entrega en 5 días<br>
+      👇 Ver portafolio
+    </div>
+  </div>
+
+  <!-- SPECS TÉCNICAS -->
+  <div class="section">
+    <div class="section-title">Especificaciones técnicas</div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <h4>Colores CSS</h4>
+        <div class="spec-row"><span class="key">--coral</span><span class="val">#E85D3A</span></div>
+        <div class="spec-row"><span class="key">--coral-dark</span><span class="val">#C94828</span></div>
+        <div class="spec-row"><span class="key">--black</span><span class="val">#1A1A1A</span></div>
+        <div class="spec-row"><span class="key">--cream</span><span class="val">#FDFAF5</span></div>
+        <div class="spec-row"><span class="key">--cream-2</span><span class="val">#F5EFE4</span></div>
+        <div class="spec-row"><span class="key">--gold</span><span class="val">#F5C97A</span></div>
+      </div>
+      <div class="spec-card">
+        <h4>Tipografía web</h4>
+        <div class="spec-row"><span class="key">Headings</span><span class="val">Plus Jakarta Sans</span></div>
+        <div class="spec-row"><span class="key">Weight head</span><span class="val">700 / 800</span></div>
+        <div class="spec-row"><span class="key">Body</span><span class="val">DM Sans</span></div>
+        <div class="spec-row"><span class="key">Weight body</span><span class="val">400 / 500</span></div>
+        <div class="spec-row"><span class="key">Fuente</span><span class="val">Google Fonts</span></div>
+        <div class="spec-row"><span class="key">Letra-spacing</span><span class="val">-.02em heads</span></div>
+      </div>
+      <div class="spec-card">
+        <h4>Instagram</h4>
+        <div class="spec-row"><span class="key">Feed post</span><span class="val">1080 × 1080 px</span></div>
+        <div class="spec-row"><span class="key">Story</span><span class="val">1080 × 1920 px</span></div>
+        <div class="spec-row"><span class="key">Reels cover</span><span class="val">1080 × 1350 px</span></div>
+        <div class="spec-row"><span class="key">Profile pic</span><span class="val">320 × 320 px</span></div>
+        <div class="spec-row"><span class="key">Handle</span><span class="val">@brotadigital</span></div>
+      </div>
+      <div class="spec-card">
+        <h4>Logo mínimo</h4>
+        <div class="spec-row"><span class="key">Tamaño mínimo</span><span class="val">80px ancho</span></div>
+        <div class="spec-row"><span class="key">Zona de respeto</span><span class="val">16px todos lados</span></div>
+        <div class="spec-row"><span class="key">No distorsionar</span><span class="val">proporciones fijas</span></div>
+        <div class="spec-row"><span class="key">No rotar</span><span class="val">siempre horizontal</span></div>
+        <div class="spec-row"><span class="key">No cambiar</span><span class="val">colores del esquema</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:24px 0;font-size:12px;color:rgba(0,0,0,.3)">
+    brota. digital · Brand Kit v1.0 · 2025 · Uso interno
+  </div>
+
+</div>
+<script>
+  // Copy hex on click
+  document.querySelectorAll('.color-hex').forEach(el => {
+    el.addEventListener('click', () => {
+      const hex = el.textContent.trim().split(' ')[0];
+      navigator.clipboard.writeText(hex).then(() => {
+        const badge = el.querySelector('.copy-badge');
+        badge.textContent = '✓ copiado';
+        badge.style.opacity = '1';
+        setTimeout(() => { badge.style.opacity = '0'; badge.textContent = 'copiar'; }, 1500);
+      });
+    });
+  });
+</script>
+</body>
+</html>
