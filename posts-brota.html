@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>15 Posts Instagram · Brota Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{--coral:#E85D3A;--coral-d:#C94828;--bk:#1A1A1A;--bk2:#111111;--cream:#FDFAF5;--cream2:#F5EFE4;--wh:#FFFFFF;--f:'Plus Jakarta Sans',system-ui,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f);background:#0a0a0a;color:#fff;min-height:100vh}
+
+/* PAGE HEADER */
+.ph{background:#1a1a1a;border-bottom:1px solid rgba(255,255,255,.07);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.ph-logo{font-size:18px;font-weight:900;letter-spacing:-.5px}.ph-logo span{color:var(--coral)}
+.ph-right{display:flex;align-items:center;gap:12px}
+.ph-tag{font-size:11px;color:#888}
+.ph-hint{font-size:11px;background:rgba(232,93,58,.12);color:var(--coral);border:1px solid rgba(232,93,58,.25);padding:6px 14px;border-radius:100px}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:32px;max-width:1740px;margin:0 auto}
+.pw{position:relative;cursor:pointer;border-radius:6px;overflow:hidden;transition:transform .2s,box-shadow .2s;background:#1a1a1a}
+.pw:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.6)}
+.pw .post{width:100%;aspect-ratio:1;position:relative}
+.day-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);color:#fff;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:5px;z-index:10}
+.pw-hover{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;z-index:9}
+.pw:hover .pw-hover{opacity:1}
+.pw-hover span{background:var(--coral);color:#fff;font-size:12px;font-weight:800;padding:10px 20px;border-radius:100px;letter-spacing:.08em;text-transform:uppercase}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:20px}
+.lb.open{display:flex}
+.lb-row{display:flex;align-items:center;gap:28px}
+.lb-frame{width:540px;height:540px;flex-shrink:0;border-radius:6px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.7)}
+.lb-frame .post{width:540px;height:540px;position:relative}
+.lb-panel{width:280px;background:#1c1c1c;border-radius:12px;padding:24px;border:1px solid rgba(255,255,255,.07);flex-shrink:0}
+.lb-day{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
+.lb-title{font-size:15px;font-weight:800;margin-bottom:16px;line-height:1.3}
+.lb-clabel{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#555;margin-bottom:8px}
+.lb-cap{font-size:11px;line-height:1.65;color:#aaa;white-space:pre-line;max-height:190px;overflow-y:auto;background:rgba(255,255,255,.03);border-radius:8px;padding:12px;margin-bottom:14px}
+.lb-btns{display:flex;gap:8px}
+.lb-copy{flex:1;padding:10px;background:var(--coral);color:#fff;border:none;border-radius:8px;font-family:var(--f);font-size:12px;font-weight:800;cursor:pointer;transition:background .2s;letter-spacing:.05em}
+.lb-copy:hover{background:var(--coral-d)}
+.lb-copy.ok{background:#22c55e}
+.lb-dl{padding:10px 14px;background:rgba(255,255,255,.07);color:#fff;border:none;border-radius:8px;font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer;transition:background .2s}
+.lb-dl:hover{background:rgba(255,255,255,.12)}
+.lb-nav-btn{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:none;color:#fff;font-size:28px;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;backdrop-filter:blur(6px)}
+.lb-nav-btn:hover{background:rgba(255,255,255,.15)}
+#lb-prev{left:16px}
+#lb-next{right:16px}
+.lb-close{position:fixed;top:16px;right:16px;background:rgba(255,255,255,.08);border:none;color:#fff;font-size:18px;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:300px}
+.lb-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .2s}
+.lb-dot.on{background:var(--coral);width:16px;border-radius:3px}
+
+/* SHARED POST ELEMENTS */
+.post{font-family:var(--f);overflow:hidden}
+.p-brand{position:absolute;bottom:14px;left:18px;font-size:10px;font-weight:800;letter-spacing:.06em;color:rgba(255,255,255,.35)}
+.p-brand.dark{color:rgba(0,0,0,.25)}
+.p-ig{position:absolute;bottom:14px;right:18px;font-size:9px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.3)}
+.p-ig.dark{color:rgba(0,0,0,.2)}
+
+/* ───────────────── POST 1: Presentación ───────────────── */
+.p1{background:var(--bk2);display:flex;align-items:center;justify-content:center;flex-direction:column}
+.p1 .sq1{position:absolute;width:100px;height:100px;background:var(--coral);top:32px;right:32px;opacity:.12}
+.p1 .sq2{position:absolute;width:50px;height:50px;background:var(--coral);bottom:70px;left:50px;opacity:.07}
+.p1 .sq3{position:absolute;width:14px;height:14px;background:var(--coral);top:80px;left:80px;opacity:.4}
+.p1 .brand{text-align:center;position:relative;z-index:1}
+.p1 .b-main{font-size:90px;font-weight:900;color:#fff;letter-spacing:-5px;line-height:.9}
+.p1 .b-main span{color:var(--coral)}
+.p1 .b-dig{font-size:14px;font-weight:300;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:14px}
+.p1 .b-tag{margin-top:36px;display:inline-flex;align-items:center;gap:8px;background:rgba(232,93,58,.1);border:1px solid rgba(232,93,58,.25);color:var(--coral);padding:9px 22px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.p1 .b-tag::before{content:'🌱'}
+
+/* ───────────────── POST 2: El Problema ───────────────── */
+.p2{background:var(--cream);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:50px 48px}
+.p2 .ey{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.p2 .ey::before{content:'';display:block;width:20px;height:2px;background:var(--coral)}
+.p2 .big{font-size:48px;font-weight:900;color:var(--bk);letter-spacing:-2.5px;line-height:1;margin-bottom:20px}
+.p2 .big em{color:var(--coral);font-style:normal}
+.p2 .body{font-size:14px;color:#777;line-height:1.6;margin-bottom:28px}
+.p2 .sbar{background:#fff;border:1.5px solid #e5e5e5;border-radius:10px;padding:13px 18px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+.p2 .sbar svg{color:#bbb;flex-shrink:0}
+.p2 .sbar p{font-size:13px;color:#aaa}.p2 .sbar p b{color:var(--bk);font-weight:700}
+
+/* ───────────────── POST 3: Estadística ───────────────── */
+.p3{background:var(--bk2);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:50px}
+.p3::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 25%,rgba(232,93,58,.18) 0%,transparent 55%)}
+.p3 .bg-num{position:absolute;top:10px;right:-10px;font-size:170px;font-weight:900;color:rgba(232,93,58,.07);letter-spacing:-10px;line-height:1}
+.p3 .pct{font-size:110px;font-weight:900;color:#fff;letter-spacing:-6px;line-height:1;position:relative;z-index:1}
+.p3 .pct span{color:var(--coral)}
+.p3 .stat{font-size:18px;font-weight:700;color:rgba(255,255,255,.8);line-height:1.4;position:relative;z-index:1;margin-bottom:10px}
+.p3 .src{font-size:10px;color:rgba(255,255,255,.25);letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:1}
+
+/* ───────────────── POST 4: Portfolio Baking Room ───────────────── */
+.p4{background:#F5F0E8;display:flex;flex-direction:column;padding:28px 28px 16px}
+.p4 .tag{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.p4 .tag::before{content:'';display:block;width:14px;height:2px;background:var(--coral)}
+.p4 .hl{font-size:20px;font-weight:900;color:#3D2B1F;letter-spacing:-.5px;line-height:1.2;margin-bottom:14px}
+.p4 .browser{background:#fff;border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.1);overflow:hidden;flex:1;display:flex;flex-direction:column}
+.p4 .bbar{background:#EDE8E0;padding:7px 10px;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.p4 .bd{width:8px;height:8px;border-radius:50%}
+.p4 .burl{margin-left:6px;background:#E0D9CF;border-radius:4px;height:15px;flex:1;max-width:150px;display:flex;align-items:center;padding:0 8px}
+.p4 .burl span{font-size:7px;color:#bbb;font-family:monospace}
+.p4 .bcont{padding:12px;flex:1}
+.p4 .bcnav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.p4 .bclogo{font-size:11px;font-weight:800;color:#3D2B1F;letter-spacing:3px}
+.p4 .bchero{background:linear-gradient(135deg,#3D2B1F,#6B4226);border-radius:5px;height:70px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.p4 .bchero span{font-size:13px;font-weight:800;color:#F5E6C8;letter-spacing:2px}
+.p4 .bcg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}
+.p4 .bcc{background:#F8F4EF;border-radius:4px;height:36px;display:flex;align-items:center;justify-content:center}
+.p4 .bcc p{font-size:7px;color:#5C3D28;font-weight:700;text-align:center;line-height:1.3;padding:0 4px}
+.p4 .clabel{font-size:10px;font-weight:700;color:#3D2B1F;text-align:right;opacity:.4;margin-top:8px;letter-spacing:.06em}
+
+/* ───────────────── POST 5: Precios ───────────────── */
+.p5{background:var(--bk);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:48px 50px}
+.p5::after{content:'';position:absolute;top:0;right:0;bottom:0;width:4px;background:var(--coral)}
+.p5 .ey{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:22px}
+.p5 .price{font-size:80px;font-weight:900;color:#fff;letter-spacing:-5px;line-height:1}
+.p5 .price sub{font-size:20px;font-weight:400;letter-spacing:0;color:rgba(255,255,255,.4);vertical-align:middle}
+.p5 .plabel{font-size:13px;color:rgba(255,255,255,.4);margin-top:6px;margin-bottom:28px}
+.p5 .list{display:flex;flex-direction:column;gap:11px}
+.p5 .li{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.75)}
+.p5 .li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0}
+.p5 .li strong{color:#fff}
+
+/* ───────────────── POST 6: Proceso ───────────────── */
+.p6{background:var(--cream);display:flex;flex-direction:column;padding:40px 44px;justify-content:center;align-items:center;text-align:center}
+.p6 .ey{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
+.p6 .hl{font-size:34px;font-weight:900;color:var(--bk);letter-spacing:-1.5px;line-height:1.05;margin-bottom:30px}
+.p6 .hl span{color:var(--coral)}
+.p6 .steps{display:flex;flex-direction:column;gap:14px}
+.p6 .step{display:flex;align-items:flex-start;gap:14px}
+.p6 .snum{width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.p6 .sbody h4{font-size:13px;font-weight:800;color:var(--bk);margin-bottom:2px}
+.p6 .sbody p{font-size:11px;color:#999}
+
+/* ───────────────── POST 7: Portfolio Lappe ───────────────── */
+.p7{background:#EFF4EC;display:flex;flex-direction:column;padding:28px 28px 16px}
+.p7 .tag{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#3A6B20;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.p7 .tag::before{content:'';display:block;width:14px;height:2px;background:#3A6B20}
+.p7 .hl{font-size:20px;font-weight:900;color:#1E3D0F;letter-spacing:-.5px;line-height:1.2;margin-bottom:14px}
+.p7 .browser{background:#fff;border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden;flex:1;display:flex;flex-direction:column}
+.p7 .bbar{background:#DDE8D5;padding:7px 10px;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.p7 .bd{width:8px;height:8px;border-radius:50%}
+.p7 .burl{margin-left:6px;background:#CCD8C2;border-radius:4px;height:15px;flex:1;max-width:150px;display:flex;align-items:center;padding:0 8px}
+.p7 .burl span{font-size:7px;color:#bbb;font-family:monospace}
+.p7 .bcont{padding:12px;flex:1}
+.p7 .bcnav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.p7 .bclogo{font-size:12px;font-weight:800;color:#3A6B20;letter-spacing:2px}
+.p7 .bchero{background:linear-gradient(135deg,#2D5016,#4A8C28);border-radius:5px;height:70px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.p7 .bchero span{font-size:13px;font-weight:800;color:#E0F0D0;letter-spacing:2px}
+.p7 .bcg{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.p7 .bcc{background:#EEF5E8;border-radius:4px;height:36px;display:flex;align-items:center;justify-content:center}
+.p7 .bcc p{font-size:7px;color:#3A6B20;font-weight:700;text-align:center}
+.p7 .clabel{font-size:10px;font-weight:700;color:#3A6B20;text-align:right;opacity:.45;margin-top:8px}
+
+/* ───────────────── POST 8: Mito vs Realidad ───────────────── */
+.p8{display:grid;grid-template-columns:1fr 1fr}
+.p8l{background:#f4f4f4;display:flex;flex-direction:column;justify-content:center;padding:36px 28px}
+.p8r{background:var(--bk);display:flex;flex-direction:column;justify-content:center;padding:36px 28px}
+.p8 .badge{font-size:8px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;border-radius:100px;display:inline-block;margin-bottom:16px}
+.p8l .badge{background:rgba(220,38,38,.1);color:#dc2626}
+.p8r .badge{background:rgba(232,93,58,.15);color:var(--coral)}
+.p8 .mt{font-size:18px;font-weight:900;line-height:1.2;letter-spacing:-.5px;margin-bottom:14px}
+.p8l .mt{color:var(--bk);text-decoration:line-through;text-decoration-color:rgba(220,38,38,.5)}
+.p8r .mt{color:#fff}
+.p8 .mb{font-size:11px;line-height:1.6}
+.p8l .mb{color:#888}
+.p8r .mb{color:rgba(255,255,255,.5)}
+.p8r .bar{width:28px;height:3px;background:var(--coral);margin-bottom:14px}
+
+/* ───────────────── POST 9: Qué incluye ───────────────── */
+.p9{background:var(--coral);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:46px 50px}
+.p9 .hl{font-size:34px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.1;margin-bottom:28px}
+.p9 .list{display:flex;flex-direction:column;gap:12px}
+.p9 .li{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.1);border-radius:10px;padding:11px 16px;border:1px solid rgba(255,255,255,.12)}
+.p9 .ck{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#fff;font-weight:900}
+.p9 .li p{font-size:12px;font-weight:600;color:#fff}
+
+/* ───────────────── POST 10: Web vs Redes ───────────────── */
+.p10{background:var(--cream2);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:42px 44px}
+.p10 .ey{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
+.p10 .hl{font-size:28px;font-weight:900;color:var(--bk);letter-spacing:-1px;line-height:1.15;margin-bottom:22px}
+.p10 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.p10 .ch{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid}
+.p10 .col-r .ch{color:#bbb;border-color:#ddd}
+.p10 .col-w .ch{color:var(--coral);border-color:var(--coral)}
+.p10 .ci{font-size:11px;color:#888;margin-bottom:8px;display:flex;align-items:flex-start;gap:6px;line-height:1.45}
+.p10 .ci::before{content:'·';flex-shrink:0;margin-top:-1px}
+.p10 .col-r .ci::before{color:#ccc}
+.p10 .col-w .ci{color:var(--bk);font-weight:500}
+.p10 .col-w .ci::before{color:var(--coral)}
+
+/* ───────────────── POST 11: CTA Medio ───────────────── */
+.p11{background:var(--bk2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px}
+.p11::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(232,93,58,.12) 0%,transparent 65%)}
+.p11 .c1{position:absolute;width:320px;height:320px;border-radius:50%;border:1px solid rgba(232,93,58,.1)}
+.p11 .c2{position:absolute;width:470px;height:470px;border-radius:50%;border:1px solid rgba(232,93,58,.05)}
+.p11 .big{font-size:50px;font-weight:900;color:#fff;letter-spacing:-2.5px;line-height:1;margin-bottom:14px;position:relative;z-index:1}
+.p11 .big em{color:var(--coral);font-style:normal}
+.p11 .sub{font-size:15px;color:rgba(255,255,255,.4);margin-bottom:32px;position:relative;z-index:1}
+.p11 .btn{background:var(--coral);color:#fff;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:15px 34px;border-radius:100px;position:relative;z-index:1}
+
+/* ───────────────── POST 12: Detrás de cámaras ───────────────── */
+.p12{background:var(--cream);display:flex;flex-direction:column;padding:38px 42px;justify-content:center;align-items:center;text-align:center}
+.p12 .ey{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
+.p12 .hl{font-size:28px;font-weight:900;color:var(--bk);letter-spacing:-1px;line-height:1.1;margin-bottom:26px}
+.p12 .tl{position:relative;padding-left:0}
+.p12 .tl::before{content:'';position:absolute;left:14px;top:15px;bottom:0;width:1.5px;background:linear-gradient(to bottom,var(--coral),transparent)}
+.p12 .ti{display:flex;align-items:flex-start;gap:16px;margin-bottom:14px}
+.p12 .td{width:30px;height:30px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:800;color:#fff;position:relative;z-index:1}
+.p12 .tc{padding-top:4px}
+.p12 .tc .day-tag{font-size:9px;font-weight:800;color:var(--coral);text-transform:uppercase;letter-spacing:.1em;background:rgba(232,93,58,.1);border-radius:4px;padding:2px 7px;display:inline-block;margin-bottom:3px}
+.p12 .tc h4{font-size:12px;font-weight:800;color:var(--bk)}
+.p12 .tc p{font-size:10px;color:#999}
+
+/* ───────────────── POST 13: Portfolio Mejia Luna ───────────────── */
+.p13{background:#0C1728;display:flex;flex-direction:column;padding:28px 28px 16px}
+.p13 .tag{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#6A9FD8;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.p13 .tag::before{content:'';display:block;width:14px;height:2px;background:#4A7BC4}
+.p13 .hl{font-size:20px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.2;margin-bottom:14px}
+.p13 .browser{background:#162035;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.5);overflow:hidden;flex:1;display:flex;flex-direction:column}
+.p13 .bbar{background:#0A1220;padding:7px 10px;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.p13 .bd{width:8px;height:8px;border-radius:50%}
+.p13 .burl{margin-left:6px;background:#111E30;border-radius:4px;height:15px;flex:1;max-width:150px;display:flex;align-items:center;padding:0 8px}
+.p13 .burl span{font-size:7px;color:#445;font-family:monospace}
+.p13 .bcont{padding:12px;flex:1}
+.p13 .bcnav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.p13 .bclogo{font-size:10px;font-weight:700;color:#6A9FD8;letter-spacing:4px;text-transform:uppercase}
+.p13 .bchero{background:linear-gradient(135deg,#1a3060,#2d508a);border-radius:5px;height:70px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.p13 .bchero span{font-size:12px;font-weight:700;color:#B0CCEF;letter-spacing:3px}
+.p13 .bcg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}
+.p13 .bcc{background:#111E30;border-radius:4px;height:30px;display:flex;align-items:center;justify-content:center}
+.p13 .bcc p{font-size:7px;color:#6A9FD8;font-weight:600}
+.p13 .clabel{font-size:10px;font-weight:700;color:#6A9FD8;text-align:right;opacity:.4;margin-top:8px}
+
+/* ───────────────── POST 14: Pregunta ───────────────── */
+.p14{background:var(--coral);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px}
+.p14 .pre{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.05em;margin-bottom:14px}
+.p14 .big{font-size:46px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1.1;margin-bottom:28px}
+.p14 .opts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:300px}
+.p14 .opt{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:13px 18px;font-size:13px;font-weight:700;color:#fff;text-align:left;display:flex;align-items:center;gap:12px}
+.p14 .ol{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0}
+
+/* ───────────────── POST 15: Cierre ───────────────── */
+.p15{background:var(--bk2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px;overflow:hidden}
+.p15 .csq1{position:absolute;width:130px;height:130px;background:var(--coral);opacity:.07;top:-20px;right:-20px;transform:rotate(45deg)}
+.p15 .csq2{position:absolute;width:80px;height:80px;background:var(--coral);opacity:.05;bottom:-10px;left:-10px;transform:rotate(20deg)}
+.p15 .ey{font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:18px;position:relative;z-index:1}
+.p15 .big{font-size:52px;font-weight:900;color:#fff;letter-spacing:-2.5px;line-height:1;margin-bottom:10px;position:relative;z-index:1}
+.p15 .big em{color:var(--coral);font-style:normal}
+.p15 .sub{font-size:14px;color:rgba(255,255,255,.4);margin-bottom:28px;position:relative;z-index:1;line-height:1.5}
+.p15 .cards{display:flex;gap:12px;margin-bottom:28px;position:relative;z-index:1}
+.p15 .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 12px;text-align:center;flex:1}
+.p15 .cn{font-size:24px;font-weight:900;color:var(--coral);line-height:1}
+.p15 .cl{font-size:9px;color:rgba(255,255,255,.35);margin-top:4px;text-transform:uppercase;letter-spacing:.1em}
+.p15 .btn{background:var(--coral);color:#fff;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:14px 32px;border-radius:100px;position:relative;z-index:1;display:inline-block}
+</style>
+</head>
+<body>
+
+<div class="ph">
+  <div class="ph-logo">brota<span>.</span>digital</div>
+  <div class="ph-right">
+    <span class="ph-tag">15 posts · 15 días</span>
+    <span class="ph-hint">Clic en cualquier post para ver caption y descargar</span>
+  </div>
+</div>
+
+<div class="gallery" id="gallery">
+
+  <!-- ── POST 1 ── -->
+  <div class="pw" data-day="1" data-title="Presentación de Brota Digital"
+    data-cap="Somos Brota Digital 🌱
+
+Hacemos crecer tu negocio en internet.
+
+✅ Páginas web profesionales desde $3,500 MXN
+✅ Identidad de marca
+✅ Gestión de redes sociales
+
+Ciudad de México · Entrega en 15 días
+
+¿Tu negocio ya tiene presencia online? Cuéntanos 👇
+
+#BrotaDigital #DiseñoWeb #MarketingDigital #CDMX #EmprendedoresMéxico #PymeMéxico">
+    <div class="day-badge">Día 1</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p1">
+      <div class="sq1"></div><div class="sq2"></div><div class="sq3"></div>
+      <div class="brand">
+        <div class="b-main">brota<span>.</span></div>
+        <div class="b-dig">Digital</div>
+        <div class="b-tag">Diseño Web &amp; Marketing</div>
+      </div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 2 ── -->
+  <div class="pw" data-day="2" data-title="¿Tu negocio existe en internet?"
+    data-cap="¿Tu negocio existe en internet? 🤔
+
+Si un cliente nuevo te busca en Google ahora mismo...
+¿te va a encontrar?
+
+La primera impresión ya no es en persona.
+Es online.
+
+Con Brota Digital tienes tu página lista en 15 días 🌱
+
+DM o WhatsApp para platicar 💬
+
+#PáginaWeb #PresenciaOnline #NegociosCDMX #DiseñoWeb #EmprendedoresMéxico">
+    <div class="day-badge">Día 2</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p2">
+      <div class="ey">La realidad de hoy</div>
+      <div class="big">¿Existes<br>en <em>internet?</em></div>
+      <div class="body">Si alguien te busca en Google ahora mismo… ¿te encuentra? La primera impresión ya no es en persona.</div>
+      <div class="sbar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <p><b>negocios cerca de mí</b> en CDMX</p>
+      </div>
+      <span class="p-brand dark">brotadigital.mx</span>
+      <span class="p-ig dark">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 3 ── -->
+  <div class="pw" data-day="3" data-title="El dato que todo negocio debe saber"
+    data-cap="El dato que todo emprendedor debe saber 📊
+
+7 de cada 10 mexicanos busca en Google antes de decidir a quién comprarle.
+
+¿Tu negocio aparece en esa búsqueda?
+
+Con Brota Digital, en 15 días tienes tu presencia online lista ✅
+
+Primera consulta gratis → brotadigital.mx
+
+#EstadísticasDigitales #MarketingMéxico #SEO #BrotaDigital #NegociosMéxico">
+    <div class="day-badge">Día 3</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p3">
+      <div class="bg-num">70</div>
+      <div class="pct"><span>70</span>%</div>
+      <div class="stat">de los mexicanos busca<br>en Google antes de comprar</div>
+      <div class="src">Fuente: Google México · 2024</div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 4 ── -->
+  <div class="pw" data-day="4" data-title="Portfolio: The Baking Room"
+    data-cap="Así se ve crecer en internet 🎂
+
+The Baking Room ya tiene su página web profesional.
+
+Sus clientes la encuentran en Google, ven el menú completo y contactan directo por WhatsApp.
+
+¿Tu negocio merece lo mismo? 🌱
+
+DM para más info
+
+#Portfolio #DiseñoWeb #TheBakingRoom #BrotaDigital #PáginaWeb #PasteleríaCDMX">
+    <div class="day-badge">Día 4</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p4">
+      <div class="tag">Portfolio · Cliente Brota</div>
+      <div class="hl">Así se ve crecer<br>en internet 🎂</div>
+      <div class="browser">
+        <div class="bbar">
+          <div class="bd" style="background:#ff5f57"></div>
+          <div class="bd" style="background:#ffbd2e"></div>
+          <div class="bd" style="background:#28c840"></div>
+          <div class="burl"><span>thebakingroom.mx</span></div>
+        </div>
+        <div class="bcont">
+          <div class="bcnav">
+            <span class="bclogo">The Baking Room</span>
+            <span style="font-size:7px;color:#bbb">MENÚ · PEDIDOS · CONTACTO</span>
+          </div>
+          <div class="bchero"><span>PASTELES ARTESANALES</span></div>
+          <div class="bcg">
+            <div class="bcc"><p>Oreo Chocolate<br>Fudge</p></div>
+            <div class="bcc"><p>Red Velvet<br>Specialty</p></div>
+            <div class="bcc"><p>Birthday<br>Cake</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="clabel">The Baking Room · CDMX</div>
+      <span class="p-brand dark">brotadigital.mx</span>
+    </div>
+  </div>
+
+  <!-- ── POST 5 ── -->
+  <div class="pw" data-day="5" data-title="¿Cuánto cuesta tu página web?"
+    data-cap="La pregunta que todos se hacen 👇
+
+¿Cuánto cuesta una página web profesional?
+
+Desde $3,500 MXN.
+
+Sí. En serio.
+
+✓ Diseño personalizado
+✓ Adaptada a celular
+✓ WhatsApp integrado
+✓ Optimizada para Google
+✓ Entrega en 15 días
+
+Sin costos ocultos. Sin mensualidades obligatorias.
+
+Escríbenos y cotizamos gratis 🌱
+
+#PreciosDiseñoWeb #PáginaWebMéxico #BrotaDigital #DiseñoWebCDMX">
+    <div class="day-badge">Día 5</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p5">
+      <div class="ey">Diseño web profesional</div>
+      <div class="price"><sub>Desde $</sub>3,500</div>
+      <div class="plabel">pesos mexicanos · entrega en 15 días</div>
+      <div class="list">
+        <div class="li"><strong>Diseño</strong> 100% personalizado</div>
+        <div class="li"><strong>Adaptada</strong> a celular y desktop</div>
+        <div class="li"><strong>WhatsApp</strong> integrado</div>
+        <div class="li"><strong>Optimizada</strong> para Google</div>
+        <div class="li"><strong>Dominio</strong> y hosting incluidos</div>
+      </div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 6 ── -->
+  <div class="pw" data-day="6" data-title="¿Cómo hacemos tu página web?"
+    data-cap="¿Cómo hacemos tu página web en 15 días? 🛠
+
+Así funciona nuestro proceso:
+
+1️⃣ Llamada de Discovery (día 1)
+Entendemos tu negocio, tu cliente y tus objetivos.
+
+2️⃣ Diseño y propuesta (días 2-5)
+Creamos el diseño completo para tu aprobación.
+
+3️⃣ Desarrollo y ajustes (días 6-12)
+Construimos tu sitio y aplicamos tus correcciones.
+
+4️⃣ Lanzamiento (día 15)
+Tu negocio ya está en internet 🚀
+
+¿Tienes preguntas? DM o brotadigital.mx
+
+#ProcesoDiseñoWeb #BrotaDigital #AgenciaCDMX #DiseñoWeb">
+    <div class="day-badge">Día 6</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p6">
+      <div class="ey">Nuestro proceso</div>
+      <div class="hl">Tu página web<br>en <span>15 días</span></div>
+      <div class="steps">
+        <div class="step"><div class="snum">1</div><div class="sbody"><h4>Discovery Call</h4><p>Entendemos tu negocio y objetivos</p></div></div>
+        <div class="step"><div class="snum">2</div><div class="sbody"><h4>Diseño y propuesta</h4><p>Creamos el diseño para tu aprobación</p></div></div>
+        <div class="step"><div class="snum">3</div><div class="sbody"><h4>Desarrollo</h4><p>Construimos y ajustamos tu sitio</p></div></div>
+        <div class="step"><div class="snum">4</div><div class="sbody"><h4>Lanzamiento 🚀</h4><p>Tu negocio ya está en internet</p></div></div>
+      </div>
+      <span class="p-brand dark">brotadigital.mx</span>
+      <span class="p-ig dark">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 7 ── -->
+  <div class="pw" data-day="7" data-title="Portfolio: Monica Lappe"
+    data-cap="Diseño que refleja identidad 🌿
+
+Monica Lappe ya tiene su espacio digital.
+
+Una página web que comunica su trabajo con la elegancia que merece.
+
+Eso hacemos en Brota Digital: llevamos tu negocio al mundo digital con diseño profesional.
+
+¿Quieres ver más proyectos? Visita brotadigital.mx
+
+#Portfolio #DiseñoWeb #BrotaDigital #MonicaLappe #PresenciaOnline">
+    <div class="day-badge">Día 7</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p7">
+      <div class="tag">Portfolio · Cliente Brota</div>
+      <div class="hl">Diseño que refleja<br>tu identidad 🌿</div>
+      <div class="browser">
+        <div class="bbar">
+          <div class="bd" style="background:#ff5f57"></div>
+          <div class="bd" style="background:#ffbd2e"></div>
+          <div class="bd" style="background:#28c840"></div>
+          <div class="burl"><span>monicaluppe.mx</span></div>
+        </div>
+        <div class="bcont">
+          <div class="bcnav">
+            <span class="bclogo">LAPPE</span>
+            <span style="font-size:7px;color:#aaa">INICIO · SERVICIOS · CONTACTO</span>
+          </div>
+          <div class="bchero"><span>CONSULTORÍA &amp; DISEÑO</span></div>
+          <div class="bcg">
+            <div class="bcc"><p>Servicios</p></div>
+            <div class="bcc"><p>Portafolio</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="clabel">Monica Lappe · CDMX</div>
+      <span class="p-brand dark">brotadigital.mx</span>
+    </div>
+  </div>
+
+  <!-- ── POST 8 ── -->
+  <div class="pw" data-day="8" data-title="Mito vs Realidad"
+    data-cap="Mito vs Realidad 🧐
+
+❌ MITO: 'Con Instagram es suficiente'
+
+✅ REALIDAD: Tu página web trabaja las 24 horas, los 7 días de la semana. No depende de algoritmos. Es tuya para siempre.
+
+Instagram puede pausar tu cuenta mañana. ¿Qué pasaría con tu negocio?
+
+Una página web = inversión permanente en tu negocio 🌱
+
+#MitoVsRealidad #PáginaWeb #MarketingDigital #BrotaDigital #EmprendedoresMéxico">
+    <div class="day-badge">Día 8</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p8">
+      <div class="p8l">
+        <span class="badge">❌ Mito</span>
+        <div class="mt">"Con Instagram es suficiente"</div>
+        <div class="mb">Las redes sociales pueden pausar o eliminar tu cuenta en cualquier momento. No son tuyas.</div>
+      </div>
+      <div class="p8r">
+        <div class="bar"></div>
+        <span class="badge">✓ Realidad</span>
+        <div class="mt">Tu página web trabaja 24/7</div>
+        <div class="mb">Aparece en Google, no depende de algoritmos y es tuya para siempre. Es inversión real.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── POST 9 ── -->
+  <div class="pw" data-day="9" data-title="¿Qué incluye tu página web?"
+    data-cap="¿Qué incluye tu página web con Brota Digital? ✅
+
+Todo lo que tu negocio necesita para arrancar:
+
+✓ Diseño 100% personalizado
+✓ Adaptada a celular (móvil first)
+✓ WhatsApp con mensaje predefinido
+✓ Formulario de contacto
+✓ Optimización básica para Google (SEO)
+✓ Mapa de ubicación integrado
+✓ Galería de productos o servicios
+✓ Hosting + dominio el primer año
+
+Sin sorpresas. Sin letra chica.
+
+DM o brotadigital.mx para cotizar gratis 🌱
+
+#BrotaDigital #DiseñoWeb #PáginaWeb #Qué Incluye #MarketingDigital">
+    <div class="day-badge">Día 9</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p9">
+      <div class="hl">¿Qué incluye<br>tu página web?</div>
+      <div class="list">
+        <div class="li"><div class="ck">✓</div><p>Diseño 100% personalizado</p></div>
+        <div class="li"><div class="ck">✓</div><p>Adaptada a celular</p></div>
+        <div class="li"><div class="ck">✓</div><p>WhatsApp integrado</p></div>
+        <div class="li"><div class="ck">✓</div><p>Optimizada para Google (SEO)</p></div>
+        <div class="li"><div class="ck">✓</div><p>Dominio + Hosting primer año</p></div>
+      </div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 10 ── -->
+  <div class="pw" data-day="10" data-title="Página web vs Redes sociales"
+    data-cap="¿Redes sociales o página web? 🤔
+
+Las dos se complementan, pero no son lo mismo:
+
+📱 Redes sociales
+→ Dependen del algoritmo
+→ Pueden desaparecer
+→ Alcance limitado
+→ No aparecen en Google
+
+🌐 Página web
+→ Es tuya para siempre
+→ Aparece en Google las 24hrs
+→ Da imagen profesional
+→ Convierte visitas en clientes
+
+Lo ideal: tener ambas 💪
+
+Brota Digital te ayuda con las dos.
+
+#DiseñoWeb #MarketingDigital #BrotaDigital #RedesSociales #PáginaWeb">
+    <div class="day-badge">Día 10</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p10">
+      <div class="ey">¿Cuál necesitas?</div>
+      <div class="hl">Redes sociales<br>vs página web</div>
+      <div class="cmp">
+        <div class="col-r">
+          <div class="ch">Redes sociales</div>
+          <div class="ci">Dependen del algoritmo</div>
+          <div class="ci">Pueden desaparecer</div>
+          <div class="ci">No aparecen en Google</div>
+          <div class="ci">Alcance limitado</div>
+        </div>
+        <div class="col-w">
+          <div class="ch">Página web</div>
+          <div class="ci">Tuya para siempre</div>
+          <div class="ci">Aparece en Google 24/7</div>
+          <div class="ci">Da imagen profesional</div>
+          <div class="ci">Convierte visitas en clientes</div>
+        </div>
+      </div>
+      <span class="p-brand dark">brotadigital.mx</span>
+      <span class="p-ig dark">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 11 ── -->
+  <div class="pw" data-day="11" data-title="¿Tu negocio ya está online?"
+    data-cap="Una pregunta honesta 👇
+
+¿Tu negocio ya está en internet?
+
+Si la respuesta es no... tus competidores sí están.
+
+Cada día sin página web es un cliente que no te encontró.
+
+En Brota Digital lo resolvemos en 15 días, desde $3,500 MXN.
+
+Escríbenos hoy 🌱
+
+#BrotaDigital #PáginaWeb #DiseñoWeb #NegociosCDMX #PresenciaOnline">
+    <div class="day-badge">Día 11</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p11">
+      <div class="c1"></div><div class="c2"></div>
+      <div class="big">¿Estás<br>en <em>internet?</em></div>
+      <div class="sub">Cada día sin página web<br>es un cliente que no te encontró.</div>
+      <div class="btn">Lo resolvemos hoy</div>
+      <span class="p-brand">brotadigital.mx</span>
+    </div>
+  </div>
+
+  <!-- ── POST 12 ── -->
+  <div class="pw" data-day="12" data-title="Detrás de cámaras: cómo trabajamos"
+    data-cap="Detrás de cámaras 👀
+
+Así construimos tu página web en 15 días:
+
+📅 Día 1 — Llamada de discovery
+📅 Días 2-3 — Investigamos tu industria y competencia
+📅 Días 4-7 — Diseño completo para tu aprobación
+📅 Días 8-12 — Desarrollo + correcciones
+📅 Día 13-14 — Pruebas y optimización
+📅 Día 15 — Lanzamiento 🚀
+
+Transparencia total en cada etapa.
+
+¿Quieres empezar? DM o brotadigital.mx
+
+#BehindTheScenes #BrotaDigital #DiseñoWeb #ProcesoDiseño #AgenciaCDMX">
+    <div class="day-badge">Día 12</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p12">
+      <div class="ey">Detrás de cámaras</div>
+      <div class="hl">Cómo construimos<br>tu página web</div>
+      <div class="tl">
+        <div class="ti"><div class="td">1</div><div class="tc"><span class="day-tag">Día 1</span><h4>Discovery Call</h4><p>Conocemos tu negocio a fondo</p></div></div>
+        <div class="ti"><div class="td">2</div><div class="tc"><span class="day-tag">Días 2-5</span><h4>Diseño y propuesta</h4><p>Presentamos el diseño para aprobación</p></div></div>
+        <div class="ti"><div class="td">3</div><div class="tc"><span class="day-tag">Días 6-12</span><h4>Desarrollo y ajustes</h4><p>Construimos y perfeccionamos</p></div></div>
+        <div class="ti"><div class="td">🚀</div><div class="tc"><span class="day-tag">Día 15</span><h4>Lanzamiento</h4><p>Tu negocio ya está en internet</p></div></div>
+      </div>
+      <span class="p-brand dark">brotadigital.mx</span>
+      <span class="p-ig dark">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 13 ── -->
+  <div class="pw" data-day="13" data-title="Portfolio: Mejia Luna Abogados"
+    data-cap="Presencia digital para profesionistas 🏛
+
+Mejia Luna Abogados ya tiene su sitio web profesional.
+
+Un espacio digital que transmite confianza y credibilidad desde el primer clic.
+
+En Brota Digital diseñamos páginas para todo tipo de negocios y profesionistas.
+
+¿El tuyo es el siguiente? 🌱
+
+DM o brotadigital.mx
+
+#Portfolio #DiseñoWeb #BrotaDigital #Abogados #PresenciaDigital #ProfesionistaCDMX">
+    <div class="day-badge">Día 13</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p13">
+      <div class="tag">Portfolio · Cliente Brota</div>
+      <div class="hl">Presencia digital<br>para profesionistas 🏛</div>
+      <div class="browser">
+        <div class="bbar">
+          <div class="bd" style="background:#ff5f57"></div>
+          <div class="bd" style="background:#ffbd2e"></div>
+          <div class="bd" style="background:#28c840"></div>
+          <div class="burl"><span>mejialuna.mx</span></div>
+        </div>
+        <div class="bcont">
+          <div class="bcnav">
+            <span class="bclogo">MEJIA LUNA</span>
+            <span style="font-size:7px;color:#556">INICIO · SERVICIOS · CONTACTO</span>
+          </div>
+          <div class="bchero"><span>DESPACHO DE ABOGADOS</span></div>
+          <div class="bcg">
+            <div class="bcc"><p>Derecho Civil</p></div>
+            <div class="bcc"><p>Corporativo</p></div>
+            <div class="bcc"><p>Contacto</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="clabel">Mejia Luna Abogados · CDMX</div>
+      <span class="p-brand">brotadigital.mx</span>
+    </div>
+  </div>
+
+  <!-- ── POST 14 ── -->
+  <div class="pw" data-day="14" data-title="¿Tienes página web?"
+    data-cap="Dinos en los comentarios 👇
+
+¿Tienes página web para tu negocio?
+
+A) Sí, ya tengo ✅
+B) No, pero me gustaría
+C) Tengo una pero está desactualizada
+D) Ni sabía que la necesitaba 😅
+
+Cuéntanos tu situación y te ayudamos a dar el siguiente paso 🌱
+
+#BrotaDigital #EncuestaInstagram #DiseñoWeb #NegociosCDMX #EmprendedoresMéxico">
+    <div class="day-badge">Día 14</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p14">
+      <div class="pre">Cuéntanos</div>
+      <div class="big">¿Tienes página<br>web?</div>
+      <div class="opts">
+        <div class="opt"><div class="ol">A</div>Sí, ya tengo ✅</div>
+        <div class="opt"><div class="ol">B</div>No, pero me gustaría</div>
+        <div class="opt"><div class="ol">C</div>Tengo una desactualizada</div>
+        <div class="opt"><div class="ol">D</div>Ni sabía que la necesitaba 😅</div>
+      </div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+  </div>
+
+  <!-- ── POST 15 ── -->
+  <div class="pw" data-day="15" data-title="¿Listo para crecer?"
+    data-cap="Si llegaste hasta aquí, tu negocio está listo para dar el siguiente paso 🌱
+
+En 15 días te entregamos tu página web profesional.
+
+$3,500 MXN · Todo incluido · Sin sorpresas
+
+✓ 15+ proyectos entregados
+✓ Entrega garantizada en 15 días
+✓ Primera consulta gratis
+
+¿Empezamos? Escríbenos por DM o WhatsApp 👇
+
+brotadigital.mx
+
+#BrotaDigital #DiseñoWeb #PáginaWeb #MarketingDigital #CDMX #EmprendedoresMéxico #NegociosMéxico">
+    <div class="day-badge">Día 15</div>
+    <div class="pw-hover"><span>Ver detalle</span></div>
+    <div class="post p15">
+      <div class="csq1"></div><div class="csq2"></div>
+      <div class="ey">¿Listo para crecer?</div>
+      <div class="big">Tu negocio<br>en <em>internet</em></div>
+      <div class="sub">15 días · desde $3,500 MXN<br>Todo incluido. Sin sorpresas.</div>
+      <div class="cards">
+        <div class="card"><div class="cn">15</div><div class="cl">Proyectos</div></div>
+        <div class="card"><div class="cn">15</div><div class="cl">Días entrega</div></div>
+        <div class="card"><div class="cn">100%</div><div class="cl">Personalizado</div></div>
+      </div>
+      <div class="btn">Escríbenos hoy</div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+  </div>
+
+</div><!-- /gallery -->
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-close" id="lb-close">✕</button>
+  <button class="lb-nav-btn" id="lb-prev">‹</button>
+  <div class="lb-row">
+    <div class="lb-frame" id="lb-frame"></div>
+    <div class="lb-panel">
+      <div class="lb-day" id="lb-day"></div>
+      <div class="lb-title" id="lb-title"></div>
+      <div class="lb-clabel">Caption listo para copiar</div>
+      <div class="lb-cap" id="lb-cap"></div>
+      <div class="lb-btns">
+        <button class="lb-copy" id="lb-copy">Copiar caption</button>
+        <button class="lb-dl" id="lb-dl">↓ Descargar</button>
+      </div>
+    </div>
+  </div>
+  <div class="lb-dots" id="lb-dots"></div>
+  <button class="lb-nav-btn" id="lb-next">›</button>
+</div>
+
+<script>
+const pws = Array.from(document.querySelectorAll('.pw'));
+const lb = document.getElementById('lb');
+let cur = 0;
+
+function openLb(i) {
+  cur = i;
+  renderLb();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function renderLb() {
+  const pw = pws[cur];
+  document.getElementById('lb-day').textContent = 'Día ' + (cur + 1) + ' de 15';
+  document.getElementById('lb-title').textContent = pw.dataset.title;
+  document.getElementById('lb-cap').textContent = pw.dataset.cap;
+  const frame = document.getElementById('lb-frame');
+  const clone = pw.querySelector('.post').cloneNode(true);
+  clone.style.width = '540px';
+  clone.style.height = '540px';
+  frame.innerHTML = '';
+  frame.appendChild(clone);
+  // dots
+  const dotsEl = document.getElementById('lb-dots');
+  dotsEl.innerHTML = '';
+  pws.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'lb-dot' + (i === cur ? ' on' : '');
+    d.onclick = () => { cur = i; renderLb(); };
+    dotsEl.appendChild(d);
+  });
+  // reset copy btn
+  const copyBtn = document.getElementById('lb-copy');
+  copyBtn.textContent = 'Copiar caption';
+  copyBtn.classList.remove('ok');
+}
+
+// Copy caption
+document.getElementById('lb-copy').addEventListener('click', function() {
+  const text = document.getElementById('lb-cap').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    this.textContent = '✓ Copiado';
+    this.classList.add('ok');
+    setTimeout(() => { this.textContent = 'Copiar caption'; this.classList.remove('ok'); }, 2000);
+  });
+});
+
+// Download
+document.getElementById('lb-dl').addEventListener('click', function() {
+  const frame = document.getElementById('lb-frame');
+  const postEl = frame.querySelector('.post');
+  if (!postEl) return;
+  this.textContent = 'Generando...';
+  const btn = this;
+  html2canvas(postEl, { scale: 2, useCORS: true, width: 540, height: 540 }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'brota-dia' + (cur + 1) + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    btn.textContent = '↓ Descargar';
+  });
+});
+
+// Nav
+document.getElementById('lb-prev').addEventListener('click', () => { cur = (cur - 1 + pws.length) % pws.length; renderLb(); });
+document.getElementById('lb-next').addEventListener('click', () => { cur = (cur + 1) % pws.length; renderLb(); });
+document.getElementById('lb-close').addEventListener('click', closeLb);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') { cur = (cur - 1 + pws.length) % pws.length; renderLb(); }
+  if (e.key === 'ArrowRight') { cur = (cur + 1) % pws.length; renderLb(); }
+  if (e.key === 'Escape') closeLb();
+});
+pws.forEach((pw, i) => pw.addEventListener('click', () => openLb(i)));
+</script>
+</body>
+</html>
