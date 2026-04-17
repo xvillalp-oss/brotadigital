@@ -876,9 +876,9 @@
        PROCESO
     ============================================ */
     .proceso {
-      background-color: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      background-color: #111111;
+      border-top: none;
+      border-bottom: none;
       padding: var(--section-padding) 0;
     }
 
@@ -901,7 +901,7 @@
       font-family: var(--font-sans);
       font-size: clamp(32px, 4.5vw, 52px);
       font-weight: 500;
-      color: var(--espresso);
+      color: #ffffff;
       line-height: 1.1;
     }
 
@@ -919,7 +919,7 @@
       font-family: var(--font-sans);
       font-size: clamp(80px, 10vw, 120px);
       font-weight: 700;
-      color: rgba(232, 25, 106, 0.18);
+      color: var(--pink);
       line-height: 0.85;
       margin-bottom: 12px;
       user-select: none;
@@ -929,13 +929,13 @@
       font-family: var(--font-sans);
       font-size: 26px;
       font-weight: 600;
-      color: var(--espresso);
+      color: #ffffff;
       margin-bottom: 12px;
     }
 
     .proceso__step-desc {
       font-size: 14px;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.6);
       line-height: 1.7;
     }
 
@@ -1347,7 +1347,7 @@
 
     /* Improve contrast on muted text */
     .section-label, .menu-section__sub,
-    .about__text, .proceso__step p:not(.proceso__step-num) {
+    .about__text {
       color: #666666;
     }
 
