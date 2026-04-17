@@ -584,7 +584,7 @@
       font-size: clamp(24px, 4vw, 44px);
       font-weight: 700;
       color: var(--espresso);
-      letter-spacing: 0.22em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       line-height: 1;
     }
@@ -876,9 +876,9 @@
        PROCESO
     ============================================ */
     .proceso {
-      background-color: #111111;
-      border-top: none;
-      border-bottom: none;
+      background-color: #ffffff;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       padding: var(--section-padding) 0;
     }
 
@@ -901,7 +901,7 @@
       font-family: var(--font-sans);
       font-size: clamp(32px, 4.5vw, 52px);
       font-weight: 500;
-      color: #ffffff;
+      color: var(--espresso);
       line-height: 1.1;
     }
 
@@ -920,7 +920,7 @@
       font-size: clamp(80px, 10vw, 120px);
       font-weight: 700;
       color: #ffffff;
-      -webkit-text-stroke: 2px var(--pink);
+      -webkit-text-stroke: 2.5px var(--pink);
       paint-order: stroke fill;
       line-height: 0.85;
       margin-bottom: 12px;
@@ -931,13 +931,13 @@
       font-family: var(--font-sans);
       font-size: 26px;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--espresso);
       margin-bottom: 12px;
     }
 
     .proceso__step-desc {
       font-size: 14px;
-      color: rgba(255,255,255,0.6);
+      color: var(--text-muted);
       line-height: 1.7;
     }
 
@@ -1517,9 +1517,9 @@
         <!-- Left: text -->
         <div class="hero__text fade-up">
           <div class="hero__label">
-            Repostería artesanal · Ciudad de México
+            La casa de los pasteles y postres · Ciudad de México
           </div>
-          <h1 class="hero__h1">El pastel que<br><em>no se olvida</em></h1>
+          <h1 class="hero__h1">Un pastel<br><em>inolvidable</em></h1>
           <p class="hero__sub">Diseños únicos, hechos a mano y bajo pedido. Cada pieza es una expresión de quién eres y qué quieres celebrar.</p>
           <div class="hero__ctas">
             <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -1550,7 +1550,7 @@
 
   <!-- Seriously Good divider -->
   <div class="seriously-good" aria-hidden="true">
-    <p class="seriously-good__text">Seriously &nbsp;<span>Good</span></p>
+    <p class="seriously-good__text">Seriously <span>Good</span></p>
   </div>
 
 
@@ -1720,7 +1720,7 @@
                 <span class="flavor-icon">+</span>
               </summary>
               <div class="flavor-body">
-                <p class="flavor-desc">Pan de chocolate fudge relleno de ganache de chocolate semi amargo cubierto de nuestro cream cheese frosting o ganache. Profundo y denso sabor a chocolate.</p>
+                <p class="flavor-desc">Pan denso de chocolate relleno de ganache de chocolate semi amargo y una capa estilo mousse de chocolate cubierto de nuestro cream cheese frosting. Puede ir con chispas de chocolate al centro. Imperdible.</p>
                 <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
               </div>
             </details>
@@ -1766,6 +1766,7 @@
                 <span class="flavor-icon">+</span>
               </summary>
               <div class="flavor-body">
+                <p class="flavor-desc">Intensamente fudgy con chocolate chunks. La gente los ha descrito como los mejores que han probado en su vida.</p>
                 <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
               </div>
             </details>
@@ -1776,6 +1777,7 @@
                 <span class="flavor-icon">+</span>
               </summary>
               <div class="flavor-body">
+                <p class="flavor-desc">Triple gooey chocolate cookies, la galleta que sabe a lo que esperarías. Adictivas.</p>
                 <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
               </div>
             </details>
@@ -1864,6 +1866,14 @@
     </div>
   </section>
 
+  <!-- DISCLAIMER -->
+  <div style="background:#fff; border-top:1px solid rgba(232,25,106,.15); padding:20px 0; text-align:center;">
+    <p style="font-size:12px; color:var(--text-muted); text-transform:none; letter-spacing:0; font-family:var(--font-sans);">
+      Antes de realizar tu compra, por favor lee la
+      <a href="#info" style="color:var(--pink); font-weight:600; text-decoration:underline; text-underline-offset:3px;">Información Importante</a>
+    </p>
+  </div>
+
 
   <!-- ============================================
        QUIÉNES SOMOS
@@ -1889,6 +1899,9 @@
           <h2 class="about__title" id="about-title">Más que un pastel</h2>
           <p class="about__body">
             Por años hemos perfeccionado nuestras recetas con todo el amor para traer The Baking Room a tu mesa.
+          </p>
+          <p class="about__body">
+            Usamos e importamos únicamente los mejores ingredientes para tu pastel.
           </p>
           <p class="about__body">
             Nos distinguimos por utilizar los ingredientes de más alta calidad que existen en el mercado.
@@ -2138,33 +2151,33 @@
   <!-- ============================================
        INFORMACIÓN IMPORTANTE
   ============================================ -->
-  <section class="info-importante" id="info" aria-label="Información importante" style="padding:48px 0; background:var(--pink-light); border-top:2px solid var(--pink);">
+  <section class="info-importante" id="info" aria-label="Información importante" style="padding:48px 0; background:#ffffff; border-top:1.5px solid var(--pink); border-bottom:1.5px solid var(--pink);">
     <div class="container">
-      <p style="font-family:var(--font-sans); font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--pink); margin-bottom:32px; text-align:center;">Cuidados generales e información importante</p>
+      <p style="font-family:var(--font-sans); font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--pink); margin-bottom:32px; text-align:center;">Información importante · Antes de realizar tu compra</p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px;">
 
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="font-size:20px; flex-shrink:0; margin-top:2px;">🧊</span>
+        <div style="border-left:2px solid var(--pink); padding-left:16px;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--pink); margin-bottom:8px;">Refrigeración</p>
           <p style="font-size:13px; color:var(--text-body); line-height:1.8; text-transform:none; letter-spacing:0;">Refrigera el pastel en cuanto termine el trayecto de transporte hasta 20 min aprox antes de partir. No puede estar bajo el sol ni fuente de calor directa.</p>
         </div>
 
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="font-size:20px; flex-shrink:0; margin-top:2px;">🚗</span>
+        <div style="border-left:2px solid var(--pink); padding-left:16px;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--pink); margin-bottom:8px;">Transporte</p>
           <p style="font-size:13px; color:var(--text-body); line-height:1.8; text-transform:none; letter-spacing:0;">Debe transportarse sobre una superficie plana y ser cargado de la base en todo momento.</p>
         </div>
 
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="font-size:20px; flex-shrink:0; margin-top:2px;">⚠️</span>
+        <div style="border-left:2px solid var(--pink); padding-left:16px;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--pink); margin-bottom:8px;">Alérgenos</p>
           <p style="font-size:13px; color:var(--text-body); line-height:1.8; text-transform:none; letter-spacing:0;">Nuestra cocina no es libre de alérgenos. El producto puede contener trazas de leche, nueces, especias, etc.</p>
         </div>
 
-        <div style="display:flex; gap:14px; align-items:flex-start;">
-          <span style="font-size:20px; flex-shrink:0; margin-top:2px;">💳</span>
+        <div style="border-left:2px solid var(--pink); padding-left:16px;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--pink); margin-bottom:8px;">Pagos</p>
           <p style="font-size:13px; color:var(--text-body); line-height:1.8; text-transform:none; letter-spacing:0;">El producto tiene que estar liquidado 100% antes de la entrega, sin excepciones.</p>
         </div>
 
       </div>
-      <p style="font-size:13px; color:var(--text-muted); text-align:center; margin-top:32px; text-transform:none; letter-spacing:0; font-style:italic;">¡Gracias por tu confianza! Estamos felices de trabajar para ti. 🤍</p>
+      <p style="font-size:13px; color:var(--text-muted); text-align:center; margin-top:32px; text-transform:none; letter-spacing:0; font-style:italic;">Gracias por tu confianza. Estamos felices de trabajar para ti.</p>
     </div>
   </section>
 
@@ -2181,30 +2194,123 @@
 
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;" class="fade-up">
 
-        <!-- Reseña 1 -->
-        <div style="background:var(--cream-dark); padding:28px; border-top:3px solid var(--pink);">
-          <div style="display:flex; gap:4px; margin-bottom:16px;">
-            <span style="color:var(--pink); font-size:14px;">★★★★★</span>
-          </div>
+        <div style="background:#fff; padding:28px; border-top:3px solid var(--pink); border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
           <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Los amo neta, son los mejores."</p>
           <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
         </div>
 
-        <!-- Reseña 2 -->
-        <div style="background:var(--cream-dark); padding:28px; border-top:3px solid var(--pink);">
-          <div style="display:flex; gap:4px; margin-bottom:16px;">
-            <span style="color:var(--pink); font-size:14px;">★★★★★</span>
-          </div>
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
           <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"No puedo dejar de comer pastel!! Neta estoy adicta, mucho más que los de mi cumpleaños. Estuvo buenísimo! Mil mil gracias."</p>
           <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
         </div>
 
-        <!-- Reseña 3 -->
-        <div style="background:var(--cream-dark); padding:28px; border-top:3px solid var(--pink);">
-          <div style="display:flex; gap:4px; margin-bottom:16px;">
-            <span style="color:var(--pink); font-size:14px;">★★★★★</span>
-          </div>
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
           <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"¡Les encantó el pastel!! Súper súper ricooo."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"El pastel de bodas fue perfecto. Todos los invitados preguntaron de dónde era. Gracias por hacer ese día tan especial."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"El Red Velvet es una locura. Súper esponjoso y el cream cheese frosting está increíble. Ya es el favorito de la familia."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Pedí el Carrot Cake para mi mamá y lloró de lo rico. Diseño hermoso y el sabor brutal. 100% recomendado."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Muy atentas desde el primer mensaje. El diseño quedó exactamente como lo imaginé. Muchas gracias!"</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"El Chocolate Fudge es lo mejor que he probado en mi vida. No exagero. Ya no puedo pedir otro pastel que no sea de aquí."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Pedí las galletas personalizadas para un baby shower y quedaron preciosas. El sabor riquísimo. Todo el mundo me preguntó dónde las compré."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"El servicio es impecable y los tiempos de entrega perfectos. El pastel llegó hermoso y riquísimo."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Primer pedido y no será el último. El Luxe Line me dejó sin palabras, literalmente una obra de arte y encima estaba delicioso."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Mi hija quedó feliz con su pastel temático. Lo hicieron igualito a lo que pedimos. 100% lo recomiendo."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Los brownies fudgiest son una perdición. Los pedimos cada semana. Son adictivos, en serio."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Piden con tiempo y no se arrepienten. El diseño floral quedó de revista. El sabor, mejor todavía."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Nunca había comido un pastel tan rico y tan bonito al mismo tiempo. The Baking Room es diferente nivel."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"El trato es hermoso. Se nota que aman lo que hacen. El pastel llegó perfecto y fue el alma de la fiesta."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"El Vintage cake me dejó sin palabras. Elegante, delicado y con un sabor increíble. Para bodas, sin duda."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Llevamos 3 cumpleaños con The Baking Room y no vamos a cambiar. Calidad, puntualidad y pastelazos."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"La presentación es perfecta, el sabor mejor aún. Mi pastel de XV años fue el más bonito de todos."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <div style="background:#fff; padding:28px; border:1px solid rgba(0,0,0,.06); border-top:3px solid var(--pink);">
+          <span style="color:var(--pink); font-size:13px; display:block; margin-bottom:14px;">★★★★★</span>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Soy mamá y soy exigente. The Baking Room es el único lugar al que le confío los pasteles de mis hijos. Sin duda."</p>
           <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
         </div>
 
