@@ -111,7 +111,7 @@
         "name": "¿Cuánto cuesta una página web en Brota Digital?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nuestras páginas web empiezan desde $3,500 MXN para una landing page básica. El plan Brote (completo) cuesta $6,500 MXN y el paquete Full con identidad y redes desde $12,000 MXN."
+          "text": "Nuestras páginas web empiezan desde $3,500 MXN con el plan Siembra (landing page básica). El plan Cosecha cuesta $8,500 MXN e incluye hasta 5 páginas, SEO y correos profesionales. El plan Selva es $16,500 MXN e incluye blog, SEO técnico y estrategia digital."
         }
       },
       {
@@ -265,6 +265,14 @@
     .paquetes__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
     .pkg{background:var(--white);border-radius:20px;padding:36px 28px;border:1.5px solid transparent;transition:border-color .25s,box-shadow .25s}
     .pkg:hover{border-color:rgba(232,93,58,.2);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+    /* SEMILLA — crema/dorado */
+    .pkg.semilla{background:var(--cream-2);border-color:var(--gold)}
+    .pkg.semilla:hover{border-color:#d4a017;box-shadow:0 12px 40px rgba(245,201,122,.25)}
+    .pkg.semilla .pkg__label{color:#9a6e00}
+    .pkg.semilla .pkg__list li::before{color:#9a6e00}
+    .pkg.semilla .btn-pkg-outline{border-color:var(--gold);color:#9a6e00}
+    .pkg.semilla .btn-pkg-outline:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+    /* RAÍZ — coral (featured) */
     .pkg.featured{background:var(--coral);border-color:var(--coral)}
     .pkg__label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
     .pkg.featured .pkg__label{color:rgba(255,255,255,.7)}
@@ -282,7 +290,19 @@
     .pkg.featured .pkg__list li{color:rgba(255,255,255,.9)}
     .pkg__list li::before{content:'✓';color:var(--coral);font-weight:800;font-size:13px;flex-shrink:0;margin-top:1px}
     .pkg.featured .pkg__list li::before{color:rgba(255,255,255,.9)}
-    .btn-pkg{width:100%;padding:13px;border:none;border-radius:100px;font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;min-height:48px}
+    /* FLORECE — negro premium / dorado */
+    .pkg.premium{background:var(--black);border-color:rgba(245,201,122,.3)}
+    .pkg.premium:hover{border-color:var(--gold);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+    .pkg.premium .pkg__label{color:var(--gold)}
+    .pkg.premium .pkg__name{color:#fff}
+    .pkg.premium .pkg__price{color:#fff}
+    .pkg.premium .pkg__note{color:rgba(255,255,255,.45)}
+    .pkg.premium .pkg__divider{background:rgba(255,255,255,.1)}
+    .pkg.premium .pkg__list li{color:rgba(255,255,255,.85)}
+    .pkg.premium .pkg__list li::before{color:var(--gold)}
+    .pkg.premium .btn-pkg-outline{border-color:rgba(245,201,122,.4);color:var(--gold)}
+    .pkg.premium .btn-pkg-outline:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+    .btn-pkg{width:100%;padding:13px;border:none;border-radius:100px;font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;min-height:48px}
     .btn-pkg-outline{background:transparent;border:1.5px solid rgba(0,0,0,.15);color:var(--black)}
     .btn-pkg-outline:hover{border-color:var(--coral);color:var(--coral)}
     .btn-pkg-white{background:#fff;color:var(--coral)}
@@ -404,7 +424,7 @@
                 <div class="trust-dot"></div>
                 <div class="trust-dot"></div>
               </div>
-              <p><strong>Desde $3,500 MXN</strong> · Entrega en 5-7 días</p>
+              <p><strong>Desde $3,500 MXN</strong> · Entrega en 7–21 días</p>
             </div>
           </div>
           <div class="hero__visual">
@@ -428,7 +448,7 @@
               </div>
               <div class="hero__card-stats">
                 <div class="stat-mini"><div class="num">↑82%</div><div class="lbl">Visitas</div></div>
-                <div class="stat-mini"><div class="num">5d</div><div class="lbl">Entrega</div></div>
+                <div class="stat-mini"><div class="num">15d</div><div class="lbl">Entrega</div></div>
                 <div class="stat-mini"><div class="num">100%</div><div class="lbl">Tuyo</div></div>
               </div>
             </div>
@@ -557,51 +577,52 @@
           <p class="lead" style="margin:0 auto">Sin letra chica. Sin costos ocultos.</p>
         </div>
         <div class="paquetes__grid">
-          <div class="pkg reveal">
-            <div class="pkg__label">Semilla</div>
-            <div class="pkg__name">Starter</div>
+          <div class="pkg semilla reveal">
+            <div class="pkg__label">Siembra</div>
+            <div class="pkg__name">Tu primera presencia digital</div>
             <div class="pkg__price"><span>$</span>3,500</div>
-            <div class="pkg__note">MXN · pago único</div>
+            <div class="pkg__note">MXN · pago único · 7 días hábiles</div>
             <div class="pkg__divider"></div>
             <ul class="pkg__list">
-              <li>Landing page de 1 página</li>
-              <li>Diseño personalizado</li>
-              <li>Formulario de contacto</li>
-              <li>Botón de WhatsApp</li>
-              <li>Adaptada a celular</li>
-              <li>2 rondas de cambios</li>
+              <li>Landing page de 1 página (5 secciones)</li>
+              <li>Diseño personalizado responsivo</li>
+              <li>Botón de WhatsApp flotante</li>
+              <li>Dominio .com/.com.mx primer año</li>
+              <li>Hosting incluido 6 meses</li>
+              <li>1 ronda de revisiones</li>
             </ul>
             <button class="btn-pkg btn-pkg-outline" onclick="window.open('https://wa.me/525564131634','_blank')">Quiero este plan</button>
           </div>
           <div class="pkg featured reveal">
             <div class="pkg__label">⭐ Más popular</div>
-            <div class="pkg__name">Brote</div>
-            <div class="pkg__price"><span>$</span>6,500</div>
-            <div class="pkg__note">MXN · pago único</div>
+            <div class="pkg__name">Cosecha</div>
+            <div class="pkg__price"><span>$</span>8,500</div>
+            <div class="pkg__note">MXN · pago único · 14 días hábiles</div>
             <div class="pkg__divider"></div>
             <ul class="pkg__list">
-              <li>Landing page completa (5-6 secciones)</li>
-              <li>Diseño premium personalizado</li>
-              <li>Galería / Menú / Portfolio</li>
-              <li>Integración Google Maps</li>
-              <li>Redes sociales enlazadas</li>
-              <li>3 rondas de cambios</li>
+              <li>Hasta 5 páginas personalizadas</li>
+              <li>SEO básico on-page incluido</li>
+              <li>Google Analytics + Search Console</li>
+              <li>3 correos profesionales</li>
+              <li>Hosting 12 meses incluido</li>
+              <li>2 rondas de revisiones</li>
+              <li>Capacitación de uso (45 min)</li>
             </ul>
             <button class="btn-pkg btn-pkg-white" onclick="window.open('https://wa.me/525564131634','_blank')">Quiero este plan</button>
           </div>
-          <div class="pkg reveal">
-            <div class="pkg__label">Raíz</div>
-            <div class="pkg__name">Full</div>
-            <div class="pkg__price"><span>$</span>12,000</div>
-            <div class="pkg__note">MXN · incluye 1 mes</div>
+          <div class="pkg premium reveal">
+            <div class="pkg__label">Selva</div>
+            <div class="pkg__name">Una web que trabaja para ti</div>
+            <div class="pkg__price"><span>$</span>16,500</div>
+            <div class="pkg__note">MXN · pago único · 21 días hábiles</div>
             <div class="pkg__divider"></div>
             <ul class="pkg__list">
-              <li>Todo el plan Brote</li>
-              <li>Logo + identidad de marca</li>
-              <li>Gestión redes 1 mes</li>
-              <li>12 publicaciones diseñadas</li>
-              <li>Estrategia de contenido</li>
-              <li>Soporte prioritario</li>
+              <li>Todo el plan Cosecha</li>
+              <li>Hasta 10 páginas + blog (3 artículos)</li>
+              <li>SEO técnico completo</li>
+              <li>CRM básico integrado</li>
+              <li>Automatización email bienvenida</li>
+              <li>Sesión de estrategia digital (1h)</li>
             </ul>
             <button class="btn-pkg btn-pkg-outline" onclick="window.open('https://wa.me/525564131634','_blank')">Quiero este plan</button>
           </div>
