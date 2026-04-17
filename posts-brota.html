@@ -259,6 +259,62 @@ body{font-family:var(--f);background:#0a0a0a;color:#fff;min-height:100vh}
 .p15 .cn{font-size:24px;font-weight:900;color:var(--coral);line-height:1}
 .p15 .cl{font-size:9px;color:rgba(255,255,255,.35);margin-top:4px;text-transform:uppercase;letter-spacing:.1em}
 .p15 .btn{background:var(--coral);color:#fff;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:14px 32px;border-radius:100px;position:relative;z-index:1;display:inline-block}
+
+/* ─── CARRUSELES ─── */
+.car-ind{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);color:#fff;font-size:9px;font-weight:800;letter-spacing:.06em;padding:4px 9px;border-radius:5px;z-index:10;display:flex;align-items:center;gap:5px}
+.car-ind svg{flex-shrink:0}
+.hidden-slide{display:none!important}
+
+/* Lightbox inner carousel nav */
+.lb-inner-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);border:none;color:#fff;font-size:22px;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;backdrop-filter:blur(4px);transition:background .2s}
+.lb-inner-nav:hover{background:rgba(0,0,0,.7)}
+#lb-iprev{left:8px}
+#lb-inext{right:8px}
+.lb-inner-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:20}
+.lb-idot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .2s}
+.lb-idot.on{background:#fff;width:14px;border-radius:3px}
+
+/* Post 6 carousel slides */
+.p6-cov{background:var(--bk2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px}
+.p6-cov::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(232,93,58,.15) 0%,transparent 60%)}
+.p6-cov .ey{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:16px;position:relative;z-index:1}
+.p6-cov .big{font-size:52px;font-weight:900;color:#fff;letter-spacing:-2.5px;line-height:1;margin-bottom:14px;position:relative;z-index:1}
+.p6-cov .big em{color:var(--coral);font-style:normal}
+.p6-cov .hint{font-size:12px;color:rgba(255,255,255,.35);position:relative;z-index:1}
+.p6-cov .hint::after{content:' →'}
+.p6-step{background:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:52px 48px}
+.p6-step .sn{font-size:100px;font-weight:900;color:rgba(232,93,58,.1);line-height:1;letter-spacing:-6px;margin-bottom:-10px}
+.p6-step .st{font-size:30px;font-weight:900;color:var(--bk);letter-spacing:-1px;line-height:1.15;margin-bottom:12px}
+.p6-step .sd{font-size:13px;color:#777;line-height:1.65;margin-bottom:24px}
+.p6-step .day-chip{display:inline-flex;align-items:center;background:rgba(232,93,58,.1);color:var(--coral);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:100px}
+
+/* Post 9 carousel slides */
+.p9-cov{background:var(--coral);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:56px 50px}
+.p9-cov .ey{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:16px}
+.p9-cov .big{font-size:52px;font-weight:900;color:#fff;letter-spacing:-2.5px;line-height:1;margin-bottom:18px}
+.p9-cov .hint{font-size:12px;color:rgba(255,255,255,.5)}
+.p9-cov .hint::after{content:' →'}
+.p9-feat{background:var(--bk2);display:flex;flex-direction:column;justify-content:center;padding:44px 48px}
+.p9-feat .slide-n{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.p9-feat .slide-n::before{content:'';display:block;width:16px;height:2px;background:var(--coral)}
+.p9-feat .items{display:flex;flex-direction:column;gap:14px}
+.p9-feat .fi{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 18px}
+.p9-feat .fi-icon{width:36px;height:36px;border-radius:9px;background:rgba(232,93,58,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.p9-feat .fi-body h4{font-size:13px;font-weight:800;color:#fff;margin-bottom:2px}
+.p9-feat .fi-body p{font-size:11px;color:rgba(255,255,255,.4)}
+
+/* Post 12 carousel slides */
+.p12-cov{background:var(--bk2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px}
+.p12-cov::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 40% 60%,rgba(232,93,58,.13) 0%,transparent 55%)}
+.p12-cov .ey{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:16px;position:relative;z-index:1}
+.p12-cov .big{font-size:50px;font-weight:900;color:#fff;letter-spacing:-2.5px;line-height:1.05;margin-bottom:14px;position:relative;z-index:1}
+.p12-cov .hint{font-size:12px;color:rgba(255,255,255,.35);position:relative;z-index:1}
+.p12-cov .hint::after{content:' →'}
+.p12-day{background:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:50px 46px}
+.p12-day .daynum{font-size:90px;font-weight:900;color:rgba(232,93,58,.1);line-height:1;letter-spacing:-5px;margin-bottom:-8px}
+.p12-day .day-label{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
+.p12-day .day-title{font-size:30px;font-weight:900;color:var(--bk);letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.p12-day .day-desc{font-size:13px;color:#777;line-height:1.65}
 </style>
 </head>
 <body>
@@ -461,16 +517,40 @@ Tu negocio ya está en internet 🚀
 
 #ProcesoDiseñoWeb #BrotaDigital #AgenciaCDMX #DiseñoWeb">
     <div class="day-badge">Día 6</div>
-    <div class="pw-hover"><span>Ver detalle</span></div>
-    <div class="post p6">
+    <div class="car-ind"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="0" y="2.5" width="8" height="8" rx="1.5" fill="currentColor" opacity=".45"/><rect x="2.5" y="0" width="9" height="9" rx="1.5" fill="currentColor"/></svg> 4 slides</div>
+    <div class="pw-hover"><span>Ver carrusel</span></div>
+    <!-- Slide 1: Cover -->
+    <div class="post p6-cov">
       <div class="ey">Nuestro proceso</div>
-      <div class="hl">Tu página web<br>en <span>15 días</span></div>
-      <div class="steps">
-        <div class="step"><div class="snum">1</div><div class="sbody"><h4>Discovery Call</h4><p>Entendemos tu negocio y objetivos</p></div></div>
-        <div class="step"><div class="snum">2</div><div class="sbody"><h4>Diseño y propuesta</h4><p>Creamos el diseño para tu aprobación</p></div></div>
-        <div class="step"><div class="snum">3</div><div class="sbody"><h4>Desarrollo</h4><p>Construimos y ajustamos tu sitio</p></div></div>
-        <div class="step"><div class="snum">4</div><div class="sbody"><h4>Lanzamiento 🚀</h4><p>Tu negocio ya está en internet</p></div></div>
-      </div>
+      <div class="big">Tu página web<br>en <em>15 días</em></div>
+      <div class="hint">Desliza para conocer cada paso</div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+    <!-- Slide 2: Paso 1 -->
+    <div class="post p6-step hidden-slide">
+      <div class="sn">01</div>
+      <div class="st">Discovery Call</div>
+      <div class="sd">Entendemos tu negocio, tu cliente ideal y tus objetivos. Una llamada de 30 min que lo define todo.</div>
+      <div class="day-chip">Día 1</div>
+      <span class="p-brand dark">brotadigital.mx</span>
+      <span class="p-ig dark">@brotadigital</span>
+    </div>
+    <!-- Slide 3: Paso 2 -->
+    <div class="post p6-step hidden-slide">
+      <div class="sn">02</div>
+      <div class="st">Diseño y Propuesta</div>
+      <div class="sd">Diseñamos tu página completa y te la presentamos para aprobación. Tú tienes la última palabra.</div>
+      <div class="day-chip">Días 2–5</div>
+      <span class="p-brand dark">brotadigital.mx</span>
+      <span class="p-ig dark">@brotadigital</span>
+    </div>
+    <!-- Slide 4: Paso 3+4 -->
+    <div class="post p6-step hidden-slide">
+      <div class="sn">03</div>
+      <div class="st">Desarrollo y Lanzamiento 🚀</div>
+      <div class="sd">Construimos tu sitio, aplicamos correcciones y lanzamos. En el día 15, tu negocio ya está en internet.</div>
+      <div class="day-chip">Días 6–15</div>
       <span class="p-brand dark">brotadigital.mx</span>
       <span class="p-ig dark">@brotadigital</span>
     </div>
@@ -569,15 +649,34 @@ DM o brotadigital.mx para cotizar gratis 🌱
 
 #BrotaDigital #DiseñoWeb #PáginaWeb #Qué Incluye #MarketingDigital">
     <div class="day-badge">Día 9</div>
-    <div class="pw-hover"><span>Ver detalle</span></div>
-    <div class="post p9">
-      <div class="hl">¿Qué incluye<br>tu página web?</div>
-      <div class="list">
-        <div class="li"><div class="ck">✓</div><p>Diseño 100% personalizado</p></div>
-        <div class="li"><div class="ck">✓</div><p>Adaptada a celular</p></div>
-        <div class="li"><div class="ck">✓</div><p>WhatsApp integrado</p></div>
-        <div class="li"><div class="ck">✓</div><p>Optimizada para Google (SEO)</p></div>
-        <div class="li"><div class="ck">✓</div><p>Dominio + Hosting primer año</p></div>
+    <div class="car-ind"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="0" y="2.5" width="8" height="8" rx="1.5" fill="currentColor" opacity=".45"/><rect x="2.5" y="0" width="9" height="9" rx="1.5" fill="currentColor"/></svg> 3 slides</div>
+    <div class="pw-hover"><span>Ver carrusel</span></div>
+    <!-- Slide 1: Cover -->
+    <div class="post p9-cov">
+      <div class="ey">Lo que llevas</div>
+      <div class="big">¿Qué incluye<br>tu página web?</div>
+      <div class="hint">Desliza para ver todo</div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+    <!-- Slide 2: Features 1-3 -->
+    <div class="post p9-feat hidden-slide">
+      <div class="slide-n">Lo que incluye</div>
+      <div class="items">
+        <div class="fi"><div class="fi-icon">🎨</div><div class="fi-body"><h4>Diseño 100% personalizado</h4><p>Único para tu marca y negocio</p></div></div>
+        <div class="fi"><div class="fi-icon">📱</div><div class="fi-body"><h4>Adaptada a celular</h4><p>Perfecto en todos los dispositivos</p></div></div>
+        <div class="fi"><div class="fi-icon">💬</div><div class="fi-body"><h4>WhatsApp integrado</h4><p>Tus clientes te contactan al instante</p></div></div>
+      </div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+    <!-- Slide 3: Features 4-5 + CTA -->
+    <div class="post p9-feat hidden-slide">
+      <div class="slide-n">Y además</div>
+      <div class="items">
+        <div class="fi"><div class="fi-icon">🔍</div><div class="fi-body"><h4>Optimizada para Google</h4><p>Apareces cuando te buscan</p></div></div>
+        <div class="fi"><div class="fi-icon">🌐</div><div class="fi-body"><h4>Dominio + Hosting</h4><p>El primer año está incluido</p></div></div>
+        <div class="fi" style="background:rgba(232,93,58,.14);border-color:rgba(232,93,58,.3)"><div class="fi-icon" style="background:rgba(232,93,58,.22)">✉️</div><div class="fi-body"><h4 style="color:var(--coral)">Sin sorpresas ni letra chica</h4><p>DM o brotadigital.mx para cotizar 🌱</p></div></div>
       </div>
       <span class="p-brand">brotadigital.mx</span>
       <span class="p-ig">@brotadigital</span>
@@ -678,16 +777,40 @@ Transparencia total en cada etapa.
 
 #BehindTheScenes #BrotaDigital #DiseñoWeb #ProcesoDiseño #AgenciaCDMX">
     <div class="day-badge">Día 12</div>
-    <div class="pw-hover"><span>Ver detalle</span></div>
-    <div class="post p12">
+    <div class="car-ind"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="0" y="2.5" width="8" height="8" rx="1.5" fill="currentColor" opacity=".45"/><rect x="2.5" y="0" width="9" height="9" rx="1.5" fill="currentColor"/></svg> 4 slides</div>
+    <div class="pw-hover"><span>Ver carrusel</span></div>
+    <!-- Slide 1: Cover -->
+    <div class="post p12-cov">
       <div class="ey">Detrás de cámaras</div>
-      <div class="hl">Cómo construimos<br>tu página web</div>
-      <div class="tl">
-        <div class="ti"><div class="td">1</div><div class="tc"><span class="day-tag">Día 1</span><h4>Discovery Call</h4><p>Conocemos tu negocio a fondo</p></div></div>
-        <div class="ti"><div class="td">2</div><div class="tc"><span class="day-tag">Días 2-5</span><h4>Diseño y propuesta</h4><p>Presentamos el diseño para aprobación</p></div></div>
-        <div class="ti"><div class="td">3</div><div class="tc"><span class="day-tag">Días 6-12</span><h4>Desarrollo y ajustes</h4><p>Construimos y perfeccionamos</p></div></div>
-        <div class="ti"><div class="td">🚀</div><div class="tc"><span class="day-tag">Día 15</span><h4>Lanzamiento</h4><p>Tu negocio ya está en internet</p></div></div>
-      </div>
+      <div class="big">Cómo construimos<br>tu página web</div>
+      <div class="hint">Día a día del proceso</div>
+      <span class="p-brand">brotadigital.mx</span>
+      <span class="p-ig">@brotadigital</span>
+    </div>
+    <!-- Slide 2: Día 1 -->
+    <div class="post p12-day hidden-slide">
+      <div class="daynum">1</div>
+      <div class="day-label">Día 1</div>
+      <div class="day-title">Discovery Call</div>
+      <div class="day-desc">Nos conocemos y entendemos tu negocio a fondo. Esta llamada de 30 min define todo el proyecto.</div>
+      <span class="p-brand dark">brotadigital.mx</span>
+      <span class="p-ig dark">@brotadigital</span>
+    </div>
+    <!-- Slide 3: Días 2-5 -->
+    <div class="post p12-day hidden-slide">
+      <div class="daynum">2-5</div>
+      <div class="day-label">Días 2–5</div>
+      <div class="day-title">Diseño y Propuesta</div>
+      <div class="day-desc">Investigamos tu industria, diseñamos tu página y te la presentamos. Tú apruebas antes de avanzar.</div>
+      <span class="p-brand dark">brotadigital.mx</span>
+      <span class="p-ig dark">@brotadigital</span>
+    </div>
+    <!-- Slide 4: Días 6-15 -->
+    <div class="post p12-day hidden-slide">
+      <div class="daynum">15</div>
+      <div class="day-label">Días 6–15</div>
+      <div class="day-title">Desarrollo y Lanzamiento 🚀</div>
+      <div class="day-desc">Construimos, ajustamos y lanzamos. En el día 15 tu negocio ya está en internet.</div>
       <span class="p-brand dark">brotadigital.mx</span>
       <span class="p-ig dark">@brotadigital</span>
     </div>
@@ -830,9 +953,14 @@ brotadigital.mx
 const pws = Array.from(document.querySelectorAll('.pw'));
 const lb = document.getElementById('lb');
 let cur = 0;
+let curSlide = 0;
+
+function getSlides(pw) {
+  return Array.from(pw.querySelectorAll('.post'));
+}
 
 function openLb(i) {
-  cur = i;
+  cur = i; curSlide = 0;
   renderLb();
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -841,70 +969,105 @@ function closeLb() {
   lb.classList.remove('open');
   document.body.style.overflow = '';
 }
-function renderLb() {
-  const pw = pws[cur];
-  document.getElementById('lb-day').textContent = 'Día ' + (cur + 1) + ' de 15';
-  document.getElementById('lb-title').textContent = pw.dataset.title;
-  document.getElementById('lb-cap').textContent = pw.dataset.cap;
+
+function renderLbSlide() {
+  const slides = getSlides(pws[cur]);
   const frame = document.getElementById('lb-frame');
-  const clone = pw.querySelector('.post').cloneNode(true);
+  const clone = slides[curSlide].cloneNode(true);
+  clone.classList.remove('hidden-slide');
   clone.style.width = '540px';
   clone.style.height = '540px';
   frame.innerHTML = '';
   frame.appendChild(clone);
-  // dots
-  const dotsEl = document.getElementById('lb-dots');
-  dotsEl.innerHTML = '';
-  pws.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'lb-dot' + (i === cur ? ' on' : '');
-    d.onclick = () => { cur = i; renderLb(); };
-    dotsEl.appendChild(d);
-  });
-  // reset copy btn
-  const copyBtn = document.getElementById('lb-copy');
-  copyBtn.textContent = 'Copiar caption';
-  copyBtn.classList.remove('ok');
+
+  if (slides.length > 1) {
+    if (curSlide > 0) {
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'lb-inner-nav'; prevBtn.id = 'lb-iprev'; prevBtn.textContent = '‹';
+      prevBtn.addEventListener('click', function(e) { e.stopPropagation(); curSlide--; renderLbSlide(); });
+      frame.appendChild(prevBtn);
+    }
+    if (curSlide < slides.length - 1) {
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'lb-inner-nav'; nextBtn.id = 'lb-inext'; nextBtn.textContent = '›';
+      nextBtn.addEventListener('click', function(e) { e.stopPropagation(); curSlide++; renderLbSlide(); });
+      frame.appendChild(nextBtn);
+    }
+    const dotsDiv = document.createElement('div');
+    dotsDiv.className = 'lb-inner-dots';
+    slides.forEach(function(_, i) {
+      const d = document.createElement('div');
+      d.className = 'lb-idot' + (i === curSlide ? ' on' : '');
+      d.addEventListener('click', function(e) { e.stopPropagation(); curSlide = i; renderLbSlide(); });
+      dotsDiv.appendChild(d);
+    });
+    frame.appendChild(dotsDiv);
+  }
 }
 
-// Copy caption
+function renderLb() {
+  const pw = pws[cur];
+  const slides = getSlides(pw);
+  document.getElementById('lb-day').textContent = 'Día ' + (cur + 1) + ' de 15' + (slides.length > 1 ? ' · ' + slides.length + ' slides' : '');
+  document.getElementById('lb-title').textContent = pw.dataset.title;
+  document.getElementById('lb-cap').textContent = pw.dataset.cap;
+  renderLbSlide();
+  const dotsEl = document.getElementById('lb-dots');
+  dotsEl.innerHTML = '';
+  pws.forEach(function(_, i) {
+    const d = document.createElement('button');
+    d.className = 'lb-dot' + (i === cur ? ' on' : '');
+    d.addEventListener('click', function() { cur = i; curSlide = 0; renderLb(); });
+    dotsEl.appendChild(d);
+  });
+  const copyBtn = document.getElementById('lb-copy');
+  copyBtn.textContent = 'Copiar caption'; copyBtn.classList.remove('ok');
+}
+
 document.getElementById('lb-copy').addEventListener('click', function() {
   const text = document.getElementById('lb-cap').textContent;
   navigator.clipboard.writeText(text).then(() => {
-    this.textContent = '✓ Copiado';
-    this.classList.add('ok');
+    this.textContent = '✓ Copiado'; this.classList.add('ok');
     setTimeout(() => { this.textContent = 'Copiar caption'; this.classList.remove('ok'); }, 2000);
   });
 });
 
-// Download
 document.getElementById('lb-dl').addEventListener('click', function() {
   const frame = document.getElementById('lb-frame');
   const postEl = frame.querySelector('.post');
   if (!postEl) return;
   this.textContent = 'Generando...';
   const btn = this;
+  const slides = getSlides(pws[cur]);
+  const suffix = slides.length > 1 ? '-slide' + (curSlide + 1) : '';
   html2canvas(postEl, { scale: 2, useCORS: true, width: 540, height: 540 }).then(canvas => {
     const link = document.createElement('a');
-    link.download = 'brota-dia' + (cur + 1) + '.png';
+    link.download = 'brota-dia' + (cur + 1) + suffix + '.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
     btn.textContent = '↓ Descargar';
   });
 });
 
-// Nav
-document.getElementById('lb-prev').addEventListener('click', () => { cur = (cur - 1 + pws.length) % pws.length; renderLb(); });
-document.getElementById('lb-next').addEventListener('click', () => { cur = (cur + 1) % pws.length; renderLb(); });
+document.getElementById('lb-prev').addEventListener('click', function() { cur = (cur - 1 + pws.length) % pws.length; curSlide = 0; renderLb(); });
+document.getElementById('lb-next').addEventListener('click', function() { cur = (cur + 1) % pws.length; curSlide = 0; renderLb(); });
 document.getElementById('lb-close').addEventListener('click', closeLb);
-lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-document.addEventListener('keydown', e => {
+lb.addEventListener('click', function(e) { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', function(e) {
   if (!lb.classList.contains('open')) return;
-  if (e.key === 'ArrowLeft') { cur = (cur - 1 + pws.length) % pws.length; renderLb(); }
-  if (e.key === 'ArrowRight') { cur = (cur + 1) % pws.length; renderLb(); }
+  if (e.key === 'ArrowLeft') {
+    const slides = getSlides(pws[cur]);
+    if (slides.length > 1 && curSlide > 0) { curSlide--; renderLbSlide(); }
+    else { cur = (cur - 1 + pws.length) % pws.length; curSlide = 0; renderLb(); }
+  }
+  if (e.key === 'ArrowRight') {
+    const slides = getSlides(pws[cur]);
+    if (slides.length > 1 && curSlide < slides.length - 1) { curSlide++; renderLbSlide(); }
+    else { cur = (cur + 1) % pws.length; curSlide = 0; renderLb(); }
+  }
   if (e.key === 'Escape') closeLb();
 });
-pws.forEach((pw, i) => pw.addEventListener('click', () => openLb(i)));
+pws.forEach(function(pw, i) { pw.addEventListener('click', function() { openLb(i); }); });
 </script>
 </body>
 </html>
