@@ -2291,89 +2291,62 @@
         <h2 style="font-family:var(--font-sans); font-size:clamp(28px,4vw,48px); font-weight:500; color:var(--espresso); letter-spacing:normal; text-transform:none;" id="resenas-title">Reseñas</h2>
       </div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px;" class="fade-up">
+      <!-- Carrusel reseñas -->
+      <div id="resCarousel" class="fade-up" style="position:relative; max-width:640px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.10);">
 
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-1.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
+        <div id="resTrack" style="display:flex; transition:transform .45s cubic-bezier(.4,0,.2,1);">
+          <img src="review-1.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-2.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-3.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-4.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-5.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-6.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-7.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-8.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-9.jpg"  alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-10.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-11.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-12.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-13.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-14.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-15.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-16.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-17.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-18.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-19.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
+          <img src="review-20.jpg" alt="Reseña cliente" style="min-width:100%; width:100%; height:auto; display:block;" loading="lazy"/>
         </div>
 
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-2.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
+        <!-- Flechas -->
+        <button id="resPrev" aria-label="Anterior" style="position:absolute;top:50%;left:12px;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);">‹</button>
+        <button id="resNext" aria-label="Siguiente" style="position:absolute;top:50%;right:12px;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);">›</button>
 
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-3.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-4.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-5.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-6.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-7.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-8.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-9.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-10.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-11.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-12.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-13.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-14.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-15.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-16.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-17.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-18.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-19.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.08);">
-          <img src="review-20.jpg" alt="Reseña cliente" loading="lazy" style="width:100%; height:auto; display:block;"/>
-        </div>
-
+        <!-- Contador -->
+        <div id="resCounter" style="position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,.45);color:#fff;font-size:12px;font-family:var(--font-sans);padding:3px 9px;border-radius:20px;">1 / 20</div>
       </div>
+
+      <script>
+        (function(){
+          var track = document.getElementById('resTrack');
+          var total = 20, idx = 0, startX = 0;
+          function go(n){
+            idx = (n + total) % total;
+            track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+            document.getElementById('resCounter').textContent = (idx+1) + ' / ' + total;
+            document.getElementById('resPrev').disabled = false;
+            document.getElementById('resNext').disabled = false;
+          }
+          document.getElementById('resPrev').addEventListener('click', function(){ go(idx-1); });
+          document.getElementById('resNext').addEventListener('click', function(){ go(idx+1); });
+          track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+          track.addEventListener('touchend', function(e){
+            var dx = e.changedTouches[0].clientX - startX;
+            if(Math.abs(dx) > 40) go(dx < 0 ? idx+1 : idx-1);
+          });
+          // Auto-advance every 4s
+          setInterval(function(){ go(idx+1); }, 4000);
+        })();
+      </script>
     </div>
   </section>
 
