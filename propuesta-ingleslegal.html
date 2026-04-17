@@ -311,6 +311,54 @@
     }
     .cta-final__garantia::before{content:'🔒';font-size:.85rem}
 
+    /* ── PROMO ── */
+    .promo{
+      background:linear-gradient(135deg,#7c2d12 0%,#9a3412 50%,#c2410c 100%);
+      padding:64px 48px;text-align:center;position:relative;overflow:hidden;
+    }
+    .promo::before{
+      content:'';position:absolute;inset:0;
+      background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .promo__content{position:relative;z-index:1;max-width:700px;margin:0 auto}
+    .promo__badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+      color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+      padding:6px 18px;border-radius:50px;margin-bottom:24px;
+    }
+    .promo__badge::before{content:'⚡';font-size:.9rem}
+    .promo h2{font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3}
+    .promo__precios{
+      display:flex;align-items:center;justify-content:center;gap:20px;
+      margin:24px 0;flex-wrap:wrap;
+    }
+    .promo__antes{
+      font-size:1.6rem;font-weight:700;color:rgba(255,255,255,.35);
+      text-decoration:line-through;
+    }
+    .promo__flecha{color:rgba(255,255,255,.4);font-size:1.4rem}
+    .promo__ahora{font-size:3rem;font-weight:800;color:#fff;line-height:1}
+    .promo__ahora small{display:block;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.6);margin-top:4px}
+    .promo__ahorro{
+      display:inline-flex;align-items:center;gap:6px;
+      background:var(--gold);color:var(--black);
+      font-size:.8rem;font-weight:800;padding:6px 16px;border-radius:50px;margin-bottom:24px;
+    }
+    .promo p{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:28px;line-height:1.6}
+    .promo__btn{
+      display:inline-block;
+      background:#fff;color:#9a3412;
+      padding:16px 40px;border-radius:50px;
+      font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1rem;
+      text-decoration:none;transition:all .2s;
+    }
+    .promo__btn:hover{background:var(--gold);color:var(--black)}
+    .promo__countdown{
+      margin-top:20px;color:rgba(255,255,255,.45);font-size:.78rem;
+    }
+    .promo__countdown strong{color:rgba(255,255,255,.8)}
+
     /* ── FOOTER ── */
     footer{
       padding:28px 48px;background:var(--black);
@@ -1329,6 +1377,24 @@
         <p>Analytics instalado desde el lanzamiento. Desde el primer día sabe cuántas personas visitan su página, de dónde vienen y qué hacen.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PROMO LUNES -->
+<section class="promo">
+  <div class="promo__content">
+    <div class="promo__badge">Oferta especial · Solo hasta el lunes</div>
+    <h2>Arranque hoy y ahorre $3,300 MXN en su proyecto</h2>
+    <div class="promo__precios">
+      <span class="promo__antes">$10,000</span>
+      <span class="promo__flecha">→</span>
+      <div class="promo__ahora">$6,700 MXN<small>pago único · mismo alcance completo</small></div>
+    </div>
+    <div class="promo__ahorro">⭐ Ahorra $3,300 MXN — 33% de descuento</div>
+    <p>Esta propuesta incluye exactamente los mismos 6 módulos: rediseño web, SEO, vCard + QR, estrategia Meta Ads, Google Ads, email marketing y plan 90 días. El precio baja porque cerramos la agenda de la semana con anticipación.</p>
+    <p><strong style="color:#fff">Esta oferta vence el lunes 21 de abril de 2026 a las 11:59 pm.</strong> Después el precio regresa a $10,000 MXN.</p>
+    <a href="https://wa.me/525564131634?text=Hola%2C%20quiero%20aprovechar%20la%20oferta%20de%20%246%2C700%20para%20InglesLegal.com%20antes%20del%20lunes." target="_blank" class="promo__btn">Quiero la oferta de $6,700 →</a>
+    <div class="promo__countdown">Oferta válida únicamente hasta el <strong>lunes 21 de abril · 11:59 pm</strong></div>
   </div>
 </section>
 
