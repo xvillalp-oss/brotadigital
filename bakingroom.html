@@ -54,7 +54,7 @@
     "areaServed": "Ciudad de México",
     "sameAs": [
       "https://www.instagram.com/thebakingroom.bakery",
-      "https://www.tiktok.com/@thebakingroom.bakery"
+      "https://www.tiktok.com/@thebakingroom.mx"
     ],
     "servesCuisine": "Bakery",
     "priceRange": "$$",
@@ -564,6 +564,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       object-position: center top;
     }
 
@@ -825,6 +826,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
     }
 
     .about__title {
@@ -874,7 +876,9 @@
        PROCESO
     ============================================ */
     .proceso {
-      background-color: var(--espresso);
+      background-color: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       padding: var(--section-padding) 0;
     }
 
@@ -897,7 +901,7 @@
       font-family: var(--font-sans);
       font-size: clamp(32px, 4.5vw, 52px);
       font-weight: 500;
-      color: var(--white);
+      color: var(--espresso);
       line-height: 1.1;
     }
 
@@ -915,8 +919,7 @@
       font-family: var(--font-sans);
       font-size: clamp(80px, 10vw, 120px);
       font-weight: 700;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(232, 25, 106, 0.3);
+      color: rgba(232, 25, 106, 0.18);
       line-height: 0.85;
       margin-bottom: 12px;
       user-select: none;
@@ -926,13 +929,13 @@
       font-family: var(--font-sans);
       font-size: 26px;
       font-weight: 600;
-      color: var(--white);
+      color: var(--espresso);
       margin-bottom: 12px;
     }
 
     .proceso__step-desc {
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--text-muted);
       line-height: 1.7;
     }
 
@@ -1344,7 +1347,7 @@
 
     /* Improve contrast on muted text */
     .section-label, .menu-section__sub,
-    .about__text, .proceso__step p {
+    .about__text, .proceso__step p:not(.proceso__step-num) {
       color: #666666;
     }
 
@@ -1466,7 +1469,7 @@
                 <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
               </svg>
             </a>
-            <a href="https://www.tiktok.com/@thebakingroom.bakery" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <a href="https://www.tiktok.com/@thebakingroom.mx" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.81 1.54V6.79a4.85 4.85 0 0 1-1.04-.1z"/>
               </svg>
@@ -1493,7 +1496,7 @@
       <a href="#contacto" class="mobile-link">Contacto</a>
       <div class="nav__mobile-social">
         <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://www.tiktok.com/@thebakingroom.bakery" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://www.tiktok.com/@thebakingroom.mx" target="_blank" rel="noopener noreferrer">TikTok</a>
       </div>
       <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 8px; width: fit-content;">
         Agendar pedido
@@ -1582,7 +1585,7 @@
       <div class="menu-section__header fade-up">
         <span class="section-label">Todo bajo pedido</span>
         <h2 class="menu-section__title" id="menu-title">Lo que hacemos</h2>
-        <p class="menu-section__sub">Abre cada categoría para ver los sabores disponibles. Si no ves lo que buscas, escríbenos — hacemos casi todo.</p>
+        <p class="menu-section__sub">Abre cada categoría para ver los sabores disponibles. Si no ves lo que buscas, escríbenos — con gusto hacemos una propuesta para ti.</p>
       </div>
 
       <!-- ── The Classics ── -->
@@ -1668,7 +1671,7 @@
                 <span class="flavor-icon">+</span>
               </summary>
               <div class="flavor-body">
-                <p class="flavor-desc">Sabor a algodón de azúcar, frosting pastel y decorado con algodón de feria. El pastel más fotogénico de la mesa. Perfecto para XV años o fiestas infantiles.</p>
+                <p class="flavor-desc">Algodón de azúcar hecho pastel. Delicioso, colorido y único, cubierto de nuestro cotton candy cream cheese frosting, este pastel supera la expectativa.</p>
                 <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
               </div>
             </details>
@@ -1695,16 +1698,6 @@
               </div>
             </details>
 
-            <details class="flavor-item">
-              <summary class="flavor-summary">
-                <span class="flavor-name">Strawberry Crunch Cake</span>
-                <span class="flavor-icon">+</span>
-              </summary>
-              <div class="flavor-body">
-                <p class="flavor-desc">Capas de pastel de vainilla y pastel de fresa balanceadas con nuestro cream cheese frosting. Cubierto de nuestro crunch de galleta y fresas freeze dried. Imperdible.</p>
-                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
-              </div>
-            </details>
 
           </div>
         </div>
@@ -1756,6 +1749,109 @@
         </div>
       </details>
 
+      <!-- ── Brownies & Cookies ── -->
+      <details class="menu-cat">
+        <summary class="menu-cat-header">
+          <span class="menu-cat-name">Brownies & Cookies</span>
+          <span class="menu-cat-arrow" aria-hidden="true">+</span>
+        </summary>
+        <div class="menu-cat-body">
+          <div class="menu-item-list">
+
+            <details class="flavor-item">
+              <summary class="flavor-summary">
+                <span class="flavor-name">Brownies</span>
+                <span class="flavor-icon">+</span>
+              </summary>
+              <div class="flavor-body">
+                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              </div>
+            </details>
+
+            <details class="flavor-item">
+              <summary class="flavor-summary">
+                <span class="flavor-name">Signature Cookies</span>
+                <span class="flavor-icon">+</span>
+              </summary>
+              <div class="flavor-body">
+                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <!-- ── Temáticos ── -->
+      <details class="menu-cat">
+        <summary class="menu-cat-header">
+          <span class="menu-cat-name">Temáticos</span>
+          <span class="menu-cat-arrow" aria-hidden="true">+</span>
+        </summary>
+        <div class="menu-cat-body">
+          <div class="menu-item-list">
+
+            <details class="flavor-item">
+              <summary class="flavor-summary">
+                <span class="flavor-name">Pasteles Temáticos</span>
+                <span class="flavor-icon">+</span>
+              </summary>
+              <div class="flavor-body">
+                <p class="flavor-desc">Diseños personalizados con temáticas especiales para XV años, cumpleaños, graduaciones y celebraciones únicas. Cuéntanos tu idea y lo hacemos realidad.</p>
+                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <!-- ── Luxe Line ── -->
+      <details class="menu-cat">
+        <summary class="menu-cat-header">
+          <span class="menu-cat-name">Luxe Line</span>
+          <span class="menu-cat-arrow" aria-hidden="true">+</span>
+        </summary>
+        <div class="menu-cat-body">
+          <div class="menu-item-list">
+
+            <details class="flavor-item">
+              <summary class="flavor-summary">
+                <span class="flavor-name">Fairy Forest Cake</span>
+                <span class="flavor-icon">+</span>
+              </summary>
+              <div class="flavor-body">
+                <p class="flavor-desc">Nuestra línea de alta repostería. Diseños únicos inspirados en la naturaleza, flores y el bosque encantado. Cada pieza es una obra de arte hecha a mano. Consultar disponibilidad y diseño personalizado.</p>
+                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              </div>
+            </details>
+
+            <details class="flavor-item">
+              <summary class="flavor-summary">
+                <span class="flavor-name">Pasteles Florales</span>
+                <span class="flavor-icon">+</span>
+              </summary>
+              <div class="flavor-body">
+                <p class="flavor-desc">Pasteles de diseño editorial con flores naturales, textura artesanal y detalles de temporada. Para bodas, eventos especiales y celebraciones que merecen algo único. Contáctanos para una propuesta personalizada.</p>
+                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              </div>
+            </details>
+
+            <details class="flavor-item">
+              <summary class="flavor-summary">
+                <span class="flavor-name">Vintage Collection</span>
+                <span class="flavor-icon">+</span>
+              </summary>
+              <div class="flavor-body">
+                <p class="flavor-desc">Nuestra colección vintage. Pasteles con detalles de listones, piping clásico y frutas frescas. Elegancia atemporal para tus celebraciones más especiales.</p>
+                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
       <div class="menu-section__footer fade-up">
         <p>¿Buscas algo que no está aquí? Lo hacemos. Escríbenos con tu idea.</p>
         <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -1790,19 +1886,111 @@
           <span class="section-label">Nuestra historia</span>
           <h2 class="about__title" id="about-title">Más que un pastel</h2>
           <p class="about__body">
-            Somos un estudio de repostería artesanal en CDMX. Desde nuestros inicios, nos hemos dedicado a crear pasteles que van más allá del sabor — son piezas únicas que cuentan una historia.
+            Por años hemos perfeccionado nuestras recetas con todo el amor para traer The Baking Room a tu mesa.
           </p>
           <p class="about__body">
-            Trabajamos exclusivamente bajo pedido para poder dedicarle el tiempo y cuidado que cada creación merece.
+            Nos distinguimos por utilizar los ingredientes de más alta calidad que existen en el mercado.
+          </p>
+          <p class="about__body">
+            Nos enfocamos en ofrecer excelencia en cada uno de nuestros productos porque consideramos que la magia de un pastel está en la combinación entre su hermosa presentación y su inolvidable y extraordinario sabor.
           </p>
           <div class="about__badges">
-            <span class="about__badge">Est. 2018</span>
+            <span class="about__badge">Est. 2021</span>
             <span class="about__badge">100% Artesanal</span>
             <span class="about__badge">Bajo pedido</span>
           </div>
         </div>
 
       </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       GALERÍA LUXE LINE
+  ============================================ -->
+  <section id="galeria" aria-label="Galería de pasteles" style="padding:var(--section-padding) 0; background:var(--cream);">
+    <div class="container">
+
+      <div style="text-align:center; margin-bottom:56px;" class="fade-up">
+        <span class="section-label">Nuestros diseños</span>
+        <h2 style="font-family:var(--font-sans); font-size:clamp(28px,4vw,48px); font-weight:500; color:var(--espresso); letter-spacing:normal; text-transform:none; margin-bottom:12px;">Pasteles que no se olvidan</h2>
+        <p style="font-size:14px; color:var(--text-muted); text-transform:none; letter-spacing:0;">Cada pastel es único, hecho a mano y bajo pedido.</p>
+      </div>
+
+      <!-- Carrusel Luxe Line -->
+      <div class="luxe-carousel fade-up" style="position:relative; overflow:hidden; border-radius:4px;">
+
+        <!-- Track -->
+        <div class="luxe-track" id="luxeTrack" style="display:flex; transition:transform .5s cubic-bezier(.4,0,.2,1);">
+          <div class="luxe-slide" style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-floral-blue.jpg" alt="Pastel floral azul con pan de oro" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div class="luxe-slide" style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-floral-rose.jpg" alt="Pastel rosas rojas artesanal" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div class="luxe-slide" style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-vintage.jpg" alt="Pastel vintage elegante" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div class="luxe-slide" style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-luxe.jpg" alt="Pastel luxe flores iridiscentes" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div class="luxe-slide" style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-floral-purple.jpg" alt="Pastel dos pisos flores moradas boda" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+        </div>
+
+        <!-- Flecha izquierda -->
+        <button onclick="luxeMove(-1)" aria-label="Anterior" style="position:absolute;top:50%;left:16px;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.12);transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,1)'" onmouseout="this.style.background='rgba(255,255,255,.85)'">‹</button>
+
+        <!-- Flecha derecha -->
+        <button onclick="luxeMove(1)" aria-label="Siguiente" style="position:absolute;top:50%;right:16px;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.12);transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,1)'" onmouseout="this.style.background='rgba(255,255,255,.85)'">›</button>
+
+        <!-- Dots -->
+        <div id="luxeDots" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;">
+          <button onclick="luxeGo(0)" class="luxe-dot active" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.9);cursor:pointer;padding:0;transition:all .3s;"></button>
+          <button onclick="luxeGo(1)" class="luxe-dot" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:all .3s;"></button>
+          <button onclick="luxeGo(2)" class="luxe-dot" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:all .3s;"></button>
+          <button onclick="luxeGo(3)" class="luxe-dot" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:all .3s;"></button>
+          <button onclick="luxeGo(4)" class="luxe-dot" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:all .3s;"></button>
+        </div>
+      </div>
+
+      <script>
+        (function(){
+          var idx = 0, total = 5, timer;
+          function update(){
+            document.getElementById('luxeTrack').style.transform = 'translateX(-'+idx*100+'%)';
+            document.querySelectorAll('.luxe-dot').forEach(function(d,i){
+              d.style.background = i===idx ? 'rgba(255,255,255,.9)' : 'rgba(255,255,255,.45)';
+              d.style.width = i===idx ? '22px' : '8px';
+              d.style.borderRadius = '4px';
+            });
+          }
+          window.luxeMove = function(dir){
+            idx = (idx + dir + total) % total;
+            update();
+            resetTimer();
+          };
+          window.luxeGo = function(i){
+            idx = i;
+            update();
+            resetTimer();
+          };
+          function resetTimer(){
+            clearInterval(timer);
+            timer = setInterval(function(){ idx=(idx+1)%total; update(); }, 4500);
+          }
+          resetTimer();
+        })();
+      </script>
+
+      <div style="text-align:center; margin-top:40px;" class="fade-up">
+        <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          Ver más en Instagram →
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -1823,23 +2011,202 @@
         <div class="proceso__step fade-up">
           <p class="proceso__step-num" aria-hidden="true">01</p>
           <h3 class="proceso__step-title">Escríbenos</h3>
-          <p class="proceso__step-desc">Mándanos un DM en Instagram o al correo con tu idea, fecha y número de personas.</p>
+          <p class="proceso__step-desc">Mándanos un DM en Instagram o al correo con tu sabor, idea, fecha y número de personas.</p>
         </div>
 
         <div class="proceso__step fade-up fade-up-delay-2">
           <p class="proceso__step-num" aria-hidden="true">02</p>
           <h3 class="proceso__step-title">Cotizamos</h3>
-          <p class="proceso__step-desc">Te enviamos propuesta de diseño y precio en menos de 24 hrs.</p>
+          <p class="proceso__step-desc">Te enviamos propuesta de diseño y precio en 48 hrs.</p>
         </div>
 
         <div class="proceso__step fade-up fade-up-delay-4">
           <p class="proceso__step-num" aria-hidden="true">03</p>
           <h3 class="proceso__step-title">Celebras</h3>
-          <p class="proceso__step-desc">Tu pastel llega perfecto y listo para el momento especial.</p>
+          <p class="proceso__step-desc">Disfrutas tu celebración con el mejor pastel.</p>
         </div>
 
       </div>
 
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       GALERÍA TEMÁTICOS
+  ============================================ -->
+  <section id="galeria-tematicos" aria-label="Galería pasteles temáticos" style="padding:var(--section-padding) 0; background:var(--white);">
+    <div class="container">
+
+      <div style="text-align:center; margin-bottom:56px;" class="fade-up">
+        <span class="section-label">Diseños personalizados</span>
+        <h2 style="font-family:var(--font-sans); font-size:clamp(28px,4vw,48px); font-weight:500; color:var(--espresso); letter-spacing:normal; text-transform:none; margin-bottom:12px;">Temáticos</h2>
+        <p style="font-size:14px; color:var(--text-muted); text-transform:none; letter-spacing:0;">Tu pastel con la temática que más te identifica. Lo que imaginas, lo hacemos.</p>
+      </div>
+
+      <!-- Carrusel Temáticos -->
+      <div class="tema-carousel fade-up" style="position:relative; overflow:hidden; border-radius:4px;">
+
+        <div class="tema-track" id="temaTrack" style="display:flex; transition:transform .5s cubic-bezier(.4,0,.2,1);">
+          <div style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-tema-nautico.jpg" alt="Pastel temático náutico velero" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-tema-gilmore.jpg" alt="Pastel temático Gilmore Girls" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-tema-frozen.jpg" alt="Pastel temático Frozen dos pisos" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-tema-carros.jpg" alt="Pastel temático Cars dos pisos" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div style="min-width:100%; aspect-ratio:4/5; overflow:hidden;">
+            <img src="cake-tema-basket.jpg" alt="Pastel temático basketball Jordan" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+        </div>
+
+        <button onclick="temaMove(-1)" aria-label="Anterior" style="position:absolute;top:50%;left:16px;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.12);transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,1)'" onmouseout="this.style.background='rgba(255,255,255,.85)'">‹</button>
+
+        <button onclick="temaMove(1)" aria-label="Siguiente" style="position:absolute;top:50%;right:16px;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.12);transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,1)'" onmouseout="this.style.background='rgba(255,255,255,.85)'">›</button>
+
+        <div id="temaDots" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;">
+          <button onclick="temaGo(0)" class="tema-dot active" style="width:22px;height:8px;border-radius:4px;border:none;background:rgba(255,255,255,.9);cursor:pointer;padding:0;transition:all .3s;"></button>
+          <button onclick="temaGo(1)" class="tema-dot" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:all .3s;"></button>
+          <button onclick="temaGo(2)" class="tema-dot" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:all .3s;"></button>
+          <button onclick="temaGo(3)" class="tema-dot" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:all .3s;"></button>
+          <button onclick="temaGo(4)" class="tema-dot" style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:all .3s;"></button>
+        </div>
+      </div>
+
+      <script>
+        (function(){
+          var idx=0, total=5, timer;
+          function update(){
+            document.getElementById('temaTrack').style.transform='translateX(-'+idx*100+'%)';
+            document.querySelectorAll('.tema-dot').forEach(function(d,i){
+              d.style.background = i===idx ? 'rgba(255,255,255,.9)' : 'rgba(255,255,255,.45)';
+              d.style.width = i===idx ? '22px' : '8px';
+              d.style.borderRadius = i===idx ? '4px' : '50%';
+            });
+          }
+          window.temaMove=function(dir){ idx=(idx+dir+total)%total; update(); resetTimer(); };
+          window.temaGo=function(i){ idx=i; update(); resetTimer(); };
+          function resetTimer(){ clearInterval(timer); timer=setInterval(function(){ idx=(idx+1)%total; update(); },4500); }
+          resetTimer();
+        })();
+      </script>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       VAMOS A TU EVENTO
+  ============================================ -->
+  <section class="evento" id="evento" aria-labelledby="evento-title" style="padding: var(--section-padding) 0; background: var(--cream-dark);">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; align-items:center;">
+
+        <!-- Dos fotos de eventos -->
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="overflow:hidden; aspect-ratio:3/4;">
+            <img src="cake-naked.jpg" alt="Pastel para boda artesanal The Baking Room CDMX" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+          <div style="overflow:hidden; aspect-ratio:3/4;">
+            <img src="cake-pavlova.jpg" alt="Pavlova frambuesas y flores frescas The Baking Room" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+        </div>
+
+        <!-- Text (spans 2 columns) -->
+        <div class="fade-up" style="grid-column: span 2;">
+          <span class="section-label">Eventos especiales</span>
+          <h2 style="font-family:var(--font-sans); font-size:clamp(28px,3.5vw,44px); font-weight:500; color:var(--espresso); line-height:1.15; margin-bottom:20px; letter-spacing:normal; text-transform:none;">Vamos a tu evento</h2>
+          <p style="font-size:15px; color:var(--text-body); line-height:1.8; margin-bottom:16px; text-transform:none; letter-spacing:0;">Hacemos pasteles y pavlovas para bodas CDMX y alrededores.</p>
+          <p style="font-size:14px; color:var(--text-muted); line-height:1.7; text-transform:none; letter-spacing:0;">Pasteles a partir de 10–12 personas en adelante. Escríbenos para cotizar tu evento especial.</p>
+          <div style="margin-top:32px;">
+            <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Cotizar evento →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       INFORMACIÓN IMPORTANTE
+  ============================================ -->
+  <section class="info-importante" id="info" aria-label="Información importante" style="padding:48px 0; background:var(--pink-light); border-top:2px solid var(--pink);">
+    <div class="container">
+      <p style="font-family:var(--font-sans); font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--pink); margin-bottom:32px; text-align:center;">Cuidados generales e información importante</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px;">
+
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <span style="font-size:20px; flex-shrink:0; margin-top:2px;">🧊</span>
+          <p style="font-size:13px; color:var(--text-body); line-height:1.8; text-transform:none; letter-spacing:0;">Refrigera el pastel en cuanto termine el trayecto de transporte hasta 20 min aprox antes de partir. No puede estar bajo el sol ni fuente de calor directa.</p>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <span style="font-size:20px; flex-shrink:0; margin-top:2px;">🚗</span>
+          <p style="font-size:13px; color:var(--text-body); line-height:1.8; text-transform:none; letter-spacing:0;">Debe transportarse sobre una superficie plana y ser cargado de la base en todo momento.</p>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <span style="font-size:20px; flex-shrink:0; margin-top:2px;">⚠️</span>
+          <p style="font-size:13px; color:var(--text-body); line-height:1.8; text-transform:none; letter-spacing:0;">Nuestra cocina no es libre de alérgenos. El producto puede contener trazas de leche, nueces, especias, etc.</p>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <span style="font-size:20px; flex-shrink:0; margin-top:2px;">💳</span>
+          <p style="font-size:13px; color:var(--text-body); line-height:1.8; text-transform:none; letter-spacing:0;">El producto tiene que estar liquidado 100% antes de la entrega, sin excepciones.</p>
+        </div>
+
+      </div>
+      <p style="font-size:13px; color:var(--text-muted); text-align:center; margin-top:32px; text-transform:none; letter-spacing:0; font-style:italic;">¡Gracias por tu confianza! Estamos felices de trabajar para ti. 🤍</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       RESEÑAS
+  ============================================ -->
+  <section class="resenas" id="resenas" aria-labelledby="resenas-title" style="padding:var(--section-padding) 0; background:var(--white);">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:56px;">
+        <span class="section-label">Lo que dicen nuestros clientes</span>
+        <h2 style="font-family:var(--font-sans); font-size:clamp(28px,4vw,48px); font-weight:500; color:var(--espresso); letter-spacing:normal; text-transform:none;" id="resenas-title">Reseñas</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;" class="fade-up">
+
+        <!-- Reseña 1 -->
+        <div style="background:var(--cream-dark); padding:28px; border-top:3px solid var(--pink);">
+          <div style="display:flex; gap:4px; margin-bottom:16px;">
+            <span style="color:var(--pink); font-size:14px;">★★★★★</span>
+          </div>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"Los amo neta, son los mejores."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <!-- Reseña 2 -->
+        <div style="background:var(--cream-dark); padding:28px; border-top:3px solid var(--pink);">
+          <div style="display:flex; gap:4px; margin-bottom:16px;">
+            <span style="color:var(--pink); font-size:14px;">★★★★★</span>
+          </div>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"No puedo dejar de comer pastel!! Neta estoy adicta, mucho más que los de mi cumpleaños. Estuvo buenísimo! Mil mil gracias."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+        <!-- Reseña 3 -->
+        <div style="background:var(--cream-dark); padding:28px; border-top:3px solid var(--pink);">
+          <div style="display:flex; gap:4px; margin-bottom:16px;">
+            <span style="color:var(--pink); font-size:14px;">★★★★★</span>
+          </div>
+          <p style="font-size:14px; color:var(--text-body); line-height:1.75; margin-bottom:20px; text-transform:none; letter-spacing:0;">"¡Les encantó el pastel!! Súper súper ricooo."</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted);">— Cliente IG</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -1852,7 +2219,7 @@
 
       <div class="contacto__header">
         <span class="section-label fade-up">Hablemos</span>
-        <h2 class="contacto__title fade-up fade-up-delay-1" id="contacto-title">¿Lista para agendar tu pastel?</h2>
+        <h2 class="contacto__title fade-up fade-up-delay-1" id="contacto-title">Cotiza tu pastel</h2>
         <p class="contacto__sub fade-up fade-up-delay-2">Escríbenos con tu idea y te ayudamos a crear algo especial.</p>
       </div>
 
@@ -1874,11 +2241,11 @@
           </div>
         </a>
 
-        <a href="https://www.tiktok.com/@thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="contacto__card">
+        <a href="https://www.tiktok.com/@thebakingroom.mx" target="_blank" rel="noopener noreferrer" class="contacto__card">
           <span class="contacto__card-icon" aria-hidden="true" style="font-size:16px;font-family:var(--font-sans);letter-spacing:0;">—</span>
           <div>
             <p class="contacto__card-label">TikTok</p>
-            <p class="contacto__card-value">@thebakingroom.bakery</p>
+            <p class="contacto__card-value">@thebakingroom.mx</p>
           </div>
         </a>
 
@@ -1935,7 +2302,7 @@
               <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
             </svg>
           </a>
-          <a href="https://www.tiktok.com/@thebakingroom.bakery" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <a href="https://www.tiktok.com/@thebakingroom.mx" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.81 1.54V6.79a4.85 4.85 0 0 1-1.04-.1z"/>
             </svg>
