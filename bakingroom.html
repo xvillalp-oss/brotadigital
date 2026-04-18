@@ -2289,95 +2289,73 @@
         <h2 style="font-family:var(--font-sans); font-size:clamp(28px,4vw,48px); font-weight:500; color:var(--espresso); letter-spacing:normal; text-transform:none;" id="resenas-title">Reseñas</h2>
       </div>
 
-      <!-- Carrusel reseñas (texto) -->
-      <div id="resCarousel" class="fade-up" style="position:relative; max-width:620px; margin:0 auto;">
+      <!-- Carrusel reseñas — 3 páginas de 9 tarjetas (grid 3×3) -->
+      <style>
+        .res-page { min-width:100%; width:100%; box-sizing:border-box; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+        .res-card { background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:14px; padding:20px 18px 16px; }
+        .res-stars { color:var(--pink); font-size:13px; display:block; margin-bottom:10px; }
+        .res-txt { font-size:13px; line-height:1.7; color:var(--espresso); font-style:italic; margin:0 0 14px; }
+        .res-src { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); margin:0; }
+        @media(max-width:640px){ .res-page{ grid-template-columns:1fr 1fr; gap:10px; } }
+        @media(max-width:400px){ .res-page{ grid-template-columns:1fr; } }
+      </style>
 
-        <div id="resTrack" style="display:flex; transition:transform .45s cubic-bezier(.4,0,.2,1); overflow:hidden; border-radius:20px;">
+      <div id="resCarousel" class="fade-up" style="position:relative; overflow:hidden;">
+        <div id="resTrack" style="display:flex; transition:transform .5s cubic-bezier(.4,0,.2,1);">
 
-          <!-- 1 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"Las tartas vascas fueron un éxito. Dice mi tía que esta semana probó la tarta vasca del palacio y que la tuya está mil veces mejor!!!"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
+          <!-- Página 1 — reseñas 1–9 -->
+          <div class="res-page">
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Las tartas vascas fueron un éxito. Dice mi tía que probó la tarta vasca del palacio y que la tuya está mil veces mejor!!!"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Los dos hermosos y deliciosos, a todo mundo le encantaron. Mil mil gracias 😍"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Paula muchas gracias por mis pasteles. Divino el zoológico de Alicia pero mis flores también una belleza. Gracias, gracias, gracias."</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Estuvieron espectaculares, tanto que el de diseño no lo quiso partir la festejada. El de coco delicioso, estarás en mis próximos eventos. Muchas gracias!!!!"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Están deliciosas. ¿Mañana te puedo hacer otro pedido?"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Wow el pastel, estaba delicioso. Muchas gracias."</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Hermosooooo y delicioso como siempre! Millones de gracias!!!!"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Muchas gracias por el pastel, estuvo muy lindo y rico como siempre. Nos encantó."</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Todo excelente. Se veía muy lindo y sabía delicioso. Muchas gracias."</p><p class="res-src">— Cliente WA</p></div>
           </div>
 
-          <!-- 2 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"Los dos hermosos y deliciosos, a todo mundo le encantaron. Mil mil gracias 😍"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
+          <!-- Página 2 — reseñas 10–18 -->
+          <div class="res-page">
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Estaba súper bonito y delicioso. Mil gracias, como siempre un 10 ⭐"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Tus galletas son una locura!!!! Se veía hermosa mi mesa!! El pastel de zanahoria que te digo! Millones de gracias por los postres más ricos."</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Paula, un exitazo como siempre! MIL GRACIAS 💖"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"El pastel fue un hit! A todos les fascinó! Casi no quedó nada 😂"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Muchísimas gracias. El pastel hermoso y su sabor increíble."</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Fue todo un éxito, a todos les encantó. Muy rico y bonito. Muchas gracias."</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Nuestro hermoso pastel para el gender reveal de nuestro bebé. Nos encantó!! El mejor! Gracias infinitas! 💙"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Todo super!!!!! Quedó increíble y DELICIOSO! De verdad espectacular! Mil mil gracias!!!!!"</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Gracias miles!!!!!! Me ENCANTÓ!!!!! ❤️"</p><p class="res-src">— Cliente WA</p></div>
           </div>
 
-          <!-- 3 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"Tus galletas son una locura!!!! Se veía hermosa mi mesa!! El pastel de zanahoria que te digo! Millones de gracias por los postres más ricos como siempre!"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
-          </div>
-
-          <!-- 4 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"Todo super!!!!! Quedó increíble y DELICIOSO! De verdad espectacular! Mil mil gracias!!!!!"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
-          </div>
-
-          <!-- 5 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"El pastel fue un hit! A todos les fascinó! Casi no quedó nada 😂"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
-          </div>
-
-          <!-- 6 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"Quería agradecerles nuestro hermoso pastel para el gender reveal de nuestro bebé! Nos encantó!! Estuvo hermoso y delicioso! El mejor! Gracias infinitas! 💙"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
-          </div>
-
-          <!-- 7 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"Estaba súper bonito y delicioso. Mil gracias, como siempre un 10 ⭐"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
-          </div>
-
-          <!-- 8 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"Hermosooooo y delicioso como siempre! Millones de gracias!!!!"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
-          </div>
-
-          <!-- 9 -->
-          <div style="min-width:100%; width:100%; background:#fff8f5; border:1px solid rgba(0,0,0,.07); border-top:3px solid var(--pink); border-radius:20px; padding:40px 40px 36px; box-sizing:border-box;">
-            <span style="color:var(--pink); font-size:20px; display:block; margin-bottom:18px; letter-spacing:2px;">★★★★★</span>
-            <p style="font-size:17px; line-height:1.8; color:var(--espresso); font-style:italic; margin:0 0 24px;">"Hoy partimos el pastel y estaba delicioso!!! El betún espectacular 😍"</p>
-            <p style="font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin:0;">— Cliente WA</p>
+          <!-- Página 3 — reseñas 19–20 -->
+          <div class="res-page">
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Si todo bien con el pastel!!! Mil gracias por todo."</p><p class="res-src">— Cliente WA</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Hoy partimos el pastel y estaba delicioso!!! El betún espectacular 😍"</p><p class="res-src">— Cliente WA</p></div>
           </div>
 
         </div>
 
         <!-- Flechas -->
-        <button id="resPrev" aria-label="Anterior" style="position:absolute;top:50%;left:-20px;transform:translateY(-50%);background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:50%;width:44px;height:44px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.1);">‹</button>
-        <button id="resNext" aria-label="Siguiente" style="position:absolute;top:50%;right:-20px;transform:translateY(-50%);background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:50%;width:44px;height:44px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.1);">›</button>
+        <button id="resPrev" aria-label="Anterior" style="position:absolute;top:50%;left:-6px;transform:translateY(-50%);background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:50%;width:40px;height:40px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:2;">‹</button>
+        <button id="resNext" aria-label="Siguiente" style="position:absolute;top:50%;right:-6px;transform:translateY(-50%);background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:50%;width:40px;height:40px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:2;">›</button>
 
         <!-- Dots -->
-        <div id="resDots" style="display:flex;justify-content:center;gap:8px;margin-top:24px;"></div>
+        <div id="resDots" style="display:flex;justify-content:center;gap:8px;margin-top:20px;"></div>
       </div>
 
       <script>
         (function(){
           var track  = document.getElementById('resTrack');
           var dotsEl = document.getElementById('resDots');
-          var total  = 9, idx = 0, startX = 0, timer;
+          var total  = 3, idx = 0, startX = 0;
           var dots   = [];
 
           for(var i = 0; i < total; i++){
             var d = document.createElement('button');
             d.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all .3s;background:rgba(0,0,0,.2);';
-            d.setAttribute('aria-label', 'Reseña ' + (i+1));
+            d.setAttribute('aria-label', 'Página ' + (i+1));
             (function(n){ d.addEventListener('click', function(){ go(n); }); })(i);
             dotsEl.appendChild(d);
             dots.push(d);
@@ -2391,8 +2369,6 @@
               d.style.width        = i === idx ? '22px' : '8px';
               d.style.borderRadius = '4px';
             });
-            clearInterval(timer);
-            timer = setInterval(function(){ go(idx+1); }, 5000);
           }
 
           document.getElementById('resPrev').addEventListener('click', function(){ go(idx-1); });
