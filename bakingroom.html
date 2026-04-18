@@ -2012,6 +2012,51 @@
                   <div class="flavor-body">
                     <p class="flavor-desc">Pasteles de diseño editorial con flores naturales, textura artesanal y detalles de temporada. Para bodas, eventos especiales y celebraciones únicas.</p>
                     <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+                    <div style="position:relative;overflow:hidden;border-radius:10px;margin-top:16px;" aria-label="Fotos Pasteles Florales">
+                      <div id="floralTrack" style="display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);">
+                        <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="floral-1.jpg" alt="Pastel Floral" loading="lazy"/>
+                        <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="floral-2.jpg" alt="Pastel Floral" loading="lazy"/>
+                        <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="floral-3.jpg" alt="Pastel Floral" loading="lazy"/>
+                        <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="floral-4.jpg" alt="Pastel Floral" loading="lazy"/>
+                        <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="floral-5.jpg" alt="Pastel Floral" loading="lazy"/>
+                        <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="floral-6.jpg" alt="Pastel Floral" loading="lazy"/>
+                        <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="floral-7.jpg" alt="Pastel Floral" loading="lazy"/>
+                        <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="floral-8.jpg" alt="Pastel Floral" loading="lazy"/>
+                      </div>
+                      <button onclick="floralMove(-1)" aria-label="Anterior" style="position:absolute;top:50%;left:8px;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">‹</button>
+                      <button onclick="floralMove(1)" aria-label="Siguiente" style="position:absolute;top:50%;right:8px;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">›</button>
+                      <div id="floralDots" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"></div>
+                      <script>
+                        (function(){
+                          var track=document.getElementById('floralTrack');
+                          var dotsEl=document.getElementById('floralDots');
+                          var total=8,idx=0,sx=0,timer;
+                          var dots=[];
+                          for(var i=0;i<total;i++){
+                            var d=document.createElement('button');
+                            d.style.cssText='width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;transition:all .3s;background:rgba(255,255,255,.5);';
+                            d.setAttribute('aria-label','Foto '+(i+1));
+                            (function(n){d.onclick=function(){floralGo(n);};})(i);
+                            dotsEl.appendChild(d);
+                            dots.push(d);
+                          }
+                          function update(){
+                            track.style.transform='translateX(-'+(idx*100)+'%)';
+                            dots.forEach(function(d,i){
+                              d.style.background=i===idx?'#fff':'rgba(255,255,255,.5)';
+                              d.style.width=i===idx?'20px':'8px';
+                              d.style.borderRadius='4px';
+                            });
+                          }
+                          window.floralMove=function(dir){idx=(idx+dir+total)%total;update();resetTimer();};
+                          window.floralGo=function(n){idx=n;update();resetTimer();};
+                          function resetTimer(){clearInterval(timer);timer=setInterval(function(){idx=(idx+1)%total;update();},4500);}
+                          track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+                          track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)floralMove(dx<0?1:-1);},{passive:true});
+                          update();resetTimer();
+                        })();
+                      </script>
+                    </div>
                   </div>
                 </details>
 
