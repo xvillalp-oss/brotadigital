@@ -704,6 +704,35 @@
     .menu-cat-body {
       padding: 0 0 28px;
     }
+    /* Sub-categorías dentro de Diseños */
+    .menu-subcat {
+      border-top: 1px solid rgba(0,0,0,.1);
+      margin-bottom: 4px;
+    }
+    .menu-subcat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    .menu-subcat-header::-webkit-details-marker { display: none; }
+    .menu-subcat-name {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--espresso);
+    }
+    .menu-subcat[open] .menu-subcat-name { color: var(--pink); }
+    .menu-subcat[open] > .menu-subcat-header .menu-cat-arrow {
+      transform: rotate(45deg);
+      border-color: var(--pink);
+      color: var(--pink);
+    }
 
     /* ── Carrusel de fotos por sección ── */
     .menu-carousel {
@@ -1872,87 +1901,92 @@
         </div>
       </details>
 
-      <!-- ── Temáticos ── -->
+      <!-- ── Diseños ── -->
       <details class="menu-cat">
         <summary class="menu-cat-header">
-          <span class="menu-cat-name">Temáticos</span>
+          <span class="menu-cat-name">Diseños</span>
           <span class="menu-cat-arrow" aria-hidden="true">+</span>
         </summary>
         <div class="menu-cat-body">
-          <div class="menu-item-list">
 
-            <details class="flavor-item">
-              <summary class="flavor-summary">
-                <span class="flavor-name">Pasteles Temáticos</span>
-                <span class="flavor-icon">+</span>
-              </summary>
-              <div class="flavor-body">
-                <p class="flavor-desc">Diseños personalizados con temáticas especiales para XV años, cumpleaños, graduaciones y celebraciones únicas. Cuéntanos tu idea y lo hacemos realidad.</p>
-                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+          <!-- Sub: Temáticos -->
+          <details class="menu-subcat">
+            <summary class="menu-subcat-header">
+              <span class="menu-subcat-name">Temáticos</span>
+              <span class="menu-cat-arrow" aria-hidden="true">+</span>
+            </summary>
+            <div class="menu-cat-body" style="padding-top:0;">
+              <div class="menu-item-list">
+                <details class="flavor-item">
+                  <summary class="flavor-summary">
+                    <span class="flavor-name">Pasteles Temáticos</span>
+                    <span class="flavor-icon">+</span>
+                  </summary>
+                  <div class="flavor-body">
+                    <p class="flavor-desc">Diseños personalizados con temáticas especiales para XV años, cumpleaños, graduaciones y celebraciones únicas. Cuéntanos tu idea y lo hacemos realidad.</p>
+                    <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+                  </div>
+                </details>
               </div>
-            </details>
-
-          </div>
-          <div class="menu-carousel" aria-label="Fotos Temáticos">
-            <img class="menu-carousel__img" src="cake-tema-nautico.jpg" alt="Pastel Náutico" loading="lazy"/>
-            <img class="menu-carousel__img" src="cake-tema-gilmore.jpg" alt="Pastel Gilmore Girls" loading="lazy"/>
-            <img class="menu-carousel__img" src="cake-tema-frozen.jpg" alt="Pastel Frozen" loading="lazy"/>
-            <img class="menu-carousel__img" src="cake-tema-carros.jpg" alt="Pastel Cars" loading="lazy"/>
-            <img class="menu-carousel__img" src="cake-tema-basket.jpg" alt="Pastel Basketball" loading="lazy"/>
-          </div>
-        </div>
-      </details>
-
-      <!-- ── Luxe Line ── -->
-      <details class="menu-cat">
-        <summary class="menu-cat-header">
-          <span class="menu-cat-name">Luxe Line</span>
-          <span class="menu-cat-arrow" aria-hidden="true">+</span>
-        </summary>
-        <div class="menu-cat-body">
-          <div class="menu-item-list">
-
-            <details class="flavor-item">
-              <summary class="flavor-summary">
-                <span class="flavor-name">Fairy Forest Cake</span>
-                <span class="flavor-icon">+</span>
-              </summary>
-              <div class="flavor-body">
-                <p class="flavor-desc">Nuestra línea de alta repostería. Diseños únicos inspirados en la naturaleza, flores y el bosque encantado. Cada pieza es una obra de arte hecha a mano. Consultar disponibilidad y diseño personalizado.</p>
-                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              <div class="menu-carousel" aria-label="Fotos Temáticos">
+                <img class="menu-carousel__img" src="cake-tema-nautico.jpg" alt="Pastel Náutico" loading="lazy"/>
+                <img class="menu-carousel__img" src="cake-tema-gilmore.jpg" alt="Pastel Gilmore Girls" loading="lazy"/>
+                <img class="menu-carousel__img" src="cake-tema-frozen.jpg" alt="Pastel Frozen" loading="lazy"/>
+                <img class="menu-carousel__img" src="cake-tema-carros.jpg" alt="Pastel Cars" loading="lazy"/>
+                <img class="menu-carousel__img" src="cake-tema-basket.jpg" alt="Pastel Basketball" loading="lazy"/>
               </div>
-            </details>
+            </div>
+          </details>
 
-            <details class="flavor-item">
-              <summary class="flavor-summary">
-                <span class="flavor-name">Pasteles Florales</span>
-                <span class="flavor-icon">+</span>
-              </summary>
-              <div class="flavor-body">
-                <p class="flavor-desc">Pasteles de diseño editorial con flores naturales, textura artesanal y detalles de temporada. Para bodas, eventos especiales y celebraciones que merecen algo único. Contáctanos para una propuesta personalizada.</p>
-                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+          <!-- Sub: Luxe Line -->
+          <details class="menu-subcat">
+            <summary class="menu-subcat-header">
+              <span class="menu-subcat-name">Luxe Line</span>
+              <span class="menu-cat-arrow" aria-hidden="true">+</span>
+            </summary>
+            <div class="menu-cat-body" style="padding-top:0;">
+              <div class="menu-item-list">
+                <details class="flavor-item">
+                  <summary class="flavor-summary">
+                    <span class="flavor-name">Fairy Forest Cake</span>
+                    <span class="flavor-icon">+</span>
+                  </summary>
+                  <div class="flavor-body">
+                    <p class="flavor-desc">Nuestra línea de alta repostería. Diseños únicos inspirados en la naturaleza, flores y el bosque encantado. Cada pieza es una obra de arte hecha a mano.</p>
+                    <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+                  </div>
+                </details>
+                <details class="flavor-item">
+                  <summary class="flavor-summary">
+                    <span class="flavor-name">Pasteles Florales</span>
+                    <span class="flavor-icon">+</span>
+                  </summary>
+                  <div class="flavor-body">
+                    <p class="flavor-desc">Pasteles de diseño editorial con flores naturales, textura artesanal y detalles de temporada. Para bodas, eventos especiales y celebraciones únicas.</p>
+                    <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+                  </div>
+                </details>
+                <details class="flavor-item">
+                  <summary class="flavor-summary">
+                    <span class="flavor-name">Vintage Collection</span>
+                    <span class="flavor-icon">+</span>
+                  </summary>
+                  <div class="flavor-body">
+                    <p class="flavor-desc">Pasteles con detalles de listones, piping clásico y frutas frescas. Elegancia atemporal para tus celebraciones más especiales.</p>
+                    <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+                  </div>
+                </details>
               </div>
-            </details>
-
-            <details class="flavor-item">
-              <summary class="flavor-summary">
-                <span class="flavor-name">Vintage Collection</span>
-                <span class="flavor-icon">+</span>
-              </summary>
-              <div class="flavor-body">
-                <p class="flavor-desc">Nuestra colección vintage. Pasteles con detalles de listones, piping clásico y frutas frescas. Elegancia atemporal para tus celebraciones más especiales.</p>
-                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              <div class="menu-carousel" aria-label="Fotos Luxe Line">
+                <img class="menu-carousel__img" src="luxe-multicolor.jpg" alt="Pastel Luxe Multicolor" loading="lazy"/>
+                <img class="menu-carousel__img" src="luxe-purple.jpg" alt="Pastel Luxe Morado" loading="lazy"/>
+                <img class="menu-carousel__img" src="luxe-pink-floral.jpg" alt="Pastel Luxe Rosa Floral" loading="lazy"/>
+                <img class="menu-carousel__img" src="luxe-blush.jpg" alt="Pastel Luxe Blush" loading="lazy"/>
+                <img class="menu-carousel__img" src="luxe-ivory.jpg" alt="Pastel Luxe Ivory" loading="lazy"/>
               </div>
-            </details>
+            </div>
+          </details>
 
-          </div>
-          <div class="menu-carousel" aria-label="Fotos Luxe Line">
-            <img class="menu-carousel__img" src="luxe-multicolor.jpg" alt="Pastel Luxe Multicolor" loading="lazy"/>
-            <img class="menu-carousel__img" src="luxe-purple.jpg" alt="Pastel Luxe Morado" loading="lazy"/>
-            <img class="menu-carousel__img" src="luxe-pink-floral.jpg" alt="Pastel Luxe Rosa Floral" loading="lazy"/>
-            <img class="menu-carousel__img" src="luxe-blush.jpg" alt="Pastel Luxe Blush" loading="lazy"/>
-            <img class="menu-carousel__img" src="luxe-ivory.jpg" alt="Pastel Luxe Ivory" loading="lazy"/>
-          </div>
         </div>
       </details>
 
