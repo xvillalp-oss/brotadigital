@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://lh3.googleusercontent.com; connect-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()" />
@@ -114,14 +114,21 @@
       position: relative; overflow: hidden;
       padding-top: 72px;
     }
+    .hero__photo {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero__photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(100%); opacity: .35;
+    }
     .hero__bg {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 1;
       background:
-        linear-gradient(135deg, rgba(11,31,58,.96) 0%, rgba(11,31,58,.75) 60%, rgba(21,43,80,.85) 100%);
+        linear-gradient(135deg, rgba(11,31,58,.92) 0%, rgba(11,31,58,.65) 55%, rgba(21,43,80,.80) 100%);
     }
     /* decorative diagonal lines */
     .hero__lines {
-      position: absolute; inset: 0; overflow: hidden;
+      position: absolute; inset: 0; overflow: hidden; z-index: 1;
     }
     .hero__lines::before,
     .hero__lines::after {
@@ -140,9 +147,41 @@
       bottom: 28%; left: -10%;
       transform: rotate(-8deg);
     }
+    .hero__grid {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+      width: 100%;
+    }
     .hero__content {
       position: relative; z-index: 2;
-      max-width: 780px;
+    }
+    .hero__card {
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 4px;
+      padding: clamp(32px, 4vw, 56px);
+    }
+    .hero__card-num {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 6vw, 72px);
+      font-style: italic;
+      color: var(--gold-lt);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .hero__card-text {
+      font-size: 16px;
+      color: rgba(255,255,255,.68);
+      line-height: 1.75;
+    }
+    @media (max-width: 900px) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__card { display: none; }
     }
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
@@ -595,26 +634,35 @@
   <main id="main">
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__photo" aria-hidden="true">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAARF6UKUGDlWy4DrNQV1sRKBlCcJt5G_24AdP8we2_T-DxzEfyMjiibQVjZSnIMTgo_iJk_Lt8wKgriHoQ7F0Jfjahx9qAny3ICLjYAdC-e-W8yODR2cy4z7QawVlOongnqnBe-d3Way_tgrK-clhKO2n15rwAlWvfKmN5E4kGWJC6bsBz0bTxCH_svIrxM89bprl-vdKLSj4aC2QX92wTetnQPN36JpZ_Phkq2o6qGxs4TvZadKI6YVV-y8vezJpKVsPimZwdDw-" alt="" />
+      </div>
       <div class="hero__bg"></div>
       <div class="hero__lines" aria-hidden="true"></div>
       <div class="container">
-        <div class="hero__content">
-          <p class="hero__eyebrow">Despacho de abogados litigantes · CDMX</p>
-          <h1 class="hero__h1" id="hero-heading">
-            Lo difícil lo resolvemos<br>
-            <em>inmediatamente.</em>
-          </h1>
-          <p class="hero__sub">
-            Especialistas en litigio mercantil y penal. Estrategia sólida,
-            resultados concretos. Lomas de Chapultepec, Ciudad de México.
-          </p>
-          <div class="hero__actions">
-            <a href="https://wa.me/525648527428" target="_blank" rel="noopener noreferrer" class="btn-primary">
-              Agenda una consulta
-            </a>
-            <a href="#servicios" class="btn-outline">
-              Nuestros servicios
-            </a>
+        <div class="hero__grid">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Despacho de abogados litigantes · CDMX</p>
+            <h1 class="hero__h1" id="hero-heading">
+              Lo difícil lo resolvemos<br>
+              <em>inmediatamente.</em>
+            </h1>
+            <p class="hero__sub">
+              Especialistas en litigio mercantil y penal. Estrategia sólida,
+              resultados concretos. Lomas de Chapultepec, Ciudad de México.
+            </p>
+            <div class="hero__actions">
+              <a href="https://wa.me/525648527428" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Agenda una consulta
+              </a>
+              <a href="#servicios" class="btn-outline">
+                Nuestros servicios
+              </a>
+            </div>
+          </div>
+          <div class="hero__card" aria-hidden="true">
+            <div class="hero__card-num">100%</div>
+            <p class="hero__card-text">Enfoque absoluto en resultados. Nuestra prioridad es la resolución efectiva de litigios de alta complejidad técnica y estratégica.</p>
           </div>
         </div>
       </div>
