@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estrategia Instagram 2026 · @rodrigomejialuna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:     #0B1F3A;
+      --navy-2:   #152B50;
+      --navy-3:   #0D243F;
+      --gold:     #B8972A;
+      --gold-lt:  #D4AF37;
+      --gold-pale:#F5EDD3;
+      --white:    #FFFFFF;
+      --off:      #F4F2EE;
+      --gray:     #6B7280;
+      --dark:     #111827;
+      --green:    #166534;
+      --green-bg: #DCFCE7;
+      --amber:    #92400E;
+      --amber-bg: #FEF3C7;
+      --red:      #991B1B;
+      --red-bg:   #FEE2E2;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max: 1100px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--dark);
+      background: var(--off);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── COVER ─────────────────────────────────────────── */
+    .cover {
+      background: var(--navy);
+      color: var(--white);
+      padding: 80px clamp(24px,5vw,80px) 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 110% 50%, rgba(184,151,42,.18) 0%, transparent 65%);
+    }
+    .cover-inner { max-width: var(--max); margin: 0 auto; position: relative; }
+    .cover-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      border: 1px solid rgba(212,175,55,.4);
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .cover h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 62px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .cover h1 span { color: var(--gold-lt); }
+    .cover-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,.65);
+      max-width: 540px;
+      margin-bottom: 40px;
+    }
+    .cover-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .cover-meta-item { font-size: 13px; color: rgba(255,255,255,.55); }
+    .cover-meta-item strong { display: block; color: var(--white); font-weight: 600; margin-bottom: 2px; }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .page { max-width: var(--max); margin: 0 auto; padding: 0 clamp(20px,4vw,60px) 80px; }
+
+    /* ── SECTION HEADER ─────────────────────────────────── */
+    .section { margin-top: 72px; }
+    .section-num {
+      display: inline-block;
+      width: 30px; height: 30px;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px,3vw,34px);
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .section-lead {
+      font-size: 15px;
+      color: var(--gray);
+      max-width: 680px;
+      margin-bottom: 36px;
+      border-left: 3px solid var(--gold);
+      padding-left: 16px;
+    }
+    hr.divider {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,.08);
+      margin: 64px 0 0;
+    }
+
+    /* ── CALLOUT BOXES ─────────────────────────────────── */
+    .callout {
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .callout-body { flex: 1; }
+    .callout-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .callout-text { font-size: 14px; line-height: 1.55; }
+    .callout.green  { background: var(--green-bg);  color: var(--green); }
+    .callout.amber  { background: var(--amber-bg);  color: var(--amber); }
+    .callout.navy   { background: #EBF0F8; color: var(--navy); }
+    .callout.gold   { background: var(--gold-pale); color: #78600E; }
+
+    /* ── VERDICT GRID ─────────────────────────────────── */
+    .verdict-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .verdict-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 22px;
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .verdict-card .vc-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+    .verdict-card .vc-val   { font-family: var(--font-serif); font-size: 28px; color: var(--navy); font-weight: 700; line-height: 1; margin-bottom: 6px; }
+    .verdict-card .vc-desc  { font-size: 13px; color: var(--gray); }
+
+    /* ── CONDITION LIST ─────────────────────────────────── */
+    .condition-list { list-style: none; margin: 0 0 28px; }
+    .condition-list li {
+      padding: 12px 0 12px 36px;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      font-size: 14px;
+      position: relative;
+    }
+    .condition-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .condition-list li strong { color: var(--navy); display: block; margin-bottom: 2px; }
+
+    /* ── PRODUCTION SYSTEM ─────────────────────────────── */
+    .sys-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .sys-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .sys-card h4 {
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--gold); margin-bottom: 14px;
+    }
+    .sys-card ul { list-style: none; }
+    .sys-card ul li { font-size: 14px; padding: 5px 0 5px 18px; position: relative; border-bottom: 1px solid var(--off); color: var(--dark); }
+    .sys-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 12px; top: 6px; }
+    .sys-card ul li:last-child { border: none; }
+
+    /* ── CALENDAR TABLE ─────────────────────────────────── */
+    .cal-wrap { overflow-x: auto; margin-bottom: 12px; }
+    table.cal {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: var(--white);
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    table.cal thead th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    table.cal tbody tr { border-bottom: 1px solid var(--off); }
+    table.cal tbody tr:last-child { border: none; }
+    table.cal tbody tr:hover { background: #F8F7F4; }
+    table.cal td { padding: 11px 14px; vertical-align: middle; }
+    table.cal td.day-num { color: var(--gold); font-weight: 700; text-align: center; width: 44px; }
+    table.cal td.date    { white-space: nowrap; color: var(--gray); font-size: 12px; }
+    table.cal td.format  { font-weight: 600; color: var(--navy); }
+    table.cal td.hook    { color: var(--dark); font-style: italic; max-width: 280px; }
+    table.cal td.cta     { white-space: nowrap; }
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+    .badge.easy   { background: var(--green-bg);  color: var(--green); }
+    .badge.medio  { background: var(--amber-bg);  color: var(--amber); }
+    .badge.dificil{ background: var(--red-bg);    color: var(--red);   }
+    .badge.cta-badge { background: #EBF0F8; color: var(--navy); font-style: normal; }
+    .week-label {
+      background: var(--navy-2);
+      color: rgba(255,255,255,.7);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 14px;
+    }
+    table.cal td.week-label { padding: 7px 14px; }
+
+    /* ── FORMAT CARDS ─────────────────────────────────── */
+    .format-card {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .format-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .format-num {
+      width: 38px; height: 38px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .format-header-info h3 { font-family: var(--font-serif); font-size: 18px; margin-bottom: 2px; }
+    .format-header-info p  { font-size: 12px; color: rgba(255,255,255,.55); }
+    .format-body { padding: 24px; }
+    .format-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--off);
+    }
+    .format-meta-item { font-size: 13px; }
+    .format-meta-item .lbl { color: var(--gray); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+    .format-meta-item .val { font-weight: 600; color: var(--navy); }
+    .escenas { list-style: none; margin: 0 0 20px; counter-reset: escena; }
+    .escenas li {
+      counter-increment: escena;
+      padding: 10px 12px 10px 44px;
+      border-left: 2px solid var(--gold-pale);
+      margin-bottom: 8px;
+      position: relative;
+      font-size: 14px;
+      border-radius: 0 4px 4px 0;
+      background: #FAFAF9;
+    }
+    .escenas li::before {
+      content: counter(escena);
+      position: absolute;
+      left: 12px;
+      top: 10px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 22px;
+    }
+    .escenas li strong { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 3px; }
+    .script-block {
+      background: #F0EDE8;
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--navy-2);
+      border-radius: 0 6px 6px 0;
+      white-space: pre-wrap;
+      line-height: 1.7;
+    }
+    .script-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+
+    /* ── CAPTION TEMPLATES ─────────────────────────────── */
+    .template-card {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .template-header {
+      padding: 14px 20px;
+      background: var(--gold-pale);
+      border-bottom: 1px solid rgba(184,151,42,.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .template-header h3 { font-family: var(--font-serif); font-size: 17px; color: var(--navy); }
+    .template-header .t-type { font-size: 11px; color: var(--gray); }
+    .template-body { padding: 20px; }
+    .tpl-structure {
+      background: var(--off);
+      border-radius: 6px;
+      padding: 16px;
+      font-size: 13px;
+      font-family: 'Courier New', monospace;
+      color: var(--navy);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      white-space: pre-wrap;
+    }
+    .hashtag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+    .ht { background: #EBF0F8; color: var(--navy); font-size: 12px; padding: 4px 10px; border-radius: 4px; }
+
+    /* ── HOOK BANK ─────────────────────────────────────── */
+    .hook-type { margin-bottom: 28px; }
+    .hook-type-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .hook-type-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-pale); }
+    .hook-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+      gap: 12px;
+    }
+    .hook-item {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 14px 16px 14px 44px;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(0,0,0,.05);
+      border-left: 3px solid var(--gold);
+    }
+    .hook-item .h-num {
+      position: absolute;
+      left: 12px; top: 14px;
+      font-size: 11px; font-weight: 700;
+      color: var(--gold);
+    }
+    .hook-item .h-text { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; font-style: italic; }
+    .hook-item .h-why  { font-size: 12px; color: var(--gray); }
+
+    /* ── METRICS ─────────────────────────────────────── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .metric-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .metric-card .m-val { font-family: var(--font-serif); font-size: 32px; color: var(--navy); font-weight: 700; line-height: 1; }
+    .metric-card .m-unit { font-size: 13px; color: var(--gold); font-weight: 600; margin: 4px 0; }
+    .metric-card .m-label { font-size: 12px; color: var(--gray); }
+
+    /* ── PRICING ─────────────────────────────────────── */
+    .pricing-card {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 12px;
+      padding: clamp(32px,4vw,56px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      border: 40px solid rgba(184,151,42,.12);
+    }
+    .pricing-card h3 { font-family: var(--font-serif); font-size: 28px; margin-bottom: 6px; }
+    .pricing-card .price { font-family: var(--font-serif); font-size: 48px; color: var(--gold-lt); font-weight: 700; line-height: 1; margin: 16px 0 8px; }
+    .pricing-card .price-period { font-size: 14px; color: rgba(255,255,255,.5); }
+    .pricing-includes { list-style: none; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 8px; }
+    .pricing-includes li { font-size: 14px; padding-left: 22px; position: relative; color: rgba(255,255,255,.85); }
+    .pricing-includes li::before { content: '✓'; position: absolute; left: 0; color: var(--gold-lt); font-weight: 700; }
+    .pricing-note { font-size: 13px; color: rgba(255,255,255,.5); font-style: italic; margin-top: 20px; }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    .doc-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      padding: 32px;
+      font-size: 12px;
+      margin-top: 80px;
+    }
+    .doc-footer strong { color: var(--gold); }
+
+    @media print {
+      .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .section { page-break-inside: avoid; }
+    }
+    @media (max-width: 600px) {
+      table.cal td.hook { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── COVER ──────────────────────────────────────────────── -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-label">Estrategia Digital · Brota Digital</div>
+    <h1>Instagram <span>2026</span><br>@rodrigomejialuna</h1>
+    <p class="cover-sub">Plan de contenido diario, sistema de producción, 8 formatos de Reel, 5 plantillas de caption y banco de 20 hooks para el primer abogado mercantil en posicionarse en Instagram CDMX.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><strong>Cliente</strong>Despacho Mejía Luna</div>
+      <div class="cover-meta-item"><strong>Plataforma</strong>Instagram / Reels</div>
+      <div class="cover-meta-item"><strong>Piloto</strong>30 días · 20 Abr – 19 May 2026</div>
+      <div class="cover-meta-item"><strong>Preparado por</strong>Brota Digital</div>
+      <div class="cover-meta-item"><strong>Plan</strong>Cosecha · $18,500 MXN/mes</div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ── 1. RESUMEN EJECUTIVO ─────────────────────────────── -->
+  <div class="section">
+    <div class="section-num">1</div>
+    <h2>Resumen Ejecutivo</h2>
+    <p class="section-lead">Diagnóstico, recomendación estratégica y condiciones del piloto de 30 días.</p>
+
+    <div class="callout green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-body">
+        <div class="callout-title">Veredicto: publicar diario SÍ funciona — con la infraestructura correcta</div>
+        <div class="callout-text">Para abogados mercantiles B2B en CDMX, Instagram no es un canal de volumen: es un canal de <strong>autoridad y captación de leads calificados</strong>. Publicar todos los días acelera el posicionamiento de Rodrigo como <em>la referencia</em> en cobranza empresarial, siempre que el contenido esté pre-producido en batches semanales y se ejecute el sistema definido en este documento.</div>
+      </div>
+    </div>
+
+    <div class="verdict-grid">
+      <div class="verdict-card">
+        <div class="vc-label">Frecuencia recomendada</div>
+        <div class="vc-val">7×</div>
+        <div class="vc-desc">posts por semana durante el piloto de 30 días</div>
+      </div>
+      <div class="verdict-card">
+        <div class="vc-label">Tiempo de Rodrigo</div>
+        <div class="vc-val">3.5h</div>
+        <div class="vc-desc">por semana (grabación batch Wed/Thu)</div>
+      </div>
+      <div class="verdict-card">
+        <div class="vc-label">Meta primaria piloto</div>
+        <div class="vc-val">3 DMs</div>
+        <div class="vc-desc">calificados en 30 días = piloto exitoso</div>
+      </div>
+      <div class="verdict-card">
+        <div class="vc-label">Ventana de posicionamiento</div>
+        <div class="vc-val">90 días</div>
+        <div class="vc-desc">para dominar el nicho legal en IG CDMX</div>
+      </div>
+    </div>
+
+    <div class="callout amber">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <div class="callout-title">El diario funciona solo si se cumplen estas 4 condiciones</div>
+        <div class="callout-text">Sin estas condiciones, bajar a 4×/semana es más inteligente que publicar contenido de baja calidad a diario.</div>
+      </div>
+    </div>
+
+    <ul class="condition-list">
+      <li><strong>Banco de contenido previo (≥ 10 piezas grabadas antes de lanzar)</strong>Antes del día 1, Rodrigo graba 1 sesión de 2.5h con 10 Reels. Esto da 10 días de colchón operativo.</li>
+      <li><strong>Sesión de batch semanal (miércoles o jueves, 2.5h)</strong>Cada semana se graban 7–10 piezas nuevas. Rodrigo llega con guiones listos (escritos por él o adaptados de las plantillas). Brota Digital edita, subtitula y programa.</li>
+      <li><strong>Rodrigo escribe o adapta los guiones (no los graba en frío)</strong>Los guiones del banco de formatos son la base. Rodrigo personaliza con casos reales de su despacho. Esto es la ventaja diferencial que ningún competidor puede replicar.</li>
+      <li><strong>Revisión semanal de métricas (lunes, 20 min)</strong>Cada lunes Brota Digital entrega 3 KPIs de la semana anterior. Si un formato supera 8% de retención al 3er segundo, se replica. Si cae por debajo de 4%, se descarta.</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 2. SISTEMA DE PRODUCCIÓN ──────────────────────────── -->
+  <div class="section">
+    <div class="section-num">2</div>
+    <h2>Sistema de Producción</h2>
+    <p class="section-lead">Rodrigo graba. Brota edita, publica y reporta. El sistema funciona con 3.5 horas semanales de su tiempo.</p>
+
+    <div class="sys-grid">
+      <div class="sys-card">
+        <h4>📅 Semana tipo</h4>
+        <ul>
+          <li><strong>Lunes:</strong> Brota entrega reporte KPIs semana anterior (20 min revisión)</li>
+          <li><strong>Miér/Jue:</strong> Sesión de batch filming Rodrigo (2.5h, 7-10 piezas)</li>
+          <li><strong>Viernes:</strong> Brota entrega ediciones para aprobación</li>
+          <li><strong>Fin de semana:</strong> Programación en Meta Business Suite</li>
+        </ul>
+      </div>
+      <div class="sys-card">
+        <h4>🎬 Sesión de grabación</h4>
+        <ul>
+          <li>Locación: despacho (escritorio, librero de fondo)</li>
+          <li>Equipo mínimo: iPhone + trípode + luz de relleno</li>
+          <li>Guiones ya preparados por Rodrigo (plantillas de este doc)</li>
+          <li>Formato: teleprompter simple o guión memorizadopor escena</li>
+          <li>Ropa: suit o blazer para todos los formatos serios</li>
+        </ul>
+      </div>
+      <div class="sys-card">
+        <h4>✂️ Brota Digital hace</h4>
+        <ul>
+          <li>Edición CapCut Pro (cortes, subtítulos, música)</li>
+          <li>Thumbnail/cover de cada Reel</li>
+          <li>Caption completo (plantilla + hooks del banco)</li>
+          <li>Hashtags específicos por formato</li>
+          <li>Programación diaria en Meta Business Suite</li>
+          <li>Reporte semanal (alcance, ER, DMs, guardados)</li>
+        </ul>
+      </div>
+      <div class="sys-card">
+        <h4>📊 KPIs del piloto</h4>
+        <ul>
+          <li>Retención 3s: meta ≥ 65%</li>
+          <li>Engagement Rate: meta ≥ 4%</li>
+          <li>DMs calificados: meta 3 en 30 días</li>
+          <li>Seguidores nuevos: meta +150</li>
+          <li>Guardados/Compartidos: leading indicator de autoridad</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <div class="callout-title">Regla de rescate: si un día no hay tiempo de grabar</div>
+        <div class="callout-text">Los Formatos 4 "La ley dice..." y 7 "Detrás del Despacho" se graban en <strong>15-20 minutos</strong> y no requieren preparación profunda. Son los videos de emergencia. El banco de 10 piezas previas existe exactamente para evitar publicar algo malo bajo presión.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 3. CALENDARIO 30 DÍAS ─────────────────────────────── -->
+  <div class="section">
+    <div class="section-num">3</div>
+    <h2>Calendario de Contenido · 30 Días</h2>
+    <p class="section-lead">20 de abril – 19 de mayo de 2026. Los hooks son del banco de 20 (Sección 6). Los CTAs activan palabras clave para tracking de leads.</p>
+
+    <div class="cal-wrap">
+      <table class="cal">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Fecha</th>
+            <th>Formato</th>
+            <th class="hook">Hook de apertura</th>
+            <th>CTA</th>
+            <th>Nivel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- SEMANA 1 -->
+          <tr><td colspan="6" class="week-label">— SEMANA 1 · Lanzamiento —</td></tr>
+          <tr>
+            <td class="day-num">1</td>
+            <td class="date">Lun 20 Abr</td>
+            <td class="format">F1 · ¿Te deben y no pagan?</td>
+            <td class="hook">"Tu cliente no va a pagarte."</td>
+            <td class="cta"><span class="badge cta-badge">DM libre</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">2</td>
+            <td class="date">Mar 21 Abr</td>
+            <td class="format">F4 · La ley dice…</td>
+            <td class="hook">"Art. 1391 del Código de Comercio. El arma que tu empresa no está usando."</td>
+            <td class="cta"><span class="badge cta-badge">Guarda</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">3</td>
+            <td class="date">Mié 22 Abr</td>
+            <td class="format">F8 · Error de tu Empresa</td>
+            <td class="hook">"Ese contrato que firmaste no te protege."</td>
+            <td class="cta"><span class="badge cta-badge">DM "CONTRATO"</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">4</td>
+            <td class="date">Jue 23 Abr</td>
+            <td class="format">F6 · 1 Min de Asesoría</td>
+            <td class="hook">"¿Qué pasa si demandas a un cliente sin contrato? Esto."</td>
+            <td class="cta"><span class="badge cta-badge">DM "CONSULTA"</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">5</td>
+            <td class="date">Vie 24 Abr</td>
+            <td class="format">F2 · Caso Cerrado</td>
+            <td class="hook">"El 68% de las PyMEs en México tiene cartera vencida sin acción legal."</td>
+            <td class="cta"><span class="badge cta-badge">Link bio</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">6</td>
+            <td class="date">Sáb 25 Abr</td>
+            <td class="format">F3 · Mito vs Realidad</td>
+            <td class="hook">"Hay una ley en México que la mayoría de empresarios desconoce."</td>
+            <td class="cta"><span class="badge cta-badge">Pregunta</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">7</td>
+            <td class="date">Dom 26 Abr</td>
+            <td class="format">F7 · Detrás del Despacho</td>
+            <td class="hook">"Son las 11 de la noche y acabo de terminar de revisar una demanda…"</td>
+            <td class="cta"><span class="badge cta-badge">Sígueme</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <!-- SEMANA 2 -->
+          <tr><td colspan="6" class="week-label">— SEMANA 2 · Construcción de Autoridad —</td></tr>
+          <tr>
+            <td class="day-num">8</td>
+            <td class="date">Lun 27 Abr</td>
+            <td class="format">F1 · ¿Te deben y no pagan?</td>
+            <td class="hook">"¿Cuánto te deben en este momento sin que hayas actuado?"</td>
+            <td class="cta"><span class="badge cta-badge">DM "PAGARE"</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">9</td>
+            <td class="date">Mar 28 Abr</td>
+            <td class="format">F4 · La ley dice…</td>
+            <td class="hook">"En México, 3 años. Eso es lo que tienes para cobrar antes de que prescriba."</td>
+            <td class="cta"><span class="badge cta-badge">Guarda</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">10</td>
+            <td class="date">Mié 29 Abr</td>
+            <td class="format">F8 · Error de tu Empresa</td>
+            <td class="hook">"¿Tu empresa está vendiendo sin contrato? Entonces esto te importa."</td>
+            <td class="cta"><span class="badge cta-badge">DM libre</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">11</td>
+            <td class="date">Jue 30 Abr</td>
+            <td class="format">F6 · 1 Min de Asesoría</td>
+            <td class="hook">"Te voy a decir exactamente cuánto tarda un juicio mercantil en México."</td>
+            <td class="cta"><span class="badge cta-badge">DM "CONSULTA"</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">12</td>
+            <td class="date">Vie 1 May</td>
+            <td class="format">F2 · Caso Cerrado</td>
+            <td class="hook">"El tipo de empresa que nunca pierde en cobranza hace esto."</td>
+            <td class="cta"><span class="badge cta-badge">Link bio</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">13</td>
+            <td class="date">Sáb 2 May</td>
+            <td class="format">F3 · Mito vs Realidad</td>
+            <td class="hook">"¿Sabes cuándo un cliente se convierte en un problema legal que ya puedes resolver?"</td>
+            <td class="cta"><span class="badge cta-badge">Pregunta</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">14</td>
+            <td class="date">Dom 3 May</td>
+            <td class="format">F7 · Detrás del Despacho</td>
+            <td class="hook">"Tuve una llamada hoy con un empresario que lleva 14 meses esperando…"</td>
+            <td class="cta"><span class="badge cta-badge">Sígueme</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <!-- SEMANA 3 -->
+          <tr><td colspan="6" class="week-label">— SEMANA 3 · Profundidad y Casos Reales —</td></tr>
+          <tr>
+            <td class="day-num">15</td>
+            <td class="date">Lun 4 May</td>
+            <td class="format">F1 · ¿Te deben y no pagan?</td>
+            <td class="hook">"Seguir esperando que te paguen no es paciencia. Es negligencia empresarial."</td>
+            <td class="cta"><span class="badge cta-badge">DM libre</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">16</td>
+            <td class="date">Mar 5 May</td>
+            <td class="format">F4 · La ley dice…</td>
+            <td class="hook">"Un pagaré mal firmado puede valer cero en un juzgado. Así evitas que eso pase."</td>
+            <td class="cta"><span class="badge cta-badge">DM "PAGARE"</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">17</td>
+            <td class="date">Mié 6 May</td>
+            <td class="format">F8 · Error de tu Empresa</td>
+            <td class="hook">"Lo que no cobras hoy, mañana ya no puedes cobrarlo."</td>
+            <td class="cta"><span class="badge cta-badge">DM "REVISION"</span></td>
+            <td><span class="badge dificil">Difícil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">18</td>
+            <td class="date">Jue 7 May</td>
+            <td class="format">F6 · 1 Min de Asesoría</td>
+            <td class="hook">"¿Qué le dices a un cliente que prometió pagar y lleva 6 meses sin hacerlo?"</td>
+            <td class="cta"><span class="badge cta-badge">DM "CONSULTA"</span></td>
+            <td><span class="badge dificil">Difícil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">19</td>
+            <td class="date">Vie 8 May</td>
+            <td class="format">F2 · Caso Cerrado</td>
+            <td class="hook">"Ya prescribió tu derecho a cobrar y no lo sabes."</td>
+            <td class="cta"><span class="badge cta-badge">Link bio</span></td>
+            <td><span class="badge dificil">Difícil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">20</td>
+            <td class="date">Sáb 9 May</td>
+            <td class="format">F3 · Mito vs Realidad</td>
+            <td class="hook">"Si mandaste otro correo de cobro, ya perdiste."</td>
+            <td class="cta"><span class="badge cta-badge">Pregunta</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">21</td>
+            <td class="date">Dom 10 May</td>
+            <td class="format">F7 · Detrás del Despacho</td>
+            <td class="hook">"Hoy revisé tres casos con el mismo denominador: excelentes empresas, pésima documentación."</td>
+            <td class="cta"><span class="badge cta-badge">Sígueme</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <!-- SEMANA 4 -->
+          <tr><td colspan="6" class="week-label">— SEMANA 4 · Conversión y Cierre —</td></tr>
+          <tr>
+            <td class="day-num">22</td>
+            <td class="date">Lun 11 May</td>
+            <td class="format">F1 · ¿Te deben y no pagan?</td>
+            <td class="hook">"Tu cliente sabe exactamente lo que está haciendo. Tú también deberías saberlo."</td>
+            <td class="cta"><span class="badge cta-badge">DM "PAGARE"</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">23</td>
+            <td class="date">Mar 12 May</td>
+            <td class="format">F4 · La ley dice…</td>
+            <td class="hook">"No necesitas un abogado caro. Necesitas uno que sepa lo que hace."</td>
+            <td class="cta"><span class="badge cta-badge">Guarda</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">24</td>
+            <td class="date">Mié 13 May</td>
+            <td class="format">F8 · Error de tu Empresa</td>
+            <td class="hook">"Tu empresa está cometiendo este error ahora mismo."</td>
+            <td class="cta"><span class="badge cta-badge">DM "CONTRATO"</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">25</td>
+            <td class="date">Jue 14 May</td>
+            <td class="format">F6 · 1 Min de Asesoría</td>
+            <td class="hook">"Esta semana me preguntaron algo que escucho constantemente…"</td>
+            <td class="cta"><span class="badge cta-badge">DM "CONSULTA"</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">26</td>
+            <td class="date">Vie 15 May</td>
+            <td class="format">F2 · Caso Cerrado</td>
+            <td class="hook">"480 mil pesos. Proyecto entregado. Cliente que argumentó inconformidades al cobrar."</td>
+            <td class="cta"><span class="badge cta-badge">Link bio</span></td>
+            <td><span class="badge dificil">Difícil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">27</td>
+            <td class="date">Sáb 16 May</td>
+            <td class="format">F3 · Mito vs Realidad</td>
+            <td class="hook">"Muchos empresarios me dicen: 'Rodrigo, demandar tarda años, no vale la pena.'"</td>
+            <td class="cta"><span class="badge cta-badge">Pregunta</span></td>
+            <td><span class="badge medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">28</td>
+            <td class="date">Dom 17 May</td>
+            <td class="format">F7 · Detrás del Despacho</td>
+            <td class="hook">"28 días publicando diario. Esto es lo que aprendí sobre los empresarios de CDMX."</td>
+            <td class="cta"><span class="badge cta-badge">Sígueme</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <!-- DÍAS FINALES -->
+          <tr><td colspan="6" class="week-label">— CIERRE DEL PILOTO —</td></tr>
+          <tr>
+            <td class="day-num">29</td>
+            <td class="date">Lun 18 May</td>
+            <td class="format">F1 · ¿Te deben y no pagan?</td>
+            <td class="hook">"Un mes después, sigo diciendo lo mismo: no cobrar tiene un costo real."</td>
+            <td class="cta"><span class="badge cta-badge">DM libre</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+          <tr>
+            <td class="day-num">30</td>
+            <td class="date">Mar 19 May</td>
+            <td class="format">F4 · La ley dice…</td>
+            <td class="hook">"30 días, 30 videos, una sola conclusión sobre la cobranza empresarial en México."</td>
+            <td class="cta"><span class="badge cta-badge">DM "CONSULTA"</span></td>
+            <td><span class="badge easy">Fácil</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:flex; gap:12px; flex-wrap:wrap; font-size:13px; color:var(--gray); margin-top:8px;">
+      <span><span class="badge easy">Fácil</span> 15-20 min de grabación</span>
+      <span><span class="badge medio">Medio</span> 25-35 min · requiere caso real</span>
+      <span><span class="badge dificil">Difícil</span> 35-45 min · investigación + dato técnico</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 4. FORMATOS DE REEL ────────────────────────────────── -->
+  <div class="section">
+    <div class="section-num">4</div>
+    <h2>8 Formatos de Reel</h2>
+    <p class="section-lead">Cada formato es una estructura replicable infinitamente. Rodrigo adapta los guiones base con casos reales de su despacho.</p>
+
+    <!-- F1 -->
+    <div class="format-card">
+      <div class="format-header">
+        <div class="format-num">1</div>
+        <div class="format-header-info">
+          <h3>¿Te deben y no pagan?</h3>
+          <p>30 seg · 2×/semana (lun y jue) · 25-35 min producción</p>
+        </div>
+      </div>
+      <div class="format-body">
+        <div class="format-meta">
+          <div class="format-meta-item"><div class="lbl">Duración</div><div class="val">30 seg</div></div>
+          <div class="format-meta-item"><div class="lbl">Frecuencia</div><div class="val">2× semana</div></div>
+          <div class="format-meta-item"><div class="lbl">Dificultad</div><div class="val">Fácil</div></div>
+          <div class="format-meta-item"><div class="lbl">CTA principal</div><div class="val">DM situación</div></div>
+        </div>
+        <ul class="escenas">
+          <li><strong>Hook (0–3s)</strong>Cámara cerca del rostro, tono serio. Frase de problema directo. Sin intro, sin saludo.</li>
+          <li><strong>Identificación del problema (3–10s)</strong>Nombra el escenario exacto que vive el empresario PyME. Una sola situación, muy específica.</li>
+          <li><strong>Pivote legal (10–20s)</strong>"Lo que muchos no saben es que…" Introduce la solución o palanca legal con lenguaje simple.</li>
+          <li><strong>CTA directo (20–30s)</strong>Una sola acción. Tono confiado, no agresivo.</li>
+        </ul>
+        <div class="script-label">Guión base</div>
+        <div class="script-block">¿Tu cliente ya lleva 4 meses sin pagarte y sigue pidiendo tiempo?
+
+Eso no es un problema de paciencia. Es un problema legal que ya puedes resolver.
+
+En México, cuando un cliente incumple un pagaré o factura, tienes derecho a iniciar un juicio ejecutivo mercantil y embargar bienes desde la primera audiencia.
+
+No necesitas esperar más. Necesitas actuar.
+
+Mándame un DM con tu situación y te digo si tienes caso en menos de 24 horas.</div>
+      </div>
+    </div>
+
+    <!-- F2 -->
+    <div class="format-card">
+      <div class="format-header">
+        <div class="format-num">2</div>
+        <div class="format-header-info">
+          <h3>Caso Cerrado</h3>
+          <p>30 seg · 1×/semana (vie) · 30-40 min producción</p>
+        </div>
+      </div>
+      <div class="format-body">
+        <div class="format-meta">
+          <div class="format-meta-item"><div class="lbl">Duración</div><div class="val">30 seg</div></div>
+          <div class="format-meta-item"><div class="lbl">Frecuencia</div><div class="val">1× semana</div></div>
+          <div class="format-meta-item"><div class="lbl">Dificultad</div><div class="val">Medio</div></div>
+          <div class="format-meta-item"><div class="lbl">CTA principal</div><div class="val">Link bio</div></div>
+        </div>
+        <ul class="escenas">
+          <li><strong>Situación inicial (0–5s)</strong>Presenta el problema del cliente. Sin nombres. Usa "una empresa del sector X."</li>
+          <li><strong>Complicación (5–15s)</strong>¿Por qué parecía difícil? ¿Qué había intentado antes?</li>
+          <li><strong>Acción legal tomada (15–23s)</strong>Qué hizo el despacho. Específico pero sin jerga innecesaria.</li>
+          <li><strong>Resultado + CTA (23–30s)</strong>Resultado concreto (tiempo, monto en porcentaje si aplica). CTA natural.</li>
+        </ul>
+        <div class="script-label">Guión base</div>
+        <div class="script-block">Una empresa de logística en CDMX tenía 380 mil pesos en facturas vencidas de un cliente que simplemente dejó de responder mensajes.
+
+Ya habían intentado cobrar por su cuenta durante seis meses. Nada.
+
+Iniciamos un juicio ejecutivo mercantil. En la primera audiencia logramos embargo precautorio sobre la cuenta bancaria del deudor.
+
+En 11 semanas, el cliente liquidó el total para evitar el remate.
+
+Caso cerrado. Si tienes cuentas por cobrar paradas, ya sabes dónde encontrarme.</div>
+      </div>
+    </div>
+
+    <!-- F3 -->
+    <div class="format-card">
+      <div class="format-header">
+        <div class="format-num">3</div>
+        <div class="format-header-info">
+          <h3>Mito vs Realidad Legal</h3>
+          <p>30–45 seg · 1×/semana (sáb) · 20-30 min producción</p>
+        </div>
+      </div>
+      <div class="format-body">
+        <div class="format-meta">
+          <div class="format-meta-item"><div class="lbl">Duración</div><div class="val">30–45 seg</div></div>
+          <div class="format-meta-item"><div class="lbl">Frecuencia</div><div class="val">1× semana</div></div>
+          <div class="format-meta-item"><div class="lbl">Dificultad</div><div class="val">Fácil-Medio</div></div>
+          <div class="format-meta-item"><div class="lbl">CTA principal</div><div class="val">Pregunta retórica</div></div>
+        </div>
+        <ul class="escenas">
+          <li><strong>Presenta el mito (0–5s)</strong>Dilo como si fuera cierto, con el tono del empresario que lo cree.</li>
+          <li><strong>La interrupción (5–8s)</strong>Una pausa. Una mirada a cámara. "Falso." o "Eso no es así."</li>
+          <li><strong>La realidad legal (8–30s)</strong>Explica la verdad con base en la ley. Artículo citado si aplica.</li>
+          <li><strong>Por qué importa + CTA (30–45s)</strong>Consecuencia práctica de creer el mito. Pregunta retórica.</li>
+        </ul>
+        <div class="script-label">Guión base</div>
+        <div class="script-block">Muchos empresarios me dicen: "Rodrigo, demandar tarda años, no vale la pena."
+
+Falso.
+
+Un juicio ejecutivo mercantil en México, con la documentación correcta, puede resolverse en 3 a 6 meses en primera instancia. Y si el deudor no contesta, puede ir mucho más rápido.
+
+El mito de que litigar es eterno le ha costado millones a las PyMEs mexicanas que simplemente se resignan a perder lo que les deben.
+
+¿Cuánto llevas esperando tú?</div>
+      </div>
+    </div>
+
+    <!-- F4 -->
+    <div class="format-card">
+      <div class="format-header">
+        <div class="format-num">4</div>
+        <div class="format-header-info">
+          <h3>La ley dice…</h3>
+          <p>15–20 seg · 2×/semana (mar y sáb) · 15-20 min producción · Formato de RESCATE</p>
+        </div>
+      </div>
+      <div class="format-body">
+        <div class="format-meta">
+          <div class="format-meta-item"><div class="lbl">Duración</div><div class="val">15–20 seg</div></div>
+          <div class="format-meta-item"><div class="lbl">Frecuencia</div><div class="val">2× semana</div></div>
+          <div class="format-meta-item"><div class="lbl">Dificultad</div><div class="val">Fácil</div></div>
+          <div class="format-meta-item"><div class="lbl">CTA principal</div><div class="val">Guarda este video</div></div>
+        </div>
+        <ul class="escenas">
+          <li><strong>El dato (0–8s)</strong>"El artículo X dice que…" Un solo dato impactante.</li>
+          <li><strong>La traducción práctica (8–15s)</strong>Qué significa eso para el empresario en lenguaje real.</li>
+          <li><strong>CTA mínimo (15–20s)</strong>Guarda este video. Simple.</li>
+        </ul>
+        <div class="script-label">Guión base</div>
+        <div class="script-block">La ley dice que si tu cliente firmó un pagaré y no paga, puedes embargarle bienes sin necesidad de un juicio largo.
+
+Eso se llama vía ejecutiva mercantil. Y está en el artículo 1391 del Código de Comercio.
+
+En otras palabras: un papel bien firmado vale más que meses de llamadas y correos sin respuesta.
+
+Guarda este video. Lo vas a necesitar.</div>
+      </div>
+    </div>
+
+    <!-- F5 -->
+    <div class="format-card">
+      <div class="format-header">
+        <div class="format-num">5</div>
+        <div class="format-header-info">
+          <h3>Lo que pasa si no cobras</h3>
+          <p>30–45 seg · 1×/semana (mar) · 25-35 min producción</p>
+        </div>
+      </div>
+      <div class="format-body">
+        <div class="format-meta">
+          <div class="format-meta-item"><div class="lbl">Duración</div><div class="val">30–45 seg</div></div>
+          <div class="format-meta-item"><div class="lbl">Frecuencia</div><div class="val">1× semana</div></div>
+          <div class="format-meta-item"><div class="lbl">Dificultad</div><div class="val">Medio</div></div>
+          <div class="format-meta-item"><div class="lbl">CTA principal</div><div class="val">DM o link bio</div></div>
+        </div>
+        <ul class="escenas">
+          <li><strong>La inacción (0–5s)</strong>Describe la actitud pasiva típica.</li>
+          <li><strong>Consecuencia 1 (5–15s)</strong>Prescripción de la deuda o pérdida de evidencia.</li>
+          <li><strong>Consecuencia 2 (15–25s)</strong>Impacto financiero real.</li>
+          <li><strong>El costo real + CTA (25–45s)</strong>"El costo de no actuar siempre es mayor."</li>
+        </ul>
+        <div class="script-label">Guión base</div>
+        <div class="script-block">Muchas PyMEs esperan. Dan otro mes. Mandan un correo más amable. Y esperan de nuevo.
+
+Lo que no saben es que en México las acciones mercantiles prescriben. Dependiendo del título, puedes perder tu derecho legal a cobrar en 3 años o menos.
+
+Y mientras esperas, ese dinero no está en tu flujo. No puedes pagar nómina con él. No puedes reinvertirlo. No existe para tu empresa.
+
+No cobrar no es neutral. Es perder activo real.
+
+Si tienes deudas sin mover, el momento de actuar fue ayer. El segundo mejor momento es hoy.</div>
+      </div>
+    </div>
+
+    <!-- F6 -->
+    <div class="format-card">
+      <div class="format-header">
+        <div class="format-num">6</div>
+        <div class="format-header-info">
+          <h3>1 Minuto de Asesoría</h3>
+          <p>60 seg · 1×/semana (jue) · 30-45 min producción</p>
+        </div>
+      </div>
+      <div class="format-body">
+        <div class="format-meta">
+          <div class="format-meta-item"><div class="lbl">Duración</div><div class="val">60 seg</div></div>
+          <div class="format-meta-item"><div class="lbl">Frecuencia</div><div class="val">1× semana</div></div>
+          <div class="format-meta-item"><div class="lbl">Dificultad</div><div class="val">Medio-Alto</div></div>
+          <div class="format-meta-item"><div class="lbl">CTA principal</div><div class="val">DM "CONSULTA"</div></div>
+        </div>
+        <ul class="escenas">
+          <li><strong>La pregunta (0–5s)</strong>"Esta semana me preguntaron…" (pregunta real o formulada así)</li>
+          <li><strong>Contexto legal rápido (5–25s)</strong>Qué dice la ley. Marco general sin abrumar.</li>
+          <li><strong>Respuesta práctica (25–45s)</strong>Qué debe hacer el empresario. Pasos concretos.</li>
+          <li><strong>Limitación + CTA (45–60s)</strong>"Esto es orientación general. Cada caso es distinto." Invita a consulta.</li>
+        </ul>
+        <div class="script-label">Guión base</div>
+        <div class="script-block">Esta semana me preguntaron: ¿puedo demandar a un cliente si no tenemos contrato firmado, solo facturas?
+
+Sí, puedes. Las facturas en México tienen valor probatorio como reconocimiento de deuda, especialmente si el cliente las recibió y no las impugnó.
+
+El camino más limpio es demanda ordinaria mercantil, apoyada en las facturas, correos de cobro y cualquier comunicación donde el cliente haya reconocido la deuda.
+
+No tener contrato complica el caso, pero no lo cancela.
+
+Esto es orientación general. Si quieres saber si tu situación específica tiene solución, mándame mensaje directo. La primera consulta es gratuita.</div>
+      </div>
+    </div>
+
+    <!-- F7 -->
+    <div class="format-card">
+      <div class="format-header">
+        <div class="format-num">7</div>
+        <div class="format-header-info">
+          <h3>Detrás del Despacho</h3>
+          <p>30–45 seg · 1×/semana (dom) · 15-20 min · Formato de RESCATE</p>
+        </div>
+      </div>
+      <div class="format-body">
+        <div class="format-meta">
+          <div class="format-meta-item"><div class="lbl">Duración</div><div class="val">30–45 seg</div></div>
+          <div class="format-meta-item"><div class="lbl">Frecuencia</div><div class="val">1× semana</div></div>
+          <div class="format-meta-item"><div class="lbl">Dificultad</div><div class="val">Fácil</div></div>
+          <div class="format-meta-item"><div class="lbl">CTA principal</div><div class="val">Sígueme (suave)</div></div>
+        </div>
+        <ul class="escenas">
+          <li><strong>Contexto del momento (0–5s)</strong>Dónde está, qué está haciendo. Tono relajado pero profesional.</li>
+          <li><strong>El aprendizaje (5–30s)</strong>Una observación del trabajo del día. Algo que el empresario nunca vería de no ser por este video.</li>
+          <li><strong>Conexión humana (30–40s)</strong>Por qué le importa este trabajo. Brevísimo.</li>
+          <li><strong>CTA suave (40–45s)</strong>"Si esto te resonó, sígueme para más de esto."</li>
+        </ul>
+        <div class="script-label">Guión base</div>
+        <div class="script-block">Son las 11 de la noche y acabo de terminar de revisar una demanda que presentamos mañana. Tres meses de trabajo en estas hojas.
+
+Lo que más me queda claro después de años haciendo esto es que la mayoría de las empresas pierde dinero no por mala suerte, sino por no documentar bien desde el principio.
+
+Un pagaré mal llenado. Una factura sin acuse. Un contrato sin cláusula de penalización. Eso es todo lo que necesita un mal pagador para ganar tiempo indefinido.
+
+Por eso hago lo que hago.
+
+Si esto te sirve, aquí estaré mañana también.</div>
+      </div>
+    </div>
+
+    <!-- F8 -->
+    <div class="format-card">
+      <div class="format-header">
+        <div class="format-num">8</div>
+        <div class="format-header-info">
+          <h3>Error que Cometió tu Empresa</h3>
+          <p>30 seg · 1×/semana (mié) · 25-35 min producción</p>
+        </div>
+      </div>
+      <div class="format-body">
+        <div class="format-meta">
+          <div class="format-meta-item"><div class="lbl">Duración</div><div class="val">30 seg</div></div>
+          <div class="format-meta-item"><div class="lbl">Frecuencia</div><div class="val">1× semana</div></div>
+          <div class="format-meta-item"><div class="lbl">Dificultad</div><div class="val">Medio</div></div>
+          <div class="format-meta-item"><div class="lbl">CTA principal</div><div class="val">DM específico</div></td>
+        </div>
+        <ul class="escenas">
+          <li><strong>Acusación directa (0–4s)</strong>"Tu empresa está cometiendo este error ahora mismo." Sin suavizar.</li>
+          <li><strong>El error específico (4–15s)</strong>Uno solo. Muy concreto. Que el empresario lo reconozca al instante.</li>
+          <li><strong>El impacto (15–23s)</strong>Qué le puede costar. Cuánto. En qué situación lo deja.</li>
+          <li><strong>Solución breve + CTA (23–30s)</strong>Una acción concreta para corregirlo. CTA a DM.</li>
+        </ul>
+        <div class="script-label">Guión base</div>
+        <div class="script-block">Tu empresa está cometiendo este error ahora mismo.
+
+Estás vendiendo a crédito sin contrato firmado. Solo con cotización y factura.
+
+Eso significa que si tu cliente no paga, tu única prueba es una factura que él puede impugnar diciendo que el servicio fue deficiente o nunca entregado. Sin contrato, su palabra vale tanto como la tuya.
+
+La corrección tarda menos de una semana: un contrato de prestación de servicios con condiciones de pago, penalizaciones y cláusula arbitral.
+
+Mándame DM y te digo exactamente qué necesita el tuyo.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 5. PLANTILLAS DE CAPTION ──────────────────────────── -->
+  <div class="section">
+    <div class="section-num">5</div>
+    <h2>5 Plantillas de Caption</h2>
+    <p class="section-lead">Estructuras replicables para el copy de cada Reel. Los corchetes son variables que Rodrigo llena con contexto real.</p>
+
+    <div class="template-card">
+      <div class="template-header">
+        <div>
+          <h3>Plantilla 1 · El Problema que ya Conoces</h3>
+          <div class="t-type">Para Formatos 1 y 5 · 2–3× por semana</div>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="tpl-structure">[FRASE QUE NOMBRA EL DOLOR DEL EMPRESARIO EN 1 LÍNEA].
+
+Eso me lo dicen [frecuencia] empresarios de [sector o tipo de empresa].
+
+Y la mayoría no sabe que [insight legal o ventaja que desconocen].
+
+En México, [dato o herramienta legal] te permite [resultado concreto] siempre que [condición clave].
+
+Lo que frena a la mayoría no es la ley. Es no saber que la ley ya está de su lado.
+
+Si tienes [situación específica], escríbeme. La primera consulta es sin costo.
+
+Guarda este post si lo puedes necesitar.</div>
+        <div class="hashtag-row">
+          <span class="ht">#cobranzaempresarial</span>
+          <span class="ht">#abogadomercantil</span>
+          <span class="ht">#pymesmexico</span>
+          <span class="ht">#litigiocdmx</span>
+          <span class="ht">#carteravencida</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="template-card">
+      <div class="template-header">
+        <div>
+          <h3>Plantilla 2 · El Caso Cerrado</h3>
+          <div class="t-type">Para Formato 2 · 1× por semana (viernes)</div>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="tpl-structure">[SECTOR DE LA EMPRESA CLIENTE] | [CIUDAD O ZONA] | [MONTO APROXIMADO]
+
+Situación: [Descripción en 1–2 líneas del problema. Sin nombres.]
+
+Lo que habían intentado: [Acciones previas del cliente antes de llegar al despacho.]
+
+Lo que hicimos: [Acción legal tomada.]
+
+Resultado: [Tiempo + desenlace concreto.]
+
+[REFLEXIÓN EN 1 LÍNEA que conecta el caso con el empresario que lee.]
+
+Si tu empresa tiene cuentas por cobrar paradas, esto mismo puede funcionar para ti.
+
+Link en bio para agendar consulta inicial.</div>
+        <div class="hashtag-row">
+          <span class="ht">#casodeéxito</span>
+          <span class="ht">#juicioejecutivomercantil</span>
+          <span class="ht">#abogadocdmx</span>
+          <span class="ht">#cobranzajudicial</span>
+          <span class="ht">#pymesmexico</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="template-card">
+      <div class="template-header">
+        <div>
+          <h3>Plantilla 3 · El Dato Legal que Cambia Todo</h3>
+          <div class="t-type">Para Formatos 4 y 3 · 2–3× por semana</div>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="tpl-structure">[DATO LEGAL EN 1 LÍNEA. Que sorprenda. Contraintuitivo o desconocido.]
+
+Artículo [número], [nombre del ordenamiento jurídico].
+
+Lo que eso significa para tu empresa:
+
+— [Implicación práctica 1]
+— [Implicación práctica 2]
+— [Implicación práctica 3]
+
+La mayoría de los empresarios no conoce este derecho. Y los que no lo conocen, simplemente no lo ejercen.
+
+[Pregunta retórica dirigida al lector.]
+
+Guarda este post. Compártelo con quien lo necesite.</div>
+        <div class="hashtag-row">
+          <span class="ht">#derechomercantil</span>
+          <span class="ht">#leyesmexicanas</span>
+          <span class="ht">#codigodecomercio</span>
+          <span class="ht">#abogadomercantilcdmx</span>
+          <span class="ht">#educacionlegal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="template-card">
+      <div class="template-header">
+        <div>
+          <h3>Plantilla 4 · El Error de tu Empresa</h3>
+          <div class="t-type">Para Formato 8 · 1× por semana (miércoles)</div>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="tpl-structure">Si tu empresa [hace X cosa], está en riesgo.
+
+Y no es un riesgo menor.
+
+El error: [Nombre claro del error en 1 línea]
+
+Por qué pasa: [Una explicación honesta y sin juzgar de por qué las empresas caen en esto]
+
+Lo que puede costar: [Consecuencia legal o financiera específica]
+
+Cómo corregirlo:
+1. [Paso 1, concreto]
+2. [Paso 2, concreto]
+3. [Paso 3 si aplica]
+
+Esto no requiere meses ni presupuesto enorme. Requiere hacerlo esta semana.
+
+¿Tu empresa tiene este problema? Cuéntame en comentarios o escríbeme directo.</div>
+        <div class="hashtag-row">
+          <span class="ht">#erroresempresariales</span>
+          <span class="ht">#pymesmexico</span>
+          <span class="ht">#prevenciónlegal</span>
+          <span class="ht">#contratos</span>
+          <span class="ht">#abogadodenegocios</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="template-card">
+      <div class="template-header">
+        <div>
+          <h3>Plantilla 5 · La Reflexión del Abogado</h3>
+          <div class="t-type">Para Formato 7 · 1× por semana (domingo)</div>
+        </div>
+      </div>
+      <div class="template-body">
+        <div class="tpl-structure">[OBSERVACIÓN DEL DÍA A DÍA DEL DESPACHO en 1–2 líneas.]
+
+Después de [tiempo o número de casos], lo que más me queda claro es esto:
+
+[Reflexión central. 2–4 líneas. Sin tecnicismos. Con humanidad.]
+
+Las empresas que mejor salen de problemas de cobranza no son las más grandes. Son las que [característica o hábito concreto].
+
+[Cierre en 1 línea que funcione como firma de pensamiento.]
+
+[Pregunta o invitación a comentar.]</div>
+        <div class="hashtag-row">
+          <span class="ht">#abogadomercantil</span>
+          <span class="ht">#rodrigomejialuna</span>
+          <span class="ht">#despacholegal</span>
+          <span class="ht">#mentoríaempresarial</span>
+          <span class="ht">#pymescdmx</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 6. BANCO DE HOOKS ──────────────────────────────────── -->
+  <div class="section">
+    <div class="section-num">6</div>
+    <h2>Banco de 20 Hooks de Apertura</h2>
+    <p class="section-lead">Los primeros 3 segundos determinan si el algoritmo distribuye el Reel o lo entierra. Rotar tipos — no repetir el mismo tipo dos días seguidos.</p>
+
+    <div class="hook-type">
+      <div class="hook-type-label">Tipo 1 · Miedo — activan el instinto de protección</div>
+      <div class="hook-grid">
+        <div class="hook-item">
+          <div class="h-num">H1</div>
+          <div class="h-text">"Tu cliente no va a pagarte."</div>
+          <div class="h-why">Afirmación que el empresario ya teme pero no ha dicho en voz alta.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H2</div>
+          <div class="h-text">"Ya prescribió tu derecho a cobrar y no lo sabes."</div>
+          <div class="h-why">Genera urgencia inmediata. Aplica para cartera vieja.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H3</div>
+          <div class="h-text">"Ese contrato que firmaste no te protege."</div>
+          <div class="h-why">Directo al dolor de quien cree que ya está cubierto pero no lo está.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H4</div>
+          <div class="h-text">"Lo que no cobras hoy, mañana ya no puedes cobrarlo."</div>
+          <div class="h-why">Combina urgencia temporal con consecuencia irreversible.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hook-type">
+      <div class="hook-type-label">Tipo 2 · Curiosidad — abren un ciclo que el cerebro necesita cerrar</div>
+      <div class="hook-grid">
+        <div class="hook-item">
+          <div class="h-num">H5</div>
+          <div class="h-text">"Hay una ley en México que la mayoría de empresarios desconoce."</div>
+          <div class="h-why">Promete información exclusiva sin revelarla. Obliga a seguir viendo.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H6</div>
+          <div class="h-text">"¿Qué pasa si demandas a un cliente sin contrato? Esto."</div>
+          <div class="h-why">Pregunta + respuesta truncada. El "esto" es irresistible.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H7</div>
+          <div class="h-text">"Te voy a decir exactamente cuánto tarda un juicio mercantil en México."</div>
+          <div class="h-why">Promesa de dato específico que nadie más está dando.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H8</div>
+          <div class="h-text">"El tipo de empresa que nunca pierde en cobranza hace esto."</div>
+          <div class="h-why">Genera aspiración e intriga sobre la práctica concreta.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hook-type">
+      <div class="hook-type-label">Tipo 3 · Dato — anclan la credibilidad como fuente de información real</div>
+      <div class="hook-grid">
+        <div class="hook-item">
+          <div class="h-num">H9</div>
+          <div class="h-text">"El 68% de las PyMEs en México tiene cartera vencida sin acción legal."</div>
+          <div class="h-why">Número específico que normaliza el problema y lo hace urgente.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H10</div>
+          <div class="h-text">"Un pagaré mal firmado puede valer cero en un juzgado. Así evitas que eso pase."</div>
+          <div class="h-why">Dato técnico con solución inmediata. Muy compartible.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H11</div>
+          <div class="h-text">"En México, 3 años. Eso es lo que tienes para cobrar antes de que prescriba."</div>
+          <div class="h-why">Número concreto con consecuencia. Funciona como alarma.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H12</div>
+          <div class="h-text">"Artículo 1391 del Código de Comercio. El arma que tu empresa no está usando."</div>
+          <div class="h-why">Cita legal como gancho. Posiciona como experto que domina el código.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hook-type">
+      <div class="hook-type-label">Tipo 4 · Pregunta — involucran al espectador desde el primer segundo</div>
+      <div class="hook-grid">
+        <div class="hook-item">
+          <div class="h-num">H13</div>
+          <div class="h-text">"¿Cuánto te deben en este momento sin que hayas actuado?"</div>
+          <div class="h-why">El empresario hace el cálculo en su cabeza mientras sigue viendo.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H14</div>
+          <div class="h-text">"¿Sabes cuándo un cliente se convierte en un problema legal que ya puedes resolver?"</div>
+          <div class="h-why">Reencuadra el problema como solucionable. Genera esperanza.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H15</div>
+          <div class="h-text">"¿Tu empresa está vendiendo sin contrato? Entonces esto te importa."</div>
+          <div class="h-why">Califica al espectador y le dice directamente que el video es para él.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H16</div>
+          <div class="h-text">"¿Qué le dices a un cliente que prometió pagar y lleva 6 meses sin hacerlo?"</div>
+          <div class="h-why">Tan específico que el empresario afectado siente que Rodrigo lo conoce.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hook-type">
+      <div class="hook-type-label">Tipo 5 · Provocación — desafían una creencia o comportamiento</div>
+      <div class="hook-grid">
+        <div class="hook-item">
+          <div class="h-num">H17</div>
+          <div class="h-text">"Seguir esperando que te paguen no es paciencia. Es negligencia empresarial."</div>
+          <div class="h-why">Reencuadra una conducta pasiva como activamente dañina.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H18</div>
+          <div class="h-text">"Si mandaste otro correo de cobro, ya perdiste."</div>
+          <div class="h-why">Contraintuitivo. Contradice el comportamiento más común.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H19</div>
+          <div class="h-text">"Tu cliente sabe exactamente lo que está haciendo. Tú también deberías saberlo."</div>
+          <div class="h-why">Implica que el deudor tiene estrategia y el empresario va desarmado.</div>
+        </div>
+        <div class="hook-item">
+          <div class="h-num">H20</div>
+          <div class="h-text">"No necesitas un abogado caro. Necesitas uno que sepa lo que hace."</div>
+          <div class="h-why">Rompe la objeción de precio antes de que aparezca.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 7. MÉTRICAS DEL PILOTO ────────────────────────────── -->
+  <div class="section">
+    <div class="section-num">7</div>
+    <h2>Métricas del Piloto</h2>
+    <p class="section-lead">Al final de los 30 días, estos son los números que determinan si se mantiene la frecuencia diaria o se ajusta a 4×/semana.</p>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="m-val">≥65%</div>
+        <div class="m-unit">Retención 3s</div>
+        <div class="m-label">Mínimo para que el algoritmo distribuya</div>
+      </div>
+      <div class="metric-card">
+        <div class="m-val">≥4%</div>
+        <div class="m-unit">Engagement Rate</div>
+        <div class="m-label">Benchmark nicho legal B2B</div>
+      </div>
+      <div class="metric-card">
+        <div class="m-val">3</div>
+        <div class="m-unit">DMs calificados</div>
+        <div class="m-label">Meta mínima en 30 días = piloto exitoso</div>
+      </div>
+      <div class="metric-card">
+        <div class="m-val">+150</div>
+        <div class="m-unit">Nuevos seguidores</div>
+        <div class="m-label">Crecimiento orgánico esperado mes 1</div>
+      </div>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">📊</div>
+      <div class="callout-body">
+        <div class="callout-title">Criterio de evaluación al día 30</div>
+        <div class="callout-text">
+          <strong>Continuar diario →</strong> Si se logran los 3 DMs calificados + ER ≥ 4% en los Reels de mayor rendimiento.<br>
+          <strong>Bajar a 4×/semana →</strong> Si no se alcanzaron los DMs pero la ER es positiva. Se mantiene calidad, se reduce volumen.<br>
+          <strong>Pivote de formatos →</strong> Los formatos con &lt;4% ER se sustituyen en el mes 2 por los de mayor rendimiento.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 8. INVERSIÓN ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-num">8</div>
+    <h2>Inversión</h2>
+    <p class="section-lead">Plan Cosecha — el más completo de Brota Digital. Diseñado exactamente para este caso de uso.</p>
+
+    <div class="pricing-card">
+      <div style="position:relative;">
+        <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,175,55,.7);margin-bottom:8px;">Plan recomendado</div>
+        <h3>Plan Cosecha</h3>
+        <div class="price">$18,500</div>
+        <div class="price-period">MXN / mes · sin IVA</div>
+        <ul class="pricing-includes">
+          <li>Estrategia y planificación mensual de contenido</li>
+          <li>Edición de hasta 30 Reels / mes (CapCut Pro)</li>
+          <li>Subtítulos, thumbnail y música licenciada</li>
+          <li>Captions completos con hooks del banco</li>
+          <li>Hashtag strategy específica por formato</li>
+          <li>Programación diaria (Meta Business Suite)</li>
+          <li>Community Management (respuesta DMs y comentarios)</li>
+          <li>Reporte semanal de KPIs (4 reportes/mes)</li>
+          <li>Reunión de revisión mensual con Rodrigo (60 min)</li>
+          <li>Optimización de bio y highlights</li>
+        </ul>
+        <div class="pricing-note">* Rodrigo escribe o adapta los guiones en sesiones de batch filming (2.5h/semana). La producción audiovisual es responsabilidad del cliente. Brota Digital hace todo lo demás.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <div class="callout green">
+        <div class="callout-icon">✅</div>
+        <div class="callout-body">
+          <div class="callout-title">¿El Plan Cosecha aplica aunque Rodrigo escriba sus propios guiones?</div>
+          <div class="callout-text">Sí, y con más razón. Los guiones representan ~20% del trabajo total. El 80% restante — edición, community management, programación, estrategia, reportes — lo sigue haciendo Brota Digital en su totalidad. Que Rodrigo traiga los guiones no reduce el plan: lo hace más efectivo, porque el contenido tiene voz real, casos reales y credibilidad que ninguna agencia puede fabricar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<div class="doc-footer">
+  Preparado por <strong>Brota Digital</strong> para Despacho Mejía Luna · @rodrigomejialuna · Abril 2026<br>
+  Documento confidencial — uso interno del cliente
+</div>
+
+</body>
+</html>
