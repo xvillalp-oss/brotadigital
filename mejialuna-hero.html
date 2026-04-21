@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mejía Luna & Asociados</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-bright": "#f8f9fa",
+          "on-secondary-fixed": "#261a00",
+          "on-error": "#ffffff",
+          "secondary": "#735b24",
+          "on-primary-fixed": "#021c36",
+          "on-secondary": "#ffffff",
+          "secondary-fixed-dim": "#e3c381",
+          "surface": "#f8f9fa",
+          "background": "#f8f9fa",
+          "primary-container": "#021c36",
+          "primary": "#000000",
+          "on-primary-container": "#6f85a3",
+          "on-primary": "#ffffff",
+          "surface-tint": "#4a607c",
+          "primary-fixed": "#d2e4ff",
+          "on-surface": "#191c1d"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "fontFamily": {
+          "headline": ["Noto Serif"],
+          "body": ["Manrope"],
+          "label": ["Manrope"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  body { font-family: 'Manrope', sans-serif; }
+  h1, h2, h3, h4, .font-serif { font-family: 'Noto Serif', serif; }
+</style>
+</head>
+<body class="bg-surface text-on-surface">
+
+<!-- Nav (minimal, para contexto) -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8f9fa]/90 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.04)] transition-all duration-300">
+  <div class="flex justify-between items-center w-full px-8 md:px-16 py-6 mx-auto max-w-screen-2xl">
+    <div class="text-2xl font-serif font-bold tracking-tighter text-[#021c36] uppercase">
+      Mejía Luna &amp; Asociados
+    </div>
+    <div class="hidden md:flex items-center gap-12">
+      <a class="text-[#021c36] font-medium hover:text-[#735b24] transition-all duration-300" href="#despacho">El Despacho</a>
+      <a class="text-[#021c36] font-medium hover:text-[#735b24] transition-all duration-300" href="#servicios">Servicios</a>
+      <a class="text-[#021c36] font-medium hover:text-[#735b24] transition-all duration-300" href="#equipo">Equipo</a>
+      <a class="text-[#021c36] font-medium hover:text-[#735b24] transition-all duration-300" href="#contacto">Contacto</a>
+    </div>
+    <a class="hidden lg:block bg-[#021c36] text-white px-6 py-3 rounded-lg text-sm font-bold tracking-widest uppercase hover:scale-95 transition-transform duration-200" href="#contacto">
+      Agenda una Consulta
+    </a>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-primary-container">
+  <div class="absolute inset-0 opacity-40">
+    <img alt="Law and Justice" class="w-full h-full object-cover grayscale"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAARF6UKUGDlWy4DrNQV1sRKBlCcJt5G_24AdP8we2_T-DxzEfyMjiibQVjZSnIMTgo_iJk_Lt8wKgriHoQ7F0Jfjahx9qAny3ICLjYAdC-e-W8yODR2cy4z7QawVlOongnqnBe-d3Way_tgrK-clhKO2n15rwAlWvfKmN5E4kGWJC6bsBz0bTxCH_svIrxM89bprl-vdKLSj4aC2QX92wTetnQPN36JpZ_Phkq2o6qGxs4TvZadKI6YVV-y8vezJpKVsPimZwdDw-"/>
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-container via-transparent to-primary-container/80"></div>
+  </div>
+  <div class="relative w-full px-8 md:px-16 mx-auto max-w-screen-2xl grid lg:grid-cols-2 gap-12 items-center">
+    <div class="space-y-8">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl text-surface font-serif leading-[1.1] tracking-tight">
+        Lo difícil lo resolvemos <span class="italic text-secondary-fixed-dim">inmediatamente.</span>
+      </h1>
+      <p class="text-on-primary-container text-xl md:text-2xl font-light leading-relaxed max-w-xl">
+        Especialistas en litigio mercantil y penal. Estrategia sólida, resultados concretos. Lomas de Chapultepec, CDMX.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 pt-4">
+        <a class="bg-secondary text-on-secondary px-8 py-4 rounded-md font-bold text-sm tracking-widest uppercase text-center hover:brightness-110 transition-all" href="#contacto">
+          Agenda una Consulta
+        </a>
+        <a class="border-b-2 border-secondary text-surface px-8 py-4 font-bold text-sm tracking-widest uppercase text-center hover:bg-white/10 transition-all" href="#servicios">
+          Nuestros Servicios
+        </a>
+      </div>
+    </div>
+    <div class="hidden lg:block">
+      <div class="relative p-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
+        <div class="text-secondary text-6xl mb-4 font-serif italic">100%</div>
+        <p class="text-on-primary-container text-lg leading-relaxed">
+          Enfoque absoluto en resultados. Nuestra prioridad es la resolución efectiva de litigios de alta complejidad técnica y estratégica.
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+</body>
+</html>

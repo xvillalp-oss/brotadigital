@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OLN Tires — Llantas para Camión, Industrial y Agrícola</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "oln-dark":  "#0a0a0a",
+          "oln-card":  "#111111",
+          "oln-red":   "#e01010",
+          "oln-red2":  "#b80d0d",
+          "oln-gray":  "#8a8a8a",
+          "oln-light": "#d4d4d4",
+        },
+        fontFamily: {
+          display: ["Barlow Condensed", "sans-serif"],
+          body:    ["Inter", "sans-serif"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; }
+  h1, h2, h3, .font-display { font-family: 'Barlow Condensed', sans-serif; }
+
+  .hero-bg {
+    background-image:
+      linear-gradient(to right, rgba(10,10,10,1) 0%, rgba(10,10,10,0.85) 50%, rgba(10,10,10,0.3) 100%),
+      url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=80&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .brand-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.2s ease;
+  }
+  .brand-card:hover {
+    background: rgba(224,16,16,0.07);
+    border-color: rgba(224,16,16,0.3);
+  }
+
+  .cat-card {
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: all 0.25s ease;
+    overflow: hidden;
+    background: #111;
+  }
+  .cat-card:hover { border-color: #e01010; transform: translateY(-4px); }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    line-height: 1;
+    color: #e01010;
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 3rem;
+    animation: ticker 25s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .red-btn {
+    background: #e01010;
+    transition: all 0.2s ease;
+  }
+  .red-btn:hover { background: #b80d0d; transform: translateY(-1px); }
+
+  .ghost-btn {
+    border: 1.5px solid rgba(255,255,255,0.2);
+    transition: all 0.2s ease;
+  }
+  .ghost-btn:hover { border-color: #e01010; color: #e01010; }
+
+  /* OLN Logo arrow */
+  .oln-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid #e01010;
+    margin-right: 2px;
+  }
+</style>
+</head>
+<body class="text-white">
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav class="fixed top-0 w-full z-50 bg-oln-dark/95 backdrop-blur-md border-b border-white/5">
+  <div class="flex justify-between items-center px-6 md:px-12 xl:px-20 py-5 max-w-screen-2xl mx-auto">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-1.5">
+      <!-- Chevron arrow like their brand -->
+      <svg viewBox="0 0 18 24" width="14" height="20">
+        <polygon points="0,0 18,12 0,24" fill="#e01010"/>
+      </svg>
+      <span class="font-display font-900 text-[22px] tracking-widest text-white uppercase leading-none">OLN <span style="color:#e01010">TIRES</span></span>
+    </div>
+
+    <!-- Links -->
+    <div class="hidden md:flex items-center gap-10 text-sm font-medium text-oln-gray">
+      <a href="#catalogo" class="hover:text-white transition-colors">Catálogo</a>
+      <a href="#marcas"   class="hover:text-white transition-colors">Marcas</a>
+      <a href="#nosotros" class="hover:text-white transition-colors">Nosotros</a>
+      <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
+    </div>
+
+    <!-- CTA -->
+    <a href="https://wa.me/5212241234567" class="hidden sm:flex items-center gap-2 red-btn text-white text-sm font-semibold px-5 py-2.5 rounded-md">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- ─── TICKER ────────────────────────────────────────────── -->
+<div class="fixed top-[73px] left-0 w-full z-40 bg-oln-red py-2 overflow-hidden text-white text-xs font-semibold tracking-[0.18em] uppercase">
+  <div class="ticker-track">
+    <span>Precios directos de fábrica</span><span class="opacity-50 mx-1">▶</span>
+    <span>Sin intermediarios</span><span class="opacity-50 mx-1">▶</span>
+    <span>+10 años de experiencia</span><span class="opacity-50 mx-1">▶</span>
+    <span>Asesoría especializada para cada cliente</span><span class="opacity-50 mx-1">▶</span>
+    <span>Logística eficiente y confiable</span><span class="opacity-50 mx-1">▶</span>
+    <span>Entrega inmediata</span><span class="opacity-50 mx-1">▶</span>
+    <span>Precios directos de fábrica</span><span class="opacity-50 mx-1">▶</span>
+    <span>Sin intermediarios</span><span class="opacity-50 mx-1">▶</span>
+    <span>+10 años de experiencia</span><span class="opacity-50 mx-1">▶</span>
+    <span>Asesoría especializada para cada cliente</span><span class="opacity-50 mx-1">▶</span>
+    <span>Logística eficiente y confiable</span><span class="opacity-50 mx-1">▶</span>
+    <span>Entrega inmediata</span><span class="opacity-50 mx-1">▶</span>
+  </div>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<header class="hero-bg min-h-screen flex items-center pt-36 pb-20 relative">
+  <div class="relative w-full px-6 md:px-12 xl:px-20 max-w-screen-2xl mx-auto">
+    <div class="max-w-3xl space-y-7">
+
+      <!-- Label -->
+      <div class="flex items-center gap-3">
+        <div class="h-0.5 w-10 bg-oln-red"></div>
+        <span class="text-oln-red text-xs font-semibold tracking-[0.25em] uppercase">Outlet Llantas del Norte S.A. de C.V.</span>
+      </div>
+
+      <!-- Headline — taken from their Instagram -->
+      <h1 class="font-display font-900 text-[4.5rem] md:text-[6rem] xl:text-[7.5rem] leading-[0.9] tracking-tight uppercase">
+        Deja huella<br/>
+        en cada<br/>
+        <span style="color:#e01010">kilómetro.</span>
+      </h1>
+
+      <!-- Subhead — from their Instagram copy -->
+      <p class="text-oln-light text-xl md:text-2xl font-light leading-relaxed max-w-xl" style="font-style:italic;">
+        Lo que tu operación necesita para rendir al máximo.
+      </p>
+      <p class="text-oln-gray text-base leading-relaxed max-w-lg">
+        Más kilómetros. Menos paradas. Más rentabilidad.<br/>
+        Llantas para camión, agrícola e industrial — precio de fábrica.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 pt-2">
+        <a href="#catalogo" class="red-btn text-white font-semibold px-9 py-4 rounded-md text-center text-sm tracking-widest uppercase">
+          Ver Catálogo
+        </a>
+        <a href="https://wa.me/5212241234567" class="ghost-btn text-white font-semibold px-9 py-4 rounded-md text-center text-sm tracking-widest uppercase">
+          Cotizar Ahora
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
+        <div>
+          <div class="stat-num text-5xl">10+</div>
+          <p class="text-oln-gray text-xs mt-1.5 leading-snug">Años de experiencia</p>
+        </div>
+        <div>
+          <div class="stat-num text-5xl">24h</div>
+          <p class="text-oln-gray text-xs mt-1.5 leading-snug">Entrega inmediata</p>
+        </div>
+        <div>
+          <div class="stat-num text-5xl">0</div>
+          <p class="text-oln-gray text-xs mt-1.5 leading-snug">Intermediarios</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Red accent line bottom -->
+  <div class="absolute bottom-0 left-0 w-full h-1 bg-oln-red opacity-60"></div>
+</header>
+
+<!-- ─── MARCAS ────────────────────────────────────────────── -->
+<section id="marcas" class="py-16 border-y border-white/5" style="background:#0f0f0f;">
+  <div class="px-6 md:px-12 xl:px-20 max-w-screen-2xl mx-auto">
+    <p class="text-center text-oln-gray text-xs tracking-[0.25em] uppercase mb-10">Marcas que distribuimos</p>
+    <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3">
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-white text-sm tracking-wider uppercase">Gladiator</p></div>
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-white text-sm tracking-wider uppercase">RoadX</p></div>
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-white text-sm tracking-wider uppercase">Empire</p></div>
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-white text-sm tracking-wider uppercase">Pegasus</p></div>
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-white text-sm tracking-wider uppercase">JK Tyre</p></div>
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-white text-sm tracking-wider uppercase">Royal Black</p></div>
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-white text-sm tracking-wider uppercase">Benchmark</p></div>
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-white text-sm tracking-wider uppercase">Starstone</p></div>
+      <div class="brand-card rounded-md px-4 py-5 text-center"><p class="font-display font-700 text-oln-red text-sm tracking-wider uppercase">+ Más</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CATEGORÍAS ───────────────────────────────────────── -->
+<section id="catalogo" class="py-24 px-6 md:px-12 xl:px-20 max-w-screen-2xl mx-auto">
+  <div class="mb-14">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="h-0.5 w-8 bg-oln-red"></div>
+      <span class="text-oln-red text-xs tracking-[0.25em] uppercase font-semibold">Lo que tenemos para ti</span>
+    </div>
+    <h2 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight">Nuestro <span style="color:#e01010">Catálogo</span></h2>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-5">
+
+    <!-- Agrícola -->
+    <div class="cat-card rounded-xl overflow-hidden">
+      <div class="h-2 bg-oln-red"></div>
+      <div class="p-8 flex flex-col justify-between min-h-[260px]">
+        <div>
+          <div class="w-11 h-11 rounded-lg bg-oln-red/10 flex items-center justify-center mb-5 border border-oln-red/20">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e01010" stroke-width="1.8" class="w-5 h-5">
+              <ellipse cx="12" cy="12" rx="10" ry="6"/>
+              <line x1="12" y1="6" x2="12" y2="18"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-800 text-3xl uppercase tracking-tight text-white mb-3">Agrícola</h3>
+          <p class="text-oln-gray text-sm leading-relaxed">
+            Tractores, cosechadoras y maquinaria de campo. Máxima tracción para el trabajo más exigente.
+          </p>
+        </div>
+        <a href="#contacto" class="mt-6 text-oln-red text-sm font-semibold tracking-wide uppercase flex items-center gap-2 group">
+          Cotizar <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Camión — featured -->
+    <div class="cat-card rounded-xl overflow-hidden" style="border-color:rgba(224,16,16,0.3);">
+      <div class="h-2" style="background:#e01010;"></div>
+      <div class="p-8 flex flex-col justify-between min-h-[260px]" style="background:linear-gradient(160deg,#111 60%,rgba(224,16,16,0.07) 100%);">
+        <div>
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5 border" style="background:rgba(224,16,16,0.12); border-color:rgba(224,16,16,0.35);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e01010" stroke-width="1.8" class="w-5 h-5">
+              <path d="M1 3h15v13H1z"/>
+              <path d="M16 8h4l3 3v5h-7V8z"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-800 text-3xl uppercase tracking-tight text-white mb-3">Camión</h3>
+          <p class="text-oln-gray text-sm leading-relaxed">
+            Camión ligero, pesado y transporte de carga. Alto rendimiento en carretera, mejor costo por kilómetro.
+          </p>
+        </div>
+        <a href="#contacto" class="mt-6 text-oln-red text-sm font-semibold tracking-wide uppercase flex items-center gap-2 group">
+          Cotizar <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Industrial -->
+    <div class="cat-card rounded-xl overflow-hidden">
+      <div class="h-2 bg-oln-red"></div>
+      <div class="p-8 flex flex-col justify-between min-h-[260px]">
+        <div>
+          <div class="w-11 h-11 rounded-lg bg-oln-red/10 flex items-center justify-center mb-5 border border-oln-red/20">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e01010" stroke-width="1.8" class="w-5 h-5">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-800 text-3xl uppercase tracking-tight text-white mb-3">Industrial</h3>
+          <p class="text-oln-gray text-sm leading-relaxed">
+            Montacargas y maquinaria pesada. Soluciones para entornos de alta demanda con garantía total.
+          </p>
+        </div>
+        <a href="#contacto" class="mt-6 text-oln-red text-sm font-semibold tracking-wide uppercase flex items-center gap-2 group">
+          Cotizar <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CATÁLOGO PRODUCTOS ──────────────────────────────────── -->
+<section id="productos" class="py-24 px-6 md:px-12 xl:px-20 max-w-screen-2xl mx-auto">
+  <div class="mb-12">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="h-0.5 w-8 bg-oln-red"></div>
+      <span class="text-oln-red text-xs tracking-[0.25em] uppercase font-semibold">Productos disponibles</span>
+    </div>
+    <h2 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight mb-8">Stock <span style="color:#e01010">Disponible</span></h2>
+
+    <!-- Tabs -->
+    <div class="flex flex-wrap gap-2" id="cat-tabs">
+      <button onclick="filterCat('todos')"    class="cat-tab active-tab px-5 py-2 rounded-md text-sm font-semibold uppercase tracking-widest transition-all" data-cat="todos">Todos</button>
+      <button onclick="filterCat('camion')"   class="cat-tab px-5 py-2 rounded-md text-sm font-semibold uppercase tracking-widest transition-all" data-cat="camion">Camión</button>
+      <button onclick="filterCat('agricola')" class="cat-tab px-5 py-2 rounded-md text-sm font-semibold uppercase tracking-widest transition-all" data-cat="agricola">Agrícola</button>
+      <button onclick="filterCat('industrial')" class="cat-tab px-5 py-2 rounded-md text-sm font-semibold uppercase tracking-widest transition-all" data-cat="industrial">Industrial</button>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="product-grid">
+
+    <!-- GLADIATOR QR99 PD -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Gladiator</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">QR99 PD</div>
+      <div class="prod-type">Tracción · Camión</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- GLADIATOR QR66-PS -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Gladiator</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">QR66-PS</div>
+      <div class="prod-type">Posición · Camión</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- GLADIATOR QR55 ST -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Gladiator</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">QR55 ST</div>
+      <div class="prod-type">Tracción · Carretera</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- GLADIATOR QR35 TR -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Gladiator</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">QR35 TR</div>
+      <div class="prod-type">Todo Terreno</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- EMPIRE EM696 -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Empire</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">EM696</div>
+      <div class="prod-type">Tracción · Camión</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- EMPIRE EM698 -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Empire</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">EM698</div>
+      <div class="prod-type">Dirección · Camión</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- EMPIRE EM699 -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Empire</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">EM699</div>
+      <div class="prod-type">Tracción · Regional</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- BENCHMARK Truck -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Benchmark</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">TB Series</div>
+      <div class="prod-type">Camión · Bus</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- STARSTONE Bus -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">StarStone</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">ST Series</div>
+      <div class="prod-type">Camión · Bus</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- JK TYRE Truck -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">JK Tyre</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">Total Control</div>
+      <div class="prod-type">Tracción · Camión</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- ROYAL BLACK -->
+    <div class="prod-card cat-camion" data-cat="camion">
+      <div class="prod-brand">Royal Black</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="6"/>
+          <circle cx="40" cy="40" r="24" fill="none" stroke="#444" stroke-width="10"/>
+          <circle cx="40" cy="40" r="8" fill="#333"/>
+          <line x1="40" y1="2" x2="40" y2="16" stroke="#555" stroke-width="3"/>
+          <line x1="40" y1="64" x2="40" y2="78" stroke="#555" stroke-width="3"/>
+          <line x1="2" y1="40" x2="16" y2="40" stroke="#555" stroke-width="3"/>
+          <line x1="64" y1="40" x2="78" y2="40" stroke="#555" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="prod-model">Power To Go</div>
+      <div class="prod-type">Camión · Carretera</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- GMX Agrícola -->
+    <div class="prod-card cat-agricola" data-cat="agricola">
+      <div class="prod-brand">GMX</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="8"/>
+          <circle cx="40" cy="40" r="20" fill="none" stroke="#444" stroke-width="8"/>
+          <circle cx="40" cy="40" r="7" fill="#333"/>
+          <rect x="37" y="2" width="6" height="14" rx="2" fill="#444"/>
+          <rect x="37" y="64" width="6" height="14" rx="2" fill="#444"/>
+          <rect x="2" y="37" width="14" height="6" rx="2" fill="#444"/>
+          <rect x="64" y="37" width="14" height="6" rx="2" fill="#444"/>
+        </svg>
+      </div>
+      <div class="prod-model">Serie Agrícola</div>
+      <div class="prod-type">Tractor · Campo</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- ROCKBUSTER Agrícola -->
+    <div class="prod-card cat-agricola" data-cat="agricola">
+      <div class="prod-brand">Rockbuster</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#333" stroke-width="8"/>
+          <circle cx="40" cy="40" r="20" fill="none" stroke="#444" stroke-width="8"/>
+          <circle cx="40" cy="40" r="7" fill="#333"/>
+          <rect x="37" y="2" width="6" height="14" rx="2" fill="#444"/>
+          <rect x="37" y="64" width="6" height="14" rx="2" fill="#444"/>
+          <rect x="2" y="37" width="14" height="6" rx="2" fill="#444"/>
+          <rect x="64" y="37" width="14" height="6" rx="2" fill="#444"/>
+        </svg>
+      </div>
+      <div class="prod-model">Serie Agrícola</div>
+      <div class="prod-type">Cosechadora · Campo</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- ROCKBUSTER H165 -->
+    <div class="prod-card cat-industrial" data-cat="industrial">
+      <div class="prod-brand">Rockbuster</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#333" stroke-width="10"/>
+          <circle cx="40" cy="40" r="18" fill="none" stroke="#444" stroke-width="6"/>
+          <circle cx="40" cy="40" r="7" fill="#333"/>
+          <line x1="40" y1="4" x2="40" y2="22" stroke="#555" stroke-width="4"/>
+          <line x1="40" y1="58" x2="40" y2="76" stroke="#555" stroke-width="4"/>
+          <line x1="4" y1="40" x2="22" y2="40" stroke="#555" stroke-width="4"/>
+          <line x1="58" y1="40" x2="76" y2="40" stroke="#555" stroke-width="4"/>
+        </svg>
+      </div>
+      <div class="prod-model">H165</div>
+      <div class="prod-type">Montacargas · Industrial</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- ROCKBUSTER H166 -->
+    <div class="prod-card cat-industrial" data-cat="industrial">
+      <div class="prod-brand">Rockbuster</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#333" stroke-width="10"/>
+          <circle cx="40" cy="40" r="18" fill="none" stroke="#444" stroke-width="6"/>
+          <circle cx="40" cy="40" r="7" fill="#333"/>
+          <line x1="40" y1="4" x2="40" y2="22" stroke="#555" stroke-width="4"/>
+          <line x1="40" y1="58" x2="40" y2="76" stroke="#555" stroke-width="4"/>
+          <line x1="4" y1="40" x2="22" y2="40" stroke="#555" stroke-width="4"/>
+          <line x1="58" y1="40" x2="76" y2="40" stroke="#555" stroke-width="4"/>
+        </svg>
+      </div>
+      <div class="prod-model">H166</div>
+      <div class="prod-type">Montacargas · Industrial</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- ROCKBUSTER H109 -->
+    <div class="prod-card cat-industrial" data-cat="industrial">
+      <div class="prod-brand">Rockbuster</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#333" stroke-width="10"/>
+          <circle cx="40" cy="40" r="18" fill="none" stroke="#444" stroke-width="6"/>
+          <circle cx="40" cy="40" r="7" fill="#333"/>
+          <line x1="40" y1="4" x2="40" y2="22" stroke="#555" stroke-width="4"/>
+          <line x1="40" y1="58" x2="40" y2="76" stroke="#555" stroke-width="4"/>
+          <line x1="4" y1="40" x2="22" y2="40" stroke="#555" stroke-width="4"/>
+          <line x1="58" y1="40" x2="76" y2="40" stroke="#555" stroke-width="4"/>
+        </svg>
+      </div>
+      <div class="prod-model">H109</div>
+      <div class="prod-type">Maquinaria Pesada</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+    <!-- GMX Industrial -->
+    <div class="prod-card cat-industrial" data-cat="industrial">
+      <div class="prod-brand">GMX</div>
+      <div class="prod-tire-icon">
+        <svg viewBox="0 0 80 80" width="60" height="60">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#333" stroke-width="10"/>
+          <circle cx="40" cy="40" r="18" fill="none" stroke="#444" stroke-width="6"/>
+          <circle cx="40" cy="40" r="7" fill="#333"/>
+          <line x1="40" y1="4" x2="40" y2="22" stroke="#555" stroke-width="4"/>
+          <line x1="40" y1="58" x2="40" y2="76" stroke="#555" stroke-width="4"/>
+          <line x1="4" y1="40" x2="22" y2="40" stroke="#555" stroke-width="4"/>
+          <line x1="58" y1="40" x2="76" y2="40" stroke="#555" stroke-width="4"/>
+        </svg>
+      </div>
+      <div class="prod-model">Serie Industrial</div>
+      <div class="prod-type">Almacén · Maquinaria</div>
+      <a href="#contacto" class="prod-cta">Cotizar →</a>
+    </div>
+
+  </div>
+
+  <!-- CTA abajo -->
+  <div class="mt-10 text-center">
+    <p class="text-oln-gray text-sm mb-4">¿No encuentras lo que buscas? Contáctanos — tenemos acceso a cientos de medidas.</p>
+    <a href="#contacto" class="inline-flex items-center gap-2 red-btn text-white text-sm font-semibold px-7 py-3 rounded-md uppercase tracking-widest">
+      Consultar disponibilidad →
+    </a>
+  </div>
+</section>
+
+<style>
+  .prod-card {
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .prod-card:hover { border-color: #e01010; transform: translateY(-3px); }
+  .prod-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e01010;
+  }
+  .prod-tire-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    opacity: 0.7;
+  }
+  .prod-model {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    line-height: 1;
+  }
+  .prod-type {
+    font-size: 12px;
+    color: #8a8a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .prod-cta {
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #e01010;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: gap 0.2s;
+  }
+  .prod-cta:hover { opacity: 0.8; }
+
+  /* Tabs */
+  .cat-tab {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #8a8a8a;
+  }
+  .cat-tab:hover, .active-tab {
+    background: #e01010;
+    border-color: #e01010;
+    color: #fff;
+  }
+
+  .prod-card.hidden { display: none; }
+</style>
+
+<script>
+  function filterCat(cat) {
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active-tab'));
+    document.querySelector('[data-cat="' + cat + '"]').classList.add('active-tab');
+    document.querySelectorAll('.prod-card').forEach(card => {
+      if (cat === 'todos' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+</script>
+
+<!-- ─── WHY OLN ─────────────────────────────────────────────── -->
+<section id="nosotros" class="py-24" style="background:#0f0f0f; border-top:1px solid rgba(255,255,255,0.05);">
+  <div class="px-6 md:px-12 xl:px-20 max-w-screen-2xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+
+    <div class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="h-0.5 w-8 bg-oln-red"></div>
+        <span class="text-oln-red text-xs tracking-[0.25em] uppercase font-semibold">¿Por qué OLN?</span>
+      </div>
+      <h2 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight leading-tight">
+        En carretera no hay<br/><span style="color:#e01010">margen de error.</span>
+      </h2>
+      <p class="text-oln-gray leading-relaxed">
+        Somos tu socio estratégico en soluciones de movilidad. Precios directos de fábrica, sin intermediarios, con la atención que tu flotilla merece.
+      </p>
+      <ul class="space-y-3.5 text-sm text-oln-light">
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#e01010" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          Precios directos de fábrica, sin intermediarios
+        </li>
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#e01010" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          Asesoría especializada para cada cliente
+        </li>
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#e01010" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          Logística eficiente y confiable
+        </li>
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#e01010" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          Atención comercial personalizada
+        </li>
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#e01010" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          Optimiza tu flotilla hoy mismo
+        </li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="rounded-xl p-7 border border-white/5" style="background:#111;">
+        <div class="stat-num text-[4rem] mb-2">10+</div>
+        <p class="text-oln-gray text-sm">Años en el mercado</p>
+      </div>
+      <div class="rounded-xl p-7 border" style="background:rgba(224,16,16,0.07); border-color:rgba(224,16,16,0.2);">
+        <div class="stat-num text-[4rem] mb-2">24h</div>
+        <p class="text-oln-gray text-sm">Entrega inmediata</p>
+      </div>
+      <div class="rounded-xl p-7 border border-white/5" style="background:#111;">
+        <div class="stat-num text-[4rem] mb-2">8+</div>
+        <p class="text-oln-gray text-sm">Marcas premium en stock</p>
+      </div>
+      <div class="rounded-xl p-7 border border-white/5" style="background:#111;">
+        <div class="stat-num text-[4rem] mb-2">$0</div>
+        <p class="text-oln-gray text-sm">Intermediarios. Precio de fábrica directo.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CTA ─────────────────────────────────────────────── -->
+<section id="contacto" class="py-24 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="rounded-2xl overflow-hidden relative" style="background:#e01010;">
+      <!-- Texture overlay -->
+      <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%); background-size:10px 10px;"></div>
+      <div class="relative px-12 md:px-20 py-16 md:py-20 text-center">
+        <h2 class="font-display font-900 text-5xl md:text-7xl uppercase tracking-tight text-white mb-3">
+          Cotiza tu flotilla.
+        </h2>
+        <p class="text-white/80 text-lg md:text-xl mb-10 max-w-xl mx-auto">
+          Dinos la medida, cantidad y tipo de uso. Te respondemos con el mejor precio — sin rodeos.
+        </p>
+        <a href="https://wa.me/5212241234567" class="inline-flex items-center gap-3 bg-oln-dark text-white font-bold px-10 py-4 rounded-lg text-sm uppercase tracking-widest hover:bg-black transition-all duration-200">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+          </svg>
+          WhatsApp — Cotizar Ahora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer style="background:#0f0f0f; border-top:1px solid rgba(255,255,255,0.05);" class="py-10 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-2">
+      <svg viewBox="0 0 18 24" width="12" height="16"><polygon points="0,0 18,12 0,24" fill="#e01010"/></svg>
+      <span class="font-display font-900 text-base tracking-widest uppercase text-white">OLN <span style="color:#e01010">TIRES</span></span>
+    </div>
+    <p class="text-oln-gray text-xs text-center">Outlet Llantas del Norte S.A. de C.V. — Llantas para camión, industrial y agrícola</p>
+    <a href="https://www.instagram.com/olntires" class="text-oln-gray hover:text-oln-red transition-colors text-sm">@olntires</a>
+  </div>
+</footer>
+
+</body>
+</html>
