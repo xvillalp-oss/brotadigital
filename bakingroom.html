@@ -1442,11 +1442,10 @@
     /* Smooth hover transitions (150-300ms) */
     a, button { transition: opacity var(--transition), color var(--transition); }
 
-    /* Hero images: full width on mobile, capped on desktop */
+    /* Hero images: full width on mobile, smaller centered on desktop */
     @media (min-width: 768px) {
       .hero-full-img {
-        max-height: 70vh;
-        width: auto;
+        width: 50% !important;
         margin: 0 auto;
       }
     }
