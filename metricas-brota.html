@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registro de Métricas — Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:       #0e0e0e;
+    --surface:  #161616;
+    --border:   rgba(255,255,255,0.07);
+    --text:     #e4e4e4;
+    --muted:    #666;
+    --accent:   #c8f542;
+    --red:      #f04343;
+    --amber:    #f5a623;
+    --green:    #3ecf8e;
+    --blue:     #4d9fff;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 28px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(14,14,14,0.95);
+    backdrop-filter: blur(10px);
+  }
+  .logo { font-size: 15px; font-weight: 700; letter-spacing: .05em; }
+  .logo span { color: var(--accent); }
+  .header-meta { font-size: 12px; color: var(--muted); }
+  #last-saved { color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  main { max-width: 1400px; margin: 0 auto; padding: 40px; }
+
+  /* ── KPI CARDS ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .kpi-label { font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .kpi-val { font-size: 2.2rem; font-weight: 700; line-height: 1; }
+  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-size: 13px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin-bottom: 48px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { border-bottom: 1px solid var(--border); }
+  th {
+    text-align: left; padding: 10px 14px;
+    font-size: 10px; font-weight: 600; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--muted);
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background .15s;
+  }
+  tbody tr:hover { background: rgba(255,255,255,.025); }
+  td { padding: 12px 14px; vertical-align: middle; }
+  td:first-child { font-weight: 600; white-space: nowrap; }
+
+  /* ── EDITABLE CELLS ── */
+  .editable {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    width: 100%;
+    min-width: 80px;
+    cursor: text;
+    border-radius: 4px;
+    padding: 4px 6px;
+    transition: background .15s;
+  }
+  .editable:focus {
+    outline: none;
+    background: rgba(200,245,66,0.08);
+    border: 1px solid rgba(200,245,66,0.3);
+  }
+  .editable::placeholder { color: var(--muted); }
+
+  /* ── STATUS BADGES ── */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-activo   { background: rgba(62,207,142,.12); color: var(--green); border: 1px solid rgba(62,207,142,.2); }
+  .badge-propuesta{ background: rgba(245,166,35,.12); color: var(--amber); border: 1px solid rgba(245,166,35,.2); }
+  .badge-desarrollo{ background: rgba(77,159,255,.12); color: var(--blue); border: 1px solid rgba(77,159,255,.2); }
+  .badge-prospecto{ background: rgba(255,255,255,.05); color: var(--muted); border: 1px solid rgba(255,255,255,.1); }
+
+  /* ── STATUS SELECT ── */
+  .status-select {
+    background: transparent;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    appearance: none;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+  .status-select:focus { outline: none; }
+
+  /* ── SITE LINK ── */
+  .site-link {
+    font-size: 11px; color: var(--muted);
+    text-decoration: none; font-weight: 400;
+    display: block; margin-top: 2px;
+    transition: color .15s;
+  }
+  .site-link:hover { color: var(--accent); }
+
+  /* ── TREND INDICATOR ── */
+  .trend-up   { color: var(--green); }
+  .trend-down { color: var(--red); }
+  .trend-flat { color: var(--muted); }
+
+  /* ── NOTES AREA ── */
+  .notes-row { background: rgba(255,255,255,.02) !important; }
+  .notes-row td { padding: 6px 14px 14px; }
+  .notes-input {
+    width: 100%; background: transparent;
+    border: none; font-family: 'Inter', sans-serif;
+    font-size: 12px; color: #777; resize: none;
+    line-height: 1.6; cursor: text;
+  }
+  .notes-input:focus { outline: none; color: var(--text); }
+
+  /* ── SAVE BTN ── */
+  .save-btn {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .save-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+  /* ── DATE UPDATED ── */
+  .updated-chip {
+    font-size: 10px;
+    color: var(--muted);
+    display: block;
+    margin-top: 3px;
+  }
+
+  /* ── TOP BAR ACTIONS ── */
+  .actions { display: flex; gap: 12px; align-items: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Brota <span>Digital</span> — Métricas</div>
+  <div class="actions">
+    <span class="header-meta">Guardado: <span id="last-saved">—</span></span>
+    <button class="save-btn" onclick="saveAll()">Guardar</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── KPI SUMMARY ── -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Sitios activos</div>
+      <div class="kpi-val" style="color:var(--green);" id="kpi-activos">—</div>
+      <div class="kpi-sub">en producción</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">En desarrollo</div>
+      <div class="kpi-val" style="color:var(--blue);" id="kpi-desarrollo">—</div>
+      <div class="kpi-sub">en proceso</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Propuestas</div>
+      <div class="kpi-val" style="color:var(--amber);" id="kpi-propuesta">—</div>
+      <div class="kpi-sub">enviadas</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Prospectos</div>
+      <div class="kpi-val" style="color:var(--muted);" id="kpi-prospecto">—</div>
+      <div class="kpi-sub">en pipeline</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total clientes</div>
+      <div class="kpi-val" style="color:var(--accent);" id="kpi-total">—</div>
+      <div class="kpi-sub">proyectos</div>
+    </div>
+  </div>
+
+  <!-- ── METRICS TABLE ── -->
+  <div class="section-title">Registro por sitio</div>
+
+  <div class="table-wrap">
+    <table id="metrics-table">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Estado</th>
+          <th>Visitas / mes</th>
+          <th>Sesión prom.</th>
+          <th>Bounce rate</th>
+          <th>WhatsApp clicks</th>
+          <th>Formularios</th>
+          <th>IG seguidores</th>
+          <th>IG engagement</th>
+          <th>Posición SEO</th>
+          <th>Ultima actualización</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+
+        <!-- THE BAKING ROOM -->
+        <tr data-id="bakingroom">
+          <td>
+            The Baking Room
+            <a class="site-link" href="https://brotadigital.mx/bakingroom.html" target="_blank">brotadigital.mx/bakingroom.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="bakingroom-status">
+            <option value="activo">Activo</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="prospecto">Prospecto</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="bakingroom-fecha" id="bakingroom-fecha-cell"/></td>
+        </tr>
+        <tr class="notes-row" data-id="bakingroom-notes">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="bakingroom-notes"></textarea></td>
+        </tr>
+
+        <!-- MEJÍA LUNA -->
+        <tr data-id="mejialuna">
+          <td>
+            Mejía Luna & Asociados
+            <a class="site-link" href="https://brotadigital.mx/mejialuna.html" target="_blank">brotadigital.mx/mejialuna.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="mejialuna-status">
+            <option value="activo">Activo</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="prospecto">Prospecto</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="mejialuna-fecha"/></td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="mejialuna-notes"></textarea></td>
+        </tr>
+
+        <!-- LAPPE -->
+        <tr data-id="lappe">
+          <td>
+            Lappe
+            <a class="site-link" href="https://brotadigital.mx/lappe.html" target="_blank">brotadigital.mx/lappe.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="lappe-status">
+            <option value="activo">Activo</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="prospecto">Prospecto</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="lappe-fecha"/></td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="lappe-notes"></textarea></td>
+        </tr>
+
+        <!-- OLN TIRES -->
+        <tr data-id="olntires">
+          <td>
+            OLN Tires
+            <a class="site-link" href="https://brotadigital.mx/propuesta-olntires.html" target="_blank">brotadigital.mx/propuesta-olntires.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="olntires-status">
+            <option value="prospecto">Prospecto</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="activo">Activo</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="olntires-fecha"/></td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="olntires-notes"></textarea></td>
+        </tr>
+
+        <!-- INGLÉS LEGAL -->
+        <tr data-id="ingleslegal">
+          <td>
+            Inglés Legal
+            <a class="site-link" href="https://brotadigital.mx/ingleslegal.html" target="_blank">brotadigital.mx/ingleslegal.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="ingleslegal-status">
+            <option value="activo">Activo</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="prospecto">Prospecto</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="ingleslegal-fecha"/></td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="ingleslegal-notes"></textarea></td>
+        </tr>
+
+        <!-- CHOCHEBURGER -->
+        <tr data-id="chocheburger">
+          <td>
+            Chocheburger
+            <a class="site-link" href="https://brotadigital.mx/chocheburger.html" target="_blank">brotadigital.mx/chocheburger.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="chocheburger-status">
+            <option value="activo">Activo</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="prospecto">Prospecto</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="chocheburger-fecha"/></td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="chocheburger-notes"></textarea></td>
+        </tr>
+
+        <!-- LATIENDO -->
+        <tr data-id="latiendo">
+          <td>
+            Latiendo
+            <a class="site-link" href="https://brotadigital.mx/latiendo.html" target="_blank">brotadigital.mx/latiendo.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="latiendo-status">
+            <option value="activo">Activo</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="prospecto">Prospecto</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="latiendo-fecha"/></td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="latiendo-notes"></textarea></td>
+        </tr>
+
+        <!-- ELITE1 -->
+        <tr data-id="elite1">
+          <td>
+            Elite1
+            <a class="site-link" href="https://brotadigital.mx/elite1.html" target="_blank">brotadigital.mx/elite1.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="elite1-status">
+            <option value="activo">Activo</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="prospecto">Prospecto</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="elite1-fecha"/></td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="elite1-notes"></textarea></td>
+        </tr>
+
+        <!-- SNACK CORNER -->
+        <tr data-id="snackcorner">
+          <td>
+            Snack Corner
+            <a class="site-link" href="https://brotadigital.mx/snackcorner.html" target="_blank">brotadigital.mx/snackcorner.html</a>
+          </td>
+          <td><select class="status-select badge" onchange="updateBadge(this); updateKPIs();" data-key="snackcorner-status">
+            <option value="activo">Activo</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="propuesta">Propuesta</option>
+            <option value="prospecto">Prospecto</option>
+          </select></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-visitas"/></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-sesion"/></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-bounce"/></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-wa"/></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-forms"/></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-ig"/></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-eng"/></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-seo"/></td>
+          <td><input class="editable" placeholder="—" data-key="snackcorner-fecha"/></td>
+        </tr>
+        <tr class="notes-row">
+          <td colspan="11"><textarea class="notes-input" rows="1" placeholder="Notas..." data-key="snackcorner-notes"></textarea></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── BOTTOM BAR ── -->
+  <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);">
+    <span>Los datos se guardan en el navegador. Exporta manualmente si necesitas una copia.</span>
+    <button class="save-btn" onclick="saveAll()">Guardar cambios</button>
+  </div>
+
+</main>
+
+<script>
+  const STORAGE_KEY = 'brota-metricas-v1';
+
+  /* ── Badge styles per status ── */
+  function applyBadgeStyle(sel) {
+    const v = sel.value;
+    sel.className = 'status-select badge badge-' + v;
+  }
+
+  function updateBadge(sel) {
+    applyBadgeStyle(sel);
+  }
+
+  /* ── KPI counts ── */
+  function updateKPIs() {
+    const counts = { activo:0, desarrollo:0, propuesta:0, prospecto:0, total:0 };
+    document.querySelectorAll('.status-select').forEach(s => {
+      counts[s.value]++;
+      counts.total++;
+    });
+    document.getElementById('kpi-activos').textContent    = counts.activo;
+    document.getElementById('kpi-desarrollo').textContent = counts.desarrollo;
+    document.getElementById('kpi-propuesta').textContent  = counts.propuesta;
+    document.getElementById('kpi-prospecto').textContent  = counts.prospecto;
+    document.getElementById('kpi-total').textContent      = counts.total;
+  }
+
+  /* ── Save to localStorage ── */
+  function saveAll() {
+    const data = {};
+    document.querySelectorAll('[data-key]').forEach(el => {
+      data[el.dataset.key] = el.tagName === 'SELECT' ? el.value : el.value;
+    });
+    data['__saved'] = new Date().toLocaleString('es-MX', { dateStyle:'short', timeStyle:'short' });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    document.getElementById('last-saved').textContent = data['__saved'];
+  }
+
+  /* ── Load from localStorage ── */
+  function loadAll() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const val = data[el.dataset.key];
+      if (val !== undefined) el.value = val;
+      if (el.tagName === 'SELECT') applyBadgeStyle(el);
+    });
+    if (data['__saved']) document.getElementById('last-saved').textContent = data['__saved'];
+  }
+
+  /* ── Auto-save on input ── */
+  document.querySelectorAll('.editable, .notes-input').forEach(el => {
+    el.addEventListener('change', saveAll);
+  });
+
+  /* ── Init ── */
+  loadAll();
+  document.querySelectorAll('.status-select').forEach(applyBadgeStyle);
+  updateKPIs();
+</script>
+
+</body>
+</html>
