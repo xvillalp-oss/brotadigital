@@ -1442,6 +1442,14 @@
     /* Smooth hover transitions (150-300ms) */
     a, button { transition: opacity var(--transition), color var(--transition); }
 
+    /* Hero images: full width on mobile, capped on desktop */
+    @media (min-width: 768px) {
+      .hero-full-img {
+        max-height: 65vh;
+        object-fit: cover;
+      }
+    }
+
     /* prefers-reduced-motion — disable animations */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -1639,7 +1647,7 @@
     </div>
 
     <!-- foto frambuesas -->
-    <img src="hero-2.jpg" alt="Pastel artesanal The Baking Room"
+    <img src="hero-2.jpg" alt="Pastel artesanal The Baking Room" class="hero-full-img"
       style="width:100%; height:auto; display:block;"/>
 
     <!-- texto inferior -->
@@ -1662,7 +1670,7 @@
     </div>
 
     <!-- foto birthday cake -->
-    <img src="bakery-birthday.jpg" alt="Birthday Cake The Baking Room"
+    <img src="bakery-birthday.jpg" alt="Birthday Cake The Baking Room" class="hero-full-img"
       style="width:100%; height:auto; display:block;"/>
 
   </section>
