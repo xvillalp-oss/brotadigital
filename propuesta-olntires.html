@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OLN Tires — Diseño Web Propuesta | Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "oln-dark":  "#0a0a0a",
+          "oln-card":  "#111111",
+          "oln-deep":  "#0f0f0f",
+          "oln-red":   "#e01010",
+          "oln-red2":  "#b80d0d",
+          "oln-gray":  "#888",
+          "oln-light": "#ccc",
+        },
+        fontFamily: {
+          display: ["Barlow Condensed", "sans-serif"],
+          body:    ["Inter", "sans-serif"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color:#fff; }
+  h1,h2,h3,h4 { font-family: 'Barlow Condensed', sans-serif; }
+
+  /* ── HERO ── */
+  .hero-section {
+    min-height: 100vh;
+    background:
+      linear-gradient(to right, rgba(10,10,10,.98) 35%, rgba(10,10,10,.6) 65%, rgba(10,10,10,.15) 100%),
+      url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat;
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap { overflow: hidden; }
+  .ticker-inner { display:flex; gap:3rem; animation: scroll 28s linear infinite; white-space:nowrap; }
+  @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ── CARDS ── */
+  .glass-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    transition: all .22s ease;
+  }
+  .glass-card:hover { border-color:#e01010; transform:translateY(-4px); }
+
+  .brand-pill {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    transition: all .2s;
+  }
+  .brand-pill:hover { background:rgba(224,16,16,.07); border-color:rgba(224,16,16,.3); }
+
+  /* ── PRODUCT CARDS ── */
+  .prod {
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius:12px;
+    overflow:hidden;
+    transition: all .2s ease;
+    display:flex; flex-direction:column;
+  }
+  .prod:hover { border-color:#e01010; transform:translateY(-3px); }
+  .prod-img {
+    width:100%; height:180px; object-fit:contain; display:block;
+    background:#1a1a1a; padding:20px;
+  }
+  .prod-body { padding: 18px 20px 20px; flex:1; display:flex; flex-direction:column; gap:6px; }
+  .prod-brand-label {
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; color:#e01010;
+  }
+  .prod-name {
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:800; font-size:1.4rem;
+    text-transform:uppercase; color:#fff; line-height:1;
+  }
+  .prod-desc { font-size:12px; color:#777; margin-top:2px; flex:1; }
+  .prod-footer { display:flex; justify-content:space-between; align-items:center; margin-top:14px; }
+  .prod-badge {
+    font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+    padding:3px 10px; border-radius:20px;
+  }
+  .badge-camion   { background:rgba(224,16,16,.12); color:#e01010; border:1px solid rgba(224,16,16,.2); }
+  .badge-agricola { background:rgba(34,197,94,.1);  color:#4ade80; border:1px solid rgba(34,197,94,.2); }
+  .badge-ind      { background:rgba(234,179,8,.1);  color:#fbbf24; border:1px solid rgba(234,179,8,.2); }
+  .prod-link { font-size:11px; font-weight:700; color:#e01010; text-transform:uppercase; letter-spacing:.12em; }
+
+  /* ── TABS ── */
+  .tab-btn {
+    padding:8px 20px; border-radius:6px; font-size:12px; font-weight:700;
+    letter-spacing:.15em; text-transform:uppercase; cursor:pointer;
+    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,.07);
+    color:#888; transition:all .2s;
+  }
+  .tab-btn:hover, .tab-btn.active {
+    background:#e01010; border-color:#e01010; color:#fff;
+  }
+  .prod.hidden { display:none; }
+
+  /* ── STAT ── */
+  .big-stat { font-family:'Barlow Condensed',sans-serif; font-weight:900; color:#e01010; line-height:1; }
+
+  /* ── FORM ── */
+  .form-input {
+    width:100%; background:#111; border:1px solid rgba(255,255,255,.1);
+    border-radius:8px; padding:12px 16px; color:#fff; font-size:14px;
+    font-family:'Inter',sans-serif; transition:border .2s;
+    outline:none;
+  }
+  .form-input:focus { border-color:#e01010; }
+  .form-input::placeholder { color:#555; }
+
+  /* ── RED BTN ── */
+  .btn-red {
+    background:#e01010; color:#fff; font-weight:700; font-size:13px;
+    letter-spacing:.2em; text-transform:uppercase; padding:14px 32px;
+    border-radius:8px; display:inline-flex; align-items:center; gap:10px;
+    transition:all .2s; border:none; cursor:pointer;
+  }
+  .btn-red:hover { background:#b80d0d; transform:translateY(-1px); }
+  .btn-ghost {
+    border:1.5px solid rgba(255,255,255,.18); color:#fff; font-weight:700; font-size:13px;
+    letter-spacing:.2em; text-transform:uppercase; padding:14px 32px;
+    border-radius:8px; display:inline-flex; align-items:center; gap:10px;
+    transition:all .2s;
+  }
+  .btn-ghost:hover { border-color:#e01010; color:#e01010; }
+
+  /* ── DIVIDER ── */
+  .section-label {
+    display:flex; align-items:center; gap:12px;
+    font-size:11px; font-weight:700; letter-spacing:.25em;
+    text-transform:uppercase; color:#e01010; margin-bottom:16px;
+  }
+  .section-label::before { content:''; display:block; width:32px; height:2px; background:#e01010; flex-shrink:0; }
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav style="position:fixed;top:0;width:100%;z-index:50;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05);">
+  <div style="max-width:1400px;margin:0 auto;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;">
+    <!-- Logo -->
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg viewBox="0 0 18 24" width="13" height="18"><polygon points="0,0 18,12 0,24" fill="#e01010"/></svg>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:.15em;text-transform:uppercase;">OLN <span style="color:#e01010;">TIRES</span></span>
+    </div>
+    <!-- Links -->
+    <div style="display:flex;gap:36px;align-items:center;">
+      <a href="#catalogo" style="color:#888;font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Catálogo</a>
+      <a href="#marcas"   style="color:#888;font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Marcas</a>
+      <a href="#nosotros" style="color:#888;font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Nosotros</a>
+      <a href="#contacto" style="color:#888;font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Contacto</a>
+    </div>
+    <!-- CTA -->
+    <a href="#contacto" class="btn-red" style="padding:10px 22px;font-size:12px;">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════ TICKER ══════════ -->
+<div style="position:fixed;top:73px;left:0;width:100%;z-index:40;background:#e01010;padding:7px 0;overflow:hidden;">
+  <div class="ticker-inner" style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;">
+    <span>Precios directos de fábrica</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Sin intermediarios</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>+10 años de experiencia</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Asesoría especializada</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Logística eficiente y confiable</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Entrega inmediata</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Precios directos de fábrica</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Sin intermediarios</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>+10 años de experiencia</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Asesoría especializada</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Logística eficiente y confiable</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Entrega inmediata</span><span style="opacity:.5;margin:0 4px;">▶</span>
+  </div>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero-section" style="display:flex;align-items:center;padding-top:140px;padding-bottom:80px;">
+  <div style="max-width:1400px;margin:0 auto;padding:0 40px;width:100%;">
+    <div style="max-width:680px;">
+
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+        <div style="height:2px;width:36px;background:#e01010;flex-shrink:0;"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#e01010;">Outlet Llantas del Norte S.A. de C.V.</span>
+      </div>
+
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(4rem,9vw,8rem);line-height:.9;text-transform:uppercase;margin-bottom:28px;">
+        DEJA HUELLA<br/>
+        EN CADA<br/>
+        <span style="color:#e01010;">KILÓMETRO.</span>
+      </h1>
+
+      <p style="font-size:clamp(1rem,2vw,1.3rem);color:#bbb;font-style:italic;margin-bottom:8px;max-width:500px;line-height:1.5;">
+        Lo que tu operación necesita para rendir al máximo.
+      </p>
+      <p style="font-size:15px;color:#777;margin-bottom:36px;max-width:460px;line-height:1.7;">
+        Más kilómetros. Menos paradas. Más rentabilidad.<br/>
+        Camión · Agrícola · Industrial — precio de fábrica.
+      </p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:52px;">
+        <a href="#catalogo" class="btn-red">Ver Catálogo</a>
+        <a href="#contacto" class="btn-ghost">Cotizar Ahora</a>
+      </div>
+
+      <!-- Stats row -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:32px;border-top:1px solid rgba(255,255,255,.08);">
+        <div>
+          <div class="big-stat" style="font-size:3.5rem;">10+</div>
+          <p style="font-size:12px;color:#666;margin-top:4px;">Años en el mercado</p>
+        </div>
+        <div>
+          <div class="big-stat" style="font-size:3.5rem;">24h</div>
+          <p style="font-size:12px;color:#666;margin-top:4px;">Entrega inmediata</p>
+        </div>
+        <div>
+          <div class="big-stat" style="font-size:3.5rem;">$0</div>
+          <p style="font-size:12px;color:#666;margin-top:4px;">Intermediarios. Precio directo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ MARCAS ══════════ -->
+<section id="marcas" style="padding:64px 40px;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);">
+  <div style="max-width:1400px;margin:0 auto;">
+    <p style="text-align:center;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#555;margin-bottom:32px;">Marcas que distribuimos</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;">
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Gladiator</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">RoadX</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Empire</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Pegasus</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">JK Tyre</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Benchmark</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Royal Black</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Rockbuster</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">StarStone</span></div>
+      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:#e01010;">GMX</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CATÁLOGO ══════════ -->
+<section id="catalogo" style="padding:80px 40px;max-width:1400px;margin:0 auto;">
+
+  <div class="section-label">Catálogo completo</div>
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,5vw,4rem);text-transform:uppercase;margin-bottom:32px;">
+    Productos en <span style="color:#e01010;">Stock</span>
+  </h2>
+
+  <!-- Tabs -->
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;" id="tabs">
+    <button class="tab-btn active" onclick="filter('todos',this)">Todos</button>
+    <button class="tab-btn" onclick="filter('camion',this)">Camión</button>
+    <button class="tab-btn" onclick="filter('agricola',this)">Agrícola</button>
+    <button class="tab-btn" onclick="filter('industrial',this)">Industrial</button>
+  </div>
+
+  <!-- Product Grid -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;" id="pgrid">
+
+    <!-- ── CAMIÓN ── -->
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/QR99PD-1-300x300.png" alt="Gladiator QR99"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Gladiator</span>
+        <span class="prod-name">QR99 PD</span>
+        <span class="prod-desc">Llanta de tracción para camión. Alta resistencia en carretera y terracería.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/QR66-PS-300x300.png" alt="Gladiator QR66"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Gladiator</span>
+        <span class="prod-name">QR66-PS</span>
+        <span class="prod-desc">Llanta de posición. Diseño optimizado para largas distancias.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/QR55-ST-300x300.png" alt="Gladiator QR55"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Gladiator</span>
+        <span class="prod-name">QR55 ST</span>
+        <span class="prod-desc">Tracción superior para carretera. Ideal para flotas de carga pesada.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/QR35-TR-300x300.png" alt="Gladiator QR35"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Gladiator</span>
+        <span class="prod-name">QR35 TR</span>
+        <span class="prod-desc">Todo terreno de alto rendimiento. Tracción en barro, grava y asfalto.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/EM696-300x300.png" alt="Empire EM696"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Empire</span>
+        <span class="prod-name">EM696</span>
+        <span class="prod-desc">Tracción para camión de carga regional. Durabilidad comprobada.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/EM698-300x300.png" alt="Empire EM698"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Empire</span>
+        <span class="prod-name">EM698</span>
+        <span class="prod-desc">Dirección para camión. Manejo estable en carreteras de larga distancia.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/EMPIRE-EM699-300x300.png" alt="Empire EM699"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Empire</span>
+        <span class="prod-name">EM699</span>
+        <span class="prod-desc">Tracción regional de alto desempeño. Diseño autopurificable.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/BENCHMARK-500X500.jpg" alt="Benchmark TB"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Benchmark</span>
+        <span class="prod-name">TB Series</span>
+        <span class="prod-desc">Camión y autobús. 10 modelos disponibles para dirección, tracción y libre.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión · Bus</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/JKTYRE-500X500.jpg" alt="JK Tyre"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">JK Tyre</span>
+        <span class="prod-name">Total Control</span>
+        <span class="prod-desc">13 modelos disponibles. Control total en todo tipo de superficie y clima.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/ROYALBLACK-500X500.jpg" alt="Royal Black"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Royal Black</span>
+        <span class="prod-name">Power To Go</span>
+        <span class="prod-desc">3 modelos. Potencia y rendimiento para flotas de largo recorrido.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="camion">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/STARSTONE-500X500.jpg" alt="StarStone"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">StarStone</span>
+        <span class="prod-name">ST Series</span>
+        <span class="prod-desc">4 modelos para camión y autobús. Equilibrio perfecto entre costo y kilómetros.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión · Bus</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── AGRÍCOLA ── -->
+    <div class="prod" data-cat="agricola">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/600X600-2.jpg" alt="GMX Agrícola"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">GMX</span>
+        <span class="prod-name">Serie Agrícola</span>
+        <span class="prod-desc">Tracción en campo y terracería. Para tractores, implementos y cosechadoras.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-agricola">Agrícola</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="agricola">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H108C-300x300.png" alt="Rockbuster Agrícola"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Rockbuster</span>
+        <span class="prod-name">Serie Agrícola</span>
+        <span class="prod-desc">Máxima resistencia al corte y punción. Para maquinaria de campo exigente.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-agricola">Agrícola</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── INDUSTRIAL ── -->
+    <div class="prod" data-cat="industrial">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H165-300x300.png" alt="Rockbuster H165"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Rockbuster</span>
+        <span class="prod-name">H165</span>
+        <span class="prod-desc">Llanta sólida para montacargas. Alta resistencia a perforación y cargas extremas.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="industrial">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H166-300x300.png" alt="Rockbuster H166"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Rockbuster</span>
+        <span class="prod-name">H166</span>
+        <span class="prod-desc">Industrial para almacén. Diseño antipinchazos para pisos con escombros.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="industrial">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H109-300x300.png" alt="Rockbuster H109"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Rockbuster</span>
+        <span class="prod-name">H109</span>
+        <span class="prod-desc">Maquinaria pesada y construcción. Paredes reforzadas para máxima durabilidad.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Maquinaria</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-cat="industrial">
+      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H108AE-2-300x300.png" alt="GMX Industrial"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">GMX</span>
+        <span class="prod-name">Serie Industrial</span>
+        <span class="prod-desc">4 modelos para almacén y planta. Tracción constante en superficies interiores.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="#contacto" class="prod-link">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">¿No encuentras tu medida? Tenemos acceso a cientos de SKUs.</p>
+    <a href="#contacto" class="btn-red">Consultar disponibilidad</a>
+  </div>
+</section>
+
+<!-- ══════════ POR QUÉ OLN ══════════ -->
+<section id="nosotros" style="padding:80px 40px;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.05);">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+
+    <div>
+      <div class="section-label">¿Por qué OLN?</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,4vw,3.8rem);text-transform:uppercase;line-height:.95;margin-bottom:24px;">
+        EN CARRETERA<br/>NO HAY MARGEN<br/><span style="color:#e01010;">DE ERROR.</span>
+      </h2>
+      <p style="color:#777;line-height:1.8;margin-bottom:28px;font-size:15px;">
+        Somos tu socio estratégico en soluciones de movilidad. Precio de fábrica directo, sin intermediarios, con la atención que tu flotilla merece.
+      </p>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
+          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          Precios directos de fábrica, sin intermediarios
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
+          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          Asesoría especializada para cada cliente y tipo de flota
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
+          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          Logística eficiente y entrega inmediata
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
+          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          Atención comercial personalizada — no eres un número
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
+          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          +10 años siendo el proveedor de confianza del norte
+        </li>
+      </ul>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;">
+        <div class="big-stat" style="font-size:3.5rem;">500+</div>
+        <p style="font-size:13px;color:#666;margin-top:6px;">SKUs en catálogo activo</p>
+      </div>
+      <div style="background:rgba(224,16,16,.07);border:1px solid rgba(224,16,16,.2);border-radius:14px;padding:28px;">
+        <div class="big-stat" style="font-size:3.5rem;">24h</div>
+        <p style="font-size:13px;color:#666;margin-top:6px;">Tiempo de entrega</p>
+      </div>
+      <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;">
+        <div class="big-stat" style="font-size:3.5rem;">10+</div>
+        <p style="font-size:13px;color:#666;margin-top:6px;">Marcas premium en stock</p>
+      </div>
+      <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;">
+        <div class="big-stat" style="font-size:3.5rem;">10+</div>
+        <p style="font-size:13px;color:#666;margin-top:6px;">Años en el mercado</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIOS ══════════ -->
+<section style="padding:80px 40px;">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="section-label">Lo que dicen nuestros clientes</div>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);text-transform:uppercase;margin-bottom:48px;">
+      Flotillas que <span style="color:#e01010;">confían en OLN</span>
+    </h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+
+      <div class="glass-card" style="padding:32px;">
+        <div style="display:flex;gap:4px;margin-bottom:16px;">
+          <span style="color:#e01010;font-size:18px;">★★★★★</span>
+        </div>
+        <p style="color:#bbb;font-size:14px;line-height:1.8;margin-bottom:20px;">
+          "Llevamos 3 años comprando con OLN. Precio justo, entrega puntual y siempre tienen lo que necesitamos. Sin intermediarios, trato directo."
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#e01010;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;">R</div>
+          <div>
+            <p style="font-weight:600;font-size:13px;">Roberto M.</p>
+            <p style="color:#555;font-size:11px;">Flota de 45 camiones, Monterrey</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="padding:32px;border-color:rgba(224,16,16,.2);background:rgba(224,16,16,.04);">
+        <div style="display:flex;gap:4px;margin-bottom:16px;">
+          <span style="color:#e01010;font-size:18px;">★★★★★</span>
+        </div>
+        <p style="color:#bbb;font-size:14px;line-height:1.8;margin-bottom:20px;">
+          "Las llantas industriales Rockbuster llevan más de un año en nuestros montacargas sin ningún problema. La asesoría técnica fue clave para elegir el modelo correcto."
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#e01010;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;">C</div>
+          <div>
+            <p style="font-weight:600;font-size:13px;">Carlos V.</p>
+            <p style="color:#555;font-size:11px;">Director de Operaciones, CDMX</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="padding:32px;">
+        <div style="display:flex;gap:4px;margin-bottom:16px;">
+          <span style="color:#e01010;font-size:18px;">★★★★★</span>
+        </div>
+        <p style="color:#bbb;font-size:14px;line-height:1.8;margin-bottom:20px;">
+          "Optimizamos la flotilla agrícola con GMX. Más kilómetros, menos paradas, mejor rentabilidad. Exactamente lo que prometieron."
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#e01010;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;">A</div>
+          <div>
+            <p style="font-weight:600;font-size:13px;">Agro Norte S.A.</p>
+            <p style="color:#555;font-size:11px;">Empresa agrícola, Tamaulipas</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACTO ══════════ -->
+<section id="contacto" style="padding:80px 40px;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.05);">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;">
+
+    <div>
+      <div class="section-label">Cotiza ahora</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,4vw,3.8rem);text-transform:uppercase;line-height:.95;margin-bottom:20px;">
+        Cotiza tu<br/><span style="color:#e01010;">flotilla.</span>
+      </h2>
+      <p style="color:#666;font-size:15px;line-height:1.7;margin-bottom:36px;">
+        Dinos la medida, cantidad y tipo de uso. Te respondemos con el mejor precio — sin rodeos ni intermediarios.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <a href="https://wa.me/5212241234567" class="btn-red" style="justify-content:center;max-width:280px;">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+          WhatsApp — Cotizar Ahora
+        </a>
+        <a href="mailto:ventas@olntires.com" class="btn-ghost" style="justify-content:center;max-width:280px;">
+          Enviar correo
+        </a>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form onsubmit="return false;" style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#555;margin-bottom:8px;">Nombre</label>
+          <input type="text" class="form-input" placeholder="Tu nombre"/>
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#555;margin-bottom:8px;">Empresa</label>
+          <input type="text" class="form-input" placeholder="Razón social"/>
+        </div>
+      </div>
+      <div>
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#555;margin-bottom:8px;">WhatsApp / Teléfono</label>
+        <input type="tel" class="form-input" placeholder="+52 (xxx) xxx xxxx"/>
+      </div>
+      <div>
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#555;margin-bottom:8px;">¿Qué necesitas?</label>
+        <textarea class="form-input" rows="4" placeholder="Medida, cantidad, tipo de uso (camión / agrícola / industrial)..." style="resize:vertical;"></textarea>
+      </div>
+      <button type="submit" class="btn-red" style="justify-content:center;">
+        Enviar solicitud de cotización
+      </button>
+    </form>
+
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="background:#0a0a0a;border-top:1px solid rgba(255,255,255,.05);padding:40px;color:#555;">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg viewBox="0 0 18 24" width="12" height="16"><polygon points="0,0 18,12 0,24" fill="#e01010"/></svg>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:17px;letter-spacing:.15em;text-transform:uppercase;color:#fff;">OLN <span style="color:#e01010;">TIRES</span></span>
+    </div>
+    <p style="font-size:12px;text-align:center;">Outlet Llantas del Norte S.A. de C.V. — Camión · Agrícola · Industrial</p>
+    <div style="display:flex;gap:20px;align-items:center;">
+      <a href="https://www.instagram.com/olntires" style="color:#555;font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#e01010'" onmouseout="this.style.color='#555'">@olntires</a>
+      <a href="https://olntires.com" style="color:#555;font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#e01010'" onmouseout="this.style.color='#555'">olntires.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function filter(cat, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.prod').forEach(p => {
+      p.classList.toggle('hidden', cat !== 'todos' && p.dataset.cat !== cat);
+    });
+  }
+</script>
+
+</body>
+</html>
