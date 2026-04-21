@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta Redes Sociales · Lappe Sabor a Familia · Brota Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange:   #D4722A;
+      --orange-d: #B85E1E;
+      --black:    #1A1A1A;
+      --cream:    #FBF7F2;
+      --cream-2:  #F4EDE3;
+      --gold:     #F5C97A;
+      --espresso: #2A1810;
+      --espresso-2: #3D2415;
+      --espresso-3: #512E18;
+      --gray:     #6B7280;
+      --gray-lt:  #9CA3AF;
+      --border:   #E8DDD4;
+      --green:    #16A34A;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--black);line-height:1.65;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4,h5{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.2}
+    a{text-decoration:none;color:inherit}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(251,247,242,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav__logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.1rem;color:var(--black)}
+    .nav__logo span{color:var(--orange)}
+    .nav__cliente{font-size:.78rem;color:var(--gray);font-weight:500;letter-spacing:.04em}
+    .nav__btn{background:var(--orange);color:#fff;border:none;padding:9px 22px;border-radius:50px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s;white-space:nowrap}
+    .nav__btn:hover{background:var(--orange-d)}
+    @media(max-width:600px){.nav{padding:14px 20px}.nav__btn{display:none}}
+
+    /* PORTADA */
+    .portada{min-height:100vh;background:linear-gradient(140deg, var(--espresso) 0%, var(--espresso-2) 55%, #5a3320 100%);display:flex;flex-direction:column;justify-content:center;padding:120px 64px 80px;position:relative;overflow:hidden}
+    .portada::after{content:'';position:absolute;right:-80px;bottom:-80px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle, rgba(212,114,42,.15) 0%, transparent 70%);pointer-events:none}
+    .portada__tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:28px;width:fit-content}
+    .portada__tag::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+    .portada__para{font-size:.85rem;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+    .portada__titulo{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:10px;max-width:720px}
+    .portada__titulo em{color:var(--gold);font-style:normal}
+    .portada__subtitulo{font-size:1rem;color:rgba(255,255,255,.5);margin-bottom:48px;font-weight:400}
+    .portada__divider{width:56px;height:3px;background:var(--orange);margin-bottom:48px;border-radius:2px}
+    .portada__meta{display:flex;gap:56px;flex-wrap:wrap}
+    .portada__meta-item label{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:5px}
+    .portada__meta-item strong{color:#fff;font-size:.9rem;font-weight:600}
+    @media(max-width:600px){.portada{padding:100px 24px 60px}.portada__meta{gap:28px}}
+
+    /* LAYOUT */
+    .wrap{max-width:940px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
+    .section{padding:80px 0}
+    .section--alt{background:var(--cream-2)}
+    .section--dark{background:var(--espresso);color:#fff}
+    .section--dark .s-label{color:rgba(255,255,255,.35)}
+    .section--dark .s-title{color:#fff}
+    .s-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+    .s-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;color:var(--espresso)}
+    .s-lead{font-size:1.05rem;color:var(--gray);max-width:620px;line-height:1.7}
+    .divider{width:48px;height:3px;background:var(--orange);margin:20px 0 40px;border-radius:2px}
+
+    /* DIAGNÓSTICO */
+    .diag-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:36px 40px;margin-top:40px}
+    .diag-box p{color:rgba(255,255,255,.75);font-size:1.05rem;line-height:1.75;margin-bottom:16px}
+    .diag-box p:last-child{margin-bottom:0}
+    .diag-box strong{color:#fff}
+    .diag-highlight{border-left:3px solid var(--gold);padding-left:20px;color:rgba(255,255,255,.85)!important;font-size:1.08rem!important;font-style:italic}
+
+    /* SCORE */
+    .score-grid{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-bottom:48px}
+    .score-circle{width:130px;height:130px;border-radius:50%;background:conic-gradient(var(--orange) 0% 38%, rgba(255,255,255,.1) 38% 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+    .score-circle::before{content:'';position:absolute;width:96px;height:96px;border-radius:50%;background:var(--espresso)}
+    .score-circle__num{position:relative;z-index:1;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.8rem;color:#fff}
+    .score-meta h3{font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .score-meta p{color:rgba(255,255,255,.6);font-size:.9rem;line-height:1.6}
+    @media(max-width:500px){.score-grid{grid-template-columns:1fr}.score-circle{margin:0 auto}}
+
+    /* FORTALEZAS / OPORTUNIDADES */
+    .fd-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+    .fd-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px}
+    .fd-card__head{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+    .fd-card__badge{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fd-card__badge--green{background:rgba(22,163,74,.2)}
+    .fd-card__badge--orange{background:rgba(212,114,42,.2)}
+    .fd-card__head h4{font-size:.9rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.06em}
+    .fd-item{display:flex;gap:10px;margin-bottom:14px;font-size:.875rem;color:rgba(255,255,255,.65);line-height:1.55;list-style:none}
+    .fd-item:last-child{margin-bottom:0}
+    .fd-item::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px}
+    .fd-card--green .fd-item::before{background:#4ade80}
+    .fd-card--orange .fd-item::before{background:var(--orange)}
+    @media(max-width:640px){.fd-grid{grid-template-columns:1fr}}
+
+    /* PILARES */
+    .pilares-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px}
+    .pilar-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform .2s,box-shadow .2s}
+    .pilar-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+    .pilar-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--orange);text-transform:uppercase;margin-bottom:12px}
+    .pilar-card h3{font-size:1.05rem;font-weight:700;color:var(--espresso);margin-bottom:10px}
+    .pilar-card p{font-size:.875rem;color:var(--gray);line-height:1.6;margin-bottom:14px}
+    .pilar-freq{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;color:var(--orange);background:rgba(212,114,42,.08);padding:4px 10px;border-radius:50px}
+    .pilar-ejemplos{margin-top:14px;border-top:1px solid var(--border);padding-top:14px}
+    .pilar-ejemplos p{font-size:.78rem;color:var(--gray-lt);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+    .pilar-ejemplos li{font-size:.82rem;color:var(--gray);margin-bottom:5px;padding-left:12px;position:relative;list-style:none}
+    .pilar-ejemplos li::before{content:'"';position:absolute;left:0;color:var(--orange)}
+
+    /* SEMANA TIPO */
+    .semana-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:40px}
+    .dia-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px}
+    .dia-card__header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .dia-badge{width:36px;height:36px;border-radius:10px;background:var(--espresso);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;flex-shrink:0}
+    .dia-card h4{font-size:.9rem;font-weight:700;color:var(--espresso)}
+    .dia-card p{font-size:.82rem;color:var(--gray);line-height:1.55;margin-bottom:8px}
+    .dia-tag{display:inline-flex;font-size:.7rem;font-weight:600;color:var(--orange);background:rgba(212,114,42,.08);padding:3px 8px;border-radius:50px}
+
+    /* PAQUETES */
+    .paquetes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px}
+    .paq{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;position:relative;transition:transform .2s,box-shadow .2s}
+    .paq:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.1)}
+    .paq--featured{border-color:var(--orange);background:linear-gradient(160deg,#fff 0%,rgba(212,114,42,.03) 100%)}
+    .paq__badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:50px;white-space:nowrap}
+    .paq__name{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+    .paq__price{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.4rem;font-weight:800;color:var(--espresso);line-height:1;margin-bottom:4px}
+    .paq__price span{font-size:1rem;font-weight:600;color:var(--gray)}
+    .paq__desc{font-size:.85rem;color:var(--gray);margin-bottom:24px;line-height:1.55}
+    .paq__list{list-style:none;margin-bottom:28px}
+    .paq__list li{font-size:.85rem;color:var(--black);padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;line-height:1.4}
+    .paq__list li:last-child{border-bottom:none}
+    .paq__list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+    .paq__list li.no::before{content:'—';color:var(--gray-lt)}
+    .paq__list li.no{color:var(--gray-lt)}
+    .paq__cta{display:block;text-align:center;background:var(--espresso);color:#fff;padding:13px;border-radius:50px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;font-weight:700;transition:background .2s}
+    .paq--featured .paq__cta{background:var(--orange)}
+    .paq__cta:hover{background:var(--orange)}
+
+    /* ADD-ONS */
+    .addons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:32px}
+    .addon{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px}
+    .addon h4{font-size:.9rem;font-weight:700;color:var(--espresso);margin-bottom:6px}
+    .addon p{font-size:.8rem;color:var(--gray);line-height:1.5;margin-bottom:12px}
+    .addon__price{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:700;color:var(--orange)}
+
+    /* POR QUÉ */
+    .porque-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:40px}
+    .porque-item{display:flex;gap:16px;align-items:flex-start}
+    .porque-icon{width:44px;height:44px;border-radius:12px;background:rgba(212,114,42,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem}
+    .porque-item h4{font-size:.95rem;font-weight:700;color:var(--espresso);margin-bottom:6px}
+    .porque-item p{font-size:.85rem;color:var(--gray);line-height:1.55}
+
+    /* CTA FINAL */
+    .cta-final{background:linear-gradient(140deg,var(--espresso) 0%,var(--espresso-3) 100%);padding:80px 0;text-align:center}
+    .cta-final h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:#fff;margin-bottom:16px}
+    .cta-final p{color:rgba(255,255,255,.55);font-size:1rem;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+    .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .btn-main{background:var(--orange);color:#fff;padding:15px 36px;border-radius:50px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.9rem;transition:background .2s}
+    .btn-main:hover{background:var(--orange-d)}
+    .btn-sec{background:rgba(255,255,255,.1);color:#fff;padding:15px 36px;border-radius:50px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9rem;border:1px solid rgba(255,255,255,.15);transition:background .2s}
+    .btn-sec:hover{background:rgba(255,255,255,.15)}
+
+    /* FOOTER */
+    .footer{background:var(--espresso);border-top:1px solid rgba(255,255,255,.08);padding:28px 0;text-align:center}
+    .footer p{font-size:.8rem;color:rgba(255,255,255,.3)}
+    .footer span{color:var(--orange)}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__logo">Brota<span>.</span></div>
+  <div class="nav__cliente">Para: Lappe Sabor a Familia</div>
+  <a href="https://wa.me/5215538546333" class="nav__btn">Hablar con nosotros</a>
+</nav>
+
+<!-- PORTADA -->
+<section class="portada">
+  <div class="wrap">
+    <div class="portada__tag">Propuesta comercial · 2025</div>
+    <p class="portada__para">Para</p>
+    <h1 class="portada__titulo">Lappe <em>Sabor a Familia</em></h1>
+    <p class="portada__subtitulo">Estrategia de redes sociales · Instagram · TikTok</p>
+    <div class="portada__divider"></div>
+    <div class="portada__meta">
+      <div class="portada__meta-item"><label>Elaborado por</label><strong>Brota Digital</strong></div>
+      <div class="portada__meta-item"><label>Plataforma principal</label><strong>Instagram @lappesabor</strong></div>
+      <div class="portada__meta-item"><label>Objetivo</label><strong>Generar pedidos recurrentes</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section class="section section--dark">
+  <div class="wrap">
+    <p class="s-label">Diagnóstico</p>
+    <h2 class="s-title">¿Dónde está Lappe hoy?</h2>
+    <div class="divider"></div>
+
+    <div class="score-grid">
+      <div class="score-circle">
+        <span class="score-circle__num">2.5</span>
+      </div>
+      <div class="score-meta">
+        <h3>Perfil en construcción</h3>
+        <p>El producto es excelente y la propuesta de valor es clara, pero la presencia digital todavía no refleja la calidad de lo que ofrece Lappe. Hay una oportunidad enorme de crecer antes de que llegue la competencia.</p>
+      </div>
+    </div>
+
+    <div class="fd-grid">
+      <div class="fd-card fd-card--green">
+        <div class="fd-card__head">
+          <div class="fd-card__badge fd-card__badge--green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>Lo que ya funciona</h4>
+        </div>
+        <li class="fd-item">Propuesta de valor muy clara: "listo en 10 minutos"</li>
+        <li class="fd-item">El empaque al vacío es un diferenciador único y visual</li>
+        <li class="fd-item">WhatsApp activo con respuesta rápida</li>
+        <li class="fd-item">Producto casero auténtico — la gente conecta con eso</li>
+      </div>
+      <div class="fd-card fd-card--orange">
+        <div class="fd-card__head">
+          <div class="fd-card__badge fd-card__badge--orange">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4722A" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <h4>Oportunidades de mejora</h4>
+        </div>
+        <li class="fd-item">Sin presencia constante en redes — no hay recordación de marca</li>
+        <li class="fd-item">Las fotos no muestran el producto en su mejor versión</li>
+        <li class="fd-item">No hay comunidad activa que recomiende el producto</li>
+        <li class="fd-item">El menú semanal no se comunica digitalmente</li>
+      </div>
+    </div>
+
+    <div class="diag-box" style="margin-top:32px">
+      <p class="diag-highlight">El cliente que pide una vez y queda satisfecho, no vuelve a pedir si no lo recuerdas. Las redes son el recordatorio más barato que existe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="section">
+  <div class="wrap">
+    <p class="s-label">Estrategia de contenido</p>
+    <h2 class="s-title">Los 3 pilares de Lappe</h2>
+    <div class="divider"></div>
+    <p class="s-lead">Cada publicación tiene un propósito concreto. No publicamos por publicar — cada pilar empuja hacia el mismo objetivo: que te manden un WhatsApp.</p>
+
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <div class="pilar-num">Pilar 01</div>
+        <h3>El producto antoja</h3>
+        <p>Fotos y videos del platillo listo: vapor, textura, el reveal de abrirlo. El gancho siempre es la velocidad y lo casero.</p>
+        <span class="pilar-freq">3× por semana</span>
+        <div class="pilar-ejemplos">
+          <p>Ejemplos de copy</p>
+          <ul>
+            <li>Tacos árabes listos en 10 minutos. Sí, en serio.</li>
+            <li>Esta es la cena de esta noche y sí, tardé menos que tú en decidir.</li>
+            <li>El sábado no merece comida de entre semana.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pilar-card">
+        <div class="pilar-num">Pilar 02</div>
+        <h3>El proceso genera confianza</h3>
+        <p>Behind the scenes del empaque al vacío, ingredientes frescos, sin conservadores. La gente compra cuando confía en quién hace la comida.</p>
+        <span class="pilar-freq">1× por semana</span>
+        <div class="pilar-ejemplos">
+          <p>Ejemplos de copy</p>
+          <ul>
+            <li>Sin conservadores, sin congelados industriales. Solo recetas de casa.</li>
+            <li>El empaque al vacío que preserva hasta 6 meses. Te lo mostramos.</li>
+            <li>Ingredientes del mercado, empaque profesional.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pilar-card">
+        <div class="pilar-num">Pilar 03</div>
+        <h3>La vida real vende</h3>
+        <p>Situaciones cotidianas donde Lappe es la solución obvia. La identificación es la herramienta de venta más poderosa en redes.</p>
+        <span class="pilar-freq">2× por semana</span>
+        <div class="pilar-ejemplos">
+          <p>Ejemplos de copy</p>
+          <ul>
+            <li>Llegué tarde, no hay nada en el refri y mis suegros vienen en una hora.</li>
+            <li>Sábado de flojera nivel: Lappe.</li>
+            <li>La semana que nadie tiene ganas de cocinar, existe Lappe.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMANA TIPO -->
+<section class="section section--alt">
+  <div class="wrap">
+    <p class="s-label">Calendario</p>
+    <h2 class="s-title">¿Cómo se ve una semana tipo?</h2>
+    <div class="divider"></div>
+
+    <div class="semana-grid">
+      <div class="dia-card">
+        <div class="dia-card__header">
+          <div class="dia-badge">Lun</div>
+          <h4>Revelación del menú semanal</h4>
+        </div>
+        <p>Publicamos los platillos disponibles esa semana con fotos y precios. Genera anticipación y pedidos tempranos.</p>
+        <span class="dia-tag">Feed + Stories</span>
+      </div>
+
+      <div class="dia-card">
+        <div class="dia-card__header">
+          <div class="dia-badge">Mié</div>
+          <h4>Platillo del día en video</h4>
+        </div>
+        <p>Reel corto (15 seg) mostrando el platillo del día: la preparación en casa, el empaque y el resultado final en el plato.</p>
+        <span class="dia-tag">Reel</span>
+      </div>
+
+      <div class="dia-card">
+        <div class="dia-card__header">
+          <div class="dia-badge">Jue</div>
+          <h4>Behind the scenes</h4>
+        </div>
+        <p>Story del proceso: ingredientes del día, empaque al vacío, preparación. Genera confianza y cercanía con la marca.</p>
+        <span class="dia-tag">Stories</span>
+      </div>
+
+      <div class="dia-card">
+        <div class="dia-card__header">
+          <div class="dia-badge">Vie</div>
+          <h4>Contenido de vida real</h4>
+        </div>
+        <p>"Plan de viernes sin cocinar" — situación cotidiana que conecta con la audiencia y termina en un CTA a WhatsApp.</p>
+        <span class="dia-tag">Feed</span>
+      </div>
+
+      <div class="dia-card">
+        <div class="dia-card__header">
+          <div class="dia-badge">Sáb</div>
+          <h4>Recuerda que existimos</h4>
+        </div>
+        <p>Story ligero: encuesta, pregunta, o foto de un platillo con el link de pedido. El sábado es el día de mayor compra.</p>
+        <span class="dia-tag">Stories</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAQUETES -->
+<section class="section">
+  <div class="wrap">
+    <p class="s-label">Inversión</p>
+    <h2 class="s-title">Elige tu paquete</h2>
+    <div class="divider"></div>
+    <p class="s-lead">Sin contratos anuales. Sin letras chiquitas. Pagas mensual y puedes cambiar de plan cuando quieras.</p>
+
+    <div class="paquetes-grid">
+
+      <div class="paq">
+        <div class="paq__name">Básico</div>
+        <div class="paq__price">$2,500 <span>MXN/mes</span></div>
+        <p class="paq__desc">Para empezar a construir presencia sin complicaciones.</p>
+        <ul class="paq__list">
+          <li>8 posts en feed por mes</li>
+          <li>Stories 3× por semana</li>
+          <li>Copy y diseño de cada post</li>
+          <li>Calendario mensual de contenido</li>
+          <li class="no">Reels / video</li>
+          <li class="no">Sesión de fotos</li>
+          <li class="no">Reporte de resultados</li>
+        </ul>
+        <a href="https://wa.me/5215538546333?text=Hola!%20Me%20interesa%20el%20paquete%20Básico%20para%20Lappe" class="paq__cta">Empezar →</a>
+      </div>
+
+      <div class="paq paq--featured">
+        <div class="paq__badge">El más popular</div>
+        <div class="paq__name">Crecimiento</div>
+        <div class="paq__price">$3,500 <span>MXN/mes</span></div>
+        <p class="paq__desc">El plan que mueve la aguja. Contenido + video + resultados.</p>
+        <ul class="paq__list">
+          <li>12 posts en feed por mes</li>
+          <li>Stories 5× por semana</li>
+          <li>Copy y diseño de cada post</li>
+          <li>4 Reels mensuales (guión + edición)</li>
+          <li>Respuesta a comentarios y DMs</li>
+          <li>Reporte mensual de métricas</li>
+          <li class="no">Sesión de fotos</li>
+        </ul>
+        <a href="https://wa.me/5215538546333?text=Hola!%20Me%20interesa%20el%20paquete%20Crecimiento%20para%20Lappe" class="paq__cta">Empezar →</a>
+      </div>
+
+      <div class="paq">
+        <div class="paq__name">Completo</div>
+        <div class="paq__price">$5,500 <span>MXN/mes</span></div>
+        <p class="paq__desc">Todo incluido. Tú cocinas, nosotros hacemos el resto.</p>
+        <ul class="paq__list">
+          <li>16 posts en feed por mes</li>
+          <li>Stories diarias</li>
+          <li>Copy y diseño de cada post</li>
+          <li>6 Reels mensuales</li>
+          <li>1 sesión de fotos al mes (CDMX)</li>
+          <li>Respuesta a comentarios y DMs</li>
+          <li>Reporte semanal de métricas</li>
+        </ul>
+        <a href="https://wa.me/5215538546333?text=Hola!%20Me%20interesa%20el%20paquete%20Completo%20para%20Lappe" class="paq__cta">Empezar →</a>
+      </div>
+
+    </div>
+
+    <p style="text-align:center; font-size:.8rem; color:var(--gray-lt); margin-top:24px;">* Todos los precios incluyen IVA · Pago mensual · Sin contrato de permanencia</p>
+
+    <div style="margin-top:48px">
+      <p class="s-label">¿Quieres agregar algo más?</p>
+      <h3 style="font-size:1.2rem;font-weight:700;color:var(--espresso);margin-bottom:8px;">Servicios adicionales</h3>
+      <div class="divider"></div>
+      <div class="addons-grid">
+        <div class="addon">
+          <h4>Menú semanal variable</h4>
+          <p>Tú actualizas el menú en Google Sheets, el sitio lo muestra automáticamente.</p>
+          <div class="addon__price">$1,500 uno a uno</div>
+        </div>
+        <div class="addon">
+          <h4>Cotizador + zonas de envío</h4>
+          <p>Calculadora en el sitio con precios por alcaldía y restricción de zona de cobertura.</p>
+          <div class="addon__price">$2,000 uno a uno</div>
+        </div>
+        <div class="addon">
+          <h4>Base de pedidos automática</h4>
+          <p>Cada pedido del sitio se registra solo en Google Sheets. Siempre sabes qué tienes pendiente.</p>
+          <div class="addon__price">$1,800 uno a uno</div>
+        </div>
+        <div class="addon">
+          <h4>Sesión de fotos extra</h4>
+          <p>Sesión de 2 hrs en CDMX, entrega de 30 fotos editadas de tus productos.</p>
+          <div class="addon__price">$2,500 por sesión</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ BROTA -->
+<section class="section section--alt">
+  <div class="wrap">
+    <p class="s-label">Por qué Brota Digital</p>
+    <h2 class="s-title">No somos una agencia más</h2>
+    <div class="divider"></div>
+    <div class="porque-grid">
+      <div class="porque-item">
+        <div class="porque-icon">🍽️</div>
+        <div>
+          <h4>Entendemos el negocio de comida</h4>
+          <p>Ya construimos tu sitio web. Sabemos cómo funciona Lappe, cuál es tu cliente y qué lo mueve a pedir.</p>
+        </div>
+      </div>
+      <div class="porque-item">
+        <div class="porque-icon">📊</div>
+        <div>
+          <h4>Contenido que convierte, no solo likes</h4>
+          <p>Cada post está diseñado para que alguien abra WhatsApp y pida. Los likes no pagan la renta.</p>
+        </div>
+      </div>
+      <div class="porque-item">
+        <div class="porque-icon">🤝</div>
+        <div>
+          <h4>Sin contratos, sin letras chiquitas</h4>
+          <p>Mes a mes. Si no ves resultados en 60 días, nos vamos sin preguntas. Así de simple.</p>
+        </div>
+      </div>
+      <div class="porque-item">
+        <div class="porque-icon">⚡</div>
+        <div>
+          <h4>Empezamos esta semana</h4>
+          <p>No necesitas tener todo listo para arrancar. Empezamos con lo que tienes y mejoramos en el camino.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="wrap">
+    <h2>¿Arrancamos esta semana?</h2>
+    <p>El menú del lunes puede ser el primer post de Lappe en redes. Solo necesitamos tu confirmación.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/5215538546333?text=Hola!%20Vi%20la%20propuesta%20de%20redes%20para%20Lappe%20y%20quiero%20arrancar" class="btn-main">Aceptar propuesta →</a>
+      <a href="https://wa.me/5215538546333?text=Hola!%20Tengo%20preguntas%20sobre%20la%20propuesta%20de%20Lappe" class="btn-sec">Tengo preguntas</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Elaborado por <span>Brota Digital</span> · @brotadigital.mx · 2025</p>
+</footer>
+
+</body>
+</html>

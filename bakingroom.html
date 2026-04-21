@@ -1633,39 +1633,37 @@
        HERO
   ============================================ -->
   <section class="hero" id="main" aria-label="Inicio">
+
+    <!-- foto 1 full-width -->
+    <img src="hero-2.jpg" alt="Pastel artesanal The Baking Room" loading="lazy" class="fade-up"
+      style="width:100%; height:auto; display:block;"/>
+
+    <!-- texto centrado -->
     <div class="container">
-
-      <!-- foto | texto | foto -->
-      <div class="hero-cols" style="display:grid; grid-template-columns:1fr 1.2fr 1fr; gap:24px; align-items:center;">
-
-        <img src="hero-2.jpg" alt="Pastel artesanal The Baking Room" loading="lazy" class="fade-up"
-          style="width:100%; height:clamp(400px,52vw,620px); object-fit:cover; display:block; border-radius:10px;"/>
-
-        <div class="hero__text fade-up fade-up-delay-1" style="text-align:center;">
-          <div class="hero__label">
-            La casa de los pasteles y postres · Ciudad de México
-          </div>
-          <h1 class="hero__h1">Un pastel<br><em>inolvidable</em></h1>
-          <p class="hero__sub">Diseños únicos, hechos a mano y bajo pedido. Cada pieza es una expresión de quién eres y qué quieres celebrar.</p>
-          <div class="hero__ctas" style="justify-content:center;">
-            <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              Agendar mi pastel
-            </a>
-            <a href="#menu" class="btn btn-outline">
-              Ver menú
-            </a>
-          </div>
-          <p class="hero__note">
-            Agenda con anticipación · Lugares muy limitados
-          </p>
+      <div class="hero__text fade-up fade-up-delay-1" style="text-align:center; padding:clamp(40px,6vw,80px) 0;">
+        <div class="hero__label">
+          La casa de los pasteles y postres · Ciudad de México
         </div>
-
-        <img src="hero-3.jpg" alt="Pastel artesanal The Baking Room" loading="lazy" class="fade-up fade-up-delay-2"
-          style="width:100%; height:clamp(400px,52vw,620px); object-fit:cover; display:block; border-radius:10px;"/>
-
+        <h1 class="hero__h1">Un pastel<br><em>inolvidable</em></h1>
+        <p class="hero__sub">Diseños únicos, hechos a mano y bajo pedido. Cada pieza es una expresión de quién eres y qué quieres celebrar.</p>
+        <div class="hero__ctas" style="justify-content:center;">
+          <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Agendar mi pastel
+          </a>
+          <a href="#menu" class="btn btn-outline">
+            Ver menú
+          </a>
+        </div>
+        <p class="hero__note">
+          Agenda con anticipación · Lugares muy limitados
+        </p>
       </div>
-
     </div>
+
+    <!-- foto 2 full-width -->
+    <img src="hero-3.jpg" alt="Pastel artesanal The Baking Room" loading="lazy" class="fade-up fade-up-delay-2"
+      style="width:100%; height:auto; display:block;"/>
+
   </section>
 
   <!-- Seriously Good divider -->
@@ -1880,8 +1878,36 @@
           </div>
           <div class="menu-carousel" aria-label="Fotos Chocolate World">
             <img class="menu-carousel__img" src="bakery-choc-drip.jpg" alt="Chocolate Oreo Drip Cake" loading="lazy"/>
-            <img class="menu-carousel__img" src="cake-slice.jpg" alt="Chocolate Fudge slice" loading="lazy"/>
-            <img class="menu-carousel__img" src="choc-fudge-new.jpg" alt="Chocolate Fudge Cake" loading="lazy"/>
+            <img class="menu-carousel__img" src="proceso-photo.jpg" alt="Rebanada Chocolate Fudge" loading="lazy" style="object-fit:cover; object-position:center 78%;"/>
+          </div>
+        </div>
+      </details>
+
+      <!-- ── Luxe Line ── -->
+      <details class="menu-cat">
+        <summary class="menu-cat-header">
+          <span class="menu-cat-name">Luxe Line</span>
+          <span class="menu-cat-arrow" aria-hidden="true">+</span>
+        </summary>
+        <div class="menu-cat-body">
+          <div class="menu-item-list">
+            <details class="flavor-item">
+              <summary class="flavor-summary">
+                <span class="flavor-name">Fairy Forest Cake</span>
+                <span class="flavor-icon">+</span>
+              </summary>
+              <div class="flavor-body">
+                <p class="flavor-desc" style="text-transform:none;">Diseños de autor, una creación 100% de The Baking Room.</p>
+                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
+              </div>
+            </details>
+          </div>
+          <div class="menu-carousel" aria-label="Fotos Fairy Forest">
+            <img class="menu-carousel__img" src="fairy-1.jpg" alt="Fairy Forest Cake" loading="lazy"/>
+            <img class="menu-carousel__img" src="fairy-2.jpg" alt="Fairy Forest Cake" loading="lazy"/>
+            <img class="menu-carousel__img" src="fairy-3.jpg" alt="Fairy Forest Cake" loading="lazy"/>
+            <img class="menu-carousel__img" src="fairy-4.jpg" alt="Fairy Forest Cake" loading="lazy"/>
+            <img class="menu-carousel__img" src="fairy-5.jpg" alt="Fairy Forest Cake" loading="lazy"/>
           </div>
         </div>
       </details>
@@ -1923,35 +1949,6 @@
         </div>
       </details>
 
-      <!-- ── Fairy Forest ── -->
-      <details class="menu-cat">
-        <summary class="menu-cat-header">
-          <span class="menu-cat-name">Fairy Forest</span>
-          <span class="menu-cat-arrow" aria-hidden="true">+</span>
-        </summary>
-        <div class="menu-cat-body">
-          <div class="menu-item-list">
-            <details class="flavor-item">
-              <summary class="flavor-summary">
-                <span class="flavor-name">Fairy Forest Cake</span>
-                <span class="flavor-icon">+</span>
-              </summary>
-              <div class="flavor-body">
-                <p class="flavor-desc" style="text-transform:none;">Diseños de autor, una creación 100% de The Baking Room.</p>
-                <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
-              </div>
-            </details>
-          </div>
-          <div class="menu-carousel" aria-label="Fotos Fairy Forest">
-            <img class="menu-carousel__img" src="fairy-1.jpg" alt="Fairy Forest Cake" loading="lazy"/>
-            <img class="menu-carousel__img" src="fairy-2.jpg" alt="Fairy Forest Cake" loading="lazy"/>
-            <img class="menu-carousel__img" src="fairy-3.jpg" alt="Fairy Forest Cake" loading="lazy"/>
-            <img class="menu-carousel__img" src="fairy-4.jpg" alt="Fairy Forest Cake" loading="lazy"/>
-            <img class="menu-carousel__img" src="fairy-5.jpg" alt="Fairy Forest Cake" loading="lazy"/>
-          </div>
-        </div>
-      </details>
-
       <!-- ── Diseños ── -->
       <details class="menu-cat">
         <summary class="menu-cat-header">
@@ -1974,7 +1971,7 @@
                     <span class="flavor-icon">+</span>
                   </summary>
                   <div class="flavor-body">
-                    <p class="flavor-desc">Diseños personalizados con temáticas especiales para cualquier tipo de evento, aniversarios, corporativos, cumpleaños, graduaciones, bodas y celebraciones únicas. Cuéntanos tu idea y lo hacemos realidad.</p>
+                    <p class="flavor-desc" style="text-transform:none;">Diseños personalizados con temáticas especiales para cualquier evento, aniversarios, corporativos, cumpleaños, graduaciones, bodas y celebraciones únicas. Cuéntanos tu idea y lo hacemos realidad.</p>
                     <a href="https://www.instagram.com/thebakingroom.bakery" target="_blank" rel="noopener noreferrer" class="flavor-cta">Cotizar →</a>
                   </div>
                 </details>
@@ -1990,12 +1987,30 @@
                 <img class="menu-carousel__img" src="tematicos-8.jpg" alt="Pastel Temático" loading="lazy"/>
                 <img class="menu-carousel__img" src="tematicos-9.jpg" alt="Pastel Temático" loading="lazy"/>
                 <img class="menu-carousel__img" src="tematicos-10.jpg" alt="Pastel Temático" loading="lazy"/>
-                <img class="menu-carousel__img" src="tematicos-11.jpg" alt="Pastel Temático" loading="lazy"/>
-                <img class="menu-carousel__img" src="tematicos-12.jpg" alt="Pastel Temático" loading="lazy"/>
-                <img class="menu-carousel__img" src="tematicos-13.jpg" alt="Pastel Temático" loading="lazy"/>
-                <img class="menu-carousel__img" src="tematicos-14.jpg" alt="Pastel Temático" loading="lazy"/>
-                <img class="menu-carousel__img" src="tematicos-15.jpg" alt="Pastel Temático" loading="lazy"/>
-                <img class="menu-carousel__img" src="tematicos-16.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="helado-1.jpg" alt="Pastel de Helado" loading="lazy"/>
+                <img class="menu-carousel__img" src="helado-2.jpg" alt="Pastel de Helado" loading="lazy"/>
+                <img class="menu-carousel__img" src="helado-3.jpg" alt="Pastel de Helado" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-18.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-19.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-20.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-21.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-22.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-23.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-24.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-25.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-26.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-27.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-28.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-29.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-30.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-31.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-32.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-33.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-34.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-35.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-36.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-37.jpg" alt="Pastel Temático" loading="lazy"/>
+                <img class="menu-carousel__img" src="tematicos-17.jpg" alt="Cupcakes Temáticos" loading="lazy"/>
               </div>
             </div>
           </details>
@@ -2244,16 +2259,19 @@
   ============================================ -->
   <section class="proceso" id="pedidos" aria-labelledby="proceso-title">
     <div class="container">
-
       <div class="proceso__header">
         <p class="proceso__label fade-up">El proceso</p>
         <h2 class="proceso__title fade-up fade-up-delay-1" id="proceso-title">¿Cómo hacer tu pedido?</h2>
       </div>
+    </div>
 
-      <div style="margin:0 auto 40px; max-width:560px; aspect-ratio:4/3; border-radius:12px; overflow:hidden;" class="fade-up">
-        <img src="proceso-photo.jpg" alt="Pastel artesanal The Baking Room" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center 80%; transform:scale(1.3); transform-origin:center 80%; display:block;"/>
-      </div>
+    <!-- foto full-width -->
+    <div class="fade-up" style="width:100%; height:clamp(500px,75vw,900px); overflow:hidden; margin-bottom:40px;">
+      <img src="proceso-photo.jpg" alt="Pastel artesanal The Baking Room" loading="lazy"
+        style="width:100%; height:100%; object-fit:cover; object-position:center 75%;"/>
+    </div>
 
+    <div class="container">
       <div class="proceso__steps">
 
         <div class="proceso__step fade-up">
@@ -2400,7 +2418,7 @@
 
           <!-- Página 1 — reseñas 1–9 -->
           <div class="res-page">
-            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Paula muchas gracias por mis pasteles. Divino el zoológico de Alicia pero mis flores también una belleza. Gracias, gracias, gracias."</p><p class="res-src">Jan 15, 2025</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Divino el zoológico de Alicia pero mis flores también una belleza. Gracias, gracias, gracias."</p><p class="res-src">Jan 15, 2025</p></div>
             <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Los dos hermosos y deliciosos, a todo mundo le encantaron. Mil mil gracias."</p><p class="res-src">Feb 8, 2025</p></div>
             <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Estuvieron espectaculares, tanto que el de diseño no lo quiso partir la festejada. El de coco delicioso, estarás en mis próximos eventos. Muchas gracias!!!!"</p><p class="res-src">Mar 22, 2025</p></div>
             <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Están deliciosas. ¿Mañana te puedo hacer otro pedido?"</p><p class="res-src">Apr 5, 2025</p></div>
@@ -2422,6 +2440,8 @@
             <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Gracias miles!!!!!! Me ENCANTÓ!!!!!"</p><p class="res-src">Jul 14, 2025</p></div>
             <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Si todo bien con el pastel!!! Mil gracias por todo."</p><p class="res-src">Sep 27, 2025</p></div>
             <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Hoy partimos el pastel y estaba delicioso!!! El betún espectacular."</p><p class="res-src">Oct 19, 2025</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Quedó absolutamente perfecto. Las flores naturales eran una belleza y el sabor increíble. Ya tengo ganas del próximo."</p><p class="res-src">Nov 5, 2025</p></div>
+            <div class="res-card"><span class="res-stars">★★★★★</span><p class="res-txt">"Todos preguntaron quién lo hizo. Hermoso, delicioso y llegó perfecto. Volveré pronto!"</p><p class="res-src">Dec 28, 2025</p></div>
           </div>
 
         </div>

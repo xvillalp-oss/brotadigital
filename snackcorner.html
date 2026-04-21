@@ -196,11 +196,13 @@
       grid-row: span 2;
       aspect-ratio: unset;
     }
-    .svc-card img {
+    .svc-card img,
+    .svc-card > div:first-child {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform 0.45s;
     }
-    .svc-card:hover img { transform: scale(1.05); }
+    .svc-card:hover img,
+    .svc-card:hover > div:first-child { transform: scale(1.05); }
     .svc-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(0deg, rgba(17,17,17,0.80) 0%, rgba(17,17,17,0.05) 55%);
@@ -252,11 +254,13 @@
       gap: 12px;
     }
     .g-item { border-radius: 16px; overflow: hidden; }
-    .g-item img {
+    .g-item img,
+    .g-item > div {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform 0.4s;
     }
-    .g-item:hover img { transform: scale(1.06); }
+    .g-item:hover img,
+    .g-item:hover > div { transform: scale(1.06); }
     .g-item.tall  { grid-row: span 2; }
     .g-item.wide  { grid-column: span 2; }
 
@@ -406,7 +410,7 @@
       </div>
     </div>
     <div class="hero-img-wrap reveal">
-      <img class="hero-img" src="snack-hero.jpg" alt="Evento SnackCorner" />
+      <div class="hero-img" style="background:#C0583A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.85);font-weight:700;">📸 Foto del producto</div>
       <div class="hero-pill">
         <div class="hero-pill-icon">🎊</div>
         <div>
@@ -440,7 +444,7 @@
       </div>
       <div class="services-grid">
         <div class="svc-card reveal">
-          <img src="snack-event1.jpg" alt="Eventos y fiestas" loading="lazy" />
+          <div style="width:100%;height:100%;min-height:200px;background:#A04530;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div>
           <div class="svc-overlay">
             <div class="svc-tag">🎉 Más popular</div>
             <div class="svc-name">Fiestas Temáticas</div>
@@ -448,7 +452,7 @@
           </div>
         </div>
         <div class="svc-card reveal">
-          <img src="snack-catering.jpg" alt="Catering" loading="lazy" />
+          <div style="width:100%;height:100%;min-height:200px;background:#C0583A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div>
           <div class="svc-overlay">
             <div class="svc-tag">🍽️ Catering</div>
             <div class="svc-name">Catering Profesional</div>
@@ -456,7 +460,7 @@
           </div>
         </div>
         <div class="svc-card reveal">
-          <img src="snack-party.jpg" alt="Wedding planner" loading="lazy" />
+          <div style="width:100%;height:100%;min-height:200px;background:#7A4030;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div>
           <div class="svc-overlay">
             <div class="svc-tag">💍 Wedding</div>
             <div class="svc-name">Wedding Planner</div>
@@ -464,7 +468,7 @@
           </div>
         </div>
         <div class="svc-card reveal">
-          <img src="snack-food2.jpg" alt="Snack stations" loading="lazy" />
+          <div style="width:100%;height:100%;min-height:200px;background:#8B4A20;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div>
           <div class="svc-overlay">
             <div class="svc-tag">🍿 Snack Bar</div>
             <div class="svc-name">Snack Stations</div>
@@ -493,13 +497,13 @@
         <p class="section-sub reveal" style="max-width:340px">Cada evento es único. Un vistazo a lo que podemos lograr juntos.</p>
       </div>
       <div class="gallery-grid reveal">
-        <div class="g-item tall"><img src="snack-food1.jpg" alt="Presentación de alimentos" loading="lazy" /></div>
-        <div class="g-item"><img src="snack-hero.jpg" alt="Setup evento" loading="lazy" /></div>
-        <div class="g-item wide"><img src="snack-catering.jpg" alt="Catering" loading="lazy" /></div>
-        <div class="g-item"><img src="snack-dessert.jpg" alt="Postres" loading="lazy" /></div>
-        <div class="g-item tall"><img src="snack-party.jpg" alt="Fiesta" loading="lazy" /></div>
-        <div class="g-item"><img src="snack-drinks.jpg" alt="Bebidas" loading="lazy" /></div>
-        <div class="g-item"><img src="snack-food2.jpg" alt="Platillos" loading="lazy" /></div>
+        <div class="g-item tall"><div style="width:100%;height:100%;min-height:200px;background:#C0583A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div></div>
+        <div class="g-item"><div style="width:100%;height:100%;min-height:200px;background:#A04530;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div></div>
+        <div class="g-item wide"><div style="width:100%;height:100%;min-height:200px;background:#7A4030;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div></div>
+        <div class="g-item"><div style="width:100%;height:100%;min-height:200px;background:#E8C49A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(100,50,20,0.85);">📸 Foto del producto</div></div>
+        <div class="g-item tall"><div style="width:100%;height:100%;min-height:200px;background:#8B4A20;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div></div>
+        <div class="g-item"><div style="width:100%;height:100%;min-height:200px;background:#D4722A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div></div>
+        <div class="g-item"><div style="width:100%;height:100%;min-height:200px;background:#B05228;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div></div>
       </div>
     </div>
   </section>
@@ -514,7 +518,7 @@
       </div>
       <div class="delicias-grid">
         <div class="del-card reveal">
-          <img src="snack-food1.jpg" alt="Botanas gourmet" loading="lazy" />
+          <div style="width:100%;aspect-ratio:1;background:#C0583A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div>
           <div class="del-body">
             <div class="del-name">Botanas Gourmet</div>
             <div class="del-desc">Selección premium de botanas para reuniones y eventos de todo tipo.</div>
@@ -522,7 +526,7 @@
           </div>
         </div>
         <div class="del-card reveal">
-          <img src="snack-dessert.jpg" alt="Postres artesanales" loading="lazy" />
+          <div style="width:100%;aspect-ratio:1;background:#E8C49A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(100,50,20,0.85);">📸 Foto del producto</div>
           <div class="del-body">
             <div class="del-name">Postres Artesanales</div>
             <div class="del-desc">Dulces y postres hechos con los mejores ingredientes de temporada.</div>
@@ -530,7 +534,7 @@
           </div>
         </div>
         <div class="del-card reveal">
-          <img src="snack-food2.jpg" alt="Platillos principales" loading="lazy" />
+          <div style="width:100%;aspect-ratio:1;background:#A04530;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div>
           <div class="del-body">
             <div class="del-name">Platillos Principales</div>
             <div class="del-desc">Opciones completas de catering para cenas y eventos de mayor escala.</div>
@@ -538,7 +542,7 @@
           </div>
         </div>
         <div class="del-card reveal">
-          <img src="snack-drinks.jpg" alt="Barra de bebidas" loading="lazy" />
+          <div style="width:100%;aspect-ratio:1;background:#D4722A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div>
           <div class="del-body">
             <div class="del-name">Barra de Bebidas</div>
             <div class="del-desc">Cócteles, aguas frescas y bebidas para complementar cualquier evento.</div>
@@ -579,7 +583,7 @@
           </div>
         </div>
         <div class="contact-right reveal">
-          <img class="contact-img" src="snack-event1.jpg" alt="Evento SnackCorner" loading="lazy" />
+          <div class="contact-img" style="background:#C0583A;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.75);">📸 Foto del producto</div>
           <div class="contact-badge">
             <strong>CDMX</strong>
             <span>Servicio a toda la ciudad</span>
