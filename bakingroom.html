@@ -1442,11 +1442,15 @@
     /* Smooth hover transitions (150-300ms) */
     a, button { transition: opacity var(--transition), color var(--transition); }
 
-    /* Hero images: full width on mobile, smaller centered on desktop */
+    /* All section images: full width on mobile, smaller centered on desktop */
     @media (min-width: 768px) {
-      .hero-full-img {
-        width: 50% !important;
-        margin: 0 auto;
+      .hero-full-img,
+      section img:not(.menu-carousel__img):not([style*="height:500px"]):not([style*="border-radius:8px"]) {
+        max-width: 600px !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
       }
     }
 
