@@ -3,463 +3,505 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>OLN Connect — Consultoría en Comercio Internacional</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<title>OLN Connect — Consultoría en Comercio Exterior</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          "oln-dark":  "#070b14",
-          "oln-card":  "#0d1221",
-          "oln-blue":  "#1a6bff",
-          "oln-blue2": "#0047cc",
-          "oln-gray":  "#8a96aa",
-          "oln-light": "#c8d0e0",
+          "blue":    "#1B5EBF",
+          "blue-dk": "#154ea3",
+          "amber":   "#F59E0B",
+          "near-black": "#111827",
+          "gray-mid":   "#6B7280",
+          "light-bg":   "#f7f8fc",
         },
         fontFamily: {
-          display: ["Barlow Condensed", "sans-serif"],
-          body:    ["Inter", "sans-serif"],
+          sans: ["Inter", "sans-serif"],
         }
       }
     }
   }
 </script>
 <style>
-  body { font-family: 'Inter', sans-serif; background: #070b14; }
-  h1, h2, h3, .font-display { font-family: 'Barlow Condensed', sans-serif; }
+  * { font-family: 'Inter', sans-serif; }
 
-  .hero-bg {
-    background-image:
-      linear-gradient(to right, rgba(7,11,20,1) 0%, rgba(7,11,20,0.88) 55%, rgba(7,11,20,0.35) 100%),
-      url('https://images.unsplash.com/photo-1494412574643-ff11b0a5716d?w=1800&q=80&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-  }
+  /* Smooth scrolling */
+  html { scroll-behavior: smooth; }
 
-  .glass-card {
-    background: rgba(255,255,255,0.035);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    transition: all 0.25s ease;
+  /* Nav link hover */
+  .nav-link {
+    color: #374151;
+    transition: color 0.2s ease;
   }
-  .glass-card:hover {
-    background: rgba(26,107,255,0.08);
-    border-color: rgba(26,107,255,0.3);
-  }
+  .nav-link:hover { color: #1B5EBF; }
 
+  /* Primary button */
+  .btn-primary {
+    background: #1B5EBF;
+    color: #fff;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .btn-primary:hover { background: #154ea3; transform: translateY(-1px); }
+
+  /* Secondary link */
+  .btn-link {
+    color: #1B5EBF;
+    transition: color 0.2s ease;
+  }
+  .btn-link:hover { color: #154ea3; }
+
+  /* Service card */
   .service-card {
-    border: 1px solid rgba(255,255,255,0.07);
-    transition: all 0.25s ease;
-    overflow: hidden;
-    background: #0d1221;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
-  .service-card:hover { border-color: #1a6bff; transform: translateY(-4px); }
-
-  .stat-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    line-height: 1;
-    color: #1a6bff;
+  .service-card:hover {
+    box-shadow: 0 8px 30px rgba(27,94,191,0.10);
+    transform: translateY(-3px);
   }
 
-  /* Ticker */
-  .ticker-track {
+  /* Step connector */
+  .step-connector {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .step-connector { display: block; }
+  }
+
+  /* Floating stat card */
+  .stat-float {
+    position: absolute;
+    bottom: -20px;
+    left: -24px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    padding: 14px 18px;
     display: flex;
-    gap: 3rem;
-    animation: ticker 30s linear infinite;
-    white-space: nowrap;
-  }
-  @keyframes ticker {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
   }
 
-  .blue-btn {
-    background: #1a6bff;
-    transition: all 0.2s ease;
-  }
-  .blue-btn:hover { background: #0047cc; transform: translateY(-1px); }
-
-  .ghost-btn {
-    border: 1.5px solid rgba(255,255,255,0.2);
-    transition: all 0.2s ease;
-  }
-  .ghost-btn:hover { border-color: #1a6bff; color: #1a6bff; }
-
-  /* Hero stat glass card */
-  .hero-stat-card {
-    background: rgba(13,18,33,0.75);
-    border: 1px solid rgba(26,107,255,0.2);
-    backdrop-filter: blur(20px);
+  /* Check icon */
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
-  /* Why card */
-  .why-card {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: all 0.2s ease;
-  }
-  .why-card:hover {
-    background: rgba(26,107,255,0.06);
-    border-color: rgba(26,107,255,0.25);
-  }
+  /* Mobile menu toggle (simple show/hide) */
+  #mobile-menu { display: none; }
+  #mobile-menu.open { display: block; }
 </style>
 </head>
-<body class="text-white">
+<body class="bg-white text-[#111827]">
 
-<!-- NAV -->
-<nav class="fixed top-0 w-full z-50 bg-[#070b14]/95 backdrop-blur-md border-b border-white/5">
-  <div class="flex justify-between items-center px-6 md:px-12 xl:px-20 py-5 max-w-screen-2xl mx-auto">
+<!-- ===================== NAV ===================== -->
+<nav class="fixed top-0 w-full z-50 bg-white border-b border-gray-100 shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 xl:px-12 py-4 flex items-center justify-between">
 
     <!-- Logo -->
-    <div class="flex items-center gap-2">
-      <svg viewBox="0 0 20 20" width="16" height="16">
-        <polygon points="0,10 10,0 20,10 10,20" fill="#1a6bff"/>
-      </svg>
-      <span class="font-display font-900 text-[22px] tracking-widest text-white uppercase leading-none">OLN <span style="color:#1a6bff">CONNECT</span></span>
-    </div>
+    <a href="#" class="flex items-center gap-2">
+      <span class="text-2xl leading-none">🌐</span>
+      <span class="font-bold text-[20px] tracking-tight text-[#1B5EBF]">OLN <span class="text-[#111827]">CONNECT</span></span>
+    </a>
 
-    <!-- Links -->
-    <div class="hidden md:flex items-center gap-10 text-sm font-medium" style="color:#8a96aa;">
-      <a href="#servicios" class="hover:text-white transition-colors">Servicios</a>
-      <a href="#nosotros"  class="hover:text-white transition-colors">Nosotros</a>
-      <a href="#contacto"  class="hover:text-white transition-colors">Contacto</a>
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#proceso" class="nav-link">Proceso</a>
+      <a href="#nosotros" class="nav-link">Nosotros</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
     </div>
 
     <!-- CTA -->
-    <a href="#contacto" class="hidden sm:flex blue-btn text-white text-sm font-semibold px-5 py-2.5 rounded-md">
+    <a href="#contacto" class="hidden sm:inline-flex btn-primary text-sm font-semibold px-5 py-2.5 rounded-lg">
       Cotizar ahora
     </a>
+
+    <!-- Mobile hamburger -->
+    <button class="md:hidden p-2 text-gray-500" onclick="document.getElementById('mobile-menu').classList.toggle('open');" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 pb-4">
+    <div class="flex flex-col gap-4 pt-4 text-sm font-medium">
+      <a href="#servicios" class="nav-link" onclick="document.getElementById('mobile-menu').classList.remove('open');">Servicios</a>
+      <a href="#proceso" class="nav-link" onclick="document.getElementById('mobile-menu').classList.remove('open');">Proceso</a>
+      <a href="#nosotros" class="nav-link" onclick="document.getElementById('mobile-menu').classList.remove('open');">Nosotros</a>
+      <a href="#contacto" class="nav-link" onclick="document.getElementById('mobile-menu').classList.remove('open');">Contacto</a>
+      <a href="#contacto" class="btn-primary inline-flex text-sm font-semibold px-5 py-2.5 rounded-lg text-center justify-center" onclick="document.getElementById('mobile-menu').classList.remove('open');">Cotizar ahora</a>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<header class="hero-bg min-h-screen flex items-center pt-28 pb-20 relative">
-  <div class="relative w-full px-6 md:px-12 xl:px-20 max-w-screen-2xl mx-auto">
-    <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-      <!-- Left: Copy -->
-      <div class="flex-1 space-y-7 max-w-2xl">
+<!-- ===================== HERO ===================== -->
+<header class="pt-28 pb-20 md:pb-28 px-6 md:px-10 xl:px-12 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-16">
 
-        <!-- Label -->
-        <div class="flex items-center gap-3">
-          <div class="h-0.5 w-10" style="background:#1a6bff;"></div>
-          <span class="text-xs font-semibold tracking-[0.25em] uppercase" style="color:#1a6bff;">Comercio Exterior · México</span>
+      <!-- LEFT: Copy (60%) -->
+      <div class="flex-1 space-y-7 max-w-[600px]">
+
+        <!-- Amber label -->
+        <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-600 text-xs font-semibold px-3 py-1.5 rounded-full border border-amber-200">
+          <span style="background:#F59E0B; width:6px; height:6px; border-radius:50%; display:inline-block;"></span>
+          Consultoría en Comercio Exterior
         </div>
 
         <!-- Headline -->
-        <h1 class="font-display font-900 text-[4rem] md:text-[5.5rem] xl:text-[7rem] leading-[0.9] tracking-tight uppercase">
-          Menos<br/>operación.<br/>
-          <span style="color:#1a6bff">Más crecimiento.</span>
+        <h1 class="font-extrabold text-[2.6rem] md:text-[3.25rem] xl:text-[3.75rem] leading-[1.12] tracking-tight text-[#111827]">
+          Convierte el comercio internacional en tu<br class="hidden xl:block"/>
+          <span class="text-[#1B5EBF]">ventaja competitiva.</span>
         </h1>
 
         <!-- Subheadline -->
-        <p class="text-[#c8d0e0] text-xl md:text-2xl font-light leading-relaxed max-w-xl" style="font-style:italic;">
-          Consultoría en importaciones, exportaciones y logística internacional para empresas mexicanas.
+        <p class="text-[#6B7280] text-lg md:text-xl leading-relaxed max-w-xl">
+          Gestionamos tus importaciones y exportaciones para que tú te enfoques en crecer. Menos operación, más resultados.
         </p>
 
         <!-- CTAs -->
         <div class="flex flex-col sm:flex-row gap-4 pt-2">
-          <a href="#contacto" class="blue-btn text-white font-semibold px-9 py-4 rounded-md text-center text-sm tracking-widest uppercase">
+          <a href="#contacto" class="btn-primary inline-flex justify-center items-center font-semibold px-7 py-3.5 rounded-lg text-sm">
             Agenda una consulta
           </a>
-          <a href="#servicios" class="ghost-btn text-white font-semibold px-9 py-4 rounded-md text-center text-sm tracking-widest uppercase">
-            Conoce nuestros servicios
+          <a href="#servicios" class="btn-link inline-flex justify-center items-center font-semibold text-sm gap-1">
+            Conoce nuestros servicios <span>→</span>
           </a>
         </div>
 
-        <!-- Bottom stats -->
-        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
-          <div>
-            <div class="stat-num text-5xl">+50</div>
-            <p class="text-[#8a96aa] text-xs mt-1.5 leading-snug">Operaciones gestionadas</p>
+        <!-- Trust badges -->
+        <div class="flex flex-wrap gap-x-7 gap-y-2 pt-4 border-t border-gray-100">
+          <div class="flex items-center gap-1.5 text-xs text-[#6B7280]">
+            <svg viewBox="0 0 16 16" fill="#1B5EBF" class="w-3.5 h-3.5"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.75 10.25L4 8l1.06-1.06 2.19 2.19 4.19-4.19L12.5 6l-5.25 5.25z"/></svg>
+            Expertos certificados
           </div>
-          <div>
-            <div class="stat-num text-5xl">100%</div>
-            <p class="text-[#8a96aa] text-xs mt-1.5 leading-snug">Acompañamiento personalizado</p>
+          <div class="flex items-center gap-1.5 text-xs text-[#6B7280]">
+            <svg viewBox="0 0 16 16" fill="#1B5EBF" class="w-3.5 h-3.5"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.75 10.25L4 8l1.06-1.06 2.19 2.19 4.19-4.19L12.5 6l-5.25 5.25z"/></svg>
+            Proceso 100% trazable
           </div>
-          <div>
-            <div class="stat-num text-5xl">MX</div>
-            <p class="text-[#8a96aa] text-xs mt-1.5 leading-snug">Empresa 100% mexicana</p>
+          <div class="flex items-center gap-1.5 text-xs text-[#6B7280]">
+            <svg viewBox="0 0 16 16" fill="#1B5EBF" class="w-3.5 h-3.5"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.75 10.25L4 8l1.06-1.06 2.19 2.19 4.19-4.19L12.5 6l-5.25 5.25z"/></svg>
+            Empresa 100% mexicana
           </div>
         </div>
 
       </div>
 
-      <!-- Right: Stat glass card -->
-      <div class="lg:flex-shrink-0 w-full lg:w-auto">
-        <div class="hero-stat-card rounded-2xl p-8 md:p-10 w-full lg:w-[340px] space-y-6">
-
-          <div class="flex items-center gap-2 mb-2">
-            <svg viewBox="0 0 20 20" width="12" height="12"><polygon points="0,10 10,0 20,10 10,20" fill="#1a6bff"/></svg>
-            <span class="font-display text-xs tracking-[0.2em] uppercase" style="color:#1a6bff;">OLN Connect</span>
-          </div>
-
-          <div class="space-y-1">
-            <div class="font-display font-900 text-[5rem] leading-none" style="color:#1a6bff;">+50</div>
-            <p class="text-[#c8d0e0] font-medium text-lg">Operaciones gestionadas</p>
-            <p class="text-[#8a96aa] text-sm leading-relaxed">Importaciones y exportaciones procesadas con éxito para empresas mexicanas en múltiples industrias.</p>
-          </div>
-
-          <div class="border-t border-white/8 pt-5 space-y-3">
-            <div class="flex justify-between items-center text-sm">
-              <span style="color:#8a96aa;">Tiempo promedio de tramitación</span>
-              <span class="font-semibold text-white">72 hrs</span>
-            </div>
-            <div class="flex justify-between items-center text-sm">
-              <span style="color:#8a96aa;">Países con operación activa</span>
-              <span class="font-semibold text-white">12+</span>
-            </div>
-            <div class="flex justify-between items-center text-sm">
-              <span style="color:#8a96aa;">Errores aduanales</span>
-              <span class="font-semibold" style="color:#1a6bff;">0</span>
-            </div>
-          </div>
-
-          <a href="#contacto" class="block blue-btn text-white text-sm font-semibold text-center px-6 py-3 rounded-lg tracking-wide">
-            Solicitar diagnóstico gratis
-          </a>
-
+      <!-- RIGHT: Image card (40%) -->
+      <div class="lg:w-[40%] w-full relative">
+        <div class="relative rounded-2xl overflow-hidden shadow-xl" style="aspect-ratio:4/3;">
+          <img
+            src="https://images.unsplash.com/photo-1494412574643-ff11b0a5716d?w=900&q=80"
+            alt="Contenedores de carga coloridos en puerto internacional"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+          <!-- Subtle warm overlay to echo the sunset tones -->
+          <div class="absolute inset-0" style="background:linear-gradient(160deg, rgba(245,158,11,0.08) 0%, rgba(27,94,191,0.12) 100%);"></div>
         </div>
+
+        <!-- Floating stat card -->
+        <div class="stat-float">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#eff6ff;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1B5EBF" stroke-width="2" class="w-5 h-5">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-bold text-[#111827] text-base leading-tight">50+ operaciones</p>
+            <p class="text-[#6B7280] text-xs">gestionadas con éxito</p>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </div>
-
-  <!-- Blue accent line bottom -->
-  <div class="absolute bottom-0 left-0 w-full h-px" style="background:rgba(26,107,255,0.5);"></div>
 </header>
 
-<!-- TICKER STRIP -->
-<div class="w-full overflow-hidden py-3" style="background:#0d1221; border-top:1px solid rgba(26,107,255,0.15); border-bottom:1px solid rgba(26,107,255,0.15);">
-  <div class="ticker-track text-xs font-semibold tracking-[0.2em] uppercase" style="color:#8a96aa;">
-    <span>Importaciones</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Exportaciones</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Logística</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Comercio Exterior</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Consultoría</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Expansión Global</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Trámites Aduanales</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Importaciones</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Exportaciones</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Logística</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Comercio Exterior</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Consultoría</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Expansión Global</span><span class="mx-3" style="color:#1a6bff;">·</span>
-    <span>Trámites Aduanales</span><span class="mx-3" style="color:#1a6bff;">·</span>
+
+<!-- ===================== TRUST STRIP ===================== -->
+<div class="bg-[#f7f8fc] border-y border-gray-200 py-4 px-6 overflow-x-auto">
+  <div class="max-w-6xl mx-auto flex items-center justify-center flex-wrap gap-x-8 gap-y-2 text-sm text-[#6B7280] font-medium whitespace-nowrap">
+    <span class="text-xs font-semibold text-[#111827] uppercase tracking-wider mr-2">Operamos en:</span>
+    <span>🇲🇽 México</span>
+    <span class="text-gray-300">·</span>
+    <span>🇺🇸 EE.UU</span>
+    <span class="text-gray-300">·</span>
+    <span>🇨🇳 China</span>
+    <span class="text-gray-300">·</span>
+    <span>🇩🇪 Europa</span>
+    <span class="text-gray-300">·</span>
+    <span>🇨🇦 Canadá</span>
   </div>
 </div>
 
-<!-- SERVICIOS -->
-<section id="servicios" class="py-24 px-6 md:px-12 xl:px-20 max-w-screen-2xl mx-auto">
 
-  <div class="mb-14">
-    <div class="flex items-center gap-3 mb-4">
-      <div class="h-0.5 w-8" style="background:#1a6bff;"></div>
-      <span class="text-xs tracking-[0.25em] uppercase font-semibold" style="color:#1a6bff;">Lo que hacemos</span>
+<!-- ===================== SERVICIOS ===================== -->
+<section id="servicios" class="py-20 md:py-28 px-6 md:px-10 xl:px-12 bg-white">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section header -->
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-semibold text-[#1B5EBF] uppercase tracking-widest mb-3">Lo que hacemos</span>
+      <h2 class="font-extrabold text-3xl md:text-4xl text-[#111827] tracking-tight">Nuestros servicios</h2>
+      <p class="text-[#6B7280] mt-3 text-base max-w-xl mx-auto">
+        Soluciones integrales de comercio exterior para empresas que buscan crecer más allá de las fronteras.
+      </p>
     </div>
-    <h2 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight">Nuestros <span style="color:#1a6bff;">Servicios</span></h2>
-  </div>
 
-  <div class="grid md:grid-cols-3 gap-5">
+    <!-- Cards grid -->
+    <div class="grid md:grid-cols-3 gap-6">
 
-    <!-- Importaciones -->
-    <div class="service-card rounded-xl overflow-hidden">
-      <div class="h-1.5" style="background:#1a6bff;"></div>
-      <div class="p-8 flex flex-col justify-between min-h-[280px]">
-        <div>
-          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5 border" style="background:rgba(26,107,255,0.1); border-color:rgba(26,107,255,0.2);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1a6bff" stroke-width="1.8" class="w-5 h-5">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-          </div>
-          <h3 class="font-display font-800 text-3xl uppercase tracking-tight text-white mb-3">Importaciones</h3>
-          <p class="text-[#8a96aa] text-sm leading-relaxed">
-            Gestión integral de compras internacionales. Coordinamos proveedores, clasificación arancelaria, trámites aduanales y entrega en tu almacén.
-          </p>
+      <!-- Importaciones -->
+      <div class="service-card p-8 flex flex-col">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-6" style="background:#eff6ff;">
+          📦
         </div>
-        <a href="#contacto" class="mt-6 text-sm font-semibold tracking-wide uppercase flex items-center gap-2 group" style="color:#1a6bff;">
-          Más información <span class="group-hover:translate-x-1 transition-transform">→</span>
+        <h3 class="font-bold text-xl text-[#111827] mb-3">Importaciones</h3>
+        <p class="text-[#6B7280] text-sm leading-relaxed flex-1">
+          Gestión integral de compras internacionales: proveedores, aranceles, aduanas y entrega en México.
+        </p>
+        <a href="#contacto" class="btn-link inline-flex items-center gap-1 text-sm font-semibold mt-6">
+          Más información <span>→</span>
         </a>
       </div>
-    </div>
 
-    <!-- Exportaciones — featured -->
-    <div class="service-card rounded-xl overflow-hidden" style="border-color:rgba(26,107,255,0.3);">
-      <div class="h-1.5" style="background:#1a6bff;"></div>
-      <div class="p-8 flex flex-col justify-between min-h-[280px]" style="background:linear-gradient(160deg,#0d1221 60%,rgba(26,107,255,0.07) 100%);">
-        <div>
-          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5 border" style="background:rgba(26,107,255,0.12); border-color:rgba(26,107,255,0.35);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1a6bff" stroke-width="1.8" class="w-5 h-5">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <h3 class="font-display font-800 text-3xl uppercase tracking-tight text-white mb-3">Exportaciones</h3>
-          <p class="text-[#8a96aa] text-sm leading-relaxed">
-            Apertura de mercados internacionales y trámites de salida. Te ayudamos a llevar tus productos al mundo con cumplimiento normativo total.
-          </p>
+      <!-- Exportaciones — featured -->
+      <div class="service-card p-8 flex flex-col" style="border-color:#1B5EBF; border-width:2px;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-6" style="background:#eff6ff;">
+          🌍
         </div>
-        <a href="#contacto" class="mt-6 text-sm font-semibold tracking-wide uppercase flex items-center gap-2 group" style="color:#1a6bff;">
-          Más información <span class="group-hover:translate-x-1 transition-transform">→</span>
+        <h3 class="font-bold text-xl text-[#111827] mb-3">Exportaciones</h3>
+        <p class="text-[#6B7280] text-sm leading-relaxed flex-1">
+          Apertura de mercados, clasificación arancelaria, documentación y logística de salida.
+        </p>
+        <a href="#contacto" class="btn-link inline-flex items-center gap-1 text-sm font-semibold mt-6">
+          Más información <span>→</span>
         </a>
       </div>
-    </div>
 
-    <!-- Consultoría Logística -->
-    <div class="service-card rounded-xl overflow-hidden">
-      <div class="h-1.5" style="background:#1a6bff;"></div>
-      <div class="p-8 flex flex-col justify-between min-h-[280px]">
-        <div>
-          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5 border" style="background:rgba(26,107,255,0.1); border-color:rgba(26,107,255,0.2);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1a6bff" stroke-width="1.8" class="w-5 h-5">
-              <rect x="1" y="3" width="15" height="13" rx="1"/>
-              <path d="M16 8h4l3 3v5h-7V8z"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/>
-              <circle cx="18.5" cy="18.5" r="2.5"/>
-            </svg>
-          </div>
-          <h3 class="font-display font-800 text-3xl uppercase tracking-tight text-white mb-3">Consultoría Logística</h3>
-          <p class="text-[#8a96aa] text-sm leading-relaxed">
-            Optimización de cadena de suministro y reducción de costos. Identificamos ineficiencias y diseñamos rutas y procesos más rentables.
-          </p>
+      <!-- Consultoría Logística -->
+      <div class="service-card p-8 flex flex-col">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-6" style="background:#eff6ff;">
+          📊
         </div>
-        <a href="#contacto" class="mt-6 text-sm font-semibold tracking-wide uppercase flex items-center gap-2 group" style="color:#1a6bff;">
-          Más información <span class="group-hover:translate-x-1 transition-transform">→</span>
+        <h3 class="font-bold text-xl text-[#111827] mb-3">Consultoría Logística</h3>
+        <p class="text-[#6B7280] text-sm leading-relaxed flex-1">
+          Optimización de tu cadena de suministro: costos, tiempos y procesos de comercio exterior.
+        </p>
+        <a href="#contacto" class="btn-link inline-flex items-center gap-1 text-sm font-semibold mt-6">
+          Más información <span>→</span>
         </a>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
-<!-- POR QUE OLN CONNECT -->
-<section id="nosotros" class="py-24" style="background:#0d1221; border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05);">
-  <div class="px-6 md:px-12 xl:px-20 max-w-screen-2xl mx-auto">
 
-    <div class="mb-14 text-center max-w-2xl mx-auto">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <div class="h-0.5 w-8" style="background:#1a6bff;"></div>
-        <span class="text-xs tracking-[0.25em] uppercase font-semibold" style="color:#1a6bff;">Por qué elegirnos</span>
-        <div class="h-0.5 w-8" style="background:#1a6bff;"></div>
-      </div>
-      <h2 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight">
-        Por qué <span style="color:#1a6bff;">OLN Connect</span>
-      </h2>
+<!-- ===================== PROCESO ===================== -->
+<section id="proceso" class="py-20 md:py-28 px-6 md:px-10 xl:px-12 bg-[#f7f8fc]">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-semibold text-[#1B5EBF] uppercase tracking-widest mb-3">Cómo trabajamos</span>
+      <h2 class="font-extrabold text-3xl md:text-4xl text-[#111827] tracking-tight">Un proceso claro y eficiente</h2>
+      <p class="text-[#6B7280] mt-3 text-base max-w-lg mx-auto">
+        Tres pasos para convertir la complejidad del comercio exterior en una operación simple y rentable.
+      </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-5">
+    <div class="grid md:grid-cols-3 gap-0 relative">
 
-      <!-- Punto 1 -->
-      <div class="why-card rounded-xl p-8 space-y-4">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(26,107,255,0.1); border:1px solid rgba(26,107,255,0.2);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#1a6bff" stroke-width="1.8" class="w-5 h-5">
-            <path d="M12 2v20M2 12h20"/>
-            <circle cx="12" cy="12" r="10"/>
-          </svg>
+      <!-- Connecting line on desktop -->
+      <div class="hidden md:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-0.5 bg-gray-200 z-0"></div>
+
+      <!-- Step 1 -->
+      <div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg mb-5 shadow-md" style="background:#1B5EBF;">
+          1
         </div>
-        <h3 class="font-display font-800 text-2xl uppercase tracking-tight text-white">Menos carga operativa</h3>
-        <p class="text-[#8a96aa] text-sm leading-relaxed">
-          Delegas la complejidad del comercio exterior. Nosotros gestionamos trámites, coordinamos proveedores y cumplimos normas — tú te concentras en crecer.
+        <h3 class="font-bold text-[#111827] text-lg mb-2">Diagnóstico</h3>
+        <p class="text-[#6B7280] text-sm leading-relaxed">
+          Analizamos tu operación actual, identificamos necesidades y oportunidades de mejora en tu cadena de comercio exterior.
         </p>
       </div>
 
-      <!-- Punto 2 -->
-      <div class="why-card rounded-xl p-8 space-y-4" style="border-color:rgba(26,107,255,0.2); background:rgba(26,107,255,0.04);">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(26,107,255,0.12); border:1px solid rgba(26,107,255,0.3);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#1a6bff" stroke-width="1.8" class="w-5 h-5">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
-          </svg>
+      <!-- Step 2 -->
+      <div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg mb-5 shadow-md" style="background:#1B5EBF;">
+          2
         </div>
-        <h3 class="font-display font-800 text-2xl uppercase tracking-tight text-white">Estrategia, no solo trámites</h3>
-        <p class="text-[#8a96aa] text-sm leading-relaxed">
-          No somos un agente aduanal más. Analizamos tu operación, identificamos oportunidades de ahorro y diseñamos una estrategia de comercio exterior a tu medida.
+        <h3 class="font-bold text-[#111827] text-lg mb-2">Estrategia</h3>
+        <p class="text-[#6B7280] text-sm leading-relaxed">
+          Diseñamos un plan personalizado: rutas, proveedores, clasificaciones arancelarias y estructura aduanal óptima.
         </p>
       </div>
 
-      <!-- Punto 3 -->
-      <div class="why-card rounded-xl p-8 space-y-4">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(26,107,255,0.1); border:1px solid rgba(26,107,255,0.2);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#1a6bff" stroke-width="1.8" class="w-5 h-5">
-            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-            <path d="M16 3.13a4 4 0 010 7.75"/>
-          </svg>
+      <!-- Step 3 -->
+      <div class="relative z-10 flex flex-col items-center text-center px-6">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg mb-5 shadow-md" style="background:#1B5EBF;">
+          3
         </div>
-        <h3 class="font-display font-800 text-2xl uppercase tracking-tight text-white">Acompañamiento personalizado</h3>
-        <p class="text-[#8a96aa] text-sm leading-relaxed">
-          Tienes un consultor dedicado, no un call center. Respondemos rápido, te explicamos cada paso y somos tu aliado en cada operación internacional.
+        <h3 class="font-bold text-[#111827] text-lg mb-2">Operación</h3>
+        <p class="text-[#6B7280] text-sm leading-relaxed">
+          Ejecutamos y coordinamos cada operación con acompañamiento en tiempo real. Tú ves los resultados.
         </p>
       </div>
 
     </div>
-
-    <!-- Stats row -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-      <div class="rounded-xl p-7 border border-white/5" style="background:#111827;">
-        <div class="stat-num text-[3.5rem] mb-2">+50</div>
-        <p class="text-[#8a96aa] text-sm">Operaciones gestionadas</p>
-      </div>
-      <div class="rounded-xl p-7 border" style="background:rgba(26,107,255,0.07); border-color:rgba(26,107,255,0.2);">
-        <div class="stat-num text-[3.5rem] mb-2">12+</div>
-        <p class="text-[#8a96aa] text-sm">Países con operación activa</p>
-      </div>
-      <div class="rounded-xl p-7 border border-white/5" style="background:#111827;">
-        <div class="stat-num text-[3.5rem] mb-2">72h</div>
-        <p class="text-[#8a96aa] text-sm">Tiempo promedio de tramitación</p>
-      </div>
-      <div class="rounded-xl p-7 border border-white/5" style="background:#111827;">
-        <div class="stat-num text-[3.5rem] mb-2">0</div>
-        <p class="text-[#8a96aa] text-sm">Errores aduanales. Cero.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section id="contacto" class="py-24 px-6 md:px-12 xl:px-20">
-  <div class="max-w-screen-2xl mx-auto">
-    <div class="rounded-2xl overflow-hidden relative" style="background:linear-gradient(135deg,#0d1221 0%,#0f1830 50%,#0d1221 100%); border:1px solid rgba(26,107,255,0.25);">
-      <!-- Subtle grid texture -->
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image:linear-gradient(rgba(26,107,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(26,107,255,1) 1px,transparent 1px); background-size:40px 40px;"></div>
-      <!-- Blue glow -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-full opacity-20 blur-3xl" style="background:#1a6bff;"></div>
-      <div class="relative px-12 md:px-20 py-16 md:py-20 text-center">
-        <p class="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style="color:#1a6bff;">Siguiente paso</p>
-        <h2 class="font-display font-900 text-5xl md:text-7xl uppercase tracking-tight text-white mb-4">
-          ¿Listo para expandirte?
+
+<!-- ===================== POR QUE OLN CONNECT ===================== -->
+<section id="nosotros" class="py-20 md:py-28 px-6 md:px-10 xl:px-12 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-14 md:gap-20 items-center">
+
+      <!-- Left: headline + paragraph -->
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-semibold text-[#1B5EBF] uppercase tracking-widest">Por qué elegirnos</span>
+        <h2 class="font-extrabold text-3xl md:text-4xl text-[#111827] tracking-tight leading-[1.15]">
+          Menos operación.<br/>
+          <span class="text-[#1B5EBF]">Más crecimiento.</span>
         </h2>
-        <p class="text-[#c8d0e0] text-lg md:text-xl mb-10 max-w-xl mx-auto">
-          Agenda una consulta sin costo. Te ayudamos a entender qué necesitas para importar, exportar o reducir costos logísticos.
+        <p class="text-[#6B7280] text-base leading-relaxed">
+          No somos un agente aduanal más. Somos socios estratégicos que transforman la complejidad del comercio internacional en una ventaja competitiva para tu empresa. Delegas la operación; nosotros entregamos resultados.
         </p>
-        <a href="https://wa.me/521XXXXXXXXXX" class="inline-flex items-center gap-3 blue-btn text-white font-bold px-10 py-4 rounded-lg text-sm uppercase tracking-widest">
-          <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
-          </svg>
-          Escríbenos por WhatsApp
+        <a href="#contacto" class="btn-primary inline-flex items-center font-semibold px-6 py-3 rounded-lg text-sm">
+          Hablar con un consultor
         </a>
-        <p class="mt-6 text-[#8a96aa] text-xs">También en Instagram: <a href="https://instagram.com/olnconnect" class="hover:text-white transition-colors" style="color:#1a6bff;">@olnconnect</a></p>
       </div>
+
+      <!-- Right: bullet points -->
+      <div class="space-y-5">
+
+        <div class="flex items-start gap-4">
+          <div class="check-icon mt-0.5">
+            <svg viewBox="0 0 16 16" fill="#1B5EBF" class="w-3.5 h-3.5"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-[#111827] text-sm">Expertos en comercio exterior</p>
+            <p class="text-[#6B7280] text-sm mt-0.5">Años de experiencia en importaciones, exportaciones y trámites aduanales en múltiples países.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="check-icon mt-0.5">
+            <svg viewBox="0 0 16 16" fill="#1B5EBF" class="w-3.5 h-3.5"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-[#111827] text-sm">Proceso transparente y trazable</p>
+            <p class="text-[#6B7280] text-sm mt-0.5">Sabes en todo momento el estatus de tu operación. Sin cajas negras, sin sorpresas.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="check-icon mt-0.5">
+            <svg viewBox="0 0 16 16" fill="#1B5EBF" class="w-3.5 h-3.5"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-[#111827] text-sm">Atención personalizada</p>
+            <p class="text-[#6B7280] text-sm mt-0.5">Tienes un consultor dedicado, no un call center. Respuesta ágil y acompañamiento real.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="check-icon mt-0.5">
+            <svg viewBox="0 0 16 16" fill="#1B5EBF" class="w-3.5 h-3.5"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-[#111827] text-sm">Resultados medibles</p>
+            <p class="text-[#6B7280] text-sm mt-0.5">Más de 50 operaciones gestionadas. Reducción de costos logísticos y tiempos de tramitación comprobables.</p>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer style="background:#0d1221; border-top:1px solid rgba(255,255,255,0.05);" class="py-10 px-6 md:px-12 xl:px-20">
-  <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-    <div class="flex items-center gap-2">
-      <svg viewBox="0 0 20 20" width="12" height="12"><polygon points="0,10 10,0 20,10 10,20" fill="#1a6bff"/></svg>
-      <span class="font-display font-900 text-base tracking-widest uppercase text-white">OLN <span style="color:#1a6bff">CONNECT</span></span>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section id="contacto" class="py-20 md:py-28 px-6 md:px-10 xl:px-12" style="background:#1B5EBF;">
+  <div class="max-w-4xl mx-auto text-center">
+
+    <h2 class="font-extrabold text-3xl md:text-4xl xl:text-5xl text-white tracking-tight leading-[1.15] mb-5">
+      ¿Listo para expandirte globalmente?
+    </h2>
+    <p class="text-blue-100 text-lg mb-10 max-w-xl mx-auto">
+      Agenda una consulta sin costo. Te ayudamos a importar, exportar y reducir costos logísticos desde el primer día.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="https://wa.me/521XXXXXXXXXX"
+        class="inline-flex items-center justify-center gap-3 bg-white text-[#1B5EBF] font-bold px-8 py-4 rounded-lg text-sm transition hover:bg-blue-50"
+      >
+        <svg viewBox="0 0 24 24" fill="#1B5EBF" class="w-5 h-5">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+        </svg>
+        Contactar por WhatsApp
+      </a>
+
+      <a href="mailto:hola@olnconnect.mx" class="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-semibold px-8 py-4 rounded-lg text-sm transition hover:border-white hover:bg-white/10">
+        Enviar un correo
+      </a>
     </div>
-    <p class="text-[#8a96aa] text-xs text-center">Consultoría en importaciones, exportaciones y logística internacional — México</p>
-    <a href="https://instagram.com/olnconnect" class="text-sm transition-colors" style="color:#8a96aa;" onmouseover="this.style.color='#1a6bff'" onmouseout="this.style.color='#8a96aa'">@olnconnect</a>
+
+    <p class="mt-8 text-blue-200 text-xs">
+      También en Instagram:
+      <a href="https://instagram.com/olnconnect" class="text-white font-medium underline underline-offset-2 hover:no-underline">@olnconnect</a>
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-white border-t border-gray-100 py-10 px-6 md:px-10 xl:px-12">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-5">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2">
+      <span class="text-xl">🌐</span>
+      <span class="font-bold text-[18px] tracking-tight text-[#1B5EBF]">OLN <span class="text-[#111827]">CONNECT</span></span>
+    </a>
+
+    <!-- Nav links -->
+    <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-[#6B7280]">
+      <a href="#servicios" class="hover:text-[#1B5EBF] transition-colors">Servicios</a>
+      <a href="#proceso" class="hover:text-[#1B5EBF] transition-colors">Proceso</a>
+      <a href="#nosotros" class="hover:text-[#1B5EBF] transition-colors">Nosotros</a>
+      <a href="#contacto" class="hover:text-[#1B5EBF] transition-colors">Contacto</a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="text-[#6B7280] text-xs text-center">© 2025 OLN Connect · México</p>
+
   </div>
 </footer>
 
