@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Propuesta de Servicios — OLN Connect × Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #070b14; color: #fff; margin: 0; }
+  h1, h2, h3, h4, .font-display { font-family: 'Barlow Condensed', sans-serif; }
+
+  /* Color tokens */
+  :root {
+    --blue:  #1a6bff;
+    --blue2: #0047cc;
+    --dark:  #070b14;
+    --card:  #0d1221;
+    --gray:  #8a96aa;
+    --light: #c8d0e0;
+    --border: rgba(255,255,255,0.07);
+    --border-blue: rgba(26,107,255,0.25);
+  }
+
+  .blue-btn {
+    background: var(--blue);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .blue-btn:hover { background: var(--blue2); transform: translateY(-1px); }
+
+  .glass-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: all 0.2s ease;
+  }
+
+  .plan-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .plan-card:hover { border-color: rgba(26,107,255,0.4); transform: translateY(-4px); }
+
+  .plan-card.featured {
+    border-color: var(--blue);
+    position: relative;
+  }
+  .plan-card.featured::before {
+    content: 'MÁS POPULAR';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--blue);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    padding: 4px 12px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--light);
+    line-height: 1.5;
+  }
+  .check-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(26,107,255,0.15);
+    border: 1px solid rgba(26,107,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .step-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(26,107,255,0.1);
+    border: 2px solid rgba(26,107,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--blue);
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+  .section-label span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  /* Grid pattern overlay */
+  .grid-overlay {
+    background-image: linear-gradient(rgba(26,107,255,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(26,107,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .price-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    color: var(--blue);
+    line-height: 1;
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+  }
+
+  @media (max-width: 768px) {
+    .plan-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header style="background:#0d1221; border-bottom:1px solid rgba(26,107,255,0.15);" class="px-6 md:px-12 xl:px-20 py-6">
+  <div class="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+
+    <!-- Brota Digital branding -->
+    <div class="space-y-0.5">
+      <p class="text-xs font-semibold tracking-[0.25em] uppercase" style="color:#1a6bff;">Propuesta de Servicios</p>
+      <div class="flex items-center gap-2">
+        <div class="w-2 h-2 rounded-full" style="background:#1a6bff;"></div>
+        <span class="font-display font-800 text-xl tracking-wider uppercase text-white">Brota Digital</span>
+      </div>
+      <p class="text-xs" style="color:#8a96aa;">Agencia de marketing digital · @brotadigital</p>
+    </div>
+
+    <!-- Cliente -->
+    <div class="text-right">
+      <p class="text-xs" style="color:#8a96aa;">Preparado para:</p>
+      <div class="flex items-center gap-1.5 justify-end">
+        <svg viewBox="0 0 20 20" width="10" height="10"><polygon points="0,10 10,0 20,10 10,20" fill="#1a6bff"/></svg>
+        <span class="font-display font-800 text-lg tracking-wider uppercase text-white">OLN Connect</span>
+      </div>
+      <p class="text-xs" style="color:#8a96aa;">@olnconnect · Abril 2026</p>
+    </div>
+
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="px-6 md:px-12 xl:px-20 py-16 max-w-screen-xl mx-auto">
+
+  <div class="section-label"><span>Por qué ahora</span></div>
+  <h1 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight mb-6">
+    El momento de construir<br/>tu presencia digital <span style="color:#1a6bff;">es hoy.</span>
+  </h1>
+
+  <div class="grid md:grid-cols-2 gap-8 items-start">
+    <div class="space-y-4">
+      <p class="text-[#c8d0e0] text-lg leading-relaxed">
+        OLN Connect acaba de abrir su cuenta en Instagram con 6 seguidores y sin estrategia de contenido. En un sector B2B como el comercio exterior, la credibilidad digital importa tanto como la experiencia.
+      </p>
+      <p class="text-[#8a96aa] leading-relaxed">
+        Las empresas que evalúan consultoras investigan en redes antes de tomar contacto. Una cuenta sin contenido consistente, sin posicionamiento claro y sin actividad regular transmite falta de presencia — y en B2B, la percepción es la realidad.
+      </p>
+      <p class="text-[#8a96aa] leading-relaxed">
+        El espacio de contenido sobre importaciones y exportaciones en México está ocupado por voces genéricas. OLN Connect tiene la oportunidad de posicionarse como referente con una estrategia clara desde el arranque.
+      </p>
+    </div>
+
+    <div class="glass-card p-6 space-y-4">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase" style="color:#1a6bff;">Situación actual</p>
+      <div class="space-y-3">
+        <div class="flex justify-between items-center py-2.5 border-b" style="border-color:rgba(255,255,255,0.06);">
+          <span class="text-sm" style="color:#8a96aa;">Seguidores en Instagram</span>
+          <span class="font-display font-700 text-lg text-white">6</span>
+        </div>
+        <div class="flex justify-between items-center py-2.5 border-b" style="border-color:rgba(255,255,255,0.06);">
+          <span class="text-sm" style="color:#8a96aa;">Posts publicados</span>
+          <span class="font-display font-700 text-lg text-white">0</span>
+        </div>
+        <div class="flex justify-between items-center py-2.5 border-b" style="border-color:rgba(255,255,255,0.06);">
+          <span class="text-sm" style="color:#8a96aa;">Estrategia de contenido</span>
+          <span class="font-display font-700 text-lg" style="color:#ff4444;">Ninguna</span>
+        </div>
+        <div class="flex justify-between items-center py-2.5">
+          <span class="text-sm" style="color:#8a96aa;">Competencia activa en redes</span>
+          <span class="font-display font-700 text-lg" style="color:#1a6bff;">Alta</span>
+        </div>
+      </div>
+      <div class="rounded-lg p-4 mt-2" style="background:rgba(26,107,255,0.08); border:1px solid rgba(26,107,255,0.2);">
+        <p class="text-sm" style="color:#c8d0e0;">Cada semana sin contenido es una oportunidad perdida de aparecer ante clientes potenciales que ya estan buscando.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PLANES -->
+<section style="background:#0d1221; border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05);" class="py-20 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="section-label"><span>Planes de servicio</span></div>
+    <h2 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight mb-3">
+      Elige tu <span style="color:#1a6bff;">plan</span>
+    </h2>
+    <p class="text-[#8a96aa] mb-12 max-w-xl">Todos los planes incluyen identidad de marca consistente, copywriting profesional en español y métricas mensuales.</p>
+
+    <div class="grid md:grid-cols-3 gap-6 plan-grid">
+
+      <!-- Plan Basico -->
+      <div class="plan-card">
+        <div class="h-1" style="background:rgba(26,107,255,0.4);"></div>
+        <div class="p-8 flex flex-col flex-1">
+
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style="color:#8a96aa;">Para empezar</p>
+            <h3 class="font-display font-900 text-3xl uppercase tracking-tight text-white mb-1">Plan Basico</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="price-tag text-[3rem]">$3,500</span>
+              <span class="text-sm" style="color:#8a96aa;">MXN / mes</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span><strong class="text-white">12 posts/mes</strong> (3 por semana) en Instagram</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Diseno de contenido con identidad de marca</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Copywriting en espanol</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Programacion y publicacion</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>1 reporte mensual de metricas</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Basico%20para%20OLN%20Connect" class="blue-btn justify-center px-6 py-3 text-sm tracking-wide" style="background:rgba(26,107,255,0.15); border:1px solid rgba(26,107,255,0.3);" onmouseover="this.style.background='#1a6bff'" onmouseout="this.style.background='rgba(26,107,255,0.15)'">
+            Seleccionar plan
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Plan Crecimiento — FEATURED -->
+      <div class="plan-card featured">
+        <div class="h-1" style="background:#1a6bff;"></div>
+        <div class="p-8 flex flex-col flex-1" style="background:linear-gradient(160deg,#0d1221 50%,rgba(26,107,255,0.06) 100%);">
+
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style="color:#1a6bff;">Recomendado</p>
+            <h3 class="font-display font-900 text-3xl uppercase tracking-tight text-white mb-1">Plan Crecimiento</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="price-tag text-[3rem]">$5,500</span>
+              <span class="text-sm" style="color:#8a96aa;">MXN / mes</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span><strong class="text-white">20 posts/mes</strong> en Instagram</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Diseno de contenido con identidad de marca</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Copywriting en espanol</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Programacion y publicacion</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span><strong class="text-white">Stories</strong> (3x semana)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Estrategia de hashtags y SEO en Instagram</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Respuesta a comentarios y DMs (lunes-viernes)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span><strong class="text-white">LinkedIn</strong> — perfil de empresa</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>1 reporte mensual de metricas</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Crecimiento%20para%20OLN%20Connect" class="blue-btn justify-center px-6 py-3 text-sm tracking-wide">
+            Seleccionar plan
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Plan Premium -->
+      <div class="plan-card">
+        <div class="h-1" style="background:rgba(26,107,255,0.7);"></div>
+        <div class="p-8 flex flex-col flex-1">
+
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style="color:#8a96aa;">Maximo impacto</p>
+            <h3 class="font-display font-900 text-3xl uppercase tracking-tight text-white mb-1">Plan Premium</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="price-tag text-[3rem]">$8,500</span>
+              <span class="text-sm" style="color:#8a96aa;">MXN / mes</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span><strong class="text-white">30 posts/mes</strong> en Instagram</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Diseno de contenido con identidad de marca</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Copywriting, programacion y publicacion</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Stories 3x semana + Estrategia de hashtags</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Respuesta a comentarios y DMs (L-V)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>LinkedIn — perfil de empresa</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span><strong class="text-white">Reels</strong> (2 al mes)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span><strong class="text-white">Gestion de pauta (ads)</strong> — hasta $2,000 MXN presupuesto incluido</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Reporte quincenal + llamada de estrategia mensual</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="#1a6bff" stroke-width="2" class="w-2.5 h-2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span><strong class="text-white">TikTok</strong></span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Premium%20para%20OLN%20Connect" class="blue-btn justify-center px-6 py-3 text-sm tracking-wide" style="background:rgba(26,107,255,0.15); border:1px solid rgba(26,107,255,0.3);" onmouseover="this.style.background='#1a6bff'" onmouseout="this.style.background='rgba(26,107,255,0.15)'">
+            Seleccionar plan
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Comparativa nota -->
+    <p class="text-center text-xs mt-8" style="color:#8a96aa;">Todos los planes se facturan mensualmente sin contrato de permanencia obligatorio. Precios en MXN, IVA no incluido.</p>
+
+  </div>
+</section>
+
+<!-- POR QUE BROTA DIGITAL -->
+<section class="py-20 px-6 md:px-12 xl:px-20 max-w-screen-xl mx-auto">
+
+  <div class="grid md:grid-cols-2 gap-16 items-center">
+
+    <div class="space-y-6">
+      <div class="section-label"><span>Por que Brota Digital</span></div>
+      <h2 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight leading-tight">
+        No somos<br/>una agencia <span style="color:#1a6bff;">generica.</span>
+      </h2>
+      <p class="text-[#c8d0e0] leading-relaxed">
+        Somos especialistas en construir presencia digital para negocios B2B que necesitan comunicar expertise, no solo publicar por publicar.
+      </p>
+      <p class="text-[#8a96aa] leading-relaxed">
+        Entendemos que en comercio exterior, el tono lo es todo. Tu audiencia son directores de compras, gerentes de logistica y socios comerciales — no consumidores finales. Sabemos como hablarles.
+      </p>
+
+      <div class="space-y-4 pt-2">
+        <div class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#1a6bff" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          <span class="text-sm text-[#c8d0e0]">Contenido con criterio B2B — no fluff, no memes innecesarios</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#1a6bff" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          <span class="text-sm text-[#c8d0e0]">Diseno alineado a tu identidad desde el dia 1</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#1a6bff" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          <span class="text-sm text-[#c8d0e0]">Comunicacion directa, sin intermediarios ni cuentas ejecutivas</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#1a6bff" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          <span class="text-sm text-[#c8d0e0]">Metricas reales, no vanity metrics — te decimos lo que importa</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#1a6bff" class="w-4 h-4 flex-shrink-0 mt-0.5"><polygon points="0,0 16,8 0,16"/></svg>
+          <span class="text-sm text-[#c8d0e0]">Flexibles: crecemos contigo, sin contratos leoninos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Credenciales card -->
+    <div class="space-y-4">
+      <div class="glass-card p-6 space-y-5">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase" style="color:#1a6bff;">Brota Digital — en numeros</p>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center py-2.5 border-b" style="border-color:rgba(255,255,255,0.06);">
+            <span class="text-sm" style="color:#8a96aa;">Cuentas gestionadas activamente</span>
+            <span class="font-display font-800 text-2xl" style="color:#1a6bff;">8+</span>
+          </div>
+          <div class="flex justify-between items-center py-2.5 border-b" style="border-color:rgba(255,255,255,0.06);">
+            <span class="text-sm" style="color:#8a96aa;">Sectores con experiencia</span>
+            <span class="font-display font-800 text-2xl text-white">B2B · Retail · Servicios</span>
+          </div>
+          <div class="flex justify-between items-center py-2.5 border-b" style="border-color:rgba(255,255,255,0.06);">
+            <span class="text-sm" style="color:#8a96aa;">Posts producidos (historico)</span>
+            <span class="font-display font-800 text-2xl" style="color:#1a6bff;">500+</span>
+          </div>
+          <div class="flex justify-between items-center py-2.5">
+            <span class="text-sm" style="color:#8a96aa;">Tiempo promedio de entrega de contenido</span>
+            <span class="font-display font-800 text-2xl text-white">48 hrs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl p-6" style="background:rgba(26,107,255,0.08); border:1px solid rgba(26,107,255,0.2);">
+        <p class="text-sm font-semibold text-white mb-1">Garantia de satisfaccion</p>
+        <p class="text-sm" style="color:#8a96aa;">Si al primer mes no estas conforme con el trabajo entregado, hacemos los ajustes necesarios sin costo adicional hasta que el resultado sea el correcto.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROXIMOS PASOS -->
+<section style="background:#0d1221; border-top:1px solid rgba(255,255,255,0.05);" class="py-20 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="section-label"><span>Como empezamos</span></div>
+    <h2 class="font-display font-900 text-5xl md:text-6xl uppercase tracking-tight mb-12">
+      Proximos <span style="color:#1a6bff;">pasos</span>
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Paso 1 -->
+      <div class="glass-card p-8 space-y-5">
+        <div class="flex items-center gap-4">
+          <div class="step-circle">1</div>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase" style="color:#1a6bff;">Hoy mismo</p>
+        </div>
+        <div>
+          <h3 class="font-display font-800 text-2xl uppercase tracking-tight text-white mb-2">Firma la propuesta</h3>
+          <p class="text-sm leading-relaxed" style="color:#8a96aa;">
+            Nos confirmas el plan elegido por WhatsApp o email. No hay papeleo complicado — un mensaje es suficiente para arrancar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Paso 2 -->
+      <div class="glass-card p-8 space-y-5" style="border-color:rgba(26,107,255,0.2); background:rgba(26,107,255,0.04);">
+        <div class="flex items-center gap-4">
+          <div class="step-circle">2</div>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase" style="color:#1a6bff;">Dias 1-3</p>
+        </div>
+        <div>
+          <h3 class="font-display font-800 text-2xl uppercase tracking-tight text-white mb-2">Onboarding</h3>
+          <p class="text-sm leading-relaxed" style="color:#8a96aa;">
+            Hacemos una sesion de brief para entender tu voz de marca, tus clientes ideales, tus servicios y el tono que quieres proyectar. Una vez definido, preparamos el plan editorial del primer mes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Paso 3 -->
+      <div class="glass-card p-8 space-y-5">
+        <div class="flex items-center gap-4">
+          <div class="step-circle">3</div>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase" style="color:#1a6bff;">Dia 7</p>
+        </div>
+        <div>
+          <h3 class="font-display font-800 text-2xl uppercase tracking-tight text-white mb-2">Primer contenido live</h3>
+          <p class="text-sm leading-relaxed" style="color:#8a96aa;">
+            En menos de una semana, OLN Connect ya tiene su primer contenido publicado y una presencia digital activa, consistente y profesional.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="py-20 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="rounded-2xl overflow-hidden relative grid-overlay" style="border:1px solid rgba(26,107,255,0.25); background:#0d1221;">
+      <!-- Blue glow top center -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[150px] rounded-full opacity-15 blur-3xl" style="background:#1a6bff;"></div>
+      <div class="relative text-center px-10 md:px-20 py-16 md:py-20">
+        <p class="text-xs font-semibold tracking-[0.25em] uppercase mb-4" style="color:#1a6bff;">Hagámoslo</p>
+        <h2 class="font-display font-900 text-5xl md:text-7xl uppercase tracking-tight text-white mb-4">
+          ¿Arrancamos?
+        </h2>
+        <p class="text-[#c8d0e0] text-lg mb-10 max-w-lg mx-auto">
+          Escríbenos ahora y en menos de 24 horas te confirmamos tu plan y fecha de inicio.
+        </p>
+        <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20Brota%20Digital%2C%20quiero%20arrancar%20con%20la%20gestion%20de%20redes%20para%20OLN%20Connect" class="blue-btn px-10 py-4 text-sm uppercase tracking-widest font-bold">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+          </svg>
+          Escribir por WhatsApp
+        </a>
+        <p class="mt-6 text-xs" style="color:#8a96aa;">Brota Digital · @brotadigital · Para OLN Connect (@olnconnect)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0d1221; border-top:1px solid rgba(255,255,255,0.05);" class="py-8 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-1.5 h-1.5 rounded-full" style="background:#1a6bff;"></div>
+      <span class="font-display font-800 text-sm tracking-widest uppercase text-white">Brota Digital</span>
+    </div>
+    <p class="text-xs text-center" style="color:#8a96aa;">Propuesta preparada para OLN Connect · Valida 30 dias a partir del 22 de abril de 2026</p>
+    <span class="text-xs" style="color:#8a96aa;">Confidencial</span>
+  </div>
+</footer>
+
+</body>
+</html>
