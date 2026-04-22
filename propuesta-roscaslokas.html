@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Propuesta de Servicios — Roscas Lokas CDMX × Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "rose":      "#D4436B",
+          "rose-dk":   "#b8375a",
+          "amber":     "#F59E0B",
+          "near-black":"#1F1F1F",
+          "gray-mid":  "#666666",
+          "cream":     "#FFF8F0",
+        },
+        fontFamily: {
+          sans: ["Inter", "sans-serif"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { font-family: 'Inter', sans-serif; }
+  html { scroll-behavior: smooth; }
+
+  /* Buttons */
+  .btn-primary {
+    background: #D4436B;
+    color: #fff;
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .btn-primary:hover { background: #b8375a; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: #D4436B;
+    border: 1.5px solid #D4436B;
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .btn-ghost:hover { background: #fff0f4; transform: translateY(-1px); }
+
+  /* Plan cards */
+  .plan-card {
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .plan-card:hover {
+    box-shadow: 0 8px 32px rgba(212,67,107,0.10);
+    transform: translateY(-4px);
+  }
+  .plan-card.featured {
+    border-color: #D4436B;
+    border-width: 2px;
+    box-shadow: 0 8px 32px rgba(212,67,107,0.14);
+  }
+
+  /* Check items */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+  }
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff0f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  /* Step numbers */
+  .step-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #D4436B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(212,67,107,0.28);
+  }
+
+  /* Section label — rose pill */
+  .section-label-rose {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff0f4;
+    color: #D4436B;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid #f9c0cd;
+    margin-bottom: 16px;
+  }
+  .section-label-rose::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #D4436B;
+    flex-shrink: 0;
+  }
+
+  /* Section label — inline rose (for light text sections) */
+  .section-label-inline {
+    display: inline-block;
+    color: #D4436B;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  /* Credential card */
+  .cred-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease;
+  }
+  .cred-card:hover { box-shadow: 0 4px 20px rgba(212,67,107,0.08); }
+
+  /* Divider row */
+  .divider-row {
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .divider-row:last-child { border-bottom: none; }
+
+  @media (max-width: 768px) {
+    .plan-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body class="bg-white text-[#1F1F1F]">
+
+
+<!-- ============================== HEADER ============================== -->
+<header class="bg-white border-b border-gray-100 shadow-sm px-6 md:px-12 xl:px-20 py-5">
+  <div class="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+
+    <!-- Brota Digital -->
+    <div class="space-y-0.5">
+      <p class="section-label-inline" style="margin-bottom:4px;">Propuesta de Servicios · Gestión de Redes Sociales</p>
+      <div class="flex items-center gap-2">
+        <div class="w-2 h-2 rounded-full bg-[#D4436B]"></div>
+        <span class="font-bold text-xl tracking-tight text-[#1F1F1F]">Brota Digital</span>
+      </div>
+      <p class="text-xs text-[#666]">Agencia de marketing digital · @brotadigital</p>
+    </div>
+
+    <!-- Para Roscas Lokas -->
+    <div class="text-right sm:text-right">
+      <p class="text-xs text-[#666]">Preparado para:</p>
+      <div class="flex items-center gap-1.5 justify-end mt-0.5">
+        <svg viewBox="0 0 20 20" width="11" height="11"><circle cx="10" cy="10" r="10" fill="#D4436B"/><circle cx="10" cy="10" r="5" fill="#F59E0B"/></svg>
+        <span class="font-bold text-lg tracking-tight text-[#1F1F1F]">Roscas Lokas CDMX</span>
+      </div>
+      <p class="text-xs text-[#666]">@roscaslokascdmx · Abril 2026</p>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ============================== INTRO / SITUACIÓN ACTUAL ============================== -->
+<section class="px-6 md:px-12 xl:px-20 py-20 max-w-screen-xl mx-auto">
+
+  <div class="section-label-rose">El momento de crecer</div>
+  <h1 class="font-extrabold text-4xl md:text-5xl xl:text-[3.25rem] leading-[1.12] tracking-tight text-[#1F1F1F] mb-6">
+    Tu negocio tiene un producto<br/>increíble — ahora necesitas que<br/><span class="text-[#D4436B]">más personas lo conozcan.</span>
+  </h1>
+
+  <div class="grid md:grid-cols-2 gap-10 items-start">
+
+    <!-- Copy -->
+    <div class="space-y-4">
+      <p class="text-[#374151] text-lg leading-relaxed">
+        Roscas Lokas CDMX ya tiene una base de clientes fieles y un producto que enamora. Con casi 1,200 seguidores construidos de forma orgánica, hay un público que ya quiere lo que vendes.
+      </p>
+      <p class="text-[#666] leading-relaxed">
+        El problema: sin una estrategia de contenido clara, ese crecimiento llega lento, irregular y depende del boca en boca. En CDMX, la competencia de negocios de postres y botanas en Instagram crece cada semana.
+      </p>
+      <p class="text-[#666] leading-relaxed">
+        Las temporadas altas — Reyes Magos, Día del Niño, Navidad, XV años, bautizos — son oportunidades de venta masiva que se pierden sin contenido planificado con anticipación y una comunidad activa que ya te sigue.
+      </p>
+    </div>
+
+    <!-- Situación actual card — warm cream bg, rose left border -->
+    <div class="rounded-xl bg-[#FFF8F0] border border-amber-100 overflow-hidden" style="border-left: 4px solid #D4436B;">
+      <div class="px-6 pt-5 pb-2">
+        <span class="section-label-rose" style="margin-bottom: 8px;">Situación actual</span>
+      </div>
+      <div class="px-6 pb-6 space-y-0">
+
+        <div class="divider-row flex justify-between items-center py-3" style="border-color: #f0e4d7;">
+          <span class="text-sm text-[#666]">Seguidores en Instagram</span>
+          <span class="font-bold text-lg text-[#1F1F1F]">1,178</span>
+        </div>
+        <div class="divider-row flex justify-between items-center py-3" style="border-color: #f0e4d7;">
+          <span class="text-sm text-[#666]">Posts publicados</span>
+          <span class="font-bold text-lg text-[#1F1F1F]">106</span>
+        </div>
+        <div class="divider-row flex justify-between items-center py-3" style="border-color: #f0e4d7;">
+          <span class="text-sm text-[#666]">Estrategia de contenido</span>
+          <span class="font-bold text-sm text-red-500 bg-red-50 px-2 py-0.5 rounded-full">Sin definir</span>
+        </div>
+        <div class="divider-row flex justify-between items-center py-3" style="border-color: #f0e4d7;">
+          <span class="text-sm text-[#666]">Sitio web</span>
+          <span class="font-bold text-sm text-[#666] bg-gray-100 px-2 py-0.5 rounded-full">Solo WhatsApp</span>
+        </div>
+        <div class="flex justify-between items-center py-3">
+          <span class="text-sm text-[#666]">Pauta pagada activa</span>
+          <span class="font-bold text-sm text-[#666] bg-gray-100 px-2 py-0.5 rounded-full">Ninguna</span>
+        </div>
+
+      </div>
+      <div class="mx-6 mb-6 rounded-lg bg-amber-50 border border-amber-200 px-4 py-3">
+        <p class="text-sm text-[#92400e]">Cada temporada sin estrategia es una venta que se va con la competencia. Las Reyes 2027 se ganan con contenido que empiezas hoy.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================== PLANES ============================== -->
+<section class="py-20 px-6 md:px-12 xl:px-20 bg-[#FFF8F0] border-y border-amber-100">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="section-label-rose">Planes de servicio</div>
+    <h2 class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#1F1F1F] mb-2">
+      Elige tu <span class="text-[#D4436B]">plan</span>
+    </h2>
+    <p class="text-[#666] mb-12 max-w-xl text-base">
+      Todos los planes incluyen identidad de marca consistente, copywriting en español y métricas mensuales para que siempre sepas cómo va tu negocio en redes.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6 plan-grid">
+
+      <!-- ── Plan Dulce ── -->
+      <div class="plan-card">
+        <div class="h-1 bg-amber-200"></div>
+        <div class="p-8 flex flex-col flex-1">
+
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-widest uppercase text-[#666] mb-2">Para empezar</p>
+            <h3 class="font-bold text-2xl text-[#1F1F1F] mb-1">Plan Dulce</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="font-extrabold text-[2.6rem] leading-none text-[#D4436B]">$3,500</span>
+              <span class="text-sm text-[#666]">MXN / mes</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span><strong class="text-[#1F1F1F]">12 posts/mes</strong> en Instagram</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Diseño con identidad de marca</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Copywriting en español</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Programación y publicación</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>1 reporte mensual de métricas</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20Brota%20Digital%2C%20me%20interesa%20el%20Plan%20Dulce%20para%20Roscas%20Lokas%20CDMX" class="btn-ghost px-6 py-3 text-sm w-full">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+            </svg>
+            Seleccionar plan
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ── Plan Fiesta — FEATURED ── -->
+      <div class="plan-card featured relative">
+        <!-- Amber "Más Popular" badge -->
+        <div class="absolute top-0 right-0">
+          <span class="inline-block bg-[#F59E0B] text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-bl-lg rounded-tr-[14px]">
+            Mas Popular
+          </span>
+        </div>
+        <div class="h-1 bg-[#D4436B]"></div>
+        <div class="p-8 flex flex-col flex-1 bg-gradient-to-b from-white to-[#FFF8F0]/60">
+
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-widest uppercase text-[#D4436B] mb-2">Recomendado</p>
+            <h3 class="font-bold text-2xl text-[#1F1F1F] mb-1">Plan Fiesta</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="font-extrabold text-[2.6rem] leading-none text-[#D4436B]">$5,500</span>
+              <span class="text-sm text-[#666]">MXN / mes</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span><strong class="text-[#1F1F1F]">20 posts/mes</strong> en Instagram</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span><strong class="text-[#1F1F1F]">Stories</strong> 3 veces por semana</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Estrategia de hashtags</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Respuesta a comentarios y DMs (lunes-viernes)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span><strong class="text-[#1F1F1F]">Gestión de temporadas</strong> — Reyes, Navidad, Dia del Nino, eventos</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Diseño con identidad de marca + copywriting</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>1 reporte mensual de metricas</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20Brota%20Digital%2C%20me%20interesa%20el%20Plan%20Fiesta%20para%20Roscas%20Lokas%20CDMX" class="btn-primary px-6 py-3 text-sm w-full">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+            </svg>
+            Seleccionar plan
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ── Plan Premium ── -->
+      <div class="plan-card">
+        <div class="h-1 bg-gray-200"></div>
+        <div class="p-8 flex flex-col flex-1">
+
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-widest uppercase text-[#666] mb-2">Maximo impacto</p>
+            <h3 class="font-bold text-2xl text-[#1F1F1F] mb-1">Plan Premium</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="font-extrabold text-[2.6rem] leading-none text-[#D4436B]">$8,500</span>
+              <span class="text-sm text-[#666]">MXN / mes</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span><strong class="text-[#1F1F1F]">30 posts/mes</strong> en Instagram</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span><strong class="text-[#1F1F1F]">2 Reels/mes</strong> — video corto con tendencia</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Stories 3x semana + estrategia de hashtags</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Respuesta a comentarios y DMs (L-V)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Gestion de temporadas y eventos especiales</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span><strong class="text-[#1F1F1F]">Pauta incluida</strong> — hasta $2,000 MXN presupuesto en ads</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span><strong class="text-[#1F1F1F]">TikTok</strong> — presencia en la plataforma de mayor alcance</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+              </div>
+              <span>Reporte quincenal + llamada mensual de estrategia</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20Brota%20Digital%2C%20me%20interesa%20el%20Plan%20Premium%20para%20Roscas%20Lokas%20CDMX" class="btn-ghost px-6 py-3 text-sm w-full">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+            </svg>
+            Seleccionar plan
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-center text-xs mt-8 text-[#666]">
+      Todos los planes se facturan mensualmente sin contrato de permanencia obligatorio. Precios en MXN, IVA no incluido.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ============================== POR QUÉ BROTA DIGITAL ============================== -->
+<section class="py-20 px-6 md:px-12 xl:px-20 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: copy -->
+      <div class="space-y-6">
+        <div class="section-label-rose">Por que Brota Digital</div>
+        <h2 class="font-extrabold text-4xl md:text-5xl tracking-tight leading-[1.12] text-[#1F1F1F]">
+          No somos<br/>una agencia <span class="text-[#D4436B]">generica.</span>
+        </h2>
+        <p class="text-[#374151] leading-relaxed text-base">
+          Entendemos los negocios de comida hecha en casa: el ritmo, las temporadas, el orgullo artesanal y las ganas de llegar a mas gente sin perder la esencia.
+        </p>
+        <p class="text-[#666] leading-relaxed">
+          Tu cliente no es cualquiera — busca calidad, presentacion y confianza antes de pedir para un evento importante. Sabemos como mostrar eso en cada post, cada Story y cada Reel para que la decision de compra llegue sola.
+        </p>
+
+        <div class="space-y-4 pt-2">
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0">
+              <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Contenido diseñado para generar pedidos — no solo likes</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0">
+              <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Identidad visual calida y artesanal desde el primer post</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0">
+              <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Comunicacion directa — sin intermediarios ni cuentas ejecutivas</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0">
+              <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Temporadas planificadas con anticipacion para que nunca pierdas una fecha clave</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0">
+              <svg viewBox="0 0 16 16" fill="#D4436B" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Flexibles: crecemos contigo, sin contratos leoninos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: credentials -->
+      <div class="space-y-4">
+        <div class="cred-card p-6 space-y-0">
+          <p class="section-label-inline" style="margin-bottom:12px;">Brota Digital — en numeros</p>
+          <div class="divider-row flex justify-between items-center py-3">
+            <span class="text-sm text-[#666]">Cuentas gestionadas activamente</span>
+            <span class="font-extrabold text-2xl text-[#D4436B]">8+</span>
+          </div>
+          <div class="divider-row flex justify-between items-center py-3">
+            <span class="text-sm text-[#666]">Sectores con experiencia</span>
+            <span class="font-bold text-sm text-[#1F1F1F]">Food · Retail · Servicios</span>
+          </div>
+          <div class="divider-row flex justify-between items-center py-3">
+            <span class="text-sm text-[#666]">Posts producidos (historico)</span>
+            <span class="font-extrabold text-2xl text-[#D4436B]">500+</span>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <span class="text-sm text-[#666]">Tiempo promedio de entrega de contenido</span>
+            <span class="font-bold text-[#1F1F1F]">48 hrs</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl p-6 bg-[#FFF8F0] border border-amber-100">
+          <p class="text-sm font-semibold text-[#1F1F1F] mb-1">Garantia de satisfaccion</p>
+          <p class="text-sm text-[#666]">
+            Si al primer mes no estas conforme con el trabajo entregado, hacemos los ajustes necesarios sin costo adicional hasta que el resultado sea el correcto.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== PRÓXIMOS PASOS ============================== -->
+<section class="py-20 px-6 md:px-12 xl:px-20 bg-[#FFF8F0] border-t border-amber-100">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-semibold text-[#D4436B] uppercase tracking-widest mb-3">Como empezamos</span>
+      <h2 class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#1F1F1F]">
+        Proximos <span class="text-[#D4436B]">pasos</span>
+      </h2>
+      <p class="text-[#666] mt-3 text-base max-w-md mx-auto">
+        Tres pasos para que Roscas Lokas CDMX tenga una presencia en redes activa, consistente y que genere pedidos.
+      </p>
+    </div>
+
+    <!-- Connecting line on desktop -->
+    <div class="grid md:grid-cols-3 gap-0 relative">
+      <div class="hidden md:block absolute top-[52px] left-[calc(16.66%+26px)] right-[calc(16.66%+26px)] h-0.5 bg-rose-100 z-0"></div>
+
+      <!-- Paso 1 -->
+      <div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0">
+        <div class="step-circle mb-5">1</div>
+        <p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Hoy mismo</p>
+        <h3 class="font-bold text-lg text-[#1F1F1F] mb-2">Firma la propuesta</h3>
+        <p class="text-sm text-[#666] leading-relaxed">
+          Nos confirmas el plan elegido por WhatsApp. No hay papeleo complicado — un mensaje es suficiente para arrancar la conversacion.
+        </p>
+      </div>
+
+      <!-- Paso 2 -->
+      <div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0">
+        <div class="step-circle mb-5">2</div>
+        <p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Dias 1–3</p>
+        <h3 class="font-bold text-lg text-[#1F1F1F] mb-2">Onboarding</h3>
+        <p class="text-sm text-[#666] leading-relaxed">
+          Hacemos una sesion de brief para entender tu estilo, tus productos estrella, tu clientela y las temporadas que mas te importan. Preparamos el plan editorial del primer mes.
+        </p>
+      </div>
+
+      <!-- Paso 3 -->
+      <div class="relative z-10 flex flex-col items-center text-center px-6">
+        <div class="step-circle mb-5">3</div>
+        <p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Dia 7</p>
+        <h3 class="font-bold text-lg text-[#1F1F1F] mb-2">Primer contenido live</h3>
+        <p class="text-sm text-[#666] leading-relaxed">
+          En menos de una semana, Roscas Lokas CDMX ya tiene su primer contenido publicado con identidad, estrategia y el tono que le habla directo a tus clientes.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== CTA FINAL ============================== -->
+<section class="py-20 px-6 md:px-12 xl:px-20 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="rounded-2xl overflow-hidden text-center px-10 md:px-20 py-16 md:py-20" style="background:#D4436B;">
+      <p class="text-xs font-bold tracking-widest uppercase text-rose-200 mb-4">Hagamoslo</p>
+      <h2 class="font-extrabold text-4xl md:text-6xl text-white tracking-tight mb-4">
+        Que empiece la fiesta.
+      </h2>
+      <p class="text-rose-100 text-lg mb-10 max-w-lg mx-auto">
+        Escribenos ahora y en menos de 24 horas te confirmamos tu plan, tu fecha de inicio y las primeras ideas para tu cuenta.
+      </p>
+      <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20Brota%20Digital%2C%20quiero%20arrancar%20con%20la%20gestion%20de%20redes%20para%20Roscas%20Lokas%20CDMX"
+         class="inline-flex items-center justify-center gap-3 bg-white text-[#D4436B] font-bold px-10 py-4 rounded-lg text-sm transition hover:bg-rose-50">
+        <svg viewBox="0 0 24 24" fill="#D4436B" class="w-5 h-5">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+        </svg>
+        Escribir por WhatsApp
+      </a>
+      <p class="mt-6 text-xs text-rose-200">Brota Digital · @brotadigital · Para Roscas Lokas CDMX (@roscaslokascdmx)</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="bg-white border-t border-gray-100 py-8 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+
+    <div class="flex items-center gap-2">
+      <div class="w-2 h-2 rounded-full bg-[#D4436B]"></div>
+      <span class="font-bold text-sm tracking-tight text-[#1F1F1F]">Brota Digital</span>
+    </div>
+
+    <p class="text-xs text-center text-[#666]">
+      Propuesta preparada para Roscas Lokas CDMX · Valida 30 dias a partir del 22 de abril de 2026
+    </p>
+
+    <span class="text-xs text-[#666] font-medium">Confidencial</span>
+
+  </div>
+</footer>
+
+</body>
+</html>
