@@ -1436,6 +1436,15 @@
     /* Smooth hover transitions (150-300ms) */
     a, button { transition: opacity var(--transition), color var(--transition); }
 
+    /* Carousels: limit width on desktop */
+    @media (min-width: 768px) {
+      .menu-carousel {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* All section images: full width on mobile, smaller centered on desktop */
     @media (min-width: 768px) {
       .hero-full-img,
