@@ -685,7 +685,7 @@
 
     .hero__image-wrap {
       position: relative;
-      height: clamp(400px, 55vw, 640px);
+      height: auto;
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
       overflow: hidden;
       box-shadow: var(--shadow-lg);
@@ -1049,14 +1049,12 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-lg);
-      aspect-ratio: 4 / 5;
     }
 
     .about__image-wrap img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
+      height: auto;
+      display: block;
     }
 
     .about__title {
@@ -1502,7 +1500,7 @@
       }
 
       .about__image-wrap {
-        aspect-ratio: 4 / 3;
+        /* no forced aspect-ratio */
       }
 
       .proceso__steps {
@@ -1583,7 +1581,7 @@
     /* All section images: full width on mobile, smaller centered on desktop */
     @media (min-width: 768px) {
       .hero-full-img,
-      section img:not(.menu-carousel__img):not([style*="height:500px"]):not([style*="border-radius:8px"]) {
+      section img:not(.menu-carousel__img):not([style*="border-radius:8px"]) {
         max-width: 450px !important;
         width: 100% !important;
         margin-left: auto !important;
@@ -1818,7 +1816,7 @@
 
     <!-- foto birthday cake -->
     <img src="bakery-birthday.jpg" alt="Birthday Cake The Baking Room" class="hero-full-img"
-      style="width:100%; max-height:75vw; object-fit:cover; display:block;"/>
+      style="width:100%; height:auto; display:block;"/>
 
   </section>
 
@@ -1851,7 +1849,7 @@
 
   <!-- foto moño -->
   <img src="home-1.jpg" alt="Pastel de moño The Baking Room" class="hero-full-img"
-    style="width:100%; max-height:75vw; object-fit:cover; display:block;"/>
+    style="width:100%; height:auto; display:block;"/>
 
   <!-- ============================================
        MENÚ
@@ -2482,8 +2480,8 @@
 
         <!-- Fotos bodas -->
         <div class="fade-up">
-          <img src="pavlova-1.jpg" alt="Pavlova de boda The Baking Room CDMX" loading="lazy" style="width:100%; height:500px; object-fit:cover; display:block; border-radius:10px; margin-bottom:8px;"/>
-          <img src="pavlova-2.jpg" alt="Pavlova de boda The Baking Room CDMX" loading="lazy" style="width:100%; height:500px; object-fit:cover; display:block; border-radius:10px; margin-bottom:8px;"/>
+          <img src="pavlova-1.jpg" alt="Pavlova de boda The Baking Room CDMX" loading="lazy" style="width:100%; height:auto; display:block; border-radius:10px; margin-bottom:8px;"/>
+          <img src="pavlova-2.jpg" alt="Pavlova de boda The Baking Room CDMX" loading="lazy" style="width:100%; height:auto; display:block; border-radius:10px; margin-bottom:8px;"/>
           <div class="menu-carousel" aria-label="Fotos Pasteles de Boda">
             <img class="menu-carousel__img" src="bodas-1.jpg" alt="Pastel de boda The Baking Room CDMX" loading="lazy"/>
             <img class="menu-carousel__img" src="bodas-2.jpg" alt="Pastel de boda The Baking Room CDMX" loading="lazy"/>
