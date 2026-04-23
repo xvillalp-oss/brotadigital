@@ -7,174 +7,174 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          "red":      "#e01010",
-          "red-dk":   "#c00d0d",
-          "amber":    "#F59E0B",
-          "near-black":"#111827",
-          "gray-mid": "#6B7280",
-          "light-bg": "#f7f8fc",
-        },
-        fontFamily: {
-          sans: ["Inter", "sans-serif"],
-          condensed: ["Barlow Condensed", "sans-serif"],
-        }
-      }
-    }
-  }
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+"red": "#e01010",
+"red-dk": "#c00d0d",
+"amber": "#F59E0B",
+"near-black":"#111827",
+"gray-mid": "#6B7280",
+"light-bg": "#f7f8fc",
+},
+fontFamily: {
+sans: ["Inter", "sans-serif"],
+condensed: ["Barlow Condensed", "sans-serif"],
+}
+}
+}
+}
 </script>
 <style>
-  * { font-family: 'Inter', sans-serif; }
-  html { scroll-behavior: smooth; }
+* { font-family: 'Inter', sans-serif; }
+html { scroll-behavior: smooth; }
 
-  h1, h2, h3, .heading {
-    font-family: 'Barlow Condensed', sans-serif;
-  }
+h1, h2, h3, .heading {
+font-family: 'Barlow Condensed', sans-serif;
+}
 
-  /* Buttons */
-  .btn-primary {
-    background: #e01010;
-    color: #fff;
-    transition: background 0.2s ease, transform 0.15s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-  .btn-primary:hover { background: #c00d0d; transform: translateY(-1px); }
+/* Buttons */
+.btn-primary {
+background: #e01010;
+color: #fff;
+transition: background 0.2s ease, transform 0.15s ease;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+font-weight: 600;
+border-radius: 8px;
+text-decoration: none;
+}
+.btn-primary:hover { background: #c00d0d; transform: translateY(-1px); }
 
-  .btn-ghost {
-    background: transparent;
-    color: #e01010;
-    border: 1.5px solid #e01010;
-    transition: background 0.2s ease, transform 0.15s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-  .btn-ghost:hover { background: #fff1f1; transform: translateY(-1px); }
+.btn-ghost {
+background: transparent;
+color: #e01010;
+border: 1.5px solid #e01010;
+transition: background 0.2s ease, transform 0.15s ease;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+font-weight: 600;
+border-radius: 8px;
+text-decoration: none;
+}
+.btn-ghost:hover { background: #fff1f1; transform: translateY(-1px); }
 
-  /* Plan cards */
-  .plan-card {
-    background: #fff;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  .plan-card:hover {
-    box-shadow: 0 8px 32px rgba(224,16,16,0.10);
-    transform: translateY(-4px);
-  }
-  .plan-card.featured {
-    border-color: #e01010;
-    border-width: 2px;
-    box-shadow: 0 8px 32px rgba(224,16,16,0.14);
-  }
+/* Plan cards */
+.plan-card {
+background: #fff;
+border: 1.5px solid #e5e7eb;
+border-radius: 16px;
+overflow: hidden;
+transition: box-shadow 0.2s ease, transform 0.2s ease;
+display: flex;
+flex-direction: column;
+}
+.plan-card:hover {
+box-shadow: 0 8px 32px rgba(224,16,16,0.10);
+transform: translateY(-4px);
+}
+.plan-card.featured {
+border-color: #e01010;
+border-width: 2px;
+box-shadow: 0 8px 32px rgba(224,16,16,0.14);
+}
 
-  /* Check items */
-  .check-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    color: #374151;
-    line-height: 1.6;
-  }
-  .check-icon {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #fff1f1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1px;
-  }
+/* Check items */
+.check-item {
+display: flex;
+align-items: flex-start;
+gap: 10px;
+font-size: 14px;
+color: #374151;
+line-height: 1.6;
+}
+.check-icon {
+flex-shrink: 0;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #fff1f1;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 1px;
+}
 
-  /* Step numbers */
-  .step-circle {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #e01010;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(224,16,16,0.25);
-  }
+/* Step numbers */
+.step-circle {
+width: 52px;
+height: 52px;
+border-radius: 50%;
+background: #e01010;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+font-weight: 700;
+font-size: 1.2rem;
+color: #fff;
+box-shadow: 0 4px 14px rgba(224,16,16,0.25);
+}
 
-  /* Section label — amber pill style matching hero */
-  .section-label-amber {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #fffbeb;
-    color: #d97706;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 999px;
-    border: 1px solid #fde68a;
-    margin-bottom: 16px;
-  }
-  .section-label-amber::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #F59E0B;
-    flex-shrink: 0;
-  }
+/* Section label — amber pill style matching hero */
+.section-label-amber {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+background: #fffbeb;
+color: #d97706;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+padding: 5px 12px;
+border-radius: 999px;
+border: 1px solid #fde68a;
+margin-bottom: 16px;
+}
+.section-label-amber::before {
+content: '';
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: #F59E0B;
+flex-shrink: 0;
+}
 
-  /* Section label — red inline (for dark bg sections) */
-  .section-label-red {
-    display: inline-block;
-    color: #e01010;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
+/* Section label — red inline (for dark bg sections) */
+.section-label-red {
+display: inline-block;
+color: #e01010;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+margin-bottom: 14px;
+}
 
-  /* Credential card */
-  .cred-card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    transition: box-shadow 0.2s ease;
-  }
-  .cred-card:hover { box-shadow: 0 4px 20px rgba(224,16,16,0.08); }
+/* Credential card */
+.cred-card {
+background: #fff;
+border: 1px solid #e5e7eb;
+border-radius: 12px;
+transition: box-shadow 0.2s ease;
+}
+.cred-card:hover { box-shadow: 0 4px 20px rgba(224,16,16,0.08); }
 
-  /* Divider row */
-  .divider-row {
-    border-bottom: 1px solid #f3f4f6;
-  }
-  .divider-row:last-child { border-bottom: none; }
+/* Divider row */
+.divider-row {
+border-bottom: 1px solid #f3f4f6;
+}
+.divider-row:last-child { border-bottom: none; }
 
-  @media (max-width: 768px) {
-    .plan-grid { grid-template-columns: 1fr !important; }
-  }
+@media (max-width: 768px) {
+.plan-grid { grid-template-columns: 1fr !important; }
+}
 </style>
 </head>
 <body class="bg-white text-[#111827]">
@@ -182,1080 +182,1080 @@
 
 <!-- ============================== HEADER ============================== -->
 <header class="bg-white border-b border-gray-100 shadow-sm px-6 md:px-12 xl:px-20 py-5">
-  <div class="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div class="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
 
-    <!-- Brota Digital -->
-    <div class="space-y-0.5">
-      <p class="section-label-red" style="margin-bottom:4px;">Propuesta de Servicios</p>
-      <div class="flex items-center gap-2">
-        <div class="w-2 h-2 rounded-full bg-[#e01010]"></div>
-        <span class="font-bold text-xl tracking-tight text-[#111827]">Brota Digital</span>
-      </div>
-      <p class="text-xs text-[#6B7280]">Agencia de marketing digital · @brotadigital</p>
-    </div>
+<!-- Brota Digital -->
+<div class="space-y-0.5">
+<p class="section-label-red" style="margin-bottom:4px;">Propuesta de Servicios</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-[#e01010]"></div>
+<span class="font-bold text-xl tracking-tight text-[#111827]">Brota Digital</span>
+</div>
+<p class="text-xs text-[#6B7280]">Agencia de marketing digital · @brotadigital</p>
+</div>
 
-    <!-- Para OLN Tires -->
-    <div class="text-right sm:text-right">
-      <p class="text-xs text-[#6B7280]">Preparado para:</p>
-      <div class="flex items-center gap-1.5 justify-end mt-0.5">
-        <svg viewBox="0 0 20 20" width="10" height="10"><polygon points="10,0 20,20 0,20" fill="#e01010"/></svg>
-        <span class="font-bold text-lg tracking-tight text-[#111827]" style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.04em;">OLN TIRES</span>
-      </div>
-      <p class="text-xs text-[#6B7280]">Outlet Llantas del Norte · Abril 2026</p>
-    </div>
+<!-- Para OLN Tires -->
+<div class="text-right sm:text-right">
+<p class="text-xs text-[#6B7280]">Preparado para:</p>
+<div class="flex items-center gap-1.5 justify-end mt-0.5">
+<svg viewBox="0 0 20 20" width="10" height="10"><polygon points="10,0 20,20 0,20" fill="#e01010"/></svg>
+<span class="font-bold text-lg tracking-tight text-[#111827]" style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.04em;">OLN TIRES</span>
+</div>
+<p class="text-xs text-[#6B7280]">Outlet Llantas del Norte · Abril 2026</p>
+</div>
 
-  </div>
+</div>
 </header>
 
 
 <!-- ============================== INTRO / SITUACIÓN ACTUAL ============================== -->
 <section class="px-6 md:px-12 xl:px-20 py-20 max-w-screen-xl mx-auto">
 
-  <div class="section-label-amber">Por qué ahora</div>
-  <h1 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl xl:text-[3.25rem] leading-[1.12] tracking-tight text-[#111827] mb-6">
-    El mercado industrial busca<br/>proveedores en redes. <span class="text-[#e01010]">¿Están ahí?</span>
-  </h1>
+<div class="section-label-amber">Por qué ahora</div>
+<h1 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl xl:text-[3.25rem] leading-[1.12] tracking-tight text-[#111827] mb-6">
+El mercado industrial busca<br/>proveedores en redes. <span class="text-[#e01010]">¿Están ahí?</span>
+</h1>
 
-  <div class="grid md:grid-cols-2 gap-10 items-start">
+<div class="grid md:grid-cols-2 gap-10 items-start">
 
-    <!-- Copy -->
-    <div class="space-y-4">
-      <p class="text-[#374151] text-lg leading-relaxed">
-        OLN Tires tiene presencia física sólida pero sin estrategia de contenido en redes. Los gerentes de flotilla, compradores industriales y transportistas buscan proveedores en Instagram y LinkedIn antes de cotizar.
-      </p>
-      <p class="text-[#6B7280] leading-relaxed">
-        En el sector de llantas para camión, agrícola e industrial, la confianza se construye antes del primer contacto. Una presencia digital inconsistente o ausente transmite una señal equivocada a quienes ya están buscando un distribuidor confiable.
-      </p>
-      <p class="text-[#6B7280] leading-relaxed">
-        El espacio de contenido B2B en la industria llantero-industrial en México sigue siendo territorio libre. OLN Tires tiene la oportunidad de posicionarse como referente antes de que la competencia lo haga.
-      </p>
-    </div>
+<!-- Copy -->
+<div class="space-y-4">
+<p class="text-[#374151] text-lg leading-relaxed">
+OLN Tires tiene presencia física sólida pero sin estrategia de contenido en redes. Los gerentes de flotilla, compradores industriales y transportistas buscan proveedores en Instagram y LinkedIn antes de cotizar.
+</p>
+<p class="text-[#6B7280] leading-relaxed">
+En el sector de llantas para camión, agrícola e industrial, la confianza se construye antes del primer contacto. Una presencia digital inconsistente o ausente transmite una señal equivocada a quienes ya están buscando un distribuidor confiable.
+</p>
+<p class="text-[#6B7280] leading-relaxed">
+El espacio de contenido B2B en la industria llantero-industrial en México sigue siendo territorio libre. OLN Tires tiene la oportunidad de posicionarse como referente antes de que la competencia lo haga.
+</p>
+</div>
 
-    <!-- Situación actual card — light gray bg, amber left border -->
-    <div class="rounded-xl bg-[#f7f8fc] border border-gray-200 overflow-hidden" style="border-left: 4px solid #F59E0B;">
-      <div class="px-6 pt-5 pb-2">
-        <span class="section-label-amber" style="margin-bottom: 8px;">Situación actual</span>
-      </div>
-      <div class="px-6 pb-6 space-y-0">
+<!-- Situación actual card — light gray bg, amber left border -->
+<div class="rounded-xl bg-[#f7f8fc] border border-gray-200 overflow-hidden" style="border-left: 4px solid #F59E0B;">
+<div class="px-6 pt-5 pb-2">
+<span class="section-label-amber" style="margin-bottom: 8px;">Situación actual</span>
+</div>
+<div class="px-6 pb-6 space-y-0">
 
-        <div class="divider-row flex justify-between items-center py-3">
-          <span class="text-sm text-[#6B7280]">Seguidores en Instagram</span>
-          <span class="font-bold text-lg text-[#111827]">[a definir]</span>
-        </div>
-        <div class="divider-row flex justify-between items-center py-3">
-          <span class="text-sm text-[#6B7280]">Posts publicados</span>
-          <span class="font-bold text-lg text-[#111827]">0 estratégicos</span>
-        </div>
-        <div class="divider-row flex justify-between items-center py-3">
-          <span class="text-sm text-[#6B7280]">Estrategia de contenido</span>
-          <span class="font-bold text-sm text-red-500 bg-red-50 px-2 py-0.5 rounded-full">Ninguna</span>
-        </div>
-        <div class="flex justify-between items-center py-3">
-          <span class="text-sm text-[#6B7280]">Competencia activa en redes</span>
-          <span class="font-bold text-sm text-[#e01010] bg-red-50 px-2 py-0.5 rounded-full">Media-Alta</span>
-        </div>
+<div class="divider-row flex justify-between items-center py-3">
+<span class="text-sm text-[#6B7280]">Seguidores en Instagram</span>
+<span class="font-bold text-lg text-[#111827]">[a definir]</span>
+</div>
+<div class="divider-row flex justify-between items-center py-3">
+<span class="text-sm text-[#6B7280]">Posts publicados</span>
+<span class="font-bold text-lg text-[#111827]">0 estratégicos</span>
+</div>
+<div class="divider-row flex justify-between items-center py-3">
+<span class="text-sm text-[#6B7280]">Estrategia de contenido</span>
+<span class="font-bold text-sm text-red-500 bg-red-50 px-2 py-0.5 rounded-full">Ninguna</span>
+</div>
+<div class="flex justify-between items-center py-3">
+<span class="text-sm text-[#6B7280]">Competencia activa en redes</span>
+<span class="font-bold text-sm text-[#e01010] bg-red-50 px-2 py-0.5 rounded-full">Media-Alta</span>
+</div>
 
-      </div>
-      <div class="mx-6 mb-6 rounded-lg bg-amber-50 border border-amber-200 px-4 py-3">
-        <p class="text-sm text-[#92400e]">Cada semana sin contenido es una cotización que va a parar a manos de la competencia que sí aparece en redes.</p>
-      </div>
-    </div>
+</div>
+<div class="mx-6 mb-6 rounded-lg bg-amber-50 border border-amber-200 px-4 py-3">
+<p class="text-sm text-[#92400e]">Cada semana sin contenido es una cotización que va a parar a manos de la competencia que sí aparece en redes.</p>
+</div>
+</div>
 
-  </div>
+</div>
 </section>
 
 
 <!-- ============================== AUDIENCIA OBJETIVO ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20 bg-white border-t border-gray-100">
-  <div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto">
 
-    <div class="section-label-amber">A quién le hablamos</div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827] mb-3">
-      Los 3 perfiles que <span class="text-[#e01010]">toman decisiones</span>
-    </h2>
-    <p class="text-[#6B7280] mb-12 max-w-xl text-base">
-      Cada pieza de contenido se diseña pensando en quién la va a ver y qué los va a mover a cotizar.
-    </p>
+<div class="section-label-amber">A quién le hablamos</div>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827] mb-3">
+Los 3 perfiles que <span class="text-[#e01010]">toman decisiones</span>
+</h2>
+<p class="text-[#6B7280] mb-12 max-w-xl text-base">
+Cada pieza de contenido se diseña pensando en quién la va a ver y qué los va a mover a cotizar.
+</p>
 
-    <div class="grid md:grid-cols-3 gap-6">
+<div class="grid md:grid-cols-3 gap-6">
 
-      <!-- Persona 1: Gerente de flotilla -->
-      <div class="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200" style="background:#0a0a0a;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-7">
-          <div class="text-5xl mb-4">🚛</div>
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase text-[#e01010] border border-[#e01010] border-opacity-40 px-2.5 py-1 rounded-full mb-3">
-            Perfil 1
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-xl text-white mb-1">Gerente de Flotilla</h3>
-          <p class="text-sm text-gray-400 mb-5">Empresa transportista · 10–50 unidades</p>
+<!-- Persona 1: Gerente de flotilla -->
+<div class="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200" style="background:#0a0a0a;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-7">
+<div class="text-5xl mb-4"></div>
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase text-[#e01010] border border-[#e01010] border-opacity-40 px-2.5 py-1 rounded-full mb-3">
+Perfil 1
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-xl text-white mb-1">Gerente de Flotilla</h3>
+<p class="text-sm text-gray-400 mb-5">Empresa transportista · 10–50 unidades</p>
 
-          <div class="space-y-3">
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Qué busca</p>
-              <p class="text-sm text-gray-300 leading-relaxed">Precio competitivo, disponibilidad inmediata y proveedor que no lo deje tirado cuando hay una urgencia.</p>
-            </div>
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Dónde está</p>
-              <div class="flex gap-2 flex-wrap">
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Facebook</span>
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">WhatsApp</span>
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Google</span>
-              </div>
-            </div>
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Hook de contenido</p>
-              <p class="text-sm text-gray-400 italic">"Entrega en 24 h · Stock garantizado · Precio directo"</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="space-y-3">
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Qué busca</p>
+<p class="text-sm text-gray-300 leading-relaxed">Precio competitivo, disponibilidad inmediata y proveedor que no lo deje tirado cuando hay una urgencia.</p>
+</div>
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Dónde está</p>
+<div class="flex gap-2 flex-wrap">
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Facebook</span>
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">WhatsApp</span>
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Google</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Hook de contenido</p>
+<p class="text-sm text-gray-400 italic">"Entrega en 24 h · Stock garantizado · Precio directo"</p>
+</div>
+</div>
+</div>
+</div>
 
-      <!-- Persona 2: Responsable de compras industrial -->
-      <div class="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200" style="background:#0a0a0a;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-7">
-          <div class="text-5xl mb-4">🏭</div>
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase text-[#e01010] border border-[#e01010] border-opacity-40 px-2.5 py-1 rounded-full mb-3">
-            Perfil 2
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-xl text-white mb-1">Responsable de Compras Industrial</h3>
-          <p class="text-sm text-gray-400 mb-5">Planta manufacturera o almacén · compra en volumen</p>
+<!-- Persona 2: Responsable de compras industrial -->
+<div class="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200" style="background:#0a0a0a;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-7">
+<div class="text-5xl mb-4"></div>
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase text-[#e01010] border border-[#e01010] border-opacity-40 px-2.5 py-1 rounded-full mb-3">
+Perfil 2
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-xl text-white mb-1">Responsable de Compras Industrial</h3>
+<p class="text-sm text-gray-400 mb-5">Planta manufacturera o almacén · compra en volumen</p>
 
-          <div class="space-y-3">
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Qué busca</p>
-              <p class="text-sm text-gray-300 leading-relaxed">Llantas industriales en cantidad, crédito disponible, cotización rápida y proveedor formal con factura.</p>
-            </div>
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Dónde está</p>
-              <div class="flex gap-2 flex-wrap">
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">LinkedIn</span>
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Google</span>
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Email</span>
-              </div>
-            </div>
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Hook de contenido</p>
-              <p class="text-sm text-gray-400 italic">"Llantas industriales · Cotización en minutos · Distribución directa"</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="space-y-3">
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Qué busca</p>
+<p class="text-sm text-gray-300 leading-relaxed">Llantas industriales en cantidad, crédito disponible, cotización rápida y proveedor formal con factura.</p>
+</div>
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Dónde está</p>
+<div class="flex gap-2 flex-wrap">
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">LinkedIn</span>
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Google</span>
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Email</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Hook de contenido</p>
+<p class="text-sm text-gray-400 italic">"Llantas industriales · Cotización en minutos · Distribución directa"</p>
+</div>
+</div>
+</div>
+</div>
 
-      <!-- Persona 3: Agricultor / Empresa agrícola -->
-      <div class="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200" style="background:#0a0a0a;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-7">
-          <div class="text-5xl mb-4">🌾</div>
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase text-[#e01010] border border-[#e01010] border-opacity-40 px-2.5 py-1 rounded-full mb-3">
-            Perfil 3
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-xl text-white mb-1">Agricultor / Empresa Agrícola</h3>
-          <p class="text-sm text-gray-400 mb-5">Temporadas definidas · necesita asesoría técnica</p>
+<!-- Persona 3: Agricultor / Empresa agrícola -->
+<div class="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200" style="background:#0a0a0a;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-7">
+<div class="text-5xl mb-4"></div>
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase text-[#e01010] border border-[#e01010] border-opacity-40 px-2.5 py-1 rounded-full mb-3">
+Perfil 3
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-xl text-white mb-1">Agricultor / Empresa Agrícola</h3>
+<p class="text-sm text-gray-400 mb-5">Temporadas definidas · necesita asesoría técnica</p>
 
-          <div class="space-y-3">
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Qué busca</p>
-              <p class="text-sm text-gray-300 leading-relaxed">La llanta correcta para su tipo de terreno y cultivo, sin pagar de más. Confía en quien sabe del tema.</p>
-            </div>
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Dónde está</p>
-              <div class="flex gap-2 flex-wrap">
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Facebook</span>
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Instagram</span>
-                <span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">WhatsApp</span>
-              </div>
-            </div>
-            <div>
-              <p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Hook de contenido</p>
-              <p class="text-sm text-gray-400 italic">"Llanta agrícola correcta · Asesoría técnica sin costo · Temporada lista"</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="space-y-3">
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Qué busca</p>
+<p class="text-sm text-gray-300 leading-relaxed">La llanta correcta para su tipo de terreno y cultivo, sin pagar de más. Confía en quien sabe del tema.</p>
+</div>
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Dónde está</p>
+<div class="flex gap-2 flex-wrap">
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Facebook</span>
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">Instagram</span>
+<span class="text-xs bg-white bg-opacity-10 text-gray-300 px-2.5 py-1 rounded-full">WhatsApp</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-semibold tracking-widest uppercase text-[#e01010] mb-1">Hook de contenido</p>
+<p class="text-sm text-gray-400 italic">"Llanta agrícola correcta · Asesoría técnica sin costo · Temporada lista"</p>
+</div>
+</div>
+</div>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
 
 <!-- ============================== PILARES DE CONTENIDO ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20" style="background:#111;">
-  <div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto">
 
-    <div class="inline-flex items-center gap-2 mb-4" style="background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.3); padding:5px 14px; border-radius:999px;">
-      <span style="width:6px;height:6px;border-radius:50%;background:#e01010;display:inline-block;flex-shrink:0;"></span>
-      <span style="color:#e01010;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Estrategia de contenido</span>
-    </div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-white mb-3">
-      Los 5 pilares de contenido <span style="color:#e01010;">OLN Tires</span>
-    </h2>
-    <p class="text-gray-400 mb-14 max-w-xl text-base">
-      Todo el contenido que producimos cae dentro de uno de estos pilares. Así cada post tiene un propósito claro y la cuenta comunica de forma consistente.
-    </p>
+<div class="inline-flex items-center gap-2 mb-4" style="background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.3); padding:5px 14px; border-radius:999px;">
+<span style="width:6px;height:6px;border-radius:50%;background:#e01010;display:inline-block;flex-shrink:0;"></span>
+<span style="color:#e01010;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Estrategia de contenido</span>
+</div>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-white mb-3">
+Los 5 pilares de contenido <span style="color:#e01010;">OLN Tires</span>
+</h2>
+<p class="text-gray-400 mb-14 max-w-xl text-base">
+Todo el contenido que producimos cae dentro de uno de estos pilares. Así cada post tiene un propósito claro y la cuenta comunica de forma consistente.
+</p>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <!-- Pilar 1 -->
-      <div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800" style="background:#1a1a1a; border-color:#2a2a2a;">
-        <div class="text-4xl mb-4">🚛</div>
-        <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 1</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Producto en Acción</h3>
-        <p class="text-sm text-gray-400 leading-relaxed">
-          Llantas en campo, flotas reales trabajando, maquinaria en operación. Contenido que muestra el producto donde más importa: en el trabajo.
-        </p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Fotos</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Reels</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Stories</span>
-        </div>
-      </div>
+<!-- Pilar 1 -->
+<div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800" style="background:#1a1a1a; border-color:#2a2a2a;">
+<div class="text-4xl mb-4"></div>
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 1</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Producto en Acción</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+Llantas en campo, flotas reales trabajando, maquinaria en operación. Contenido que muestra el producto donde más importa: en el trabajo.
+</p>
+<div class="mt-4 flex gap-2 flex-wrap">
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Fotos</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Reels</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Stories</span>
+</div>
+</div>
 
-      <!-- Pilar 2 -->
-      <div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800" style="background:#1a1a1a; border-color:#2a2a2a;">
-        <div class="text-4xl mb-4">🔧</div>
-        <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 2</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Tips y Educación</h3>
-        <p class="text-sm text-gray-400 leading-relaxed">
-          Cómo elegir la llanta correcta, señales de desgaste, diferencias entre modelos, mantenimiento preventivo. Contenido que posiciona a OLN como experto.
-        </p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Carruseles</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Infografías</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Posts</span>
-        </div>
-      </div>
+<!-- Pilar 2 -->
+<div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800" style="background:#1a1a1a; border-color:#2a2a2a;">
+<div class="text-4xl mb-4"></div>
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 2</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Tips y Educación</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+Cómo elegir la llanta correcta, señales de desgaste, diferencias entre modelos, mantenimiento preventivo. Contenido que posiciona a OLN como experto.
+</p>
+<div class="mt-4 flex gap-2 flex-wrap">
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Carruseles</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Infografías</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Posts</span>
+</div>
+</div>
 
-      <!-- Pilar 3 -->
-      <div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800" style="background:#1a1a1a; border-color:#2a2a2a;">
-        <div class="text-4xl mb-4">🏆</div>
-        <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 3</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Credibilidad de Marca</h3>
-        <p class="text-sm text-gray-400 leading-relaxed">
-          10+ años de trayectoria, marcas distribuidas, casos de clientes satisfechos. Contenido que construye confianza antes del primer contacto.
-        </p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Testimonios</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Hitos</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Datos</span>
-        </div>
-      </div>
+<!-- Pilar 3 -->
+<div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800" style="background:#1a1a1a; border-color:#2a2a2a;">
+<div class="text-4xl mb-4"></div>
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 3</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Credibilidad de Marca</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+10+ años de trayectoria, marcas distribuidas, casos de clientes satisfechos. Contenido que construye confianza antes del primer contacto.
+</p>
+<div class="mt-4 flex gap-2 flex-wrap">
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Testimonios</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Hitos</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Datos</span>
+</div>
+</div>
 
-      <!-- Pilar 4 -->
-      <div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800" style="background:#1a1a1a; border-color:#2a2a2a;">
-        <div class="text-4xl mb-4">📦</div>
-        <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 4</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Catálogo y Disponibilidad</h3>
-        <p class="text-sm text-gray-400 leading-relaxed">
-          Productos en stock, medidas especiales, entregas en 24 h. Contenido de conversión directa: si alguien lo necesita hoy, OLN tiene la respuesta.
-        </p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Catálogo</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">CTA directo</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Stories</span>
-        </div>
-      </div>
+<!-- Pilar 4 -->
+<div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800" style="background:#1a1a1a; border-color:#2a2a2a;">
+<div class="text-4xl mb-4"></div>
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 4</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Catálogo y Disponibilidad</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+Productos en stock, medidas especiales, entregas en 24 h. Contenido de conversión directa: si alguien lo necesita hoy, OLN tiene la respuesta.
+</p>
+<div class="mt-4 flex gap-2 flex-wrap">
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Catálogo</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">CTA directo</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Stories</span>
+</div>
+</div>
 
-      <!-- Pilar 5 -->
-      <div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800 sm:col-span-2 lg:col-span-1" style="background:#1a1a1a; border-color:#2a2a2a;">
-        <div class="text-4xl mb-4">🤝</div>
-        <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 5</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Detrás de la Operación</h3>
-        <p class="text-sm text-gray-400 leading-relaxed">
-          Equipo, almacén, proceso de distribución. Humaniza la marca y genera confianza mostrando que hay personas reales detrás de cada entrega.
-        </p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Equipo</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Almacén</span>
-          <span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Behind-the-scenes</span>
-        </div>
-      </div>
+<!-- Pilar 5 -->
+<div class="rounded-2xl p-7 border transition-all duration-200 hover:border-red-800 sm:col-span-2 lg:col-span-1" style="background:#1a1a1a; border-color:#2a2a2a;">
+<div class="text-4xl mb-4"></div>
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Pilar 5</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-xl mb-2">Detrás de la Operación</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+Equipo, almacén, proceso de distribución. Humaniza la marca y genera confianza mostrando que hay personas reales detrás de cada entrega.
+</p>
+<div class="mt-4 flex gap-2 flex-wrap">
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Equipo</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Almacén</span>
+<span class="text-xs text-gray-500 bg-white bg-opacity-5 px-2 py-0.5 rounded">Behind-the-scenes</span>
+</div>
+</div>
 
-      <!-- Nota cierre pilares -->
-      <div class="rounded-2xl p-7 border flex flex-col justify-center" style="background:rgba(224,16,16,0.07); border-color:rgba(224,16,16,0.25);">
-        <div style="color:#e01010;" class="text-3xl font-extrabold mb-2" style="font-family:'Barlow Condensed',sans-serif;">5 pilares.</div>
-        <p class="text-sm text-gray-400 leading-relaxed">Cada post tiene propósito. No publicamos por volumen — publicamos con estrategia para que cada pieza trabaje para OLN Tires.</p>
-        <div class="mt-5 flex items-center gap-2">
-          <div class="w-1.5 h-1.5 rounded-full bg-[#e01010]"></div>
-          <span class="text-xs text-gray-500">Calendario editorial mensual aprobado por ti</span>
-        </div>
-      </div>
+<!-- Nota cierre pilares -->
+<div class="rounded-2xl p-7 border flex flex-col justify-center" style="background:rgba(224,16,16,0.07); border-color:rgba(224,16,16,0.25);">
+<div style="color:#e01010;" class="text-3xl font-extrabold mb-2" style="font-family:'Barlow Condensed',sans-serif;">5 pilares.</div>
+<p class="text-sm text-gray-400 leading-relaxed">Cada post tiene propósito. No publicamos por volumen — publicamos con estrategia para que cada pieza trabaje para OLN Tires.</p>
+<div class="mt-5 flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-[#e01010]"></div>
+<span class="text-xs text-gray-500">Calendario editorial mensual aprobado por ti</span>
+</div>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
 
 <!-- ============================== PLANES ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20 bg-[#f7f8fc] border-y border-gray-200">
-  <div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto">
 
-    <div class="section-label-amber">Planes de servicio</div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827] mb-2">
-      Elige tu <span class="text-[#e01010]">plan</span>
-    </h2>
-    <p class="text-[#6B7280] mb-12 max-w-xl text-base">
-      Todos los planes incluyen identidad de marca OLN Tires, copywriting especializado para la industria y métricas mensuales.
-    </p>
+<div class="section-label-amber">Planes de servicio</div>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827] mb-2">
+Elige tu <span class="text-[#e01010]">plan</span>
+</h2>
+<p class="text-[#6B7280] mb-12 max-w-xl text-base">
+Todos los planes incluyen identidad de marca OLN Tires, copywriting especializado para la industria y métricas mensuales.
+</p>
 
-    <div class="grid md:grid-cols-3 gap-6 plan-grid">
+<div class="grid md:grid-cols-3 gap-6 plan-grid">
 
-      <!-- ── Plan Básico ── -->
-      <div class="plan-card">
-        <div class="h-1 bg-gray-200"></div>
-        <div class="p-8 flex flex-col flex-1">
+<!-- Plan Básico -->
+<div class="plan-card">
+<div class="h-1 bg-gray-200"></div>
+<div class="p-8 flex flex-col flex-1">
 
-          <div class="mb-6">
-            <p class="text-xs font-semibold tracking-widest uppercase text-[#6B7280] mb-2">Para empezar</p>
-            <h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-2xl text-[#111827] mb-1">Plan Básico</h3>
-            <div class="flex items-baseline gap-1 mt-3">
-              <span class="font-extrabold text-[2.6rem] leading-none text-[#e01010]">$3,500</span>
-              <span class="text-sm text-[#6B7280]">MXN / mes</span>
-            </div>
-          </div>
+<div class="mb-6">
+<p class="text-xs font-semibold tracking-widest uppercase text-[#6B7280] mb-2">Para empezar</p>
+<h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-2xl text-[#111827] mb-1">Plan Básico</h3>
+<div class="flex items-baseline gap-1 mt-3">
+<span class="font-extrabold text-[2.6rem] leading-none text-[#e01010]">$3,500</span>
+<span class="text-sm text-[#6B7280]">MXN / mes</span>
+</div>
+</div>
 
-          <div class="space-y-3 flex-1 mb-8">
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">12 posts/mes</strong> (3 por semana) en Instagram</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Diseño con identidad de marca OLN Tires</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Copywriting enfocado en industria y flotillas</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Programación y publicación</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>1 reporte mensual de métricas</span>
-            </div>
-          </div>
+<div class="space-y-3 flex-1 mb-8">
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">12 posts/mes</strong> (3 por semana) en Instagram</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Diseño con identidad de marca OLN Tires</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Copywriting enfocado en industria y flotillas</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Programación y publicación</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>1 reporte mensual de métricas</span>
+</div>
+</div>
 
-          <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Básico%20para%20OLN%20Tires" class="btn-ghost px-6 py-3 text-sm w-full">
-            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
-            </svg>
-            Seleccionar plan
-          </a>
+<a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Básico%20para%20OLN%20Tires" class="btn-ghost px-6 py-3 text-sm w-full">
+<svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+<path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+</svg>
+Seleccionar plan
+</a>
 
-        </div>
-      </div>
+</div>
+</div>
 
-      <!-- ── Plan Crecimiento — FEATURED ── -->
-      <div class="plan-card featured relative">
-        <!-- Amber "Más Popular" badge -->
-        <div class="absolute top-0 right-0">
-          <span class="inline-block bg-[#F59E0B] text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-bl-lg rounded-tr-[14px]">
-            Más Popular
-          </span>
-        </div>
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-8 flex flex-col flex-1" style="background: linear-gradient(to bottom, #fff, #fff1f1 140%);">
+<!-- Plan Crecimiento — FEATURED -->
+<div class="plan-card featured relative">
+<!-- Amber "Más Popular" badge -->
+<div class="absolute top-0 right-0">
+<span class="inline-block bg-[#F59E0B] text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-bl-lg rounded-tr-[14px]">
+Más Popular
+</span>
+</div>
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-8 flex flex-col flex-1" style="background: linear-gradient(to bottom, #fff, #fff1f1 140%);">
 
-          <div class="mb-6">
-            <p class="text-xs font-semibold tracking-widest uppercase text-[#e01010] mb-2">Recomendado</p>
-            <h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-2xl text-[#111827] mb-1">Plan Crecimiento</h3>
-            <div class="flex items-baseline gap-1 mt-3">
-              <span class="font-extrabold text-[2.6rem] leading-none text-[#e01010]">$5,500</span>
-              <span class="text-sm text-[#6B7280]">MXN / mes</span>
-            </div>
-          </div>
+<div class="mb-6">
+<p class="text-xs font-semibold tracking-widest uppercase text-[#e01010] mb-2">Recomendado</p>
+<h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-2xl text-[#111827] mb-1">Plan Crecimiento</h3>
+<div class="flex items-baseline gap-1 mt-3">
+<span class="font-extrabold text-[2.6rem] leading-none text-[#e01010]">$5,500</span>
+<span class="text-sm text-[#6B7280]">MXN / mes</span>
+</div>
+</div>
 
-          <div class="space-y-3 flex-1 mb-8">
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">20 posts/mes</strong> en Instagram</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Diseño con identidad de marca OLN Tires</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Copywriting especializado B2B</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Programación y publicación</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">Stories</strong> (3x semana) — catálogo, tips de llantas, casos de uso</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Estrategia de hashtags y SEO en Instagram</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Respuesta a comentarios y DMs (lunes-viernes)</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">LinkedIn</strong> — perfil de empresa + 8 posts/mes</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>1 reporte mensual de métricas</span>
-            </div>
-          </div>
+<div class="space-y-3 flex-1 mb-8">
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">20 posts/mes</strong> en Instagram</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Diseño con identidad de marca OLN Tires</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Copywriting especializado B2B</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Programación y publicación</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">Stories</strong> (3x semana) — catálogo, tips de llantas, casos de uso</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Estrategia de hashtags y SEO en Instagram</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Respuesta a comentarios y DMs (lunes-viernes)</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">LinkedIn</strong> — perfil de empresa + 8 posts/mes</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>1 reporte mensual de métricas</span>
+</div>
+</div>
 
-          <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Crecimiento%20para%20OLN%20Tires" class="btn-primary px-6 py-3 text-sm w-full">
-            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
-            </svg>
-            Seleccionar plan
-          </a>
+<a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Crecimiento%20para%20OLN%20Tires" class="btn-primary px-6 py-3 text-sm w-full">
+<svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+<path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+</svg>
+Seleccionar plan
+</a>
 
-        </div>
-      </div>
+</div>
+</div>
 
-      <!-- ── Plan Premium ── -->
-      <div class="plan-card">
-        <div class="h-1 bg-gray-200"></div>
-        <div class="p-8 flex flex-col flex-1">
+<!-- Plan Premium -->
+<div class="plan-card">
+<div class="h-1 bg-gray-200"></div>
+<div class="p-8 flex flex-col flex-1">
 
-          <div class="mb-6">
-            <p class="text-xs font-semibold tracking-widest uppercase text-[#6B7280] mb-2">Máximo impacto</p>
-            <h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-2xl text-[#111827] mb-1">Plan Premium</h3>
-            <div class="flex items-baseline gap-1 mt-3">
-              <span class="font-extrabold text-[2.6rem] leading-none text-[#e01010]">$8,500</span>
-              <span class="text-sm text-[#6B7280]">MXN / mes</span>
-            </div>
-          </div>
+<div class="mb-6">
+<p class="text-xs font-semibold tracking-widest uppercase text-[#6B7280] mb-2">Máximo impacto</p>
+<h3 style="font-family:'Barlow Condensed',sans-serif;" class="font-bold text-2xl text-[#111827] mb-1">Plan Premium</h3>
+<div class="flex items-baseline gap-1 mt-3">
+<span class="font-extrabold text-[2.6rem] leading-none text-[#e01010]">$8,500</span>
+<span class="text-sm text-[#6B7280]">MXN / mes</span>
+</div>
+</div>
 
-          <div class="space-y-3 flex-1 mb-8">
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">30 posts/mes</strong> en Instagram</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Copywriting, programación y publicación</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Stories 3x semana + Estrategia de hashtags</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Respuesta a comentarios y DMs (L-V)</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">LinkedIn</strong> — perfil de empresa + 12 posts/mes</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">Reels</strong> (2 al mes) — showcase de productos en campo</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">Gestión de pauta (ads)</strong> — hasta $2,000 MXN presupuesto incluido</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span>Reporte quincenal + llamada de estrategia mensual</span>
-            </div>
-            <div class="check-item">
-              <div class="check-icon">
-                <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-              </div>
-              <span><strong class="text-[#111827]">Facebook</strong> — page management</span>
-            </div>
-          </div>
+<div class="space-y-3 flex-1 mb-8">
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">30 posts/mes</strong> en Instagram</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Copywriting, programación y publicación</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Stories 3x semana + Estrategia de hashtags</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Respuesta a comentarios y DMs (L-V)</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">LinkedIn</strong> — perfil de empresa + 12 posts/mes</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">Reels</strong> (2 al mes) — showcase de productos en campo</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">Gestión de pauta (ads)</strong> — hasta $2,000 MXN presupuesto incluido</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span>Reporte quincenal + llamada de estrategia mensual</span>
+</div>
+<div class="check-item">
+<div class="check-icon">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span><strong class="text-[#111827]">Facebook</strong> — page management</span>
+</div>
+</div>
 
-          <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Premium%20para%20OLN%20Tires" class="btn-ghost px-6 py-3 text-sm w-full">
-            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
-            </svg>
-            Seleccionar plan
-          </a>
+<a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20Plan%20Premium%20para%20OLN%20Tires" class="btn-ghost px-6 py-3 text-sm w-full">
+<svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+<path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+</svg>
+Seleccionar plan
+</a>
 
-        </div>
-      </div>
+</div>
+</div>
 
-    </div>
+</div>
 
-    <p class="text-center text-xs mt-8 text-[#6B7280]">
-      Todos los planes se facturan mensualmente sin contrato de permanencia obligatorio. Precios en MXN, IVA no incluido.
-    </p>
+<p class="text-center text-xs mt-8 text-[#6B7280]">
+Todos los planes se facturan mensualmente sin contrato de permanencia obligatorio. Precios en MXN, IVA no incluido.
+</p>
 
-  </div>
+</div>
 </section>
 
 
 <!-- ============================== PROCESO DE TRABAJO ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20 bg-white border-t border-gray-100">
-  <div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto">
 
-    <div class="text-center mb-16">
-      <div class="section-label-amber" style="display:inline-flex;">Cómo trabajamos</div>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827] mt-1">
-        Del brief al primer post <span class="text-[#e01010]">en 7 días</span>
-      </h2>
-      <p class="text-[#6B7280] mt-3 max-w-md mx-auto text-base">
-        Un proceso claro, sin sorpresas. Sabes exactamente qué pasa en cada etapa y cuándo.
-      </p>
-    </div>
+<div class="text-center mb-16">
+<div class="section-label-amber" style="display:inline-flex;">Cómo trabajamos</div>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827] mt-1">
+Del brief al primer post <span class="text-[#e01010]">en 7 días</span>
+</h2>
+<p class="text-[#6B7280] mt-3 max-w-md mx-auto text-base">
+Un proceso claro, sin sorpresas. Sabes exactamente qué pasa en cada etapa y cuándo.
+</p>
+</div>
 
-    <!-- Timeline vertical (mobile) / horizontal (desktop) -->
-    <div class="relative">
+<!-- Timeline vertical (mobile) / horizontal (desktop) -->
+<div class="relative">
 
-      <!-- Horizontal connecting line — desktop only -->
-      <div class="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-0.5 z-0" style="background: linear-gradient(to right, #e01010, #c00d0d);"></div>
+<!-- Horizontal connecting line — desktop only -->
+<div class="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-0.5 z-0" style="background: linear-gradient(to right, #e01010, #c00d0d);"></div>
 
-      <div class="grid lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
+<div class="grid lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
 
-        <!-- Paso 1 -->
-        <div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
-          <div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">1</span>
-          </div>
-          <div class="lg:mt-5">
-            <div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Semana 1</div>
-            <h3 class="font-bold text-[#111827] text-base mb-1">Onboarding</h3>
-            <p class="text-sm text-[#6B7280] leading-relaxed">Brief de marca, acceso a redes, definición de voz y tono de OLN Tires.</p>
-          </div>
-        </div>
+<!-- Paso 1 -->
+<div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
+<div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
+<span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">1</span>
+</div>
+<div class="lg:mt-5">
+<div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Semana 1</div>
+<h3 class="font-bold text-[#111827] text-base mb-1">Onboarding</h3>
+<p class="text-sm text-[#6B7280] leading-relaxed">Brief de marca, acceso a redes, definición de voz y tono de OLN Tires.</p>
+</div>
+</div>
 
-        <!-- Paso 2 -->
-        <div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
-          <div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">2</span>
-          </div>
-          <div class="lg:mt-5">
-            <div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Semanas 1–2</div>
-            <h3 class="font-bold text-[#111827] text-base mb-1">Estrategia</h3>
-            <p class="text-sm text-[#6B7280] leading-relaxed">Calendario editorial del primer mes, pilares definidos y aprobados por ti.</p>
-          </div>
-        </div>
+<!-- Paso 2 -->
+<div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
+<div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
+<span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">2</span>
+</div>
+<div class="lg:mt-5">
+<div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Semanas 1–2</div>
+<h3 class="font-bold text-[#111827] text-base mb-1">Estrategia</h3>
+<p class="text-sm text-[#6B7280] leading-relaxed">Calendario editorial del primer mes, pilares definidos y aprobados por ti.</p>
+</div>
+</div>
 
-        <!-- Paso 3 -->
-        <div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
-          <div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">3</span>
-          </div>
-          <div class="lg:mt-5">
-            <div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Semana 2</div>
-            <h3 class="font-bold text-[#111827] text-base mb-1">Producción</h3>
-            <p class="text-sm text-[#6B7280] leading-relaxed">Diseño de los primeros 10 posts para revisión y aprobación antes de publicar.</p>
-          </div>
-        </div>
+<!-- Paso 3 -->
+<div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
+<div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
+<span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">3</span>
+</div>
+<div class="lg:mt-5">
+<div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Semana 2</div>
+<h3 class="font-bold text-[#111827] text-base mb-1">Producción</h3>
+<p class="text-sm text-[#6B7280] leading-relaxed">Diseño de los primeros 10 posts para revisión y aprobación antes de publicar.</p>
+</div>
+</div>
 
-        <!-- Paso 4 -->
-        <div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
-          <div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">4</span>
-          </div>
-          <div class="lg:mt-5">
-            <div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Semana 3</div>
-            <h3 class="font-bold text-[#111827] text-base mb-1">Publicación</h3>
-            <p class="text-sm text-[#6B7280] leading-relaxed">Arranque oficial. Todo el mes programado, publicado en los mejores horarios.</p>
-          </div>
-        </div>
+<!-- Paso 4 -->
+<div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
+<div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
+<span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">4</span>
+</div>
+<div class="lg:mt-5">
+<div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Semana 3</div>
+<h3 class="font-bold text-[#111827] text-base mb-1">Publicación</h3>
+<p class="text-sm text-[#6B7280] leading-relaxed">Arranque oficial. Todo el mes programado, publicado en los mejores horarios.</p>
+</div>
+</div>
 
-        <!-- Paso 5 -->
-        <div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
-          <div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">5</span>
-          </div>
-          <div class="lg:mt-5">
-            <div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Fin de mes</div>
-            <h3 class="font-bold text-[#111827] text-base mb-1">Reporte y Ajuste</h3>
-            <p class="text-sm text-[#6B7280] leading-relaxed">Métricas reales, aprendizajes del mes y plan ajustado para el siguiente período.</p>
-          </div>
-        </div>
+<!-- Paso 5 -->
+<div class="flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 lg:text-center">
+<div class="flex-shrink-0 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white font-bold shadow-lg" style="background:#e01010;">
+<span style="font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; line-height:1;">5</span>
+</div>
+<div class="lg:mt-5">
+<div class="text-[10px] font-bold tracking-widest uppercase text-[#F59E0B] mb-1">Fin de mes</div>
+<h3 class="font-bold text-[#111827] text-base mb-1">Reporte y Ajuste</h3>
+<p class="text-sm text-[#6B7280] leading-relaxed">Métricas reales, aprendizajes del mes y plan ajustado para el siguiente período.</p>
+</div>
+</div>
 
-      </div>
-    </div>
+</div>
+</div>
 
-    <!-- Bottom note -->
-    <div class="mt-14 rounded-xl border border-gray-200 bg-[#f7f8fc] px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#fff1f1] flex items-center justify-center">
-        <svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
-      </div>
-      <p class="text-sm text-[#374151]">
-        <strong class="text-[#111827]">Tu aprobación es obligatoria antes de publicar.</strong> Nunca publicamos nada sin que lo hayas revisado. OLN Tires siempre tiene la última palabra.
-      </p>
-    </div>
+<!-- Bottom note -->
+<div class="mt-14 rounded-xl border border-gray-200 bg-[#f7f8fc] px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#fff1f1] flex items-center justify-center">
+<svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+</div>
+<p class="text-sm text-[#374151]">
+<strong class="text-[#111827]">Tu aprobación es obligatoria antes de publicar.</strong> Nunca publicamos nada sin que lo hayas revisado. OLN Tires siempre tiene la última palabra.
+</p>
+</div>
 
-  </div>
+</div>
 </section>
 
 
 <!-- ============================== KPIs Y MÉTRICAS ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20" style="background:#0a0a0a;">
-  <div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto">
 
-    <div class="inline-flex items-center gap-2 mb-4" style="background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.3); padding:5px 14px; border-radius:999px;">
-      <span style="width:6px;height:6px;border-radius:50%;background:#e01010;display:inline-block;flex-shrink:0;"></span>
-      <span style="color:#e01010;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Transparencia total</span>
-    </div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-white mb-3">
-      Las métricas que <span style="color:#e01010;">realmente importan</span>
-    </h2>
-    <p class="text-gray-400 mb-12 max-w-xl text-base">
-      Recibes un reporte visual cada mes — sin tecnicismos, con las métricas que importan para tu negocio.
-    </p>
+<div class="inline-flex items-center gap-2 mb-4" style="background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.3); padding:5px 14px; border-radius:999px;">
+<span style="width:6px;height:6px;border-radius:50%;background:#e01010;display:inline-block;flex-shrink:0;"></span>
+<span style="color:#e01010;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Transparencia total</span>
+</div>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-white mb-3">
+Las métricas que <span style="color:#e01010;">realmente importan</span>
+</h2>
+<p class="text-gray-400 mb-12 max-w-xl text-base">
+Recibes un reporte visual cada mes — sin tecnicismos, con las métricas que importan para tu negocio.
+</p>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
 
-      <!-- KPI 1 -->
-      <div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
-            <svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Alcance Mensual</h3>
-        </div>
-        <p class="text-sm text-gray-400 leading-relaxed">Cuántas personas únicas vieron el contenido de OLN Tires ese mes. La medida base de visibilidad.</p>
-        <div class="mt-4 pt-4 border-t border-gray-800">
-          <span class="text-xs text-gray-600">Frecuencia de reporte</span>
-          <p class="text-sm font-semibold text-gray-300 mt-0.5">Mensual + acumulado</p>
-        </div>
-      </div>
+<!-- KPI 1 -->
+<div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
+<svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Alcance Mensual</h3>
+</div>
+<p class="text-sm text-gray-400 leading-relaxed">Cuántas personas únicas vieron el contenido de OLN Tires ese mes. La medida base de visibilidad.</p>
+<div class="mt-4 pt-4 border-t border-gray-800">
+<span class="text-xs text-gray-600">Frecuencia de reporte</span>
+<p class="text-sm font-semibold text-gray-300 mt-0.5">Mensual + acumulado</p>
+</div>
+</div>
 
-      <!-- KPI 2 -->
-      <div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
-            <svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Impresiones</h3>
-        </div>
-        <p class="text-sm text-gray-400 leading-relaxed">Total de veces que el contenido fue mostrado. Refleja la frecuencia de exposición de la marca.</p>
-        <div class="mt-4 pt-4 border-t border-gray-800">
-          <span class="text-xs text-gray-600">Frecuencia de reporte</span>
-          <p class="text-sm font-semibold text-gray-300 mt-0.5">Mensual comparativo</p>
-        </div>
-      </div>
+<!-- KPI 2 -->
+<div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
+<svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Impresiones</h3>
+</div>
+<p class="text-sm text-gray-400 leading-relaxed">Total de veces que el contenido fue mostrado. Refleja la frecuencia de exposición de la marca.</p>
+<div class="mt-4 pt-4 border-t border-gray-800">
+<span class="text-xs text-gray-600">Frecuencia de reporte</span>
+<p class="text-sm font-semibold text-gray-300 mt-0.5">Mensual comparativo</p>
+</div>
+</div>
 
-      <!-- KPI 3 -->
-      <div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
-            <svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Tasa de Engagement</h3>
-        </div>
-        <p class="text-sm text-gray-400 leading-relaxed">(Likes + comentarios + guardados) / alcance. La métrica que más dice sobre la calidad del contenido.</p>
-        <div class="mt-4 pt-4 border-t border-gray-800">
-          <span class="text-xs text-gray-600">Benchmark sector industrial</span>
-          <p class="text-sm font-semibold text-[#e01010] mt-0.5">Meta: &gt;3.5%</p>
-        </div>
-      </div>
+<!-- KPI 3 -->
+<div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
+<svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Tasa de Engagement</h3>
+</div>
+<p class="text-sm text-gray-400 leading-relaxed">(Likes + comentarios + guardados) / alcance. La métrica que más dice sobre la calidad del contenido.</p>
+<div class="mt-4 pt-4 border-t border-gray-800">
+<span class="text-xs text-gray-600">Benchmark sector industrial</span>
+<p class="text-sm font-semibold text-[#e01010] mt-0.5">Meta: &gt;3.5%</p>
+</div>
+</div>
 
-      <!-- KPI 4 -->
-      <div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
-            <svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Crecimiento de Seguidores</h3>
-        </div>
-        <p class="text-sm text-gray-400 leading-relaxed">Nuevos seguidores netos cada mes. Crecer de forma orgánica y con audiencia relevante para el negocio.</p>
-        <div class="mt-4 pt-4 border-t border-gray-800">
-          <span class="text-xs text-gray-600">Frecuencia de reporte</span>
-          <p class="text-sm font-semibold text-gray-300 mt-0.5">Mensual + tendencia</p>
-        </div>
-      </div>
+<!-- KPI 4 -->
+<div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
+<svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Crecimiento de Seguidores</h3>
+</div>
+<p class="text-sm text-gray-400 leading-relaxed">Nuevos seguidores netos cada mes. Crecer de forma orgánica y con audiencia relevante para el negocio.</p>
+<div class="mt-4 pt-4 border-t border-gray-800">
+<span class="text-xs text-gray-600">Frecuencia de reporte</span>
+<p class="text-sm font-semibold text-gray-300 mt-0.5">Mensual + tendencia</p>
+</div>
+</div>
 
-      <!-- KPI 5 -->
-      <div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
-            <svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"/></svg>
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Clics al WhatsApp</h3>
-        </div>
-        <p class="text-sm text-gray-400 leading-relaxed">Cuántas personas iniciaron una conversación de cotización desde redes. La métrica de conversión directa.</p>
-        <div class="mt-4 pt-4 border-t border-gray-800">
-          <span class="text-xs text-gray-600">Importancia</span>
-          <p class="text-sm font-semibold text-[#e01010] mt-0.5">Métrica de negocio #1</p>
-        </div>
-      </div>
+<!-- KPI 5 -->
+<div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
+<svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"/></svg>
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Clics al WhatsApp</h3>
+</div>
+<p class="text-sm text-gray-400 leading-relaxed">Cuántas personas iniciaron una conversación de cotización desde redes. La métrica de conversión directa.</p>
+<div class="mt-4 pt-4 border-t border-gray-800">
+<span class="text-xs text-gray-600">Importancia</span>
+<p class="text-sm font-semibold text-[#e01010] mt-0.5">Métrica de negocio #1</p>
+</div>
+</div>
 
-      <!-- KPI 6 -->
-      <div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
-            <svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
-          </div>
-          <h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Mejor Horario y Formato</h3>
-        </div>
-        <p class="text-sm text-gray-400 leading-relaxed">Qué tipo de contenido y en qué horario genera más reacción en la audiencia de OLN. Optimización continua.</p>
-        <div class="mt-4 pt-4 border-t border-gray-800">
-          <span class="text-xs text-gray-600">Frecuencia de ajuste</span>
-          <p class="text-sm font-semibold text-gray-300 mt-0.5">Cada mes, con datos reales</p>
-        </div>
-      </div>
+<!-- KPI 6 -->
+<div class="rounded-2xl p-6 border" style="background:#161616; border-color:#222;">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(224,16,16,0.15);">
+<svg viewBox="0 0 20 20" fill="#e01010" class="w-5 h-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+</div>
+<h3 style="font-family:'Barlow Condensed',sans-serif; color:#fff;" class="font-bold text-lg">Mejor Horario y Formato</h3>
+</div>
+<p class="text-sm text-gray-400 leading-relaxed">Qué tipo de contenido y en qué horario genera más reacción en la audiencia de OLN. Optimización continua.</p>
+<div class="mt-4 pt-4 border-t border-gray-800">
+<span class="text-xs text-gray-600">Frecuencia de ajuste</span>
+<p class="text-sm font-semibold text-gray-300 mt-0.5">Cada mes, con datos reales</p>
+</div>
+</div>
 
-    </div>
+</div>
 
-    <!-- Nota reporte -->
-    <div class="rounded-2xl border px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-5" style="background:rgba(224,16,16,0.08); border-color:rgba(224,16,16,0.25);">
-      <div class="flex-shrink-0 text-3xl">📊</div>
-      <div>
-        <p class="font-semibold text-white mb-1">Reporte mensual visual — sin tecnicismos</p>
-        <p class="text-sm text-gray-400">Recibes un documento claro con todas estas métricas, comparativo del mes anterior, los 3 mejores posts del mes y recomendaciones para el siguiente período. Sin términos técnicos que no aporten.</p>
-      </div>
-    </div>
+<!-- Nota reporte -->
+<div class="rounded-2xl border px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-5" style="background:rgba(224,16,16,0.08); border-color:rgba(224,16,16,0.25);">
+<div class="flex-shrink-0 text-3xl"></div>
+<div>
+<p class="font-semibold text-white mb-1">Reporte mensual visual — sin tecnicismos</p>
+<p class="text-sm text-gray-400">Recibes un documento claro con todas estas métricas, comparativo del mes anterior, los 3 mejores posts del mes y recomendaciones para el siguiente período. Sin términos técnicos que no aporten.</p>
+</div>
+</div>
 
-  </div>
+</div>
 </section>
 
 
 <!-- ============================== MUESTRA DE CONTENIDO ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20 bg-[#f7f8fc] border-y border-gray-200">
-  <div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto">
 
-    <div class="section-label-amber">Así se ve en práctica</div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827] mb-3">
-      Ideas de posts para <span class="text-[#e01010]">OLN Tires</span>
-    </h2>
-    <p class="text-[#6B7280] mb-12 max-w-xl text-base">
-      Estos son solo ejemplos del tipo de contenido que produciríamos desde el primer mes. Cada uno tiene un propósito claro.
-    </p>
+<div class="section-label-amber">Así se ve en práctica</div>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827] mb-3">
+Ideas de posts para <span class="text-[#e01010]">OLN Tires</span>
+</h2>
+<p class="text-[#6B7280] mb-12 max-w-xl text-base">
+Estos son solo ejemplos del tipo de contenido que produciríamos desde el primer mes. Cada uno tiene un propósito claro.
+</p>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <!-- Post 1 -->
-      <div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-6">
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#F59E0B; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25);">Tips y Educacion</div>
-          <p class="text-white text-sm leading-relaxed mb-5">
-            "¿Sabes cuándo cambiar las llantas de tu flota? Te explicamos las 3 señales clave que no debes ignorar 🚛"
-          </p>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-gray-600">Formato sugerido</span>
-            <span class="text-xs text-gray-400 font-medium">Carrusel · Instagram</span>
-          </div>
-        </div>
-      </div>
+<!-- Post 1 -->
+<div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-6">
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#F59E0B; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25);">Tips y Educacion</div>
+<p class="text-white text-sm leading-relaxed mb-5">
+"¿Sabes cuándo cambiar las llantas de tu flota? Te explicamos las 3 señales clave que no debes ignorar "
+</p>
+<div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+<span class="text-xs text-gray-600">Formato sugerido</span>
+<span class="text-xs text-gray-400 font-medium">Carrusel · Instagram</span>
+</div>
+</div>
+</div>
 
-      <!-- Post 2 -->
-      <div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-6">
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Catalogo y Disponibilidad</div>
-          <p class="text-white text-sm leading-relaxed mb-5">
-            "Gladiator QR99: la llanta de tracción que resiste carretera y terracería sin perder rendimiento. Stock disponible hoy. 📦"
-          </p>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-gray-600">Formato sugerido</span>
-            <span class="text-xs text-gray-400 font-medium">Post · Instagram + LinkedIn</span>
-          </div>
-        </div>
-      </div>
+<!-- Post 2 -->
+<div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-6">
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Catalogo y Disponibilidad</div>
+<p class="text-white text-sm leading-relaxed mb-5">
+"Gladiator QR99: la llanta de tracción que resiste carretera y terracería sin perder rendimiento. Stock disponible hoy. "
+</p>
+<div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+<span class="text-xs text-gray-600">Formato sugerido</span>
+<span class="text-xs text-gray-400 font-medium">Post · Instagram + LinkedIn</span>
+</div>
+</div>
+</div>
 
-      <!-- Post 3 -->
-      <div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-6">
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Catalogo y Disponibilidad</div>
-          <p class="text-white text-sm leading-relaxed mb-5">
-            "Entrega en 24 horas en tu zona. Cotiza hoy y tu flota no para mañana. Sin intermediarios, sin excusas. ⚡"
-          </p>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-gray-600">Formato sugerido</span>
-            <span class="text-xs text-gray-400 font-medium">Story con CTA · Instagram</span>
-          </div>
-        </div>
-      </div>
+<!-- Post 3 -->
+<div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-6">
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#e01010; background:rgba(224,16,16,0.12); border:1px solid rgba(224,16,16,0.25);">Catalogo y Disponibilidad</div>
+<p class="text-white text-sm leading-relaxed mb-5">
+"Entrega en 24 horas en tu zona. Cotiza hoy y tu flota no para mañana. Sin intermediarios, sin excusas. "
+</p>
+<div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+<span class="text-xs text-gray-600">Formato sugerido</span>
+<span class="text-xs text-gray-400 font-medium">Story con CTA · Instagram</span>
+</div>
+</div>
+</div>
 
-      <!-- Post 4 -->
-      <div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-6">
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#9ca3af; background:rgba(156,163,175,0.10); border:1px solid rgba(156,163,175,0.2);">Detras de la Operacion</div>
-          <p class="text-white text-sm leading-relaxed mb-5">
-            "10 años distribuyendo llantas de calidad al norte del país. Conoce al equipo que hace posible cada entrega →"
-          </p>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-gray-600">Formato sugerido</span>
-            <span class="text-xs text-gray-400 font-medium">Reel · Instagram + Facebook</span>
-          </div>
-        </div>
-      </div>
+<!-- Post 4 -->
+<div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-6">
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#9ca3af; background:rgba(156,163,175,0.10); border:1px solid rgba(156,163,175,0.2);">Detras de la Operacion</div>
+<p class="text-white text-sm leading-relaxed mb-5">
+"10 años distribuyendo llantas de calidad al norte del país. Conoce al equipo que hace posible cada entrega →"
+</p>
+<div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+<span class="text-xs text-gray-600">Formato sugerido</span>
+<span class="text-xs text-gray-400 font-medium">Reel · Instagram + Facebook</span>
+</div>
+</div>
+</div>
 
-      <!-- Post 5 -->
-      <div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-6">
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#34d399; background:rgba(52,211,153,0.10); border:1px solid rgba(52,211,153,0.2);">Producto en Accion</div>
-          <p class="text-white text-sm leading-relaxed mb-5">
-            "Llanta agrícola para temporada de cosecha. ¿Ya tienes las tuyas listas? Asesoría técnica sin costo, para el terreno correcto. 🌾"
-          </p>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-gray-600">Formato sugerido</span>
-            <span class="text-xs text-gray-400 font-medium">Post · Facebook + Instagram</span>
-          </div>
-        </div>
-      </div>
+<!-- Post 5 -->
+<div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-6">
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#34d399; background:rgba(52,211,153,0.10); border:1px solid rgba(52,211,153,0.2);">Producto en Accion</div>
+<p class="text-white text-sm leading-relaxed mb-5">
+"Llanta agrícola para temporada de cosecha. ¿Ya tienes las tuyas listas? Asesoría técnica sin costo, para el terreno correcto. "
+</p>
+<div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+<span class="text-xs text-gray-600">Formato sugerido</span>
+<span class="text-xs text-gray-400 font-medium">Post · Facebook + Instagram</span>
+</div>
+</div>
+</div>
 
-      <!-- Post 6 -->
-      <div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
-        <div class="h-1 bg-[#e01010]"></div>
-        <div class="p-6">
-          <div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#60a5fa; background:rgba(96,165,250,0.10); border:1px solid rgba(96,165,250,0.2);">Credibilidad de Marca</div>
-          <p class="text-white text-sm leading-relaxed mb-5">
-            "Precio directo de fábrica, sin intermediarios. Así es como OLN Tires puede darte el mejor precio del mercado. 🔴"
-          </p>
-          <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-            <span class="text-xs text-gray-600">Formato sugerido</span>
-            <span class="text-xs text-gray-400 font-medium">Post · LinkedIn + Instagram</span>
-          </div>
-        </div>
-      </div>
+<!-- Post 6 -->
+<div class="rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200" style="background:#111;">
+<div class="h-1 bg-[#e01010]"></div>
+<div class="p-6">
+<div class="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4" style="color:#60a5fa; background:rgba(96,165,250,0.10); border:1px solid rgba(96,165,250,0.2);">Credibilidad de Marca</div>
+<p class="text-white text-sm leading-relaxed mb-5">
+"Precio directo de fábrica, sin intermediarios. Así es como OLN Tires puede darte el mejor precio del mercado. "
+</p>
+<div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+<span class="text-xs text-gray-600">Formato sugerido</span>
+<span class="text-xs text-gray-400 font-medium">Post · LinkedIn + Instagram</span>
+</div>
+</div>
+</div>
 
-    </div>
+</div>
 
-    <p class="text-center text-xs mt-8 text-[#6B7280]">
-      Estos son solo 6 ejemplos. El calendario real incluiría 12–30 piezas mensuales adaptadas a tus productos, temporadas y objetivos.
-    </p>
+<p class="text-center text-xs mt-8 text-[#6B7280]">
+Estos son solo 6 ejemplos. El calendario real incluiría 12–30 piezas mensuales adaptadas a tus productos, temporadas y objetivos.
+</p>
 
-  </div>
+</div>
 </section>
 
 
 <!-- ============================== POR QUÉ BROTA DIGITAL ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20 bg-white">
-  <div class="max-w-screen-xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-16 items-center">
+<div class="max-w-screen-xl mx-auto">
+<div class="grid md:grid-cols-2 gap-16 items-center">
 
-      <!-- Left: copy -->
-      <div class="space-y-6">
-        <div class="section-label-amber">Por qué Brota Digital</div>
-        <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight leading-[1.12] text-[#111827]">
-          No somos<br/>una agencia <span class="text-[#e01010]">genérica.</span>
-        </h2>
-        <p class="text-[#374151] leading-relaxed text-base">
-          Somos especialistas en construir presencia digital para negocios B2B que necesitan comunicar expertise, no solo publicar por publicar.
-        </p>
-        <p class="text-[#6B7280] leading-relaxed">
-          Tu audiencia son gerentes de flotilla, responsables de compras y operadores de maquinaria — sabemos cómo hablarles. No con contenido genérico, sino con mensajes que generan confianza en el sector industrial.
-        </p>
+<!-- Left: copy -->
+<div class="space-y-6">
+<div class="section-label-amber">Por qué Brota Digital</div>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight leading-[1.12] text-[#111827]">
+No somos<br/>una agencia <span class="text-[#e01010]">genérica.</span>
+</h2>
+<p class="text-[#374151] leading-relaxed text-base">
+Somos especialistas en construir presencia digital para negocios B2B que necesitan comunicar expertise, no solo publicar por publicar.
+</p>
+<p class="text-[#6B7280] leading-relaxed">
+Tu audiencia son gerentes de flotilla, responsables de compras y operadores de maquinaria — sabemos cómo hablarles. No con contenido genérico, sino con mensajes que generan confianza en el sector industrial.
+</p>
 
-        <div class="space-y-4 pt-2">
-          <div class="flex items-start gap-3">
-            <div class="check-icon mt-0.5 flex-shrink-0">
-              <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-            </div>
-            <span class="text-sm text-[#374151]">Contenido con criterio B2B — dirigido a quienes toman decisiones de compra</span>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="check-icon mt-0.5 flex-shrink-0">
-              <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-            </div>
-            <span class="text-sm text-[#374151]">Diseño alineado a la identidad OLN Tires desde el día 1</span>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="check-icon mt-0.5 flex-shrink-0">
-              <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-            </div>
-            <span class="text-sm text-[#374151]">Comunicación directa, sin intermediarios ni cuentas ejecutivas</span>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="check-icon mt-0.5 flex-shrink-0">
-              <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-            </div>
-            <span class="text-sm text-[#374151]">Métricas reales, no vanity metrics — te decimos lo que importa</span>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="check-icon mt-0.5 flex-shrink-0">
-              <svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
-            </div>
-            <span class="text-sm text-[#374151]">Flexibles: crecemos contigo, sin contratos leoninos</span>
-          </div>
-        </div>
-      </div>
+<div class="space-y-4 pt-2">
+<div class="flex items-start gap-3">
+<div class="check-icon mt-0.5 flex-shrink-0">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span class="text-sm text-[#374151]">Contenido con criterio B2B — dirigido a quienes toman decisiones de compra</span>
+</div>
+<div class="flex items-start gap-3">
+<div class="check-icon mt-0.5 flex-shrink-0">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span class="text-sm text-[#374151]">Diseño alineado a la identidad OLN Tires desde el día 1</span>
+</div>
+<div class="flex items-start gap-3">
+<div class="check-icon mt-0.5 flex-shrink-0">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span class="text-sm text-[#374151]">Comunicación directa, sin intermediarios ni cuentas ejecutivas</span>
+</div>
+<div class="flex items-start gap-3">
+<div class="check-icon mt-0.5 flex-shrink-0">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span class="text-sm text-[#374151]">Métricas reales, no vanity metrics — te decimos lo que importa</span>
+</div>
+<div class="flex items-start gap-3">
+<div class="check-icon mt-0.5 flex-shrink-0">
+<svg viewBox="0 0 16 16" fill="#e01010" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+</div>
+<span class="text-sm text-[#374151]">Flexibles: crecemos contigo, sin contratos leoninos</span>
+</div>
+</div>
+</div>
 
-      <!-- Right: credentials -->
-      <div class="space-y-4">
-        <div class="cred-card p-6 space-y-0">
-          <p class="section-label-red" style="margin-bottom:12px;">Brota Digital — en números</p>
-          <div class="divider-row flex justify-between items-center py-3">
-            <span class="text-sm text-[#6B7280]">Cuentas gestionadas activamente</span>
-            <span class="font-extrabold text-2xl text-[#e01010]">8+</span>
-          </div>
-          <div class="divider-row flex justify-between items-center py-3">
-            <span class="text-sm text-[#6B7280]">Sectores con experiencia</span>
-            <span class="font-bold text-sm text-[#111827]">B2B · Retail · Servicios</span>
-          </div>
-          <div class="divider-row flex justify-between items-center py-3">
-            <span class="text-sm text-[#6B7280]">Posts producidos (histórico)</span>
-            <span class="font-extrabold text-2xl text-[#e01010]">500+</span>
-          </div>
-          <div class="flex justify-between items-center py-3">
-            <span class="text-sm text-[#6B7280]">Tiempo promedio de entrega de contenido</span>
-            <span class="font-bold text-[#111827]">48 hrs</span>
-          </div>
-        </div>
+<!-- Right: credentials -->
+<div class="space-y-4">
+<div class="cred-card p-6 space-y-0">
+<p class="section-label-red" style="margin-bottom:12px;">Brota Digital — en números</p>
+<div class="divider-row flex justify-between items-center py-3">
+<span class="text-sm text-[#6B7280]">Cuentas gestionadas activamente</span>
+<span class="font-extrabold text-2xl text-[#e01010]">8+</span>
+</div>
+<div class="divider-row flex justify-between items-center py-3">
+<span class="text-sm text-[#6B7280]">Sectores con experiencia</span>
+<span class="font-bold text-sm text-[#111827]">B2B · Retail · Servicios</span>
+</div>
+<div class="divider-row flex justify-between items-center py-3">
+<span class="text-sm text-[#6B7280]">Posts producidos (histórico)</span>
+<span class="font-extrabold text-2xl text-[#e01010]">500+</span>
+</div>
+<div class="flex justify-between items-center py-3">
+<span class="text-sm text-[#6B7280]">Tiempo promedio de entrega de contenido</span>
+<span class="font-bold text-[#111827]">48 hrs</span>
+</div>
+</div>
 
-        <div class="rounded-xl p-6 bg-red-50 border border-red-100">
-          <p class="text-sm font-semibold text-[#111827] mb-1">Garantía de satisfacción</p>
-          <p class="text-sm text-[#6B7280]">
-            Si al primer mes no estás conforme con el trabajo entregado, hacemos los ajustes necesarios sin costo adicional hasta que el resultado sea el correcto.
-          </p>
-        </div>
-      </div>
+<div class="rounded-xl p-6 bg-red-50 border border-red-100">
+<p class="text-sm font-semibold text-[#111827] mb-1">Garantía de satisfacción</p>
+<p class="text-sm text-[#6B7280]">
+Si al primer mes no estás conforme con el trabajo entregado, hacemos los ajustes necesarios sin costo adicional hasta que el resultado sea el correcto.
+</p>
+</div>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
 
 <!-- ============================== PRÓXIMOS PASOS ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20 bg-[#f7f8fc] border-t border-gray-200">
-  <div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto">
 
-    <div class="text-center mb-14">
-      <span class="inline-block text-xs font-semibold text-[#e01010] uppercase tracking-widest mb-3">Cómo empezamos</span>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827]">
-        Próximos <span class="text-[#e01010]">pasos</span>
-      </h2>
-      <p class="text-[#6B7280] mt-3 text-base max-w-md mx-auto">
-        Tres pasos para pasar de cero a una presencia digital profesional y activa.
-      </p>
-    </div>
+<div class="text-center mb-14">
+<span class="inline-block text-xs font-semibold text-[#e01010] uppercase tracking-widest mb-3">Cómo empezamos</span>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-5xl tracking-tight text-[#111827]">
+Próximos <span class="text-[#e01010]">pasos</span>
+</h2>
+<p class="text-[#6B7280] mt-3 text-base max-w-md mx-auto">
+Tres pasos para pasar de cero a una presencia digital profesional y activa.
+</p>
+</div>
 
-    <!-- Connecting line on desktop -->
-    <div class="grid md:grid-cols-3 gap-0 relative">
-      <div class="hidden md:block absolute top-[52px] left-[calc(16.66%+26px)] right-[calc(16.66%+26px)] h-0.5 bg-gray-300 z-0"></div>
+<!-- Connecting line on desktop -->
+<div class="grid md:grid-cols-3 gap-0 relative">
+<div class="hidden md:block absolute top-[52px] left-[calc(16.66%+26px)] right-[calc(16.66%+26px)] h-0.5 bg-gray-300 z-0"></div>
 
-      <!-- Paso 1 -->
-      <div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0">
-        <div class="step-circle mb-5">1</div>
-        <p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Hoy mismo</p>
-        <h3 class="font-bold text-lg text-[#111827] mb-2">Confirma el plan</h3>
-        <p class="text-sm text-[#6B7280] leading-relaxed">
-          Nos confirmas el plan elegido por WhatsApp o email. No hay papeleo complicado — un mensaje es suficiente para arrancar.
-        </p>
-      </div>
+<!-- Paso 1 -->
+<div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0">
+<div class="step-circle mb-5">1</div>
+<p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Hoy mismo</p>
+<h3 class="font-bold text-lg text-[#111827] mb-2">Confirma el plan</h3>
+<p class="text-sm text-[#6B7280] leading-relaxed">
+Nos confirmas el plan elegido por WhatsApp o email. No hay papeleo complicado — un mensaje es suficiente para arrancar.
+</p>
+</div>
 
-      <!-- Paso 2 -->
-      <div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0">
-        <div class="step-circle mb-5">2</div>
-        <p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Días 1–3</p>
-        <h3 class="font-bold text-lg text-[#111827] mb-2">Onboarding</h3>
-        <p class="text-sm text-[#6B7280] leading-relaxed">
-          Hacemos una sesión de brief para entender tu línea de productos, tus clientes ideales, tu competencia y el tono que quieres proyectar. Preparamos el plan editorial del primer mes.
-        </p>
-      </div>
+<!-- Paso 2 -->
+<div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0">
+<div class="step-circle mb-5">2</div>
+<p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Días 1–3</p>
+<h3 class="font-bold text-lg text-[#111827] mb-2">Onboarding</h3>
+<p class="text-sm text-[#6B7280] leading-relaxed">
+Hacemos una sesión de brief para entender tu línea de productos, tus clientes ideales, tu competencia y el tono que quieres proyectar. Preparamos el plan editorial del primer mes.
+</p>
+</div>
 
-      <!-- Paso 3 -->
-      <div class="relative z-10 flex flex-col items-center text-center px-6">
-        <div class="step-circle mb-5">3</div>
-        <p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Día 7</p>
-        <h3 class="font-bold text-lg text-[#111827] mb-2">Primer contenido live</h3>
-        <p class="text-sm text-[#6B7280] leading-relaxed">
-          En menos de una semana, OLN Tires ya tiene su primer contenido publicado y una presencia digital activa, consistente y profesional.
-        </p>
-      </div>
+<!-- Paso 3 -->
+<div class="relative z-10 flex flex-col items-center text-center px-6">
+<div class="step-circle mb-5">3</div>
+<p class="text-xs font-semibold tracking-widest uppercase text-[#F59E0B] mb-2">Día 7</p>
+<h3 class="font-bold text-lg text-[#111827] mb-2">Primer contenido live</h3>
+<p class="text-sm text-[#6B7280] leading-relaxed">
+En menos de una semana, OLN Tires ya tiene su primer contenido publicado y una presencia digital activa, consistente y profesional.
+</p>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
 
 <!-- ============================== CTA FINAL ============================== -->
 <section class="py-20 px-6 md:px-12 xl:px-20 bg-white">
-  <div class="max-w-screen-xl mx-auto">
-    <div class="rounded-2xl overflow-hidden text-center px-10 md:px-20 py-16 md:py-20" style="background:#e01010;">
-      <p class="text-xs font-bold tracking-widest uppercase text-red-200 mb-4">Hagámoslo</p>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-6xl text-white tracking-tight mb-4">
-        ¿Arrancamos?
-      </h2>
-      <p class="text-red-100 text-lg mb-10 max-w-lg mx-auto">
-        Escríbenos ahora y en menos de 24 horas te confirmamos tu plan y fecha de inicio.
-      </p>
-      <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20Brota%20Digital%2C%20quiero%20arrancar%20con%20la%20gestión%20de%20redes%20para%20OLN%20Tires"
-         class="inline-flex items-center justify-center gap-3 bg-white text-[#e01010] font-bold px-10 py-4 rounded-lg text-sm transition hover:bg-red-50">
-        <svg viewBox="0 0 24 24" fill="#e01010" class="w-5 h-5">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
-        </svg>
-        Escribir por WhatsApp
-      </a>
-      <p class="mt-6 text-xs text-red-200">brota digital · brotadigital.mx · Para OLN Tires (Outlet Llantas del Norte S.A. de C.V.)</p>
-    </div>
-  </div>
+<div class="max-w-screen-xl mx-auto">
+<div class="rounded-2xl overflow-hidden text-center px-10 md:px-20 py-16 md:py-20" style="background:#e01010;">
+<p class="text-xs font-bold tracking-widest uppercase text-red-200 mb-4">Hagámoslo</p>
+<h2 style="font-family:'Barlow Condensed',sans-serif;" class="font-extrabold text-4xl md:text-6xl text-white tracking-tight mb-4">
+¿Arrancamos?
+</h2>
+<p class="text-red-100 text-lg mb-10 max-w-lg mx-auto">
+Escríbenos ahora y en menos de 24 horas te confirmamos tu plan y fecha de inicio.
+</p>
+<a href="https://wa.me/521XXXXXXXXXX?text=Hola%20Brota%20Digital%2C%20quiero%20arrancar%20con%20la%20gestión%20de%20redes%20para%20OLN%20Tires"
+class="inline-flex items-center justify-center gap-3 bg-white text-[#e01010] font-bold px-10 py-4 rounded-lg text-sm transition hover:bg-red-50">
+<svg viewBox="0 0 24 24" fill="#e01010" class="w-5 h-5">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+<path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/>
+</svg>
+Escribir por WhatsApp
+</a>
+<p class="mt-6 text-xs text-red-200">brota digital · brotadigital.mx · Para OLN Tires (Outlet Llantas del Norte S.A. de C.V.)</p>
+</div>
+</div>
 </section>
 
 
 <!-- ============================== FOOTER ============================== -->
 <footer class="bg-white border-t border-gray-100 py-8 px-6 md:px-12 xl:px-20">
-  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
 
-    <div class="flex items-center gap-2">
-      <div class="w-2 h-2 rounded-full bg-[#e01010]"></div>
-      <span class="font-bold text-sm tracking-tight text-[#111827]">brota digital</span>
-      <span class="text-xs text-[#6B7280]">· brotadigital.mx</span>
-    </div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-[#e01010]"></div>
+<span class="font-bold text-sm tracking-tight text-[#111827]">brota digital</span>
+<span class="text-xs text-[#6B7280]">· brotadigital.mx</span>
+</div>
 
-    <p class="text-xs text-center text-[#6B7280]">
-      Propuesta preparada para OLN Tires · Outlet Llantas del Norte S.A. de C.V. · Válida 30 días a partir del 23 de abril de 2026
-    </p>
+<p class="text-xs text-center text-[#6B7280]">
+Propuesta preparada para OLN Tires · Outlet Llantas del Norte S.A. de C.V. · Válida 30 días a partir del 23 de abril de 2026
+</p>
 
-    <span class="text-xs text-[#6B7280] font-medium">Confidencial</span>
+<span class="text-xs text-[#6B7280] font-medium">Confidencial</span>
 
-  </div>
+</div>
 </footer>
 
 </body>
