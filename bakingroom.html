@@ -869,7 +869,7 @@
       position: relative;
       width: 100%;
       margin: 20px 0 16px;
-      border-radius: 12px;
+      border-radius: 0;
       overflow: hidden;
       background: var(--surface);
     }
@@ -1573,7 +1573,7 @@
     /* Carousels: limit width on desktop */
     @media (min-width: 768px) {
       .menu-carousel {
-        max-width: 500px;
+        max-width: 380px;
         margin-left: auto;
         margin-right: auto;
         border-radius: 0;
@@ -1584,14 +1584,14 @@
     @media (min-width: 768px) {
       .hero-full-img,
       section img:not(.menu-carousel__img):not([style*="height:500px"]):not([style*="border-radius:8px"]) {
-        max-width: 600px !important;
+        max-width: 450px !important;
         width: 100% !important;
         margin-left: auto !important;
         margin-right: auto !important;
         display: block !important;
       }
       .flavor-body img {
-        max-width: 400px !important;
+        max-width: 300px !important;
         margin-left: auto !important;
         margin-right: auto !important;
       }
@@ -2185,7 +2185,7 @@
                   </div>
                 </details>
               </div>
-              <div style="position:relative;overflow:hidden;border-radius:10px;max-width:500px;margin:0 auto;" aria-label="Fotos Pasteles Florales">
+              <div style="position:relative;overflow:hidden;border-radius:0;max-width:380px;margin:0 auto;" aria-label="Fotos Pasteles Florales">
                 <div id="floralTrack" style="display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);">
                   <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="florales-1.jpg" alt="Pastel floral con flores naturales CDMX · The Baking Room" loading="lazy"/>
                   <img style="min-width:100%;width:100%;height:auto;flex-shrink:0;display:block;" src="florales-2.jpg" alt="Pastel de boda floral artesanal Ciudad de México" loading="lazy"/>
