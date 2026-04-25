@@ -542,6 +542,115 @@
     .btn-pkg-white{background:#fff;color:var(--coral)}
     .btn-pkg-white:hover{background:var(--cream)}
 
+    /* ADD-ONS — identidad de marca + redes sociales */
+    .addons{margin-top:80px;padding-top:64px;border-top:1px dashed rgba(0,0,0,.12);position:relative}
+    .addons::before{
+      content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+      width:80px;height:1px;background:var(--coral);
+    }
+    .addons__head{text-align:center;max-width:560px;margin:0 auto 40px}
+    .addons__eyebrow{
+      font-family:var(--font-body);font-size:11px;font-weight:600;
+      letter-spacing:.22em;text-transform:uppercase;
+      color:var(--coral);margin-bottom:14px;
+    }
+    .addons__title{
+      font-family:var(--font-head);font-size:clamp(28px,4vw,40px);
+      font-weight:500;color:var(--black);line-height:1.15;margin-bottom:12px;
+      letter-spacing:-.01em;
+    }
+    .addons__title em{color:var(--coral);font-style:italic}
+    .addons__sub{font-size:14px;color:var(--gray);line-height:1.6}
+
+    .addons__grid{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+    }
+    .addon{
+      background:var(--white);border-radius:14px;
+      padding:36px 32px 32px;
+      border:1.5px solid transparent;
+      display:flex;flex-direction:column;gap:0;
+      transition:transform .35s cubic-bezier(.2,.8,.2,1),
+                 box-shadow .45s ease,border-color .3s ease;
+      position:relative;overflow:hidden;
+    }
+    .addon::before{
+      content:'';position:absolute;
+      top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;
+      background:radial-gradient(circle,rgba(232,93,58,.08) 0%,transparent 70%);
+      pointer-events:none;opacity:0;transition:opacity .5s ease;
+    }
+    .addon:hover{
+      transform:translateY(-4px);
+      border-color:rgba(232,93,58,.30);
+      box-shadow:
+        0 30px 60px -28px rgba(20,16,8,.22),
+        0 12px 28px -10px rgba(232,93,58,.18),
+        0 4px 12px -4px rgba(0,0,0,.06);
+    }
+    .addon:hover::before{opacity:1;}
+
+    .addon__icon{
+      width:52px;height:52px;border-radius:12px;
+      background:linear-gradient(135deg,rgba(232,93,58,.12) 0%,rgba(245,201,122,.08) 100%);
+      color:var(--coral);
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:22px;flex-shrink:0;
+      transition:transform .45s cubic-bezier(.2,.8,.2,1);
+    }
+    .addon__icon svg{width:26px;height:26px;}
+    .addon:hover .addon__icon{transform:rotate(-8deg) scale(1.05);}
+
+    .addon__name{
+      font-family:var(--font-head);font-size:24px;font-weight:600;
+      color:var(--black);margin-bottom:10px;letter-spacing:-.01em;
+    }
+    .addon__desc{
+      font-size:14px;color:var(--gray);line-height:1.6;margin-bottom:18px;
+    }
+    .addon__list{
+      list-style:none;display:flex;flex-direction:column;gap:8px;
+      margin-bottom:24px;
+    }
+    .addon__list li{
+      font-size:13px;color:var(--black);
+      display:flex;align-items:flex-start;gap:10px;line-height:1.45;
+    }
+    .addon__list li::before{
+      content:'✓';color:var(--coral);font-weight:800;font-size:13px;
+      flex-shrink:0;margin-top:1px;
+    }
+
+    .addon__foot{
+      margin-top:auto;padding-top:18px;
+      border-top:1px solid rgba(0,0,0,.06);
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      flex-wrap:wrap;
+    }
+    .addon__price{display:flex;flex-direction:column;line-height:1.1;}
+    .addon__price span{
+      font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--gray);font-weight:600;margin-bottom:4px;
+    }
+    .addon__price strong{
+      font-family:var(--font-head);font-size:24px;font-weight:700;
+      color:var(--black);letter-spacing:-.01em;
+    }
+    .addon__price strong em{
+      font-style:italic;font-weight:400;font-size:14px;color:var(--gray);
+    }
+    .addon__foot .btn-pkg{
+      width:auto;padding:11px 18px;font-size:11px;
+    }
+
+    @media(max-width:720px){
+      .addons{margin-top:56px;padding-top:48px}
+      .addons__grid{grid-template-columns:1fr;gap:16px}
+      .addon{padding:28px 24px}
+      .addon__foot{flex-direction:column;align-items:stretch;gap:14px}
+      .addon__foot .btn-pkg{width:100%;text-align:center;justify-content:center}
+    }
+
     /* TESTIMONIOS */
     .testimonios{padding:var(--py) 0;background:var(--black)}
     .testimonios__top{text-align:center;margin-bottom:56px}
@@ -1018,6 +1127,66 @@
             <button class="btn-pkg btn-pkg-outline" onclick="window.open('https://wa.me/525564131634','_blank')">Quiero este plan</button>
           </div>
         </div>
+
+        <!-- ADD-ONS: identidad de marca + redes sociales -->
+        <div class="addons reveal">
+          <div class="addons__head">
+            <p class="addons__eyebrow">También hacemos</p>
+            <h3 class="addons__title">Branding y redes para tu negocio</h3>
+            <p class="addons__sub">Servicios independientes o complemento de cualquier plan de página web.</p>
+          </div>
+          <div class="addons__grid">
+            <div class="addon">
+              <div class="addon__icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.4"/>
+                  <path d="M10 16h12M16 10v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                  <circle cx="16" cy="16" r="4" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="addon__body">
+                <div class="addon__name">Identidad de Marca</div>
+                <p class="addon__desc">Logo, paleta de colores, tipografía y guía de marca lista para que tu negocio se vea como debe verse.</p>
+                <ul class="addon__list">
+                  <li>Logo principal + variantes</li>
+                  <li>Paleta de colores y tipografías</li>
+                  <li>Guía de marca en PDF</li>
+                  <li>Archivos editables y para imprimir</li>
+                </ul>
+              </div>
+              <div class="addon__foot">
+                <div class="addon__price"><span>Desde</span><strong>$2,500 MXN</strong></div>
+                <a href="https://wa.me/525564131634?text=Hola%20Brota%20Digital%2C%20quiero%20info%20de%20Identidad%20de%20Marca" target="_blank" rel="noopener" class="btn-pkg btn-pkg-outline" data-magnetic>Cotizar marca</a>
+              </div>
+            </div>
+
+            <div class="addon">
+              <div class="addon__icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="6" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/>
+                  <rect x="14" y="12" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="11" cy="13" r="1.5" fill="currentColor"/>
+                  <circle cx="21" cy="19" r="1.5" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="addon__body">
+                <div class="addon__name">Gestión de Redes Sociales</div>
+                <p class="addon__desc">12 publicaciones mensuales para Instagram y Facebook con estrategia, copy y diseño. Tú nos cuentas, nosotras lo lanzamos.</p>
+                <ul class="addon__list">
+                  <li>12 publicaciones al mes (feed + reels)</li>
+                  <li>Estrategia y calendario editorial</li>
+                  <li>Diseño + copy + hashtags</li>
+                  <li>Reporte mensual de métricas</li>
+                </ul>
+              </div>
+              <div class="addon__foot">
+                <div class="addon__price"><span>Desde</span><strong>$3,000 MXN<em>/mes</em></strong></div>
+                <a href="https://wa.me/525564131634?text=Hola%20Brota%20Digital%2C%20quiero%20info%20de%20Gesti%C3%B3n%20de%20Redes" target="_blank" rel="noopener" class="btn-pkg btn-pkg-outline" data-magnetic>Cotizar redes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
