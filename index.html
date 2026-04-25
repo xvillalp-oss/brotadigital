@@ -859,6 +859,206 @@
       .top-thread,.btn-white{animation:none}
       .hero__glow--coral,.hero__glow--gold{animation:none}
     }
+
+    /* ============== MICRO-INTERACTIONS LAYER ============== */
+
+    /* 1. Nav links — underline draw */
+    .nav__links a{position:relative;padding-bottom:4px}
+    .nav__links a::after{
+      content:'';position:absolute;left:0;bottom:0;width:100%;height:1.5px;
+      background:var(--coral);transform:scaleX(0);transform-origin:left center;
+      transition:transform .25s cubic-bezier(.6,.05,.2,1)
+    }
+    .nav__links a:hover::after{transform:scaleX(1)}
+    .nav__links a:not(:hover)::after{transform-origin:right center}
+
+    /* 2. Logo letter-spacing breath */
+    .nav__logo{transition:letter-spacing .25s cubic-bezier(.4,0,.2,1)}
+    .nav__logo span{display:inline-block;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+    .nav__logo:hover{letter-spacing:.08em}
+    .nav__logo:hover span{transform:rotate(-12deg)}
+
+    /* 3. Burger morph to X */
+    .nav__burger span{transform-origin:center;transition:transform .3s cubic-bezier(.6,0,.2,1),opacity .25s ease}
+    .nav__burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav__burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .nav__burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* 4. All buttons — press feedback */
+    .btn-coral,.btn-ghost,.btn-pkg,.btn-white,.nav__cta{position:relative;overflow:hidden;transition:background .2s,border-color .2s,color .2s,transform .12s ease-out}
+    .btn-coral:active,.btn-ghost:active,.btn-pkg:active,.btn-white:active,.nav__cta:active{transform:scale(.97)}
+    .pkg.featured:hover .btn-pkg-white:active{transform:scale(.97)}
+
+    /* 5. Ripple effect */
+    .ripple{
+      position:absolute;width:8px;height:8px;border-radius:50%;
+      background:rgba(255,255,255,.45);
+      transform:translate(-50%,-50%) scale(0);
+      animation:ripple 600ms ease-out forwards;
+      pointer-events:none;z-index:0;
+    }
+    .btn-pkg-outline .ripple,.btn-ghost .ripple{background:rgba(232,93,58,.3)}
+    .btn-white .ripple{background:rgba(232,93,58,.35)}
+    @keyframes ripple{to{transform:translate(-50%,-50%) scale(40);opacity:0}}
+
+    /* 6. Servicios cards — stagger list on hover */
+    .serv-list li{
+      transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .3s ease;
+    }
+    @media(hover:hover){
+      .serv-card:not(:hover) .serv-list li{opacity:.78;transform:translateX(-4px)}
+      .serv-card:hover .serv-list li{opacity:1;transform:translateX(0)}
+      .serv-card:hover .serv-list li:nth-child(1){transition-delay:0ms}
+      .serv-card:hover .serv-list li:nth-child(2){transition-delay:60ms}
+      .serv-card:hover .serv-list li:nth-child(3){transition-delay:120ms}
+      .serv-card:hover .serv-list li:nth-child(4){transition-delay:180ms}
+    }
+
+    /* 7. Plan price — bounce when counter ends */
+    @keyframes price-punch{
+      0%{transform:scale(1)}
+      40%{transform:scale(1.08)}
+      70%{transform:scale(.98)}
+      100%{transform:scale(1)}
+    }
+    .pkg__price.punched{animation:price-punch .4s cubic-bezier(.34,1.56,.64,1)}
+
+    /* 8. Plan price — hover pulse */
+    .pkg__price{display:inline-block;cursor:default;transition:transform .25s ease;transform-origin:left center}
+    @media(prefers-reduced-motion:no-preference) and (hover:hover){
+      @keyframes price-pulse{
+        0%,100%{transform:scale(1)}
+        50%{transform:scale(1.03)}
+      }
+      .pkg__price:hover{animation:price-pulse 1.5s ease-in-out infinite}
+    }
+
+    /* 9. Add-on icon glow */
+    .addon__icon{position:relative}
+    .addon__icon::before{
+      content:'';position:absolute;inset:-12px;border-radius:50%;
+      background:radial-gradient(circle,rgba(232,93,58,.45) 0%,transparent 70%);
+      opacity:0;z-index:-1;pointer-events:none;
+    }
+    @media(prefers-reduced-motion:no-preference) and (hover:hover){
+      @keyframes addon-glow-pulse{
+        0%,100%{opacity:0;transform:scale(.85)}
+        50%{opacity:.6;transform:scale(1.1)}
+      }
+      .addon:hover .addon__icon::before{animation:addon-glow-pulse 1.5s ease-in-out infinite}
+    }
+
+    /* 10. Add-on checkmarks draw */
+    .addon__list li::before{
+      display:inline-block;
+      transition:opacity .35s ease,transform .45s cubic-bezier(.34,1.56,.64,1);
+    }
+    @media(prefers-reduced-motion:no-preference){
+      .addon:not(.in-view) .addon__list li::before{opacity:0;transform:scale(0)}
+      .addon.in-view .addon__list li::before{opacity:1;transform:scale(1)}
+      .addon.in-view .addon__list li:nth-child(1)::before{transition-delay:120ms}
+      .addon.in-view .addon__list li:nth-child(2)::before{transition-delay:200ms}
+      .addon.in-view .addon__list li:nth-child(3)::before{transition-delay:280ms}
+      .addon.in-view .addon__list li:nth-child(4)::before{transition-delay:360ms}
+    }
+
+    /* 11. Testimonio stars — wave on hover */
+    @media(prefers-reduced-motion:no-preference) and (hover:hover){
+      .testi__stars span{transition:transform .3s cubic-bezier(.34,1.56,.64,1),text-shadow .3s ease}
+      .testi:hover .testi__stars span{text-shadow:0 0 12px rgba(245,201,122,.7)}
+      @keyframes star-wave{
+        0%,100%{transform:scale(1)}
+        50%{transform:scale(1.25)}
+      }
+      .testi:hover .testi__stars span:nth-child(1){animation:star-wave .5s ease-in-out 0ms}
+      .testi:hover .testi__stars span:nth-child(2){animation:star-wave .5s ease-in-out 50ms}
+      .testi:hover .testi__stars span:nth-child(3){animation:star-wave .5s ease-in-out 100ms}
+      .testi:hover .testi__stars span:nth-child(4){animation:star-wave .5s ease-in-out 150ms}
+      .testi:hover .testi__stars span:nth-child(5){animation:star-wave .5s ease-in-out 200ms}
+    }
+
+    /* 12. Testimonial avatar — pulse + rotate on hover */
+    .testi__avatar{transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .3s ease,box-shadow .35s ease}
+    .testi:hover .testi__avatar{transform:rotate(-5deg) scale(1.08);background:var(--coral-d);box-shadow:0 6px 18px rgba(232,93,58,.4)}
+
+    /* 13. Footer social icons — bounce + glow */
+    .soc{transition:background .25s ease,transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease}
+    @keyframes soc-bounce{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-4px)}
+      100%{transform:translateY(0)}
+    }
+    .soc:hover{background:var(--coral);box-shadow:0 8px 18px rgba(232,93,58,.45);animation:soc-bounce .5s cubic-bezier(.34,1.56,.64,1)}
+
+    /* 14. Section flash (smooth scroll target) */
+    .flash{position:relative}
+    .flash::before{
+      content:'';position:absolute;inset:0;
+      background:rgba(232,93,58,.08);
+      pointer-events:none;z-index:50;
+      animation:section-flash .8s ease-out forwards;
+    }
+    @keyframes section-flash{
+      0%{opacity:0}
+      30%{opacity:1}
+      100%{opacity:0}
+    }
+
+    /* 15. Marquee slow on hover (override prior pause) */
+    .logos:hover .logos__track{animation-play-state:running;animation-duration:60s;transition:animation-duration .4s ease}
+    .logos__track{transition:animation-duration .4s ease}
+
+    /* 16. Hero CTA arrows — bounce loop */
+    .btn-coral .arr,.btn-ghost .arr,.btn-white .arr{display:inline-block;transition:transform .25s ease}
+    @keyframes arr-bounce{
+      0%,100%{transform:translateX(0)}
+      50%{transform:translateX(4px)}
+    }
+    @media(prefers-reduced-motion:no-preference) and (hover:hover){
+      .btn-coral:hover .arr,.btn-ghost:hover .arr,.btn-white:hover .arr{animation:arr-bounce .8s ease-in-out infinite}
+    }
+
+    /* 18. Reveal — glow flash on enter */
+    .serv-card.in-view,.pkg.in-view,.addon.in-view,.testi.in-view{position:relative}
+    @keyframes reveal-glow-flash{
+      0%{box-shadow:0 0 0 0 rgba(232,93,58,0)}
+      30%{box-shadow:0 6px 24px -8px rgba(232,93,58,.35)}
+      100%{box-shadow:0 0 0 0 rgba(232,93,58,0)}
+    }
+    @media(prefers-reduced-motion:no-preference){
+      .serv-card.glow-flash,.pkg.glow-flash,.addon.glow-flash,.testi.glow-flash{animation:reveal-glow-flash 1s ease-out}
+    }
+
+    /* 20. Tooltip MXN sin IVA */
+    .pkg__price,.addon__price{position:relative}
+    .pkg__price::after,.addon__price::after{
+      content:'Pesos mexicanos · sin IVA';
+      position:absolute;left:50%;bottom:calc(100% + 8px);
+      transform:translateX(-50%) translateY(4px);
+      background:var(--black);color:#fff;
+      font-family:var(--font-body);font-size:10px;font-weight:500;
+      letter-spacing:.06em;padding:6px 10px;border-radius:3px;
+      white-space:nowrap;pointer-events:none;
+      opacity:0;transition:opacity .25s ease .6s,transform .25s ease .6s;
+      z-index:60;
+    }
+    .pkg.featured .pkg__price::after{background:#fff;color:var(--coral-d)}
+    .pkg.premium .pkg__price::after{background:var(--gold);color:var(--black)}
+    .pkg__price:hover::after,.addon__price:hover::after{
+      opacity:1;transform:translateX(-50%) translateY(0);
+    }
+
+    /* Reduced motion: kill new animated decorations */
+    @media(prefers-reduced-motion:reduce){
+      .ripple{display:none}
+      .pkg__price.punched,.pkg__price:hover{animation:none}
+      .addon:hover .addon__icon::before{animation:none}
+      .testi:hover .testi__stars span{animation:none}
+      .soc:hover{animation:none}
+      .btn-coral:hover .arr,.btn-ghost:hover .arr,.btn-white:hover .arr{animation:none}
+      .serv-card.glow-flash,.pkg.glow-flash,.addon.glow-flash,.testi.glow-flash{animation:none}
+      .flash::before{animation:none}
+    }
   </style>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
@@ -1388,7 +1588,7 @@
           ctaIO.observe(ctaH2);
         }
 
-        // Price counter (on reveal)
+        // Price counter (on reveal) + 7. punch on complete
         const fmt = (n) => Math.round(n).toLocaleString('es-MX');
         document.querySelectorAll('.pkg__price[data-count]').forEach(el => {
           const target = parseInt(el.dataset.count, 10);
@@ -1403,7 +1603,11 @@
                 v: target,
                 duration: 1200,
                 easing: 'easeOutExpo',
-                update: () => { numEl.textContent = fmt(obj.v); }
+                update: () => { numEl.textContent = fmt(obj.v); },
+                complete: () => {
+                  el.classList.add('punched');
+                  setTimeout(() => el.classList.remove('punched'), 450);
+                }
               });
             });
           }, {threshold:0.4});
@@ -1479,7 +1683,7 @@
         lineIO.observe(grid);
       }
 
-      // ------- CUSTOM CURSOR -------
+      // ------- CUSTOM CURSOR (17. expanded selectors) -------
       if (fineCursor && !reduced){
         const dot = document.getElementById('cursorDot');
         const ring = document.getElementById('cursorRing');
@@ -1496,7 +1700,7 @@
           requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
-        document.querySelectorAll('a,button,.serv-card,.pkg,.testi,.hero__work-item').forEach(el => {
+        document.querySelectorAll('a,button,.serv-card,.pkg,.testi,.hero__work-item,.addon,.nav__logo,.soc,.testi__avatar').forEach(el => {
           el.addEventListener('mouseenter', () => ring.classList.add('hover'));
           el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
         });
@@ -1504,6 +1708,68 @@
         const d = document.getElementById('cursorDot'), r = document.getElementById('cursorRing');
         if (d) d.style.display = 'none';
         if (r) r.style.display = 'none';
+      }
+
+      // ------- 5. RIPPLE EFFECT on primary CTAs -------
+      if (!reduced){
+        const rippleSel = '.btn-coral,.btn-pkg,.btn-white,.nav__cta,.btn-ghost';
+        document.querySelectorAll(rippleSel).forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = (e.clientX - rect.left) + 'px';
+            ripple.style.top = (e.clientY - rect.top) + 'px';
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+          });
+        });
+      }
+
+      // ------- 14. SMOOTH SCROLL + section flash -------
+      const navHeight = 68;
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        const href = a.getAttribute('href');
+        if (!href || href === '#' || href.length < 2) return;
+        a.addEventListener('click', (e) => {
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
+          window.scrollTo({top, behavior: reduced ? 'auto' : 'smooth'});
+          if (!reduced){
+            target.classList.remove('flash');
+            void target.offsetWidth;
+            target.classList.add('flash');
+            setTimeout(() => target.classList.remove('flash'), 850);
+          }
+        });
+      });
+
+      // ------- 18. GLOW FLASH on reveal of major cards -------
+      if (!reduced && 'IntersectionObserver' in window){
+        const flashIO = new IntersectionObserver(entries => {
+          entries.forEach(en => {
+            if (!en.isIntersecting) return;
+            flashIO.unobserve(en.target);
+            en.target.classList.add('glow-flash');
+            setTimeout(() => en.target.classList.remove('glow-flash'), 1100);
+          });
+        }, {threshold:0.25});
+        document.querySelectorAll('.serv-card,.pkg,.addon,.testi').forEach(el => flashIO.observe(el));
+      }
+
+      // ------- 10. ADD-ON in-view tracker for checkmark stagger -------
+      if ('IntersectionObserver' in window){
+        const addonIO = new IntersectionObserver(entries => {
+          entries.forEach(en => {
+            if (en.isIntersecting){
+              en.target.classList.add('in-view');
+              addonIO.unobserve(en.target);
+            }
+          });
+        }, {threshold:0.3});
+        document.querySelectorAll('.addon').forEach(el => addonIO.observe(el));
       }
     })();
   </script>
