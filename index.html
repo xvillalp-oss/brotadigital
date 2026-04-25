@@ -1059,10 +1059,269 @@
       .serv-card.glow-flash,.pkg.glow-flash,.addon.glow-flash,.testi.glow-flash{animation:none}
       .flash::before{animation:none}
     }
+
+    /* ============================================================
+       DESIGNER LAYER — StringTune-inspired, Brota-flavored.
+       All decorative; respects reduced-motion + touch.
+       ============================================================ */
+
+    /* Lenis baseline */
+    html.lenis,html.lenis body{height:auto}
+    .lenis.lenis-smooth{scroll-behavior:auto !important}
+    .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+    .lenis.lenis-stopped{overflow:hidden}
+    /* Disable native smooth-scroll once Lenis is on */
+    html.lenis-on{scroll-behavior:auto}
+
+    /* Header hide-on-scroll-down, reveal on scroll-up */
+    .nav{transition:transform .6s cubic-bezier(.16,1,.3,1),background .25s,box-shadow .3s}
+    .nav.is-hidden{transform:translateY(-105%)}
+    .nav.is-hidden .top-thread{opacity:0}
+
+    /* Section numbering (designer signature) — sutil, italic, bajo opacidad */
+    .servicios,.proceso,.paquetes,.testimonios,.cta-final{position:relative}
+    .sec-num{
+      position:absolute;top:clamp(20px,3vw,40px);right:clamp(16px,4vw,48px);
+      font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+      font-size:clamp(14px,1.1vw,16px);font-weight:500;
+      letter-spacing:.04em;opacity:.32;pointer-events:none;z-index:2;
+      display:inline-flex;align-items:center;gap:10px;
+    }
+    .sec-num::before{
+      content:'';display:block;width:32px;height:1px;
+      background:currentColor;opacity:.6;
+      transform-origin:left;animation:sec-num-line 1.2s cubic-bezier(.16,1,.3,1) both;
+    }
+    .proceso .sec-num,.cta-final .sec-num{color:rgba(255,255,255,.55)}
+    .servicios .sec-num,.paquetes .sec-num{color:var(--black)}
+    .testimonios .sec-num{color:rgba(255,255,255,.55)}
+    @keyframes sec-num-line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+    /* Designer mark — pequeño asterisco coral animado en headers */
+    .des-mark{
+      display:inline-block;width:14px;height:14px;margin-right:10px;
+      vertical-align:middle;color:var(--coral);
+      animation:des-mark-rot 14s linear infinite;will-change:transform;
+    }
+    .des-mark svg{width:100%;height:100%;display:block}
+    @keyframes des-mark-rot{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+    /* IMPULSE TRIGGERS — más sofisticados que el reveal base */
+    [data-impulse]{will-change:transform,opacity,clip-path;opacity:0}
+    [data-impulse="rise"]{transform:translate3d(0,42px,0)}
+    [data-impulse="slide"]{transform:translate3d(-32px,0,0)}
+    [data-impulse="scale"]{transform:scale(.92);transform-origin:50% 100%}
+    [data-impulse="clip"]{clip-path:inset(0 100% 0 0);opacity:1}
+    [data-impulse].is-impulsed{
+      opacity:1;transform:none;clip-path:inset(0 0 0 0);
+      transition:
+        opacity .9s cubic-bezier(.16,1,.3,1),
+        transform 1s cubic-bezier(.16,1,.3,1),
+        clip-path 1.05s cubic-bezier(.77,0,.18,1);
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-impulse]{opacity:1 !important;transform:none !important;clip-path:none !important}
+    }
+
+    /* EDGE SHINES — gradiente que atraviesa el card al hover */
+    .serv-card,.pkg,.addon,.testi{position:relative}
+    .serv-card::before,.pkg::before,.addon .edge-shine,.testi::before{
+      content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+      background:linear-gradient(115deg,
+        transparent 0%,transparent 38%,
+        rgba(255,255,255,.55) 50%,
+        transparent 62%,transparent 100%);
+      background-size:220% 100%;background-position:200% 0;
+      mix-blend-mode:overlay;opacity:0;transition:opacity .35s;
+      z-index:3;
+    }
+    .pkg::before,.testi::before{
+      background:linear-gradient(115deg,
+        transparent 0%,transparent 38%,
+        rgba(245,201,122,.45) 50%,
+        transparent 62%,transparent 100%);
+      background-size:220% 100%;background-position:200% 0;
+    }
+    .serv-card:hover::before,.pkg:hover::before,.addon:hover .edge-shine,.testi:hover::before{
+      opacity:1;animation:edge-shine 750ms cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes edge-shine{
+      0%{background-position:200% 0;opacity:0}
+      30%{opacity:1}
+      100%{background-position:-100% 0;opacity:0}
+    }
+    /* edge-shine wrapper inside .addon (porque ya tiene ::before en uso) */
+    .addon .edge-shine{border-radius:inherit;background-size:220% 100%}
+    @media(hover:none){
+      .serv-card::before,.pkg::before,.addon .edge-shine,.testi::before{display:none}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .serv-card::before,.pkg::before,.addon .edge-shine,.testi::before{display:none}
+    }
+
+    /* MARQUEE — agregar subtítulo editorial y edge fade */
+    .logos{position:relative}
+    .logos::before,.logos::after{
+      content:'';position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none;
+    }
+    .logos::before{left:0;background:linear-gradient(90deg,var(--black),transparent)}
+    .logos::after{right:0;background:linear-gradient(-90deg,var(--black),transparent)}
+    .logos:hover .logos__track{animation-play-state:running !important;animation-direction:reverse !important}
+    .logos__sub{
+      padding:14px 0 4px;background:var(--black);overflow:hidden;
+      border-top:1px solid rgba(255,255,255,.05);position:relative;
+    }
+    .logos__sub-track{
+      display:flex;gap:36px;white-space:nowrap;
+      font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+      font-size:13px;color:rgba(245,201,122,.55);letter-spacing:.05em;
+      animation:logos-sub-marq 38s linear infinite;
+      will-change:transform;
+    }
+    .logos__sub-track span{padding-right:36px;border-right:0}
+    .logos__sub-track .dotg{
+      display:inline-block;width:4px;height:4px;border-radius:50%;
+      background:var(--coral);align-self:center;flex-shrink:0;
+    }
+    @keyframes logos-sub-marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(prefers-reduced-motion:reduce){
+      .logos__sub-track{animation:none}
+    }
+
+    /* KINETIC TYPO — hero h1 breath (loop suave 1 ciclo después) */
+    .hero__h1.is-breathing .word{animation:word-breath 4s ease-in-out 1;animation-delay:calc(var(--i,0)*.06s)}
+    @keyframes word-breath{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.012)}
+    }
+
+    /* KINETIC TYPO — title compose letter-by-letter */
+    .kin-letter{display:inline-block;will-change:transform,opacity;opacity:0;transform:translate3d(0,var(--ky,30px),0) rotate(var(--kr,0deg))}
+    .kin-on .kin-letter{
+      opacity:1;transform:none;
+      transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1);
+      transition-delay:calc(var(--ki,0)*32ms);
+    }
+
+    /* CTA final — palabra "brote" con stroke fill */
+    .cta-final h2 em .word{
+      background:linear-gradient(180deg,var(--gold) 0%,var(--gold) 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      -webkit-text-stroke:.5px rgba(245,201,122,.6);
+      position:relative;
+    }
+
+    /* SCALE REVEALS con clip-path para imagenes/blocks */
+    .clip-reveal{clip-path:inset(0 0 100% 0);transition:clip-path 1s cubic-bezier(.77,0,.18,1)}
+    .clip-reveal.is-revealed{clip-path:inset(0 0 0 0)}
+
+    /* STICKY SCROLL PROCESO — el momento "wow" */
+    .proceso.sticky-mode{padding:0;background:var(--black)}
+    .proceso.sticky-mode .proceso-stage{
+      position:relative;height:380vh;
+    }
+    .proceso.sticky-mode .proceso-sticky{
+      position:sticky;top:0;height:100vh;
+      display:flex;flex-direction:column;justify-content:center;
+      overflow:hidden;
+    }
+    .proceso.sticky-mode .container{position:relative;z-index:2}
+    .proceso.sticky-mode .proceso__top{margin-bottom:48px}
+    .proceso.sticky-mode .proceso__grid{
+      grid-template-columns:repeat(4,1fr);gap:24px;align-items:start;
+    }
+    .proceso.sticky-mode .paso{
+      transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1),background .35s;
+      opacity:.22;transform:translateY(8px) scale(.96);
+    }
+    .proceso.sticky-mode .paso.is-focus{
+      opacity:1;transform:translateY(0) scale(1);
+      background:rgba(232,93,58,.12);
+      box-shadow:0 30px 60px -20px rgba(232,93,58,.35);
+    }
+    .proceso.sticky-mode .paso.is-focus .paso__circle{
+      background:rgba(232,93,58,.22);border-color:var(--coral);color:var(--coral);
+    }
+    .proceso.sticky-mode .proceso__line{
+      position:absolute;left:0;top:50%;height:2px;
+      background:linear-gradient(90deg,var(--gold),var(--coral));
+      transform:scaleX(var(--p,0));transform-origin:left center;
+      transition:transform .15s linear;
+      box-shadow:0 0 16px rgba(245,201,122,.55);
+      width:100%;border-radius:1px;
+    }
+    .proceso.sticky-mode .proceso__progress-num{
+      position:absolute;top:38px;left:50%;transform:translateX(-50%);
+      font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+      font-size:clamp(48px,9vw,120px);color:rgba(255,255,255,.06);
+      pointer-events:none;letter-spacing:-.02em;line-height:1;font-weight:500;
+      z-index:1;transition:color .35s;
+    }
+    @media(max-width:880px){
+      .proceso.sticky-mode .proceso-stage{height:auto}
+      .proceso.sticky-mode .proceso-sticky{position:static;height:auto;padding:var(--py) 0}
+      .proceso.sticky-mode .proceso__grid{grid-template-columns:1fr}
+      .proceso.sticky-mode .paso{opacity:1;transform:none}
+      .proceso.sticky-mode .proceso__progress-num{display:none}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .proceso.sticky-mode .proceso-stage{height:auto}
+      .proceso.sticky-mode .proceso-sticky{position:static;height:auto;padding:var(--py) 0}
+      .proceso.sticky-mode .paso{opacity:1;transform:none}
+    }
+
+    /* CINEMATIC TRANSITION — thin line accent que cruza la pantalla */
+    .thin-cross{
+      position:relative;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(232,93,58,.5),rgba(245,201,122,.5),transparent);
+      transform:scaleX(0);transform-origin:left center;
+      transition:transform 1.2s cubic-bezier(.77,0,.18,1);
+      margin:0;
+    }
+    .thin-cross.is-on{transform:scaleX(1)}
+
+    /* PREMIUM LOADER */
+    #preloader{
+      position:fixed;inset:0;z-index:99999;background:var(--black);
+      display:flex;align-items:center;justify-content:center;
+      transition:opacity .8s cubic-bezier(.77,0,.18,1),visibility 0s linear .8s;
+    }
+    #preloader.is-out{opacity:0;visibility:hidden;pointer-events:none}
+    #preloader .pl-word{
+      font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;
+      font-size:clamp(54px,10vw,120px);color:var(--cream);letter-spacing:-.01em;
+      position:relative;
+    }
+    #preloader .pl-word::after{
+      content:'.';color:var(--coral);
+    }
+    #preloader .pl-word .pl-l{
+      display:inline-block;opacity:0;transform:translateY(20px);
+      animation:pl-in .55s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    #preloader .pl-word .pl-l:nth-child(1){animation-delay:.05s}
+    #preloader .pl-word .pl-l:nth-child(2){animation-delay:.12s}
+    #preloader .pl-word .pl-l:nth-child(3){animation-delay:.19s}
+    #preloader .pl-word .pl-l:nth-child(4){animation-delay:.26s}
+    #preloader .pl-word .pl-l:nth-child(5){animation-delay:.33s}
+    @keyframes pl-in{to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){
+      #preloader{display:none !important}
+    }
+
+    /* PARALLAX SUTIL — backgrounds */
+    .hero__glow,.hero::before,.hero::after{will-change:transform}
+
+    /* Update scroll progress bar to use Lenis-driven value */
+    .scroll-progress{transition:width .04s linear}
   </style>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 </head>
 <body>
+  <div id="preloader" aria-hidden="true">
+    <div class="pl-word"><span class="pl-l">b</span><span class="pl-l">r</span><span class="pl-l">o</span><span class="pl-l">t</span><span class="pl-l">a</span></div>
+  </div>
   <a href="#main" class="skip">Saltar al contenido</a>
   <div class="top-thread" aria-hidden="true"></div>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -1170,19 +1429,34 @@
         <span>Diseño Gráfico</span><span class="dot"></span>
       </div>
     </div>
+    <div class="logos__sub" aria-hidden="true">
+      <div class="logos__sub-track">
+        <span>CDMX</span><span class="dotg"></span>
+        <span>Pequeños negocios</span><span class="dotg"></span>
+        <span>Páginas que trabajan</span><span class="dotg"></span>
+        <span>Brota Digital</span><span class="dotg"></span>
+        <span>2026</span><span class="dotg"></span>
+        <span>CDMX</span><span class="dotg"></span>
+        <span>Pequeños negocios</span><span class="dotg"></span>
+        <span>Páginas que trabajan</span><span class="dotg"></span>
+        <span>Brota Digital</span><span class="dotg"></span>
+        <span>2026</span><span class="dotg"></span>
+      </div>
+    </div>
 
     <!-- SERVICIOS -->
     <section class="servicios" id="servicios">
+      <span class="sec-num" aria-hidden="true">01</span>
       <div class="container">
         <div class="servicios__top">
-          <div class="reveal">
-            <p class="label">Lo que hacemos</p>
+          <div class="reveal" data-impulse="rise">
+            <p class="label"><span class="des-mark" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>Lo que hacemos</p>
             <h2 class="h2">Todo lo que tu negocio<br>necesita para crecer</h2>
           </div>
-          <p class="lead reveal" style="max-width:320px">Sin complicaciones, sin tecnicismos. Tú enfócate en tu negocio, nosotros en lo digital.</p>
+          <p class="lead reveal" data-impulse="slide" style="max-width:320px">Sin complicaciones, sin tecnicismos. Tú enfócate en tu negocio, nosotros en lo digital.</p>
         </div>
         <div class="servicios__grid">
-          <div class="serv-card reveal">
+          <div class="serv-card reveal" data-impulse="rise" data-stagger="0">
             <div class="serv-icon">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
             </div>
@@ -1196,7 +1470,7 @@
               <li>Link a WhatsApp</li>
             </ul>
           </div>
-          <div class="serv-card reveal">
+          <div class="serv-card reveal" data-impulse="rise" data-stagger="1">
             <div class="serv-icon">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
             </div>
@@ -1210,7 +1484,7 @@
               <li>Kit para redes sociales</li>
             </ul>
           </div>
-          <div class="serv-card reveal">
+          <div class="serv-card reveal" data-impulse="rise" data-stagger="2">
             <div class="serv-icon">
               <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </div>
@@ -1227,58 +1501,67 @@
         </div>
       </div>
     </section>
+    <div class="thin-cross" aria-hidden="true"></div>
 
-    <!-- PROCESO -->
-    <section class="proceso" id="proceso">
-      <div class="container">
-        <div class="proceso__top reveal">
-          <p class="label" style="justify-content:center">Cómo funciona</p>
-          <h2 class="h2 light">Simple, rápido y sin sorpresas</h2>
-          <p class="lead light" style="margin:0 auto">Tu página lista en menos de una semana.</p>
-        </div>
-        <div class="proceso__grid" id="procesoGrid">
-          <div class="proceso__line" id="procesoLine" aria-hidden="true"></div>
-          <div class="paso reveal">
-            <div class="paso__circle">01</div>
-            <div class="paso__num" aria-hidden="true">01</div>
-            <h3>Briefing</h3>
-            <p>Me cuentas sobre tu negocio: qué vendes, a quién le vendes y qué quieres transmitir.</p>
-            <div class="paso__arrow">→</div>
-          </div>
-          <div class="paso reveal">
-            <div class="paso__circle">02</div>
-            <div class="paso__num" aria-hidden="true">02</div>
-            <h3>Propuesta + 50%</h3>
-            <p>Te mando la propuesta de diseño. Con el 50% de anticipo arrancamos.</p>
-            <div class="paso__arrow">→</div>
-          </div>
-          <div class="paso reveal">
-            <div class="paso__circle">03</div>
-            <div class="paso__num" aria-hidden="true">03</div>
-            <h3>Diseño</h3>
-            <p>En 3-5 días tienes la primera versión lista para revisar con 2 rondas de cambios incluidas.</p>
-            <div class="paso__arrow">→</div>
-          </div>
-          <div class="paso reveal">
-            <div class="paso__circle">04</div>
-            <div class="paso__num" aria-hidden="true">04</div>
-            <h3>Entrega + 50%</h3>
-            <p>Aprobado el diseño, se paga el resto y tu página queda en línea lista para recibir clientes.</p>
+    <!-- PROCESO (sticky scroll experience) -->
+    <section class="proceso sticky-mode" id="proceso">
+      <span class="sec-num" aria-hidden="true">02</span>
+      <div class="proceso-stage" id="procesoStage">
+        <div class="proceso-sticky">
+          <div class="proceso__progress-num" id="procesoProgressNum" aria-hidden="true">01</div>
+          <div class="container">
+            <div class="proceso__top reveal" data-impulse="rise">
+              <p class="label" style="justify-content:center"><span class="des-mark" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>Cómo funciona</p>
+              <h2 class="h2 light">Simple, rápido y sin sorpresas</h2>
+              <p class="lead light" style="margin:0 auto">Tu página lista en menos de una semana.</p>
+            </div>
+            <div class="proceso__grid" id="procesoGrid">
+              <div class="proceso__line" id="procesoLine" aria-hidden="true"></div>
+              <div class="paso reveal" data-step="1">
+                <div class="paso__circle">01</div>
+                <div class="paso__num" aria-hidden="true">01</div>
+                <h3>Briefing</h3>
+                <p>Me cuentas sobre tu negocio: qué vendes, a quién le vendes y qué quieres transmitir.</p>
+                <div class="paso__arrow">→</div>
+              </div>
+              <div class="paso reveal" data-step="2">
+                <div class="paso__circle">02</div>
+                <div class="paso__num" aria-hidden="true">02</div>
+                <h3>Propuesta + 50%</h3>
+                <p>Te mando la propuesta de diseño. Con el 50% de anticipo arrancamos.</p>
+                <div class="paso__arrow">→</div>
+              </div>
+              <div class="paso reveal" data-step="3">
+                <div class="paso__circle">03</div>
+                <div class="paso__num" aria-hidden="true">03</div>
+                <h3>Diseño</h3>
+                <p>En 3-5 días tienes la primera versión lista para revisar con 2 rondas de cambios incluidas.</p>
+                <div class="paso__arrow">→</div>
+              </div>
+              <div class="paso reveal" data-step="4">
+                <div class="paso__circle">04</div>
+                <div class="paso__num" aria-hidden="true">04</div>
+                <h3>Entrega + 50%</h3>
+                <p>Aprobado el diseño, se paga el resto y tu página queda en línea lista para recibir clientes.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
+    <div class="thin-cross" aria-hidden="true"></div>
 
     <!-- PAQUETES -->
     <section class="paquetes" id="paquetes">
+      <span class="sec-num" aria-hidden="true">03</span>
       <div class="container">
-        <div class="paquetes__top reveal">
-          <p class="label" style="justify-content:center">Precios</p>
+        <div class="paquetes__top reveal" data-impulse="rise">
+          <p class="label" style="justify-content:center"><span class="des-mark" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>Precios</p>
           <h2 class="h2">Planes para cada etapa</h2>
           <p class="lead" style="margin:0 auto">Sin letra chica. Sin costos ocultos.</p>
         </div>
         <div class="paquetes__grid">
-          <div class="pkg semilla reveal">
+          <div class="pkg semilla reveal" data-impulse="rise" data-stagger="0">
             <div class="pkg__label">Siembra</div>
             <div class="pkg__name">Tu primera presencia digital</div>
             <div class="pkg__price" data-count="3500"><span>$</span><span class="pkg__num">3,500</span></div>
@@ -1293,7 +1576,7 @@
             </ul>
             <button class="btn-pkg btn-pkg-outline" onclick="window.open('https://wa.me/525564131634','_blank')">Quiero este plan</button>
           </div>
-          <div class="pkg featured reveal">
+          <div class="pkg featured reveal" data-impulse="scale" data-stagger="1">
             <div class="pkg__label">⭐ Más popular</div>
             <div class="pkg__name">Cosecha</div>
             <div class="pkg__price" data-count="8500"><span>$</span><span class="pkg__num">8,500</span></div>
@@ -1310,7 +1593,7 @@
             </ul>
             <button class="btn-pkg btn-pkg-white" onclick="window.open('https://wa.me/525564131634','_blank')" data-magnetic>Quiero este plan</button>
           </div>
-          <div class="pkg premium reveal">
+          <div class="pkg premium reveal" data-impulse="rise" data-stagger="2">
             <div class="pkg__label">Selva</div>
             <div class="pkg__name">Una web que trabaja para ti</div>
             <div class="pkg__price" data-count="16500"><span>$</span><span class="pkg__num">16,500</span></div>
@@ -1329,14 +1612,14 @@
         </div>
 
         <!-- ADD-ONS: identidad de marca + redes sociales -->
-        <div class="addons reveal">
+        <div class="addons reveal" data-impulse="rise">
           <div class="addons__head">
-            <p class="addons__eyebrow">También hacemos</p>
+            <p class="addons__eyebrow"><span class="des-mark" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>También hacemos</p>
             <h3 class="addons__title">Branding y redes para tu negocio</h3>
             <p class="addons__sub">Servicios independientes o complemento de cualquier plan de página web.</p>
           </div>
           <div class="addons__grid">
-            <div class="addon">
+            <div class="addon"><span class="edge-shine" aria-hidden="true"></span>
               <div class="addon__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32" fill="none">
                   <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.4"/>
@@ -1360,7 +1643,7 @@
               </div>
             </div>
 
-            <div class="addon">
+            <div class="addon"><span class="edge-shine" aria-hidden="true"></span>
               <div class="addon__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32" fill="none">
                   <rect x="4" y="6" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/>
@@ -1392,13 +1675,14 @@
 
     <!-- TESTIMONIOS -->
     <section class="testimonios" id="clientes">
+      <span class="sec-num" aria-hidden="true">04</span>
       <div class="container">
-        <div class="testimonios__top reveal">
-          <p class="label" style="justify-content:center">Clientes</p>
-          <h2 class="h2 light">Negocios que ya brotaron</h2>
+        <div class="testimonios__top reveal" data-impulse="rise">
+          <p class="label" style="justify-content:center"><span class="des-mark" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>Clientes</p>
+          <h2 class="h2 light" data-kin="compose">Negocios que ya brotaron</h2>
         </div>
         <div class="testimonios__grid">
-          <div class="testi reveal">
+          <div class="testi reveal" data-impulse="rise" data-stagger="0">
             <div class="testi__stars" aria-label="5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
             <p class="testi__text">"Mi restaurante duplicó las llamadas el primer mes de tener la página. Vale cada peso."</p>
             <div class="testi__author">
@@ -1409,7 +1693,7 @@
               </div>
             </div>
           </div>
-          <div class="testi reveal">
+          <div class="testi reveal" data-impulse="rise" data-stagger="1">
             <div class="testi__stars" aria-label="5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
             <p class="testi__text">"Súper rápidas y profesionales. En 5 días ya tenía mi página y mis clientes no podían creer lo bonita."</p>
             <div class="testi__author">
@@ -1420,7 +1704,7 @@
               </div>
             </div>
           </div>
-          <div class="testi reveal">
+          <div class="testi reveal" data-impulse="rise" data-stagger="2">
             <div class="testi__stars" aria-label="5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
             <p class="testi__text">"Por fin mi negocio se ve tan bueno como el servicio que doy. Recomendado al 100%."</p>
             <div class="testi__author">
@@ -1435,8 +1719,10 @@
       </div>
     </section>
 
+    <div class="thin-cross" aria-hidden="true"></div>
     <!-- CTA FINAL -->
     <section class="cta-final" id="contacto">
+      <span class="sec-num" aria-hidden="true">05</span>
       <div class="container">
         <h2 class="reveal" data-split>
           <span class="word-wrap"><span class="word">¿Lista</span></span>
@@ -1770,6 +2056,193 @@
           });
         }, {threshold:0.3});
         document.querySelectorAll('.addon').forEach(el => addonIO.observe(el));
+      }
+
+      /* ============================================================
+         DESIGNER LAYER — JS
+         ============================================================ */
+
+      // ------- PRELOADER -------
+      const preloader = document.getElementById('preloader');
+      const dismissPreloader = () => {
+        if (!preloader) return;
+        preloader.classList.add('is-out');
+        document.documentElement.classList.add('lenis-on');
+        setTimeout(() => preloader.remove(), 900);
+      };
+      if (reduced) {
+        dismissPreloader();
+      } else {
+        const minShow = 720;
+        const t0 = performance.now();
+        const finish = () => {
+          const elapsed = performance.now() - t0;
+          setTimeout(dismissPreloader, Math.max(0, minShow - elapsed));
+        };
+        if (document.readyState === 'complete') finish();
+        else window.addEventListener('load', finish, {once:true});
+        // Safety: never block more than 2.6s
+        setTimeout(dismissPreloader, 2600);
+      }
+
+      // ------- LENIS SMOOTH SCROLL -------
+      let lenis = null;
+      function initLenis(){
+        if (reduced || !window.Lenis) return;
+        lenis = new window.Lenis({
+          duration: 1.15,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          smoothTouch: false,
+          wheelMultiplier: 1,
+          touchMultiplier: 1.6,
+        });
+        function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // Sync scroll progress bar to Lenis
+        lenis.on('scroll', ({scroll, limit}) => {
+          const pct = (scroll / Math.max(1, limit)) * 100;
+          if (sp) sp.style.width = pct + '%';
+        });
+
+        // Replace anchor smooth scroll with Lenis.scrollTo
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+          const href = a.getAttribute('href');
+          if (!href || href === '#' || href.length < 2) return;
+          a.addEventListener('click', (e) => {
+            const target = document.querySelector(href);
+            if (!target) return;
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            lenis.scrollTo(target, {offset: -76, duration: 1.4});
+          }, true);
+        });
+      }
+      if (window.Lenis) initLenis();
+      else window.addEventListener('load', initLenis, {once:true});
+
+      // ------- HEADER hide on scroll-down, reveal on scroll-up -------
+      let lastY = window.scrollY, navHidden = false;
+      const navEl = document.getElementById('nav');
+      const onNavScroll = () => {
+        const y = window.scrollY;
+        const dy = y - lastY;
+        if (y < 80){ if (navHidden){ navEl.classList.remove('is-hidden'); navHidden = false; } }
+        else if (dy > 6 && !navHidden){ navEl.classList.add('is-hidden'); navHidden = true; }
+        else if (dy < -6 && navHidden){ navEl.classList.remove('is-hidden'); navHidden = false; }
+        lastY = y;
+      };
+      window.addEventListener('scroll', onNavScroll, {passive:true});
+
+      // ------- IMPULSE TRIGGERS -------
+      const impulseTargets = document.querySelectorAll('[data-impulse]');
+      if ('IntersectionObserver' in window && impulseTargets.length){
+        const impulseIO = new IntersectionObserver((entries) => {
+          entries.forEach(en => {
+            if (!en.isIntersecting) return;
+            const el = en.target;
+            const stagger = parseInt(el.dataset.stagger || '0', 10);
+            el.style.transitionDelay = (stagger * 75) + 'ms';
+            el.classList.add('is-impulsed');
+            impulseIO.unobserve(el);
+          });
+        }, {rootMargin: '-8% 0px -8% 0px', threshold: 0.05});
+        impulseTargets.forEach(el => impulseIO.observe(el));
+      } else {
+        impulseTargets.forEach(el => el.classList.add('is-impulsed'));
+      }
+
+      // ------- HERO H1 BREATH (1 ciclo después de la entrada) -------
+      const heroH1 = document.querySelector('.hero__h1');
+      if (heroH1 && !reduced){
+        heroH1.querySelectorAll('.word').forEach((w,i) => w.style.setProperty('--i', i));
+        setTimeout(() => heroH1.classList.add('is-breathing'), 1700);
+      }
+
+      // ------- KINETIC TYPO compose -------
+      document.querySelectorAll('[data-kin="compose"]').forEach(el => {
+        if (reduced) return;
+        const txt = el.textContent;
+        el.textContent = '';
+        const frag = document.createDocumentFragment();
+        let li = 0;
+        for (const ch of txt){
+          if (ch === ' '){ frag.appendChild(document.createTextNode(' ')); continue; }
+          const s = document.createElement('span');
+          s.className = 'kin-letter';
+          s.textContent = ch;
+          s.style.setProperty('--ki', li);
+          s.style.setProperty('--ky', (Math.random() * 40 + 10) + 'px');
+          s.style.setProperty('--kr', ((Math.random() - .5) * 8) + 'deg');
+          frag.appendChild(s);
+          li++;
+        }
+        el.appendChild(frag);
+        const kinIO = new IntersectionObserver((entries) => {
+          entries.forEach(en => {
+            if (en.isIntersecting){ el.classList.add('kin-on'); kinIO.unobserve(el); }
+          });
+        }, {threshold: 0.4});
+        kinIO.observe(el);
+      });
+
+      // ------- THIN CROSS lines reveal -------
+      document.querySelectorAll('.thin-cross').forEach(el => {
+        const tcIO = new IntersectionObserver((entries) => {
+          entries.forEach(en => { if (en.isIntersecting){ el.classList.add('is-on'); tcIO.unobserve(el); }});
+        }, {threshold:0.5});
+        tcIO.observe(el);
+      });
+
+      // ------- STICKY SCROLL PROCESO -------
+      const procesoSection = document.querySelector('.proceso.sticky-mode');
+      const procesoStage = document.getElementById('procesoStage');
+      const procesoLine = document.getElementById('procesoLine');
+      const procesoNum = document.getElementById('procesoProgressNum');
+      const pasos = procesoSection ? procesoSection.querySelectorAll('.paso') : [];
+      const isMobileSticky = window.matchMedia('(max-width:880px)').matches;
+      if (procesoStage && pasos.length && !reduced && !isMobileSticky){
+        let pasoTicking = false;
+        const updateProceso = () => {
+          if (pasoTicking) return;
+          pasoTicking = true;
+          requestAnimationFrame(() => {
+            const rect = procesoStage.getBoundingClientRect();
+            const total = procesoStage.offsetHeight - window.innerHeight;
+            const scrolled = Math.max(0, Math.min(total, -rect.top));
+            const p = total > 0 ? scrolled / total : 0;
+            // line
+            if (procesoLine) procesoLine.style.setProperty('--p', p.toFixed(3));
+            // active paso index
+            const idx = Math.min(pasos.length - 1, Math.floor(p * pasos.length * 0.999));
+            pasos.forEach((el, i) => el.classList.toggle('is-focus', i === idx));
+            if (procesoNum) procesoNum.textContent = String(idx + 1).padStart(2, '0');
+            pasoTicking = false;
+          });
+        };
+        window.addEventListener('scroll', updateProceso, {passive:true});
+        window.addEventListener('resize', updateProceso, {passive:true});
+        updateProceso();
+        // Make first paso focused initially
+        pasos[0].classList.add('is-focus');
+      }
+
+      // ------- PARALLAX hero glows (subtle, transform only) -------
+      const glows = document.querySelectorAll('.hero__glow');
+      if (glows.length && !reduced && fineCursor){
+        let glowTicking = false;
+        window.addEventListener('scroll', () => {
+          if (glowTicking) return;
+          glowTicking = true;
+          requestAnimationFrame(() => {
+            const y = window.scrollY;
+            glows.forEach((g, i) => {
+              g.style.transform = `translate3d(0, ${y * (i === 0 ? -0.06 : 0.04)}px, 0)`;
+            });
+            glowTicking = false;
+          });
+        }, {passive:true});
       }
     })();
   </script>
