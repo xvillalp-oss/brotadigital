@@ -1923,131 +1923,48 @@ Las empresas que mejor salen de problemas de cobranza no son las más grandes. S
   Documento confidencial — uso interno del cliente
 </div>
 
-<!-- Lenis smooth scroll + anime.js (deferred, no bloquean render) -->
-<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
-<script defer>
-(function () {
-  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Detectar conexión lenta o data-saver → apagar lo decorativo
-  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  var slowConnection = conn && (conn.saveData || /(2g|slow-2g)/.test(conn.effectiveType || ''));
-  // Detectar dispositivo modesto (≤4 CPU cores)
-  var modestDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
-  var skipMotion = prefersReduced || slowConnection;
+<!-- Lite: vanilla JS, sin libs externas, ~1.5KB -->
+<script>
+(function(){
+  var R = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var els = document.querySelectorAll('.reveal,.reveal-stagger');
+  // Reveal-on-scroll
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.1, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in'); }); }
 
-  // ── Lenis smooth scroll (solo desktop con buena conexión) ─────────
-  if (!skipMotion && !modestDevice && typeof Lenis !== 'undefined' && window.innerWidth > 900) {
-    var lenis = new Lenis({
-      duration: 1.05,
-      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-      smoothWheel: true,
-      smoothTouch: false
-    });
-    // RAF inteligente: solo corre cuando hay scroll activo
-    var rafActive = false;
-    function raf(time) {
-      lenis.raf(time);
-      if (rafActive) requestAnimationFrame(raf);
-    }
-    lenis.on('scroll', function () {
-      if (!rafActive) {
-        rafActive = true;
-        requestAnimationFrame(raf);
+  // Counters (vanilla, sin anime.js)
+  var ctrs = document.querySelectorAll('[data-counter]');
+  if(ctrs.length && 'IntersectionObserver' in window){
+    var fmt = function(n){ return n.toLocaleString('en-US'); };
+    var animate = function(el, target, prefix){
+      if(R){ el.textContent = (prefix||'') + fmt(target); return; }
+      var start = null, dur = 1200;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        // ease-out cubic
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (prefix||'') + fmt(Math.round(target * eased));
+        if(p < 1) requestAnimationFrame(step);
       }
-      clearTimeout(window._lenisIdle);
-      window._lenisIdle = setTimeout(function () { rafActive = false; }, 200);
-    });
-  }
-
-  // ── Scroll reveal via IntersectionObserver ─────────────
-  var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
+      requestAnimationFrame(step);
+    };
+    var cio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target;
+          animate(el, parseFloat(el.getAttribute('data-counter'))||0, el.getAttribute('data-prefix')||'');
+          cio.unobserve(el);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('in'); });
-  }
-
-  // ── Calendar row stagger ─────────────
-  var calRows = document.querySelectorAll('table.cal tbody tr');
-  if (calRows.length && 'IntersectionObserver' in window && !prefersReduced) {
-    calRows.forEach(function (row) {
-      row.style.opacity = '0';
-      row.style.transform = 'translateY(6px)';
-      row.style.transition = 'opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1)';
-    });
-    var rowIO = new IntersectionObserver(function (entries) {
-      var visible = entries.filter(function (e) { return e.isIntersecting; });
-      visible.forEach(function (entry, i) {
-        var row = entry.target;
-        setTimeout(function () {
-          row.style.opacity = '1';
-          row.style.transform = 'translateY(0)';
-        }, i * 35);
-        rowIO.unobserve(row);
-      });
-    }, { threshold: 0.15 });
-    calRows.forEach(function (r) { rowIO.observe(r); });
-  }
-
-  // ── Animated counters (KPIs, prices) ─────────────
-  function formatNumber(n) {
-    return n.toLocaleString('en-US');
-  }
-  function animateCounter(el, target, prefix) {
-    if (prefersReduced || typeof anime === 'undefined') {
-      el.textContent = (prefix || '') + formatNumber(target);
-      return;
-    }
-    var obj = { v: 0 };
-    anime({
-      targets: obj,
-      v: target,
-      duration: 1400,
-      easing: 'cubicBezier(.16,1,.3,1)',
-      update: function () {
-        el.textContent = (prefix || '') + formatNumber(Math.round(obj.v));
-      }
-    });
-  }
-  var counterEls = document.querySelectorAll('[data-counter]');
-  if (counterEls.length && 'IntersectionObserver' in window) {
-    var counterIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          var target = parseFloat(el.getAttribute('data-counter')) || 0;
-          var prefix = el.getAttribute('data-prefix') || '';
-          animateCounter(el, target, prefix);
-          counterIO.unobserve(el);
-        }
-      });
-    }, { threshold: 0.4 });
-    counterEls.forEach(function (el) { counterIO.observe(el); });
-  }
-
-  // ── Subtle hero parallax ─────────────
-  if (!prefersReduced) {
-    var cover = document.querySelector('.cover');
-    if (cover) {
-      var rafId = null;
-      window.addEventListener('scroll', function () {
-        if (rafId) return;
-        rafId = requestAnimationFrame(function () {
-          var y = Math.min(window.scrollY, 600);
-          cover.style.backgroundPosition = '50% ' + (y * 0.06) + 'px';
-          rafId = null;
-        });
-      }, { passive: true });
-    }
+    },{threshold:.4});
+    ctrs.forEach(function(el){ cio.observe(el); });
   }
 })();
 </script>
