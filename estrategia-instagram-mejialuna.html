@@ -1923,23 +1923,41 @@ Las empresas que mejor salen de problemas de cobranza no son las más grandes. S
   Documento confidencial — uso interno del cliente
 </div>
 
-<!-- Lenis smooth scroll + anime.js -->
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
-<script>
+<!-- Lenis smooth scroll + anime.js (deferred, no bloquean render) -->
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+<script defer>
 (function () {
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Detectar conexión lenta o data-saver → apagar lo decorativo
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var slowConnection = conn && (conn.saveData || /(2g|slow-2g)/.test(conn.effectiveType || ''));
+  // Detectar dispositivo modesto (≤4 CPU cores)
+  var modestDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+  var skipMotion = prefersReduced || slowConnection;
 
-  // ── Lenis smooth scroll ─────────────────────────
-  if (!prefersReduced && typeof Lenis !== 'undefined') {
+  // ── Lenis smooth scroll (solo desktop con buena conexión) ─────────
+  if (!skipMotion && !modestDevice && typeof Lenis !== 'undefined' && window.innerWidth > 900) {
     var lenis = new Lenis({
       duration: 1.05,
       easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
       smoothWheel: true,
       smoothTouch: false
     });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
+    // RAF inteligente: solo corre cuando hay scroll activo
+    var rafActive = false;
+    function raf(time) {
+      lenis.raf(time);
+      if (rafActive) requestAnimationFrame(raf);
+    }
+    lenis.on('scroll', function () {
+      if (!rafActive) {
+        rafActive = true;
+        requestAnimationFrame(raf);
+      }
+      clearTimeout(window._lenisIdle);
+      window._lenisIdle = setTimeout(function () { rafActive = false; }, 200);
+    });
   }
 
   // ── Scroll reveal via IntersectionObserver ─────────────
