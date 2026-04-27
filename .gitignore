@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Claude Code metadata
+.claude/
+.claude-flow/
+.claude-flow.session
+
+# IDE
+.vscode/
+.idea/
+
+# Temp
+*.swp
+*.swo
+*~
+.cache/
+
+# Node
+node_modules/
