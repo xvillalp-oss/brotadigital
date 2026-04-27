@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Brota Digital — Propuesta de Identidad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',system-ui,sans-serif;background:#F7F7F2;color:#111}
+    h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}
+
+    .page-header{
+      background:#111;padding:48px 40px;text-align:center;
+    }
+    .page-header h1{color:#fff;font-size:clamp(24px,3vw,36px);font-weight:800;margin-bottom:8px}
+    .page-header p{color:rgba(255,255,255,.5);font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+
+    .options{display:flex;flex-direction:column;gap:2px;padding:2px}
+
+    /* ── OPCIÓN A ── Verde + Negro ── */
+    .opt-a{background:#0D0D0D;padding:clamp(48px,6vw,80px) clamp(24px,5vw,80px)}
+    .opt-a .tag{color:#1DB954;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:10px}
+    .opt-a .tag::before{content:'';display:block;width:28px;height:1px;background:#1DB954}
+    .opt-a .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(40px,7vw,80px);font-weight:800;color:#fff;line-height:1;margin-bottom:6px}
+    .opt-a .logo span{color:#1DB954}
+    .opt-a .sub{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:40px}
+    .opt-a .desc{color:rgba(255,255,255,.55);font-size:15px;line-height:1.7;max-width:480px;margin-bottom:36px}
+    .swatches{display:flex;gap:12px;flex-wrap:wrap}
+    .sw{width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,.08)}
+    .sw-label{font-size:10px;color:rgba(255,255,255,.35);margin-top:6px;letter-spacing:.06em;text-align:center}
+    .swatch-wrap{display:flex;flex-direction:column;align-items:center}
+    .opt-a .badge{display:inline-block;background:#1DB954;color:#000;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 24px;border-radius:2px;margin-top:28px}
+
+    /* ── OPCIÓN B ── Coral + Crema ── */
+    .opt-b{background:#FDFAF5;padding:clamp(48px,6vw,80px) clamp(24px,5vw,80px)}
+    .opt-b .tag{color:#E85D3A;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:10px}
+    .opt-b .tag::before{content:'';display:block;width:28px;height:1px;background:#E85D3A}
+    .opt-b .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(40px,7vw,80px);font-weight:800;color:#1A1A1A;line-height:1;margin-bottom:6px}
+    .opt-b .logo span{color:#E85D3A}
+    .opt-b .sub{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.3);margin-bottom:40px}
+    .opt-b .desc{color:#666;font-size:15px;line-height:1.7;max-width:480px;margin-bottom:36px}
+    .opt-b .badge{display:inline-block;background:#1A1A1A;color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 24px;border-radius:2px;margin-top:28px}
+    .sw-label-dark{font-size:10px;color:rgba(0,0,0,.35);margin-top:6px;letter-spacing:.06em;text-align:center}
+
+    /* ── OPCIÓN C ── Violeta + Lima ── */
+    .opt-c{background:#0F0A1E;padding:clamp(48px,6vw,80px) clamp(24px,5vw,80px)}
+    .opt-c .tag{color:#B8FF57;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:10px}
+    .opt-c .tag::before{content:'';display:block;width:28px;height:1px;background:#B8FF57}
+    .opt-c .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(40px,7vw,80px);font-weight:800;color:#fff;line-height:1;margin-bottom:6px}
+    .opt-c .logo span{color:#B8FF57}
+    .opt-c .sub{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:40px}
+    .opt-c .desc{color:rgba(255,255,255,.5);font-size:15px;line-height:1.7;max-width:480px;margin-bottom:36px}
+    .opt-c .badge{display:inline-block;background:#B8FF57;color:#0F0A1E;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 24px;border-radius:2px;margin-top:28px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+    .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:24px;border-radius:4px}
+    .card-dark{background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.08);padding:24px;border-radius:4px}
+    .card h3,.card-dark h3{font-size:14px;font-weight:700;margin-bottom:8px}
+    .card p,.card-dark p{font-size:13px;line-height:1.6}
+
+    .choose{
+      background:#111;padding:40px;text-align:center;
+    }
+    .choose p{color:rgba(255,255,255,.5);font-size:13px;margin-bottom:20px}
+    .choose-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .choose-btns button{
+      padding:12px 32px;font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+      border:none;border-radius:2px;cursor:pointer;transition:.2s;
+    }
+    .btn-a{background:#1DB954;color:#000}
+    .btn-b{background:#E85D3A;color:#fff}
+    .btn-c{background:#B8FF57;color:#0F0A1E}
+    .choose-btns button:hover{opacity:.85;transform:translateY(-1px)}
+
+    .divider{
+      background:#111;color:rgba(255,255,255,.2);
+      font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+      padding:16px 40px;text-align:right;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Brota Digital — Propuesta de Identidad</h1>
+  <p>3 opciones de logo + paleta · Elige la que más te represente</p>
+</div>
+
+<div class="options">
+
+  <!-- OPCIÓN A -->
+  <div class="opt-a">
+    <p class="tag">Opción A</p>
+    <div class="logo">brota<span>.</span></div>
+    <div class="sub">Digital</div>
+    <p class="desc">
+      Verde vibrante sobre negro. Energía, crecimiento, modernidad.<br>
+      La paleta más reconocible y con mayor contraste en redes sociales.
+    </p>
+    <div class="swatches">
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#1DB954"></div>
+        <div class="sw-label">#1DB954</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#0D0D0D"></div>
+        <div class="sw-label">#0D0D0D</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#F7F7F2;border-color:rgba(255,255,255,.2)"></div>
+        <div class="sw-label">#F7F7F2</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#14A045"></div>
+        <div class="sw-label">#14A045</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card"><h3 style="color:#1DB954">✓ Funciona en Instagram</h3><p style="color:rgba(255,255,255,.5)">Alto contraste, muy visible en feed y stories</p></div>
+      <div class="card"><h3 style="color:#1DB954">✓ Transmite crecimiento</h3><p style="color:rgba(255,255,255,.5)">"Brota" + verde = concepto visual inmediato</p></div>
+      <div class="card"><h3 style="color:#1DB954">✓ Atemporal</h3><p style="color:rgba(255,255,255,.5)">No es una tendencia — es un clásico moderno</p></div>
+    </div>
+    <div class="badge">Elegir opción A</div>
+  </div>
+
+  <div class="divider">— vs —</div>
+
+  <!-- OPCIÓN B -->
+  <div class="opt-b">
+    <p class="tag">Opción B</p>
+    <div class="logo">brota<span>.</span></div>
+    <div class="sub">Digital</div>
+    <p class="desc">
+      Coral cálido sobre fondo crema. Boutique, cercano, con personalidad.<br>
+      Ideal si quieres proyectar una agencia con trato más personal y humano.
+    </p>
+    <div class="swatches">
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#E85D3A"></div>
+        <div class="sw-label-dark">#E85D3A</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#1A1A1A"></div>
+        <div class="sw-label-dark">#1A1A1A</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#FDFAF5;border:2px solid #ddd"></div>
+        <div class="sw-label-dark">#FDFAF5</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#F5C97A"></div>
+        <div class="sw-label-dark">#F5C97A</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card-dark"><h3 style="color:#E85D3A">✓ Calidez y confianza</h3><p style="color:#666">Los pequeños negocios se sienten en buenas manos</p></div>
+      <div class="card-dark"><h3 style="color:#E85D3A">✓ Tendencia 2025</h3><p style="color:#666">Tonos tierra/coral dominan el branding boutique LATAM</p></div>
+      <div class="card-dark"><h3 style="color:#E85D3A">✓ Versátil</h3><p style="color:#666">Funciona muy bien en propuestas impresas y digitales</p></div>
+    </div>
+    <div class="badge">Elegir opción B</div>
+  </div>
+
+  <div class="divider">— vs —</div>
+
+  <!-- OPCIÓN C -->
+  <div class="opt-c">
+    <p class="tag">Opción C</p>
+    <div class="logo">brota<span>.</span></div>
+    <div class="sub">Digital</div>
+    <p class="desc">
+      Verde lima eléctrico sobre morado oscuro. Bold, disruptiva, memorable.<br>
+      Para una agencia que quiere destacar y no parecerse a ninguna otra.
+    </p>
+    <div class="swatches">
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#B8FF57"></div>
+        <div class="sw-label">#B8FF57</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#0F0A1E"></div>
+        <div class="sw-label">#0F0A1E</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#6C3FC8"></div>
+        <div class="sw-label">#6C3FC8</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="sw" style="background:#fff;border-color:rgba(255,255,255,.2)"></div>
+        <div class="sw-label">#FFFFFF</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card"><h3 style="color:#B8FF57">✓ Muy viral en redes</h3><p style="color:rgba(255,255,255,.5)">Esta paleta genera saves y shares en Instagram</p></div>
+      <div class="card"><h3 style="color:#B8FF57">✓ Top tendencia 2025</h3><p style="color:rgba(255,255,255,.5)">Lima eléctrico + dark bg es la combinación del momento</p></div>
+      <div class="card"><h3 style="color:#B8FF57">✓ Diferenciadora</h3><p style="color:rgba(255,255,255,.5)">No hay otra agencia así en México — te recordarán</p></div>
+    </div>
+    <div class="badge">Elegir opción C</div>
+  </div>
+
+</div>
+
+<div class="choose">
+  <p>¿Cuál opción es Brota Digital?</p>
+  <div class="choose-btns">
+    <button class="btn-a">A — Verde + Negro</button>
+    <button class="btn-b">B — Coral + Crema</button>
+    <button class="btn-c">C — Lima + Morado</button>
+  </div>
+</div>
+
+</body>
+</html>

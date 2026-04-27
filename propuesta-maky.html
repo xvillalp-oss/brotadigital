@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Propuesta de Página Web — Creaciones Maky × Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "ink":       "#0a0a0a",
+          "ink-card":  "#141414",
+          "ink-lift":  "#1a1a1a",
+          "coral":     "#e8637a",
+          "coral-dim": "rgba(232,99,122,0.15)",
+          "coral-bdr": "rgba(232,99,122,0.35)",
+          "text-main": "#f5f5f5",
+          "text-muted":"#a0a0a0",
+          "border":    "#222222",
+        },
+        fontFamily: {
+          serif: ["Noto Serif", "serif"],
+          sans:  ["Manrope", "sans-serif"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { font-family: 'Manrope', sans-serif; }
+  h1, h2, h3, h4, .font-serif { font-family: 'Noto Serif', serif; }
+  html { scroll-behavior: smooth; }
+
+  /* ---- Accent label pill ---- */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(232,99,122,0.10);
+    color: #e8637a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(232,99,122,0.35);
+    margin-bottom: 16px;
+    font-family: 'Manrope', sans-serif;
+  }
+  .section-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e8637a;
+    flex-shrink: 0;
+  }
+
+  /* ---- Feature cards ---- */
+  .feature-card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 14px;
+    padding: 28px 24px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .feature-card:hover {
+    border-color: rgba(232,99,122,0.45);
+    box-shadow: 0 6px 28px rgba(232,99,122,0.08);
+  }
+
+  /* ---- Plan cards ---- */
+  .plan-card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 36px rgba(0,0,0,0.45);
+  }
+  .plan-card.featured {
+    border: 2px solid #e8637a;
+    box-shadow: 0 8px 32px rgba(232,99,122,0.18);
+  }
+
+  /* ---- Check list item ---- */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #d0d0d0;
+    line-height: 1.65;
+  }
+  .check-dot {
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e8637a;
+    margin-top: 7px;
+  }
+
+  /* ---- Bullet list (Why section) ---- */
+  .why-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: #d0d0d0;
+    line-height: 1.7;
+    padding: 14px 0;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .why-item:last-child { border-bottom: none; }
+  .why-dash {
+    flex-shrink: 0;
+    width: 20px;
+    height: 2px;
+    background: #e8637a;
+    margin-top: 11px;
+    border-radius: 2px;
+  }
+
+  /* ---- Timeline ---- */
+  .step-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(232,99,122,0.12);
+    border: 1.5px solid rgba(232,99,122,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #e8637a;
+    font-family: 'Manrope', sans-serif;
+  }
+  .step-connector {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(to bottom, rgba(232,99,122,0.4), rgba(232,99,122,0.05));
+    margin: 4px 0;
+    margin-left: 23px;
+    min-height: 28px;
+  }
+
+  /* ---- CTA button ---- */
+  .btn-coral {
+    background: #e8637a;
+    color: #fff;
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    letter-spacing: 0.02em;
+  }
+  .btn-coral:hover { background: #d04f67; transform: translateY(-2px); }
+
+  /* ---- Thin coral divider ---- */
+  .coral-divider {
+    width: 52px;
+    height: 2px;
+    background: #e8637a;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .plan-grid { grid-template-columns: 1fr !important; }
+    .feature-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 900px) {
+    .timeline-row { flex-direction: column !important; }
+  }
+</style>
+</head>
+<body class="bg-[#0a0a0a] text-[#f5f5f5]">
+
+
+<!-- ============================== HEADER / HERO ============================== -->
+<header class="px-6 md:px-12 xl:px-20 pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#1a1a1a]">
+  <div class="max-w-screen-lg mx-auto">
+
+    <!-- Brand label -->
+    <div class="section-label mb-6">BROTA DIGITAL</div>
+
+    <!-- H1 -->
+    <h1 class="font-serif text-4xl md:text-6xl font-bold text-[#f5f5f5] leading-tight tracking-tight mb-5" style="max-width:720px;">
+      Tu tienda online,<br/>lista para vender
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-[#a0a0a0] text-base md:text-lg font-medium tracking-wide mb-8">
+      Propuesta de página web &middot; Creaciones Maky
+    </p>
+
+    <!-- Coral divider -->
+    <div class="coral-divider"></div>
+
+    <!-- Meta row -->
+    <div class="flex flex-wrap items-center gap-x-8 gap-y-2 mt-8 text-sm text-[#a0a0a0]">
+      <span>Preparada para <span class="text-[#f5f5f5] font-semibold">Paulina Peña</span></span>
+      <span class="hidden sm:inline text-[#333]">|</span>
+      <span>Brota Digital &middot; brotadigital.mx</span>
+      <span class="hidden sm:inline text-[#333]">|</span>
+      <span>Abril 2026</span>
+    </div>
+  </div>
+</header>
+
+
+<!-- ============================== INTRO ============================== -->
+<section class="px-6 md:px-12 xl:px-20 py-16 md:py-20">
+  <div class="max-w-screen-lg mx-auto">
+    <div class="max-w-2xl">
+      <p class="text-[#d0d0d0] text-lg md:text-xl leading-relaxed font-light">
+        Creaciones Maky ya tiene presencia en Instagram con más de 1,800 seguidoras y 243 publicaciones. El siguiente paso es una página web que convierta visitas en ventas, disponible las 24 horas, sin depender de algoritmos.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== LO QUE INCLUYE ============================== -->
+<section class="px-6 md:px-12 xl:px-20 py-16 md:py-20 border-t border-[#1a1a1a]">
+  <div class="max-w-screen-lg mx-auto">
+
+    <div class="section-label mb-2">Lo que incluye tu página</div>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#f5f5f5] mb-4">
+      Todo lo que necesitas para empezar
+    </h2>
+    <div class="coral-divider mb-12"></div>
+
+    <!-- Feature grid -->
+    <div class="feature-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Card 1 -->
+      <div class="feature-card">
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-3">01</p>
+        <h3 class="font-serif text-lg font-bold text-[#f5f5f5] mb-3">Diseño a medida</h3>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">Páginas adaptadas a tu marca, colores y estilo. Nada genérico — tu identidad visual reflejada desde el primer scroll.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-card">
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-3">02</p>
+        <h3 class="font-serif text-lg font-bold text-[#f5f5f5] mb-3">Catálogo de productos</h3>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">Organizado por categoría con fotos, descripción y precio. Tus moños, diademas y colitas exhibidos como merecen.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-card">
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-3">03</p>
+        <h3 class="font-serif text-lg font-bold text-[#f5f5f5] mb-3">Botón de compra directo</h3>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">Cada producto conecta directo a WhatsApp con el mensaje listo. Sin fricciones, sin pasos extra para tu clienta.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-card">
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-3">04</p>
+        <h3 class="font-serif text-lg font-bold text-[#f5f5f5] mb-3">Optimización móvil</h3>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">El 90% de tus clientas te buscan desde el celular. Tu página se ve perfecta en cualquier pantalla, sin excepción.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="feature-card">
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-3">05</p>
+        <h3 class="font-serif text-lg font-bold text-[#f5f5f5] mb-3">SEO básico</h3>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">Tu página aparece en Google cuando buscan accesorios para niñas. Visibilidad orgánica desde el día del lanzamiento.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="feature-card">
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-3">06</p>
+        <h3 class="font-serif text-lg font-bold text-[#f5f5f5] mb-3">Velocidad y seguridad</h3>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">HTTPS, carga rápida, hosting incluido el primer año. Tu sitio siempre en línea y protegido desde el inicio.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== PLANES ============================== -->
+<section class="px-6 md:px-12 xl:px-20 py-16 md:py-20 border-t border-[#1a1a1a]">
+  <div class="max-w-screen-lg mx-auto">
+
+    <div class="section-label mb-2">Inversión</div>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#f5f5f5] mb-4">Planes</h2>
+    <div class="coral-divider mb-12"></div>
+
+    <div class="plan-grid grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+      <!-- Plan Esencial -->
+      <div class="plan-card">
+        <div class="p-7 pb-6 border-b border-[#1e1e1e]">
+          <p class="text-[#a0a0a0] text-xs font-bold uppercase tracking-widest mb-3">Esencial</p>
+          <p class="font-serif text-3xl font-bold text-[#f5f5f5] mb-1">$7,500 <span class="text-base font-normal text-[#a0a0a0]">MXN</span></p>
+          <p class="text-[#a0a0a0] text-sm">Entrega en 10 días hábiles</p>
+        </div>
+        <div class="p-7 flex flex-col gap-4 flex-1">
+          <div class="check-item"><div class="check-dot"></div><span>Hasta 30 productos en catálogo</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>Diseño personalizado (1 página)</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>Conexión a WhatsApp</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>SEO básico</span></div>
+        </div>
+      </div>
+
+      <!-- Plan Tienda (featured) -->
+      <div class="plan-card featured" style="position:relative;">
+        <!-- Badge -->
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#e8637a;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:5px 18px;border-radius:999px;white-space:nowrap;font-family:'Manrope',sans-serif;">Recomendado</div>
+        <div class="p-7 pb-6 border-b border-[#2a2a2a]" style="background:rgba(232,99,122,0.04);">
+          <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-3">Tienda</p>
+          <p class="font-serif text-3xl font-bold text-[#f5f5f5] mb-1">$11,500 <span class="text-base font-normal text-[#a0a0a0]">MXN</span></p>
+          <p class="text-[#a0a0a0] text-sm">Entrega en 15 días hábiles</p>
+        </div>
+        <div class="p-7 flex flex-col gap-4 flex-1">
+          <div class="check-item"><div class="check-dot"></div><span>Hasta 100 productos con filtros por categoría</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>Diseño multi-página (Inicio, Catálogo, Nosotras, Contacto)</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>Conexión a WhatsApp + formulario</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>Galería de Instagram integrada</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>SEO completo + Google Business</span></div>
+        </div>
+      </div>
+
+      <!-- Plan Premium -->
+      <div class="plan-card">
+        <div class="p-7 pb-6 border-b border-[#1e1e1e]">
+          <p class="text-[#a0a0a0] text-xs font-bold uppercase tracking-widest mb-3">Premium</p>
+          <p class="font-serif text-3xl font-bold text-[#f5f5f5] mb-1">$16,500 <span class="text-base font-normal text-[#a0a0a0]">MXN</span></p>
+          <p class="text-[#a0a0a0] text-sm">Entrega en 25 días hábiles</p>
+        </div>
+        <div class="p-7 flex flex-col gap-4 flex-1">
+          <div class="check-item"><div class="check-dot"></div><span>Productos ilimitados + carrito de compras</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>Pasarela de pago (Mercado Pago / Stripe)</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>Panel de administración para agregar productos tú misma</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>Diseño multi-página premium</span></div>
+          <div class="check-item"><div class="check-dot"></div><span>SEO avanzado + analítica</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== CÓMO TRABAJAMOS ============================== -->
+<section class="px-6 md:px-12 xl:px-20 py-16 md:py-20 border-t border-[#1a1a1a]">
+  <div class="max-w-screen-lg mx-auto">
+
+    <div class="section-label mb-2">Proceso</div>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#f5f5f5] mb-4">Cómo trabajamos</h2>
+    <div class="coral-divider mb-14"></div>
+
+    <!-- Timeline: desktop horizontal, mobile vertical -->
+    <div class="hidden md:grid grid-cols-4 gap-0 relative">
+      <!-- Connecting line -->
+      <div style="position:absolute;top:24px;left:calc(12.5%);width:75%;height:1px;background:linear-gradient(to right,rgba(232,99,122,0.5),rgba(232,99,122,0.1));z-index:0;"></div>
+
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center text-center px-4 relative z-10">
+        <div class="step-circle mb-5">1</div>
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-1">Día 1–2</p>
+        <h4 class="font-serif text-base font-bold text-[#f5f5f5] mb-2">Kickoff</h4>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">Nos compartes logo, fotos, texto y preferencias de diseño</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center text-center px-4 relative z-10">
+        <div class="step-circle mb-5">2</div>
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-1">Día 3–7</p>
+        <h4 class="font-serif text-base font-bold text-[#f5f5f5] mb-2">Diseño</h4>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">Presentamos una propuesta visual para tu aprobación</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center text-center px-4 relative z-10">
+        <div class="step-circle mb-5">3</div>
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-1">Día 8–14</p>
+        <h4 class="font-serif text-base font-bold text-[#f5f5f5] mb-2">Desarrollo</h4>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">Construimos la página con todos los productos</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flex flex-col items-center text-center px-4 relative z-10">
+        <div class="step-circle mb-5">4</div>
+        <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-1">Día 15</p>
+        <h4 class="font-serif text-base font-bold text-[#f5f5f5] mb-2">Lanzamiento</h4>
+        <p class="text-[#a0a0a0] text-sm leading-relaxed">Revisión final, dominio y tu página en vivo</p>
+      </div>
+    </div>
+
+    <!-- Mobile vertical timeline -->
+    <div class="md:hidden flex flex-col">
+
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <div class="step-circle">1</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="pb-8 pt-1">
+          <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-1">Día 1–2</p>
+          <h4 class="font-serif text-base font-bold text-[#f5f5f5] mb-1">Kickoff</h4>
+          <p class="text-[#a0a0a0] text-sm leading-relaxed">Nos compartes logo, fotos, texto y preferencias de diseño</p>
+        </div>
+      </div>
+
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <div class="step-circle">2</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="pb-8 pt-1">
+          <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-1">Día 3–7</p>
+          <h4 class="font-serif text-base font-bold text-[#f5f5f5] mb-1">Diseño</h4>
+          <p class="text-[#a0a0a0] text-sm leading-relaxed">Presentamos una propuesta visual para tu aprobación</p>
+        </div>
+      </div>
+
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <div class="step-circle">3</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="pb-8 pt-1">
+          <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-1">Día 8–14</p>
+          <h4 class="font-serif text-base font-bold text-[#f5f5f5] mb-1">Desarrollo</h4>
+          <p class="text-[#a0a0a0] text-sm leading-relaxed">Construimos la página con todos los productos</p>
+        </div>
+      </div>
+
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <div class="step-circle">4</div>
+        </div>
+        <div class="pt-1">
+          <p class="text-[#e8637a] text-xs font-bold uppercase tracking-widest mb-1">Día 15</p>
+          <h4 class="font-serif text-base font-bold text-[#f5f5f5] mb-1">Lanzamiento</h4>
+          <p class="text-[#a0a0a0] text-sm leading-relaxed">Revisión final, dominio y tu página en vivo</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== POR QUÉ TENER PÁGINA WEB ============================== -->
+<section class="px-6 md:px-12 xl:px-20 py-16 md:py-20 border-t border-[#1a1a1a]">
+  <div class="max-w-screen-lg mx-auto">
+
+    <div class="section-label mb-2">Valor</div>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#f5f5f5] mb-4">Por qué tener página web</h2>
+    <div class="coral-divider mb-12"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
+      <div>
+        <div class="why-item">
+          <div class="why-dash"></div>
+          <span>Apareces en Google cuando buscan "moños para niñas" o "accesorios para niñas" en tu ciudad</span>
+        </div>
+        <div class="why-item">
+          <div class="why-dash"></div>
+          <span>Vendes aunque no estés respondiendo mensajes — tu página trabaja mientras tú descansas</span>
+        </div>
+        <div class="why-item">
+          <div class="why-dash"></div>
+          <span>Tus clientas pueden ver el catálogo completo sin preguntarte por WhatsApp</span>
+        </div>
+      </div>
+      <div>
+        <div class="why-item">
+          <div class="why-dash"></div>
+          <span>Transmite profesionalismo y confianza desde el primer contacto con una clienta nueva</span>
+        </div>
+        <div class="why-item">
+          <div class="why-dash"></div>
+          <span>No dependes del algoritmo de Instagram para que te vean — tu página siempre está disponible</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== CTA / FOOTER ============================== -->
+<footer class="px-6 md:px-12 xl:px-20 py-16 md:py-24 border-t border-[#1a1a1a]">
+  <div class="max-w-screen-lg mx-auto">
+
+    <!-- Coral divider -->
+    <div class="coral-divider mb-10"></div>
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+
+      <div>
+        <h2 class="font-serif text-3xl md:text-5xl font-bold text-[#f5f5f5] leading-tight mb-4">
+          Lista para empezar?
+        </h2>
+        <p class="text-[#a0a0a0] text-lg mb-8">Escríbenos y arrancamos esta semana.</p>
+        <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20mi%20p%C3%A1gina%20web%20para%20Creaciones%20Maky"
+           class="btn-coral px-8 py-4 text-base">
+          Escribir por WhatsApp
+        </a>
+      </div>
+
+      <div class="text-right">
+        <p class="text-[#f5f5f5] font-bold text-lg tracking-tight mb-1">Brota Digital</p>
+        <p class="text-[#a0a0a0] text-sm">brotadigital.mx</p>
+      </div>
+
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-[#1a1a1a] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs text-[#555]">
+      <span>brota digital &middot; brotadigital.mx</span>
+      <span>Propuesta preparada para Creaciones Maky &middot; Abril 2026</span>
+    </div>
+
+  </div>
+</footer>
+
+
+</body>
+</html>

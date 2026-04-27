@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia de Marketing — Brota Digital 2025–2026</title>
+<style>
+  :root{
+    --verde:#2d7a45;--verde-claro:#4aad66;--verde-pale:#e8f5ec;
+    --negro:#1a1a1a;--gris:#4a4a4a;--gris-claro:#f5f5f5;
+    --coral:#e8533a;--crema:#faf8f4;--oro:#c9a84c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--negro);background:var(--crema);line-height:1.6}
+
+  /* NAV */
+  nav{position:sticky;top:0;background:#fff;border-bottom:2px solid var(--verde);z-index:100;padding:0 24px}
+  nav ul{display:flex;gap:0;list-style:none;overflow-x:auto;white-space:nowrap;max-width:1200px;margin:0 auto}
+  nav a{display:block;padding:12px 14px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);text-decoration:none;border-bottom:3px solid transparent;transition:all .2s}
+  nav a:hover,nav a.on{color:var(--verde);border-bottom-color:var(--verde)}
+
+  /* HERO */
+  .hero{background:var(--verde);color:#fff;padding:64px 24px 48px;text-align:center}
+  .hero .logo-area{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px}
+  .hero-leaf{font-size:36px}
+  .hero h1{font-size:clamp(28px,5vw,48px);font-weight:900;letter-spacing:-.02em;line-height:1.1}
+  .hero h1 em{color:#a8e6bb;font-style:normal}
+  .hero p{font-size:16px;opacity:.85;max-width:600px;margin:12px auto 0}
+  .hero-meta{display:flex;gap:24px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+  .hero-chip{background:rgba(255,255,255,.15);border-radius:20px;padding:6px 16px;font-size:12px;font-weight:700;letter-spacing:.05em}
+
+  /* LAYOUT */
+  .container{max-width:1100px;margin:0 auto;padding:0 24px}
+  section{padding:56px 0 48px}
+  section:nth-child(even){background:#fff}
+  section:nth-child(odd){background:var(--crema)}
+
+  /* SECTION HEADER */
+  .sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:32px;padding-bottom:20px;border-bottom:2px solid var(--verde-pale)}
+  .sec-num{font-size:11px;font-weight:900;color:var(--verde-claro);letter-spacing:.1em;text-transform:uppercase;background:var(--verde-pale);padding:4px 10px;border-radius:4px;white-space:nowrap;margin-top:2px}
+  .sec-head h2{font-size:clamp(20px,3vw,28px);font-weight:900;color:var(--negro);line-height:1.2}
+  .sec-head p{font-size:14px;color:var(--gris);margin-top:4px}
+
+  /* CARDS GRID */
+  .grid{display:grid;gap:20px}
+  .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .grid-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .grid-4{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .card{background:#fff;border-radius:12px;padding:24px;border:1px solid #e8e8e8;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .card-green{background:var(--verde);color:#fff;border:none}
+  .card-green .lbl{color:rgba(255,255,255,.7)}
+  .card-coral{background:var(--coral);color:#fff;border:none}
+  .card h3{font-size:16px;font-weight:800;margin-bottom:8px}
+  .card .lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--verde-claro);margin-bottom:6px}
+  .card p{font-size:14px;line-height:1.5;color:var(--gris)}
+  .card-green p,.card-coral p{color:rgba(255,255,255,.88)}
+  .card .price{font-size:28px;font-weight:900;color:var(--verde);margin:8px 0 4px}
+  .card-green .price,.card-coral .price{color:#fff}
+  .card ul{list-style:none;margin-top:10px}
+  .card ul li{font-size:13px;color:var(--gris);padding:3px 0;padding-left:16px;position:relative}
+  .card ul li::before{content:'→';position:absolute;left:0;color:var(--verde-claro);font-size:11px;top:5px}
+  .card-green ul li::before,.card-coral ul li::before{color:rgba(255,255,255,.6)}
+  .card-green ul li,.card-coral ul li{color:rgba(255,255,255,.9)}
+
+  /* TABLE */
+  .tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid #e0e0e0;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
+  th{background:var(--verde);color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;text-align:left}
+  td{padding:9px 14px;border-bottom:1px solid #f0f0f0;color:var(--gris)}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:var(--verde-pale)}
+  td strong{color:var(--negro)}
+  .tag{display:inline-block;background:var(--verde-pale);color:var(--verde);font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;letter-spacing:.05em;white-space:nowrap}
+  .tag-coral{background:#fde8e4;color:var(--coral)}
+  .tag-oro{background:#fdf5e4;color:var(--oro)}
+
+  /* HIGHLIGHT BOXES */
+  .hl{background:var(--verde);color:#fff;border-radius:14px;padding:28px 32px;margin:24px 0}
+  .hl h3{font-size:18px;font-weight:900;margin-bottom:8px}
+  .hl p{font-size:14px;opacity:.9;line-height:1.6}
+  .hl-coral{background:var(--coral)}
+  .hl-dark{background:var(--negro)}
+
+  /* STAT CHIPS */
+  .stats{display:flex;gap:16px;flex-wrap:wrap;margin:24px 0}
+  .stat{background:#fff;border-radius:10px;padding:16px 20px;border:1px solid #e8e8e8;text-align:center;flex:1;min-width:120px}
+  .stat .n{font-size:28px;font-weight:900;color:var(--verde);line-height:1}
+  .stat .u{font-size:11px;color:var(--gris);margin-top:4px;font-weight:600}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:28px;border-left:3px solid var(--verde-pale)}
+  .tl-item{position:relative;margin-bottom:28px}
+  .tl-item::before{content:'';position:absolute;left:-36px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--verde);border:3px solid #fff;box-shadow:0 0 0 2px var(--verde)}
+  .tl-month{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--verde-claro);margin-bottom:4px}
+  .tl-content{background:#fff;border-radius:10px;padding:16px 20px;border:1px solid #e8e8e8}
+  .tl-content h4{font-size:15px;font-weight:800;margin-bottom:6px}
+  .tl-content ul{list-style:none}
+  .tl-content ul li{font-size:13px;color:var(--gris);padding:2px 0 2px 14px;position:relative}
+  .tl-content ul li::before{content:'·';position:absolute;left:0;color:var(--verde);font-weight:900;font-size:16px;line-height:1.1}
+
+  /* COPY BLOCKS */
+  .copy-block{background:#fff;border-radius:10px;border:1px solid #e8e8e8;padding:20px;margin-bottom:16px}
+  .copy-block .meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+  .copy-block .caption{font-size:14px;line-height:1.6;color:var(--negro)}
+  .copy-block .hashtags{font-size:12px;color:var(--verde-claro);margin-top:8px}
+  .copy-block .time-badge{background:var(--verde-pale);color:var(--verde);font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px}
+
+  /* PACKAGES COMPARISON */
+  .pkg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .pkg{background:#fff;border-radius:14px;border:2px solid #e8e8e8;padding:24px 20px;position:relative;overflow:hidden}
+  .pkg.featured{border-color:var(--verde);background:var(--verde-pale)}
+  .pkg.featured::before{content:'POPULAR';position:absolute;top:12px;right:-20px;background:var(--verde);color:#fff;font-size:9px;font-weight:900;padding:4px 28px;transform:rotate(35deg);letter-spacing:.1em}
+  .pkg .pkg-name{font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--verde-claro);margin-bottom:6px}
+  .pkg .pkg-tag{font-size:12px;color:var(--gris);margin-bottom:16px;line-height:1.4;font-style:italic}
+  .pkg .pkg-price{font-size:32px;font-weight:900;color:var(--verde);line-height:1}
+  .pkg .pkg-currency{font-size:13px;font-weight:700;color:var(--gris);margin-top:2px}
+  .pkg ul{list-style:none;margin-top:14px;border-top:1px solid #e8e8e8;padding-top:14px}
+  .pkg ul li{font-size:12px;color:var(--gris);padding:3px 0 3px 16px;position:relative}
+  .pkg ul li::before{content:'✓';position:absolute;left:0;color:var(--verde);font-weight:900;font-size:11px}
+
+  /* OBJECTION HANDLING */
+  .obj{background:#fff;border-radius:10px;border:1px solid #e8e8e8;margin-bottom:16px;overflow:hidden}
+  .obj-q{background:var(--negro);color:#fff;padding:14px 20px;font-size:14px;font-weight:700}
+  .obj-a{padding:16px 20px;font-size:13px;color:var(--gris);line-height:1.6}
+  .obj-key{background:var(--verde-pale);border-radius:6px;padding:10px 14px;margin-top:10px;font-size:12px;color:var(--verde);font-weight:700}
+
+  /* KPI TABLE */
+  .kpi-badge{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .kpi-green{background:#22c55e}
+  .kpi-yellow{background:#eab308}
+  .kpi-red{background:#ef4444}
+
+  /* FOOTER */
+  footer{background:var(--negro);color:rgba(255,255,255,.6);text-align:center;padding:32px 24px;font-size:12px}
+  footer strong{color:#fff}
+
+  @media(max-width:640px){
+    .hero{padding:40px 16px 32px}
+    section{padding:40px 0 32px}
+    .hl{padding:20px}
+    .stats .stat .n{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#mercado">Mercado</a></li>
+    <li><a href="#marca">Marca</a></li>
+    <li><a href="#paquetes">Paquetes</a></li>
+    <li><a href="#contenido">Contenido</a></li>
+    <li><a href="#social">Instagram</a></li>
+    <li><a href="#crecimiento">Crecimiento</a></li>
+    <li><a href="#seo">SEO</a></li>
+    <li><a href="#ads">Meta Ads</a></li>
+    <li><a href="#metricas">Métricas</a></li>
+    <li><a href="#objeciones">Objeciones</a></li>
+    <li><a href="#hoja-ruta">Hoja de Ruta</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo-area"><span class="hero-leaf">🌱</span></div>
+  <h1>Estrategia de Marketing<br><em>Brota Digital</em></h1>
+  <p>Propuesta completa para posicionar a Brota Digital como la agencia web líder para PyMEs en CDMX. Elaborada con 9 especialistas en paralelo.</p>
+  <div class="hero-meta">
+    <span class="hero-chip">🎯 Mercado CDMX</span>
+    <span class="hero-chip">📱 Instagram + Meta Ads</span>
+    <span class="hero-chip">🔍 SEO Local</span>
+    <span class="hero-chip">💰 MRR $29,550/mo en 6 meses</span>
+    <span class="hero-chip">📅 Abril 2025</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 1. MERCADO Y COMPETENCIA -->
+<!-- ═══════════════════════════════════════ -->
+<section id="mercado">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <div>
+      <h2>Mercado y Oportunidad</h2>
+      <p>Investigación de mercado — agencias web en CDMX</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">284K</div><div class="u">negocios en CDMX sin web</div></div>
+    <div class="stat"><div class="n">$382M</div><div class="u">MXN TAM disponible</div></div>
+    <div class="stat"><div class="n">71%</div><div class="u">búsquedas desde móvil</div></div>
+    <div class="stat"><div class="n">3–5%</div><div class="u">tasa de captura objetivo</div></div>
+    <div class="stat"><div class="n">$19M</div><div class="u">MXN potencial real año 1</div></div>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:800;margin:28px 0 16px">5 Nichos Prioritarios</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Nicho</th><th>Ticket promedio</th><th>Oportunidad</th><th>Acción</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Restaurantes y food service</strong></td><td>$8,500–$16,500</td><td><span class="tag">Alta densidad CDMX</span></td><td>Portafolio con demo restaurante</td></tr>
+        <tr><td>2</td><td><strong>Despachos profesionales</strong> (abogados, contadores, arquitectos)</td><td>$8,500–$16,500</td><td><span class="tag">Credibilidad crítica</span></td><td>Caso de éxito + testimonial</td></tr>
+        <tr><td>3</td><td><strong>Salud y bienestar</strong> (clínicas, spas, terapeutas)</td><td>$8,500–$28,000+</td><td><span class="tag">Crecimiento post-CDMX</span></td><td>Destacar reservas + reseñas</td></tr>
+        <tr><td>4</td><td><strong>Retail local y boutiques</strong></td><td>$16,500–$28,000+</td><td><span class="tag tag-oro">E-commerce emergente</span></td><td>Mostrar tiendas hechas</td></tr>
+        <tr><td>5</td><td><strong>Servicios para el hogar</strong> (plomeros, electricistas, reformas)</td><td>$3,500–$8,500</td><td><span class="tag tag-coral">Volumen alto</span></td><td>Landing + WhatsApp rápido</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:800;margin:28px 0 16px">Competidores y Posicionamiento</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Competidor</th><th>Precio aprox.</th><th>Debilidad clave</th><th>Ventaja Brota</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Freelancers Workana/Upwork</strong></td><td>$1,500–$4,000</td><td>Sin proceso, sin soporte, desaparecen</td><td>Contrato + proceso + garantía</td></tr>
+        <tr><td><strong>Agencias medianas CDMX</strong></td><td>$15,000–$50,000</td><td>Lentas, impersonales, cara</td><td>Precio accesible, trato directo</td></tr>
+        <tr><td><strong>Plantillas Wix/Squarespace</strong></td><td>$0–$2,000/año</td><td>Sin SEO, genérico, cliente solo</td><td>Diseño personalizado + acompañamiento</td></tr>
+        <tr><td><strong>Sobrino/amigo que sabe</strong></td><td>$0–$2,000</td><td>Sin responsabilidad, sin proceso</td><td>Profesionalismo, tiempos definidos</td></tr>
+        <tr><td><strong>Agencias especializadas en sector</strong></td><td>$20,000+</td><td>No conocen al PyME local</td><td>Enfocada en PyME CDMX, precios claros</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl" style="margin-top:28px">
+    <h3>Tendencias que Brota debe capitalizar ahora</h3>
+    <p><strong>📱 Mobile-first:</strong> 71% de búsquedas desde celular — todos los sitios deben cargar en &lt;3s en 4G. · <strong>💬 WhatsApp como CTA principal:</strong> el botón flotante convierte más que cualquier formulario para el mercado CDMX. · <strong>🔍 SEO local explota:</strong> "cerca de mí" y "en CDMX" crecen 45% YoY — Google Business es un activo obligatorio.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 2. IDENTIDAD DE MARCA -->
+<!-- ═══════════════════════════════════════ -->
+<section id="marca">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <div>
+      <h2>Identidad y Posicionamiento de Marca</h2>
+      <p>Brand Guardian — arquetipo, voz, mensajes clave y diferenciación</p>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="margin-bottom:24px">
+    <div class="card">
+      <div class="lbl">Arquetipo Primario</div>
+      <h3>El Creador</h3>
+      <p>Brota construye cosas que duran. No solo hace páginas web — crea activos digitales que hacen crecer negocios. Cada proyecto es único, hecho con intención y proceso.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Arquetipo Secundario</div>
+      <h3>El Hombre/Mujer del Pueblo</h3>
+      <p>Cercano, accesible, sin pretensiones. Habla el idioma del PyME: precios claros, sin letra chica, sin jerga técnica innecesaria. Está del lado del cliente.</p>
+    </div>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card card-green">
+      <div class="lbl">Propuesta de Valor Única</div>
+      <h3>Tu página web en 15 días — o te devolvemos el anticipo</h3>
+      <p>La garantía de tiempo es el diferenciador más poderoso del mercado CDMX. Nadie más la ofrece de forma explícita.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Voz en Instagram / RRSS</div>
+      <h3>Directa, cálida, educativa</h3>
+      <ul>
+        <li>Tono amigable sin ser informal</li>
+        <li>Explica sin condescender</li>
+        <li>Usa ejemplos reales CDMX</li>
+        <li>Celebra los logros del cliente</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="lbl">Voz en propuestas / WhatsApp</div>
+      <h3>Profesional, precisa, confiable</h3>
+      <ul>
+        <li>Nombre del prospecto siempre</li>
+        <li>Números y plazos específicos</li>
+        <li>Sin presión, con fecha de vigencia</li>
+        <li>Follow-up natural, no desesperado</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:800;margin:28px 0 14px">5 Mensajes Clave de Marca</h3>
+  <div class="grid grid-2">
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Mensaje 1</span></div>
+      <div class="caption">"Tu negocio ya existe — ahora que exista en internet también."</div>
+    </div>
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Mensaje 2</span></div>
+      <div class="caption">"No vendes en internet porque no tienes presencia. Eso lo cambiamos en 15 días."</div>
+    </div>
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Mensaje 3</span></div>
+      <div class="caption">"Una página web que trabaja para ti mientras duermes."</div>
+    </div>
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Mensaje 4</span></div>
+      <div class="caption">"Construimos tu sitio como si fuera el nuestro: con cuidado, con proceso, con orgullo."</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:800;margin:24px 0 12px">Vocabulario de Marca</h3>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="lbl" style="color:#22c55e">✓ Usar siempre</div>
+      <p style="font-size:13px">Inversión · Activo digital · Crecer · Presencia · Resultado · Proceso · Garantía · En 15 días · Tu negocio · Juntos</p>
+    </div>
+    <div class="card">
+      <div class="lbl" style="color:#ef4444">✗ Evitar</div>
+      <p style="font-size:13px">Costo · Barato · Económico · Rápido (sin contexto) · Fácil · El mejor · Somos expertos · Solución integral · No se preocupe</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 3. PAQUETES Y PRECIOS -->
+<!-- ═══════════════════════════════════════ -->
+<section id="paquetes">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <div>
+      <h2>Paquetes, Precios y Modelo de Ingresos</h2>
+      <p>Estructura de servicios optimizada para PyME CDMX con escalera de valor clara</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Paquetes Web — Proyecto Único</h3>
+  <div class="pkg-grid">
+    <div class="pkg">
+      <div class="pkg-name">🌱 Semilla</div>
+      <div class="pkg-tag">"Tu primera presencia digital"</div>
+      <div class="pkg-price">$3,500</div>
+      <div class="pkg-currency">MXN · pago único · 7 días hábiles</div>
+      <ul>
+        <li>Landing page 1 página / 5 secciones</li>
+        <li>Responsivo (móvil + escritorio)</li>
+        <li>Botón WhatsApp Business</li>
+        <li>Dominio .com/.com.mx primer año</li>
+        <li>Hosting 6 meses incluido</li>
+        <li>1 ronda de revisiones</li>
+      </ul>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-name">🌿 Raíz</div>
+      <div class="pkg-tag">"Fundamentos para un negocio en serio"</div>
+      <div class="pkg-price">$8,500</div>
+      <div class="pkg-currency">MXN · pago único · 14 días hábiles</div>
+      <ul>
+        <li>Hasta 5 páginas personalizadas</li>
+        <li>SEO básico on-page</li>
+        <li>Google Analytics + Search Console</li>
+        <li>3 correos profesionales</li>
+        <li>Hosting 12 meses incluido</li>
+        <li>Capacitación 45 min al cliente</li>
+        <li>2 rondas de revisiones</li>
+      </ul>
+    </div>
+    <div class="pkg">
+      <div class="pkg-name">🌺 Florece</div>
+      <div class="pkg-tag">"Una web que trabaja mientras duermes"</div>
+      <div class="pkg-price">$16,500</div>
+      <div class="pkg-currency">MXN · pago único · 21 días hábiles</div>
+      <ul>
+        <li>Todo Raíz + hasta 10 páginas</li>
+        <li>Diseño UX orientado a conversión</li>
+        <li>Blog con 3 artículos de arranque</li>
+        <li>SEO técnico completo</li>
+        <li>CRM básico integrado</li>
+        <li>Automatización email bienvenida</li>
+        <li>Sesión estrategia digital 1h</li>
+      </ul>
+    </div>
+    <div class="pkg">
+      <div class="pkg-name">🍎 Cosecha</div>
+      <div class="pkg-tag">"Tu ecosistema digital completo"</div>
+      <div class="pkg-price">$28,000+</div>
+      <div class="pkg-currency">MXN · cotización · 30–45 días</div>
+      <ul>
+        <li>Todo Florece + hasta 15 páginas</li>
+        <li>Tienda en línea (hasta 50 productos)</li>
+        <li>MercadoPago / Stripe / PayPal</li>
+        <li>Facturación CFDI integrada</li>
+        <li>SEO estratégico 3 meses incluido</li>
+        <li>Soporte prioritario 3 meses</li>
+        <li>2 sesiones de capacitación admin</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:40px 0 16px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Planes de Mantenimiento Mensual — Brota Care (MRR)</h3>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="lbl">Care Básico</div>
+      <div class="price">$650<span style="font-size:14px;font-weight:600;color:var(--gris)">/mes</span></div>
+      <ul>
+        <li>Actualizaciones CMS + plugins</li>
+        <li>Backup mensual</li>
+        <li>Monitoreo de uptime</li>
+        <li>1 hora cambios menores/mes</li>
+        <li>Reporte mensual Analytics</li>
+        <li>Soporte en 48h hábiles</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <div class="lbl">Care Estándar</div>
+      <div class="price">$1,400<span style="font-size:14px;font-weight:600;opacity:.8">/mes</span></div>
+      <ul>
+        <li>Todo Básico</li>
+        <li>Hasta 2 horas cambios/mes</li>
+        <li>1 artículo blog SEO/mes</li>
+        <li>Reporte completo: tráfico + leads</li>
+        <li>Llamada mensual resultados 30 min</li>
+        <li>Soporte en 24h hábiles</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="lbl">Care Premium</div>
+      <div class="price">$2,800<span style="font-size:14px;font-weight:600;color:var(--gris)">/mes</span></div>
+      <ul>
+        <li>Todo Estándar</li>
+        <li>4 horas cambios/mes</li>
+        <li>2 artículos blog SEO/mes</li>
+        <li>A/B testing trimestral</li>
+        <li>Reporte ejecutivo + recomendaciones</li>
+        <li>WhatsApp directo al equipo técnico</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:40px 0 16px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Gestión de Redes Sociales</h3>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="lbl">Brota Social Básico</div>
+      <div class="price">$2,500<span style="font-size:14px;font-weight:600;color:var(--gris)">/mes</span></div>
+      <ul>
+        <li>2 redes (Instagram + Facebook/TikTok)</li>
+        <li>12 publicaciones/mes (3x semana)</li>
+        <li>Diseño + copy de Brota</li>
+        <li>Respuesta comentarios L–V</li>
+        <li>Reporte alcance e interacciones</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <div class="lbl">Brota Social Completo</div>
+      <div class="price">$4,500<span style="font-size:14px;font-weight:600;opacity:.8">/mes</span></div>
+      <ul>
+        <li>3 redes sociales</li>
+        <li>20 publicaciones + 2 reels/mes</li>
+        <li>Estrategia de contenido mensual</li>
+        <li>Inbox y comentarios 7 días</li>
+        <li>1 campaña pauta incluida ($500 ads)</li>
+        <li>Análisis competencia mensual</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hl" style="margin-top:32px">
+    <h3>💰 Proyección MRR a 6 meses</h3>
+    <p>Con solo <strong>10 clientes en mantenimiento + 5 en redes sociales</strong> — completamente alcanzable convirtiendo los primeros 8–10 proyectos:<br><br>
+    5 × Care Básico $650 = <strong>$3,250</strong> · 3 × Care Estándar $1,400 = <strong>$4,200</strong> · 2 × Care Premium $2,800 = <strong>$5,600</strong> · 3 × Social Básico $2,500 = <strong>$7,500</strong> · 2 × Social Completo $4,500 = <strong>$9,000</strong><br><br>
+    <strong>MRR total proyectado: ~$29,550 MXN/mes</strong></p>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:36px 0 16px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Add-ons de Alto Margen</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Add-on</th><th>Precio</th><th>Margen</th><th>Mejor momento para ofrecerlo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Identidad de marca completa</strong></td><td>$6,500</td><td><span class="tag">Alto</span></td><td>Cuando el cliente no tiene logo</td></tr>
+        <tr><td><strong>Copywriting completo del sitio</strong></td><td>$3,500–$5,000</td><td><span class="tag">Alto</span></td><td>Al momento de cotizar siempre</td></tr>
+        <tr><td><strong>Sesión de fotografía (media jornada)</strong></td><td>$3,500</td><td><span class="tag tag-oro">Medio-alto</span></td><td>Proyectos Raíz+, cuando el cliente tiene fotos malas</td></tr>
+        <tr><td><strong>Logotipo básico</strong></td><td>$2,500</td><td><span class="tag">Alto</span></td><td>Semilla + negocios nuevos</td></tr>
+        <tr><td><strong>Chatbot WhatsApp Business</strong></td><td>$1,800</td><td><span class="tag tag-coral">Rápido</span></td><td>Al cerrar cualquier paquete</td></tr>
+        <tr><td><strong>Instalación Pixel Meta + GA4</strong></td><td>$600</td><td><span class="tag tag-coral">Rápido</span></td><td>A clientes que van a hacer ads</td></tr>
+        <tr><td><strong>Landing page de campaña extra</strong></td><td>$2,200</td><td><span class="tag">Alto</span></td><td>Mes 2–3 cuando el cliente ya tiene tráfico</td></tr>
+        <tr><td><strong>SEO local (GBP + palabras clave)</strong></td><td>$1,800</td><td><span class="tag">Alto</span></td><td>A todo cliente que no tenga ficha optimizada</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:36px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Ruta de Valor Típica de un Cliente</h3>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-month">Mes 0 — Primer contacto</div>
+      <div class="tl-content">
+        <h4>Compra Semilla + Care Básico</h4>
+        <ul><li>Inversión inicial: $3,500 + $650/mes</li><li>Ofreces add-on copywriting o logo según situación</li></ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Mes 3–4 — Primera expansión</div>
+      <div class="tl-content">
+        <h4>Migra de Semilla a Raíz + sube a Care Estándar</h4>
+        <ul><li>Diferencial de migración: $5,000</li><li>Ahora paga $1,400/mes</li><li>Contrata Social Básico (+$2,500/mes)</li></ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Mes 8 — Crecimiento sostenido</div>
+      <div class="tl-content">
+        <h4>Migra a Florece + empieza a hablar de tienda en línea</h4>
+        <ul><li>Diferencial: $8,000</li><li>Care Premium $2,800/mes</li></ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Mes 12 — Cliente maduro</div>
+      <div class="tl-content">
+        <h4>Valor total acumulado: $60,000–$75,000 MXN</h4>
+        <ul><li>Vs. $3,500 si solo hubiera comprado el proyecto inicial</li><li>Tasa de retención objetivo: 85%+ después del mes 3</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 4. CONTENIDO INSTAGRAM -->
+<!-- ═══════════════════════════════════════ -->
+<section id="contenido">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <div>
+      <h2>Contenido para Instagram</h2>
+      <p>Content Creator — 15 copies listos para publicar con CTAs, hashtags y horarios óptimos</p>
+    </div>
+  </div>
+
+  <div class="grid grid-3" style="margin-bottom:28px">
+    <div class="card card-green">
+      <div class="lbl">Mejores horarios CDMX</div>
+      <h3>Martes y Jueves 7–8 PM</h3>
+      <p>Horario pico de engagement para dueños de negocio. Revisar celular después de cerrar. Lunes 12PM como alternativa.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Mix de contenido recomendado</div>
+      <h3>40% Educativo · 30% Social proof · 30% Venta</h3>
+      <p>La regla 40-30-30 genera confianza antes de pedir la compra. No vender en cada post.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Formato que más convierte</div>
+      <h3>Carrusel educativo &gt; Reel &gt; Single post</h3>
+      <p>Los carruseles de "5 razones / errores / pasos" retienen 3× más que imágenes simples en el nicho B2B local.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Copies Listos para Publicar</h3>
+
+  <div class="copy-block">
+    <div class="meta"><span class="tag">Educativo · Carrusel</span><span class="time-badge">Mar/Jue 7PM</span></div>
+    <div class="caption">¿Tu negocio existe en WhatsApp pero no en Google? 😬<br><br>Eso significa que cuando alguien busca lo que tú vendes, te encuentran a ti… o a tu competencia.<br><br>Tener página web no es un lujo. Es lo que separa a los negocios que crecen de los que siempre dependen del boca a boca.<br><br>Desliza para ver los 5 errores más comunes de los negocios sin presencia digital 👉</div>
+    <div class="hashtags">#PáginaWeb #NegocioDigital #EmprendedoresCDMX #MarketingDigital #BrotaDigital</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="meta"><span class="tag">Social proof · Resultado</span><span class="time-badge">Lun 12PM</span></div>
+    <div class="caption">De 0 a visible en Google en 15 días 🌱<br><br>[Nombre del cliente] llevaba 3 años con su negocio de [giro] en CDMX. Tenía clientes — pero todos llegaban por recomendación. Nunca por búsqueda.<br><br>Hoy su sitio aparece en las primeras posiciones cuando alguien busca "[giro] en [colonia]". El mes pasado recibió 4 contactos nuevos directamente desde su página.<br><br>¿Tu negocio merece lo mismo? Escríbenos "WEB" por DM y te decimos cómo podemos ayudarte 👇</div>
+    <div class="hashtags">#CasoDeÉxito #SEOLocal #PyMEsCDMX #BrotaDigital #DiseñoWeb</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="meta"><span class="tag">Venta directa · Urgencia</span><span class="time-badge">Jue 7PM</span></div>
+    <div class="caption">Tu página web lista en 15 días — o te devolvemos el anticipo. 🤝<br><br>Sí, en serio. Esa es nuestra garantía.<br><br>Porque sabemos que has visto muchas agencias que prometen y no cumplen. Nosotros no operamos así.<br><br>Paquete Raíz: sitio web profesional de hasta 5 páginas, responsivo, con SEO básico, dominio y hosting incluidos.<br><br>Inversión: desde $8,500 MXN.<br><br>4 lugares disponibles este mes. Escríbenos ahora 👇</div>
+    <div class="hashtags">#BrotaDigital #DiseñoWebCDMX #PáginaWebProfesional #PyME #EmprendedoresMéxico</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="meta"><span class="tag">Educativo · Tips</span><span class="time-badge">Mar 7PM</span></div>
+    <div class="caption">3 cosas que tu página web DEBE tener (y que el 90% de los negocios ignoran) 👇<br><br>1. Número de WhatsApp en cada sección — no solo al final<br>2. Fotos reales de tu negocio, no de banco de imágenes<br>3. Tiempo de carga menor a 3 segundos (si tarda más, el cliente se va)<br><br>¿Tu sitio tiene estas tres? Cuéntanos en los comentarios 👇</div>
+    <div class="hashtags">#TipsDigitales #DiseñoWeb #MarketingLocal #CDMX #BrotaDigital</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="meta"><span class="tag">Identificación · Dolor</span><span class="time-badge">Lun 12PM</span></div>
+    <div class="caption">"Mi negocio no necesita página web, mis clientes me encuentran por recomendación."<br><br>¿Cuántos clientes nuevos por mes te trae esa recomendación? 🤔<br><br>¿Y si pudieras tener 5, 10 o 15 más — que lleguen solos mientras duermes — porque te encontraron en Google?<br><br>No te pedimos que abandones el boca a boca. Solo que le sumes un canal que trabaja para ti 24/7.<br><br>Empezamos desde $3,500 MXN. ¿Cuándo hablamos?</div>
+    <div class="hashtags">#EmprendedoresCDMX #NegocioLocal #PresenciaDigital #BrotaDigital</div>
+  </div>
+
+  <div class="grid grid-3" style="margin-top:24px">
+    <div class="card">
+      <div class="lbl">Set Hashtags Educativo (13)</div>
+      <p style="font-size:12px;line-height:1.8">#PáginaWebProfesional #DiseñoWebCDMX #MarketingDigital #NegocioDigital #EmprendedoresCDMX #PyMEMéxico #SEOLocal #GoogleMiNegocio #TipsDigitales #BrotaDigital #PáginaWeb #MarketingMéxico #CreceEnInternet</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Set Hashtags Social Proof (13)</div>
+      <p style="font-size:12px;line-height:1.8">#CasoDeÉxito #ResultadosReales #ClientesFelices #TransformaciónDigital #NegocioCDMX #AgenciaWebMéxico #SitioWebProfesional #WebDesignMéxico #PyMEsCDMX #BrotaDigital #CreceConNosotros #ÉxitoEmpresarial #DigitalizaTuNegocio</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Set Hashtags Venta (13)</div>
+      <p style="font-size:12px;line-height:1.8">#PáginaWebDesde3500 #WebEnMéxico #AgenciaDigitalCDMX #DiseñoWebBarato #WebProfesional #TuWebEn15Días #BrotaDigital #PyME #Emprendedor #NegocioLocal #MarketingPyME #SitioWebMéxico #AgenciaWeb</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 5. ESTRATEGIA INSTAGRAM -->
+<!-- ═══════════════════════════════════════ -->
+<section id="social">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <div>
+      <h2>Calendario Instagram — 30 Días</h2>
+      <p>Social Media Strategist — plan día a día con tipos de contenido y CTAs</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Semana</th><th>Lunes</th><th>Miércoles</th><th>Viernes (opcional)</th><th>Foco</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sem 1</strong><br><small>Presentación</small></td><td>Post presentación Brota + UVP "15 días"</td><td>Carrusel "5 razones para tener web en 2025"</td><td>Reel: proceso de trabajo time-lapse</td><td><span class="tag">Awareness</span></td></tr>
+        <tr><td><strong>Sem 2</strong><br><small>Educación</small></td><td>Post "Qué pasa cuando alguien busca tu negocio"</td><td>Carrusel "3 páginas web que hicimos" (portfolio)</td><td>Story-only: encuesta "¿tienes web?"</td><td><span class="tag">Consideración</span></td></tr>
+        <tr><td><strong>Sem 3</strong><br><small>Social proof</small></td><td>Testimonio de cliente real (imagen + cita)</td><td>Carrusel "Antes y después: negocio sin web vs. con web"</td><td>Reel: cliente hablando de su experiencia</td><td><span class="tag tag-coral">Conversión</span></td></tr>
+        <tr><td><strong>Sem 4</strong><br><small>Cierre</small></td><td>Post oferta del mes / lugares disponibles</td><td>Carrusel comparativo de paquetes</td><td>Reel: "¿cuánto cuesta una página web en México?"</td><td><span class="tag tag-coral">Conversión</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Estructura de Stories Diarias</h3>
+  <div class="grid grid-4">
+    <div class="card">
+      <div class="lbl">9 AM — Apertura</div>
+      <h3>Contenido útil</h3>
+      <p style="font-size:12px">Tip del día, dato de mercado o pregunta para activar respuestas</p>
+    </div>
+    <div class="card">
+      <div class="lbl">1 PM — Social</div>
+      <h3>Behind the scenes</h3>
+      <p style="font-size:12px">Proceso de trabajo, equipo, avance de proyecto (humaniza la marca)</p>
+    </div>
+    <div class="card">
+      <div class="lbl">6 PM — Conversión</div>
+      <h3>CTA directo</h3>
+      <p style="font-size:12px">"¿Quieres tu web en 15 días? Mándame un DM" con botón de acción</p>
+    </div>
+    <div class="card">
+      <div class="lbl">8 PM — Cierre</div>
+      <h3>Testimonio / resultado</h3>
+      <p style="font-size:12px">Captura de screen del cliente satisfecho o métrica de un sitio entregado</p>
+    </div>
+  </div>
+
+  <div class="hl" style="margin-top:28px">
+    <h3>⏱ Rutina de Interacción Diaria (30 min)</h3>
+    <p><strong>10 min:</strong> Responder DMs y comentarios del día anterior · <strong>10 min:</strong> Interactuar en 10 cuentas del nicho objetivo (restaurantes, despachos, tiendas CDMX) — dejar comentario genuino, no genérico · <strong>10 min:</strong> Buscar posts con hashtag #EmprendedoresCDMX y #PyMEMéxico — responder preguntas sobre diseño web como experto, sin vender directamente</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 6. CRECIMIENTO ORGÁNICO -->
+<!-- ═══════════════════════════════════════ -->
+<section id="crecimiento">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <div>
+      <h2>Crecimiento Orgánico y Generación de Leads</h2>
+      <p>Growth Hacker — DM scripts, alianzas estratégicas, funnel completo</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Scripts de DM por Nicho</h3>
+  <div class="grid grid-3">
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Restaurantes</span></div>
+      <div class="caption" style="font-size:13px">Hola [Nombre], vi tu restaurant en Instagram — la comida se ve increíble. ¿Ya tienen página web para que la gente los encuentre en Google cuando busca "restaurante en [colonia]"? Trabajamos con varios negocios de comida en CDMX y los resultados son muy buenos. ¿Te cuento cómo lo hacemos?</div>
+    </div>
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Despachos profesionales</span></div>
+      <div class="caption" style="font-size:13px">Buenos días [Nombre], soy de Brota Digital — creamos sitios web para despachos como el suyo que quieren que sus clientes potenciales los encuentren antes de llamar a la competencia. ¿Tiene 10 minutos esta semana para contarle cómo lo hemos hecho para otros despachos en CDMX?</div>
+    </div>
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Tiendas / boutiques</span></div>
+      <div class="caption" style="font-size:13px">Hola! Vi tu tienda en IG y me encantó el estilo. ¿Saben cuántas ventas están perdiendo porque no pueden comprar en línea? Podemos tener tu tienda online lista en menos de un mes. ¿Te mando info de cómo funcionaría para tu negocio específico?</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">5 Alianzas Estratégicas Prioritarias</h3>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="lbl">Alianza 1 — Contadores y despachos fiscales</div>
+      <h3>Propuesta: comisión del 10% por referido</h3>
+      <p>Los contadores tienen acceso a decenas de PyMEs que acaban de constituirse. Son el primer proveedor en quien confían. Una conversación mensual puede generar 3–5 leads calificados.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Alianza 2 — Fotógrafos comerciales</div>
+      <h3>Propuesta: cross-referral mutuo</h3>
+      <p>Cuando Brota entrega un sitio nuevo, recomienda al fotógrafo aliado. Cuando el fotógrafo hace una sesión para un negocio sin web, recomienda a Brota. Costo $0, clientes calificados.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Alianza 3 — Cámaras de comercio locales (CDMX)</div>
+      <h3>Propuesta: taller gratuito mensual</h3>
+      <p>Dar un taller de 45 min "Cómo aparecer en Google si tienes un negocio en CDMX" — no vender directamente, solo educar. Los asistentes son prospectos precalificados.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Alianza 4 — Diseñadores gráficos que no hacen web</div>
+      <h3>Propuesta: subcontrato / referido recíproco</h3>
+      <p>Muchos diseñadores hacen logos pero no web. Brota puede manejar el proyecto web y pagarles comisión, o viceversa cuando Brota necesita identidad visual para clientes sin logo.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Lead Magnet + Funnel Completo</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Etapa</th><th>Acción</th><th>Herramienta</th><th>Objetivo</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag">Atracción</span></td><td>Post educativo en IG + CTA "Descarga gratis"</td><td>Linktree → formulario</td><td>Capturar email + WhatsApp</td></tr>
+        <tr><td><span class="tag">Lead magnet</span></td><td>PDF: "Checklist: ¿Tu negocio está listo para crecer en internet?"</td><td>Mailchimp / Notion</td><td>Demuestra expertise, genera confianza</td></tr>
+        <tr><td><span class="tag">Nurturing</span></td><td>Secuencia de 3 emails en 7 días (educación → social proof → oferta)</td><td>Mailchimp free</td><td>Mantener interés, eliminar objeciones</td></tr>
+        <tr><td><span class="tag">Conversión</span></td><td>WhatsApp personal: "¿Tienes 15 min para una llamada rápida?"</td><td>WhatsApp Business</td><td>Agendar discovery call</td></tr>
+        <tr><td><span class="tag">Cierre</span></td><td>Discovery call (guion abajo) → propuesta en 24h</td><td>Zoom / Meet / Presencial</td><td>Cerrar con anticipo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hl hl-dark" style="margin-top:24px">
+    <h3>📞 Guion Discovery Call (15–20 min)</h3>
+    <p><strong>1. Contexto (3 min):</strong> "Cuéntame de tu negocio — qué haces, cuánto tiempo llevan, quiénes son tus clientes principales." — Escuchar, no interrumpir.<br><br>
+    <strong>2. Diagnóstico (5 min):</strong> "¿Cómo te encuentran hoy tus clientes? ¿Qué pasa cuando alguien busca [giro] + [colonia] en Google — apareces tú o tu competencia?"<br><br>
+    <strong>3. Visión (4 min):</strong> "Si tuvieras tu sitio listo mañana y empezara a aparecer en Google este mes, ¿qué cambiaría en tu negocio?"<br><br>
+    <strong>4. Propuesta (3 min):</strong> "Basado en lo que me contaste, creo que el paquete [X] es el que mejor se ajusta. Te mando la propuesta completa hoy antes de las [hora]. ¿Está bien?"</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 7. SEO LOCAL -->
+<!-- ═══════════════════════════════════════ -->
+<section id="seo">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">07</span>
+    <div>
+      <h2>Estrategia SEO — Posicionamiento Orgánico</h2>
+      <p>SEO Specialist — palabras clave, Google Business, blog y quick wins</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">20 Palabras Clave Prioritarias</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Keyword</th><th>Volumen/mes</th><th>Dificultad</th><th>Intención</th><th>Prioridad</th></tr></thead>
+      <tbody>
+        <tr><td><strong>diseño web cdmx</strong></td><td>1,900</td><td>Media</td><td>Compra</td><td><span class="tag">Alta</span></td></tr>
+        <tr><td><strong>página web para negocio cdmx</strong></td><td>880</td><td>Baja</td><td>Compra</td><td><span class="tag">Alta</span></td></tr>
+        <tr><td><strong>agencia web ciudad de mexico</strong></td><td>720</td><td>Media</td><td>Compra</td><td><span class="tag">Alta</span></td></tr>
+        <tr><td><strong>crear página web barata mexico</strong></td><td>1,300</td><td>Media</td><td>Compra</td><td><span class="tag">Alta</span></td></tr>
+        <tr><td><strong>diseño web para restaurante</strong></td><td>590</td><td>Baja</td><td>Compra</td><td><span class="tag tag-coral">Media</span></td></tr>
+        <tr><td><strong>cuanto cuesta una página web en mexico</strong></td><td>2,400</td><td>Media</td><td>Informacional</td><td><span class="tag">Alta</span></td></tr>
+        <tr><td><strong>mantenimiento web mensual</strong></td><td>480</td><td>Baja</td><td>Compra</td><td><span class="tag tag-coral">Media</span></td></tr>
+        <tr><td><strong>diseño web para pymes</strong></td><td>880</td><td>Baja</td><td>Compra</td><td><span class="tag">Alta</span></td></tr>
+        <tr><td><strong>hacer página web desde cero</strong></td><td>3,600</td><td>Alta</td><td>Informacional</td><td><span class="tag tag-oro">A futuro</span></td></tr>
+        <tr><td><strong>empresa diseño web mexico df</strong></td><td>390</td><td>Baja</td><td>Compra</td><td><span class="tag">Alta</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">6 Ideas de Blog con Alto Potencial SEO</h3>
+  <div class="grid grid-2">
+    <div class="copy-block"><div class="meta"><span class="tag">Post 1 — Informacional</span></div><div class="caption">¿Cuánto cuesta una página web en México en 2025? (Guía honesta de precios)</div></div>
+    <div class="copy-block"><div class="meta"><span class="tag">Post 2 — Comparativo</span></div><div class="caption">Wix vs. página web profesional: ¿cuál conviene para tu negocio en CDMX?</div></div>
+    <div class="copy-block"><div class="meta"><span class="tag">Post 3 — Local</span></div><div class="caption">Cómo aparecer en Google Maps si tienes un negocio en Ciudad de México (Guía 2025)</div></div>
+    <div class="copy-block"><div class="meta"><span class="tag">Post 4 — Nicho</span></div><div class="caption">Página web para restaurantes en México: qué debe tener para convertir visitas en reservas</div></div>
+    <div class="copy-block"><div class="meta"><span class="tag">Post 5 — Objeción</span></div><div class="caption">Mi sobrino me hace la web gratis: 7 razones por las que eso puede salirte muy caro</div></div>
+    <div class="copy-block"><div class="meta"><span class="tag">Post 6 — Tendencia</span></div><div class="caption">Por qué el 70% de los clientes te buscan en celular (y cómo asegurarte de que te encuentren)</div></div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Google Business Profile — Guía de Optimización</h3>
+  <div class="grid grid-2">
+    <div class="card card-green">
+      <div class="lbl">Configuración obligatoria</div>
+      <ul>
+        <li>Nombre exacto: "Brota Digital — Diseño Web CDMX"</li>
+        <li>Categoría: "Diseñador de sitios web"</li>
+        <li>Dirección (o área de servicio: CDMX)</li>
+        <li>Teléfono y WhatsApp en descripción</li>
+        <li>Horario actualizado y correcto</li>
+        <li>Enlace al sitio web</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="lbl">Para ranking superior</div>
+      <ul>
+        <li>20+ fotos profesionales del equipo y proyectos</li>
+        <li>Publicar en GBP 2× por semana (igual que IG)</li>
+        <li>Responder TODAS las reseñas en 24h</li>
+        <li>Pedir reseña a cada cliente al entregar</li>
+        <li>Meta: 50 reseñas con promedio 4.8+ en mes 6</li>
+        <li>Descripción con palabras clave naturales</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hl" style="margin-top:24px">
+    <h3>⚡ 5 Quick Wins SEO — Primera Semana</h3>
+    <p>1. Crear y completar ficha de Google Business Profile al 100% · 2. Instalar Google Search Console y subir sitemap.xml · 3. Verificar velocidad de carga en PageSpeed Insights (objetivo: &gt;85 en mobile) · 4. Agregar etiquetas alt descriptivas a todas las imágenes · 5. Crear perfil en 3 directorios clave: Hotfrog, Yelp México, Páginas Amarillas</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 8. META ADS -->
+<!-- ═══════════════════════════════════════ -->
+<section id="ads">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">08</span>
+    <div>
+      <h2>Meta Ads — Publicidad Pagada</h2>
+      <p>Paid Social Strategist — estructura de campañas, audiencias, copies y escalado</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Estructura por Presupuesto</h3>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="lbl">Presupuesto Inicio</div>
+      <div class="price" style="font-size:22px">$500 MXN/mes</div>
+      <ul>
+        <li>1 campaña de conversión (DM / lead)</li>
+        <li>1 audiencia: dueños de negocio CDMX 25–55</li>
+        <li>2 creativos: imagen + carrusel</li>
+        <li>Objetivo: 5–8 leads/mes</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <div class="lbl">Presupuesto Crecimiento</div>
+      <div class="price" style="font-size:22px">$1,000 MXN/mes</div>
+      <ul>
+        <li>2 campañas: conversión + remarketing</li>
+        <li>3 audiencias (nicho + lookalike + retargeting web)</li>
+        <li>4 creativos con A/B testing</li>
+        <li>Objetivo: 15–20 leads/mes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="lbl">Presupuesto Escala</div>
+      <div class="price" style="font-size:22px">$1,500 MXN/mes</div>
+      <ul>
+        <li>3 campañas: TOF + MOF + remarketing</li>
+        <li>5 audiencias segmentadas por nicho</li>
+        <li>6 creativos + video</li>
+        <li>Objetivo: 30–40 leads/mes</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Audiencias Objetivo CDMX</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Audiencia</th><th>Segmentación</th><th>Tamaño estimado</th><th>Campaña recomendada</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dueños de negocio activos</strong></td><td>Propietario/Autoempleado + CDMX 30–55 años</td><td>180,000–220,000</td><td>Conversión (leads)</td></tr>
+        <tr><td><strong>Intereses negocio + marketing</strong></td><td>Marketing digital + Emprendimiento + PyME</td><td>120,000–160,000</td><td>Awareness + consideración</td></tr>
+        <tr><td><strong>Lookalike de clientes actuales</strong></td><td>1% LAL de lista de clientes</td><td>Según base</td><td>Conversión (alta calidad)</td></tr>
+        <tr><td><strong>Retargeting — visitas web</strong></td><td>Visitaron brotadigital.mx en 30 días</td><td>Según tráfico</td><td>Remarketing (costo bajo)</td></tr>
+        <tr><td><strong>Nicho restaurantes CDMX</strong></td><td>Restaurante/Food + CDMX + comportamiento dueño</td><td>40,000–60,000</td><td>Conversión (nicho)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">3 Copies de Anuncio Listos</h3>
+  <div class="grid grid-3">
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Anuncio 1 · Garantía</span></div>
+      <div class="caption">Tu página web lista en 15 días — garantizado ✅<br><br>Si no cumplimos, te devolvemos el anticipo.<br><br>Sitios web profesionales para negocios en CDMX desde $3,500 MXN.<br><br>↓ Escríbenos ahora</div>
+    </div>
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Anuncio 2 · Dolor</span></div>
+      <div class="caption">¿Tus competidores aparecen en Google y tú no?<br><br>Cada día sin página web es un cliente que se va a la competencia.<br><br>Nosotros lo arreglamos en menos de 3 semanas. Con proceso, contrato y soporte.<br><br>↓ Cotiza sin compromiso</div>
+    </div>
+    <div class="copy-block">
+      <div class="meta"><span class="tag">Anuncio 3 · Social proof</span></div>
+      <div class="caption">+30 negocios en CDMX ya tienen su web con Brota Digital 🌱<br><br>Restaurantes · Despachos · Boutiques · Clínicas<br><br>¿Tu negocio es el siguiente? Sitios desde $3,500 MXN.<br><br>↓ Ver paquetes</div>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:20px">
+    <div class="card">
+      <div class="lbl">Benchmarks CDMX — Meta Ads</div>
+      <ul>
+        <li>CTR esperado: 1.2%–2.5%</li>
+        <li>CPL (costo por lead): $35–$90 MXN</li>
+        <li>Tasa de cierre lead → cliente: 10–20%</li>
+        <li>Costo por cliente: $300–$500 MXN</li>
+        <li>ROI mínimo esperado: 8:1 con paquete Raíz</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <div class="lbl">Boost vs Campaña</div>
+      <h3>Nunca solo "impulsar publicación"</h3>
+      <p style="font-size:13px">Los boosts son caros y sin control. Siempre usar Administrador de Anuncios para segmentar, hacer A/B testing y optimizar CPA. Los boosts solo para aumentar reach orgánico ya exitoso.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 9. MÉTRICAS Y KPIs -->
+<!-- ═══════════════════════════════════════ -->
+<section id="metricas">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">09</span>
+    <div>
+      <h2>Métricas y Dashboard de Resultados</h2>
+      <p>Analytics Reporter — KPIs por fase, alertas y 8 herramientas gratuitas</p>
+    </div>
+  </div>
+
+  <div class="hl hl-coral" style="margin-bottom:28px">
+    <h3>⭐ North Star Metric: Clientes que pagan por mes</h3>
+    <p>Una sola métrica que lo resume todo. Si este número crece, el marketing funciona. Todo lo demás es contexto que explica por qué sube o baja.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Métrica</th><th>Mes 1</th><th>Mes 3</th><th>Mes 6</th><th>¿Dónde medirla?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Clientes pagados/mes</strong></td><td>1–2</td><td>3–5</td><td>6–10</td><td>CRM / hoja de seguimiento</td></tr>
+        <tr><td><strong>Leads generados/mes</strong></td><td>10–15</td><td>25–40</td><td>50–80</td><td>Meta Ads + DMs + formulario web</td></tr>
+        <tr><td><strong>Tasa de cierre</strong></td><td>10–15%</td><td>15–20%</td><td>20–25%</td><td>Leads ÷ clientes</td></tr>
+        <tr><td><strong>Seguidores IG</strong></td><td>+200</td><td>+600</td><td>+1,500</td><td>Instagram Insights</td></tr>
+        <tr><td><strong>Alcance orgánico/semana</strong></td><td>500–1,000</td><td>2,000–4,000</td><td>5,000–10,000</td><td>Instagram Insights</td></tr>
+        <tr><td><strong>Visitas web / mes</strong></td><td>100–200</td><td>400–800</td><td>1,000–2,500</td><td>Google Analytics</td></tr>
+        <tr><td><strong>MRR (mantenimiento)</strong></td><td>$650</td><td>$5,000</td><td>$29,550</td><td>Hoja de cálculo</td></tr>
+        <tr><td><strong>Reseñas Google</strong></td><td>5</td><td>20</td><td>50</td><td>Google Business</td></tr>
+        <tr><td><strong>Tasa retención clientes Care</strong></td><td>N/A</td><td>80%</td><td>85%+</td><td>CRM</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:28px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">Alertas de Performance</h3>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="lbl" style="color:#ef4444">🔴 Alerta Roja — Acción inmediata</div>
+      <ul>
+        <li>0 leads en una semana completa</li>
+        <li>Tasa de cierre &lt; 8% dos meses seguidos</li>
+        <li>Churn de clientes Care &gt; 20%/mes</li>
+        <li>CPL en Meta Ads &gt; $150 MXN</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="lbl" style="color:#eab308">🟡 Alerta Naranja — Revisar estrategia</div>
+      <ul>
+        <li>Engagement IG &lt; 3% dos semanas</li>
+        <li>Sin nuevos seguidores en 10 días</li>
+        <li>Bounce rate web &gt; 70%</li>
+        <li>Menos de 3 consultas/semana</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:24px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">8 Herramientas Gratuitas</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Herramienta</th><th>Para qué</th><th>Cuándo usar</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Google Analytics 4</strong></td><td>Tráfico web, fuentes, comportamiento</td><td>Revisar cada lunes</td></tr>
+        <tr><td><strong>Google Search Console</strong></td><td>Keywords que te traen tráfico orgánico, indexación</td><td>Revisar cada 2 semanas</td></tr>
+        <tr><td><strong>Instagram Insights</strong></td><td>Alcance, engagement, mejores horarios</td><td>Revisar cada miércoles</td></tr>
+        <tr><td><strong>Meta Ads Manager</strong></td><td>CPC, CPL, ROAS, resultados de campañas</td><td>Revisar cada 3 días si hay campañas activas</td></tr>
+        <tr><td><strong>Google Business Profile</strong></td><td>Búsquedas, clics, llamadas desde ficha</td><td>Revisar cada semana</td></tr>
+        <tr><td><strong>Ubersuggest (free)</strong></td><td>Volumen de keywords, ideas de contenido</td><td>Al planear contenido mensual</td></tr>
+        <tr><td><strong>Canva Analytics</strong></td><td>Posts más descargados/compartidos</td><td>Al hacer reporte mensual</td></tr>
+        <tr><td><strong>Notion / Google Sheets</strong></td><td>CRM básico, seguimiento de leads y MRR</td><td>Actualizar después de cada contacto</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 10. OBJECIONES -->
+<!-- ═══════════════════════════════════════ -->
+<section id="objeciones">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">10</span>
+    <div>
+      <h2>Manejo de Objeciones</h2>
+      <p>Guion de ventas — respuestas a las 5 objeciones más comunes del mercado CDMX</p>
+    </div>
+  </div>
+
+  <div class="obj">
+    <div class="obj-q">💸 "Está muy caro, en otro lado lo hacen por $1,500"</div>
+    <div class="obj-a">
+      No defiendes el precio — reencuadras el valor. "Tienes razón, hay opciones a ese precio. La diferencia está en lo que pasa después de que te entregan el sitio: sin personalización, sin SEO, sin soporte. Tengo clientes que llegaron a mí después de pagar $1,500 en otro lado y terminar con un sitio que no funcionaba en celular. Al final pagaron doble. Lo que yo te ofrezco es un activo que trabaja para tu negocio. Si el presupuesto es el tema, podemos revisar si el paquete Semilla te funciona para arrancar."
+      <div class="obj-key">🔑 Clave: No pelees el precio. Ofrece la salida real del paquete más accesible.</div>
+    </div>
+  </div>
+
+  <div class="obj">
+    <div class="obj-q">👨‍💻 "Lo puede hacer mi sobrino / amigo que sabe de computadoras"</div>
+    <div class="obj-a">
+      "Qué bueno que tienes ese recurso. La pregunta es: ¿en cuánto tiempo lo va a tener listo, y qué pasa si algo sale mal en 6 meses? Con un familiar, esa conversación se complica mucho. Yo entrego en [X] días con contrato, con soporte incluido. Tu sobrino tiene buena voluntad, pero yo tengo proceso, experiencia y responsabilidad profesional. Si en algún momento sientes que el proceso se alarga o el resultado no es el que esperabas, aquí estoy."
+      <div class="obj-key">🔑 Clave: No ataques al familiar. Posicionate como la alternativa profesional y planta la semilla de que pueden volver.</div>
+    </div>
+  </div>
+
+  <div class="obj">
+    <div class="obj-q">🤷 "No creo que mis clientes me busquen en internet"</div>
+    <div class="obj-a">
+      "Te hago una pregunta rápida: la última vez que quisiste ir a un restaurante nuevo o contratar a alguien que no conocías, ¿qué hiciste primero? La mayoría buscamos en Google. Tus clientes hacen exactamente lo mismo. No tener sitio web no significa que no te buscan — significa que cuando te buscan, no te encuentran. Y en ese momento lo que encuentran es a tu competencia. Si solo capturas 2–3 clientes nuevos al mes gracias a tu sitio, ¿en cuánto tiempo recuperas la inversión?"
+      <div class="obj-key">🔑 Clave: Usa su propia experiencia como consumidor. Cierra con pregunta de ROI.</div>
+    </div>
+  </div>
+
+  <div class="obj">
+    <div class="obj-q">⏳ "Déjame pensarlo / consultarlo con mi socio"</div>
+    <div class="obj-a">
+      "Claro, con gusto. Para que puedas tomar la mejor decisión, ¿hay algo en la propuesta que no quedó claro o que te generó alguna duda? Prefiero aclararlo ahora. Y solo para que lo tengas en cuenta: la propuesta tiene vigencia hasta el [fecha] — no es para presionarte, es porque mi agenda se llena. ¿Te parece si te escribo el [día específico, 3–4 días después] para ver cómo quedaron?"
+      <div class="obj-key">🔑 Clave: No desaparezcas. Pon fecha concreta de follow-up. La vigencia crea urgencia real sin presión.</div>
+    </div>
+  </div>
+
+  <div class="obj">
+    <div class="obj-q">😤 "Ya tuve una mala experiencia con otra agencia / freelancer"</div>
+    <div class="obj-a">
+      "Lamento mucho que hayas tenido esa experiencia — y lamentablemente es más común de lo que debería ser. Cuéntame qué pasó." [Escuchar sin interrumpir.] "Lo que describes — [reformulas su problema específico] — es exactamente lo que yo trabajo para evitar. Mira, te digo concretamente cómo funciona mi proceso: [explicas los puntos que resuelven su mala experiencia]. Y si quieres, puedo darte contacto directo con uno o dos clientes actuales para que les preguntes cómo ha sido trabajar conmigo."
+      <div class="obj-key">🔑 Clave: La oferta de referencias en vivo es el cierre más poderoso. Muy pocos proveedores la hacen.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 11. HOJA DE RUTA -->
+<!-- ═══════════════════════════════════════ -->
+<section id="hoja-ruta">
+<div class="container">
+  <div class="sec-head">
+    <span class="sec-num">11</span>
+    <div>
+      <h2>Hoja de Ruta — Plan de 6 Meses</h2>
+      <p>Prioridades de implementación semana a semana para ir de 0 a motor de crecimiento</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-month">Semana 1 — Bases (Costo: $0)</div>
+      <div class="tl-content">
+        <h4>Infraestructura y presencia básica</h4>
+        <ul>
+          <li>Crear y optimizar Google Business Profile al 100%</li>
+          <li>Instalar Google Analytics 4 + Search Console en brotadigital.mx</li>
+          <li>Configurar WhatsApp Business con mensajes automáticos y catálogo de paquetes</li>
+          <li>Crear tabla comparativa visual de 4 paquetes (imagen para IG + versión web)</li>
+          <li>Preparar guion de discovery call y propuesta en PDF (template Brota)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Semana 2–4 — Contenido y primeros leads</div>
+      <div class="tl-content">
+        <h4>Calendario editorial mes 1 activo</h4>
+        <ul>
+          <li>Publicar 3 posts/semana según calendario (educativo → social proof → venta)</li>
+          <li>Activar stories diarias con estructura AM/PM/noche</li>
+          <li>Iniciar rutina de 30 min de interacción diaria con cuentas del nicho</li>
+          <li>Publicar lead magnet (checklist PDF) + link en bio</li>
+          <li>Contactar 10 negocios/semana por DM con script de nicho</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Mes 2 — Primeros clientes + MRR</div>
+      <div class="tl-content">
+        <h4>Convertir leads en clientes y en recurrentes</h4>
+        <ul>
+          <li>Cerrar primeros 2–3 proyectos → al entregar, presentar plan Care</li>
+          <li>Activar primera campaña Meta Ads ($500 MXN budget)</li>
+          <li>Publicar primer artículo de blog SEO: "¿Cuánto cuesta una página web en México?"</li>
+          <li>Pedir reseñas en Google Business a clientes existentes</li>
+          <li>Diseñar formulario de onboarding para clientes nuevos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Mes 3 — Escala y alianzas</div>
+      <div class="tl-content">
+        <h4>Diversificar fuentes de leads</h4>
+        <ul>
+          <li>Contactar 2 contadores o despachos para propuesta de alianza referido</li>
+          <li>Subir Meta Ads a $1,000 MXN / agregar lookalike de clientes</li>
+          <li>Publicar segundo y tercer artículo de blog</li>
+          <li>Analizar resultados mes 1–3 y ajustar calendario editorial</li>
+          <li>Meta MRR: $5,000–$8,000 MXN (5–6 clientes Care activos)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Mes 4–6 — Motor consolidado</div>
+      <div class="tl-content">
+        <h4>Sistema de crecimiento autosostenible</h4>
+        <ul>
+          <li>Activar campañas Meta $1,500 MXN con 3 audiencias segmentadas</li>
+          <li>Evaluar contratar apoyo freelance (diseño o desarrollo) si hay cuello de botella</li>
+          <li>Considerar Brota Social para clientes actuales que no gestionan sus redes</li>
+          <li>Taller o webinar gratuito para cámara de comercio (lead generation en volumen)</li>
+          <li>Meta MRR mes 6: $29,550 MXN con 15 clientes en algún plan recurrente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:32px 0 14px;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-claro)">5 Acciones de Alto Impacto — Esta Semana</h3>
+  <div class="grid grid-2">
+    <div class="card card-green">
+      <div class="lbl">Acción 1 — Tabla de precios visible</div>
+      <p>Subir la tabla comparativa de los 4 paquetes al sitio web y a Instagram. La claridad de precios reduce fricción inicial y precalifica prospectos sin que tengas que responder lo mismo 20 veces.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Acción 2 — Formulario de onboarding</div>
+      <p>Crear el formulario que se envía a cada cliente que paga anticipo. Profesionaliza el proceso desde el primer contacto post-venta y elimina la persecución de materiales.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Acción 3 — Pitch de mantenimiento</div>
+      <p>Preparar el guion de 3 minutos para presentar los planes Care en cada sesión de entrega. No improvisar — tener listo el pitch y practicarlo antes de la próxima entrega.</p>
+    </div>
+    <div class="card card-green">
+      <div class="lbl">Acción 4 — Contactar clientes anteriores</div>
+      <p>Hacer una lista de todos los clientes que tienen sitio hecho por Brota y no tienen mantenimiento mensual. Escribirles un mensaje personalizado presentando los planes Care.</p>
+    </div>
+  </div>
+
+  <div class="hl" style="margin-top:24px">
+    <h3>🎯 Meta Principal a 6 meses</h3>
+    <p><strong>10 proyectos web cerrados + 15 contratos recurrentes activos + $29,550 MXN/mes en MRR</strong><br><br>
+    Cada proyecto web bien ejecutado es una semilla de cliente recurrente. La estrategia de marketing es el riego. El proceso y los resultados son lo que hace crecer la raíz.</p>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div>🌱 <strong>Brota Digital — Estrategia de Marketing 2025–2026</strong></div>
+  <div style="margin-top:8px">Elaborada con 9 especialistas: Brand Guardian · Trend Researcher · Product Manager · Content Creator · Social Media Strategist · Growth Hacker · SEO Specialist · Paid Social Strategist · Analytics Reporter</div>
+  <div style="margin-top:8px;opacity:.5">brotadigital.mx · @brotadigital</div>
+</footer>
+
+<script>
+// Highlight nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('nav a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      links.forEach(l => l.classList.remove('on'));
+      const a = document.querySelector('nav a[href="#'+e.target.id+'"]');
+      if(a) a.classList.add('on');
+    }
+  });
+}, {threshold:.25, rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>

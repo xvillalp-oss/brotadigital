@@ -1,0 +1,14 @@
+{
+  "id": "session-1776399875563",
+  "startedAt": "2026-04-17T04:24:35.563Z",
+  "cwd": "/Users/ximevillalpando/src/brota-digital",
+  "context": {},
+  "metrics": {
+    "edits": 6,
+    "commands": 0,
+    "tasks": 0,
+    "errors": 0
+  },
+  "endedAt": "2026-04-18T01:10:37.040Z",
+  "duration": 74761484
+}
