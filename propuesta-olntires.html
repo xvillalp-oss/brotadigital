@@ -14,8 +14,8 @@
           "oln-dark":  "#0a0a0a",
           "oln-card":  "#111111",
           "oln-deep":  "#0f0f0f",
-          "oln-red":   "#e01010",
-          "oln-red2":  "#b80d0d",
+          "oln-red":   "#E31E24",
+          "oln-red2":  "#B81820",
           "oln-gray":  "#888",
           "oln-light": "#ccc",
         },
@@ -29,16 +29,119 @@
 </script>
 <style>
   * { box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color:#fff; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; }
   h1,h2,h3,h4 { font-family: 'Barlow Condensed', sans-serif; }
+
+  /* ── PRELOADER ── */
+  #preloader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #0a0a0a;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 20px;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #preloader.done { opacity: 0; visibility: hidden; }
+  .pre-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 3.5rem;
+    letter-spacing: .2em; text-transform: uppercase; color: #fff;
+    opacity: 0; transform: translateY(16px);
+    animation: preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards;
+  }
+  .pre-logo span { color: #E31E24; }
+  .pre-bar {
+    width: 0; height: 2px; background: #E31E24;
+    animation: preBar .8s cubic-bezier(.4,0,.2,1) .3s forwards;
+  }
+  @keyframes preIn  { to { opacity:1; transform:translateY(0); } }
+  @keyframes preBar { to { width: 120px; } }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity .75s cubic-bezier(.2,.8,.2,1), transform .75s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: .1s; }
+  .reveal-d2 { transition-delay: .2s; }
+  .reveal-d3 { transition-delay: .3s; }
+
+  /* ── BUTTON FILL HOVER ── */
+  .btn-red {
+    position: relative; overflow: hidden;
+    z-index: 0;
+  }
+  .btn-red::before {
+    content:''; position:absolute; inset:0; z-index:-1;
+    background:#B81820;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .btn-red:hover::before { transform: scaleX(1); }
+  .btn-red:hover { transform: none; }
 
   /* ── HERO ── */
   .hero-section {
+    position: relative;
     min-height: 100vh;
     background:
-      linear-gradient(to right, rgba(10,10,10,.98) 35%, rgba(10,10,10,.6) 65%, rgba(10,10,10,.15) 100%),
-      url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat;
+      linear-gradient(to top, rgba(0,0,0,.96) 0%, rgba(0,0,0,.65) 42%, rgba(0,0,0,.22) 100%),
+      url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=80&auto=format&fit=crop') center 30%/cover no-repeat;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 140px;
   }
+  .hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 64px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 48px;
+    position: relative;
+  }
+  .hero-left { flex: 1; }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  }
+  .hero-eyebrow span {
+    font-size: 11px; font-weight: 700; letter-spacing: .25em;
+    text-transform: uppercase; color: #E31E24;
+  }
+  .hero-h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(5rem, 12vw, 10.5rem);
+    line-height: .88;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    color: #fff;
+    max-width: 820px;
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero-hud {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: flex-end;
+    border-left: 1px solid rgba(255,255,255,.15);
+    padding-left: 40px;
+    flex-shrink: 0;
+  }
+  .hud-stat { text-align: right; }
+  .hud-stat .big-stat { font-size: 3rem; }
+  .hud-stat p {
+    font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: rgba(255,255,255,.45); margin-top: 2px;
+  }
+  .hero-section .btn-ghost {
+    background: transparent; border-color: rgba(255,255,255,.5); color: #fff;
+  }
+  .hero-section .btn-ghost:hover { border-color:#E31E24; color:#E31E24; }
 
   /* ── TICKER ── */
   .ticker-wrap { overflow: hidden; }
@@ -47,126 +150,239 @@
 
   /* ── CARDS ── */
   .glass-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 14px;
+    background:#111; border:1px solid rgba(255,255,255,.08); border-radius:14px;
     transition: all .22s ease;
   }
-  .glass-card:hover { border-color:#e01010; transform:translateY(-4px); }
+  .glass-card:hover { border-color:rgba(227,30,36,.4); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.4); }
 
   .brand-pill {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 8px;
-    transition: all .2s;
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:8px; transition:all .2s;
   }
-  .brand-pill:hover { background:rgba(224,16,16,.07); border-color:rgba(224,16,16,.3); }
+  .brand-pill:hover { background:rgba(227,30,36,.08); border-color:rgba(227,30,36,.3); }
 
   /* ── PRODUCT CARDS ── */
   .prod {
-    background: #111;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius:12px;
-    overflow:hidden;
-    transition: all .2s ease;
-    display:flex; flex-direction:column;
+    background:#111; border:1px solid rgba(255,255,255,.08); border-radius:12px; overflow:hidden;
+    transition:all .2s ease; display:flex; flex-direction:column;
   }
-  .prod:hover { border-color:#e01010; transform:translateY(-3px); }
+  .prod:hover { border-color:rgba(227,30,36,.4); transform:translateY(-10px); box-shadow:0 24px 48px rgba(0,0,0,.5); }
   .prod-img {
     width:100%; height:180px; object-fit:contain; display:block;
     background:#1a1a1a; padding:20px;
+    transition: transform .4s cubic-bezier(.22,.61,.36,1), filter .3s ease;
+  }
+  .prod:hover .prod-img {
+    transform: translateY(-8px) scale(1.04);
+    filter: drop-shadow(0 16px 14px rgba(227,30,36,.2));
   }
   .prod-body { padding: 18px 20px 20px; flex:1; display:flex; flex-direction:column; gap:6px; }
   .prod-brand-label {
     font-family:'Barlow Condensed',sans-serif;
     font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; color:#e01010;
+    letter-spacing:.2em; text-transform:uppercase; color:#E31E24;
   }
   .prod-name {
     font-family:'Barlow Condensed',sans-serif;
     font-weight:800; font-size:1.4rem;
     text-transform:uppercase; color:#fff; line-height:1;
   }
-  .prod-desc { font-size:12px; color:#777; margin-top:2px; flex:1; }
+  .prod-desc { font-size:12px; color:rgba(255,255,255,.45); margin-top:2px; flex:1; }
   .prod-footer { display:flex; justify-content:space-between; align-items:center; margin-top:14px; }
   .prod-badge {
     font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
     padding:3px 10px; border-radius:20px;
   }
-  .badge-camion   { background:rgba(224,16,16,.12); color:#e01010; border:1px solid rgba(224,16,16,.2); }
-  .badge-agricola { background:rgba(34,197,94,.1);  color:#4ade80; border:1px solid rgba(34,197,94,.2); }
-  .badge-ind      { background:rgba(234,179,8,.1);  color:#fbbf24; border:1px solid rgba(234,179,8,.2); }
-  .prod-link { font-size:11px; font-weight:700; color:#e01010; text-transform:uppercase; letter-spacing:.12em; }
+  .badge-camion   { background:rgba(227,30,36,.1);  color:#E31E24; border:1px solid rgba(227,30,36,.25); }
+  .badge-agricola { background:rgba(34,197,94,.1);  color:#16A34A; border:1px solid rgba(34,197,94,.3); }
+  .badge-ind      { background:rgba(234,179,8,.12); color:#A87800; border:1px solid rgba(234,179,8,.35); }
+  .badge-auto     { background:rgba(59,130,246,.1); color:#2563EB; border:1px solid rgba(59,130,246,.3); }
+  .badge-rin      { background:rgba(168,85,247,.1); color:#9333EA; border:1px solid rgba(168,85,247,.3); }
+
+  /* ── BRAND CARDS ── */
+  .brand-card {
+    background:#111; border:1px solid rgba(255,255,255,.08); border-radius:14px;
+    padding:24px; transition:all .3s cubic-bezier(.2,.8,.2,1); display:flex; flex-direction:column; gap:14px;
+  }
+  .brand-card:hover { border-color:rgba(227,30,36,.4); transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,.5); }
+  .brand-card__name {
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900; font-size:1.6rem;
+    text-transform:uppercase; letter-spacing:.05em; color:#fff; line-height:1;
+  }
+  .brand-card__name span { color:#E31E24; }
+  .brand-card__tag {
+    font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.35); font-weight:600;
+  }
+  .brand-card__desc { font-size:13px; color:rgba(255,255,255,.5); line-height:1.55; flex:1; }
+  .brand-card__pdf {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase;
+    color:#E31E24; padding:10px 14px; border:1px solid rgba(227,30,36,.3);
+    border-radius:8px; transition:all .2s; align-self:flex-start;
+  }
+  .brand-card__pdf:hover { background:#E31E24; color:#fff; border-color:#E31E24; }
+  .prod-link { font-size:11px; font-weight:700; color:#E31E24; text-transform:uppercase; letter-spacing:.12em; }
 
   /* ── TABS ── */
   .tab-btn {
     padding:8px 20px; border-radius:6px; font-size:12px; font-weight:700;
     letter-spacing:.15em; text-transform:uppercase; cursor:pointer;
-    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,.07);
-    color:#888; transition:all .2s;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.5); transition:all .2s;
   }
-  .tab-btn:hover, .tab-btn.active {
-    background:#e01010; border-color:#e01010; color:#fff;
-  }
+  .tab-btn:hover, .tab-btn.active { background:#E31E24; border-color:#E31E24; color:#fff; }
   .prod.hidden { display:none; }
 
   /* ── STAT ── */
-  .big-stat { font-family:'Barlow Condensed',sans-serif; font-weight:900; color:#e01010; line-height:1; }
+  .big-stat { font-family:'Barlow Condensed',sans-serif; font-weight:900; color:#E31E24; line-height:1; }
 
   /* ── FORM ── */
   .form-input {
-    width:100%; background:#111; border:1px solid rgba(255,255,255,.1);
+    width:100%; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
     border-radius:8px; padding:12px 16px; color:#fff; font-size:14px;
-    font-family:'Inter',sans-serif; transition:border .2s;
-    outline:none;
+    font-family:'Inter',sans-serif; transition:border .2s; outline:none;
   }
-  .form-input:focus { border-color:#e01010; }
-  .form-input::placeholder { color:#555; }
+  .form-input:focus { border-color:#E31E24; background:rgba(255,255,255,.07); }
+  .form-input::placeholder { color:rgba(255,255,255,.25); }
 
-  /* ── RED BTN ── */
+  /* ── BUTTONS ── */
   .btn-red {
-    background:#e01010; color:#fff; font-weight:700; font-size:13px;
+    background:#E31E24; color:#fff; font-weight:700; font-size:13px;
     letter-spacing:.2em; text-transform:uppercase; padding:14px 32px;
     border-radius:8px; display:inline-flex; align-items:center; gap:10px;
-    transition:all .2s; border:none; cursor:pointer;
+    transition:all .2s; border:none; cursor:pointer; text-decoration:none;
   }
-  .btn-red:hover { background:#b80d0d; transform:translateY(-1px); }
+  .btn-red:hover { background:#B81820; transform:translateY(-1px); }
   .btn-ghost {
-    border:1.5px solid rgba(255,255,255,.18); color:#fff; font-weight:700; font-size:13px;
+    background:transparent; border:1.5px solid rgba(255,255,255,.4); color:#fff;
+    font-weight:700; font-size:13px;
     letter-spacing:.2em; text-transform:uppercase; padding:14px 32px;
     border-radius:8px; display:inline-flex; align-items:center; gap:10px;
-    transition:all .2s;
+    transition:all .2s; text-decoration:none;
   }
-  .btn-ghost:hover { border-color:#e01010; color:#e01010; }
+  .btn-ghost:hover { border-color:#E31E24; color:#E31E24; }
 
-  /* ── DIVIDER ── */
+  /* ── DIVIDER / SECTION LABEL ── */
   .section-label {
     display:flex; align-items:center; gap:12px;
     font-size:11px; font-weight:700; letter-spacing:.25em;
-    text-transform:uppercase; color:#e01010; margin-bottom:16px;
+    text-transform:uppercase; color:#E31E24; margin-bottom:16px;
   }
-  .section-label::before { content:''; display:block; width:32px; height:2px; background:#e01010; flex-shrink:0; }
+  .section-label::before { content:''; display:block; width:32px; height:2px; background:#E31E24; flex-shrink:0; }
+
+  /* ── HERO TIRES (apitire-style — integrated into hero) ── */
+  .hero-tires-row {
+    display: grid; grid-template-columns: repeat(5,1fr); gap: 0;
+    max-width: 1400px; margin: 0 auto; padding: 48px 40px 0;
+    position: relative;
+  }
+  .hero-tires-row::before { display: none; }
+  /* keep old class alias for grid */
+  .categorias-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+    max-width: 1400px; margin: 0 auto; padding: 0 40px;
+    position: relative;
+  }
+  .categoria-tile {
+    display:flex; flex-direction:column; align-items:center;
+    text-decoration:none; cursor:pointer;
+    opacity:0;
+    animation: tileFadeIn .9s cubic-bezier(.2,.8,.2,1) forwards;
+    background:transparent; border:none; padding: 0 12px 40px;
+    font-family:inherit; border-right: none;
+  }
+  .categoria-tile:nth-child(1) { animation-delay: .2s; }
+  .categoria-tile:nth-child(2) { animation-delay: .35s; }
+  .categoria-tile:nth-child(3) { animation-delay: .5s; }
+  .categoria-tile:nth-child(4) { animation-delay: .65s; }
+  .categoria-tile:nth-child(5) { animation-delay: .8s; }
+  @keyframes tileFadeIn {
+    from { opacity:0; transform: translateY(70px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .categoria-tile__img,
+  .rin-svg-wrap {
+    width:100%; max-width:320px; height:360px;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 14px rgba(0,0,0,.22));
+    transition: transform .7s cubic-bezier(.22,.61,.36,1), filter .5s ease;
+    transform-origin: center bottom;
+    will-change: transform;
+  }
+  .rin-svg-wrap { display:flex; align-items:center; justify-content:center;
+    transition: transform .7s cubic-bezier(.22,.61,.36,1); }
+  @keyframes tireBob {
+    0%   { transform: translateY(0)     scale(1);    }
+    50%  { transform: translateY(-12px) scale(1.012); }
+    100% { transform: translateY(0)     scale(1);    }
+  }
+  .categoria-tile:hover .categoria-tile__img,
+  .categoria-tile:hover .rin-svg-wrap {
+    animation: tireBob 1.8s cubic-bezier(.45,0,.55,1) infinite;
+    filter: drop-shadow(0 36px 24px rgba(227,30,36,.34));
+  }
+  .categoria-tile__label {
+    margin-top:28px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900; font-size:2rem;
+    letter-spacing:.1em; text-transform:uppercase;
+    color:#fff;
+    transition: color .25s ease;
+    text-align:center;
+  }
+  .categoria-tile:hover .categoria-tile__label { color:#E31E24; }
+  @media (max-width: 900px) {
+    .categorias-grid { grid-template-columns: repeat(2,1fr); gap: 32px 16px; }
+    .categoria-tile__img, .rin-svg-wrap { max-width:160px; height:200px; }
+    .categoria-tile__label { font-size:1.2rem; margin-top:20px; }
+  }
+
+  /* ── CTA BLOCKS ── */
+  .cta-block {
+    display:flex; flex-direction:column; gap:16px;
+    background:#111; border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:36px 32px;
+    text-decoration:none; transition:all .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .cta-block:hover { border-color:rgba(227,30,36,.4); transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,.5); }
+  .cta-block__eyebrow {
+    font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:#E31E24;
+  }
+  .cta-block__title {
+    font-family:'Barlow Condensed',sans-serif; font-weight:900;
+    font-size:2rem; text-transform:uppercase; color:#fff; line-height:1;
+  }
+  .cta-block__desc { font-size:13px; color:rgba(255,255,255,.45); line-height:1.6; flex:1; }
+  .cta-block__arrow {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:12px;
+    letter-spacing:.2em; text-transform:uppercase; color:#E31E24;
+    display:flex; align-items:center; gap:8px;
+  }
 </style>
 </head>
 <body>
 
+<!-- ══════════ PRELOADER ══════════ -->
+<div id="preloader">
+  <div class="pre-logo">OLN <span>TIRES</span></div>
+  <div class="pre-bar"></div>
+</div>
+
 <!-- ══════════ NAV ══════════ -->
-<nav style="position:fixed;top:0;width:100%;z-index:50;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05);">
+<nav id="main-nav" style="position:fixed;top:0;width:100%;z-index:50;transition:background .4s ease,border-color .4s ease,backdrop-filter .4s ease;border-bottom:1px solid transparent;">
   <div style="max-width:1400px;margin:0 auto;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;">
     <!-- Logo -->
-    <div style="display:flex;align-items:center;gap:8px;">
-      <svg viewBox="0 0 18 24" width="13" height="18"><polygon points="0,0 18,12 0,24" fill="#e01010"/></svg>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:.15em;text-transform:uppercase;">OLN <span style="color:#e01010;">TIRES</span></span>
-    </div>
+    <a href="propuesta-olntires.html" style="display:flex;align-items:center;text-decoration:none;">
+      <img id="nav-logo-text" src="oln/logo-white.png" alt="OLN Tires" style="height:32px;width:auto;object-fit:contain;"/>
+    </a>
     <!-- Links -->
     <div style="display:flex;gap:36px;align-items:center;">
-      <a href="#catalogo" style="color:#888;font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Catálogo</a>
-      <a href="#marcas"   style="color:#888;font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Marcas</a>
-      <a href="#nosotros" style="color:#888;font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Nosotros</a>
-      <a href="#contacto" style="color:#888;font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Contacto</a>
+      <a class="nav-link" href="oln-catalogo.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Catálogo</a>
+      <a class="nav-link" href="oln-marcas.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Marcas</a>
+      <a class="nav-link" href="oln-marcas.html#catalogos-pdf" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Catálogos PDF</a>
+      <a class="nav-link" href="oln-marcas.html#nosotros" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Nosotros</a>
+      <a class="nav-link" href="oln-contacto.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Contacto</a>
     </div>
     <!-- CTA -->
-    <a href="#contacto" class="btn-red" style="padding:10px 22px;font-size:12px;">
+    <a id="nav-wa" href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;border-radius:8px;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;text-decoration:none;transition:all .4s ease;">
       <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
       WhatsApp
     </a>
@@ -174,7 +390,7 @@
 </nav>
 
 <!-- ══════════ TICKER ══════════ -->
-<div style="position:fixed;top:73px;left:0;width:100%;z-index:40;background:#e01010;padding:7px 0;overflow:hidden;">
+<div id="hero-ticker" style="position:fixed;top:73px;left:0;width:100%;z-index:40;background:#E31E24;padding:7px 0;overflow:hidden;opacity:0;transition:opacity .4s ease;pointer-events:none;">
   <div class="ticker-inner" style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;">
     <span>Precios directos de fábrica</span><span style="opacity:.5;margin:0 4px;">▶</span>
     <span>Sin intermediarios</span><span style="opacity:.5;margin:0 4px;">▶</span>
@@ -192,516 +408,214 @@
 </div>
 
 <!-- ══════════ HERO ══════════ -->
-<header class="hero-section" style="display:flex;align-items:center;padding-top:140px;padding-bottom:80px;">
-  <div style="max-width:1400px;margin:0 auto;padding:0 40px;width:100%;">
-    <div style="max-width:680px;">
+<header class="hero-section">
+  <div class="hero-inner">
 
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
-        <div style="height:2px;width:36px;background:#e01010;flex-shrink:0;"></div>
-        <span style="font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#e01010;">Outlet Llantas del Norte S.A. de C.V.</span>
+    <!-- LEFT: eyebrow + headline + CTAs -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div style="height:2px;width:36px;background:#E31E24;flex-shrink:0;"></div>
+        <span>Outlet Llantas del Norte S.A. de C.V.</span>
       </div>
-
-      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(4rem,9vw,8rem);line-height:.9;text-transform:uppercase;margin-bottom:28px;">
-        DEJA HUELLA<br/>
-        EN CADA<br/>
-        <span style="color:#e01010;">KILÓMETRO.</span>
+      <h1 class="hero-h1">
+        EN CADA<br/><span style="color:#E31E24;">KILÓMETRO.</span>
       </h1>
-
-      <p style="font-size:clamp(1rem,2vw,1.3rem);color:#bbb;font-style:italic;margin-bottom:8px;max-width:500px;line-height:1.5;">
-        Lo que tu operación necesita para rendir al máximo.
-      </p>
-      <p style="font-size:15px;color:#777;margin-bottom:36px;max-width:460px;line-height:1.7;">
-        Más kilómetros. Menos paradas. Más rentabilidad.<br/>
-        Camión · Agrícola · Industrial — precio de fábrica.
-      </p>
-
-      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:52px;">
-        <a href="#catalogo" class="btn-red">Ver Catálogo</a>
-        <a href="#contacto" class="btn-ghost">Cotizar Ahora</a>
-      </div>
-
-      <!-- Stats row -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:32px;border-top:1px solid rgba(255,255,255,.08);">
-        <div>
-          <div class="big-stat" style="font-size:3.5rem;">10+</div>
-          <p style="font-size:12px;color:#666;margin-top:4px;">Años en el mercado</p>
-        </div>
-        <div>
-          <div class="big-stat" style="font-size:3.5rem;">24h</div>
-          <p style="font-size:12px;color:#666;margin-top:4px;">Entrega inmediata</p>
-        </div>
-        <div>
-          <div class="big-stat" style="font-size:3.5rem;">$0</div>
-          <p style="font-size:12px;color:#666;margin-top:4px;">Intermediarios. Precio directo.</p>
-        </div>
+      <div class="hero-ctas">
+        <a href="oln-catalogo.html" class="btn-red">Ver Catálogo</a>
+        <a href="oln-contacto.html" class="btn-ghost">Cotizar Ahora</a>
       </div>
     </div>
+
+    <!-- RIGHT: HUD stats -->
+    <div class="hero-hud">
+      <div class="hud-stat">
+        <div class="big-stat">10+</div>
+        <p>Años en el mercado</p>
+      </div>
+      <div class="hud-stat">
+        <div class="big-stat">24h</div>
+        <p>Entrega inmediata</p>
+      </div>
+      <div class="hud-stat">
+        <div class="big-stat">$0</div>
+        <p>Sin intermediarios</p>
+      </div>
+    </div>
+
   </div>
 </header>
 
-<!-- ══════════ MARCAS ══════════ -->
-<section id="marcas" style="padding:64px 40px;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);">
+<!-- ══════════ CATEGORÍAS ══════════ -->
+<section id="categorias" style="
+  position:relative;
+  background: #0a0a0a;
+  border-top:3px solid #E31E24;
+  padding:60px 0 20px;
+">
+  <div class="hero-tires-row">
+    <button type="button" class="categoria-tile" onclick="goToCat('auto')">
+      <img class="categoria-tile__img" src="oln/rdx/at21.png" alt="Auto" loading="lazy"/>
+      <span class="categoria-tile__label">Auto</span>
+    </button>
+    <button type="button" class="categoria-tile" onclick="goToCat('camion')">
+      <img class="categoria-tile__img" src="oln/roadx/st355.png" alt="Camión" loading="lazy"/>
+      <span class="categoria-tile__label">Camión</span>
+    </button>
+    <button type="button" class="categoria-tile" onclick="goToCat('agricola')">
+      <img class="categoria-tile__img" src="oln/allwin/r4.png" alt="Agrícola" loading="lazy"/>
+      <span class="categoria-tile__label">Agrícola</span>
+    </button>
+    <button type="button" class="categoria-tile" onclick="goToCat('industrial')">
+      <img class="categoria-tile__img" src="oln/allwin/sks4.png" alt="Industrial" loading="lazy"/>
+      <span class="categoria-tile__label">Industrial</span>
+    </button>
+    <button type="button" class="categoria-tile" onclick="goToCat('rin')">
+      <div class="categoria-tile__img rin-svg-wrap">
+        <svg viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="90" stroke="#fff" stroke-width="6"/>
+          <circle cx="100" cy="100" r="62" stroke="rgba(255,255,255,.35)" stroke-width="3"/>
+          <circle cx="100" cy="100" r="20" fill="#E31E24"/>
+          <circle cx="100" cy="100" r="12" fill="#0a0a0a"/>
+          <!-- spokes -->
+          <line x1="100" y1="78" x2="100" y2="10"  stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="100" y1="122" x2="100" y2="190" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="78"  y1="100" x2="10"  y2="100" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="122" y1="100" x2="190" y2="100" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="86"  y1="86"  x2="36"  y2="36"  stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="114" y1="114" x2="164" y2="164" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="114" y1="86"  x2="164" y2="36"  stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          <line x1="86"  y1="114" x2="36"  y2="164" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="categoria-tile__label">Rin</span>
+    </button>
+  </div>
+</section>
+
+<!-- ══════════ CTA BLOCKS ══════════ -->
+<section style="padding:80px 40px;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.06);">
   <div style="max-width:1400px;margin:0 auto;">
-    <p style="text-align:center;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#555;margin-bottom:32px;">Marcas que distribuimos</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;">
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Gladiator</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">RoadX</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Empire</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Pegasus</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">JK Tyre</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Benchmark</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Royal Black</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">Rockbuster</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;">StarStone</span></div>
-      <div class="brand-pill" style="padding:14px;text-align:center;"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:#e01010;">GMX</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CATÁLOGO ══════════ -->
-<section id="catalogo" style="padding:80px 40px;max-width:1400px;margin:0 auto;">
-
-  <div class="section-label">Catálogo completo</div>
-  <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,5vw,4rem);text-transform:uppercase;margin-bottom:32px;">
-    Productos en <span style="color:#e01010;">Stock</span>
-  </h2>
-
-  <!-- Tabs -->
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;" id="tabs">
-    <button class="tab-btn active" onclick="filter('todos',this)">Todos</button>
-    <button class="tab-btn" onclick="filter('camion',this)">Camión</button>
-    <button class="tab-btn" onclick="filter('agricola',this)">Agrícola</button>
-    <button class="tab-btn" onclick="filter('industrial',this)">Industrial</button>
-  </div>
-
-  <!-- Product Grid -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;" id="pgrid">
-
-    <!-- ── CAMIÓN ── -->
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/QR99PD-1-300x300.png" alt="Gladiator QR99"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Gladiator</span>
-        <span class="prod-name">QR99 PD</span>
-        <span class="prod-desc">Llanta de tracción para camión. Alta resistencia en carretera y terracería.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/QR66-PS-300x300.png" alt="Gladiator QR66"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Gladiator</span>
-        <span class="prod-name">QR66-PS</span>
-        <span class="prod-desc">Llanta de posición. Diseño optimizado para largas distancias.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/QR55-ST-300x300.png" alt="Gladiator QR55"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Gladiator</span>
-        <span class="prod-name">QR55 ST</span>
-        <span class="prod-desc">Tracción superior para carretera. Ideal para flotas de carga pesada.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/QR35-TR-300x300.png" alt="Gladiator QR35"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Gladiator</span>
-        <span class="prod-name">QR35 TR</span>
-        <span class="prod-desc">Todo terreno de alto rendimiento. Tracción en barro, grava y asfalto.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/EM696-300x300.png" alt="Empire EM696"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Empire</span>
-        <span class="prod-name">EM696</span>
-        <span class="prod-desc">Tracción para camión de carga regional. Durabilidad comprobada.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/EM698-300x300.png" alt="Empire EM698"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Empire</span>
-        <span class="prod-name">EM698</span>
-        <span class="prod-desc">Dirección para camión. Manejo estable en carreteras de larga distancia.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/EMPIRE-EM699-300x300.png" alt="Empire EM699"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Empire</span>
-        <span class="prod-name">EM699</span>
-        <span class="prod-desc">Tracción regional de alto desempeño. Diseño autopurificable.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/BENCHMARK-500X500.jpg" alt="Benchmark TB"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Benchmark</span>
-        <span class="prod-name">TB Series</span>
-        <span class="prod-desc">Camión y autobús. 10 modelos disponibles para dirección, tracción y libre.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión · Bus</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/JKTYRE-500X500.jpg" alt="JK Tyre"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">JK Tyre</span>
-        <span class="prod-name">Total Control</span>
-        <span class="prod-desc">13 modelos disponibles. Control total en todo tipo de superficie y clima.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/ROYALBLACK-500X500.jpg" alt="Royal Black"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Royal Black</span>
-        <span class="prod-name">Power To Go</span>
-        <span class="prod-desc">3 modelos. Potencia y rendimiento para flotas de largo recorrido.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="camion">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/STARSTONE-500X500.jpg" alt="StarStone"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">StarStone</span>
-        <span class="prod-name">ST Series</span>
-        <span class="prod-desc">4 modelos para camión y autobús. Equilibrio perfecto entre costo y kilómetros.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-camion">Camión · Bus</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── AGRÍCOLA ── -->
-    <div class="prod" data-cat="agricola">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/11/600X600-2.jpg" alt="GMX Agrícola"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">GMX</span>
-        <span class="prod-name">Serie Agrícola</span>
-        <span class="prod-desc">Tracción en campo y terracería. Para tractores, implementos y cosechadoras.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-agricola">Agrícola</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="agricola">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H108C-300x300.png" alt="Rockbuster Agrícola"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Rockbuster</span>
-        <span class="prod-name">Serie Agrícola</span>
-        <span class="prod-desc">Máxima resistencia al corte y punción. Para maquinaria de campo exigente.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-agricola">Agrícola</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── INDUSTRIAL ── -->
-    <div class="prod" data-cat="industrial">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H165-300x300.png" alt="Rockbuster H165"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Rockbuster</span>
-        <span class="prod-name">H165</span>
-        <span class="prod-desc">Llanta sólida para montacargas. Alta resistencia a perforación y cargas extremas.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-ind">Industrial</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="industrial">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H166-300x300.png" alt="Rockbuster H166"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Rockbuster</span>
-        <span class="prod-name">H166</span>
-        <span class="prod-desc">Industrial para almacén. Diseño antipinchazos para pisos con escombros.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-ind">Industrial</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="industrial">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H109-300x300.png" alt="Rockbuster H109"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">Rockbuster</span>
-        <span class="prod-name">H109</span>
-        <span class="prod-desc">Maquinaria pesada y construcción. Paredes reforzadas para máxima durabilidad.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-ind">Maquinaria</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod" data-cat="industrial">
-      <img class="prod-img" src="https://olntires.com/wpolntires/wp-content/uploads/2021/12/ROCKBUSTER-H108AE-2-300x300.png" alt="GMX Industrial"/>
-      <div class="prod-body">
-        <span class="prod-brand-label">GMX</span>
-        <span class="prod-name">Serie Industrial</span>
-        <span class="prod-desc">4 modelos para almacén y planta. Tracción constante en superficies interiores.</span>
-        <div class="prod-footer">
-          <span class="prod-badge badge-ind">Industrial</span>
-          <a href="#contacto" class="prod-link">Cotizar →</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div style="text-align:center;margin-top:40px;">
-    <p style="color:#666;font-size:13px;margin-bottom:16px;">¿No encuentras tu medida? Tenemos acceso a cientos de SKUs.</p>
-    <a href="#contacto" class="btn-red">Consultar disponibilidad</a>
-  </div>
-</section>
-
-<!-- ══════════ POR QUÉ OLN ══════════ -->
-<section id="nosotros" style="padding:80px 40px;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.05);">
-  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
-
-    <div>
-      <div class="section-label">¿Por qué OLN?</div>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,4vw,3.8rem);text-transform:uppercase;line-height:.95;margin-bottom:24px;">
-        EN CARRETERA<br/>NO HAY MARGEN<br/><span style="color:#e01010;">DE ERROR.</span>
-      </h2>
-      <p style="color:#777;line-height:1.8;margin-bottom:28px;font-size:15px;">
-        Somos tu socio estratégico en soluciones de movilidad. Precio de fábrica directo, sin intermediarios, con la atención que tu flotilla merece.
-      </p>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
-        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
-          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
-          Precios directos de fábrica, sin intermediarios
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
-          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
-          Asesoría especializada para cada cliente y tipo de flota
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
-          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
-          Logística eficiente y entrega inmediata
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
-          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
-          Atención comercial personalizada — no eres un número
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#ccc;">
-          <svg viewBox="0 0 16 16" fill="#e01010" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
-          +10 años siendo el proveedor de confianza del norte
-        </li>
-      </ul>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-      <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;">
-        <div class="big-stat" style="font-size:3.5rem;">500+</div>
-        <p style="font-size:13px;color:#666;margin-top:6px;">SKUs en catálogo activo</p>
-      </div>
-      <div style="background:rgba(224,16,16,.07);border:1px solid rgba(224,16,16,.2);border-radius:14px;padding:28px;">
-        <div class="big-stat" style="font-size:3.5rem;">24h</div>
-        <p style="font-size:13px;color:#666;margin-top:6px;">Tiempo de entrega</p>
-      </div>
-      <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;">
-        <div class="big-stat" style="font-size:3.5rem;">10+</div>
-        <p style="font-size:13px;color:#666;margin-top:6px;">Marcas premium en stock</p>
-      </div>
-      <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;">
-        <div class="big-stat" style="font-size:3.5rem;">10+</div>
-        <p style="font-size:13px;color:#666;margin-top:6px;">Años en el mercado</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════ TESTIMONIOS ══════════ -->
-<section style="padding:80px 40px;">
-  <div style="max-width:1400px;margin:0 auto;">
-    <div class="section-label">Lo que dicen nuestros clientes</div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);text-transform:uppercase;margin-bottom:48px;">
-      Flotillas que <span style="color:#e01010;">confían en OLN</span>
+    <div class="section-label reveal">Explora OLN Tires</div>
+    <h2 class="reveal reveal-d1" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);text-transform:uppercase;line-height:.95;margin-bottom:48px;">
+      Todo lo que <span style="color:#E31E24;">necesitas</span>
     </h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;">
 
-      <div class="glass-card" style="padding:32px;">
-        <div style="display:flex;gap:4px;margin-bottom:16px;">
-          <span style="color:#e01010;font-size:18px;">★★★★★</span>
-        </div>
-        <p style="color:#bbb;font-size:14px;line-height:1.8;margin-bottom:20px;">
-          "Llevamos 3 años comprando con OLN. Precio justo, entrega puntual y siempre tienen lo que necesitamos. Sin intermediarios, trato directo."
-        </p>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:38px;height:38px;border-radius:50%;background:#e01010;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;">R</div>
-          <div>
-            <p style="font-weight:600;font-size:13px;">Roberto M.</p>
-            <p style="color:#555;font-size:11px;">Flota de 45 camiones, Monterrey</p>
-          </div>
-        </div>
-      </div>
+      <a href="oln-catalogo.html" class="cta-block reveal reveal-d1">
+        <span class="cta-block__eyebrow">Catálogo completo</span>
+        <span class="cta-block__title">Productos en Stock</span>
+        <span class="cta-block__desc">Auto, Camión, Agrícola, Industrial y Rines. Filtra por categoría y encuentra tu medida exacta con precio de fábrica.</span>
+        <span class="cta-block__arrow">
+          Ver Catálogo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
 
-      <div class="glass-card" style="padding:32px;border-color:rgba(224,16,16,.2);background:rgba(224,16,16,.04);">
-        <div style="display:flex;gap:4px;margin-bottom:16px;">
-          <span style="color:#e01010;font-size:18px;">★★★★★</span>
-        </div>
-        <p style="color:#bbb;font-size:14px;line-height:1.8;margin-bottom:20px;">
-          "Las llantas industriales Rockbuster llevan más de un año en nuestros montacargas sin ningún problema. La asesoría técnica fue clave para elegir el modelo correcto."
-        </p>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:38px;height:38px;border-radius:50%;background:#e01010;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;">C</div>
-          <div>
-            <p style="font-weight:600;font-size:13px;">Carlos V.</p>
-            <p style="color:#555;font-size:11px;">Director de Operaciones, CDMX</p>
-          </div>
-        </div>
-      </div>
+      <a href="oln-marcas.html" class="cta-block reveal reveal-d2">
+        <span class="cta-block__eyebrow">Distribuidores autorizados</span>
+        <span class="cta-block__title">Marcas y PDFs</span>
+        <span class="cta-block__desc">RDX Auto, Lanvigator, ROADX, EMPIRE y ALLWIN. Descarga el catálogo técnico de cada marca en PDF.</span>
+        <span class="cta-block__arrow">
+          Ver Marcas
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
 
-      <div class="glass-card" style="padding:32px;">
-        <div style="display:flex;gap:4px;margin-bottom:16px;">
-          <span style="color:#e01010;font-size:18px;">★★★★★</span>
-        </div>
-        <p style="color:#bbb;font-size:14px;line-height:1.8;margin-bottom:20px;">
-          "Optimizamos la flotilla agrícola con GMX. Más kilómetros, menos paradas, mejor rentabilidad. Exactamente lo que prometieron."
-        </p>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:38px;height:38px;border-radius:50%;background:#e01010;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;">A</div>
-          <div>
-            <p style="font-weight:600;font-size:13px;">Agro Norte S.A.</p>
-            <p style="color:#555;font-size:11px;">Empresa agrícola, Tamaulipas</p>
-          </div>
-        </div>
-      </div>
+      <a href="oln-contacto.html" class="cta-block reveal reveal-d3">
+        <span class="cta-block__eyebrow">Cotiza ahora</span>
+        <span class="cta-block__title">Contacto directo</span>
+        <span class="cta-block__desc">Dinos tu medida, cantidad y tipo de uso. Te respondemos con el mejor precio sin rodeos ni intermediarios.</span>
+        <span class="cta-block__arrow">
+          Cotizar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
 
     </div>
-  </div>
-</section>
-
-<!-- ══════════ CONTACTO ══════════ -->
-<section id="contacto" style="padding:80px 40px;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.05);">
-  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;">
-
-    <div>
-      <div class="section-label">Cotiza ahora</div>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,4vw,3.8rem);text-transform:uppercase;line-height:.95;margin-bottom:20px;">
-        Cotiza tu<br/><span style="color:#e01010;">flotilla.</span>
-      </h2>
-      <p style="color:#666;font-size:15px;line-height:1.7;margin-bottom:36px;">
-        Dinos la medida, cantidad y tipo de uso. Te respondemos con el mejor precio — sin rodeos ni intermediarios.
-      </p>
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <a href="https://wa.me/5212241234567" class="btn-red" style="justify-content:center;max-width:280px;">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
-          WhatsApp — Cotizar Ahora
-        </a>
-        <a href="mailto:ventas@olntires.com" class="btn-ghost" style="justify-content:center;max-width:280px;">
-          Enviar correo
-        </a>
-      </div>
-    </div>
-
-    <!-- Form -->
-    <form onsubmit="return false;" style="display:flex;flex-direction:column;gap:16px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div>
-          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#555;margin-bottom:8px;">Nombre</label>
-          <input type="text" class="form-input" placeholder="Tu nombre"/>
-        </div>
-        <div>
-          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#555;margin-bottom:8px;">Empresa</label>
-          <input type="text" class="form-input" placeholder="Razón social"/>
-        </div>
-      </div>
-      <div>
-        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#555;margin-bottom:8px;">WhatsApp / Teléfono</label>
-        <input type="tel" class="form-input" placeholder="+52 (xxx) xxx xxxx"/>
-      </div>
-      <div>
-        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#555;margin-bottom:8px;">¿Qué necesitas?</label>
-        <textarea class="form-input" rows="4" placeholder="Medida, cantidad, tipo de uso (camión / agrícola / industrial)..." style="resize:vertical;"></textarea>
-      </div>
-      <button type="submit" class="btn-red" style="justify-content:center;">
-        Enviar solicitud de cotización
-      </button>
-    </form>
-
   </div>
 </section>
 
 <!-- ══════════ FOOTER ══════════ -->
-<footer style="background:#0a0a0a;border-top:1px solid rgba(255,255,255,.05);padding:40px;color:#555;">
+<footer style="background:#0f0f0f;border-top:1px solid rgba(255,255,255,.06);padding:40px;color:rgba(255,255,255,.4);">
   <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;">
     <div style="display:flex;align-items:center;gap:8px;">
-      <svg viewBox="0 0 18 24" width="12" height="16"><polygon points="0,0 18,12 0,24" fill="#e01010"/></svg>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:17px;letter-spacing:.15em;text-transform:uppercase;color:#fff;">OLN <span style="color:#e01010;">TIRES</span></span>
+      <img src="oln/logo-white.png" alt="OLN Tires" style="height:28px;width:auto;object-fit:contain;"/>
     </div>
-    <p style="font-size:12px;text-align:center;">Outlet Llantas del Norte S.A. de C.V. — Camión · Agrícola · Industrial</p>
+    <p style="font-size:12px;text-align:center;color:rgba(255,255,255,.3);">Outlet Llantas del Norte S.A. de C.V. — Auto · Camión · Agrícola · Industrial · Rin</p>
     <div style="display:flex;gap:20px;align-items:center;">
-      <a href="https://www.instagram.com/olntires" style="color:#555;font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#e01010'" onmouseout="this.style.color='#555'">@olntires</a>
-      <a href="https://olntires.com" style="color:#555;font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#e01010'" onmouseout="this.style.color='#555'">olntires.com</a>
+      <a href="https://www.instagram.com/olntires" style="color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='rgba(255,255,255,.4)'">@olntires</a>
+      <a href="https://olntires.com" style="color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='rgba(255,255,255,.4)'">olntires.com</a>
     </div>
   </div>
 </footer>
 
 <script>
-  function filter(cat, btn) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.prod').forEach(p => {
-      p.classList.toggle('hidden', cat !== 'todos' && p.dataset.cat !== cat);
-    });
+  function goToCat(cat) {
+    window.location.href = 'oln-catalogo.html?cat=' + cat;
   }
+
+  /* ── PRELOADER ── */
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('preloader').classList.add('done');
+    }, 900);
+  });
+
+  /* ── SCROLL REVEAL ── */
+  (function() {
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el) { io.observe(el); });
+  })();
+
+  /* ── NAV: transparent → solid on scroll ── */
+  (function () {
+    var nav     = document.getElementById('main-nav');
+    var logo    = document.getElementById('nav-logo-text');
+    var links   = document.querySelectorAll('.nav-link');
+    var waBtn   = document.getElementById('nav-wa');
+    var ticker  = document.getElementById('hero-ticker');
+
+    function update() {
+      var atTop = window.scrollY < 80;
+
+      // Nav background — always dark, just gains blur on scroll
+      nav.style.background        = atTop ? 'transparent'               : 'rgba(10,10,10,.95)';
+      nav.style.backdropFilter    = atTop ? 'none'                      : 'blur(16px)';
+      nav.style.webkitBackdropFilter = atTop ? 'none'                   : 'blur(16px)';
+      nav.style.borderBottomColor = atTop ? 'rgba(255,255,255,.1)'      : 'rgba(255,255,255,.06)';
+
+      // Logo swap: white on dark, dark logo never needed since bg is always dark
+      if (logo && logo.tagName === 'IMG') logo.src = 'oln/logo-white.png';
+
+      // Nav links — always white (dark bg)
+      links.forEach(function(l) {
+        l.style.color = atTop ? 'rgba(255,255,255,.75)' : 'rgba(255,255,255,.65)';
+        l.onmouseover = function() { this.style.color = '#fff'; };
+        l.onmouseout  = function() { this.style.color = atTop ? 'rgba(255,255,255,.75)' : 'rgba(255,255,255,.65)'; };
+      });
+
+      // WhatsApp button
+      if (waBtn) {
+        waBtn.style.background   = atTop ? 'transparent' : '#E31E24';
+        waBtn.style.border       = atTop ? '1.5px solid rgba(255,255,255,.55)' : '1.5px solid #E31E24';
+        waBtn.style.color        = '#fff';
+      }
+
+      // Ticker: hidden over hero, visible when scrolled
+      if (ticker) {
+        ticker.style.opacity        = atTop ? '0' : '1';
+        ticker.style.pointerEvents  = atTop ? 'none' : 'auto';
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
 </script>
 
 </body>

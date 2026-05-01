@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catálogo — OLN Tires | Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; }
+  h1,h2,h3,h4 { font-family: 'Barlow Condensed', sans-serif; }
+
+  /* ── PRELOADER ── */
+  #preloader {
+    position: fixed; inset: 0; z-index: 9999; background: #0a0a0a;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #preloader.done { opacity: 0; visibility: hidden; }
+  .pre-logo {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 3.5rem;
+    letter-spacing: .2em; text-transform: uppercase; color: #fff;
+    opacity: 0; transform: translateY(16px);
+    animation: preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards;
+  }
+  .pre-logo span { color: #E31E24; }
+  .pre-bar {
+    width: 0; height: 2px; background: #E31E24;
+    animation: preBar .8s cubic-bezier(.4,0,.2,1) .3s forwards;
+  }
+  @keyframes preIn { to { opacity: 1; transform: none; } }
+  @keyframes preBar { to { width: 160px; } }
+
+  /* ── TICKER ── */
+  .ticker-wrap { overflow: hidden; }
+  .ticker-inner { display: flex; gap: 3rem; animation: scroll 28s linear infinite; white-space: nowrap; }
+  @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ── PRODUCT CARDS ── */
+  .prod {
+    background: #111; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; overflow: hidden;
+    transition: all .25s cubic-bezier(.2,.8,.2,1); display: flex; flex-direction: column;
+    box-shadow: none;
+  }
+  .prod:hover {
+    border-color: rgba(227,30,36,.5); transform: translateY(-10px);
+    box-shadow: 0 24px 48px rgba(0,0,0,.4), 0 0 0 1px rgba(227,30,36,.2);
+  }
+  .prod-img {
+    width: 100%; height: 180px; object-fit: contain; display: block;
+    background: #1a1a1a; padding: 20px;
+    transition: transform .4s cubic-bezier(.22,.61,.36,1), filter .3s ease;
+  }
+  .prod:hover .prod-img {
+    transform: translateY(-8px) scale(1.04);
+    filter: drop-shadow(0 16px 14px rgba(227,30,36,.2));
+  }
+  .prod-body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .prod-brand-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 10px;
+    letter-spacing: .2em; text-transform: uppercase; color: #E31E24;
+  }
+  .prod-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 1.4rem;
+    text-transform: uppercase; color: #fff; line-height: 1;
+  }
+  .prod-desc { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 2px; flex: 1; }
+  .prod-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+  .prod-badge {
+    font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px;
+  }
+  .badge-camion   { background: rgba(227,30,36,.12);  color: #E31E24;   border: 1px solid rgba(227,30,36,.25); }
+  .badge-agricola { background: rgba(34,197,94,.12);  color: #4ade80;   border: 1px solid rgba(34,197,94,.25); }
+  .badge-ind      { background: rgba(234,179,8,.12);  color: #facc15;   border: 1px solid rgba(234,179,8,.25); }
+  .badge-auto     { background: rgba(59,130,246,.15); color: #60a5fa;   border: 1px solid rgba(59,130,246,.25); }
+  .badge-rin      { background: rgba(168,85,247,.12); color: #c084fc;   border: 1px solid rgba(168,85,247,.25); }
+
+  /* ── TABS ── */
+  .tab-btn {
+    padding: 8px 20px; border-radius: 6px; font-size: 12px; font-weight: 700;
+    letter-spacing: .15em; text-transform: uppercase; cursor: pointer;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.5); transition: all .2s;
+  }
+  .tab-btn:hover, .tab-btn.active { background: #E31E24; border-color: #E31E24; color: #fff; }
+  .prod.hidden { display: none; }
+
+  /* ── STAT ── */
+  .big-stat { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; color: #E31E24; line-height: 1; }
+
+  /* ── BUTTONS ── */
+  .btn-red {
+    position: relative; overflow: hidden; z-index: 0;
+    background: #E31E24; color: #fff; font-weight: 700; font-size: 13px;
+    letter-spacing: .2em; text-transform: uppercase; padding: 14px 32px;
+    border-radius: 8px; display: inline-flex; align-items: center; gap: 10px;
+    transition: all .2s; border: none; cursor: pointer; text-decoration: none;
+  }
+  .btn-red::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: #B81820; transform: scaleX(0); transform-origin: left;
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .btn-red:hover::before { transform: scaleX(1); }
+  .btn-red:hover { transform: none; }
+
+  /* ── DIVIDER / SECTION LABEL ── */
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: .25em;
+    text-transform: uppercase; color: #E31E24; margin-bottom: 16px;
+  }
+  .section-label::before { content: ''; display: block; width: 32px; height: 2px; background: #E31E24; flex-shrink: 0; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: #0a0a0a;
+    border-bottom: 2px solid #E31E24;
+    padding: 160px 40px 64px;
+  }
+
+  /* ── PROD LINK ── */
+  .prod-link {
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,.4);
+    text-transform: uppercase; letter-spacing: .12em;
+    text-decoration: none; transition: color .2s;
+  }
+  .prod-link:hover { color: #E31E24; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity .75s cubic-bezier(.2,.8,.2,1), transform .75s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: .1s; }
+  .reveal-d2 { transition-delay: .2s; }
+
+  /* ── NAV ── */
+  #main-nav {
+    position: fixed; top: 0; width: 100%; z-index: 50;
+    background: transparent;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+  }
+  .nav-inner {
+    max-width: 1400px; margin: 0 auto; padding: 18px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-link {
+    color: rgba(255,255,255,.7); font-size: 13px; font-weight: 500;
+    text-decoration: none; transition: color .2s;
+  }
+  .nav-link:hover { color: #fff; }
+  .nav-link-active { color: #fff; font-weight: 600; }
+
+  /* ── CATALOG SECTION ── */
+  #catalogo { background: #0a0a0a; }
+
+  /* ── FOOTER ── */
+  footer { background: #0f0f0f; border-top: 1px solid rgba(255,255,255,.06); }
+</style>
+</head>
+<body>
+
+<!-- ══════════ PRELOADER ══════════ -->
+<div id="preloader">
+  <div class="pre-logo">OLN <span>TIRES</span></div>
+  <div class="pre-bar"></div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <!-- Logo -->
+    <a href="propuesta-olntires.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+      <svg viewBox="0 0 18 24" width="13" height="18"><polygon points="0,0 18,12 0,24" fill="#E31E24"/></svg>
+      <span id="nav-logo-text" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:.15em;text-transform:uppercase;color:#fff;">OLN <span style="color:#E31E24;">TIRES</span></span>
+    </a>
+    <!-- Links -->
+    <div style="display:flex;gap:36px;align-items:center;">
+      <a href="oln-catalogo.html" class="nav-link nav-link-active">Catálogo</a>
+      <a href="oln-marcas.html" class="nav-link">Marcas</a>
+      <a href="oln-marcas.html#catalogos-pdf" class="nav-link">Catálogos PDF</a>
+      <a href="oln-marcas.html#nosotros" class="nav-link">Nosotros</a>
+      <a href="oln-contacto.html" class="nav-link">Contacto</a>
+    </div>
+    <!-- CTA -->
+    <a href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" id="nav-wa" class="btn-red" style="padding:10px 22px;font-size:12px;">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════ TICKER ══════════ -->
+<div style="position:fixed;top:73px;left:0;width:100%;z-index:40;background:#E31E24;padding:7px 0;overflow:hidden;">
+  <div class="ticker-inner" style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;">
+    <span>Precios directos de fábrica</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Sin intermediarios</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>+10 años de experiencia</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Asesoría especializada</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Logística eficiente y confiable</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Entrega inmediata</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Precios directos de fábrica</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Sin intermediarios</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>+10 años de experiencia</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Asesoría especializada</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Logística eficiente y confiable</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Entrega inmediata</span><span style="opacity:.5;margin:0 4px;">▶</span>
+  </div>
+</div>
+
+<!-- ══════════ PAGE HERO ══════════ -->
+<div class="page-hero reveal">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="section-label">Catálogo completo</div>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(4rem,9vw,8rem);text-transform:uppercase;line-height:.88;margin-bottom:16px;">
+      Productos en <span style="color:#E31E24;">Stock</span>
+    </h1>
+    <p style="color:rgba(255,255,255,.55);font-size:15px;max-width:560px;line-height:1.7;">
+      Auto, Camión, Agrícola, Industrial y Rines. Precio de fábrica directo, sin intermediarios.
+    </p>
+  </div>
+</div>
+
+<!-- ══════════ CATÁLOGO ══════════ -->
+<section id="catalogo" style="padding:60px 40px 80px;max-width:1400px;margin:0 auto;">
+
+  <!-- Tabs -->
+  <div class="reveal" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;" id="tabs">
+    <button class="tab-btn active" onclick="filter('todos',this)">Todos</button>
+    <button class="tab-btn" onclick="filter('auto',this)">Auto</button>
+    <button class="tab-btn" onclick="filter('camion',this)">Camión</button>
+    <button class="tab-btn" onclick="filter('agricola',this)">Agrícola</button>
+    <button class="tab-btn" onclick="filter('industrial',this)">Industrial</button>
+    <button class="tab-btn" onclick="filter('rin',this)">Rin</button>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="reveal reveal-d1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;" id="pgrid">
+
+    <!-- ── AUTO · CAMIONETA ── -->
+    <div class="prod" data-id="ht01" data-cat="auto">
+      <img class="prod-img" src="oln/rdx/ht01.png" alt="RDX AUTO H/T 01" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">RDX AUTO</span>
+        <span class="prod-name">H/T 01</span>
+        <span class="prod-desc">Highway Terrain. Ideal carretera y ciudad. Alto rendimiento kilométrico y desgaste uniforme.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 155/70R13 → 245/65R17</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-auto">Auto</span>
+          <a href="propuesta-olntires-detalle.html#ht01" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="dh51" data-cat="auto">
+      <img class="prod-img" src="oln/rdx/dh51.png" alt="RDX AUTO DH 51" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">RDX AUTO</span>
+        <span class="prod-name">DH 51</span>
+        <span class="prod-desc">Banda optimizada para mayor agarre y estabilidad. Excelente en piso seco y mojado.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 185/60R14 → 215/55R18</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-auto">Auto</span>
+          <a href="propuesta-olntires-detalle.html#dh51" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="at21" data-cat="auto">
+      <img class="prod-img" src="oln/rdx/at21.png" alt="RDX AUTO AT 21" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">RDX AUTO</span>
+        <span class="prod-name">AT 21</span>
+        <span class="prod-desc">All Terrain. Costados reforzados, alta durabilidad, manejo estable en uso diario.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: LT215/75R15 → 31x10.50R15</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-auto">Auto</span>
+          <a href="propuesta-olntires-detalle.html#at21" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CAMIÓN · TBR ── -->
+    <div class="prod" data-id="s201" data-cat="camion">
+      <img class="prod-img" src="oln/lanvigator/s201.png" alt="Lanvigator S201" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Lanvigator</span>
+        <span class="prod-name">S201</span>
+        <span class="prod-desc">Alta densidad. Frenado excepcional en mojado, alto kilometraje, protectores de ranura.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11R22.5, 12R24.5, 295/75R22.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#s201" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="s207" data-cat="camion">
+      <img class="prod-img" src="oln/lanvigator/s207.png" alt="Lanvigator WIDER S207" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Lanvigator</span>
+        <span class="prod-name">WIDER S207</span>
+        <span class="prod-desc">Dibujo profundo y banda ancha. Mayor capacidad de carga, desgaste uniforme y renovable.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11R22.5, 12R24.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#s207" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="d808" data-cat="camion">
+      <img class="prod-img" src="oln/lanvigator/d808.png" alt="Lanvigator D808" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">Lanvigator</span>
+        <span class="prod-name">D808</span>
+        <span class="prod-desc">Banda extra profunda con protectores anti-perforación. Tracción y kilometraje superior.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11R22.5, 12R24.5, 295/75R22.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#d808" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="st355" data-cat="camion">
+      <img class="prod-img" src="oln/roadx/st355.png" alt="ROADX ST 355" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ROADX</span>
+        <span class="prod-name">ST 355</span>
+        <span class="prod-desc">Eje direccional. Caucho premium, canales anchos, hombros sólidos contra desgaste irregular.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11R22.5, 11R24.5, 295/75R22.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#st355" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="d871" data-cat="camion">
+      <img class="prod-img" src="oln/roadx/d871.png" alt="ROADX D871" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ROADX</span>
+        <span class="prod-name">D871</span>
+        <span class="prod-desc">Eje de tracción. Gran profundidad de piso y diseño agresivo para máxima tracción.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11R22.5, 11R24.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#d871" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="rh620" data-cat="camion">
+      <img class="prod-img" src="oln/roadx/rh620.png" alt="ROADX RH 620" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ROADX</span>
+        <span class="prod-name">RH 620</span>
+        <span class="prod-desc">Dirección. Compuesto resistente, desgaste uniforme, ideal reparto y larga distancia.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 215/75R17.5, 225/70R19.5, 255/70R22.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#rh620" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="rh621" data-cat="camion">
+      <img class="prod-img" src="oln/roadx/rh621.png" alt="ROADX RH 621" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ROADX</span>
+        <span class="prod-name">RH 621</span>
+        <span class="prod-desc">Dirección de carga. Excelente control en eje direccional, alta estabilidad en carretera.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 295/80R22.5, 315/80R22.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#rh621" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="em699" data-cat="camion">
+      <img class="prod-img" src="oln/empire/em699.png" alt="EMPIRE EM699" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">EMPIRE</span>
+        <span class="prod-name">EM699</span>
+        <span class="prod-desc">Posición dirección. Diseño especial eje direccional, buen manejo, baja resistencia a rodadura.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11R22.5, 11R24.5, 295/75R22.5, 315/80R22.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#em699" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="em698" data-cat="camion">
+      <img class="prod-img" src="oln/empire/em698.png" alt="EMPIRE EM698" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">EMPIRE</span>
+        <span class="prod-name">EM698</span>
+        <span class="prod-desc">Posición tracción. Hombro cerrado contra desgaste irregular, alta resistencia y kilometraje.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11R22.5, 11R24.5, 295/75R22.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-camion">Camión</span>
+          <a href="propuesta-olntires-detalle.html#em698" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── AGRÍCOLA ── -->
+    <div class="prod" data-id="f2" data-cat="agricola">
+      <img class="prod-img" src="oln/allwin/f2.png" alt="ALLWIN F2" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">F2</span>
+        <span class="prod-desc">Dirección agrícola. Banda ensanchada, rendimiento de dirección en suelos blandos y sueltos.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 7.50-16, 10.00-16</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-agricola">Agrícola</span>
+          <a href="propuesta-olntires-detalle.html#f2" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="f3" data-cat="agricola">
+      <img class="prod-img" src="oln/allwin/f3.png" alt="ALLWIN F3" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">F3</span>
+        <span class="prod-desc">Patrón optimizado para tracción agrícola. Buena flotación, sin cámara, bajo riesgo de pinchadura.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11L-16</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-agricola">Agrícola</span>
+          <a href="propuesta-olntires-detalle.html#f3" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="r1" data-cat="agricola">
+      <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:#1a1a1a;"><svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="#555" stroke-width="3"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22"/><circle cx="50" cy="50" r="6" fill="#555"/><line x1="50" y1="14" x2="50" y2="28"/><line x1="50" y1="72" x2="50" y2="86"/><line x1="14" y1="50" x2="28" y2="50"/><line x1="72" y1="50" x2="86" y2="50"/></svg></div>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">R1</span>
+        <span class="prod-desc">Tractor agrícola. Estabilidad superior, tracción en suelos blandos, 12-16 capas.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 12.4-24, 13.6-24, 14.9-24, 15.5-38, 18.4-30/34/38</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-agricola">Agrícola</span>
+          <a href="propuesta-olntires-detalle.html#r1" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── INDUSTRIAL · MAQUINARIA ── -->
+    <div class="prod" data-id="sks1" data-cat="industrial">
+      <img class="prod-img" src="oln/allwin/sks1.png" alt="ALLWIN SKS 1" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">SKS 1</span>
+        <span class="prod-desc">Skid steer. Obra pública, minería y construcción pesada. Rigidez estructural y resistencia.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 11L-16, 10-16.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="propuesta-olntires-detalle.html#sks1" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="sks4" data-cat="industrial">
+      <img class="prod-img" src="oln/allwin/sks4.png" alt="ALLWIN SKS 4" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">SKS 4</span>
+        <span class="prod-desc">Skid steer. Caucho de alta densidad, disipación de temperatura, compatibilidad universal.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 12-16.5</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="propuesta-olntires-detalle.html#sks4" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="sks5" data-cat="industrial">
+      <img class="prod-img" src="oln/allwin/sks5.png" alt="ALLWIN SKS 5" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">SKS 5</span>
+        <span class="prod-desc">Skid steer. Banda robusta, estabilidad bajo carga, ideal terrenos abrasivos y cortantes.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 12-16.5, 19.5L-24</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="propuesta-olntires-detalle.html#sks5" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="e3l3" data-cat="industrial">
+      <img class="prod-img" src="oln/allwin/e3l3.png" alt="ALLWIN E-3 / L-3" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">E-3 / L-3</span>
+        <span class="prod-desc">Movimiento de tierra. Banda autolimpiante, alta capacidad de carga, agarre en lodo.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 17.5-25, 20.5-25, 23.5-25, 26.5-25</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="propuesta-olntires-detalle.html#e3l3" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="g2l2" data-cat="industrial">
+      <img class="prod-img" src="oln/allwin/g2l2.png" alt="ALLWIN G2 / L2" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">G2 / L2</span>
+        <span class="prod-desc">Maquinaria construcción. Tracción tipo bloque, resistencia al desgaste, durabilidad alta.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 13.00-24, 14.00-24, 17.5-25</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="propuesta-olntires-detalle.html#g2l2" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="r4" data-cat="industrial">
+      <img class="prod-img" src="oln/allwin/r4.png" alt="ALLWIN R4" loading="lazy"/>
+      <div class="prod-body">
+        <span class="prod-brand-label">ALLWIN</span>
+        <span class="prod-name">R4</span>
+        <span class="prod-desc">Cargadores frontales y retroexcavadoras. 12-16 capas, alto rendimiento bajo carga.</span>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:500;">Medidas: 19.5L-24, 21L-24, 12.5/80R18</p>
+        <div class="prod-footer">
+          <span class="prod-badge badge-ind">Industrial</span>
+          <a href="propuesta-olntires-detalle.html#r4" class="prod-link">Ver detalle →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RINES ── -->
+    <div class="prod" data-cat="rin" style="grid-column:span 2;background:linear-gradient(135deg,#111 0%,#1a1020 100%);border:1px solid rgba(168,85,247,.2);">
+      <div class="prod-body" style="padding:32px;">
+        <span class="prod-brand-label" style="color:#c084fc;">OLN · Rines</span>
+        <span class="prod-name" style="font-size:1.7rem;">Acero · Aluminio · Pedido</span>
+        <span class="prod-desc" style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.45);margin-top:8px;">Surtimos rines de acero y aluminio en medidas para auto, camioneta y camión. Disponibilidad inmediata o sobre pedido — solicita medida exacta y nosotros te confirmamos stock y precio.</span>
+        <div class="prod-footer" style="margin-top:18px;">
+          <span class="prod-badge badge-rin">Cotización directa</span>
+          <a href="https://wa.me/525633880151?text=Hola!%20Necesito%20cotizar%20rines.%20Medida:" target="_blank" rel="noopener" class="prod-link" style="color:#c084fc;">WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reveal reveal-d2" style="text-align:center;margin-top:40px;">
+    <p style="color:rgba(255,255,255,.45);font-size:13px;margin-bottom:16px;">¿No encuentras tu medida? Tenemos acceso a cientos de SKUs.</p>
+    <a href="oln-contacto.html" class="btn-red">Consultar disponibilidad</a>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="padding:40px;">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg viewBox="0 0 18 24" width="12" height="16"><polygon points="0,0 18,12 0,24" fill="#E31E24"/></svg>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:17px;letter-spacing:.15em;text-transform:uppercase;color:#fff;">OLN <span style="color:#E31E24;">TIRES</span></span>
+    </div>
+    <p style="font-size:12px;text-align:center;color:rgba(255,255,255,.5);">Outlet Llantas del Norte S.A. de C.V. — Auto · Camión · Agrícola · Industrial · Rin</p>
+    <div style="display:flex;gap:20px;align-items:center;">
+      <a href="https://www.instagram.com/olntires" style="color:rgba(255,255,255,.5);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">@olntires</a>
+      <a href="https://olntires.com" style="color:rgba(255,255,255,.5);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">olntires.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── PRELOADER ──
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('preloader').classList.add('done');
+    }, 900);
+  });
+
+  // ── NAV SCROLL ──
+  (function() {
+    var nav = document.getElementById('main-nav');
+    var logo = document.getElementById('nav-logo-text');
+    var links = document.querySelectorAll('.nav-link');
+    var waBtn = document.getElementById('nav-wa');
+    function update() {
+      var atTop = window.scrollY < 80;
+      nav.style.background = atTop ? 'transparent' : 'rgba(10,10,10,.95)';
+      nav.style.backdropFilter = atTop ? 'none' : 'blur(16px)';
+      nav.style.borderBottomColor = atTop ? 'rgba(255,255,255,.1)' : 'rgba(255,255,255,.06)';
+      if (logo) logo.style.color = '#fff';
+      links.forEach(function(l) {
+        if (!l.classList.contains('nav-link-active')) {
+          l.style.color = atTop ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.55)';
+        }
+      });
+      if (waBtn) {
+        waBtn.style.background = '#E31E24';
+        waBtn.style.borderColor = '#E31E24';
+        waBtn.style.color = '#fff';
+      }
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+
+  // ── SCROLL REVEAL ──
+  (function() {
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(el) { io.observe(el); });
+  })();
+
+  // ── CARD CLICK ──
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('.prod[data-id]');
+    if (!card) return;
+    if (e.target.closest('a')) return;
+    var id = card.dataset.id;
+    window.location.href = 'propuesta-olntires-detalle.html#' + id;
+  });
+  var style = document.createElement('style');
+  style.textContent = '.prod[data-id]{cursor:pointer;}';
+  document.head.appendChild(style);
+
+  // ── FILTER ──
+  function filter(cat, btn) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) {
+      btn.classList.add('active');
+    } else {
+      var target = Array.from(document.querySelectorAll('.tab-btn'))
+        .find(function(b) { return b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + cat + "'") !== -1; });
+      if (target) target.classList.add('active');
+    }
+    document.querySelectorAll('.prod').forEach(function(p) {
+      p.classList.toggle('hidden', cat !== 'todos' && p.dataset.cat !== cat);
+    });
+  }
+
+  // ── URL ?cat= PARAM ──
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var cat = params.get('cat');
+    if (cat) {
+      filter(cat, null);
+    }
+  })();
+</script>
+
+</body>
+</html>

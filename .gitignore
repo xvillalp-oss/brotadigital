@@ -19,3 +19,8 @@
 
 # Node
 node_modules/
+
+# Large generated assets (too big for GitHub)
+oln/cache_*.jpg
+oln/*.pdf
+ellen/

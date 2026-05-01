@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ellen Art Photography — Propuesta Web | Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+
+  :root {
+    --cream:   #FAF7F4;
+    --sand:    #F2EDE7;
+    --blush:   #E8C9B8;
+    --tan:     #C9A98A;
+    --rose:    #A8806A;
+    --brown:   #2C2118;
+    --mid:     #6B5246;
+    --muted:   #9C8478;
+    --white:   #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family:'Inter',sans-serif; background:var(--cream); color:var(--brown); }
+  h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; font-weight:400; }
+  a { text-decoration:none; color:inherit; }
+  img { display:block; max-width:100%; }
+
+  /* ── PRELOADER ── */
+  #preloader {
+    position:fixed; inset:0; z-index:9999;
+    background:var(--cream);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  #preloader.done { opacity:0; visibility:hidden; }
+  .pre-name {
+    font-family:'Cormorant Garamond',serif; font-weight:300; font-size:2.2rem;
+    letter-spacing:.35em; text-transform:uppercase; color:var(--brown);
+    opacity:0; transform:translateY(14px);
+    animation: preIn .7s cubic-bezier(.2,.8,.2,1) .2s forwards;
+  }
+  .pre-bar { width:0; height:1px; background:var(--tan);
+    animation: preBar 1s cubic-bezier(.4,0,.2,1) .4s forwards; }
+  @keyframes preIn  { to { opacity:1; transform:none; } }
+  @keyframes preBar { to { width:120px; } }
+
+  /* ── NAV ── */
+  .nav {
+    position:fixed; top:0; width:100%; z-index:50;
+    transition:background .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  .nav-inner {
+    max-width:1300px; margin:0 auto; padding:20px 40px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-logo {
+    font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.25rem;
+    letter-spacing:.3em; text-transform:uppercase; color:var(--brown);
+    transition:color .4s ease;
+  }
+  .nav-links { display:flex; gap:36px; align-items:center; }
+  .nav-links a {
+    font-size:11px; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--mid); transition:color .2s;
+  }
+  .nav-links a:hover { color:var(--brown); }
+  .nav-cta {
+    font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+    padding:10px 22px; border:1px solid var(--tan); color:var(--rose);
+    border-radius:2px; transition:all .25s;
+  }
+  .nav-cta:hover { background:var(--tan); color:var(--white); border-color:var(--tan); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.visible { opacity:1; transform:none; }
+  .reveal-d1 { transition-delay:.1s; }
+  .reveal-d2 { transition-delay:.22s; }
+  .reveal-d3 { transition-delay:.34s; }
+  .reveal-d4 { transition-delay:.46s; }
+
+  /* ── HERO ── */
+  .hero {
+    display:grid; grid-template-columns:1fr 1fr; min-height:100vh; padding-top:80px;
+  }
+  .hero-img-col {
+    position:relative; overflow:hidden;
+  }
+  .hero-img-col img {
+    width:100%; height:100%; object-fit:cover;
+    filter:sepia(.06) saturate(.97);
+  }
+  .hero-inner {
+    display:flex; flex-direction:column; justify-content:center;
+    padding:80px 72px 80px 60px;
+    background:var(--white);
+  }
+  .hero-eyebrow {
+    font-size:10px; font-weight:500; letter-spacing:.35em; text-transform:uppercase;
+    color:var(--muted); display:flex; align-items:center; gap:14px; margin-bottom:28px;
+  }
+  .hero-eyebrow::before { content:''; width:28px; height:1px; background:var(--tan); flex-shrink:0; }
+  .hero-h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:300;
+    font-size:clamp(3.5rem,6vw,6.5rem); line-height:.92;
+    text-transform:uppercase; letter-spacing:.04em; color:var(--brown); margin-bottom:28px;
+  }
+  .hero-h1 em { font-style:italic; font-weight:300; color:var(--rose); }
+  .hero-sub {
+    font-size:14px; font-weight:300; line-height:1.9; color:var(--muted);
+    max-width:380px; margin-bottom:40px;
+  }
+  .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-rose {
+    font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+    padding:14px 32px; background:var(--blush); color:var(--brown);
+    border:none; cursor:pointer; transition:all .25s; border-radius:2px;
+    display:inline-flex; align-items:center; gap:10px;
+    position:relative; overflow:hidden; z-index:0;
+  }
+  .btn-rose::before {
+    content:''; position:absolute; inset:0; z-index:-1;
+    background:var(--tan); transform:scaleX(0); transform-origin:left;
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .btn-rose:hover::before { transform:scaleX(1); }
+  .btn-rose:hover { color:var(--white); transform:none; }
+  .btn-ghost-light {
+    font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+    padding:14px 32px; background:transparent; color:var(--mid);
+    border:1px solid rgba(44,33,24,.25); border-radius:2px;
+    display:inline-flex; align-items:center; gap:10px; transition:all .25s;
+  }
+  .btn-ghost-light:hover { border-color:var(--tan); color:var(--rose); }
+  .btn-ghost-light.on-dark {
+    color:#fff; border-color:rgba(255,255,255,.45);
+  }
+  .btn-ghost-light.on-dark:hover { border-color:var(--blush); color:var(--blush); }
+
+  /* ── SECTION BASE ── */
+  .section { padding:100px 40px; }
+  .section-inner { max-width:1300px; margin:0 auto; }
+  .eyebrow-label {
+    font-size:10px; font-weight:600; letter-spacing:.32em; text-transform:uppercase;
+    color:var(--tan); margin-bottom:18px; display:flex; align-items:center; gap:12px;
+  }
+  .eyebrow-label::before { content:''; width:24px; height:1px; background:var(--tan); flex-shrink:0; }
+  .section-h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:300;
+    font-size:clamp(2.5rem,5vw,4.5rem); line-height:.95;
+    text-transform:uppercase; letter-spacing:.04em; margin-bottom:24px;
+  }
+  .section-h2 em { font-style:italic; color:var(--rose); }
+
+  /* ── ABOUT ── */
+  .about-section { background:var(--white); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .about-img {
+    width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:2px;
+    filter:sepia(.08) saturate(.95);
+  }
+  .about-text p { font-size:15px; line-height:1.9; color:var(--mid); margin-bottom:20px; }
+  .about-text p:last-child { margin-bottom:0; }
+  .about-tag {
+    font-size:10px; font-weight:600; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--tan); background:var(--sand); padding:6px 14px; border-radius:20px;
+    display:inline-block; margin-bottom:20px;
+  }
+  .about-name {
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:2rem; color:var(--brown); margin-top:28px; margin-bottom:6px;
+  }
+  .about-loc { font-size:12px; color:var(--muted); letter-spacing:.2em; text-transform:uppercase; }
+
+  /* ── SERVICIOS ── */
+  .servicios-section { background:var(--sand); }
+  .servicios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+  .servicio-card {
+    background:var(--white); border-radius:2px; overflow:hidden;
+    transition:all .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .servicio-card:hover { transform:translateY(-8px); box-shadow:0 24px 48px rgba(44,33,24,.1); }
+  .servicio-card__img { width:100%; aspect-ratio:4/3; object-fit:cover; filter:sepia(.06); }
+  .servicio-card__body { padding:28px 24px; }
+  .servicio-card__num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300;
+    color:var(--blush); line-height:1; margin-bottom:12px;
+  }
+  .servicio-card__title {
+    font-family:'Cormorant Garamond',serif; font-weight:500;
+    font-size:1.6rem; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--brown); margin-bottom:10px;
+  }
+  .servicio-card__desc { font-size:13px; color:var(--muted); line-height:1.7; }
+
+  /* ── GALERÍA ── */
+  .galeria-section { background:var(--cream); }
+  .galeria-masonry {
+    columns: 3; column-gap:12px; margin-top:56px;
+  }
+  .galeria-item {
+    break-inside:avoid; margin-bottom:12px; overflow:hidden; border-radius:2px;
+    position:relative;
+  }
+  .galeria-item img {
+    width:100%; display:block; filter:sepia(.06) saturate(.97);
+    transition:transform .6s cubic-bezier(.2,.8,.2,1), filter .4s ease;
+  }
+  .galeria-item:hover img { transform:scale(1.04); filter:sepia(.0) saturate(1.05); }
+
+  /* ── PAQUETES ── */
+  .paquetes-section { background:var(--white); }
+  .paquetes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:56px; }
+  .paquete-card {
+    border:1px solid var(--sand); border-radius:2px; padding:40px 32px;
+    display:flex; flex-direction:column; gap:20px;
+    transition:all .3s cubic-bezier(.2,.8,.2,1);
+    position:relative; overflow:hidden;
+  }
+  .paquete-card.featured { border-color:var(--tan); background:var(--sand); }
+  .paquete-card.featured::before {
+    content:'Más popular'; position:absolute; top:18px; right:-24px;
+    background:var(--tan); color:#fff; font-size:9px; font-weight:600;
+    letter-spacing:.2em; text-transform:uppercase; padding:5px 32px;
+    transform:rotate(45deg); transform-origin:center;
+  }
+  .paquete-card:hover { border-color:var(--tan); box-shadow:0 20px 40px rgba(44,33,24,.07); transform:translateY(-4px); }
+  .paquete-card__name {
+    font-family:'Cormorant Garamond',serif; font-weight:500; font-size:1.7rem;
+    text-transform:uppercase; letter-spacing:.1em; color:var(--brown);
+  }
+  .paquete-card__price {
+    font-family:'Cormorant Garamond',serif; font-weight:300; font-size:3.2rem;
+    color:var(--rose); line-height:1;
+  }
+  .paquete-card__price span { font-size:1rem; color:var(--muted); font-family:'Inter',sans-serif; }
+  .paquete-card__list { list-style:none; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .paquete-card__list li {
+    font-size:13px; color:var(--mid); padding-left:18px; position:relative; line-height:1.5;
+  }
+  .paquete-card__list li::before {
+    content:''; position:absolute; left:0; top:8px;
+    width:6px; height:1px; background:var(--tan);
+  }
+  .btn-paquete {
+    font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+    padding:12px 24px; border:1px solid var(--tan); color:var(--rose);
+    border-radius:2px; text-align:center; transition:all .25s; cursor:pointer;
+  }
+  .btn-paquete:hover, .paquete-card.featured .btn-paquete {
+    background:var(--tan); color:#fff; border-color:var(--tan);
+  }
+
+  /* ── TESTIMONIOS ── */
+  .testimonios-section { background:var(--sand); }
+  .testimonios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; }
+  .testimonio-card {
+    background:var(--white); border-radius:2px; padding:32px 28px;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .testimonio-stars { color:var(--tan); font-size:13px; letter-spacing:3px; }
+  .testimonio-text { font-size:14px; color:var(--mid); line-height:1.75; font-style:italic; flex:1; }
+  .testimonio-author { font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+
+  /* ── CONTACTO ── */
+  .contacto-section {
+    background:
+      linear-gradient(to bottom, rgba(44,33,24,.7) 0%, rgba(44,33,24,.85) 100%),
+      url('https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat;
+    color:#fff;
+  }
+  .contacto-inner { max-width:900px; margin:0 auto; text-align:center; }
+  .contacto-inner .section-h2 { color:#fff; margin-bottom:12px; }
+  .contacto-inner .section-h2 em { color:var(--blush); }
+  .contacto-sub { font-size:15px; color:rgba(255,255,255,.65); line-height:1.8; margin-bottom:48px; max-width:520px; margin-left:auto; margin-right:auto; }
+  .contacto-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:48px; }
+  .contacto-card {
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+    border-radius:2px; padding:28px 20px; text-align:center;
+    transition:all .25s;
+  }
+  .contacto-card:hover { background:rgba(255,255,255,.1); border-color:var(--blush); }
+  .contacto-card__icon { font-size:1.5rem; margin-bottom:10px; }
+  .contacto-card__label { font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:6px; }
+  .contacto-card__val { font-size:13px; color:rgba(255,255,255,.85); font-weight:500; }
+  .contacto-btn-group { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+  /* ── INSTAGRAM STRIP ── */
+  .insta-section { background:var(--cream); padding:60px 40px; }
+  .insta-inner { max-width:1300px; margin:0 auto; text-align:center; }
+  .insta-label {
+    font-size:11px; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:32px; display:flex; align-items:center; justify-content:center; gap:12px;
+  }
+  .insta-label::before, .insta-label::after { content:''; width:40px; height:1px; background:var(--blush); }
+  .insta-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:6px; }
+  .insta-item { aspect-ratio:1; overflow:hidden; }
+  .insta-item img { width:100%; height:100%; object-fit:cover; filter:sepia(.07); transition:transform .4s; }
+  .insta-item:hover img { transform:scale(1.06); }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--brown); color:rgba(255,255,255,.45);
+    padding:48px 40px; text-align:center;
+  }
+  .footer-logo {
+    font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.6rem;
+    letter-spacing:.35em; text-transform:uppercase; color:rgba(255,255,255,.85);
+    margin-bottom:20px;
+  }
+  .footer-links { display:flex; gap:28px; justify-content:center; margin-bottom:28px; flex-wrap:wrap; }
+  .footer-links a { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.4); transition:color .2s; }
+  .footer-links a:hover { color:var(--blush); }
+  .footer-copy { font-size:11px; color:rgba(255,255,255,.25); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:900px) {
+    .hero { grid-template-columns:1fr; }
+    .hero-img-col { height:60vw; min-height:320px; }
+    .hero-inner { padding:48px 24px 64px; }
+    .hero-h1 { font-size:clamp(3rem,10vw,5rem); }
+    .about-grid, .servicios-grid, .paquetes-grid, .testimonios-grid, .contacto-cards { grid-template-columns:1fr; }
+    .galeria-masonry { columns:2; }
+    .insta-grid { grid-template-columns:repeat(3,1fr); }
+    .nav-links { display:none; }
+    .section { padding:72px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ PRELOADER ══════════ -->
+<div id="preloader">
+  <div class="pre-name">Ellen Art</div>
+  <div class="pre-bar"></div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <span class="nav-logo" id="nav-logo">Ellen Art Photography</span>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#paquetes">Paquetes</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="https://wa.me/525633880151" class="nav-cta" id="nav-cta">Reservar sesión</a>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-img-col">
+    <img
+      src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=1200&q=90&auto=format&fit=crop"
+      alt="Fotografía newborn — Ellen Art Photography"
+    />
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Nicolás Romero &amp; Polanco, CDMX</div>
+    <h1 class="hero-h1">
+      Momentos<br/><em>eternos</em><br/>para siempre.
+    </h1>
+    <p class="hero-sub">Capturamos los primeros días de tu bebé con una delicadeza que ninguna cámara de teléfono puede igualar.</p>
+    <div class="hero-ctas">
+      <a href="#paquetes" class="btn-rose">Ver paquetes</a>
+      <a href="#galeria" class="btn-ghost-light">Ver galería</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="about-section section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <img
+          class="about-img"
+          src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800&q=80&auto=format&fit=crop"
+          alt="Ellen — fotógrafa newborn"
+        />
+      </div>
+      <div class="reveal reveal-d1">
+        <span class="about-tag">Sobre Ellen</span>
+        <div class="eyebrow-label">Fotógrafa profesional de bebés</div>
+        <h2 class="section-h2">El amor de<br/><em>una madre,</em><br/>la visión de<br/>una artista.</h2>
+        <div class="about-text">
+          <p>Soy Ellen, mamá y fotógrafa especializada en fotografía newborn y maternidad. Mi pasión es preservar esos primeros días de vida que pasan tan rápido y que solo se viven una vez.</p>
+          <p>Cada sesión es diseñada con cuidado, amor y total atención al detalle — desde los accesorios hasta la luz. Tu bebé siempre estará seguro y cómodo.</p>
+          <p>Trabajo en mi estudio en Nicolás Romero, y también ofrezco sesiones en Polanco, CDMX.</p>
+        </div>
+        <p class="about-name">— Ellen</p>
+        <p class="about-loc">Nicolás Romero · Polanco, CDMX</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SERVICIOS ══════════ -->
+<section class="servicios-section section" id="servicios">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow-label">Lo que ofrezco</div>
+      <h2 class="section-h2">Cada etapa,<br/><em>inmortalizada.</em></h2>
+    </div>
+    <div class="servicios-grid">
+
+      <div class="servicio-card reveal reveal-d1">
+        <img class="servicio-card__img"
+          src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&q=80&auto=format&fit=crop&crop=center"
+          alt="Newborn"/>
+        <div class="servicio-card__body">
+          <div class="servicio-card__num">01</div>
+          <div class="servicio-card__title">Newborn</div>
+          <p class="servicio-card__desc">Sesión durante los primeros 15 días de vida. El tiempo más mágico — bebés duermen profundo y son muy maleables para las poses.</p>
+        </div>
+      </div>
+
+      <div class="servicio-card reveal reveal-d2">
+        <img class="servicio-card__img"
+          src="https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=600&q=80&auto=format&fit=crop"
+          alt="Maternidad"/>
+        <div class="servicio-card__body">
+          <div class="servicio-card__num">02</div>
+          <div class="servicio-card__title">Maternidad</div>
+          <p class="servicio-card__desc">Celebramos tu panza y ese amor que ya existe antes de que llegue al mundo. Sesiones entre la semana 32 y 36 de embarazo.</p>
+        </div>
+      </div>
+
+      <div class="servicio-card reveal reveal-d3">
+        <img class="servicio-card__img"
+          src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&q=80&auto=format&fit=crop"
+          alt="Familia"/>
+        <div class="servicio-card__body">
+          <div class="servicio-card__num">03</div>
+          <div class="servicio-card__title">Familia & Hitos</div>
+          <p class="servicio-card__desc">Sitter (6 meses), cake smash (1 año) y sesiones familiares. Porque cada etapa merece ser recordada para siempre.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GALERÍA ══════════ -->
+<section class="galeria-section section" id="galeria">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow-label">Portafolio</div>
+      <h2 class="section-h2">Un vistazo<br/><em>al trabajo.</em></h2>
+    </div>
+    <div class="galeria-masonry reveal reveal-d1">
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&q=80&auto=format&fit=crop" alt="Newborn 1"/>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&q=80&auto=format&fit=crop&crop=top" alt="Newborn 2"/>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&q=80&auto=format&fit=crop" alt="Familia 1"/>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=600&q=80&auto=format&fit=crop&crop=faces" alt="Maternidad 1"/>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80&auto=format&fit=crop" alt="Bebé 1"/>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80&auto=format&fit=crop" alt="Bebé 2"/>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=600&q=80&auto=format&fit=crop" alt="Newborn 3"/>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?w=600&q=80&auto=format&fit=crop" alt="Familia 2"/>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600&q=80&auto=format&fit=crop" alt="Bebé 3"/>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <a href="https://www.instagram.com/ellenartphotography" target="_blank" rel="noopener" class="btn-rose">
+        Ver más en Instagram →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PAQUETES ══════════ -->
+<section class="paquetes-section section" id="paquetes">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow-label">Inversión</div>
+      <h2 class="section-h2">Elige tu<br/><em>sesión ideal.</em></h2>
+      <p style="font-size:14px;color:var(--muted);margin-top:-8px;margin-bottom:0;max-width:500px;line-height:1.8;">
+        Todos los paquetes incluyen asesoría de vestuario y accesorios. Los precios son en MXN.
+      </p>
+    </div>
+    <div class="paquetes-grid">
+
+      <div class="paquete-card reveal reveal-d1">
+        <div class="paquete-card__name">Básico</div>
+        <div class="paquete-card__price">$2,800 <span>MXN</span></div>
+        <ul class="paquete-card__list">
+          <li>Sesión de 2–3 horas en estudio</li>
+          <li>15 fotos editadas en alta resolución</li>
+          <li>1 tema / set</li>
+          <li>Entrega digital en 7 días</li>
+          <li>Galería privada en línea</li>
+        </ul>
+        <a href="https://wa.me/525633880151?text=Hola%20Ellen!%20Me%20interesa%20el%20paquete%20B%C3%A1sico." class="btn-paquete">Reservar</a>
+      </div>
+
+      <div class="paquete-card featured reveal reveal-d2">
+        <div class="paquete-card__name">Premium</div>
+        <div class="paquete-card__price">$4,500 <span>MXN</span></div>
+        <ul class="paquete-card__list">
+          <li>Sesión de 3–4 horas en estudio</li>
+          <li>30 fotos editadas en alta resolución</li>
+          <li>3 temas / sets diferentes</li>
+          <li>Accesorios y props incluidos</li>
+          <li>Entrega digital en 10 días</li>
+          <li>Galería privada en línea</li>
+          <li>1 impresión 20×30 de regalo</li>
+        </ul>
+        <a href="https://wa.me/525633880151?text=Hola%20Ellen!%20Me%20interesa%20el%20paquete%20Premium." class="btn-paquete">Reservar</a>
+      </div>
+
+      <div class="paquete-card reveal reveal-d3">
+        <div class="paquete-card__name">Completo</div>
+        <div class="paquete-card__price">$6,800 <span>MXN</span></div>
+        <ul class="paquete-card__list">
+          <li>Sesión de 4–5 horas en estudio</li>
+          <li>50 fotos editadas en alta resolución</li>
+          <li>Sets ilimitados</li>
+          <li>Fotos con papás y hermanos incluidas</li>
+          <li>Accesorios y props premium</li>
+          <li>Entrega en 10 días</li>
+          <li>Álbum impreso de 20 páginas</li>
+          <li>2 impresiones 30×40</li>
+        </ul>
+        <a href="https://wa.me/525633880151?text=Hola%20Ellen!%20Me%20interesa%20el%20paquete%20Completo." class="btn-paquete">Reservar</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:28px;" class="reveal">
+      * Los precios son orientativos — se ajustan según disponibilidad y tipo de sesión. Contacta para cotización exacta.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIOS ══════════ -->
+<section class="testimonios-section section" id="testimonios">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow-label">Lo que dicen las mamás</div>
+      <h2 class="section-h2">Palabras que<br/><em>nos llenan.</em></h2>
+    </div>
+    <div class="testimonios-grid">
+
+      <div class="testimonio-card reveal reveal-d1">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">"Ellen capturó los primeros días de mi bebé de una manera tan hermosa. Cada foto es una obra de arte. ¡La recomiendo con los ojos cerrados!"</p>
+        <span class="testimonio-author">— Karla M., mamá de Sofía</span>
+      </div>
+
+      <div class="testimonio-card reveal reveal-d2">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">"Quedé enamorada de las fotos. Ellen es super paciente y profesional. Mi bebé se veía como sacado de una revista. ¡Mil gracias!"</p>
+        <span class="testimonio-author">— Fernanda R., mamá de Mateo</span>
+      </div>
+
+      <div class="testimonio-card reveal reveal-d3">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">"Nunca había visto fotos tan bonitas de bebés. El estudio es súper cómodo y seguro. Ya voy a regresarme para el sitter de los 6 meses."</p>
+        <span class="testimonio-author">— Daniela T., mamá de Isabella</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ INSTAGRAM STRIP ══════════ -->
+<section class="insta-section">
+  <div class="insta-inner">
+    <p class="insta-label">Síguenos en Instagram · @ellenartphotography</p>
+    <div class="insta-grid">
+      <div class="insta-item"><img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&q=80&auto=format&fit=crop" alt=""/></div>
+      <div class="insta-item"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80&auto=format&fit=crop" alt=""/></div>
+      <div class="insta-item"><img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=400&q=80&auto=format&fit=crop" alt=""/></div>
+      <div class="insta-item"><img src="https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=400&q=80&auto=format&fit=crop" alt=""/></div>
+      <div class="insta-item"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&q=80&auto=format&fit=crop" alt=""/></div>
+      <div class="insta-item"><img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=400&q=80&auto=format&fit=crop" alt=""/></div>
+    </div>
+    <div style="margin-top:28px;">
+      <a href="https://www.instagram.com/ellenartphotography" target="_blank" rel="noopener" class="btn-rose">
+        @ellenartphotography
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACTO ══════════ -->
+<section class="contacto-section section" id="contacto">
+  <div class="section-inner">
+    <div class="contacto-inner">
+      <div class="eyebrow-label reveal" style="justify-content:center;color:var(--blush);">
+        <span style="width:24px;height:1px;background:var(--blush);flex-shrink:0;"></span>
+        Hablemos
+        <span style="width:24px;height:1px;background:var(--blush);flex-shrink:0;"></span>
+      </div>
+      <h2 class="section-h2 reveal" style="color:#fff;">Reserva tu<br/><em>sesión hoy.</em></h2>
+      <p class="contacto-sub reveal">El newborn solo se da una vez. Reserva con anticipación — los lugares son limitados.</p>
+
+      <div class="contacto-cards reveal">
+        <div class="contacto-card">
+          <div class="contacto-card__icon">📍</div>
+          <div class="contacto-card__label">Estudio</div>
+          <div class="contacto-card__val">Nicolás Romero, Edo. Méx.</div>
+        </div>
+        <div class="contacto-card">
+          <div class="contacto-card__icon">📍</div>
+          <div class="contacto-card__label">Sesiones externas</div>
+          <div class="contacto-card__val">Polanco, CDMX</div>
+        </div>
+        <div class="contacto-card">
+          <div class="contacto-card__icon">🕐</div>
+          <div class="contacto-card__label">Mejor momento</div>
+          <div class="contacto-card__val">Primeros 15 días de vida</div>
+        </div>
+      </div>
+
+      <div class="contacto-btn-group reveal">
+        <a href="https://wa.me/525633880151?text=Hola%20Ellen!%20Quiero%20info%20sobre%20sesiones%20newborn." target="_blank" rel="noopener" class="btn-rose">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+          Reservar por WhatsApp
+        </a>
+        <a href="https://www.instagram.com/ellenartphotography" target="_blank" rel="noopener" class="btn-ghost-light on-dark">
+          Ver Instagram →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-logo">Ellen Art Photography</div>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#paquetes">Paquetes</a>
+    <a href="https://www.instagram.com/ellenartphotography" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/ellenartphotography" target="_blank">Facebook</a>
+    <a href="https://www.tiktok.com/@ellenartphotography" target="_blank">TikTok</a>
+  </div>
+  <p class="footer-copy">© 2025 Ellen Art Photography · Nicolás Romero & Polanco, CDMX · Diseño por Brota Digital</p>
+</footer>
+
+<script>
+/* ── Preloader ── */
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('preloader').classList.add('done');
+  }, 1000);
+});
+
+/* ── Scroll reveal ── */
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+
+/* ── Nav: always cream/white — gains blur + border on scroll ── */
+(function() {
+  var nav = document.getElementById('main-nav');
+  function update() {
+    var atTop = window.scrollY < 80;
+    nav.style.background = atTop ? 'rgba(250,247,244,.85)' : 'rgba(250,247,244,.97)';
+    nav.style.backdropFilter = 'blur(16px)';
+    nav.style.borderBottomColor = atTop ? 'transparent' : 'rgba(44,33,24,.08)';
+  }
+  window.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+</script>
+
+</body>
+</html>

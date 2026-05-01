@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Marcas y Nosotros — OLN Tires | Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; }
+  h1, h2, h3, h4 { font-family: 'Barlow Condensed', sans-serif; }
+
+  /* ── PRELOADER ── */
+  #preloader {
+    position: fixed; inset: 0; z-index: 9999; background: #0a0a0a;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #preloader.done { opacity: 0; visibility: hidden; }
+  .pre-logo {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 3.5rem;
+    letter-spacing: .2em; text-transform: uppercase; color: #fff;
+    opacity: 0; transform: translateY(16px);
+    animation: preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards;
+  }
+  .pre-logo span { color: #E31E24; }
+  .pre-bar {
+    width: 0; height: 2px; background: #E31E24;
+    animation: preBar .8s cubic-bezier(.4,0,.2,1) .3s forwards;
+  }
+  @keyframes preIn { to { opacity: 1; transform: none; } }
+  @keyframes preBar { to { width: 160px; } }
+
+  /* ── TICKER ── */
+  .ticker-wrap { overflow: hidden; }
+  .ticker-inner { display: flex; gap: 3rem; animation: scroll 28s linear infinite; white-space: nowrap; }
+  @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ── BRAND CARDS ── */
+  .brand-card {
+    background: #111; border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
+    padding: 24px; transition: all .3s cubic-bezier(.2,.8,.2,1); display: flex; flex-direction: column; gap: 14px;
+  }
+  .brand-card:hover {
+    border-color: rgba(227,30,36,.4); transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,0,0,.5);
+  }
+  .brand-card__name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 1.6rem;
+    text-transform: uppercase; letter-spacing: .05em; color: #fff; line-height: 1;
+  }
+  .brand-card__name span { color: #E31E24; }
+  .brand-card__tag {
+    font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(255,255,255,.35); font-weight: 600;
+  }
+  .brand-card__desc { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.55; flex: 1; }
+  .brand-card__pdf {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+    color: #E31E24; padding: 10px 14px; border: 1px solid rgba(227,30,36,.3);
+    border-radius: 8px; transition: all .2s; align-self: flex-start; text-decoration: none;
+  }
+  .brand-card__pdf:hover { background: #E31E24; color: #fff; border-color: #E31E24; }
+
+  /* ── STAT ── */
+  .big-stat {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    color: #E31E24; line-height: 1; font-size: 3.5rem;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-red {
+    position: relative; overflow: hidden; z-index: 0; background: #E31E24; color: #fff;
+    font-weight: 700; font-size: 13px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 14px 32px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px;
+    transition: all .2s; border: none; cursor: pointer; text-decoration: none;
+  }
+  .btn-red::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: #B81820; transform: scaleX(0); transform-origin: left;
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .btn-red:hover::before { transform: scaleX(1); }
+  .btn-red:hover { transform: none; }
+
+  /* ── DIVIDER / SECTION LABEL ── */
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: .25em;
+    text-transform: uppercase; color: #E31E24; margin-bottom: 16px;
+  }
+  .section-label::before { content: ''; display: block; width: 32px; height: 2px; background: #E31E24; flex-shrink: 0; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding: 160px 40px 80px;
+    background: #0a0a0a;
+    border-bottom: 2px solid #E31E24;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── NAV LINKS ── */
+  .nav-link { color: rgba(255,255,255,.5); font-size: 13px; font-weight: 500; text-decoration: none; transition: color .2s; }
+  .nav-link:hover { color: #fff; }
+  .nav-link.active { color: #fff; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ══════════ PRELOADER ══════════ -->
+<div id="preloader">
+  <div class="pre-logo">OLN <span>TIRES</span></div>
+  <div class="pre-bar"></div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="main-nav" style="position:fixed;top:0;width:100%;z-index:50;border-bottom:1px solid rgba(255,255,255,.1);transition:background .3s,backdrop-filter .3s,border-bottom-color .3s;">
+  <div style="max-width:1400px;margin:0 auto;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;">
+    <!-- Logo -->
+    <a href="propuesta-olntires.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+      <svg viewBox="0 0 18 24" width="13" height="18"><polygon points="0,0 18,12 0,24" fill="#E31E24"/></svg>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:.15em;text-transform:uppercase;color:#fff;">OLN <span style="color:#E31E24;">TIRES</span></span>
+    </a>
+    <!-- Links -->
+    <div style="display:flex;gap:36px;align-items:center;">
+      <a href="oln-catalogo.html" class="nav-link">Catálogo</a>
+      <a href="oln-marcas.html" class="nav-link active">Marcas</a>
+      <a href="oln-marcas.html#catalogos-pdf" class="nav-link">Catálogos PDF</a>
+      <a href="oln-marcas.html#nosotros" class="nav-link">Nosotros</a>
+      <a href="oln-contacto.html" class="nav-link">Contacto</a>
+    </div>
+    <!-- CTA -->
+    <a href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" class="btn-red" style="padding:10px 22px;font-size:12px;">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════ TICKER ══════════ -->
+<div style="position:fixed;top:73px;left:0;width:100%;z-index:40;background:#E31E24;padding:7px 0;overflow:hidden;">
+  <div class="ticker-inner" style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;">
+    <span>Precios directos de fábrica</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Sin intermediarios</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>+10 años de experiencia</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Asesoría especializada</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Logística eficiente y confiable</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Entrega inmediata</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Precios directos de fábrica</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Sin intermediarios</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>+10 años de experiencia</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Asesoría especializada</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Logística eficiente y confiable</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Entrega inmediata</span><span style="opacity:.5;margin:0 4px;">▶</span>
+  </div>
+</div>
+
+<!-- ══════════ PAGE HERO ══════════ -->
+<div class="page-hero reveal">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="section-label">Distribuidores autorizados</div>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(4rem,9vw,8rem);text-transform:uppercase;line-height:.88;margin-bottom:16px;">
+      Las marcas que <span style="color:#E31E24;">manejamos</span>
+    </h1>
+    <p style="color:rgba(255,255,255,.5);font-size:15px;max-width:560px;line-height:1.7;">
+      Importación directa de cinco marcas globales con stock en piso. Descarga el catálogo técnico de cada una.
+    </p>
+  </div>
+</div>
+
+<!-- ══════════ MARCAS ══════════ -->
+<section id="catalogos-pdf" style="padding:80px 40px;background:#0f0f0f;border-bottom:1px solid rgba(255,255,255,.06);">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="section-label reveal">Catálogos PDF</div>
+    <h2 class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);text-transform:uppercase;line-height:.95;color:#fff;margin-bottom:48px;">
+      Descarga el catálogo <span style="color:#E31E24;">técnico</span>
+    </h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;">
+
+      <div class="brand-card reveal">
+        <div class="brand-card__tag">Auto · Camioneta · SUV</div>
+        <div class="brand-card__name">RDX <span>AUTO</span></div>
+        <p class="brand-card__desc">Llantas de pasajero y camioneta. Modelos H/T, DH y AT para carretera, ciudad y todo terreno.</p>
+        <a href="oln-catalogo-rdx.html" class="brand-card__pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+      <div class="brand-card reveal">
+        <div class="brand-card__tag">Camión · Carga regional</div>
+        <div class="brand-card__name">LANVIGATOR</div>
+        <p class="brand-card__desc">Línea TBR para camión carretero. Modelos S201, WIDER S207 y D808 — alta densidad y kilometraje.</p>
+        <a href="oln-catalogo-lanvigator.html" class="brand-card__pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+      <div class="brand-card reveal">
+        <div class="brand-card__tag">Camión · Larga distancia</div>
+        <div class="brand-card__name">ROADX</div>
+        <p class="brand-card__desc">Eje direccional y de tracción. Líneas ST 355, D871, RH 620 y RH 621 para reparto y carretera.</p>
+        <a href="oln-catalogo-roadx.html" class="brand-card__pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+      <div class="brand-card reveal">
+        <div class="brand-card__tag">Camión · Flotillas</div>
+        <div class="brand-card__name">EMPIRE</div>
+        <p class="brand-card__desc">Llantas de flotilla con diseño anti-desgaste irregular. Modelos EM698 (tracción) y EM699 (dirección).</p>
+        <a href="oln-catalogo-empire.html" class="brand-card__pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+      <div class="brand-card reveal">
+        <div class="brand-card__tag">Industrial · Agrícola</div>
+        <div class="brand-card__name">ALLWIN</div>
+        <p class="brand-card__desc">Maquinaria pesada, montacargas y agricultura. Series SKS, F2/F3, E-3/L-3, G2/L2, R1 y R4.</p>
+        <a href="oln-catalogo-allwin.html" class="brand-card__pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ POR QUÉ OLN / NOSOTROS ══════════ -->
+<section id="nosotros" style="padding:80px 40px;background:#0a0a0a;border-top:1px solid rgba(255,255,255,.06);">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+
+    <div class="reveal">
+      <div class="section-label">¿Por qué OLN?</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,4vw,3.8rem);text-transform:uppercase;line-height:.95;color:#fff;margin-bottom:24px;">
+        EN CARRETERA<br/>NO HAY MARGEN<br/><span style="color:#E31E24;">DE ERROR.</span>
+      </h2>
+      <p style="color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:28px;font-size:15px;">
+        Somos tu socio estratégico en soluciones de movilidad. Precio de fábrica directo, sin intermediarios, con la atención que tu flotilla merece.
+      </p>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:rgba(255,255,255,.7);">
+          <svg viewBox="0 0 16 16" fill="#E31E24" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          Precios directos de fábrica, sin intermediarios
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:rgba(255,255,255,.7);">
+          <svg viewBox="0 0 16 16" fill="#E31E24" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          Asesoría especializada para cada cliente y tipo de flota
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:rgba(255,255,255,.7);">
+          <svg viewBox="0 0 16 16" fill="#E31E24" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          Logística eficiente y entrega inmediata
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:rgba(255,255,255,.7);">
+          <svg viewBox="0 0 16 16" fill="#E31E24" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          Atención comercial personalizada — no eres un número
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:rgba(255,255,255,.7);">
+          <svg viewBox="0 0 16 16" fill="#E31E24" width="12" height="12" style="flex-shrink:0;margin-top:3px;"><polygon points="0,0 16,8 0,16"/></svg>
+          +10 años siendo el proveedor de confianza del norte
+        </li>
+      </ul>
+    </div>
+
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px;">
+        <div class="big-stat">500+</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:6px;">SKUs en catálogo activo</p>
+      </div>
+      <div style="background:rgba(227,30,36,.08);border:1px solid rgba(227,30,36,.2);border-radius:14px;padding:28px;">
+        <div class="big-stat">24h</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:6px;">Tiempo de entrega</p>
+      </div>
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px;">
+        <div class="big-stat">10+</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:6px;">Marcas premium en stock</p>
+      </div>
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px;">
+        <div class="big-stat">10+</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:6px;">Años en el mercado</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="background:#0f0f0f;border-top:1px solid rgba(255,255,255,.06);padding:40px;">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg viewBox="0 0 18 24" width="12" height="16"><polygon points="0,0 18,12 0,24" fill="#E31E24"/></svg>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:17px;letter-spacing:.15em;text-transform:uppercase;color:#fff;">OLN <span style="color:#E31E24;">TIRES</span></span>
+    </div>
+    <p style="font-size:12px;text-align:center;color:rgba(255,255,255,.3);">Outlet Llantas del Norte S.A. de C.V. — Auto · Camión · Agrícola · Industrial · Rin</p>
+    <div style="display:flex;gap:20px;align-items:center;">
+      <a href="https://www.instagram.com/olntires" style="color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='rgba(255,255,255,.4)'">@olntires</a>
+      <a href="https://olntires.com" style="color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='rgba(255,255,255,.4)'">olntires.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load', function() {
+  setTimeout(function() { document.getElementById('preloader').classList.add('done'); }, 900);
+});
+
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+
+(function() {
+  var nav = document.getElementById('main-nav');
+  function update() {
+    var atTop = window.scrollY < 80;
+    nav.style.background = atTop ? 'transparent' : 'rgba(10,10,10,.95)';
+    nav.style.backdropFilter = atTop ? 'none' : 'blur(16px)';
+    nav.style.borderBottomColor = atTop ? 'rgba(255,255,255,.1)' : 'rgba(255,255,255,.06)';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>

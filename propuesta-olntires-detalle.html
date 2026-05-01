@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalle de producto · OLN Tires</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family:'Inter',sans-serif; background:#0a0a0a; color:#fff; }
+  h1,h2,h3,h4 { font-family:'Barlow Condensed',sans-serif; line-height:1.05; }
+  a { text-decoration:none; color:inherit; }
+
+  /* PRELOADER */
+  #preloader { position:fixed; inset:0; z-index:9999; background:#0a0a0a;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px;
+    transition: opacity .6s ease, visibility .6s ease; }
+  #preloader.done { opacity:0; visibility:hidden; }
+  .pre-logo { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:3.5rem;
+    letter-spacing:.2em; text-transform:uppercase; color:#fff;
+    opacity:0; transform:translateY(16px);
+    animation: preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards; }
+  .pre-logo span { color:#E31E24; }
+  .pre-bar { width:0; height:2px; background:#E31E24;
+    animation: preBar .8s cubic-bezier(.4,0,.2,1) .3s forwards; }
+  @keyframes preIn { to { opacity:1; transform:none; } }
+  @keyframes preBar { to { width:160px; } }
+
+  /* NAV */
+  .nav { position:fixed; top:0; width:100%; z-index:50; background:transparent; border-bottom:1px solid rgba(255,255,255,.1); transition: background .3s ease, backdrop-filter .3s ease, border-bottom-color .3s ease; }
+  .nav-inner { max-width:1400px; margin:0 auto; padding:18px 40px; display:flex; justify-content:space-between; align-items:center; }
+  .logo { display:flex; align-items:center; gap:8px; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:20px; letter-spacing:.15em; text-transform:uppercase; color:#fff; }
+  .logo-mark { width:13px; height:18px; }
+  .logo span { color:#E31E24; }
+  .nav-links { display:flex; gap:36px; align-items:center; }
+  .nav-links a { color:rgba(255,255,255,.6); font-size:13px; font-weight:500; transition:color .2s; }
+  .nav-links a:hover { color:#fff; }
+
+  /* BUTTONS */
+  .btn-red { position:relative; overflow:hidden; z-index:0; background:#E31E24; color:#fff;
+    font-weight:700; font-size:13px; letter-spacing:.2em; text-transform:uppercase;
+    padding:10px 22px; border-radius:8px; display:inline-flex; align-items:center; gap:8px;
+    transition:all .2s; border:none; cursor:pointer; text-decoration:none; }
+  .btn-red::before { content:''; position:absolute; inset:0; z-index:-1;
+    background:#B81820; transform:scaleX(0); transform-origin:left;
+    transition: transform .35s cubic-bezier(.4,0,.2,1); }
+  .btn-red:hover::before { transform:scaleX(1); }
+  .btn-red:hover { transform:none; }
+  .btn-red.lg { padding:14px 32px; }
+
+  /* TICKER */
+  .ticker { position:fixed; top:73px; left:0; width:100%; z-index:40; background:#E31E24; padding:7px 0; overflow:hidden; }
+  .ticker-inner { display:flex; gap:3rem; animation:scroll 28s linear infinite; white-space:nowrap; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#fff; }
+  .ticker-inner span:nth-child(2n) { opacity:.5; margin:0 4px; }
+  @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* HERO */
+  .detail-hero { padding:160px 40px 80px; background:#0a0a0a; position:relative; overflow:hidden; }
+  .detail-hero::before { content:''; position:absolute; left:-100px; top:50%; width:700px; height:700px;
+    transform:translateY(-50%);
+    background:radial-gradient(circle at center, rgba(227,30,36,.06) 0%, transparent 60%);
+    pointer-events:none; }
+  .detail-hero-grid { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1; }
+  .back-link { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:32px; transition:color .2s; }
+  .back-link:hover { color:#E31E24; }
+  .brand-label { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:.3em; text-transform:uppercase; color:#E31E24; margin-bottom:14px; }
+  .model-name { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(3.5rem,8vw,6.5rem); text-transform:uppercase; line-height:.92; margin-bottom:24px; color:#fff; }
+  .model-tags { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:28px; align-items:center; }
+  .model-tag { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:14px; letter-spacing:.2em; text-transform:uppercase; color:#E31E24; }
+  .model-tag-sep { color:rgba(255,255,255,.2); font-weight:300; }
+  .model-desc { font-size:1.05rem; color:rgba(255,255,255,.55); line-height:1.65; max-width:520px; margin-bottom:36px; }
+  .hero-tire-img { width:100%; max-width:560px; margin:0 auto; display:block; filter:drop-shadow(0 30px 30px rgba(0,0,0,.5)); animation:tireBob 5s ease-in-out infinite; }
+  .hero-red-strip { position:absolute; left:0; right:0; bottom:0; height:14px; background:#E31E24; }
+  @keyframes tireBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+  /* SECTION LAYOUT */
+  .section { padding:80px 40px; }
+  .section-inner { max-width:1300px; margin:0 auto; }
+  .section-label { display:flex; align-items:center; gap:12px; font-size:11px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:#E31E24; margin-bottom:16px; }
+  .section-label::before { content:''; display:block; width:32px; height:2px; background:#E31E24; flex-shrink:0; }
+  .section-title { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(2rem,4vw,3rem); text-transform:uppercase; margin-bottom:14px; color:#fff; }
+  .section-divider { width:48px; height:3px; background:#E31E24; border-radius:2px; margin-bottom:40px; }
+
+  /* FEATURES */
+  .features-section { background:#0f0f0f; border-top:1px solid rgba(255,255,255,.06); }
+  .features-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:80px; align-items:center; }
+  .features-tire { position:relative; }
+  .features-tire img { width:100%; max-width:440px; margin:0 auto; display:block; filter:drop-shadow(0 25px 25px rgba(0,0,0,.4)); }
+  .features-tire::after { content:''; position:absolute; left:50%; top:45%; width:160px; height:160px; border:3px solid rgba(255,255,255,.08); border-radius:50%; transform:translate(-50%,-50%); box-shadow:0 0 0 9999px rgba(15,15,15,.5), 0 0 30px rgba(227,30,36,.15); pointer-events:none; }
+  .features-list { display:flex; flex-direction:column; gap:32px; }
+  .feature-item { display:flex; gap:32px; align-items:flex-start; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,.06); }
+  .feature-item:last-child { border-bottom:none; }
+  .feature-num { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:5rem; color:#E31E24; line-height:.85; flex-shrink:0; min-width:80px; }
+  .feature-text { font-size:1.05rem; color:rgba(255,255,255,.7); line-height:1.7; padding-top:8px; }
+
+  /* SPECS TABLE */
+  .specs-section { background:#111; }
+  .specs-table-wrap { overflow-x:auto; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,.3); }
+  .specs-table { width:100%; min-width:720px; border-collapse:collapse; background:#111; }
+  .specs-table th { background:#1a1a1a; color:#fff; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:.15em; text-transform:uppercase; padding:18px 16px; text-align:center; border-right:1px solid rgba(255,255,255,.06); }
+  .specs-table th:last-child { border-right:none; }
+  .specs-table td { padding:18px 16px; text-align:center; font-size:14px; color:rgba(255,255,255,.7); border-bottom:1px solid rgba(255,255,255,.05); border-right:1px solid rgba(255,255,255,.04); }
+  .specs-table td:last-child { border-right:none; }
+  .specs-table td:first-child { font-weight:700; color:#fff; }
+  .specs-table tr:nth-child(even) td { background:rgba(255,255,255,.02); }
+  .specs-table tr:hover td { background:rgba(227,30,36,.05); }
+
+  /* OTHER TIRES */
+  .other-section { background:#0a0a0a; border-top:1px solid rgba(255,255,255,.06); }
+  .other-toggle { display:inline-flex; gap:0; background:rgba(255,255,255,.06); padding:4px; border-radius:50px; margin-bottom:32px; }
+  .other-toggle button { padding:8px 24px; border-radius:50px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:.15em; text-transform:uppercase; background:transparent; border:none; color:rgba(255,255,255,.5); cursor:pointer; transition:all .2s; }
+  .other-toggle button.active { background:#E31E24; color:#fff; }
+  .other-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .other-card { background:#111; border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:24px 20px; text-align:center; transition:all .25s ease; }
+  .other-card:hover { border-color:rgba(227,30,36,.4); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.4); }
+  .other-card img { width:100%; max-width:160px; height:170px; object-fit:contain; display:block; margin:0 auto 16px; transition:transform .4s ease; }
+  .other-card:hover img { transform:scale(1.05); }
+  .other-card__brand { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#E31E24; margin-bottom:6px; display:block; }
+  .other-card__name { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.3rem; text-transform:uppercase; color:#fff; }
+
+  /* CTA */
+  .cta-banner { background:#0f0f0f; border-top:1px solid rgba(255,255,255,.06); padding:80px 40px; text-align:center; color:#fff; }
+  .cta-banner h2 { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(2rem,4vw,3rem); text-transform:uppercase; margin-bottom:18px; }
+  .cta-banner h2 span { color:#E31E24; }
+  .cta-banner p { color:rgba(255,255,255,.55); font-size:1rem; margin-bottom:36px; max-width:540px; margin-left:auto; margin-right:auto; line-height:1.6; }
+
+  /* FOOTER */
+  .footer { background:#0f0f0f; border-top:1px solid rgba(255,255,255,.06); padding:32px 40px; color:rgba(255,255,255,.5); }
+  .footer-inner { max-width:1400px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:20px; }
+  .footer p { font-size:12px; }
+  .footer a { color:rgba(255,255,255,.5); font-size:13px; transition:color .2s; }
+  .footer a:hover { color:#E31E24; }
+
+  /* REVEAL */
+  .reveal { opacity:0; transform:translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+
+  /* RESPONSIVE */
+  @media (max-width:900px) {
+    .detail-hero { padding:130px 24px 60px; }
+    .detail-hero-grid { grid-template-columns:1fr; gap:40px; }
+    .features-grid { grid-template-columns:1fr; gap:48px; }
+    .other-grid { grid-template-columns:repeat(2,1fr); }
+    .nav-links { display:none; }
+    .features-tire::after { width:120px; height:120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pre-logo">OLN <span>TIRES</span></div>
+  <div class="pre-bar"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="propuesta-olntires.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 18 24"><polygon points="0,0 18,12 0,24" fill="#E31E24"/></svg>
+      OLN <span>TIRES</span>
+    </a>
+    <div class="nav-links">
+      <a href="propuesta-olntires.html#catalogo">Catálogo</a>
+      <a href="propuesta-olntires.html#marcas">Marcas</a>
+      <a href="propuesta-olntires.html#nosotros">Nosotros</a>
+      <a href="propuesta-olntires.html#contacto">Contacto</a>
+    </div>
+    <a href="https://wa.me/525633880151" target="_blank" rel="noopener" class="btn-red">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Precios directos de fábrica</span><span>▶</span>
+    <span>Sin intermediarios</span><span>▶</span>
+    <span>+10 años de experiencia</span><span>▶</span>
+    <span>Asesoría especializada</span><span>▶</span>
+    <span>Logística eficiente y confiable</span><span>▶</span>
+    <span>Entrega inmediata</span><span>▶</span>
+    <span>Precios directos de fábrica</span><span>▶</span>
+    <span>Sin intermediarios</span><span>▶</span>
+    <span>+10 años de experiencia</span><span>▶</span>
+    <span>Asesoría especializada</span><span>▶</span>
+  </div>
+</div>
+
+<!-- DETAIL HERO -->
+<section class="detail-hero">
+  <div class="detail-hero-grid">
+    <div>
+      <a href="propuesta-olntires.html#catalogo" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg>
+        Volver al catálogo
+      </a>
+      <p class="brand-label" id="brand-label">—</p>
+      <h1 class="model-name" id="model-name">—</h1>
+      <div class="model-tags" id="model-tags"></div>
+      <p class="model-desc" id="model-desc">—</p>
+      <a href="https://wa.me/525633880151" target="_blank" rel="noopener" class="btn-red lg" id="cta-quote">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+        Cotizar esta llanta
+      </a>
+    </div>
+    <div>
+      <img src="" alt="" class="hero-tire-img" id="hero-tire"/>
+    </div>
+  </div>
+  <div class="hero-red-strip"></div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features-section reveal">
+  <div class="section-inner">
+    <div class="section-label">Características técnicas</div>
+    <h2 class="section-title">Diseñada para <span style="color:#E31E24;">durar más</span></h2>
+    <div class="section-divider"></div>
+    <div class="features-grid">
+      <div class="features-tire">
+        <img src="" alt="" id="features-tire-img"/>
+      </div>
+      <div class="features-list" id="features-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS TABLE -->
+<section class="section specs-section reveal">
+  <div class="section-inner">
+    <div class="section-label">Medidas y especificaciones</div>
+    <h2 class="section-title">Disponibilidad técnica</h2>
+    <div class="section-divider"></div>
+    <div class="specs-table-wrap">
+      <table class="specs-table">
+        <thead>
+          <tr>
+            <th>Medida</th>
+            <th>Capas (PR)</th>
+            <th>Profundidad (mm)</th>
+            <th>Carga máx (kg)</th>
+            <th>Presión (kPa)</th>
+            <th>Índice de carga / Vel.</th>
+          </tr>
+        </thead>
+        <tbody id="specs-tbody"></tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:18px;">* Especificaciones referenciales. Confirma disponibilidad y medida exacta por WhatsApp.</p>
+  </div>
+</section>
+
+<!-- OTHER TIRES -->
+<section class="section other-section reveal">
+  <div class="section-inner">
+    <div class="section-label">Más opciones</div>
+    <h2 class="section-title">Otras llantas <span style="color:#E31E24;" id="other-brand">de la marca</span></h2>
+    <div class="section-divider"></div>
+    <div class="other-toggle">
+      <button class="active" id="toggle-same">Misma marca</button>
+      <button id="toggle-cat">Misma categoría</button>
+    </div>
+    <div class="other-grid" id="other-grid"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner reveal">
+  <h2>¿Esta es <span>tu medida</span>?</h2>
+  <p>Mándanos un mensaje con la cantidad y medida exacta. Te respondemos con el mejor precio — sin intermediarios.</p>
+  <a href="https://wa.me/525633880151" target="_blank" rel="noopener" class="btn-red lg">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+    WhatsApp — 56 3388 0151
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 18 24"><polygon points="0,0 18,12 0,24" fill="#E31E24"/></svg>
+      OLN <span>TIRES</span>
+    </div>
+    <p>Outlet Llantas del Norte S.A. de C.V. — Auto · Camión · Agrícola · Industrial · Rin</p>
+    <div style="display:flex;gap:20px;">
+      <a href="https://www.instagram.com/olntires" target="_blank" rel="noopener">@olntires</a>
+      <a href="https://olntires.com">olntires.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── PRODUCT DATA ──
+const PRODUCTS = {
+  // RDX AUTO
+  ht01: { brand:'RDX AUTO', model:'H/T 01', cat:'auto', img:'oln/rdx/ht01.png',
+    tags:['Highway Terrain','Carretera y ciudad'],
+    desc:'Llanta diseñada para uso en carretera y ciudad. Excelente rendimiento kilométrico y desgaste uniforme — ideal para SUV y camionetas de uso diario.',
+    features:[
+      'Diseño Highway Terrain (H/T) optimizado para carretera y ciudad con desgaste uniforme.',
+      'Excelente rendimiento kilométrico — mayor duración bajo condiciones secas y mojadas.',
+      'Opciones con estructura reforzada (XL) para mayor capacidad de carga sin sacrificar confort.'
+    ],
+    specs:[
+      ['225/75R15','—','—','850','300','102 T'],
+      ['235/75R15','—','—','925','300','105 S'],
+      ['245/65R17','—','—','975','300','107 S'],
+      ['215/65R16','—','—','750','300','98 T'],
+      ['265/70R16','—','—','1120','300','112 S'],
+      ['245/70R16','—','—','1090','340','111 T XL'],
+    ]},
+  dh51: { brand:'RDX AUTO', model:'DH 51', cat:'auto', img:'oln/rdx/dh51.png',
+    tags:['Pasajero','Alto rendimiento'],
+    desc:'Banda de rodadura optimizada para mayor agarre y estabilidad. Excelente desempeño en piso seco y mojado, con canales de evacuación que mejoran la tracción en lluvia.',
+    features:[
+      'Banda optimizada para mayor agarre y estabilidad en cualquier superficie.',
+      'Canales de evacuación de agua que mejoran la tracción en lluvia.',
+      'Desgaste uniforme y mayor vida útil. Refuerzo XL disponible.'
+    ],
+    specs:[
+      ['195/60R15','—','—','560','300','88 V'],
+      ['205/65R15','—','—','670','300','94 V'],
+      ['215/65R16','—','—','750','300','98 H'],
+      ['215/55R18','—','—','775','340','99 V XL'],
+      ['215/55R17','—','—','750','340','98 W XL'],
+      ['185/65R15','—','—','630','340','92 H XL'],
+    ]},
+  at21: { brand:'RDX AUTO', model:'AT 21', cat:'auto', img:'oln/rdx/at21.png',
+    tags:['All Terrain','Light truck'],
+    desc:'All Terrain con costados reforzados. Alta resistencia a golpes, cortes y abrasión — ideal para camionetas y light truck de uso mixto carretera/terracería.',
+    features:[
+      'Costados reforzados para mayor resistencia a golpes, cortes y abrasión.',
+      'Compuesto diseñado para mayor kilometraje en condiciones mixtas.',
+      'Manejo estable y menor ruido en carretera para uso diario.'
+    ],
+    specs:[
+      ['LT215/75R15','—','—','730','350','100/97 S'],
+      ['225/65R17','—','—','850','300','102 H'],
+      ['31x10.50R15 LT','—','—','1030','350','109 S'],
+      ['215/70R16','—','—','800','300','100 T'],
+      ['235/75R15','—','—','1030','340','109 T XL'],
+    ]},
+
+  // LANVIGATOR
+  s201: { brand:'Lanvigator', model:'S201', cat:'camion', img:'oln/lanvigator/s201.png',
+    tags:['Eje libre','Larga distancia'],
+    desc:'Llanta TBR de alta densidad diseñada para camión carretero. Frenado excepcional en mojado combinado con alto kilometraje gracias a sus protectores de ranura.',
+    features:[
+      'Alta densidad de banda para frenado excepcional en superficies mojadas.',
+      'Protectores de ranura que previenen la perforación por piedras.',
+      'Mayor estabilidad lateral — mayor kilometraje en rutas largas.'
+    ],
+    specs:[
+      ['11R22.5','8.25','14.5','3250 / 3000','—','149/146 M'],
+      ['12R24.5','8.25','14.5','3250 / 3000','—','149/146 M'],
+      ['295/75R22.5','9','15.5','3000 / 2725','—','176/143 M'],
+      ['225/70R19.5','6.75','12.5','1800 / 1700','—','128/126 M'],
+      ['255/70R22.5','15','14','2500 / 2300','—','140/137 M'],
+    ]},
+  s207: { brand:'Lanvigator', model:'WIDER S207', cat:'camion', img:'oln/lanvigator/s207.png',
+    tags:['Banda ancha','Renovable'],
+    desc:'Llanta TBR de banda ancha y dibujo profundo. Mayor capacidad de carga, mejor disipación de calor y patrón simétrico que permite renovación.',
+    features:[
+      'Dibujo profundo que aumenta la capacidad de carga y kilometraje.',
+      'Banda ancha para mejor disipación térmica y desempeño en alta carga.',
+      'Patrón simétrico con desgaste uniforme — apto para renovación.'
+    ],
+    specs:[
+      ['11R22.5','8.25','15.5','3250 / 3000','—','149/146 M'],
+      ['12R24.5','9','18','3550 / 3250','—','152/149 L'],
+    ]},
+  d808: { brand:'Lanvigator', model:'D808', cat:'camion', img:'oln/lanvigator/d808.png',
+    tags:['Tracción','Anti-perforación'],
+    desc:'Banda extra profunda con protectores anti-perforación por piedras. Construcción optimizada para mayor durabilidad y kilometraje en eje de tracción.',
+    features:[
+      'Banda extra profunda con protectores contra perforación por piedras.',
+      'Construcción optimizada para mayor durabilidad y kilometraje original.',
+      'Diseño de hombro cerrado para desgaste uniforme con excelente tracción.'
+    ],
+    specs:[
+      ['11R22.5','8.25','20','3250 / 3000','—','149/146 M'],
+      ['12R24.5','8.25','20','3550 / 3250','—','152/149 L'],
+      ['295/75R22.5','9','20','3150 / 2900','—','148/145 L'],
+    ]},
+
+  // ROADX
+  st355: { brand:'ROADX', model:'ST 355', cat:'camion', img:'oln/roadx/st355.png',
+    tags:['Dirección','Larga distancia'],
+    desc:'Diseño de eje direccional con compuesto premium para mayor kilometraje. Canales circunferenciales anchos para excelente evacuación de agua.',
+    features:[
+      'Compuesto de caucho premium para mayor kilometraje en eje direccional.',
+      'Canales circunferenciales anchos — mejor evacuación de agua y agarre en lluvia.',
+      'Hombros sólidos que resisten el desgaste irregular en uso continuo.'
+    ],
+    specs:[
+      ['11R22.5','16','19','4151','—','146/143 M'],
+      ['11R24.5','16','19','4351','—','149/146 M'],
+      ['295/75R22.5','16','19','3991','—','146/143 M'],
+    ]},
+  d871: { brand:'ROADX', model:'D871', cat:'camion', img:'oln/roadx/d871.png',
+    tags:['Tracción','Carretera'],
+    desc:'Llanta de tracción para camión carretero. Gran profundidad de piso y diseño agresivo que prolonga la vida útil con tracción superior.',
+    features:[
+      'Gran profundidad de piso — prolonga la vida útil de la llanta.',
+      'Diseño agresivo de banda para tracción superior en cualquier condición.',
+      'Hombros sólidos contra desgaste irregular en eje de tracción.'
+    ],
+    specs:[
+      ['11R22.5','16','30','4221','—','146/143 L'],
+      ['11R24.5','16','30','4421','—','149/146 L'],
+    ]},
+  rh620: { brand:'ROADX', model:'RH 620', cat:'camion', img:'oln/roadx/rh620.png',
+    tags:['Dirección','Reparto'],
+    desc:'Llanta de dirección versátil. Alta durabilidad, desgaste uniforme y buen agarre en lluvia — ideal para camiones de reparto y larga distancia.',
+    features:[
+      'Alta durabilidad con compuesto resistente y desgaste uniforme.',
+      'Diseño que evacúa agua eficientemente — mejor agarre en lluvia.',
+      'Reduce calentamiento del neumático en operación continua.'
+    ],
+    specs:[
+      ['215/75R17.5','16','16','3028','—','135/133 L'],
+      ['225/70R19.5','14','16','3198','—','128/126 L'],
+      ['255/70R22.5','16','17','3661','—','140/137 L'],
+    ]},
+  rh621: { brand:'ROADX', model:'RH 621', cat:'camion', img:'oln/roadx/rh621.png',
+    tags:['Dirección','Carga regional'],
+    desc:'Eje direccional de carga. Excelente control con alta estabilidad en carretera y desempeño en lluvia — diseño enfocado en precisión de manejo.',
+    features:[
+      'Excelente control en eje direccional con alta estabilidad en carretera.',
+      'Diseño con buena evacuación de agua para desempeño en lluvia.',
+      'Desgaste más uniforme — ideal para rutas regionales y reparto.'
+    ],
+    specs:[
+      ['295/80R22.5','18','20','4111','—','152/149 M'],
+      ['315/80R22.5','20','21','4241','—','156/153 L'],
+    ]},
+
+  // EMPIRE
+  em699: { brand:'EMPIRE', model:'EM699', cat:'camion', img:'oln/empire/em699.png',
+    tags:['Dirección','Camión'],
+    desc:'Diseño especial para el eje direccional de camiones. Buen manejo y baja resistencia a la rodadura — eficiencia y estabilidad en carretera.',
+    features:[
+      'Diseño especial para el eje direccional de camiones.',
+      'Buen manejo con baja resistencia a la rodadura — mayor eficiencia.',
+      'Desgaste uniforme en operación continua de larga distancia.'
+    ],
+    specs:[
+      ['11R22.5','8.25','18','3250 / 3000','—','149/146 L'],
+      ['11R24.5','8.25','18','3550 / 3250','—','152/146 L'],
+      ['295/75R22.5','9','18','3000 / 3250','—','149/146 L'],
+      ['295/80R22.5','9','18','3000 / 3250','—','149/146 L'],
+      ['315/80R22.5','14','18','3350 / 3750','—','154/150 M'],
+    ]},
+  em698: { brand:'EMPIRE', model:'EM698', cat:'camion', img:'oln/empire/em698.png',
+    tags:['Tracción','Carretera'],
+    desc:'Eje de tracción adecuado para camiones que circulan en carretera. Patrón con hombro cerrado para combatir el desgaste irregular y kilometraje ultra alto.',
+    features:[
+      'Eje de tracción ideal para camiones que circulan en carretera.',
+      'Hombro cerrado para combatir el desgaste irregular.',
+      'Banda de rodadura con alta resistencia al desgaste — kilometraje ultra alto.'
+    ],
+    specs:[
+      ['11R22.5','8.25','18','3250 / 3000','—','149/146 L'],
+      ['11R24.5','8.25','18','3550 / 3250','—','152/149 L'],
+      ['295/75R22.5','9','18','3250 / 3000','—','149/146 L'],
+    ]},
+
+  // ALLWIN
+  sks1: { brand:'ALLWIN', model:'SKS 1', cat:'industrial', img:'oln/allwin/sks1.png',
+    tags:['Skid steer','Construcción pesada'],
+    desc:'Ideal para uso intensivo en obra pública, minería y construcción pesada. Mayor rigidez estructural que reduce deformaciones bajo cargas altas.',
+    features:[
+      'Ideal para terrenos difíciles: obra pública, minería y construcción pesada.',
+      'Mayor rigidez estructural — reduce deformaciones con cargas altas.',
+      'Alta resistencia al desgaste y menor generación de calor.'
+    ],
+    specs:[
+      ['11L-16','8','25','1395','420','12 PR'],
+      ['10-16.5','8','25','2375','620','12 PR'],
+    ]},
+  sks4: { brand:'ALLWIN', model:'SKS 4', cat:'industrial', img:'oln/allwin/sks4.png',
+    tags:['Skid steer','Universal'],
+    desc:'Compuesto de caucho de alta densidad con resistencia al calor y cortes — ideal para trabajo continuo en maquinaria compacta.',
+    features:[
+      'Caucho de alta densidad: resistencia al calor y cortes en trabajo continuo.',
+      'Excelente disipación de temperatura — previene deformaciones.',
+      'Compatibilidad universal con la mayoría de marcas de maquinaria.'
+    ],
+    specs:[
+      ['12-16.5','9.75','27','3078','550','12 PR'],
+    ]},
+  sks5: { brand:'ALLWIN', model:'SKS 5', cat:'industrial', img:'oln/allwin/sks5.png',
+    tags:['Skid steer','Terreno duro'],
+    desc:'Excelente desempeño en terrenos duros, abrasivos o con materiales cortantes. Estructura reforzada y huella amplia para mayor estabilidad bajo carga.',
+    features:[
+      'Excelente desempeño en terrenos duros, abrasivos o cortantes.',
+      'Mayor estabilidad bajo carga — estructura reforzada y huella amplia.',
+      'Banda robusta con resistencia a la deformación lateral.'
+    ],
+    specs:[
+      ['12-16.5','8.25','21','2540','450','12 PR'],
+      ['19.5L-24','9','45','13404','3530','16 PR'],
+    ]},
+  e3l3: { brand:'ALLWIN', model:'E-3 / L-3', cat:'industrial', img:'oln/allwin/e3l3.png',
+    tags:['Movimiento de tierra','Carga'],
+    desc:'Diseño autolimpiante para movimiento de tierra y carga de materiales. Excelente agarre en condiciones de humedad o lodo con buena amortiguación.',
+    features:[
+      'Excelente agarre en condiciones de humedad o lodo.',
+      'Gran capacidad de carga con buena amortiguación.',
+      'Banda autolimpiante que evita acumulación de material.'
+    ],
+    specs:[
+      ['17.5-25','14.00','20','9250 / 5600','700/475','—'],
+      ['20.5-25','17.00','20','10300 / 6700','525/400','—'],
+      ['23.5-25','19.50','20','12500 / 8000','475/350','—'],
+      ['26.5-25','22.00','20','15500 / 10000','475/350','—'],
+    ]},
+  g2l2: { brand:'ALLWIN', model:'G2 / L2', cat:'industrial', img:'oln/allwin/g2l2.png',
+    tags:['Maquinaria','Construcción'],
+    desc:'Superficie ancha con tracción tipo bloque de alta saturación. Excelente resistencia al desgaste, cortes y perforación con relación costo-beneficio óptima.',
+    features:[
+      'Superficie ancha con tracción tipo bloque — conducción estable y suave.',
+      'Excelente resistencia al desgaste, cortes y perforación.',
+      'Diseño profundo de banda — durabilidad y costo-beneficio óptimos.'
+    ],
+    specs:[
+      ['13.00-24','8.25','21','2135','520','16 PR'],
+      ['14.00-24','8.25','21','2375','620','16 PR'],
+      ['17.5-25','9.75','21','2540','450','16 PR'],
+    ]},
+  r4: { brand:'ALLWIN', model:'R4', cat:'industrial', img:'oln/allwin/r4.png',
+    tags:['Cargadores frontales','Retroexcavadoras'],
+    desc:'Estabilidad superior con óptima distribución de peso y tracción. Versátil — compatible con cargadores frontales, retroexcavadoras y maquinaria industrial.',
+    features:[
+      'Estabilidad superior con óptima distribución de peso y tracción.',
+      'Versatilidad — compatible con cargadores frontales y retroexcavadoras.',
+      'Estructura de 12 y 16 capas para resistencia y seguridad bajo carga.'
+    ],
+    specs:[
+      ['19.5L-24','—','16','13404','3530','16 PR'],
+      ['21L-24','—','12','27533','3875','18 PR'],
+      ['12.5/80R18','—','12','22530','2625','9 PR'],
+    ]},
+  f2: { brand:'ALLWIN', model:'F2', cat:'agricola', img:'oln/allwin/f2.png',
+    tags:['Dirección agrícola','Suelos blandos'],
+    desc:'Dirección agrícola con banda ensanchada en la ranura central. Mejora resistencia al desgaste y rendimiento en suelos blandos y sueltos.',
+    features:[
+      'Banda ensanchada en ranura central — mejora resistencia al desgaste.',
+      'Rendimiento de dirección óptimo en suelos blandos y sueltos.',
+      'Construcción optimizada para uso agrícola continuo.'
+    ],
+    specs:[
+      ['7.50-16','5.50F','10','1120','580','10 PR'],
+      ['10.00-16','W8L','10','2127','591','10 PR'],
+    ]},
+  f3: { brand:'ALLWIN', model:'F3', cat:'agricola', img:'oln/allwin/f3.png',
+    tags:['Tracción agrícola','Sin cámara'],
+    desc:'Patrón optimizado para tracción agrícola — equilibrio entre agarre y rodamiento suave. Estructura sin cámara reduce riesgos de pinchadura.',
+    features:[
+      'Patrón de banda optimizado — equilibrio entre agarre y rodamiento suave.',
+      'Ancho uniforme: buena flotación, evita hundimiento en suelos blandos.',
+      'Estructura sin cámara — reduce riesgos de pinchaduras.'
+    ],
+    specs:[
+      ['11L-16','8LB','12','1352','1243','10 PR'],
+    ]},
+  r1: { brand:'ALLWIN', model:'R1', cat:'agricola', img:'oln/allwin/r4.png',
+    tags:['Tractor agrícola','12-16 capas'],
+    desc:'Llanta para tractor agrícola. Estabilidad superior y tracción óptima en suelos blandos o irregulares — versátil con cargadores e implementos.',
+    features:[
+      'Estabilidad superior con óptima distribución de peso y tracción.',
+      'Versatilidad — compatible con cargadores frontales y retroexcavadoras.',
+      'Estructura de 12 y 16 capas — alto rendimiento bajo carga.'
+    ],
+    specs:[
+      ['12.4-24','11','29','1160','1640','10 PR'],
+      ['13.6-24','12','29','1000','1180','10 PR'],
+      ['14.9-24','13','—','1304','1510','6 PR'],
+      ['15.5-38','14','—','1570','2320','10 PR'],
+      ['18.4-30','16','—','1550','2815','10 PR'],
+      ['18.4-34','16','—','1655','2990','10 PR'],
+      ['18.4-38','16','—','1755','3160','10 PR'],
+    ]},
+};
+
+// ── ROUTING & RENDERING ──
+function getId(){ return (location.hash||'').replace('#','') || 'rh621'; }
+
+function setEl(id, txt){ const el=document.getElementById(id); if(el) el.textContent=txt; }
+function setImg(id, src, alt){ const el=document.getElementById(id); if(el){ el.src=src; el.alt=alt; }}
+
+function render(){
+  const id = getId();
+  const p = PRODUCTS[id] || PRODUCTS.rh621;
+
+  document.title = `${p.brand} ${p.model} · OLN Tires`;
+
+  setEl('brand-label', p.brand);
+  setEl('model-name', p.model);
+  setEl('model-desc', p.desc);
+  setImg('hero-tire', p.img, `${p.brand} ${p.model}`);
+  setImg('features-tire-img', p.img, `${p.brand} ${p.model}`);
+
+  // Tags
+  const tagsEl = document.getElementById('model-tags');
+  tagsEl.innerHTML = p.tags.map((t,i) =>
+    `<span class="model-tag">${t}</span>${i<p.tags.length-1?'<span class="model-tag-sep">|</span>':''}`
+  ).join('');
+
+  // Features
+  const featEl = document.getElementById('features-list');
+  featEl.innerHTML = p.features.map((f,i) =>
+    `<div class="feature-item"><div class="feature-num">${i+1}</div><p class="feature-text">${f}</p></div>`
+  ).join('');
+
+  // Specs
+  const tbody = document.getElementById('specs-tbody');
+  tbody.innerHTML = p.specs.map(row =>
+    `<tr>${row.map(c=>`<td>${c}</td>`).join('')}</tr>`
+  ).join('');
+
+  // CTA WhatsApp pre-fill with model
+  document.getElementById('cta-quote').href =
+    `https://wa.me/525633880151?text=${encodeURIComponent(`Hola! Me interesa cotizar la llanta ${p.brand} ${p.model}.`)}`;
+
+  // Other tires
+  setEl('other-brand', `de ${p.brand}`);
+  renderOther('same');
+}
+
+function renderOther(mode){
+  const id = getId();
+  const p = PRODUCTS[id] || PRODUCTS.rh621;
+  const filterFn = mode==='cat'
+    ? ([key,prod]) => prod.cat===p.cat && key!==id
+    : ([key,prod]) => prod.brand===p.brand && key!==id;
+  const others = Object.entries(PRODUCTS).filter(filterFn).slice(0,4);
+  const grid = document.getElementById('other-grid');
+  grid.innerHTML = others.map(([key,prod]) => `
+    <a href="#${key}" class="other-card">
+      <img src="${prod.img}" alt="${prod.brand} ${prod.model}" loading="lazy"/>
+      <span class="other-card__brand">${prod.brand}</span>
+      <span class="other-card__name">${prod.model}</span>
+    </a>
+  `).join('');
+}
+
+document.getElementById('toggle-same').addEventListener('click', e=>{
+  document.querySelectorAll('.other-toggle button').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderOther('same');
+});
+document.getElementById('toggle-cat').addEventListener('click', e=>{
+  document.querySelectorAll('.other-toggle button').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderOther('cat');
+});
+
+window.addEventListener('hashchange', () => { render(); window.scrollTo(0,0); });
+render();
+
+// ── PRELOADER ──
+window.addEventListener('load', function(){ setTimeout(function(){ document.getElementById('preloader').classList.add('done'); }, 900); });
+
+// ── SCROLL REVEAL ──
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+
+// ── NAV SCROLL ──
+(function() {
+  var nav = document.getElementById('main-nav');
+  function update() {
+    var atTop = window.scrollY < 80;
+    nav.style.background = atTop ? 'transparent' : 'rgba(10,10,10,.95)';
+    nav.style.backdropFilter = atTop ? 'none' : 'blur(16px)';
+    nav.style.borderBottomColor = atTop ? 'rgba(255,255,255,.1)' : 'rgba(255,255,255,.06)';
+  }
+  window.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+</script>
+
+</body>
+</html>

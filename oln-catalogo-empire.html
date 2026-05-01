@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EMPIRE Catálogo — OLN Tires</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family:'Inter',sans-serif; background:#0a0a0a; color:#fff; }
+  h1,h2,h3 { font-family:'Barlow Condensed',sans-serif; }
+  a { text-decoration:none; color:inherit; }
+
+  /* NAV */
+  .nav { position:fixed; top:0; width:100%; z-index:50; transition:background .4s ease, border-color .4s ease; border-bottom:1px solid rgba(255,255,255,.1); }
+  .nav-inner { max-width:1400px; margin:0 auto; padding:18px 40px; display:flex; justify-content:space-between; align-items:center; }
+  .nav-links { display:flex; gap:36px; align-items:center; }
+  .nav-links a { color:rgba(255,255,255,.65); font-size:13px; font-weight:500; transition:color .2s; }
+  .nav-links a:hover { color:#fff; }
+  .btn-wa { background:#E31E24; color:#fff; font-weight:700; font-size:12px; letter-spacing:.15em; text-transform:uppercase; padding:10px 22px; border-radius:8px; display:inline-flex; align-items:center; gap:8px; transition:background .2s; }
+  .btn-wa:hover { background:#B81820; }
+
+  /* PAGE HERO */
+  .page-hero { padding:120px 40px 48px; background:#0a0a0a; border-bottom:2px solid #E31E24; }
+  .page-hero-inner { max-width:1400px; margin:0 auto; }
+  .eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:16px; font-size:11px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:#E31E24; }
+  .eyebrow::before { content:''; display:block; width:32px; height:2px; background:#E31E24; flex-shrink:0; }
+  .page-h1 { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(3.5rem,8vw,7rem); text-transform:uppercase; line-height:.88; margin-bottom:20px; }
+  .page-sub { color:rgba(255,255,255,.5); font-size:15px; max-width:520px; line-height:1.7; }
+
+  /* BACK LINK */
+  .back-link { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:32px; transition:color .2s; }
+  .back-link:hover { color:#E31E24; }
+
+  /* PDF VIEWER */
+  .viewer-wrap { padding:40px 40px 80px; max-width:1400px; margin:0 auto; }
+  .pdf-frame { width:100%; height:85vh; min-height:600px; border:1px solid rgba(255,255,255,.08); border-radius:12px; background:#111; }
+
+  /* DOWNLOAD BAR */
+  .dl-bar { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; background:#111; border:1px solid rgba(255,255,255,.08); border-radius:12px; margin-bottom:16px; flex-wrap:wrap; gap:12px; }
+  .dl-bar__label { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.1rem; text-transform:uppercase; letter-spacing:.08em; }
+  .dl-bar__sub { font-size:12px; color:rgba(255,255,255,.4); margin-top:2px; }
+  .btn-dl { background:transparent; border:1px solid rgba(255,255,255,.2); color:rgba(255,255,255,.7); font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; padding:10px 20px; border-radius:8px; display:inline-flex; align-items:center; gap:8px; transition:all .2s; }
+  .btn-dl:hover { border-color:#E31E24; color:#E31E24; }
+
+  /* FOOTER */
+  footer { background:#0f0f0f; border-top:1px solid rgba(255,255,255,.06); padding:32px 40px; }
+  footer p { font-size:12px; color:rgba(255,255,255,.3); text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav" style="background:transparent;">
+  <div class="nav-inner">
+    <a href="propuesta-olntires.html">
+      <img src="oln/logo-white.png" alt="OLN Tires" style="height:30px;width:auto;object-fit:contain;"/>
+    </a>
+    <div class="nav-links">
+      <a href="oln-catalogo.html">Catálogo</a>
+      <a href="oln-marcas.html">Marcas</a>
+      <a href="oln-marcas.html#catalogos-pdf">Catálogos PDF</a>
+      <a href="oln-marcas.html#nosotros">Nosotros</a>
+      <a href="oln-contacto.html">Contacto</a>
+    </div>
+    <a href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" class="btn-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <a href="oln-marcas.html#catalogos-pdf" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Volver a Marcas
+    </a>
+    <div class="eyebrow">Camión · Flotillas</div>
+    <h1 class="page-h1">EMPIRE</h1>
+    <p class="page-sub">Llantas de flotilla con diseño anti-desgaste irregular. Modelos EM698 (tracción) y EM699 (dirección).</p>
+  </div>
+</div>
+
+<!-- PDF VIEWER -->
+<div class="viewer-wrap">
+  <div class="dl-bar">
+    <div>
+      <div class="dl-bar__label">EMPIRE — Catálogo Técnico</div>
+      <div class="dl-bar__sub">Visualización en línea · PDF oficial</div>
+    </div>
+    <a href="oln/catalogo-empire.pdf" download class="btn-dl">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Descargar PDF
+    </a>
+  </div>
+  <iframe class="pdf-frame" src="oln/catalogo-empire.pdf" title="Catálogo EMPIRE"></iframe>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Outlet Llantas del Norte S.A. de C.V. — © 2024 OLN Tires</p>
+</footer>
+
+<script>
+(function() {
+  var nav = document.getElementById('main-nav');
+  function update() {
+    var atTop = window.scrollY < 60;
+    nav.style.background = atTop ? 'transparent' : 'rgba(10,10,10,.95)';
+    nav.style.backdropFilter = atTop ? 'none' : 'blur(16px)';
+    nav.style.borderBottomColor = atTop ? 'rgba(255,255,255,.1)' : 'rgba(255,255,255,.06)';
+  }
+  window.addEventListener('scroll', update, { passive:true });
+  update();
+})();
+</script>
+</body>
+</html>
