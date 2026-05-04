@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotras — Sonne Mond Agency</title>
+  <meta name="description" content="Conoce a Tanya y Ana Fer, la dupla creativa detrás de Sonne Mond Agency. Diseñadora y estratega de contenido, primas y socias en CDMX.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --gold: #C9A84C;
+      --gold-light: #E2C97E;
+      --white: #FFFFFF;
+      --cream: #FAF8F4;
+      --gray: #8a8a8a;
+      --border: rgba(201,168,76,0.2);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 60px;
+      transition: all .4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(10,10,10,.96);
+      backdrop-filter: blur(12px);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(201,168,76,.15);
+    }
+    .nav-logo {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo .star { color: var(--gold); }
+    .nav-links { display: flex; gap: 40px; }
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); }
+    .nav-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,10,.98);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,.75) 0%, rgba(10,10,10,.85) 100%), url(sonnemond/foto-hero.jpg) center top/cover no-repeat;
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+    .hero-star {
+      color: var(--gold);
+      font-size: 32px;
+      display: block;
+      margin-bottom: 32px;
+    }
+    .hero-sub {
+      font-family: var(--font-serif);
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-style: italic;
+      color: rgba(255,255,255,.55);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.3);
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* TEAM SECTION */
+    .team-section {
+      background: var(--cream);
+      padding: 100px 60px;
+    }
+    .team-section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .section-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .section-title-light {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 300;
+      color: var(--black);
+      line-height: 1.1;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .team-card {
+      background: var(--white);
+      padding: 56px 48px;
+      position: relative;
+      border-top: 3px solid var(--gold);
+    }
+    .team-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: 0 8px 60px rgba(0,0,0,.06);
+    }
+    .team-role-tag {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .team-name {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 300;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .team-title {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+    .team-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 24px;
+    }
+    .team-focus {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-style: italic;
+      color: var(--black);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .team-bio {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(0,0,0,.6);
+    }
+
+    /* PHILOSOPHY SECTION */
+    .philosophy-section {
+      background: var(--dark);
+      padding: 100px 60px;
+    }
+    .philosophy-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .philosophy-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .philosophy-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto 80px;
+    }
+    .pillar {
+      text-align: center;
+      padding: 48px 32px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .pillar-star {
+      color: var(--gold);
+      font-size: 22px;
+      display: block;
+      margin-bottom: 24px;
+    }
+    .pillar-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .pillar-text {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--gray);
+    }
+    .philosophy-quote {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .philosophy-quote blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(20px, 3vw, 30px);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,.75);
+      line-height: 1.6;
+    }
+    .philosophy-quote blockquote::before {
+      content: '"';
+      color: var(--gold);
+      font-size: 60px;
+      display: block;
+      line-height: .8;
+      margin-bottom: 16px;
+    }
+
+    /* INDUSTRIES SECTION */
+    .industries-section {
+      background: var(--cream);
+      padding: 100px 60px;
+    }
+    .industries-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .industries-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 300;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .industries-sub {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-style: italic;
+      color: rgba(0,0,0,.5);
+    }
+    .industry-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .industry-tag {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid rgba(201,168,76,.4);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.7);
+      background: transparent;
+      transition: all .3s ease;
+    }
+    .industry-tag:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    /* TAGLINE CTA */
+    .tagline-cta {
+      background: var(--black);
+      padding: 120px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .tagline-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tagline-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 5vw, 60px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 48px;
+      line-height: 1.3;
+    }
+    .tagline-btn {
+      display: inline-block;
+      padding: 18px 48px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      transition: all .3s ease;
+    }
+    .tagline-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 64px 60px 32px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+    .footer-logo {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      letter-spacing: .2em;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-tagline { font-size: 13px; color: var(--gray); font-style: italic; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact p, .footer-contact a {
+      font-size: 13px;
+      color: var(--gray);
+      display: block;
+      margin-bottom: 8px;
+      text-decoration: none;
+    }
+    .footer-contact a:hover { color: var(--gold); }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .08em;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .35s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav { padding: 20px 24px; }
+      .nav.scrolled { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-menu-btn { display: block; }
+
+      .hero { padding: 100px 24px 80px; }
+
+      .team-section { padding: 72px 24px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .team-card { padding: 40px 32px; }
+
+      .philosophy-section { padding: 72px 24px; }
+      .philosophy-pillars { grid-template-columns: 1fr; gap: 24px; }
+
+      .industries-section { padding: 72px 24px; }
+
+      .tagline-cta { padding: 80px 24px; }
+
+      .footer { padding: 48px 24px 28px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="propuesta-sonnemond.html" class="nav-logo">SONNE<span class="star">✦</span>MOND</a>
+    <div class="nav-links">
+      <a href="propuesta-sonnemond.html">Inicio</a>
+      <a href="sonnemond-servicios.html">Servicios</a>
+      <a href="sonnemond-nosotras.html" class="active">Nosotras</a>
+      <a href="sonnemond-contacto.html">¿Platicamos?</a>
+    </div>
+    <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()" aria-label="Cerrar menú">✕</button>
+    <a href="propuesta-sonnemond.html" onclick="toggleMenu()">Inicio</a>
+    <a href="sonnemond-servicios.html" onclick="toggleMenu()">Servicios</a>
+    <a href="sonnemond-nosotras.html" onclick="toggleMenu()">Nosotras</a>
+    <a href="sonnemond-contacto.html" onclick="toggleMenu()">¿Platicamos?</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-eyebrow">Sonne Mond Agency</span>
+    <h1 class="hero-title reveal">Somos Tanya<br>y Ana Fer.</h1>
+    <span class="hero-star reveal reveal-delay-1">✦</span>
+    <p class="hero-sub reveal reveal-delay-2">Diseñadora y estratega. Primas, socias, el equipo creativo detrás de Sonne Mond.</p>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section">
+    <div class="team-section-header reveal">
+      <span class="section-eyebrow">El equipo</span>
+      <h2 class="section-title-light">La dupla detrás<br>de cada proyecto</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <p class="team-role-tag">Fundadora · Diseñadora</p>
+        <h3 class="team-name">Tanya</h3>
+        <p class="team-title">Diseñadora Creativa</p>
+        <div class="team-divider"></div>
+        <p class="team-focus">Donde cada elemento visual tiene una razón de ser.</p>
+        <p class="team-bio">Tanya traduce la esencia de cada marca en un lenguaje visual que habla sin palabras. Con ojo para el detalle y pasión por el diseño con intención, crea identidades que no solo se ven bien — se sienten auténticas. Cada color, tipografía y forma es una decisión estratégica disfrazada de belleza.</p>
+      </div>
+      <div class="team-card reveal reveal-delay-1">
+        <p class="team-role-tag">Fundadora · Estratega</p>
+        <h3 class="team-name">Ana Fer</h3>
+        <p class="team-title">Estratega de Contenido</p>
+        <div class="team-divider"></div>
+        <p class="team-focus">Donde cada palabra construye comunidad.</p>
+        <p class="team-bio">Ana Fer convierte ideas en narrativas y narrativas en comunidades. Su especialidad está en encontrar la voz única de cada marca y amplificarla de forma consistente y estratégica. Detrás de cada caption, guion y calendario editorial hay una mente que siempre pregunta: ¿esto conecta con quien nos necesita?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO DIVIDER -->
+  <div style="height:55vh;min-height:400px;overflow:hidden;position:relative;">
+    <img src="sonnemond/foto-3.jpg" alt="Sonne Mond proceso creativo" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(15%);">
+    <div style="position:absolute;inset:0;background:rgba(10,10,10,.4);display:flex;align-items:flex-end;padding:48px 64px;"><p style="font-family:Cormorant Garamond,serif;font-size:clamp(22px,3vw,36px);font-style:italic;color:#fff;font-weight:300;max-width:600px;line-height:1.3;">“Creemos que una marca bien construida no necesita gritar para ser escuchada.”</p></div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy-section">
+    <div class="philosophy-header reveal">
+      <span class="section-eyebrow" style="color:var(--gold);">Nuestra filosofía</span>
+      <h2 class="philosophy-title">Nuestra forma<br>de trabajar</h2>
+    </div>
+    <div class="philosophy-pillars">
+      <div class="pillar reveal">
+        <span class="pillar-star">✦</span>
+        <h3 class="pillar-title">Estrategia con alma</h3>
+        <p class="pillar-text">Cada decisión creativa tiene un porqué. No hacemos cosas bonitas por hacerlas — cada elemento está alineado con tus objetivos y conectado con tu audiencia.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-1">
+        <span class="pillar-star">✦</span>
+        <h3 class="pillar-title">Diseño con intención</h3>
+        <p class="pillar-text">El diseño que funciona no es el más complicado, es el más claro. Creamos sistemas visuales coherentes que hablan por tu marca en cada punto de contacto.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <span class="pillar-star">✦</span>
+        <h3 class="pillar-title">Marcas que se sienten vivas</h3>
+        <p class="pillar-text">Una marca no es solo un logo — es una experiencia. Construimos marcas con personalidad, carácter y la capacidad de evolucionar contigo.</p>
+      </div>
+    </div>
+    <div class="philosophy-quote reveal">
+      <blockquote>Creemos que una marca bien construida no necesita gritar para ser escuchada.</blockquote>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries-section">
+    <div class="industries-header reveal">
+      <span class="section-eyebrow" style="color:var(--gold); display:block; margin-bottom:20px;">Nuestra experiencia</span>
+      <h2 class="industries-title">Marcas que<br>construimos juntas</h2>
+      <p class="industries-sub">Nutrición, construcción, gastronomía, editorial, wellness, consultoría.</p>
+    </div>
+    <div class="industry-tags reveal reveal-delay-1">
+      <span class="industry-tag">Nutriólogas</span>
+      <span class="industry-tag">Constructoras</span>
+      <span class="industry-tag">Restaurantes</span>
+      <span class="industry-tag">Consultoras</span>
+      <span class="industry-tag">Emprendedoras</span>
+      <span class="industry-tag">Editoriales</span>
+      <span class="industry-tag">Wellness</span>
+      <span class="industry-tag">Fitness</span>
+      <span class="industry-tag">Coaches</span>
+    </div>
+  </section>
+
+  <!-- TAGLINE CTA -->
+  <section class="tagline-cta">
+    <p class="tagline-quote reveal">"Cuando tu marca brilla, tú también lo haces."</p>
+    <a href="sonnemond-contacto.html" class="tagline-btn reveal reveal-delay-1">¿Platicamos?</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">SONNE<span style="color:var(--gold);">✦</span>MOND</div>
+        <p class="footer-tagline">No hacemos magia, hacemos marketing.</p>
+      </div>
+      <div class="footer-links">
+        <a href="propuesta-sonnemond.html">Inicio</a>
+        <a href="sonnemond-servicios.html">Servicios</a>
+        <a href="sonnemond-nosotras.html">Nosotras</a>
+        <a href="sonnemond-contacto.html">¿Platicamos?</a>
+      </div>
+      <div class="footer-contact">
+        <p>sonnemondagency@gmail.com</p>
+        <p>Lomas de Chapultepec, CDMX</p>
+        <a href="https://instagram.com/sonnemondagency" target="_blank">@sonnemondagency</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Sonne Mond Agency · Diseño y estrategia con alma.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

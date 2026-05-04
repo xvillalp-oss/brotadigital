@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios — Sonne Mond Agency</title>
+  <meta name="description" content="Seis formas de hacer brillar tu marca. Branding emocional, diseño web, redes sociales, contenido, producción audiovisual y consultoría creativa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --gold: #C9A84C;
+      --gold-light: #E2C97E;
+      --white: #FFFFFF;
+      --cream: #FAF8F4;
+      --gray: #8a8a8a;
+      --border: rgba(201,168,76,0.2);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-sans);
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 60px;
+      transition: all .4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(10,10,10,.96);
+      backdrop-filter: blur(12px);
+      padding: 18px 60px;
+      border-bottom: 1px solid rgba(201,168,76,.15);
+    }
+    .nav-logo {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo .star { color: var(--gold); }
+    .nav-links { display: flex; gap: 40px; }
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); }
+    .nav-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* MOBILE NAV */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,10,.98);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--black);
+      padding: 160px 60px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,.82) 0%, rgba(10,10,10,.92) 100%), url(sonnemond/foto-2.jpg) center 25%/cover no-repeat;
+      pointer-events: none;
+    }
+    .page-header-ornament {
+      font-size: 14px;
+      letter-spacing: .3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(64px, 10vw, 110px);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .page-header-sub {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-style: italic;
+      color: rgba(255,255,255,.6);
+    }
+    .gold-star {
+      display: block;
+      color: var(--gold);
+      font-size: 28px;
+      margin-top: 32px;
+    }
+
+    /* SERVICE SECTIONS */
+    .service-section {
+      padding: 100px 60px;
+      min-height: 400px;
+      position: relative;
+    }
+    .service-section.dark {
+      background: var(--dark);
+    }
+    .service-section.light {
+      background: var(--cream);
+      color: var(--black);
+    }
+    .service-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .service-left {
+      position: relative;
+    }
+    .service-number {
+      font-family: var(--font-serif);
+      font-size: clamp(100px, 12vw, 160px);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--gold);
+      opacity: .15;
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .service-title-wrap {
+      padding-top: 60px;
+    }
+    .service-section.dark .service-title-wrap {}
+    .service-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .service-section.light .service-title { color: var(--black); }
+    .service-one-liner {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.5;
+    }
+
+    .service-right {}
+    .service-description {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 40px;
+    }
+    .service-section.light .service-description { color: rgba(0,0,0,.65); }
+    .service-includes-label {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .service-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.75);
+    }
+    .service-section.light .service-list li { color: rgba(0,0,0,.7); }
+    .service-list li::before {
+      content: '·';
+      color: var(--gold);
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--black);
+      padding: 120px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(201,168,76,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-ornament {
+      color: var(--gold);
+      font-size: 28px;
+      display: block;
+      margin-bottom: 32px;
+    }
+    .cta-title {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-sub {
+      font-size: 14px;
+      color: var(--gray);
+      letter-spacing: .08em;
+      margin-bottom: 48px;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 48px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      transition: all .3s ease;
+    }
+    .cta-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 64px 60px 32px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+    .footer-logo {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      letter-spacing: .2em;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-tagline { font-size: 13px; color: var(--gray); font-style: italic; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact p, .footer-contact a {
+      font-size: 13px;
+      color: var(--gray);
+      display: block;
+      margin-bottom: 8px;
+      text-decoration: none;
+    }
+    .footer-contact a:hover { color: var(--gold); }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .08em;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav { padding: 20px 24px; }
+      .nav.scrolled { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-menu-btn { display: block; }
+
+      .page-header { padding: 120px 24px 80px; }
+
+      .service-section { padding: 72px 24px; }
+      .service-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .service-number { font-size: 80px; }
+      .service-title-wrap { padding-top: 40px; }
+
+      .cta-section { padding: 80px 24px; }
+
+      .footer { padding: 48px 24px 28px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="propuesta-sonnemond.html" class="nav-logo">SONNE<span class="star">✦</span>MOND</a>
+    <div class="nav-links">
+      <a href="propuesta-sonnemond.html">Inicio</a>
+      <a href="sonnemond-servicios.html" class="active">Servicios</a>
+      <a href="sonnemond-nosotras.html">Nosotras</a>
+      <a href="sonnemond-contacto.html">¿Platicamos?</a>
+    </div>
+    <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()" aria-label="Cerrar menú">✕</button>
+    <a href="propuesta-sonnemond.html" onclick="toggleMenu()">Inicio</a>
+    <a href="sonnemond-servicios.html" onclick="toggleMenu()">Servicios</a>
+    <a href="sonnemond-nosotras.html" onclick="toggleMenu()">Nosotras</a>
+    <a href="sonnemond-contacto.html" onclick="toggleMenu()">¿Platicamos?</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <span class="page-header-ornament">Sonne Mond Agency</span>
+    <h1 class="reveal">Servicios</h1>
+    <p class="page-header-sub reveal reveal-delay-1">Seis formas de hacer brillar tu marca.</p>
+    <span class="gold-star reveal reveal-delay-2">✦</span>
+  </section>
+
+  <!-- SERVICE 1: BRANDING EMOCIONAL — DARK -->
+  <section class="service-section dark">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-number">01</span>
+        <div class="service-title-wrap reveal">
+          <h2 class="service-title">Branding<br>Emocional</h2>
+          <p class="service-one-liner">Para marcas que quieren ser reconocidas, no solo vistas.</p>
+        </div>
+      </div>
+      <div class="service-right reveal reveal-delay-1">
+        <p class="service-description">Construimos identidades visuales y conceptuales que van más allá del logo. Desarrollamos el universo completo de tu marca: desde su nombre hasta la forma en que le habla al mundo. Cada elemento tiene una razón de ser, y juntos cuentan una historia que conecta emocionalmente con tu audiencia.</p>
+        <p class="service-includes-label">Incluye</p>
+        <ul class="service-list">
+          <li>Naming</li>
+          <li>Logotipo y variantes</li>
+          <li>Paleta de color</li>
+          <li>Tipografía</li>
+          <li>Tono de voz</li>
+          <li>Manual de marca</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 2: DISEÑO WEB — LIGHT -->
+  <section class="service-section light">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-number" style="opacity:.08; color:#C9A84C;">02</span>
+        <div class="service-title-wrap reveal">
+          <h2 class="service-title" style="color:var(--black);">Diseño Web<br>Estratégico</h2>
+          <p class="service-one-liner">Tu página web es tu vendedor 24/7. Que se vea y funcione como uno.</p>
+        </div>
+      </div>
+      <div class="service-right reveal reveal-delay-1">
+        <p class="service-description">Desarrollamos sitios en WordPress y Shopify que no solo se ven increíbles, sino que están diseñados para convertir. Cada página, cada sección y cada botón tiene un propósito estratégico. Tu sitio web será tu herramienta de ventas más poderosa.</p>
+        <p class="service-includes-label">Incluye</p>
+        <ul class="service-list" style="color: rgba(0,0,0,.7)">
+          <li>Diseño UX/UI</li>
+          <li>Desarrollo WordPress o Shopify</li>
+          <li>Adaptación móvil</li>
+          <li>Estructura de contenido</li>
+          <li>Velocidad y SEO técnico</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 3: REDES SOCIALES — DARK -->
+  <section class="service-section dark">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-number">03</span>
+        <div class="service-title-wrap reveal">
+          <h2 class="service-title">Diseño de<br>Redes Sociales</h2>
+          <p class="service-one-liner">Un feed que se vea profesional no es un lujo — es tu primera impresión.</p>
+        </div>
+      </div>
+      <div class="service-right reveal reveal-delay-1">
+        <p class="service-description">Diseñamos sistemas visuales para Instagram, TikTok y LinkedIn que reflejan la esencia de tu marca y crean coherencia en cada publicación. Tu presencia digital será tan memorable como tu producto o servicio.</p>
+        <p class="service-includes-label">Incluye</p>
+        <ul class="service-list">
+          <li>Sistema visual para redes</li>
+          <li>Plantillas editables</li>
+          <li>Portadas de highlights</li>
+          <li>Diseño de carruseles</li>
+          <li>Kit de marca para contenido</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 4: ESTRATEGIA DE CONTENIDO — LIGHT -->
+  <section class="service-section light">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-number" style="opacity:.08; color:#C9A84C;">04</span>
+        <div class="service-title-wrap reveal">
+          <h2 class="service-title" style="color:var(--black);">Estrategia y<br>Gestión de<br>Contenido</h2>
+          <p class="service-one-liner">Publicar sin estrategia es solo hacer ruido. Nosotras hacemos que cada pieza tenga un propósito.</p>
+        </div>
+      </div>
+      <div class="service-right reveal reveal-delay-1">
+        <p class="service-description">Planeamos y ejecutamos tu presencia digital de principio a fin. Desde el calendario editorial hasta los captions y guiones, cada pieza de contenido está alineada con tus objetivos de negocio y habla directamente a tu audiencia ideal.</p>
+        <p class="service-includes-label">Incluye</p>
+        <ul class="service-list" style="color: rgba(0,0,0,.7)">
+          <li>Calendario editorial mensual</li>
+          <li>Copywriting para captions</li>
+          <li>Guiones de video</li>
+          <li>Hashtag strategy</li>
+          <li>Reporte mensual de métricas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 5: PRODUCCIÓN AUDIOVISUAL — DARK -->
+  <section class="service-section dark">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-number">05</span>
+        <div class="service-title-wrap reveal">
+          <h2 class="service-title">Producción<br>Audiovisual<br>y Creativa</h2>
+          <p class="service-one-liner">El contenido que funciona no es el más producido — es el más auténtico. Nosotras sabemos cómo capturarlo.</p>
+        </div>
+      </div>
+      <div class="service-right reveal reveal-delay-1">
+        <p class="service-description">Producimos contenido audiovisual estratégico para redes que conecta con tu audiencia desde el primer segundo. Desde la dirección creativa hasta la edición final, cada pieza está pensada para generar impacto y fomentar la comunidad alrededor de tu marca.</p>
+        <p class="service-includes-label">Incluye</p>
+        <ul class="service-list">
+          <li>Dirección creativa</li>
+          <li>Sesiones de foto y video</li>
+          <li>Edición para reels y TikTok</li>
+          <li>Videos de marca</li>
+          <li>Contenido evergreen</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 6: CONSULTORÍA CREATIVA — LIGHT -->
+  <section class="service-section light">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-number" style="opacity:.08; color:#C9A84C;">06</span>
+        <div class="service-title-wrap reveal">
+          <h2 class="service-title" style="color:var(--black);">Consultoría<br>Creativa</h2>
+          <p class="service-one-liner">A veces no necesitas que alguien lo haga todo — necesitas a alguien que te ayude a ver claro.</p>
+        </div>
+      </div>
+      <div class="service-right reveal reveal-delay-1">
+        <p class="service-description">Sesiones de asesoría estratégica para emprendedoras y marcas que quieren tomar mejores decisiones creativas. Te ayudamos a identificar lo que está funcionando, lo que no, y el camino más claro hacia donde quieres llegar.</p>
+        <p class="service-includes-label">Incluye</p>
+        <ul class="service-list" style="color: rgba(0,0,0,.7)">
+          <li>Auditoría de marca</li>
+          <li>Sesión estratégica 1:1</li>
+          <li>Revisión de presencia digital</li>
+          <li>Hoja de ruta creativa</li>
+          <li>Seguimiento puntual</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <span class="cta-ornament reveal">✦</span>
+    <h2 class="cta-title reveal reveal-delay-1">¿Lista para empezar?</h2>
+    <p class="cta-sub reveal reveal-delay-2">Cuéntanos tu proyecto y encontramos juntas el camino.</p>
+    <a href="sonnemond-contacto.html" class="cta-btn reveal reveal-delay-3">Escríbenos</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">SONNE<span class="star" style="color:var(--gold);">✦</span>MOND</div>
+        <p class="footer-tagline">No hacemos magia, hacemos marketing.</p>
+      </div>
+      <div class="footer-links">
+        <a href="propuesta-sonnemond.html">Inicio</a>
+        <a href="sonnemond-servicios.html">Servicios</a>
+        <a href="sonnemond-nosotras.html">Nosotras</a>
+        <a href="sonnemond-contacto.html">¿Platicamos?</a>
+      </div>
+      <div class="footer-contact">
+        <p>sonnemondagency@gmail.com</p>
+        <p>Lomas de Chapultepec, CDMX</p>
+        <a href="https://instagram.com/sonnemondagency" target="_blank">@sonnemondagency</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Sonne Mond Agency · Diseño y estrategia con alma.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
