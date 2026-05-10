@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<title>Calero — Luminarias y objetos · CDMX</title>
+<meta name="description" content="Bases de cerámica y pantallas hechas a mano en CDMX. Better than your abuela's decor."/>
+<meta name="theme-color" content="#700402"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Calero — Luminarias y objetos"/>
+<meta property="og:description" content="Arte objeto hecho a mano en CDMX."/>
+<meta property="og:locale" content="es_MX"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap"/>
+
+<style>
+:root{
+  --bg:#E6D9C8;
+  --bg-warm:#DDCDB8;
+  --ink:#700402;
+  --ink-2:rgba(112,4,2,0.7);
+  --ink-3:rgba(112,4,2,0.5);
+  --accent:#B32917;
+  --rule:rgba(112,4,2,0.14);
+  --white:#F5EFE3;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;font-weight:300;font-size:13px;line-height:1.65;
+  background:var(--bg);color:var(--ink);
+  letter-spacing:.01em;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none;transition:color .25s ease}
+a:hover{color:var(--accent)}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400}
+
+.label{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:400;
+}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  background:rgba(230,217,200,.85);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav__logo{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+  font-size:24px;color:var(--ink);letter-spacing:.02em;line-height:1;
+}
+.nav__links{display:flex;gap:30px;list-style:none}
+.nav__links a{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2)}
+.nav__links a:hover{color:var(--accent)}
+.nav__cart{
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink);padding:8px 14px;border:1px solid var(--ink);
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .2s;
+}
+.nav__cart:hover{background:var(--ink);color:var(--bg)}
+.nav__cart-count{
+  background:var(--accent);color:var(--bg);
+  width:18px;height:18px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:500;letter-spacing:0;
+}
+
+@media(max-width:768px){
+  .nav__links{display:none}
+  .nav__logo{font-size:22px}
+  .container{padding:0 22px}
+}
+
+/* HERO */
+.hero{
+  padding:120px 0 100px;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;min-height:90vh;
+}
+.hero__copy{padding-bottom:60px;max-width:420px}
+.hero__label{margin-bottom:24px;display:block}
+.hero__h1{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(38px,4.6vw,58px);line-height:1.05;letter-spacing:-.005em;margin-bottom:28px;
+}
+.hero__h1 em{font-style:normal;color:var(--accent)}
+.hero__sub{font-size:13px;color:var(--ink-2);max-width:340px;line-height:1.7;margin-bottom:36px}
+.hero__cta{
+  display:inline-block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink);padding-bottom:6px;border-bottom:1px solid var(--ink);
+}
+.hero__cta:hover{color:var(--accent);border-color:var(--accent)}
+
+.hero__image{
+  aspect-ratio:4/5;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 60% 40% at 50% 35%,#FFD9A8 0%,#C18653 35%,#7B3F23 70%,#1F0A05 100%);
+}
+.hero__image::after{
+  content:'Pieza Margo';position:absolute;top:24px;right:24px;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(245,239,227,.7);
+}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:50px;padding:100px 0 70px;min-height:auto}
+  .hero__copy{padding-bottom:0;max-width:100%}
+  .hero__image{aspect-ratio:1/1.1}
+}
+
+/* SECTIONS */
+section{padding:110px 0}
+.section__head{
+  display:grid;grid-template-columns:1fr 2fr;gap:60px;
+  margin-bottom:70px;align-items:end;
+}
+.section__title{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(32px,3.6vw,48px);line-height:1.1;
+}
+.section__title em{font-style:normal;color:var(--accent)}
+.section__intro{font-size:13px;color:var(--ink-2);max-width:380px;line-height:1.7}
+@media(max-width:768px){section{padding:80px 0}.section__head{grid-template-columns:1fr;gap:24px;margin-bottom:40px}}
+
+/* PRODUCT GRID */
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:50px 32px}
+.product{display:flex;flex-direction:column}
+.product__image{
+  aspect-ratio:4/5;margin-bottom:16px;position:relative;overflow:hidden;
+  transition:transform .5s ease;
+}
+.product:hover .product__image{transform:scale(1.01)}
+.product__name{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+  font-size:18px;color:var(--ink);margin-bottom:4px;
+}
+.product__desc{font-size:11px;color:var(--ink-3);line-height:1.6;margin-bottom:14px;flex:1}
+.product__row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:12px;border-top:1px solid var(--rule);
+}
+.product__price{font-size:12px;letter-spacing:.06em;color:var(--ink)}
+.product__add{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  padding:8px 14px;border:1px solid var(--ink);color:var(--ink);
+  transition:all .2s;
+}
+.product__add:hover{background:var(--ink);color:var(--bg)}
+.product__add.in-cart{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+
+@media(max-width:768px){.products{grid-template-columns:1fr;gap:40px}}
+@media(min-width:769px) and (max-width:1100px){.products{grid-template-columns:repeat(2,1fr)}}
+
+/* Lamp/base photo placeholders (warm gradient bgs) */
+.bg-1{background:radial-gradient(ellipse 50% 35% at 50% 30%,#FFEEC6,#E8B976 30%,#9F5D2F 60%,#3A1A12 100%)}
+.bg-2{background:radial-gradient(ellipse 60% 45% at 50% 40%,#F2D9B4,#C7976B 35%,#7B3E1F 65%,#1F0E08 100%)}
+.bg-3{background:radial-gradient(ellipse 45% 40% at 50% 35%,#FDE8C0,#D8A674 30%,#8B5435 60%,#2C160B 100%)}
+.bg-4{background:radial-gradient(ellipse 55% 38% at 50% 32%,#F8DDB0,#C28A56 32%,#6E3A1F 62%,#251108 100%)}
+.bg-5{background:radial-gradient(ellipse 50% 42% at 50% 38%,#FFE2A8,#D49860 32%,#80411C 64%,#1A0B05 100%)}
+.bg-6{background:radial-gradient(ellipse 60% 35% at 50% 28%,#FCE0AE,#CC9663 30%,#783A1B 60%,#1E0E07 100%)}
+.bg-7{background:linear-gradient(160deg,#E6D9C8 0%,#C8B59A 60%,#8C7257 100%)}
+.bg-8{background:linear-gradient(180deg,#F0E0CB 0%,#B3937A 100%)}
+.bg-9{background:linear-gradient(200deg,#E0CDB0 0%,#9B7E5E 100%)}
+.bg-10{background:linear-gradient(165deg,#EAD9C0 0%,#A98869 100%)}
+
+/* COMBINA / ARMA TU LÁMPARA */
+.combina{background:var(--bg-warm)}
+.combina__steps{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:30px;
+}
+.combina__step{padding:28px;background:var(--bg);border:1px solid var(--rule)}
+.combina__num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:36px;
+  color:var(--accent);line-height:1;margin-bottom:14px;
+}
+.combina__step h3{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+  font-size:20px;margin-bottom:10px;
+}
+.combina__step p{font-size:12px;color:var(--ink-2);line-height:1.7}
+@media(max-width:768px){.combina__steps{grid-template-columns:1fr}}
+
+/* SOBRE */
+.sobre__inner{display:grid;grid-template-columns:5fr 7fr;gap:100px;align-items:start}
+.sobre__h2{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(34px,4vw,52px);line-height:1.1;
+}
+.sobre__h2 em{font-style:normal;color:var(--accent)}
+.sobre__p{font-size:13px;color:var(--ink-2);line-height:1.85;margin-bottom:18px;max-width:520px}
+.sobre__sign{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:18px;color:var(--accent);margin-top:30px;
+}
+@media(max-width:900px){.sobre__inner{grid-template-columns:1fr;gap:40px}}
+
+/* ENVIOS */
+.envios__grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:50px;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:60px 0;
+}
+.envios__col h3{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+  font-size:22px;margin-bottom:14px;
+}
+.envios__col p{font-size:12px;color:var(--ink-2);line-height:1.75}
+.envios__col strong{color:var(--accent);font-weight:500}
+@media(max-width:768px){.envios__grid{grid-template-columns:1fr;gap:40px}}
+
+/* CONTACT */
+.contacto{text-align:center;padding:140px 0;background:var(--bg-warm)}
+.contacto__label{margin-bottom:28px;display:block}
+.contacto__h2{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(36px,4.6vw,56px);line-height:1.05;margin-bottom:36px;
+}
+.contacto__h2 em{font-style:normal;color:var(--accent)}
+.contacto__sub{font-size:13px;color:var(--ink-2);max-width:420px;margin:0 auto 44px;line-height:1.75}
+.contacto__btn{
+  display:inline-block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--bg);background:var(--ink);padding:18px 36px;
+}
+.contacto__btn:hover{background:var(--accent)}
+.contacto__alt{margin-top:24px;display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.contacto__alt a{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px}
+
+/* FOOTER */
+.footer{padding:50px 0 40px}
+.footer__inner{
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--rule);padding-top:30px;flex-wrap:wrap;gap:20px;
+}
+.footer__logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink)}
+.footer__links{display:flex;gap:24px;list-style:none}
+.footer__links a{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.footer__credit{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.footer__credit a{color:var(--ink-2);border-bottom:1px solid var(--ink-3)}
+
+/* CART DRAWER */
+.cart-overlay{
+  position:fixed;inset:0;background:rgba(31,10,5,.45);
+  opacity:0;pointer-events:none;transition:opacity .3s;z-index:90;
+}
+.cart-overlay.open{opacity:1;pointer-events:all}
+
+.cart{
+  position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);
+  background:var(--bg);z-index:100;
+  transform:translateX(100%);transition:transform .35s cubic-bezier(.4,.0,.2,1);
+  display:flex;flex-direction:column;
+  box-shadow:-20px 0 60px rgba(31,10,5,.18);
+}
+.cart.open{transform:translateX(0)}
+.cart__head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 30px;border-bottom:1px solid var(--rule);
+}
+.cart__title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px}
+.cart__close{
+  font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);
+}
+.cart__close:hover{color:var(--accent)}
+
+.cart__body{flex:1;overflow-y:auto;padding:20px 30px}
+.cart__empty{
+  padding:60px 20px;text-align:center;color:var(--ink-3);font-size:13px;
+}
+.cart__item{
+  display:grid;grid-template-columns:60px 1fr auto;gap:14px;
+  padding:16px 0;border-bottom:1px solid var(--rule);align-items:center;
+}
+.cart__item-img{
+  width:60px;aspect-ratio:1;border-radius:2px;
+}
+.cart__item-info{min-width:0}
+.cart__item-name{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink);
+}
+.cart__item-cat{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
+.cart__item-price{font-size:12px;color:var(--ink);text-align:right;white-space:nowrap}
+.cart__item-remove{
+  display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:4px;
+}
+.cart__item-remove:hover{color:var(--accent)}
+
+.cart__addons{
+  border-top:6px double var(--rule);margin-top:20px;padding-top:24px;
+}
+.cart__addons h4{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;
+  margin-bottom:6px;
+}
+.cart__addons-sub{font-size:11px;color:var(--ink-3);margin-bottom:18px}
+.cart__addons-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cart__addon{
+  display:flex;flex-direction:column;gap:8px;padding:12px;
+  background:var(--bg-warm);border:1px solid transparent;cursor:pointer;
+  transition:all .2s;
+}
+.cart__addon:hover{border-color:var(--accent)}
+.cart__addon-img{aspect-ratio:1;width:100%}
+.cart__addon-name{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);
+}
+.cart__addon-price{font-size:11px;color:var(--ink-2);display:flex;justify-content:space-between;align-items:center}
+.cart__addon-add{
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  background:var(--ink);color:var(--bg);padding:4px 8px;
+}
+
+.cart__foot{
+  padding:24px 30px;border-top:1px solid var(--rule);
+}
+.cart__total{
+  display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;
+}
+.cart__total-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.cart__total-amount{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--ink)}
+.cart__shipping{font-size:11px;color:var(--ink-3);margin-bottom:18px}
+.cart__shipping strong{color:var(--accent)}
+.cart__checkout{
+  display:block;width:100%;text-align:center;
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  background:var(--ink);color:var(--bg);padding:18px;
+}
+.cart__checkout:hover{background:var(--accent)}
+.cart__checkout.disabled{opacity:.4;pointer-events:none}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo">Calero</a>
+    <ul class="nav__links">
+      <li><a href="#bases">Bases</a></li>
+      <li><a href="#pantallas">Pantallas</a></li>
+      <li><a href="#estudio">Estudio</a></li>
+      <li><a href="#envios">Envíos</a></li>
+    </ul>
+    <button class="nav__cart" id="openCart">
+      Pedido <span class="nav__cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero container">
+  <div class="hero__copy">
+    <span class="label hero__label">Edición CDMX 2026</span>
+    <h1 class="hero__h1">Luminarias hechas <em>a mano,</em> una a la vez.</h1>
+    <p class="hero__sub">
+      Bases de cerámica torneada y pantallas en lino crudo. Eliges la base, eliges la pantalla.
+      Cada combinación, una pieza única.
+    </p>
+    <a href="#bases" class="hero__cta">Ver las piezas →</a>
+  </div>
+  <div class="hero__image"></div>
+</section>
+
+<!-- BASES -->
+<section id="bases" class="container">
+  <div class="section__head reveal">
+    <h2 class="section__title"><em>Bases</em> de cerámica</h2>
+    <p class="section__intro">
+      Cada base lleva el nombre de una abuela. Torneadas a mano en CDMX, cocidas en horno alto.
+      Edición limitada de cinco por modelo.
+    </p>
+  </div>
+
+  <div class="products" id="basesGrid">
+    <!-- populated by JS for cart wiring -->
+  </div>
+</section>
+
+<!-- PANTALLAS -->
+<section id="pantallas" class="combina">
+  <div class="container">
+    <div class="section__head reveal">
+      <h2 class="section__title"><em>Pantallas</em> textiles</h2>
+      <p class="section__intro">
+        Cosidas en taller, en lino crudo y algodón natural. Cada pantalla embona con cualquier base —
+        la combinación es tuya.
+      </p>
+    </div>
+    <div class="products" id="pantallasGrid"></div>
+
+    <div class="section__head reveal" style="margin-top:90px">
+      <h2 class="section__title">Cómo <em>armarla</em></h2>
+      <p class="section__intro">
+        Tres pasos para tener tu lámpara en casa.
+      </p>
+    </div>
+    <div class="combina__steps reveal">
+      <div class="combina__step">
+        <div class="combina__num">01</div>
+        <h3>Eliges base</h3>
+        <p>Margo, Pepa, Toña... cada una con personalidad propia. Agrégala a tu pedido.</p>
+      </div>
+      <div class="combina__step">
+        <div class="combina__num">02</div>
+        <h3>Eliges pantalla</h3>
+        <p>Cono, cilindro o tambor — en lino crudo o algodón. La que combine con tu espacio.</p>
+      </div>
+      <div class="combina__step">
+        <div class="combina__num">03</div>
+        <h3>Lo confirmamos</h3>
+        <p>Por WhatsApp confirmamos plazo y entrega. CDMX llega en mano sin costo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="estudio">
+  <div class="container sobre__inner">
+    <div class="reveal">
+      <h2 class="sobre__h2">Better than<br>your <em>abuela's</em><br>decor.</h2>
+    </div>
+    <div class="reveal">
+      <p class="sobre__p">
+        Calero México nació de una idea simple: que los objetos que compramos para
+        habitar nuestra casa deberían tener tanta historia como los que heredamos.
+      </p>
+      <p class="sobre__p">
+        Trabajamos con artesanas y artesanos en CDMX. Cada base se tornea, se cuece y
+        se acaba a mano. Cada pantalla se cose en taller.
+      </p>
+      <p class="sobre__p">
+        Las piezas se nombran por las mujeres que nos enseñaron a cuidar de las cosas
+        bonitas. Cada nombre, una pieza. Cada pieza, una edición de cinco.
+      </p>
+      <p class="sobre__sign">— el estudio</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENVIOS -->
+<section id="envios" style="background:var(--bg-warm)">
+  <div class="container">
+    <div class="section__head reveal">
+      <h2 class="section__title">Envíos y <em>entregas</em></h2>
+      <p class="section__intro">
+        Cada pieza se hace por encargo. Tiempo de producción de 7 a 14 días desde que confirmamos.
+      </p>
+    </div>
+
+    <div class="envios__grid reveal">
+      <div class="envios__col">
+        <h3>Envío en CDMX</h3>
+        <p>
+          <strong>Sin costo</strong> dentro de Ciudad de México.
+          Entregamos en mano cuando es posible.
+        </p>
+      </div>
+      <div class="envios__col">
+        <h3>Resto de México</h3>
+        <p>
+          Envío con costo según destino, embalado para piezas frágiles.
+          Cotizamos al confirmar tu pedido.
+        </p>
+      </div>
+      <div class="envios__col">
+        <h3>El proceso</h3>
+        <p>
+          1 · Armas tu pedido · 2 · Confirmamos por WhatsApp · 3 · 50% anticipo · 4 · Entrega.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__logo">Calero</div>
+    <ul class="footer__links">
+      <li><a href="#bases">Bases</a></li>
+      <li><a href="#pantallas">Pantallas</a></li>
+      <li><a href="#estudio">Estudio</a></li>
+      <li><a href="https://www.instagram.com/caleromexico/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <div class="footer__credit">© 2026 Calero · CDMX · Sitio por <a href="https://brotadigital.mx" target="_blank" rel="noopener">Brota</a></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart" id="cart">
+  <div class="cart__head">
+    <div class="cart__title">Tu pedido</div>
+    <button class="cart__close" id="closeCart">Cerrar</button>
+  </div>
+  <div class="cart__body" id="cartBody">
+    <p class="cart__empty">Aún no has agregado piezas.</p>
+  </div>
+  <div class="cart__foot">
+    <div class="cart__total">
+      <span class="cart__total-label">Subtotal</span>
+      <span class="cart__total-amount" id="cartTotal">$0 MXN</span>
+    </div>
+    <p class="cart__shipping">Envío en CDMX <strong>incluido</strong> · resto del país con costo extra</p>
+    <a href="#" class="cart__checkout disabled" id="checkoutBtn">Enviar pedido por WhatsApp</a>
+  </div>
+</aside>
+
+<script>
+// ─── PRODUCT DATA ───────────────────────────────────────────────
+const BASES = [
+  { id:'b1', name:'Margo',   desc:'Barro torneado · 38 cm',                    price:4800, img:'bg-1' },
+  { id:'b2', name:'Pepa',    desc:'Esmaltada en cobre · 42 cm',                price:5400, img:'bg-2' },
+  { id:'b3', name:'Toña',    desc:'Cerámica escultórica · 50 cm',              price:6200, img:'bg-3' },
+  { id:'b4', name:'Concha',  desc:'Barro vidriado, forma de luna · 36 cm',     price:4500, img:'bg-4' },
+  { id:'b5', name:'Lupita',  desc:'Engobe terracota · 44 cm',                  price:5900, img:'bg-5' },
+  { id:'b6', name:'Chela',   desc:'Barro negro, base baja · 32 cm',            price:5200, img:'bg-6' },
+];
+const PANTALLAS = [
+  { id:'p1', name:'Cono Lino', desc:'Lino crudo · cónica · 30 cm',             price:1400, img:'bg-7' },
+  { id:'p2', name:'Tambor',    desc:'Algodón natural · cilíndrica · 35 cm',    price:1600, img:'bg-8' },
+  { id:'p3', name:'Globo',     desc:'Lino · forma esférica · 32 cm',           price:1800, img:'bg-9' },
+];
+const COMPLEMENTOS = [
+  { id:'m1', name:'Lamparita Margo', desc:'Mini · 18 cm',  price:1200, img:'bg-1' },
+  { id:'m2', name:'Lamparita Pepa',  desc:'Mini · 20 cm',  price:1400, img:'bg-2' },
+];
+
+// ─── RENDER PRODUCTS ───────────────────────────────────────────
+function renderProducts(list, gridId, category) {
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = list.map(p => `
+    <article class="product reveal">
+      <div class="product__image ${p.img}"></div>
+      <h3 class="product__name">${p.name}</h3>
+      <p class="product__desc">${p.desc}</p>
+      <div class="product__row">
+        <span class="product__price">$${p.price.toLocaleString('es-MX')} MXN</span>
+        <button class="product__add" data-id="${p.id}" data-cat="${category}">Agregar</button>
+      </div>
+    </article>
+  `).join('');
+}
+renderProducts(BASES, 'basesGrid', 'base');
+renderProducts(PANTALLAS, 'pantallasGrid', 'pantalla');
+
+// ─── CART STATE ────────────────────────────────────────────────
+const ALL_PRODUCTS = [...BASES, ...PANTALLAS, ...COMPLEMENTOS];
+let cart = JSON.parse(localStorage.getItem('caleroCart') || '[]');
+
+function saveCart() {
+  localStorage.setItem('caleroCart', JSON.stringify(cart));
+}
+
+function addToCart(id, category) {
+  const product = ALL_PRODUCTS.find(p => p.id === id);
+  if (!product) return;
+  cart.push({ ...product, category });
+  saveCart();
+  renderCart();
+}
+
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  saveCart();
+  renderCart();
+}
+
+function renderCart() {
+  const body = document.getElementById('cartBody');
+  const totalEl = document.getElementById('cartTotal');
+  const countEl = document.getElementById('cartCount');
+  const checkout = document.getElementById('checkoutBtn');
+
+  countEl.textContent = cart.length;
+  const subtotal = cart.reduce((s, i) => s + i.price, 0);
+  totalEl.textContent = `$${subtotal.toLocaleString('es-MX')} MXN`;
+
+  // Update product buttons (highlight added ones)
+  document.querySelectorAll('.product__add').forEach(b => {
+    const inCart = cart.some(i => i.id === b.dataset.id);
+    b.classList.toggle('in-cart', inCart);
+    b.textContent = inCart ? '✓ Agregada' : 'Agregar';
+  });
+
+  if (cart.length === 0) {
+    body.innerHTML = `<p class="cart__empty">Aún no has agregado piezas.</p>`;
+    checkout.classList.add('disabled');
+    return;
+  }
+
+  checkout.classList.remove('disabled');
+  const items = cart.map((it, idx) => `
+    <div class="cart__item">
+      <div class="cart__item-img ${it.img}"></div>
+      <div class="cart__item-info">
+        <div class="cart__item-name">${it.name}</div>
+        <div class="cart__item-cat">${it.category || ''}</div>
+        <button class="cart__item-remove" data-idx="${idx}">Quitar</button>
+      </div>
+      <div class="cart__item-price">$${it.price.toLocaleString('es-MX')}</div>
+    </div>
+  `).join('');
+
+  // Complementos suggestions (always visible during checkout)
+  const addons = COMPLEMENTOS.map(a => `
+    <div class="cart__addon" data-id="${a.id}">
+      <div class="cart__addon-img ${a.img}"></div>
+      <div class="cart__addon-name">${a.name}</div>
+      <div class="cart__addon-price">
+        <span>$${a.price.toLocaleString('es-MX')}</span>
+        <span class="cart__addon-add">Agregar</span>
+      </div>
+    </div>
+  `).join('');
+
+  body.innerHTML = items + `
+    <div class="cart__addons">
+      <h4>Complementa con una mini</h4>
+      <p class="cart__addons-sub">Lamparitas pequeñas, perfectas como regalo o para esquinas.</p>
+      <div class="cart__addons-grid">${addons}</div>
+    </div>
+  `;
+}
+
+// ─── EVENT WIRING ──────────────────────────────────────────────
+document.addEventListener('click', (e) => {
+  // Add to cart from product grid
+  const addBtn = e.target.closest('.product__add');
+  if (addBtn) {
+    addToCart(addBtn.dataset.id, addBtn.dataset.cat);
+    openCartDrawer();
+    return;
+  }
+  // Remove from cart
+  const removeBtn = e.target.closest('.cart__item-remove');
+  if (removeBtn) {
+    removeFromCart(parseInt(removeBtn.dataset.idx));
+    return;
+  }
+  // Add complemento
+  const addon = e.target.closest('.cart__addon');
+  if (addon) {
+    addToCart(addon.dataset.id, 'complemento');
+  }
+});
+
+// Cart open/close
+const cartEl = document.getElementById('cart');
+const overlay = document.getElementById('cartOverlay');
+function openCartDrawer() { cartEl.classList.add('open'); overlay.classList.add('open'); }
+function closeCartDrawer() { cartEl.classList.remove('open'); overlay.classList.remove('open'); }
+document.getElementById('openCart').addEventListener('click', openCartDrawer);
+document.getElementById('closeCart').addEventListener('click', closeCartDrawer);
+overlay.addEventListener('click', closeCartDrawer);
+
+// Checkout via WhatsApp
+document.getElementById('checkoutBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (cart.length === 0) return;
+  const lines = cart.map(i => `· ${i.name} (${i.category}) — $${i.price.toLocaleString('es-MX')}`).join('\n');
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  const msg = `Hola Calero, quiero hacer el siguiente pedido:\n\n${lines}\n\nSubtotal: $${total.toLocaleString('es-MX')} MXN\n\nMi zona de entrega:`;
+  window.open(`https://wa.me/525500000000?text=${encodeURIComponent(msg)}`, '_blank');
+});
+
+// Initial render + reveal observer
+renderCart();
+const io = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+function observeReveals() {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+}
+observeReveals();
+// Re-observe after dynamic product rendering
+setTimeout(observeReveals, 100);
+</script>
+
+</body>
+</html>
