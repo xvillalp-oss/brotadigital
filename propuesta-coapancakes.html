@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Propuesta de Servicios — CoaPa'ncakes × Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@400;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "syrup":      "#FF8F65",
+          "syrup-dk":   "#E8723F",
+          "maple":      "#FFB347",
+          "sky-soft":   "#4FC3DC",
+          "berry":      "#D44862",
+          "near-black": "#1F1F1F",
+          "gray-mid":   "#666666",
+          "cream":      "#FFF8F0",
+          "cream-2":    "#FCEDD9",
+        },
+        fontFamily: {
+          sans:   ["Inter", "sans-serif"],
+          script: ["Caveat", "cursive"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { font-family: 'Inter', sans-serif; }
+  html { scroll-behavior: smooth; }
+
+  .btn-primary {
+    background: #FF8F65; color: #fff;
+    transition: background .2s ease, transform .15s ease;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; font-weight: 600; border-radius: 10px; text-decoration: none;
+    padding: 14px 26px;
+  }
+  .btn-primary:hover { background: #E8723F; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent; color: #E8723F; border: 1.5px solid #FF8F65;
+    transition: background .2s ease, transform .15s ease;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; font-weight: 600; border-radius: 10px; text-decoration: none;
+    padding: 14px 26px;
+  }
+  .btn-ghost:hover { background: #FFF1E8; transform: translateY(-1px); }
+
+  .plan-card {
+    background: #fff; border: 1.5px solid #F4E3D0; border-radius: 18px;
+    overflow: hidden; transition: box-shadow .2s ease, transform .2s ease;
+    display: flex; flex-direction: column;
+  }
+  .plan-card:hover {
+    box-shadow: 0 12px 36px rgba(255,143,101,0.14);
+    transform: translateY(-4px);
+  }
+  .plan-card.featured {
+    border-color: #FF8F65; border-width: 2px;
+    box-shadow: 0 12px 36px rgba(255,143,101,0.18);
+  }
+
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: #374151; line-height: 1.6;
+  }
+  .check-icon {
+    flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+    background: #FFF1E8; display: flex; align-items: center; justify-content: center;
+    margin-top: 1px; color: #E8723F; font-size: 12px; font-weight: 700;
+  }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: #E8723F;
+    background: #FFF1E8; padding: 6px 14px; border-radius: 999px;
+  }
+  .section-label::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: #FF8F65;
+  }
+
+  .stat-card {
+    background: #fff; border: 1.5px solid #F4E3D0; border-radius: 14px;
+    padding: 22px 20px; text-align: center;
+  }
+
+  .step-card {
+    background: #fff; border: 1.5px solid #F4E3D0; border-radius: 14px;
+    padding: 22px;
+  }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #FF8F65; color: #fff; font-weight: 700; font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .pancake-divider {
+    text-align: center; font-family: 'Caveat', cursive;
+    font-size: 28px; color: #FF8F65; margin: 8px 0;
+  }
+</style>
+</head>
+
+<body class="bg-cream text-near-black">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-cream/90 backdrop-blur border-b border-cream-2">
+  <div class="max-w-screen-xl mx-auto px-6 md:px-12 xl:px-20 h-16 flex items-center justify-between">
+    <div class="font-script text-2xl text-syrup-dk">Brota Digital</div>
+    <a href="#contacto" class="btn-primary text-sm" style="padding:10px 20px;">Empezar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="px-6 md:px-12 xl:px-20 pt-16 pb-20 max-w-screen-xl mx-auto">
+  <div class="grid md:grid-cols-12 gap-10 items-center">
+    <div class="md:col-span-7">
+      <p class="section-label mb-6">Propuesta personalizada · Mayo 2026</p>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
+        El pancake perfecto<br>
+        <span class="text-syrup">merece un escaparate digital</span> a la altura.
+      </h1>
+      <p class="text-lg text-gray-mid leading-relaxed max-w-xl mb-8">
+        CoaPa'ncakes ya tiene un producto delicioso, una identidad encantadora y un nombre
+        que se queda en la mente. Ahora toca <strong class="text-near-black">construir la
+        casa digital</strong> donde tus clientes te encuentren, te confíen y te pidan.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#planes" class="btn-primary">Ver planes</a>
+        <a href="#diagnostico" class="btn-ghost">Diagnóstico actual</a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-gray-mid">
+        <span>✦ Entrega 7–21 días</span>
+        <span>✦ 100% personalizado</span>
+        <span>✦ Sin contratos forzados</span>
+      </div>
+    </div>
+    <div class="md:col-span-5">
+      <div class="bg-white rounded-3xl border border-cream-2 p-8 shadow-sm">
+        <p class="section-label mb-4" style="background:#E6F7FB;color:#0C7B95;">
+          <span style="background:#4FC3DC"></span>Para CoaPa'ncakes
+        </p>
+        <h3 class="font-extrabold text-2xl mb-3">Resumen ejecutivo</h3>
+        <p class="text-sm text-gray-mid mb-5 leading-relaxed">
+          Marca recién lanzada en Facebook con identidad visual fuerte (logo cursivo,
+          ilustración hermosa, slogan "El pancake perfecto"). Producto inicial: jokeis
+          tradicionales clásicos a $110.
+        </p>
+        <ul class="space-y-2.5">
+          <li class="check-item"><span class="check-icon">✓</span> Sin sitio web propio actualmente</li>
+          <li class="check-item"><span class="check-icon">✓</span> 0 seguidores · cuenta recién creada</li>
+          <li class="check-item"><span class="check-icon">✓</span> Identidad de marca ya definida</li>
+          <li class="check-item"><span class="check-icon">✓</span> Oportunidad: capturar el momento de lanzamiento</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="pancake-divider">~ ✦ ~</div>
+
+<!-- DIAGNÓSTICO -->
+<section id="diagnostico" class="px-6 md:px-12 xl:px-20 py-20 bg-white border-y border-cream-2">
+  <div class="max-w-screen-xl mx-auto">
+    <p class="section-label mb-4">El momento de crecer</p>
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight">
+      Estás justo donde la magia empieza.
+    </h2>
+    <p class="text-gray-mid text-lg max-w-2xl mb-12">
+      Tener una marca nueva es una ventaja: empezamos sin errores que corregir y
+      construimos cada pieza con propósito.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="stat-card">
+        <div class="text-5xl font-extrabold text-syrup mb-2">0</div>
+        <p class="text-sm text-gray-mid leading-relaxed">
+          <strong class="text-near-black">Seguidores hoy.</strong><br>
+          Empezamos sin lastre — todo el crecimiento es ganado y orgánico.
+        </p>
+      </div>
+      <div class="stat-card">
+        <div class="text-5xl font-extrabold text-syrup mb-2">1</div>
+        <p class="text-sm text-gray-mid leading-relaxed">
+          <strong class="text-near-black">Canal activo (FB).</strong><br>
+          Faltan: web propia, Instagram, Google Business, WhatsApp catálogo.
+        </p>
+      </div>
+      <div class="stat-card">
+        <div class="text-5xl font-extrabold text-syrup mb-2">$110</div>
+        <p class="text-sm text-gray-mid leading-relaxed">
+          <strong class="text-near-black">Ticket inicial.</strong><br>
+          Producto con margen sano para escalar con publicidad y combos.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LO QUE PROPONEMOS -->
+<section class="px-6 md:px-12 xl:px-20 py-20 max-w-screen-xl mx-auto">
+  <div class="grid md:grid-cols-2 gap-12 items-start">
+    <div>
+      <p class="section-label mb-4">Lo que proponemos</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+        Tres pilares para arrancar fuerte.
+      </h2>
+      <p class="text-gray-mid text-lg leading-relaxed">
+        No te ofrecemos "solo una página web". Te entregamos una infraestructura digital
+        completa para que CoaPa'ncakes empiece a vender desde el primer día.
+      </p>
+    </div>
+    <div class="space-y-5">
+      <div class="bg-white border border-cream-2 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="step-num" style="margin-bottom:0">1</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Casa digital propia</h3>
+            <p class="text-sm text-gray-mid leading-relaxed">
+              Página web que sí es tuya — no depende de Facebook ni de algoritmos.
+              Menú, fotos, pedidos por WhatsApp, ubicación.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border border-cream-2 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="step-num" style="margin-bottom:0;background:#4FC3DC">2</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Presencia social que crece</h3>
+            <p class="text-sm text-gray-mid leading-relaxed">
+              Instagram + Facebook con calendario semanal, plantillas reutilizables,
+              y el tono de marca que ya construiste.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border border-cream-2 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="step-num" style="margin-bottom:0;background:#FFB347">3</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Encontrabilidad local</h3>
+            <p class="text-sm text-gray-mid leading-relaxed">
+              Google Business Profile, WhatsApp Business con catálogo, SEO local
+              para que aparezcas cuando alguien busque "pancakes cerca de mí".
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section id="planes" class="py-20 px-6 md:px-12 xl:px-20 bg-cream-2 border-y border-syrup/20">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="section-label mb-4">Planes de servicio</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
+        Elige el ritmo que necesitas hoy.
+      </h2>
+      <p class="text-gray-mid text-lg max-w-2xl mx-auto">
+        Tres opciones pensadas para una marca nueva. Puedes empezar pequeña y subir cuando crezcas.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- ESENCIAL -->
+      <div class="plan-card">
+        <div class="p-8">
+          <p class="text-sm font-bold text-syrup uppercase tracking-wider mb-2">Esencial</p>
+          <h3 class="text-2xl font-extrabold mb-1">Tu primera casa digital</h3>
+          <p class="text-sm text-gray-mid mb-6">Para validar y empezar a vender en línea.</p>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-extrabold">$4,500</span>
+              <span class="text-gray-mid text-sm">MXN · pago único</span>
+            </div>
+            <p class="text-xs text-gray-mid mt-1">Entrega 7 días</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="check-item"><span class="check-icon">✓</span> Landing page de 1 sección (menú, contacto, pedido)</li>
+            <li class="check-item"><span class="check-icon">✓</span> Botón directo de WhatsApp con mensaje pre-llenado</li>
+            <li class="check-item"><span class="check-icon">✓</span> Optimización SEO local básica</li>
+            <li class="check-item"><span class="check-icon">✓</span> Hosting gratuito el primer año</li>
+            <li class="check-item"><span class="check-icon">✓</span> Setup de Google Business Profile</li>
+          </ul>
+        </div>
+        <div class="px-8 pb-8 mt-auto">
+          <a href="#contacto" class="btn-ghost w-full">Quiero este</a>
+        </div>
+      </div>
+
+      <!-- CRECIMIENTO (FEATURED) -->
+      <div class="plan-card featured relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-syrup text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+          Más recomendado
+        </div>
+        <div class="p-8">
+          <p class="text-sm font-bold text-syrup uppercase tracking-wider mb-2">Crecimiento</p>
+          <h3 class="text-2xl font-extrabold mb-1">Web + Redes activas</h3>
+          <p class="text-sm text-gray-mid mb-6">Para construir comunidad y vender constante.</p>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-extrabold">$9,500</span>
+              <span class="text-gray-mid text-sm">MXN · setup</span>
+            </div>
+            <p class="text-xs text-gray-mid mt-1">+ $3,200/mes mantenimiento de redes</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="check-item"><span class="check-icon">✓</span> <strong>Todo lo del plan Esencial</strong></li>
+            <li class="check-item"><span class="check-icon">✓</span> Web de 4 secciones (home, menú, historia, pedido)</li>
+            <li class="check-item"><span class="check-icon">✓</span> Galería editable de productos</li>
+            <li class="check-item"><span class="check-icon">✓</span> 12 posts mensuales en IG + FB con calendario</li>
+            <li class="check-item"><span class="check-icon">✓</span> 8 historias mensuales + 2 reels</li>
+            <li class="check-item"><span class="check-icon">✓</span> Reporte mensual de métricas</li>
+            <li class="check-item"><span class="check-icon">✓</span> WhatsApp Business con catálogo</li>
+          </ul>
+        </div>
+        <div class="px-8 pb-8 mt-auto">
+          <a href="#contacto" class="btn-primary w-full">Empezar con este</a>
+        </div>
+      </div>
+
+      <!-- DESPEGUE -->
+      <div class="plan-card">
+        <div class="p-8">
+          <p class="text-sm font-bold text-syrup uppercase tracking-wider mb-2">Despegue</p>
+          <h3 class="text-2xl font-extrabold mb-1">Marca completa + venta online</h3>
+          <p class="text-sm text-gray-mid mb-6">Para escalar a delivery y eventos.</p>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-extrabold">$16,500</span>
+              <span class="text-gray-mid text-sm">MXN · setup</span>
+            </div>
+            <p class="text-xs text-gray-mid mt-1">+ $4,800/mes redes + ads</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="check-item"><span class="check-icon">✓</span> <strong>Todo lo del plan Crecimiento</strong></li>
+            <li class="check-item"><span class="check-icon">✓</span> Tienda online con carrito y pago</li>
+            <li class="check-item"><span class="check-icon">✓</span> Integración con repartidores (Rappi/Uber Eats setup)</li>
+            <li class="check-item"><span class="check-icon">✓</span> Brand kit ampliado (templates de combos, eventos)</li>
+            <li class="check-item"><span class="check-icon">✓</span> Campaña de Meta Ads para los primeros 1,000 seguidores</li>
+            <li class="check-item"><span class="check-icon">✓</span> Sesión de fotos profesional (1 día)</li>
+          </ul>
+        </div>
+        <div class="px-8 pb-8 mt-auto">
+          <a href="#contacto" class="btn-ghost w-full">Quiero este</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-center text-sm text-gray-mid mt-10">
+      Precios en MXN · IVA incluido · Sin contratos forzados, salida con 30 días de aviso.
+    </p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="py-20 px-6 md:px-12 xl:px-20 max-w-screen-xl mx-auto">
+  <p class="section-label mb-4">Cómo trabajamos</p>
+  <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-12">
+    De cero a online en 3 semanas.
+  </h2>
+
+  <div class="grid md:grid-cols-4 gap-5">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3 class="font-bold text-base mb-2">Brief y discovery</h3>
+      <p class="text-sm text-gray-mid leading-relaxed">
+        Conocemos a fondo CoaPa'ncakes, tu visión y a quién quieres llegar. Días 1–2.
+      </p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3 class="font-bold text-base mb-2">Diseño y wireframe</h3>
+      <p class="text-sm text-gray-mid leading-relaxed">
+        Maqueta visual de tu web y de las primeras piezas para redes. Días 3–7.
+      </p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3 class="font-bold text-base mb-2">Desarrollo y pruebas</h3>
+      <p class="text-sm text-gray-mid leading-relaxed">
+        Construimos, optimizamos y probamos. Tú revisas y damos los ajustes finales. Días 8–18.
+      </p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h3 class="font-bold text-base mb-2">Lanzamiento + soporte</h3>
+      <p class="text-sm text-gray-mid leading-relaxed">
+        Subimos al dominio, activamos campañas y damos 30 días de soporte gratuito.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ BROTA -->
+<section class="py-20 px-6 md:px-12 xl:px-20 bg-white border-y border-cream-2">
+  <div class="max-w-screen-xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+    <div class="md:col-span-6">
+      <p class="section-label mb-4">Por qué Brota Digital</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+        Pequeños negocios.<br>Grandes resultados.
+      </h2>
+      <p class="text-gray-mid text-lg leading-relaxed mb-6">
+        Somos una agencia especializada en marcas emergentes en CDMX. Sabemos lo que
+        es empezar de cero porque cada cliente con el que trabajamos arrancó así.
+      </p>
+      <ul class="space-y-3">
+        <li class="check-item"><span class="check-icon">✓</span> Más de 20 marcas pequeñas levantadas en su primer año</li>
+        <li class="check-item"><span class="check-icon">✓</span> Diseño hecho a mano — no plantillas genéricas</li>
+        <li class="check-item"><span class="check-icon">✓</span> Comunicación directa con quien hace tu proyecto</li>
+        <li class="check-item"><span class="check-icon">✓</span> Sin letras chicas, sin sorpresas en la factura</li>
+      </ul>
+    </div>
+    <div class="md:col-span-6 grid grid-cols-2 gap-4">
+      <div class="stat-card"><div class="text-3xl font-extrabold text-syrup">+20</div><p class="text-xs text-gray-mid mt-1">Marcas activas</p></div>
+      <div class="stat-card"><div class="text-3xl font-extrabold text-syrup">5 días</div><p class="text-xs text-gray-mid mt-1">Entrega más rápida</p></div>
+      <div class="stat-card"><div class="text-3xl font-extrabold text-syrup">100%</div><p class="text-xs text-gray-mid mt-1">Hecho en CDMX</p></div>
+      <div class="stat-card"><div class="text-3xl font-extrabold text-syrup">0</div><p class="text-xs text-gray-mid mt-1">Contratos forzados</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACTO -->
+<section id="contacto" class="py-24 px-6 md:px-12 xl:px-20">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="section-label mb-4 mx-auto">Siguiente paso</p>
+    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+      ¿Listas para servir el<br>
+      <span class="text-syrup">pancake digital perfecto?</span>
+    </h2>
+    <p class="text-lg text-gray-mid mb-10 leading-relaxed">
+      Reserva 20 minutos sin costo. Te explicamos los planes en detalle, resolvemos
+      dudas y si te late, arrancamos esta misma semana.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3">
+      <a href="https://wa.me/525500000000?text=Hola%20Brota%20Digital%2C%20vengo%20de%20la%20propuesta%20de%20CoaPa%27ncakes"
+         class="btn-primary">
+        Agendar llamada por WhatsApp
+      </a>
+      <a href="mailto:hola@brotadigital.mx?subject=Propuesta%20CoaPa%27ncakes"
+         class="btn-ghost">
+        Escribir por correo
+      </a>
+    </div>
+    <p class="text-sm text-gray-mid mt-8">
+      O simplemente respóndeme este mensaje y avanzamos por aquí mismo.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-cream-2 py-10 px-6 md:px-12 xl:px-20 bg-cream-2/40">
+  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-mid">
+    <div>
+      <span class="font-script text-syrup-dk text-xl">Brota Digital</span> · Agencia para pequeños negocios
+    </div>
+    <div>Propuesta válida 30 días · Mayo 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

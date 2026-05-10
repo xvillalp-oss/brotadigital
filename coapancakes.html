@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<title>CoaPa'ncakes | El pancake perfecto · CDMX</title>
+<meta name="description" content="Pancakes esponjosos hechos con amor. Jokeis tradicionales, especiales y toppings premium. Pídelos por WhatsApp y recíbelos en tu puerta."/>
+<meta name="theme-color" content="#FF8F65"/>
+
+<!-- OG -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="CoaPa'ncakes — El pancake perfecto"/>
+<meta property="og:description" content="Pancakes esponjosos hechos con amor. Pide los tuyos por WhatsApp."/>
+<meta property="og:locale" content="es_MX"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&display=swap"/>
+
+<style>
+:root{
+  --syrup:#FF8F65;
+  --syrup-dk:#E8723F;
+  --maple:#FFB347;
+  --sky:#4FC3DC;
+  --berry:#D44862;
+  --cream:#FFF8F0;
+  --cream-2:#FCEDD9;
+  --cream-3:#F8E1C0;
+  --ink:#2A1810;
+  --ink-2:#5A4030;
+  --ink-3:#8A7060;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Typography */
+.serif{font-family:'Fraunces',Georgia,serif}
+.script{font-family:'Caveat',cursive;font-weight:700}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--syrup-dk);
+}
+.eyebrow::before{content:'';width:24px;height:1.5px;background:var(--syrup)}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 30px;border-radius:999px;
+  font-weight:600;font-size:15px;letter-spacing:.02em;
+  transition:all .25s ease;
+  min-height:48px;
+}
+.btn-primary{
+  background:var(--syrup);color:#fff;
+  box-shadow:0 8px 20px rgba(255,143,101,.32);
+}
+.btn-primary:hover{background:var(--syrup-dk);transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,143,101,.4)}
+.btn-ghost{
+  background:transparent;color:var(--ink);
+  border:1.5px solid var(--ink);
+}
+.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  background:rgba(255,248,240,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(232,114,63,.1);
+}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav__logo{
+  font-family:'Caveat',cursive;font-weight:700;font-size:30px;color:var(--syrup-dk);
+  line-height:1;letter-spacing:.01em;
+}
+.nav__logo span{color:var(--ink)}
+.nav__links{display:flex;gap:34px;list-style:none}
+.nav__links a{
+  font-size:13px;font-weight:500;color:var(--ink-2);
+  transition:color .2s;
+}
+.nav__links a:hover{color:var(--syrup-dk)}
+.nav__cta{
+  background:var(--syrup);color:#fff;
+  padding:10px 22px;border-radius:999px;
+  font-size:13px;font-weight:600;letter-spacing:.02em;
+}
+.nav__cta:hover{background:var(--syrup-dk)}
+.nav__burger{display:none}
+
+@media(max-width:768px){
+  .nav__links{display:none}
+  .nav__cta{padding:9px 16px;font-size:12px}
+  .nav__logo{font-size:26px}
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  padding:140px 0 80px;
+  position:relative;
+  display:flex;align-items:center;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(79,195,220,.18) 0%,transparent 45%),
+    radial-gradient(circle at 15% 85%,rgba(255,179,71,.22) 0%,transparent 45%),
+    var(--cream);
+  overflow:hidden;
+}
+.hero__inner{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;
+  position:relative;z-index:2;
+}
+.hero__h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(48px,7vw,96px);
+  font-weight:600;line-height:1.0;letter-spacing:-.02em;
+  margin:24px 0 28px;
+  color:var(--ink);
+}
+.hero__h1 em{
+  font-style:italic;color:var(--syrup-dk);font-weight:500;
+}
+.hero__sub{
+  font-size:clamp(17px,1.7vw,20px);color:var(--ink-2);
+  max-width:480px;margin-bottom:36px;line-height:1.6;
+}
+.hero__cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero__trust{
+  margin-top:32px;display:flex;align-items:center;gap:18px;
+  font-size:13px;color:var(--ink-3);
+}
+.hero__trust strong{color:var(--ink)}
+.hero__rating{display:flex;gap:2px;color:var(--maple);font-size:18px}
+
+/* Hero visual — pancake stack illustration in CSS */
+.hero__visual{
+  position:relative;height:560px;display:flex;align-items:center;justify-content:center;
+}
+.stack{position:relative;width:340px;height:340px;animation:float 5s ease-in-out infinite}
+.stack__plate{
+  position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
+  width:380px;height:30px;border-radius:50%;
+  background:linear-gradient(to bottom,#fff 0%,#f5e8d8 100%);
+  box-shadow:0 12px 40px rgba(232,114,63,.18);
+}
+.stack__cake{
+  position:absolute;left:50%;transform:translateX(-50%);
+  width:280px;height:42px;border-radius:60px;
+  background:linear-gradient(180deg,#E8B477 0%,#C9885A 70%,#A86940 100%);
+  box-shadow:0 4px 0 rgba(0,0,0,.08), inset 0 -6px 12px rgba(0,0,0,.15);
+}
+.stack__cake--1{bottom:8px}
+.stack__cake--2{bottom:42px}
+.stack__cake--3{bottom:76px}
+.stack__syrup{
+  position:absolute;left:50%;transform:translateX(-50%);bottom:108px;
+  width:200px;height:40px;
+  background:radial-gradient(ellipse 100% 50% at 50% 0%,#FFB347 0%,#E8923D 60%,transparent 100%);
+  border-radius:50% 50% 30% 30% / 80% 80% 100% 100%;
+  filter:drop-shadow(0 4px 8px rgba(232,146,61,.4));
+}
+.stack__syrup::after{
+  content:'';position:absolute;bottom:-30px;left:30%;width:8px;height:50px;
+  background:linear-gradient(180deg,#FFB347,#E8923D);border-radius:0 0 50% 50%;
+}
+.stack__berry{
+  position:absolute;border-radius:50%;
+  box-shadow:0 4px 8px rgba(0,0,0,.2), inset -3px -3px 6px rgba(0,0,0,.2);
+}
+.stack__berry--1{
+  left:42%;bottom:128px;width:24px;height:28px;
+  background:radial-gradient(circle at 30% 30%,#FF6B7A 0%,#D44862 60%,#9C2D45 100%);
+}
+.stack__berry--2{
+  left:58%;bottom:138px;width:18px;height:18px;
+  background:radial-gradient(circle at 30% 30%,#5C7CFF 0%,#3550C7 100%);
+}
+.stack__berry--3{
+  left:50%;bottom:148px;width:16px;height:16px;
+  background:radial-gradient(circle at 30% 30%,#5C7CFF 0%,#3550C7 100%);
+}
+.stack__leaf{
+  position:absolute;left:48%;bottom:160px;
+  width:30px;height:14px;border-radius:0 100% 0 100%;
+  background:linear-gradient(135deg,#7DB668,#4F8A3D);transform:rotate(-25deg);
+}
+.stack__steam{
+  position:absolute;width:8px;height:50px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.6),transparent);
+  border-radius:50%;
+  filter:blur(4px);
+  animation:steam 3s ease-in-out infinite;
+}
+.stack__steam--1{left:40%;bottom:180px;animation-delay:0s}
+.stack__steam--2{left:55%;bottom:185px;animation-delay:.6s;height:60px}
+.stack__steam--3{left:62%;bottom:178px;animation-delay:1.2s}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes steam{
+  0%{opacity:0;transform:translateY(0) scale(.8)}
+  50%{opacity:.7}
+  100%{opacity:0;transform:translateY(-30px) scale(1.4)}
+}
+
+@media(max-width:900px){
+  .hero{padding:120px 0 60px}
+  .hero__inner{grid-template-columns:1fr;text-align:center}
+  .hero__sub{margin-left:auto;margin-right:auto}
+  .hero__cta{justify-content:center}
+  .hero__trust{justify-content:center}
+  .hero__visual{height:380px;order:-1;margin-bottom:20px}
+  .stack{transform:scale(.85)}
+  .eyebrow{justify-content:center}
+}
+
+/* SECTIONS */
+section{padding:100px 0;position:relative}
+.section__head{text-align:center;margin-bottom:60px;max-width:680px;margin-left:auto;margin-right:auto}
+.section__h2{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:clamp(38px,5vw,60px);line-height:1.05;letter-spacing:-.02em;
+  margin:18px 0 16px;
+}
+.section__h2 em{font-style:italic;color:var(--syrup-dk);font-weight:500}
+.section__sub{font-size:17px;color:var(--ink-2);line-height:1.6}
+
+/* SOBRE */
+.sobre{background:var(--cream-2)}
+.sobre__inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.sobre__visual{
+  position:relative;
+  background:#fff;border-radius:24px;padding:60px 40px;
+  text-align:center;
+  box-shadow:0 16px 50px rgba(232,114,63,.1);
+}
+.sobre__quote{font-family:'Caveat',cursive;font-size:42px;color:var(--syrup-dk);line-height:1.2;margin-bottom:14px}
+.sobre__quote-author{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.sobre__h2{font-family:'Fraunces',serif;font-size:clamp(36px,4.6vw,52px);line-height:1.1;font-weight:600;margin:18px 0 22px}
+.sobre__h2 em{font-style:italic;color:var(--syrup-dk);font-weight:500}
+.sobre__p{font-size:17px;color:var(--ink-2);margin-bottom:18px;line-height:1.7}
+
+@media(max-width:900px){.sobre__inner{grid-template-columns:1fr;gap:40px}}
+
+/* MENÚ */
+.menu{background:var(--cream)}
+.menu__categories{
+  display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:42px;
+}
+.menu__cat{
+  padding:10px 22px;border-radius:999px;
+  font-size:13px;font-weight:600;letter-spacing:.02em;
+  background:#fff;color:var(--ink-2);border:1.5px solid var(--cream-3);
+  transition:all .2s;
+}
+.menu__cat.active,.menu__cat:hover{background:var(--syrup);color:#fff;border-color:var(--syrup)}
+
+.menu__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.menu__card{
+  background:#fff;border-radius:20px;padding:30px;
+  border:1.5px solid var(--cream-3);
+  transition:all .25s ease;
+  position:relative;display:flex;flex-direction:column;gap:14px;
+}
+.menu__card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(255,143,101,.18);
+  border-color:var(--syrup);
+}
+.menu__card--featured{
+  background:linear-gradient(180deg,#fff 0%,#FFF1E8 100%);
+  border:2px solid var(--syrup);
+}
+.menu__badge{
+  position:absolute;top:20px;right:20px;
+  background:var(--syrup);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 11px;border-radius:999px;
+}
+.menu__icon{
+  width:64px;height:64px;border-radius:50%;
+  background:var(--cream-2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;margin-bottom:6px;
+}
+.menu__name{
+  font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1.1;
+  color:var(--ink);
+}
+.menu__desc{font-size:14px;color:var(--ink-2);line-height:1.6;flex:1}
+.menu__foot{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-top:8px;padding-top:14px;border-top:1px dashed var(--cream-3);
+}
+.menu__price{
+  font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--syrup-dk);
+  line-height:1;
+}
+.menu__price small{font-size:13px;color:var(--ink-3);font-weight:400;margin-left:4px}
+.menu__order{
+  background:var(--ink);color:var(--cream);
+  padding:8px 16px;border-radius:999px;
+  font-size:12px;font-weight:600;letter-spacing:.04em;
+}
+.menu__order:hover{background:var(--syrup-dk)}
+
+@media(max-width:900px){.menu__grid{grid-template-columns:1fr}}
+
+/* PORQUÉ */
+.porque{background:var(--cream-2);padding:90px 0}
+.porque__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:50px}
+.porque__card{text-align:center;padding:30px 18px}
+.porque__icon{
+  width:72px;height:72px;border-radius:50%;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;margin:0 auto 18px;
+  box-shadow:0 8px 24px rgba(232,114,63,.12);
+}
+.porque__title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:8px}
+.porque__desc{font-size:14px;color:var(--ink-2);line-height:1.5}
+
+@media(max-width:900px){.porque__grid{grid-template-columns:repeat(2,1fr);gap:20px}}
+
+/* PEDIDO CTA */
+.pedido{
+  background:linear-gradient(135deg,var(--syrup) 0%,var(--berry) 100%);
+  color:#fff;text-align:center;padding:120px 0;
+}
+.pedido__h2{
+  font-family:'Fraunces',serif;font-size:clamp(40px,6vw,72px);
+  font-weight:600;line-height:1.05;letter-spacing:-.02em;margin-bottom:18px;
+}
+.pedido__h2 em{font-style:italic;font-family:'Caveat',cursive;font-weight:700;display:block;font-size:1.1em;margin:8px 0}
+.pedido__sub{font-size:18px;opacity:.92;margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto}
+.pedido__btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:#fff;color:var(--syrup-dk);
+  padding:20px 36px;border-radius:999px;
+  font-size:17px;font-weight:700;letter-spacing:.01em;
+  box-shadow:0 16px 50px rgba(0,0,0,.18);
+  transition:transform .2s;
+}
+.pedido__btn:hover{transform:translateY(-3px) scale(1.02)}
+.pedido__steps{
+  margin-top:50px;display:flex;justify-content:center;gap:34px;flex-wrap:wrap;
+  font-size:14px;
+}
+.pedido__step{display:flex;align-items:center;gap:10px;opacity:.95}
+.pedido__step strong{
+  background:rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;font-weight:700;
+}
+
+/* INFO / Horario */
+.info{background:var(--cream)}
+.info__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.info__card{
+  background:#fff;border-radius:20px;padding:34px;
+  border:1.5px solid var(--cream-3);
+}
+.info__card-icon{font-size:32px;margin-bottom:14px}
+.info__card-title{
+  font-family:'Fraunces',serif;font-size:22px;font-weight:600;margin-bottom:10px;
+}
+.info__card-text{font-size:15px;color:var(--ink-2);line-height:1.6}
+.info__card-text strong{color:var(--ink)}
+
+@media(max-width:900px){.info__grid{grid-template-columns:1fr}}
+
+/* FOOTER */
+.footer{
+  background:var(--ink);color:rgba(255,248,240,.7);
+  padding:60px 0 30px;
+}
+.footer__inner{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;
+  padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.footer__logo{
+  font-family:'Caveat',cursive;font-weight:700;font-size:34px;
+  color:var(--syrup);line-height:1;margin-bottom:12px;
+}
+.footer__tag{font-size:14px;color:rgba(255,248,240,.55);max-width:280px;line-height:1.6}
+.footer__h4{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:18px;
+}
+.footer__list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer__list a{font-size:14px;transition:color .2s}
+.footer__list a:hover{color:var(--syrup)}
+.footer__bottom{
+  padding-top:30px;display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:rgba(255,248,240,.4);
+}
+.footer__bottom a{color:var(--syrup);font-weight:500}
+
+@media(max-width:768px){
+  .footer__inner{grid-template-columns:1fr;gap:30px}
+  .footer__bottom{flex-direction:column;gap:10px;text-align:center}
+}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo">CoaPa<span>'n</span>cakes</a>
+    <ul class="nav__links">
+      <li><a href="#sobre">Sobre nosotras</a></li>
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#porque">Por qué</a></li>
+      <li><a href="#info">Encuéntranos</a></li>
+    </ul>
+    <a href="#pedido" class="nav__cta">Pedir ahora</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero__inner">
+    <div>
+      <div class="eyebrow">Hechos a mano · CDMX</div>
+      <h1 class="hero__h1">El pancake <em>perfecto</em><br>existe.</h1>
+      <p class="hero__sub">
+        Esponjosos por dentro, doraditos por fuera, bañados en miel maple de verdad.
+        Pídelos por WhatsApp y los llevamos calientitos hasta tu puerta.
+      </p>
+      <div class="hero__cta">
+        <a href="#pedido" class="btn btn-primary">Pedir mis pancakes →</a>
+        <a href="#menu" class="btn btn-ghost">Ver menú</a>
+      </div>
+      <div class="hero__trust">
+        <div class="hero__rating">★★★★★</div>
+        <span><strong>Hechos diariamente</strong> · masa fresca, sin pre-mezclas</span>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="stack" aria-hidden="true">
+        <div class="stack__plate"></div>
+        <div class="stack__cake stack__cake--1"></div>
+        <div class="stack__cake stack__cake--2"></div>
+        <div class="stack__cake stack__cake--3"></div>
+        <div class="stack__syrup"></div>
+        <div class="stack__berry stack__berry--1"></div>
+        <div class="stack__berry stack__berry--2"></div>
+        <div class="stack__berry stack__berry--3"></div>
+        <div class="stack__leaf"></div>
+        <div class="stack__steam stack__steam--1"></div>
+        <div class="stack__steam stack__steam--2"></div>
+        <div class="stack__steam stack__steam--3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="sobre">
+  <div class="container sobre__inner">
+    <div class="sobre__visual reveal">
+      <p class="sobre__quote">"Cada pancake<br>se hace con receta<br>de casa."</p>
+      <p class="sobre__quote-author">— Coapa'n Cakes</p>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Sobre nosotras</div>
+      <h2 class="sobre__h2">El sabor de un domingo en la mañana,<br><em>todos los días.</em></h2>
+      <p class="sobre__p">
+        CoaPa'ncakes nace en CDMX con una idea sencilla: que el desayuno favorito
+        de todo el mundo no debería ser solo de fines de semana.
+      </p>
+      <p class="sobre__p">
+        Hacemos cada masa fresca, mezclamos a mano, y solo usamos ingredientes
+        que reconocerías en tu propia cocina. Sin pre-mezclas industriales,
+        sin polvos raros, sin atajos.
+      </p>
+      <p class="sobre__p">
+        Solo pancakes esponjosos, miel maple de verdad, y la promesa de un
+        desayuno que se siente como en casa.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- MENÚ -->
+<section id="menu" class="menu">
+  <div class="container">
+    <div class="section__head reveal">
+      <div class="eyebrow" style="justify-content:center">Nuestro menú</div>
+      <h2 class="section__h2">Tres jokeis. <em>Mil formas.</em></h2>
+      <p class="section__sub">Empezamos con los clásicos. Cada plato lleva tres pancakes esponjosos como base — el resto, lo decides tú.</p>
+    </div>
+
+    <div class="menu__categories reveal">
+      <button class="menu__cat active">Clásicos</button>
+      <button class="menu__cat">Especiales</button>
+      <button class="menu__cat">Dulces extras</button>
+      <button class="menu__cat">Bebidas</button>
+    </div>
+
+    <div class="menu__grid">
+
+      <article class="menu__card menu__card--featured reveal">
+        <span class="menu__badge">Más pedido</span>
+        <div class="menu__icon">🥞</div>
+        <h3 class="menu__name">Jokei Clásico</h3>
+        <p class="menu__desc">
+          Tres jokeis tradicionales esponjosos, bañados en miel maple
+          y rematados con mantequilla derretida.
+        </p>
+        <div class="menu__foot">
+          <div class="menu__price">$110<small>MXN</small></div>
+          <a href="#pedido" class="menu__order">Pedir</a>
+        </div>
+      </article>
+
+      <article class="menu__card reveal">
+        <div class="menu__icon">🍓</div>
+        <h3 class="menu__name">Jokei Frutal</h3>
+        <p class="menu__desc">
+          Tres jokeis con frutos rojos frescos, miel maple y un toque
+          de mascarpone.
+        </p>
+        <div class="menu__foot">
+          <div class="menu__price">$135<small>MXN</small></div>
+          <a href="#pedido" class="menu__order">Pedir</a>
+        </div>
+      </article>
+
+      <article class="menu__card reveal">
+        <div class="menu__icon">🍫</div>
+        <h3 class="menu__name">Jokei Choco</h3>
+        <p class="menu__desc">
+          Tres jokeis con chips de chocolate, ganache calientita
+          y un poco de plátano caramelizado.
+        </p>
+        <div class="menu__foot">
+          <div class="menu__price">$140<small>MXN</small></div>
+          <a href="#pedido" class="menu__order">Pedir</a>
+        </div>
+      </article>
+
+      <article class="menu__card reveal">
+        <div class="menu__icon">🥥</div>
+        <h3 class="menu__name">Jokei Tropical</h3>
+        <p class="menu__desc">
+          Tres jokeis con piña asada, coco rallado y miel de agave.
+        </p>
+        <div class="menu__foot">
+          <div class="menu__price">$135<small>MXN</small></div>
+          <a href="#pedido" class="menu__order">Pedir</a>
+        </div>
+      </article>
+
+      <article class="menu__card reveal">
+        <div class="menu__icon">🥜</div>
+        <h3 class="menu__name">Jokei PB & Banana</h3>
+        <p class="menu__desc">
+          Tres jokeis con crema de cacahuate natural, plátano y miel.
+        </p>
+        <div class="menu__foot">
+          <div class="menu__price">$130<small>MXN</small></div>
+          <a href="#pedido" class="menu__order">Pedir</a>
+        </div>
+      </article>
+
+      <article class="menu__card reveal">
+        <div class="menu__icon">✨</div>
+        <h3 class="menu__name">Personalizado</h3>
+        <p class="menu__desc">
+          Tres jokeis con los toppings que tú elijas. Cuéntanos qué se te antoja.
+        </p>
+        <div class="menu__foot">
+          <div class="menu__price">desde $110<small>MXN</small></div>
+          <a href="#pedido" class="menu__order">Diseñar</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORQUÉ -->
+<section id="porque" class="porque">
+  <div class="container">
+    <div class="section__head reveal">
+      <div class="eyebrow" style="justify-content:center">Por qué CoaPa'ncakes</div>
+      <h2 class="section__h2">Cuatro razones para <em>no resistirte</em>.</h2>
+    </div>
+
+    <div class="porque__grid">
+      <div class="porque__card reveal">
+        <div class="porque__icon">🌾</div>
+        <h3 class="porque__title">Masa fresca diaria</h3>
+        <p class="porque__desc">Sin pre-mezclas. Cada masa se hace el mismo día, a mano.</p>
+      </div>
+      <div class="porque__card reveal">
+        <div class="porque__icon">🍯</div>
+        <h3 class="porque__title">Miel maple real</h3>
+        <p class="porque__desc">No miel saborizada — usamos miel maple importada de verdad.</p>
+      </div>
+      <div class="porque__card reveal">
+        <div class="porque__icon">🚴</div>
+        <h3 class="porque__title">Llegan calientitos</h3>
+        <p class="porque__desc">Empacados para que mantengan el calor en el camino.</p>
+      </div>
+      <div class="porque__card reveal">
+        <div class="porque__icon">💛</div>
+        <h3 class="porque__title">Receta de casa</h3>
+        <p class="porque__desc">Como los hacía tu mamá los domingos en la mañana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEDIDO CTA -->
+<section id="pedido" class="pedido">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="pedido__h2">Pídelos<em>justo ahora.</em></h2>
+      <p class="pedido__sub">
+        Mándanos un WhatsApp con tu pedido y te confirmamos disponibilidad
+        y tiempo de entrega al instante.
+      </p>
+      <a href="https://wa.me/525500000000?text=Hola%20CoaPa%27ncakes%2C%20quiero%20pedir%3A" class="pedido__btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+        Pedir por WhatsApp
+      </a>
+      <div class="pedido__steps">
+        <div class="pedido__step"><strong>1</strong> Eliges tus jokeis</div>
+        <div class="pedido__step"><strong>2</strong> Confirmamos</div>
+        <div class="pedido__step"><strong>3</strong> Llegan en 30–45 min</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section id="info" class="info">
+  <div class="container">
+    <div class="section__head reveal">
+      <div class="eyebrow" style="justify-content:center">Encuéntranos</div>
+      <h2 class="section__h2">Aquí estamos<br><em>todos los días.</em></h2>
+    </div>
+
+    <div class="info__grid">
+
+      <div class="info__card reveal">
+        <div class="info__card-icon">📍</div>
+        <h3 class="info__card-title">Zona de entrega</h3>
+        <p class="info__card-text">
+          <strong>Coapa y alrededores · CDMX.</strong><br>
+          ¿Vives más lejos? Mándanos tu zona, vemos cómo llegamos.
+        </p>
+      </div>
+
+      <div class="info__card reveal">
+        <div class="info__card-icon">🕐</div>
+        <h3 class="info__card-title">Horario</h3>
+        <p class="info__card-text">
+          <strong>Lunes a domingo · 8am – 2pm</strong><br>
+          Hacemos en lotes pequeños — pide temprano para asegurar disponibilidad.
+        </p>
+      </div>
+
+      <div class="info__card reveal">
+        <div class="info__card-icon">💬</div>
+        <h3 class="info__card-title">Contacto directo</h3>
+        <p class="info__card-text">
+          <strong>WhatsApp:</strong> 55 0000 0000<br>
+          <strong>Facebook:</strong> @CoaPa'ncakes<br>
+          Te respondemos en menos de 10 min en horario laboral.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__logo">CoaPa'ncakes</div>
+        <p class="footer__tag">El pancake perfecto, hecho con receta de casa, entregado calientito en CDMX.</p>
+      </div>
+      <div>
+        <h4 class="footer__h4">Menú</h4>
+        <ul class="footer__list">
+          <li><a href="#menu">Clásicos</a></li>
+          <li><a href="#menu">Especiales</a></li>
+          <li><a href="#menu">Personalizados</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__h4">Contacto</h4>
+        <ul class="footer__list">
+          <li><a href="https://wa.me/525500000000">WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61573323367180" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#info">Zona de entrega</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 CoaPa'ncakes · CDMX</div>
+      <div>Sitio por <a href="https://brotadigital.mx" target="_blank" rel="noopener">Brota Digital</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  }
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Menu category tabs (visual only — placeholder for future filtering)
+document.querySelectorAll('.menu__cat').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.menu__cat').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
