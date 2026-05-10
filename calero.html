@@ -104,12 +104,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 .hero__image{
   aspect-ratio:4/5;position:relative;overflow:hidden;
-  background:radial-gradient(ellipse 60% 40% at 50% 35%,#FFD9A8 0%,#C18653 35%,#7B3F23 70%,#1F0A05 100%);
+  background:url('calero-base-1.jpg') center/cover no-repeat;
 }
 .hero__image::after{
   content:'Pieza Margo';position:absolute;top:24px;right:24px;
   font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(245,239,227,.7);
+  color:rgba(245,239,227,.85);
+  text-shadow:0 1px 4px rgba(0,0,0,.4);
 }
 
 @media(max-width:900px){
@@ -168,6 +169,7 @@ section{padding:110px 0}
 .bg-4{background:radial-gradient(ellipse 55% 38% at 50% 32%,#F8DDB0,#C28A56 32%,#6E3A1F 62%,#251108 100%)}
 .bg-5{background:radial-gradient(ellipse 50% 42% at 50% 38%,#FFE2A8,#D49860 32%,#80411C 64%,#1A0B05 100%)}
 .bg-6{background:radial-gradient(ellipse 60% 35% at 50% 28%,#FCE0AE,#CC9663 30%,#783A1B 60%,#1E0E07 100%)}
+.bg-real-margo{background:url('calero-base-1.jpg') center/cover no-repeat}
 .bg-7{background:linear-gradient(160deg,#E6D9C8 0%,#C8B59A 60%,#8C7257 100%)}
 .bg-8{background:linear-gradient(180deg,#F0E0CB 0%,#B3937A 100%)}
 .bg-9{background:linear-gradient(200deg,#E0CDB0 0%,#9B7E5E 100%)}
@@ -525,7 +527,7 @@ section{padding:110px 0}
 <script>
 // ─── PRODUCT DATA ───────────────────────────────────────────────
 const BASES = [
-  { id:'b1', name:'Margo',   desc:'Barro torneado · 38 cm',                    price:4800, img:'bg-1' },
+  { id:'b1', name:'Margo',   desc:'Cerámica esmaltada miel · 22 cm · incluye foco Edison globe', price:4800, img:'bg-real-margo' },
   { id:'b2', name:'Pepa',    desc:'Esmaltada en cobre · 42 cm',                price:5400, img:'bg-2' },
   { id:'b3', name:'Toña',    desc:'Cerámica escultórica · 50 cm',              price:6200, img:'bg-3' },
   { id:'b4', name:'Concha',  desc:'Barro vidriado, forma de luna · 36 cm',     price:4500, img:'bg-4' },
