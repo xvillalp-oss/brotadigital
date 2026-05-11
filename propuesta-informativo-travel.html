@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Propuesta WordPress Diario Digital — Informativo Travel × Brota Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "coral":      "#C8562A",
+          "coral-dk":   "#A8441F",
+          "teal":       "#2D5A6B",
+          "near-black": "#1F1814",
+          "gray-mid":   "#6b6b6b",
+          "cream":      "#FAF6EE",
+          "cream-2":    "#F2EAD7",
+        },
+        fontFamily: {
+          sans:   ["Inter", "sans-serif"],
+          serif:  ["Fraunces", "Georgia", "serif"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { font-family: 'Inter', sans-serif; }
+  html { scroll-behavior: smooth; }
+
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+
+  .btn-primary {
+    background: #C8562A; color: #fff;
+    transition: background .2s, transform .15s;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; font-weight: 600; border-radius: 999px; text-decoration: none;
+    padding: 14px 28px; font-size: 14px;
+  }
+  .btn-primary:hover { background: #A8441F; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent; color: #1F1814; border: 1.5px solid #1F1814;
+    transition: all .2s;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; font-weight: 600; border-radius: 999px; text-decoration: none;
+    padding: 14px 28px; font-size: 14px;
+  }
+  .btn-ghost:hover { background: #1F1814; color: #FAF6EE; }
+
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: #2A2118; line-height: 1.6; padding: 4px 0;
+  }
+  .check-icon {
+    flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+    background: #FAEEE8; color: #A8441F; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .x-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: #6b6b6b; line-height: 1.6; padding: 4px 0;
+  }
+  .x-icon {
+    flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+    background: #f0e8d8; color: #6b6b6b; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+
+  .label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: #C8562A;
+    background: #FAEEE8; padding: 6px 14px; border-radius: 999px;
+  }
+  .label::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: #C8562A;
+  }
+
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #1F1814; color: #FAF6EE; font-weight: 700; font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .price-card {
+    background: linear-gradient(180deg, #fff 0%, #FAEEE8 100%);
+    border: 2px solid #C8562A;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 16px 50px rgba(200,86,42,0.14);
+  }
+</style>
+</head>
+
+<body class="bg-cream text-near-black">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-cream/90 backdrop-blur border-b border-cream-2">
+  <div class="max-w-screen-xl mx-auto px-6 md:px-12 xl:px-20 h-16 flex items-center justify-between">
+    <div class="serif italic text-2xl text-coral-dk font-medium">Brota Digital</div>
+    <a href="#contacto" class="btn-primary text-sm" style="padding:10px 20px;">Empezar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="px-6 md:px-12 xl:px-20 pt-16 pb-20 max-w-screen-xl mx-auto">
+  <div class="grid md:grid-cols-12 gap-10 items-center">
+    <div class="md:col-span-7">
+      <p class="label mb-6">Propuesta personalizada · Mayo 2026</p>
+      <h1 class="serif font-medium text-4xl md:text-6xl leading-tight tracking-tight mb-6" style="font-style:italic">
+        Tu diario digital,<br>
+        <span class="not-italic text-coral">listo para publicar</span><br>
+        en menos de 14 días.
+      </h1>
+      <p class="text-lg text-gray-mid leading-relaxed max-w-xl mb-8">
+        Una propuesta hecha a medida para Informativo Travel. Sitio en WordPress
+        con look editorial profesional, listo para que ustedes publiquen
+        contenido diariamente sin depender de nadie.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#inversion" class="btn-primary">Ver inversión</a>
+        <a href="#incluye" class="btn-ghost">Qué incluye</a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-gray-mid">
+        <span>✦ Entrega 7–14 días</span>
+        <span>✦ Capacitación incluida</span>
+        <span>✦ Sin licencias premium obligatorias</span>
+      </div>
+    </div>
+    <div class="md:col-span-5">
+      <div class="bg-white rounded-3xl border border-cream-2 p-8 shadow-sm">
+        <p class="label mb-4" style="background:#E8F0F4;color:#2D5A6B;">
+          <span style="background:#2D5A6B"></span>Para Informativo Travel
+        </p>
+        <h3 class="serif font-medium text-2xl mb-3">Resumen ejecutivo</h3>
+        <p class="text-sm text-gray-mid mb-5 leading-relaxed">
+          Ya tienen WordPress instalado en HostGator y dominio comprado.
+          Quieren un sitio con estilo de revista digital donde puedan subir
+          contenido editorial diariamente.
+        </p>
+        <ul class="space-y-1.5">
+          <li class="check-item"><span class="check-icon">✓</span>WordPress + dominio listos</li>
+          <li class="check-item"><span class="check-icon">✓</span>Look tipo revista digital editorial</li>
+          <li class="check-item"><span class="check-icon">✓</span>Equipo capaz de subir contenido diario</li>
+          <li class="check-item"><span class="check-icon">✓</span>Capacitación + manual de uso incluidos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- LO QUE INCLUYE -->
+<section id="incluye" class="px-6 md:px-12 xl:px-20 py-20 bg-white border-y border-cream-2">
+  <div class="max-w-screen-xl mx-auto">
+    <p class="label mb-4">Qué incluye</p>
+    <h2 class="serif font-medium text-3xl md:text-5xl tracking-tight mb-3" style="font-style:italic">
+      Todo lo necesario para <span class="not-italic text-coral">arrancar.</span>
+    </h2>
+    <p class="text-gray-mid text-lg max-w-2xl mb-12">
+      Dejas el sitio funcionando, optimizado, y listo para que tu equipo lo opere
+      desde el primer día — sin depender de nosotras para publicar.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+
+      <div>
+        <h3 class="serif text-xl font-medium mb-4 text-near-black">🎨 Diseño y configuración</h3>
+        <ul class="space-y-1">
+          <li class="check-item"><span class="check-icon">✓</span>Tema WordPress estilo revista digital, customizado con su identidad</li>
+          <li class="check-item"><span class="check-icon">✓</span>Personalización de colores, logo y tipografías de marca</li>
+          <li class="check-item"><span class="check-icon">✓</span>Header con menú principal y carrusel de noticias destacadas</li>
+          <li class="check-item"><span class="check-icon">✓</span>Layout de portada tipo magazine con grid editorial</li>
+          <li class="check-item"><span class="check-icon">✓</span>Diseño responsive (perfecto en celular, tablet y desktop)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="serif text-xl font-medium mb-4 text-near-black">📰 Estructura editorial</h3>
+        <ul class="space-y-1">
+          <li class="check-item"><span class="check-icon">✓</span>Hasta 5 categorías editoriales configuradas (Destinos, Tips, Crónicas, etc.)</li>
+          <li class="check-item"><span class="check-icon">✓</span>Menú principal de navegación funcional</li>
+          <li class="check-item"><span class="check-icon">✓</span>Página "Sobre nosotros" con contenido editorial redactado</li>
+          <li class="check-item"><span class="check-icon">✓</span>Página de "Contacto" con formulario funcional</li>
+          <li class="check-item"><span class="check-icon">✓</span>2 artículos modelo cargados para que el sitio no se vea vacío al lanzar</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="serif text-xl font-medium mb-4 text-near-black">⚙️ Plugins esenciales</h3>
+        <ul class="space-y-1">
+          <li class="check-item"><span class="check-icon">✓</span><strong>Yoast SEO:</strong> para que Google los encuentre fácil</li>
+          <li class="check-item"><span class="check-icon">✓</span><strong>WP Rocket / cache:</strong> sitio que carga rápido</li>
+          <li class="check-item"><span class="check-icon">✓</span><strong>Wordfence Security:</strong> protección contra ataques</li>
+          <li class="check-item"><span class="check-icon">✓</span>Conexión con Google Analytics + Search Console</li>
+          <li class="check-item"><span class="check-icon">✓</span>Optimización de imágenes (Smush)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="serif text-xl font-medium mb-4 text-near-black">🎓 Capacitación</h3>
+        <ul class="space-y-1">
+          <li class="check-item"><span class="check-icon">✓</span>1 sesión de capacitación de 1 hora vía Google Meet</li>
+          <li class="check-item"><span class="check-icon">✓</span>Te enseñamos paso a paso cómo subir artículos desde compu</li>
+          <li class="check-item"><span class="check-icon">✓</span>Cómo usar la app móvil de WordPress (publicar desde el celular)</li>
+          <li class="check-item"><span class="check-icon">✓</span>Cómo programar publicaciones para toda la semana</li>
+          <li class="check-item"><span class="check-icon">✓</span><strong>Manual de usuario en PDF</strong> personalizado para consultar siempre</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-2 gap-12">
+      <div class="bg-cream-2 rounded-2xl p-8">
+        <h4 class="serif text-lg font-medium mb-3 flex items-center gap-2">
+          <span class="text-coral">✓</span> Soporte post-entrega
+        </h4>
+        <p class="text-sm text-gray-mid leading-relaxed">
+          Te acompañamos durante <strong class="text-near-black">30 días después de entregado el sitio</strong>
+          por WhatsApp para resolver cualquier duda mientras se familiarizan con la operación diaria.
+        </p>
+      </div>
+      <div class="bg-cream-2 rounded-2xl p-8">
+        <h4 class="serif text-lg font-medium mb-3 flex items-center gap-2">
+          <span class="text-coral">✓</span> Hasta 2 rondas de ajustes
+        </h4>
+        <p class="text-sm text-gray-mid leading-relaxed">
+          El paquete incluye <strong class="text-near-black">2 rondas de ajustes</strong> sobre el sitio entregado.
+          Cambios mayores o features adicionales se cotizan aparte de manera transparente.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LO QUE NO INCLUYE -->
+<section class="px-6 md:px-12 xl:px-20 py-16 max-w-screen-xl mx-auto">
+  <p class="label mb-4">Lo que no incluye</p>
+  <h2 class="serif font-medium text-2xl md:text-3xl tracking-tight mb-3">
+    Servicios que se cotizan aparte
+  </h2>
+  <p class="text-gray-mid text-base max-w-2xl mb-8">
+    Para mantener la propuesta accesible, este paquete cubre lo esencial.
+    Si necesitan alguno de los siguientes, los podemos integrar después.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-x-12">
+    <ul class="space-y-1">
+      <li class="x-item"><span class="x-icon">✕</span>Migración a un hosting más rápido (recomendable a futuro)</li>
+      <li class="x-item"><span class="x-icon">✕</span>Newsletter / email marketing (MailerLite o similar)</li>
+      <li class="x-item"><span class="x-icon">✕</span>Diseño de logo desde cero (si no lo tienen)</li>
+    </ul>
+    <ul class="space-y-1">
+      <li class="x-item"><span class="x-icon">✕</span>Producción o redacción de artículos (más allá de los 2 modelo)</li>
+      <li class="x-item"><span class="x-icon">✕</span>Mantenimiento mensual del sitio</li>
+      <li class="x-item"><span class="x-icon">✕</span>Campañas de redes sociales o publicidad</li>
+    </ul>
+  </div>
+</section>
+
+<!-- INVERSIÓN -->
+<section id="inversion" class="py-20 px-6 md:px-12 xl:px-20 bg-cream-2 border-y border-coral/20">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="label mb-4 mx-auto">Inversión</p>
+      <h2 class="serif font-medium text-3xl md:text-5xl tracking-tight mb-3" style="font-style:italic">
+        Pago único.<br>
+        <span class="not-italic text-coral">Sin sorpresas.</span>
+      </h2>
+    </div>
+
+    <div class="price-card">
+      <div class="text-center mb-8">
+        <p class="text-sm font-bold text-coral uppercase tracking-wider mb-3">Setup completo WordPress</p>
+        <div class="flex items-baseline justify-center gap-3">
+          <span class="serif text-6xl md:text-7xl font-medium text-near-black">$5,500</span>
+          <span class="text-gray-mid text-lg">MXN</span>
+        </div>
+        <p class="text-sm text-gray-mid mt-2">Pago único · entrega 7–14 días</p>
+      </div>
+
+      <div class="border-t border-coral/30 pt-6 mb-6">
+        <p class="text-sm text-gray-mid leading-relaxed text-center">
+          <strong class="text-near-black">Esquema de pago:</strong>
+          50% de anticipo para arrancar · 50% al entregar el sitio funcionando.
+        </p>
+      </div>
+
+      <div class="flex justify-center">
+        <a href="#contacto" class="btn-primary" style="padding:18px 40px;font-size:15px;">
+          Quiero arrancar →
+        </a>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-gray-mid mt-6">
+      Precio en MXN · IVA incluido · Factura electrónica disponible.
+    </p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="py-20 px-6 md:px-12 xl:px-20 max-w-screen-xl mx-auto">
+  <p class="label mb-4">Cómo trabajamos</p>
+  <h2 class="serif font-medium text-3xl md:text-5xl tracking-tight mb-12" style="font-style:italic">
+    De firmado a publicado<br>en <span class="not-italic text-coral">14 días.</span>
+  </h2>
+
+  <div class="grid md:grid-cols-4 gap-5">
+    <div class="bg-white border border-cream-2 rounded-xl p-6">
+      <div class="step-num">1</div>
+      <h3 class="serif font-medium text-lg mb-2">Confirmación</h3>
+      <p class="text-sm text-gray-mid leading-relaxed">
+        Pago de 50% anticipo + envío de accesos a WordPress y materiales (logo, colores). <strong>Día 1.</strong>
+      </p>
+    </div>
+    <div class="bg-white border border-cream-2 rounded-xl p-6">
+      <div class="step-num">2</div>
+      <h3 class="serif font-medium text-lg mb-2">Setup técnico</h3>
+      <p class="text-sm text-gray-mid leading-relaxed">
+        Instalamos tema, plugins, configuramos seguridad y velocidad. <strong>Días 2–4.</strong>
+      </p>
+    </div>
+    <div class="bg-white border border-cream-2 rounded-xl p-6">
+      <div class="step-num">3</div>
+      <h3 class="serif font-medium text-lg mb-2">Diseño y contenido</h3>
+      <p class="text-sm text-gray-mid leading-relaxed">
+        Personalizamos el look, montamos páginas, cargamos artículos modelo. <strong>Días 5–10.</strong>
+      </p>
+    </div>
+    <div class="bg-white border border-cream-2 rounded-xl p-6">
+      <div class="step-num">4</div>
+      <h3 class="serif font-medium text-lg mb-2">Capacitación + entrega</h3>
+      <p class="text-sm text-gray-mid leading-relaxed">
+        Sesión de 1 hora, manual PDF, y comienza el soporte de 30 días. <strong>Días 11–14.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ BROTA -->
+<section class="py-20 px-6 md:px-12 xl:px-20 bg-white border-y border-cream-2">
+  <div class="max-w-screen-xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+    <div class="md:col-span-6">
+      <p class="label mb-4">Por qué Brota Digital</p>
+      <h2 class="serif font-medium text-3xl md:text-5xl tracking-tight mb-6" style="font-style:italic">
+        Construimos para<br>marcas que <span class="not-italic text-coral">crecen.</span>
+      </h2>
+      <p class="text-gray-mid text-lg leading-relaxed mb-6">
+        Trabajamos con marcas emergentes en CDMX que necesitan presencia digital
+        profesional sin pagar tarifas de agencia grande. Comunicación directa,
+        sin teléfono descompuesto, y entregables que sí funcionan en operación real.
+      </p>
+      <ul class="space-y-1">
+        <li class="check-item"><span class="check-icon">✓</span>Comunicación directa con quien hace tu proyecto</li>
+        <li class="check-item"><span class="check-icon">✓</span>Sin contratos forzados</li>
+        <li class="check-item"><span class="check-icon">✓</span>Entregamos un sitio que tu equipo realmente puede operar</li>
+        <li class="check-item"><span class="check-icon">✓</span>Hecho en CDMX</li>
+      </ul>
+    </div>
+    <div class="md:col-span-6 grid grid-cols-2 gap-4">
+      <div class="bg-cream-2 rounded-2xl p-6 text-center">
+        <div class="serif text-4xl font-medium text-coral">+20</div>
+        <p class="text-xs text-gray-mid mt-2">Marcas activas</p>
+      </div>
+      <div class="bg-cream-2 rounded-2xl p-6 text-center">
+        <div class="serif text-4xl font-medium text-coral">14 días</div>
+        <p class="text-xs text-gray-mid mt-2">Entrega máxima</p>
+      </div>
+      <div class="bg-cream-2 rounded-2xl p-6 text-center">
+        <div class="serif text-4xl font-medium text-coral">100%</div>
+        <p class="text-xs text-gray-mid mt-2">Hecho en CDMX</p>
+      </div>
+      <div class="bg-cream-2 rounded-2xl p-6 text-center">
+        <div class="serif text-4xl font-medium text-coral">0</div>
+        <p class="text-xs text-gray-mid mt-2">Contratos forzados</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACTO -->
+<section id="contacto" class="py-24 px-6 md:px-12 xl:px-20">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="label mb-4 mx-auto">Siguiente paso</p>
+    <h2 class="serif font-medium text-3xl md:text-5xl tracking-tight mb-5" style="font-style:italic">
+      ¿Lista para que<br>
+      <span class="not-italic text-coral">Informativo Travel</span><br>
+      tenga su lugar en línea?
+    </h2>
+    <p class="text-lg text-gray-mid mb-10 leading-relaxed">
+      Si te late la propuesta, confirmamos por WhatsApp y arrancamos esta misma semana.
+      En 14 días estás publicando.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3">
+      <a href="https://wa.me/525500000000?text=Hola%20Brota%20Digital%2C%20vengo%20de%20la%20propuesta%20de%20Informativo%20Travel"
+         class="btn-primary" style="padding:18px 32px;">
+        Confirmar por WhatsApp
+      </a>
+      <a href="mailto:hola@brotadigital.mx?subject=Propuesta%20Informativo%20Travel"
+         class="btn-ghost">
+        Escribir por correo
+      </a>
+    </div>
+    <p class="text-sm text-gray-mid mt-8">
+      O simplemente responde este mensaje y avanzamos por aquí mismo.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-cream-2 py-10 px-6 md:px-12 xl:px-20 bg-cream-2/40">
+  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-mid">
+    <div>
+      <span class="serif italic text-coral-dk text-xl font-medium">Brota Digital</span> · Agencia para pequeños negocios
+    </div>
+    <div>Propuesta válida 30 días · Mayo 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
