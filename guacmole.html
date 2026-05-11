@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<title>Guac&mole — El topo más chingón del guacamole · CDMX</title>
+<meta name="description" content="Guacamole hecho con aguacate de verdad y mucho amor. Sin conservadores. Hecho en México."/>
+<meta name="theme-color" content="#4A6B2E"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Guac&mole"/>
+<meta property="og:description" content="El topo más chingón del guacamole."/>
+<meta property="og:locale" content="es_MX"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap"/>
+
+<style>
+:root{
+  --cream:#FAF6E8;
+  --cream-2:#F2EAD3;
+  --green:#4A6B2E;
+  --green-bright:#83A246;
+  --green-dk:#1E2D14;
+  --topo:#7D5236;
+  --topo-dk:#4A2F1E;
+  --yellow:#E8B547;
+  --pink:#FF8B9E;
+  --rule:rgba(30,45,20,0.12);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;font-weight:400;font-size:15px;line-height:1.6;
+  background:var(--cream);color:var(--green-dk);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none;transition:color .2s}
+a:hover{color:var(--green-bright)}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:.95}
+
+.label{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green);
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;justify-content:center;
+  padding:16px 28px;border-radius:999px;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;
+  letter-spacing:.04em;transition:all .2s;
+  min-height:48px;
+}
+.btn-primary{background:var(--green-dk);color:var(--cream)}
+.btn-primary:hover{background:var(--green);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--green-dk);border:2px solid var(--green-dk)}
+.btn-ghost:hover{background:var(--green-dk);color:var(--cream)}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(250,246,232,.92);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav__logo{display:flex;align-items:center;gap:10px}
+.nav__logo svg{width:36px;height:36px}
+.nav__logo-text{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:22px;color:var(--green-dk);letter-spacing:-.01em;
+}
+.nav__logo-text span{color:var(--green-bright)}
+.nav__links{display:flex;gap:30px;list-style:none}
+.nav__links a{font-size:13px;font-weight:500;color:var(--green-dk)}
+.nav__cta{
+  background:var(--green-dk);color:var(--cream);
+  padding:10px 18px;border-radius:999px;font-size:12px;font-weight:600;
+}
+.nav__cta:hover{background:var(--green);color:var(--cream)}
+
+@media(max-width:768px){
+  .nav__links{display:none}
+  .container{padding:0 22px}
+}
+
+/* HERO */
+.hero{
+  padding:60px 0 80px;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:60px;
+  align-items:center;
+  position:relative;
+}
+.hero__copy{padding-right:20px}
+.hero__eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--green-dk);color:var(--cream);
+  padding:8px 16px;border-radius:999px;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:24px;
+}
+.hero__h1{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+  font-size:clamp(56px,9vw,124px);line-height:.9;
+  letter-spacing:-.04em;margin-bottom:28px;color:var(--green-dk);
+}
+.hero__h1 em{font-style:normal;color:var(--green-bright)}
+.hero__sub{
+  font-size:18px;color:var(--green-dk);max-width:480px;line-height:1.55;margin-bottom:36px;
+}
+.hero__cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero__visual{
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.hero__visual svg{
+  width:100%;max-width:480px;height:auto;
+  filter:drop-shadow(0 16px 40px rgba(74,107,46,.18));
+  animation:hop 3.5s ease-in-out infinite;
+}
+
+@keyframes hop{
+  0%,100%{transform:translateY(0) rotate(-1deg)}
+  50%{transform:translateY(-12px) rotate(1deg)}
+}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:30px;padding:40px 0 60px}
+  .hero__copy{padding-right:0;text-align:center}
+  .hero__eyebrow,.hero__cta{justify-content:center}
+  .hero__cta{display:flex}
+  .hero__visual svg{max-width:340px}
+  .hero__sub{margin-left:auto;margin-right:auto}
+}
+
+/* MARQUEE */
+.marquee{
+  background:var(--green-dk);color:var(--cream);
+  padding:16px 0;overflow:hidden;
+  border-top:2px solid var(--green-bright);
+  border-bottom:2px solid var(--green-bright);
+}
+.marquee__track{
+  display:flex;gap:60px;white-space:nowrap;
+  animation:marquee 30s linear infinite;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;
+  letter-spacing:.16em;text-transform:uppercase;
+}
+.marquee__item{display:inline-flex;align-items:center;gap:60px}
+.marquee__item::after{content:'★';color:var(--green-bright)}
+
+@keyframes marquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+/* SECTIONS */
+section{padding:100px 0}
+.section__head{margin-bottom:50px;max-width:680px}
+.section__head--center{text-align:center;margin-left:auto;margin-right:auto}
+.section__title{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:clamp(40px,5.5vw,72px);line-height:.95;
+  letter-spacing:-.03em;margin:14px 0 16px;
+}
+.section__title em{font-style:normal;color:var(--green-bright)}
+.section__sub{font-size:17px;color:var(--green-dk);opacity:.75;line-height:1.55;max-width:560px}
+
+@media(max-width:768px){section{padding:70px 0}}
+
+/* PRODUCTS */
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{
+  background:#fff;border-radius:24px;padding:28px 22px;
+  border:2px solid transparent;transition:all .25s;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.product:hover{border-color:var(--green-bright);transform:translateY(-4px)}
+.product__jar{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;
+}
+.product__jar svg{width:80%;height:auto;filter:drop-shadow(0 8px 16px rgba(0,0,0,.08))}
+.product__tag{
+  display:inline-block;padding:4px 10px;border-radius:999px;
+  background:var(--cream-2);color:var(--green-dk);
+  font-family:'Bricolage Grotesque',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;
+}
+.product__name{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:24px;color:var(--green-dk);line-height:1;margin-bottom:8px;
+  letter-spacing:-.02em;
+}
+.product__desc{font-size:13px;color:var(--green-dk);opacity:.7;line-height:1.5;margin-bottom:16px;flex:1}
+.product__price{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:14px;border-top:1px dashed var(--rule);
+}
+.product__price-amount{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;
+}
+.product__add{
+  background:var(--green-dk);color:var(--cream);
+  padding:8px 14px;border-radius:999px;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.06em;
+}
+.product__add:hover{background:var(--green-bright);color:var(--green-dk)}
+
+@media(max-width:1024px){.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.products{grid-template-columns:1fr}}
+
+/* STORY */
+.story{background:var(--green-dk);color:var(--cream)}
+.story__inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story h2{color:var(--cream)}
+.story h2 em{color:var(--yellow)}
+.story p{font-size:16px;line-height:1.7;opacity:.85;margin-bottom:18px;max-width:520px}
+.story__sign{
+  display:block;margin-top:22px;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);
+}
+.story__visual{
+  display:flex;align-items:center;justify-content:center;
+}
+.story__visual svg{
+  width:100%;max-width:340px;height:auto;
+  filter:drop-shadow(0 16px 40px rgba(0,0,0,.3));
+}
+.story__visual .topo-bg{fill:var(--cream-2)}
+
+@media(max-width:900px){.story__inner{grid-template-columns:1fr;gap:50px}.story__visual{order:-1}}
+
+/* RECETAS */
+.recetas__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.receta{
+  background:#fff;border-radius:24px;overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .25s;
+}
+.receta:hover{transform:translateY(-6px)}
+.receta__img{
+  aspect-ratio:4/3;
+  background:var(--cream-2);
+  position:relative;display:flex;align-items:center;justify-content:center;
+  font-size:84px;
+}
+.receta__img--1{background:linear-gradient(135deg,#A8C766 0%,#83A246 100%)}
+.receta__img--2{background:linear-gradient(135deg,#E8B547 0%,#D89A2C 100%)}
+.receta__img--3{background:linear-gradient(135deg,#FF8B9E 0%,#E96B82 100%)}
+.receta__body{padding:24px}
+.receta__tag{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--green);
+  margin-bottom:8px;
+}
+.receta__name{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;
+  margin-bottom:6px;line-height:1.1;letter-spacing:-.01em;
+}
+.receta__desc{font-size:13px;color:var(--green-dk);opacity:.7;line-height:1.5}
+
+@media(max-width:768px){.recetas__grid{grid-template-columns:1fr;gap:20px}}
+
+/* WHERE TO BUY */
+.donde{background:var(--cream-2)}
+.donde__grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin-top:40px;
+}
+.donde__store{
+  background:#fff;border-radius:16px;padding:30px 18px;
+  text-align:center;border:1.5px solid transparent;
+  transition:all .2s;
+}
+.donde__store:hover{border-color:var(--green-bright);transform:translateY(-3px)}
+.donde__store-icon{font-size:36px;margin-bottom:12px;display:block}
+.donde__store-name{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;
+  margin-bottom:4px;
+}
+.donde__store-tag{font-size:11px;color:var(--green-dk);opacity:.6}
+
+@media(max-width:768px){.donde__grid{grid-template-columns:repeat(2,1fr)}}
+
+/* CTA / NEWSLETTER */
+.cta{
+  background:var(--green-bright);color:var(--green-dk);
+  text-align:center;padding:120px 0;position:relative;overflow:hidden;
+}
+.cta__h2{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+  font-size:clamp(48px,7vw,96px);line-height:.95;letter-spacing:-.03em;
+  margin-bottom:20px;
+}
+.cta__h2 em{font-style:italic;color:var(--green-dk)}
+.cta__sub{font-size:18px;max-width:480px;margin:0 auto 36px;line-height:1.5}
+.cta__btn{
+  background:var(--green-dk);color:var(--cream);
+  padding:20px 36px;border-radius:999px;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;
+  display:inline-flex;align-items:center;gap:10px;
+  letter-spacing:.04em;
+}
+.cta__btn:hover{background:var(--cream);color:var(--green-dk);transform:translateY(-2px)}
+
+/* FOOTER */
+.footer{background:var(--green-dk);color:rgba(250,246,232,.7);padding:60px 0 30px}
+.footer__inner{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;
+  padding-bottom:40px;border-bottom:1px solid rgba(250,246,232,.12);
+}
+.footer__brand .nav__logo-text{color:var(--cream)}
+.footer__brand .nav__logo-text span{color:var(--green-bright)}
+.footer__brand p{font-size:13px;margin-top:14px;max-width:280px;opacity:.75;line-height:1.6}
+.footer__h4{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--cream);margin-bottom:16px;
+}
+.footer__list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer__list a{font-size:13px;color:rgba(250,246,232,.7)}
+.footer__list a:hover{color:var(--yellow)}
+.footer__bottom{
+  padding-top:30px;display:flex;justify-content:space-between;align-items:center;
+  font-size:11px;flex-wrap:wrap;gap:14px;
+}
+.footer__bottom a{color:var(--green-bright)}
+
+@media(max-width:768px){
+  .footer__inner{grid-template-columns:1fr 1fr;gap:30px}
+}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+
+<body>
+
+<!-- TOPO + AVOCADO SVG (definido como template, reutilizable) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="topo-aguacate" viewBox="0 0 200 240">
+      <!-- Avocado -->
+      <path d="M 100 80 C 60 80, 40 120, 40 168 C 40 208, 70 232, 100 232 C 130 232, 160 208, 160 168 C 160 120, 140 80, 100 80 Z" fill="#83A246"/>
+      <!-- Squished top of avocado (lighter pulp) -->
+      <ellipse cx="100" cy="100" rx="55" ry="14" fill="#A8C766"/>
+      <!-- Stem -->
+      <ellipse cx="100" cy="78" rx="5" ry="3" fill="#5A3A26"/>
+      <!-- Leaf -->
+      <path d="M 105 78 Q 125 60 138 78 Q 130 92 110 86 Z" fill="#3D5A2A"/>
+      <!-- Seed -->
+      <circle cx="100" cy="178" r="22" fill="#5A3A26"/>
+      <circle cx="92" cy="172" r="5" fill="#7D5236" opacity=".6"/>
+
+      <!-- Topo body (sits on top of avocado) -->
+      <ellipse cx="100" cy="78" rx="52" ry="42" fill="#7D5236"/>
+      <!-- Body fold/belly hint -->
+      <ellipse cx="100" cy="92" rx="34" ry="14" fill="#8E6244" opacity=".8"/>
+
+      <!-- Ears -->
+      <circle cx="68" cy="48" r="11" fill="#7D5236"/>
+      <circle cx="68" cy="48" r="5" fill="#4A2F1E"/>
+      <circle cx="132" cy="48" r="11" fill="#7D5236"/>
+      <circle cx="132" cy="48" r="5" fill="#4A2F1E"/>
+
+      <!-- Eyes (closed - "ahh esfuerzo") -->
+      <path d="M 78 72 Q 86 80 94 72" stroke="#1E1108" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M 106 72 Q 114 80 122 72" stroke="#1E1108" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- Nose (pink heart-like) -->
+      <ellipse cx="100" cy="86" rx="4.5" ry="3.5" fill="#FF8B9E"/>
+
+      <!-- Mouth - tiny smile of effort -->
+      <path d="M 92 96 Q 100 102 108 96" stroke="#1E1108" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+      <!-- Whiskers -->
+      <line x1="48" y1="84" x2="62" y2="86" stroke="#1E1108" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="48" y1="92" x2="62" y2="92" stroke="#1E1108" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="138" y1="86" x2="152" y2="84" stroke="#1E1108" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="138" y1="92" x2="152" y2="92" stroke="#1E1108" stroke-width="1.4" stroke-linecap="round"/>
+
+      <!-- Tiny paws pressing down on avocado -->
+      <ellipse cx="58" cy="108" rx="9" ry="5.5" fill="#7D5236" transform="rotate(-12 58 108)"/>
+      <ellipse cx="142" cy="108" rx="9" ry="5.5" fill="#7D5236" transform="rotate(12 142 108)"/>
+
+      <!-- Effort/movement specks -->
+      <circle cx="32" cy="55" r="2.5" fill="#1E2D14"/>
+      <circle cx="22" cy="68" r="2" fill="#1E2D14"/>
+      <circle cx="168" cy="55" r="2.5" fill="#1E2D14"/>
+      <circle cx="178" cy="68" r="2" fill="#1E2D14"/>
+    </symbol>
+
+    <!-- Mini topo for nav/logo -->
+    <symbol id="topo-mini" viewBox="0 0 60 60">
+      <circle cx="30" cy="38" r="20" fill="#83A246"/>
+      <circle cx="30" cy="22" r="15" fill="#7D5236"/>
+      <circle cx="20" cy="13" r="4.5" fill="#7D5236"/>
+      <circle cx="40" cy="13" r="4.5" fill="#7D5236"/>
+      <circle cx="20" cy="13" r="2" fill="#4A2F1E"/>
+      <circle cx="40" cy="13" r="2" fill="#4A2F1E"/>
+      <path d="M 24 22 Q 27 26 30 22" stroke="#1E1108" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 30 22 Q 33 26 36 22" stroke="#1E1108" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="30" cy="28" rx="1.5" ry="1.2" fill="#FF8B9E"/>
+    </symbol>
+
+    <!-- Jar of guacamole -->
+    <symbol id="jar" viewBox="0 0 100 130">
+      <!-- Lid -->
+      <rect x="20" y="8" width="60" height="14" rx="3" fill="#1E2D14"/>
+      <!-- Jar body -->
+      <path d="M 22 22 L 78 22 L 80 110 Q 80 120 70 120 L 30 120 Q 20 120 20 110 Z" fill="#fff" stroke="#1E2D14" stroke-width="2"/>
+      <!-- Label -->
+      <rect x="26" y="40" width="48" height="60" rx="2" fill="#83A246"/>
+      <text x="50" y="58" text-anchor="middle" fill="#1E2D14" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="9">Guac</text>
+      <text x="50" y="69" text-anchor="middle" fill="#1E2D14" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="9">&amp;mole</text>
+      <circle cx="50" cy="84" r="6" fill="#7D5236"/>
+      <circle cx="46" cy="82" r="1.2" fill="#4A2F1E"/>
+      <circle cx="54" cy="82" r="1.2" fill="#4A2F1E"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo">
+      <svg><use href="#topo-mini"/></svg>
+      <span class="nav__logo-text">Guac<span>&amp;</span>mole</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#topo">El topo</a></li>
+      <li><a href="#recetas">Recetas</a></li>
+      <li><a href="#donde">Dónde comprar</a></li>
+    </ul>
+    <a href="#newsletter" class="nav__cta">Pídelo</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero container">
+  <div class="hero__copy">
+    <span class="hero__eyebrow">★ Hecho en CDMX · 100% natural</span>
+    <h1 class="hero__h1">El topo<br>más <em>chingón</em><br>del guacamole.</h1>
+    <p class="hero__sub">
+      Aguacate de verdad, machacado a mano (bueno, a pata) por nuestro topo titular.
+      Sin conservadores, sin polvitos raros, sin pretextos.
+    </p>
+    <div class="hero__cta">
+      <a href="#productos" class="btn btn-primary">Ver el menú</a>
+      <a href="#topo" class="btn btn-ghost">Conoce al topo</a>
+    </div>
+  </div>
+  <div class="hero__visual">
+    <svg><use href="#topo-aguacate"/></svg>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span class="marquee__item">100% natural</span>
+    <span class="marquee__item">Sin conservadores</span>
+    <span class="marquee__item">Hecho con amor en CDMX</span>
+    <span class="marquee__item">Aguacate Hass de Michoacán</span>
+    <span class="marquee__item">El topo aprueba</span>
+    <span class="marquee__item">100% natural</span>
+    <span class="marquee__item">Sin conservadores</span>
+    <span class="marquee__item">Hecho con amor en CDMX</span>
+    <span class="marquee__item">Aguacate Hass de Michoacán</span>
+    <span class="marquee__item">El topo aprueba</span>
+  </div>
+</div>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label">Nuestro menú</span>
+      <h2 class="section__title">Los <em>cuatro chingones</em>.</h2>
+      <p class="section__sub">Cada frasco es 250g de guacamole fresco, hecho el mismo día, listo para comer.</p>
+    </div>
+
+    <div class="products">
+
+      <article class="product reveal">
+        <div class="product__jar"><svg><use href="#jar"/></svg></div>
+        <span class="product__tag">Original</span>
+        <h3 class="product__name">El Clásico</h3>
+        <p class="product__desc">Aguacate, cilantro, cebolla, limón y sal. Como debe ser.</p>
+        <div class="product__price">
+          <span class="product__price-amount">$95</span>
+          <button class="product__add">Pídelo</button>
+        </div>
+      </article>
+
+      <article class="product reveal">
+        <div class="product__jar"><svg><use href="#jar"/></svg></div>
+        <span class="product__tag">Picante</span>
+        <h3 class="product__name">El Bravo</h3>
+        <p class="product__desc">El clásico + chile habanero asado. Para los que sí aguantan.</p>
+        <div class="product__price">
+          <span class="product__price-amount">$110</span>
+          <button class="product__add">Pídelo</button>
+        </div>
+      </article>
+
+      <article class="product reveal">
+        <div class="product__jar"><svg><use href="#jar"/></svg></div>
+        <span class="product__tag">Tropical</span>
+        <h3 class="product__name">El Mango</h3>
+        <p class="product__desc">Con mango fresco, chile piquín y un toque de naranja.</p>
+        <div class="product__price">
+          <span class="product__price-amount">$115</span>
+          <button class="product__add">Pídelo</button>
+        </div>
+      </article>
+
+      <article class="product reveal">
+        <div class="product__jar"><svg><use href="#jar"/></svg></div>
+        <span class="product__tag">Cremoso</span>
+        <h3 class="product__name">El Roquefort</h3>
+        <p class="product__desc">Con queso roquefort, nuez tostada y miel. Atrévete.</p>
+        <div class="product__price">
+          <span class="product__price-amount">$125</span>
+          <button class="product__add">Pídelo</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- STORY / EL TOPO -->
+<section id="topo" class="story">
+  <div class="container story__inner">
+    <div class="reveal">
+      <span class="label" style="color:var(--yellow)">La historia</span>
+      <h2 class="section__title">¿Quién es <em>el topo?</em></h2>
+      <p>
+        Cuenta la leyenda que en algún huerto de Michoacán, un topo descubrió por accidente
+        que aplastando aguacates con sus paticas hacía algo… <strong>delicioso</strong>.
+      </p>
+      <p>
+        Inspiradas por su técnica milenaria (y su buena onda), nosotras seguimos su receta
+        al pie de la letra: aguacate de verdad, ingredientes simples, machacado con amor.
+      </p>
+      <p>
+        Cada frasco que sacas es un homenaje a nuestro héroe peludo.
+        El topo aprueba. <strong style="color:var(--yellow)">Tú también deberías.</strong>
+      </p>
+      <span class="story__sign">— Guac&mole · CDMX 2026</span>
+    </div>
+    <div class="story__visual reveal">
+      <svg><use href="#topo-aguacate"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- RECETAS -->
+<section id="recetas">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label">Inspírate</span>
+      <h2 class="section__title">Más allá del <em>totopo</em>.</h2>
+      <p class="section__sub">Tres formas inesperadas de comerte un Guac&mole.</p>
+    </div>
+
+    <div class="recetas__grid">
+      <div class="receta reveal">
+        <div class="receta__img receta__img--1">🥑</div>
+        <div class="receta__body">
+          <span class="receta__tag">Brunch</span>
+          <h3 class="receta__name">Avocado toast del topo</h3>
+          <p class="receta__desc">Pan de masa madre tostado, una cama generosa de El Clásico, huevo poché y chile piquín.</p>
+        </div>
+      </div>
+      <div class="receta reveal">
+        <div class="receta__img receta__img--2">🌮</div>
+        <div class="receta__body">
+          <span class="receta__tag">Comida</span>
+          <h3 class="receta__name">Tacos dorados con dip</h3>
+          <p class="receta__desc">Tacos de pollo deshebrado dorados al sartén, servidos con El Bravo y cebollita morada.</p>
+        </div>
+      </div>
+      <div class="receta reveal">
+        <div class="receta__img receta__img--3">🥗</div>
+        <div class="receta__body">
+          <span class="receta__tag">Cena ligera</span>
+          <h3 class="receta__name">Bowl tropical</h3>
+          <p class="receta__desc">Quinoa, mango, pepino, jícama, una cucharada generosa de El Mango y semillas de calabaza.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DÓNDE COMPRAR -->
+<section id="donde" class="donde">
+  <div class="container">
+    <div class="section__head section__head--center reveal">
+      <span class="label">Dónde encontrarnos</span>
+      <h2 class="section__title">Cerca de tu <em>casa</em>.</h2>
+      <p class="section__sub" style="margin-left:auto;margin-right:auto">
+        Estamos en mercados orgánicos, tiendas chiquitas seleccionadas, y por delivery directo.
+      </p>
+    </div>
+
+    <div class="donde__grid">
+      <div class="donde__store">
+        <span class="donde__store-icon">🛒</span>
+        <div class="donde__store-name">Mercado Roma</div>
+        <div class="donde__store-tag">CDMX · Miércoles a domingo</div>
+      </div>
+      <div class="donde__store">
+        <span class="donde__store-icon">🌿</span>
+        <div class="donde__store-name">Tianguis Chapultepec</div>
+        <div class="donde__store-tag">Sábados 9am – 4pm</div>
+      </div>
+      <div class="donde__store">
+        <span class="donde__store-icon">🥑</span>
+        <div class="donde__store-name">Casa Bosques</div>
+        <div class="donde__store-tag">Roma Norte · todo el día</div>
+      </div>
+      <div class="donde__store">
+        <span class="donde__store-icon">🚴</span>
+        <div class="donde__store-name">Delivery directo</div>
+        <div class="donde__store-tag">Pídelo por WhatsApp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="newsletter" class="cta">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="cta__h2">¡Pídete un<br><em>topazo!</em></h2>
+      <p class="cta__sub">
+        Mándanos WhatsApp y te llevamos tus frascos. Pedidos mínimos de 2 frascos en CDMX.
+      </p>
+      <a href="https://wa.me/525500000000?text=Hola%20Guac%26mole%2C%20quiero%20pedir%3A" class="cta__btn">
+        Pedir por WhatsApp →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="nav__logo">
+          <svg style="width:40px;height:40px"><use href="#topo-mini"/></svg>
+          <span class="nav__logo-text">Guac<span>&amp;</span>mole</span>
+        </div>
+        <p>Guacamole hecho con amor (y patitas) en CDMX. El topo aprueba.</p>
+      </div>
+      <div>
+        <h4 class="footer__h4">Producto</h4>
+        <ul class="footer__list">
+          <li><a href="#productos">El menú</a></li>
+          <li><a href="#recetas">Recetas</a></li>
+          <li><a href="#donde">Dónde comprar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__h4">Marca</h4>
+        <ul class="footer__list">
+          <li><a href="#topo">La historia</a></li>
+          <li><a href="#newsletter">Pedidos</a></li>
+          <li><a href="#">Mayoreo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__h4">Síguenos</h4>
+        <ul class="footer__list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="https://wa.me/525500000000">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 Guac&amp;mole · CDMX</div>
+      <div>Sitio por <a href="https://brotadigital.mx">Brota Digital</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
