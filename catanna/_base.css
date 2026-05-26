@@ -1,0 +1,17 @@
+/* Catanna Consulting — Shared Styles */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:    #0F2D5C;
+  --blue:    #1A56DB;
+  --blue-lt: #EBF3FF;
+  --blue-md: #DBEAFE;
+  --green:   #25D366;
+  --green-dk:#128C4B;
+  --text:    #1E293B;
+  --muted:   #64748B;
+  --border:  #CBD5E1;
+  --white:   #FFFFFF;
+  --mx-red:  #B91C1C;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
