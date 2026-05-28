@@ -11,7 +11,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:#0F2D5C; --blue:#1A56DB; --blue-lt:#EBF3FF; --blue-md:#DBEAFE;
+      --navy:#205597; --blue:#1A56DB; --blue-lt:#EBF3FF; --blue-md:#DBEAFE;
       --green:#25D366; --green-dk:#128C4B; --text:#1E293B; --muted:#64748B;
       --border:#CBD5E1; --white:#FFFFFF; --mx-red:#B91C1C;
     }
@@ -20,9 +20,10 @@
 
     /* NAV */
     nav { position:sticky; top:0; z-index:100; background:var(--white); border-bottom:1px solid var(--border); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:68px; box-shadow:0 1px 8px rgba(0,0,0,.06); }
-    .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
-    .nav-logo-icon { width:40px; height:40px; background:var(--navy); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--white); font-weight:800; font-size:15px; }
-    .nav-logo-text { font-weight:700; font-size:16px; color:var(--navy); line-height:1.2; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-icon { width:45px; height:45px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .nav-logo-icon img { width:100%; height:100%; object-fit:contain; }
+    .nav-logo-text { font-weight:700; font-size:15px; color:var(--navy); line-height:1.2; }
     .nav-logo-text span { display:block; font-weight:400; font-size:11px; color:var(--muted); }
     .nav-links { display:flex; gap:0; list-style:none; }
     .nav-links a { text-decoration:none; font-size:14px; font-weight:500; color:var(--text); padding:8px 14px; border-radius:8px; transition:background .15s,color .15s; }
@@ -40,7 +41,7 @@
     .hamburger span { width:22px; height:2px; background:var(--navy); border-radius:2px; }
 
     /* HERO */
-    .hero { background:linear-gradient(135deg,var(--navy) 0%,#1A3A6E 55%,#1E4D9A 100%); color:var(--white); padding:80px 5% 70px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; min-height:520px; }
+    .hero { background:linear-gradient(135deg,var(--navy) 0%,#2A6CB1 55%,#1E4580 100%); color:var(--white); padding:80px 5% 70px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; min-height:520px; }
     .hero-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:rgba(255,255,255,.9); font-size:12px; font-weight:600; padding:5px 12px; border-radius:50px; margin-bottom:18px; }
     .hero h1 { font-size:clamp(28px,4vw,46px); font-weight:900; line-height:1.15; margin-bottom:18px; }
     .hero h1 em { font-style:normal; color:#60BFFF; }
@@ -90,15 +91,15 @@
     .service-cta { display:inline-flex; align-items:center; gap:6px; margin-top:4px; font-size:13px; font-weight:700; color:var(--blue); }
 
     /* STAMP CARDS */
-    .stamp-section { background:#B8D4F0; padding:64px 5%; }
+    .stamp-section { background:#C5DDF5; padding:64px 5%; }
     .stamp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(188px,1fr)); gap:18px; }
-    .stamp-card { background:#D2E8FF; border-radius:20px; padding:28px 18px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; transition:transform .2s,box-shadow .2s; text-decoration:none; }
-    .stamp-card:hover { transform:translateY(-5px); box-shadow:0 12px 30px rgba(15,45,92,.2); }
+    .stamp-card { background:#DDE9F7; border-radius:20px; padding:28px 18px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; transition:transform .2s,box-shadow .2s; text-decoration:none; }
+    .stamp-card:hover { transform:translateY(-5px); box-shadow:0 12px 30px rgba(32,85,151,.2); }
     .stamp-svg { width:130px; height:130px; flex-shrink:0; }
-    .stamp-name { font-size:16px; font-weight:800; color:#0F2D5C; line-height:1.25; }
+    .stamp-name { font-size:16px; font-weight:800; color:#205597; line-height:1.25; }
     .stamp-desc { font-size:12.5px; color:#475569; line-height:1.6; flex:1; }
-    .btn-stamp { background:#0F2D5C; color:white; font-weight:700; font-size:13px; padding:10px 22px; border-radius:50px; text-decoration:none; transition:background .2s; margin-top:2px; }
-    .btn-stamp:hover { background:#1A3A6E; }
+    .btn-stamp { background:#205597; color:white; font-weight:700; font-size:13px; padding:10px 22px; border-radius:50px; text-decoration:none; transition:background .2s; margin-top:2px; }
+    .btn-stamp:hover { background:#1a4477; }
     .btn-wa-sm { display:flex; align-items:center; justify-content:center; gap:8px; background:var(--green); color:var(--white); font-weight:700; font-size:14px; padding:12px 20px; border-radius:50px; text-decoration:none; transition:background .2s; margin-top:4px; }
     .btn-wa-sm:hover { background:var(--green-dk); }
 
@@ -131,7 +132,7 @@
     .faq-item.open .faq-a { max-height:300px; padding:0 20px 18px; }
 
     /* CTA BAND */
-    .cta-band { background:linear-gradient(135deg,#1A56DB,#0F2D5C); padding:60px 5%; text-align:center; color:var(--white); }
+    .cta-band { background:linear-gradient(135deg,#1A56DB,#205597); padding:60px 5%; text-align:center; color:var(--white); }
     .cta-band h2 { font-size:clamp(22px,3vw,34px); font-weight:800; margin-bottom:10px; }
     .cta-band p { color:rgba(255,255,255,.7); font-size:15px; max-width:480px; margin-inline:auto; margin-bottom:28px; }
     .btn-wa-lg { display:inline-flex; align-items:center; gap:10px; background:var(--green); color:var(--white); font-weight:700; font-size:16px; padding:16px 28px; border-radius:50px; text-decoration:none; box-shadow:0 4px 20px rgba(37,211,102,.4); transition:background .2s,transform .15s; }
@@ -163,8 +164,8 @@
 
 <nav id="top">
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon">C</div>
-    <div class="nav-logo-text">CATANNA<span>CONSULTING</span></div>
+    <div class="nav-logo-icon"><img src="assets/catanna-logo.png" alt="Catanna Consulting"></div>
+    <div class="nav-logo-text">CATANNA<span>FDA CONSULTING</span></div>
   </a>
   <ul class="nav-links" id="nav-links">
     <li class="has-sub">
@@ -237,7 +238,7 @@
 <!-- STAMP CARDS -->
 <section class="stamp-section" id="populares">
   <div class="section-header">
-    <span class="section-label" style="background:rgba(255,255,255,.3);color:#0F2D5C;">SERVICIOS</span>
+    <span class="section-label" style="background:rgba(255,255,255,.3);color:#205597;">SERVICIOS</span>
     <h2 class="section-title">Nuestros servicios</h2>
     <p class="section-sub">Todo lo que necesitas para vender en EE.UU. y cumplir en México</p>
   </div>
@@ -247,7 +248,7 @@
     <a href="registro-fda.html" class="stamp-card">
       <svg class="stamp-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
         <defs><path id="t1" d="M 12,65 A 53,53 0 0,1 118,65"/><path id="b1" d="M 118,65 A 53,53 0 0,1 12,65"/></defs>
-        <circle cx="65" cy="65" r="63" fill="#0F2D5C"/>
+        <circle cx="65" cy="65" r="63" fill="#205597"/>
         <circle cx="65" cy="65" r="53" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
         <circle cx="65" cy="65" r="47" fill="white"/>
         <text x="14" y="69" font-size="12" text-anchor="middle">⭐</text><text x="116" y="69" font-size="12" text-anchor="middle">⭐</text>
@@ -264,7 +265,7 @@
     <a href="revision-etiquetas-fda.html" class="stamp-card">
       <svg class="stamp-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
         <defs><path id="t2" d="M 12,65 A 53,53 0 0,1 118,65"/><path id="b2" d="M 118,65 A 53,53 0 0,1 12,65"/></defs>
-        <circle cx="65" cy="65" r="63" fill="#0F2D5C"/>
+        <circle cx="65" cy="65" r="63" fill="#205597"/>
         <circle cx="65" cy="65" r="53" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
         <circle cx="65" cy="65" r="47" fill="white"/>
         <text x="14" y="69" font-size="12" text-anchor="middle">⭐</text><text x="116" y="69" font-size="12" text-anchor="middle">⭐</text>
@@ -281,7 +282,7 @@
     <a href="registro-cola-ttb.html" class="stamp-card">
       <svg class="stamp-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
         <defs><path id="t3" d="M 12,65 A 53,53 0 0,1 118,65"/><path id="b3" d="M 118,65 A 53,53 0 0,1 12,65"/></defs>
-        <circle cx="65" cy="65" r="63" fill="#0F2D5C"/>
+        <circle cx="65" cy="65" r="63" fill="#205597"/>
         <circle cx="65" cy="65" r="53" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
         <circle cx="65" cy="65" r="47" fill="white"/>
         <text x="14" y="69" font-size="12" text-anchor="middle">⭐</text><text x="116" y="69" font-size="12" text-anchor="middle">⭐</text>
@@ -298,7 +299,7 @@
     <a href="registro-usda.html" class="stamp-card">
       <svg class="stamp-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
         <defs><path id="t4" d="M 12,65 A 53,53 0 0,1 118,65"/><path id="b4" d="M 118,65 A 53,53 0 0,1 12,65"/></defs>
-        <circle cx="65" cy="65" r="63" fill="#0F2D5C"/>
+        <circle cx="65" cy="65" r="63" fill="#205597"/>
         <circle cx="65" cy="65" r="53" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
         <circle cx="65" cy="65" r="47" fill="white"/>
         <text x="14" y="69" font-size="12" text-anchor="middle">⭐</text><text x="116" y="69" font-size="12" text-anchor="middle">⭐</text>
@@ -315,7 +316,7 @@
     <a href="creacion-empresa.html" class="stamp-card">
       <svg class="stamp-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
         <defs><path id="t5" d="M 12,65 A 53,53 0 0,1 118,65"/><path id="b5" d="M 118,65 A 53,53 0 0,1 12,65"/></defs>
-        <circle cx="65" cy="65" r="63" fill="#0F2D5C"/>
+        <circle cx="65" cy="65" r="63" fill="#205597"/>
         <circle cx="65" cy="65" r="53" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
         <circle cx="65" cy="65" r="47" fill="white"/>
         <text x="14" y="69" font-size="12" text-anchor="middle">⭐</text><text x="116" y="69" font-size="12" text-anchor="middle">⭐</text>
@@ -332,11 +333,11 @@
     <a href="registro-marca.html" class="stamp-card">
       <svg class="stamp-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
         <defs><path id="t6" d="M 12,65 A 53,53 0 0,1 118,65"/><path id="b6" d="M 118,65 A 53,53 0 0,1 12,65"/></defs>
-        <circle cx="65" cy="65" r="63" fill="#0F2D5C"/>
+        <circle cx="65" cy="65" r="63" fill="#205597"/>
         <circle cx="65" cy="65" r="53" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
         <circle cx="65" cy="65" r="47" fill="white"/>
         <text x="14" y="69" font-size="12" text-anchor="middle">⭐</text><text x="116" y="69" font-size="12" text-anchor="middle">⭐</text>
-        <text x="65" y="65" font-size="34" text-anchor="middle" dominant-baseline="middle" font-weight="900" fill="#0F2D5C">™</text>
+        <text x="65" y="65" font-size="34" text-anchor="middle" dominant-baseline="middle" font-weight="900" fill="#205597">™</text>
         <text font-size="8.5" font-weight="700" letter-spacing="2.2" font-family="Inter,sans-serif" fill="white"><textPath href="#t6" startOffset="50%" text-anchor="middle">REGISTRO MARCA</textPath></text>
         <text font-size="7.5" font-weight="600" letter-spacing="2" font-family="Inter,sans-serif" fill="rgba(255,255,255,0.8)"><textPath href="#b6" startOffset="50%" text-anchor="middle">CATANNA.COM</textPath></text>
       </svg>
@@ -349,7 +350,7 @@
     <a href="prior-notice.html" class="stamp-card">
       <svg class="stamp-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
         <defs><path id="t7" d="M 12,65 A 53,53 0 0,1 118,65"/><path id="b7" d="M 118,65 A 53,53 0 0,1 12,65"/></defs>
-        <circle cx="65" cy="65" r="63" fill="#0F2D5C"/>
+        <circle cx="65" cy="65" r="63" fill="#205597"/>
         <circle cx="65" cy="65" r="53" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
         <circle cx="65" cy="65" r="47" fill="white"/>
         <text x="14" y="69" font-size="12" text-anchor="middle">⭐</text><text x="116" y="69" font-size="12" text-anchor="middle">⭐</text>
