@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería | Loons Balloons · Decoración con Globos CDMX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <style>
+    .page-hero {
+      background: var(--dark); padding: clamp(120px,15vw,180px) 0 clamp(64px,8vw,100px);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .page-hero__dots {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__tag {
+      display: inline-block; background: var(--pink); color: var(--black);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .page-hero__h1 {
+      font-family: var(--font-display);
+      font-size: clamp(44px,7vw,88px); font-weight: 300;
+      color: var(--white); letter-spacing: -0.03em; line-height: 1.0;
+    }
+    .page-hero__h1 em { font-style: italic; color: var(--yellow); }
+
+    /* Filters */
+    .filter-bar {
+      padding: 40px 0 0;
+    }
+    .filter-bar .container { display: flex; gap: 10px; flex-wrap: wrap; }
+    .filter-btn {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 9px 20px; border-radius: 100px;
+      border: 1.5px solid rgba(0,0,0,.15); background: transparent; color: rgba(0,0,0,.5);
+      cursor: pointer; transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--black); color: var(--white); border-color: var(--black);
+    }
+
+    /* Gallery grid */
+    .galeria { padding: 32px 0 var(--py); }
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    @media (max-width: 768px) { .galeria-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .galeria-grid { grid-template-columns: 1fr; } }
+    .galeria-item {
+      aspect-ratio: 1; border-radius: 6px; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; transition: transform .2s; cursor: pointer; position: relative;
+    }
+    .galeria-item:hover { transform: scale(1.02); }
+    .galeria-item .icon {
+      width: 60px; height: 76px;
+      border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+      position: relative;
+    }
+    .galeria-item .icon::after {
+      content: ''; position: absolute; bottom: -14px; left: 50%;
+      transform: translateX(-50%); width: 1px; height: 18px;
+      background: rgba(255,255,255,.35);
+    }
+    .galeria-item .lbl {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,.45); margin-top: 8px;
+    }
+    .gi-pink   { background: rgba(242,167,195,.18); } .gi-pink   .icon { background: var(--pink); }
+    .gi-yellow { background: rgba(249,224,75,.14); }  .gi-yellow .icon { background: var(--yellow); }
+    .gi-lilac  { background: rgba(201,184,240,.18); } .gi-lilac  .icon { background: var(--lilac); }
+    .gi-mint   { background: rgba(168,221,196,.14); } .gi-mint   .icon { background: var(--mint); }
+    .gi-coral  { background: rgba(240,122,106,.18); } .gi-coral  .icon { background: var(--coral); }
+    .galeria-bg { background: var(--dark); padding-top: 8px; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <div class="nav__inner">
+      <a href="/loons/" class="nav__logo">Loons <em>Balloons</em></a>
+      <ul class="nav__links" role="list">
+        <li><a href="/loons/servicios/">Servicios</a></li>
+        <li><a href="/loons/galeria/" class="active">Galería</a></li>
+        <li><a href="/loons/contacto/">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="nav__cta">Cotiza aquí</a>
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" id="burger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu" role="menu">
+      <a href="/loons/servicios/">Servicios</a>
+      <a href="/loons/galeria/">Galería</a>
+      <a href="/loons/contacto/">Contacto</a>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="nav__mobile-cta">Cotiza aquí</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="page-hero__dots" aria-hidden="true"></div>
+      <div class="page-hero__content container">
+        <span class="page-hero__tag">Galería</span>
+        <h1 class="page-hero__h1">Trabajos <em>recientes</em></h1>
+      </div>
+    </section>
+
+    <div class="galeria-bg">
+      <div class="filter-bar container">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="baby">Baby Shower</button>
+        <button class="filter-btn" data-filter="bautizo">Bautizos</button>
+        <button class="filter-btn" data-filter="empresa">Empresas</button>
+        <button class="filter-btn" data-filter="arco">Arcos</button>
+        <button class="filter-btn" data-filter="mampara">Mamparas</button>
+      </div>
+
+      <section class="galeria">
+        <div class="galeria-grid container">
+          <div class="galeria-item gi-pink reveal" data-cat="baby"><div class="icon"></div><span class="lbl">Baby Shower</span></div>
+          <div class="galeria-item gi-yellow reveal" data-cat="arco"><div class="icon"></div><span class="lbl">Arco</span></div>
+          <div class="galeria-item gi-lilac reveal" data-cat="empresa"><div class="icon"></div><span class="lbl">Empresas</span></div>
+          <div class="galeria-item gi-mint reveal" data-cat="bautizo"><div class="icon"></div><span class="lbl">Bautizo</span></div>
+          <div class="galeria-item gi-coral reveal" data-cat="mampara"><div class="icon"></div><span class="lbl">Mampara</span></div>
+          <div class="galeria-item gi-pink reveal" data-cat="baby"><div class="icon"></div><span class="lbl">Baby Shower</span></div>
+          <div class="galeria-item gi-yellow reveal" data-cat="bautizo"><div class="icon"></div><span class="lbl">Bautizo</span></div>
+          <div class="galeria-item gi-lilac reveal" data-cat="arco"><div class="icon"></div><span class="lbl">Arco</span></div>
+          <div class="galeria-item gi-mint reveal" data-cat="empresa"><div class="icon"></div><span class="lbl">Empresas</span></div>
+          <div class="galeria-item gi-coral reveal" data-cat="baby"><div class="icon"></div><span class="lbl">Baby Shower</span></div>
+          <div class="galeria-item gi-pink reveal" data-cat="mampara"><div class="icon"></div><span class="lbl">Mampara</span></div>
+          <div class="galeria-item gi-yellow reveal" data-cat="arco"><div class="icon"></div><span class="lbl">Arco</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="cta-banner reveal">
+      <span class="cta-banner__deco" aria-hidden="true">🎈</span>
+      <h2 class="cta-banner__h2">¿Te inspiraste?<br>Cotiza tu evento.</h2>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="btn-dark">Cotiza por WhatsApp →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">Loons <em>Balloons</em></div>
+      <nav class="footer__links"><a href="/loons/servicios/">Servicios</a><a href="/loons/galeria/">Galería</a><a href="/loons/contacto/">Contacto</a></nav>
+      <span>© 2025 Loons Balloons · CDMX</span>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+    // Filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.galeria-item').forEach(item => {
+          item.style.display = (f === 'all' || item.dataset.cat === f) ? 'flex' : 'none';
+        });
+      });
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); io.unobserve(x.target); } }), { threshold: 0.05 });
+      reveals.forEach(el => io.observe(el));
+    } else { reveals.forEach(el => el.classList.add('visible')); }
+  </script>
+</body>
+</html>

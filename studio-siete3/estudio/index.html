@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce Studio Siete 3 — filosofía, historia y el equipo detrás de nuestros proyectos de diseño de interiores en Polanco, CDMX.">
+  <title>El Estudio — Studio Siete 3</title>
+  <link rel="stylesheet" href="/studio-siete3/assets/styles.css">
+  <style>
+    /* ── Story ── */
+    .story { background-color: var(--surface); border-bottom: 1px solid var(--line); }
+    .story__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+    .story__visual {
+      position: relative;
+      height: 540px;
+    }
+    .story__photo {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .story__photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .story__badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      background-color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+    .story__badge-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--bg);
+      line-height: 1;
+    }
+    .story__badge-txt {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(248, 246, 242, 0.55);
+      margin-top: 0.2rem;
+    }
+    .story__text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .story__text h2 { margin-bottom: var(--space-xs); }
+    .story__text p { color: rgba(26, 22, 20, 0.65); font-size: 0.95rem; line-height: 1.8; }
+
+    /* ── Values ── */
+    .values { background-color: var(--bg); }
+    .values__header { text-align: center; margin-bottom: var(--space-lg); }
+    .value-card {
+      padding: var(--space-md);
+      border: 1px solid var(--line);
+      background-color: var(--surface);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .value-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(26,22,20,0.06); }
+    .value-card__num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--dark);
+      opacity: 0.07;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .value-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--dark);
+      margin-bottom: var(--space-xs);
+    }
+    .value-card p { font-size: 0.88rem; color: rgba(26, 22, 20, 0.6); line-height: 1.7; }
+
+    /* ── Team ── */
+    .team { background-color: var(--surface); border-top: 1px solid var(--line); }
+    .team__header { text-align: center; margin-bottom: var(--space-lg); }
+    .team__card {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 0;
+      max-width: 860px;
+      margin-inline: auto;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .team__photo {
+      height: 440px;
+      overflow: hidden;
+      background-image: url('/studio-siete3/assets/img/p9_2.jpeg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .team__photo-label {
+      position: absolute;
+      bottom: var(--space-sm);
+      left: var(--space-sm);
+      background-color: var(--dark);
+      padding: 0.4rem 0.9rem;
+    }
+    .team__photo-label p {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(248, 246, 242, 0.7);
+    }
+    .team__bio {
+      padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-xs);
+    }
+    .team__bio .label { margin-bottom: var(--space-xs); }
+    .team__bio h3 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--dark);
+      margin-bottom: 0.1rem;
+    }
+    .team__bio .role {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: var(--space-sm);
+    }
+    .team__bio p { font-size: 0.92rem; color: rgba(26, 22, 20, 0.65); line-height: 1.78; }
+
+    /* ── Mood Board ── */
+    .moodboard { background-color: var(--bg); padding-block: var(--space-xl); }
+    .moodboard__header { text-align: center; margin-bottom: var(--space-lg); }
+    .moodboard__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 180px);
+      gap: 6px;
+    }
+    .moodboard__grid > div { overflow: hidden; }
+    .moodboard__grid > div:first-child { grid-row: span 2; }
+    .moodboard__grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .moodboard__grid > div:hover img { transform: scale(1.05); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .story__inner { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .story__visual { height: 360px; }
+      .story__badge { right: 0; bottom: -16px; }
+      .team__card { grid-template-columns: 1fr; }
+      .team__photo { height: 300px; }
+      .moodboard__grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 160px); }
+      .moodboard__grid > div:first-child { grid-row: span 2; }
+    }
+    @media (max-width: 768px) {
+      .moodboard__grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 150px); }
+      .moodboard__grid > div:first-child { grid-row: span 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <a href="/studio-siete3/" class="sidebar__logo">
+      <span class="sidebar__logo-mark">S7</span>
+      <span class="sidebar__logo-sub">Studio Siete 3</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="sidebar__nav">
+        <li><a href="/studio-siete3/proyectos/" class="sidebar__link">Proyectos</a></li>
+        <li><a href="/studio-siete3/estudio/" class="sidebar__link active">Estudio</a></li>
+        <li><a href="/studio-siete3/contacto/" class="sidebar__link">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar__foot">
+      <a href="https://www.instagram.com/studio.siete3" class="sidebar__social" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:yulirealestateoficial@gmail.com" class="sidebar__social">yulirealestateoficial@gmail.com</a>
+    </div>
+  </aside>
+  <button class="sidebar__burger" id="burger" aria-label="Abrir menú"><span></span><span></span></button>
+
+  <div class="site-body">
+    <main>
+
+      <!-- Page Header -->
+      <header class="page-hero" aria-labelledby="estudio-title">
+        <div class="container">
+          <p class="label page-hero__eyebrow reveal">El Estudio</p>
+          <h1 class="display-xl reveal reveal-delay-1" id="estudio-title">
+            Diseñamos con<br><em style="font-style:italic; color: var(--accent);">propósito y precisión</em>
+          </h1>
+          <p class="reveal reveal-delay-2">Somos un estudio boutique de diseño de interiores radicado en Polanco, CDMX. Nos especializamos en proyectos donde cada decisión nace de una conversación honesta contigo.</p>
+        </div>
+      </header>
+
+      <!-- Story -->
+      <section class="story" aria-labelledby="story-heading">
+        <div class="container story__inner">
+          <div class="story__visual reveal">
+            <div class="story__photo">
+              <img src="/studio-siete3/assets/img/p8_1.jpeg" alt="Espacio diseñado por Studio Siete 3">
+            </div>
+            <div class="story__badge" aria-label="Más de 5 años de experiencia">
+              <div class="story__badge-num">5+</div>
+              <div class="story__badge-txt">Años de experiencia</div>
+            </div>
+          </div>
+          <div class="story__text reveal reveal-delay-2">
+            <span class="accent-line" aria-hidden="true"></span>
+            <p class="label" style="color: var(--accent);">Nuestra historia</p>
+            <h2 class="display-md" id="story-heading">Un estudio que nació de la pasión por los espacios</h2>
+            <p>Studio Siete 3 surgió con la convicción de que el diseño de interiores puede transformar la manera en que las personas habitan sus espacios. Con sede en Polanco, nuestro trabajo refleja una sensibilidad local con visión contemporánea.</p>
+            <p>Cada proyecto comienza con escuchar. Entendemos tu estilo de vida, tus necesidades funcionales y los sueños que tienes para tu espacio. A partir de ahí, construimos propuestas que equilibran la belleza con la practicidad.</p>
+            <p>Trabajamos con un equipo reducido y dedicado, garantizando atención personalizada y coherencia desde el primer boceto hasta el día de la entrega.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Values -->
+      <section class="values" aria-labelledby="values-heading">
+        <div class="container">
+          <div class="values__header reveal">
+            <p class="label">Nuestros pilares</p>
+            <h2 class="display-md" id="values-heading">Lo que guía nuestro trabajo</h2>
+          </div>
+          <div class="grid-3">
+            <article class="value-card reveal reveal-delay-1">
+              <div class="value-card__num">01</div>
+              <h3>Funcionalidad</h3>
+              <p>Un espacio hermoso debe funcionar perfectamente para quien lo habita. Comenzamos con la distribución y el flujo, nunca con la decoración.</p>
+            </article>
+            <article class="value-card reveal reveal-delay-2">
+              <div class="value-card__num">02</div>
+              <h3>Estética</h3>
+              <p>Creemos en la belleza como algo que se siente y no solo se ve. Nuestra firma combina calidez, modernidad y referencias que trascienden tendencias.</p>
+            </article>
+            <article class="value-card reveal reveal-delay-3">
+              <div class="value-card__num">03</div>
+              <h3>Detalle</h3>
+              <p>Los proyectos extraordinarios se construyen en los detalles. Supervisamos cada material y acabado hasta alcanzar la perfección que imaginas.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team -->
+      <section class="team" aria-labelledby="team-heading">
+        <div class="container">
+          <div class="team__header reveal">
+            <p class="label" style="margin-bottom: 0.5rem;">El equipo</p>
+            <h2 class="display-md" id="team-heading">Quién está detrás del diseño</h2>
+          </div>
+          <div class="team__card reveal reveal-delay-1">
+            <div class="team__photo" aria-label="Fotografía de la fundadora">
+              <div class="team__photo-label"><p>Fundadora</p></div>
+            </div>
+            <div class="team__bio">
+              <p class="label">Diseñadora Principal</p>
+              <h3>Yuliana</h3>
+              <span class="role">Fundadora &amp; Directora Creativa</span>
+              <p>Con más de cinco años de experiencia en diseño de interiores residenciales y comerciales, Yuliana fundó Studio Siete 3 con una visión clara: crear espacios que equilibren la funcionalidad con una estética contemporánea y cálida.</p>
+              <p>Su trabajo refleja una sensibilidad especial por los materiales naturales, la luz y las proporciones arquitectónicas. Cada proyecto nace de una colaboración estrecha con el cliente.</p>
+              <a href="/studio-siete3/contacto/" class="btn btn-dark" style="margin-top: 1.25rem; align-self: flex-start;">Agenda una consulta</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mood Board -->
+      <section class="moodboard">
+        <div class="container">
+          <div class="moodboard__header reveal">
+            <p class="label" style="margin-bottom: 0.5rem;">Estética &amp; Referencias</p>
+            <h2 class="display-md">Universo visual</h2>
+          </div>
+          <div class="moodboard__grid reveal reveal-delay-1">
+            <div><img src="/studio-siete3/assets/img/p4_1.jpeg" alt="Inspiración" loading="lazy"></div>
+            <div><img src="/studio-siete3/assets/img/p4_2.jpeg" alt="Inspiración" loading="lazy"></div>
+            <div><img src="/studio-siete3/assets/img/p4_3.jpeg" alt="Inspiración" loading="lazy"></div>
+            <div><img src="/studio-siete3/assets/img/p4_4.jpeg" alt="Inspiración" loading="lazy"></div>
+            <div><img src="/studio-siete3/assets/img/p4_5.jpeg" alt="Inspiración" loading="lazy"></div>
+            <div><img src="/studio-siete3/assets/img/p4_6.jpeg" alt="Inspiración" loading="lazy"></div>
+            <div><img src="/studio-siete3/assets/img/p4_7.jpeg" alt="Inspiración" loading="lazy"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta-banner">
+        <div class="container">
+          <span class="accent-line accent-line--center reveal" aria-hidden="true"></span>
+          <h2 class="display-md reveal reveal-delay-1">Trabajemos juntos</h2>
+          <p class="reveal reveal-delay-2">Cada proyecto comienza con una conversación. Cuéntanos sobre tu espacio y lo que imaginas para él.</p>
+          <a href="/studio-siete3/contacto/" class="btn reveal reveal-delay-3"
+             style="color: rgba(248,246,242,0.85); border-color: rgba(248,246,242,0.35); margin-top: 0.5rem;">
+            Contáctanos hoy
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-logo">
+            <div class="sidebar__logo-mark">S7</div>
+            <div class="sidebar__logo-sub">Studio Siete 3</div>
+          </div>
+          <p>Estudio de diseño de interiores con sede en Polanco, CDMX.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Navegación</p>
+          <ul class="footer__links">
+            <li><a href="/studio-siete3/">Inicio</a></li>
+            <li><a href="/studio-siete3/proyectos/">Proyectos</a></li>
+            <li><a href="/studio-siete3/estudio/">Estudio</a></li>
+            <li><a href="/studio-siete3/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Servicios</p>
+          <ul class="footer__links">
+            <li><a href="/studio-siete3/contacto/">Diseño Residencial</a></li>
+            <li><a href="/studio-siete3/contacto/">Diseño Comercial</a></li>
+            <li><a href="/studio-siete3/contacto/">Consultoría</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <p class="footer__col-title">Contacto</p>
+          <p>Polanco, Miguel Hidalgo</p>
+          <p>Ciudad de México, CDMX</p>
+          <p style="margin-top: 0.65rem;"><a href="mailto:yulirealestateoficial@gmail.com">yulirealestateoficial@gmail.com</a></p>
+          <p><a href="tel:+525576672987">+52 55 7667 2987</a></p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Studio Siete 3. Todos los derechos reservados.</p>
+        <p>Polanco, CDMX</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const sidebar = document.getElementById('sidebar');
+    burger.addEventListener('click', () => { sidebar.classList.toggle('open'); burger.classList.toggle('open'); });
+    sidebar.querySelectorAll('.sidebar__link').forEach(l => l.addEventListener('click', () => { sidebar.classList.remove('open'); burger.classList.remove('open'); }));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

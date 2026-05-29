@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Personalizado — Calero · CDMX</title>
+<meta name="description" content="Piezas Calero a tu medida: colores, tamaños y acabados de acuerdo a tu espacio."/>
+<meta name="theme-color" content="#700402"/>
+<link rel="stylesheet" href="calero.css"/>
+</head>
+<body>
+
+<aside class="sidenav">
+  <a href="index.html" class="sidenav__logo">Calero</a>
+  <nav class="sidenav__nav">
+    <div class="sidenav__item sidenav__item--tienda">
+      <button class="sidenav__link" id="sidenavTiendaBtn">Tienda
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+      </button>
+      <div class="sidenav__sub" id="sidenavTiendaSub">
+        <div class="sidenav__sub-group">
+          <button class="sidenav__sub-toggle" data-target="sn-luminarias">Luminarias
+            <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+          </button>
+          <div class="sidenav__sub2" id="sn-luminarias">
+            <div class="sidenav__sub-group">
+              <button class="sidenav__sub-toggle" data-target="sn-demesa">De mesa
+                <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+              </button>
+              <div class="sidenav__sub3" id="sn-demesa">
+                <a href="tienda.html#pantallas">Pantallas</a>
+                <a href="tienda.html#bases">Bases</a>
+              </div>
+            </div>
+            <a href="tienda.html#colgantes">Colgantes</a>
+          </div>
+        </div>
+        <a href="tienda.html#mural">Objetos Mural</a>
+      </div>
+    </div>
+    <div class="sidenav__divider"></div>
+    <div class="sidenav__item"><a href="regalo.html" class="sidenav__link">Tarjeta regalo</a></div>
+    <div class="sidenav__item"><a href="b2b.html" class="sidenav__link">B2B</a></div>
+    <div class="sidenav__item"><a href="personalizado.html" class="sidenav__link active">Personalizado</a></div>
+    <div class="sidenav__item"><a href="nosotros.html" class="sidenav__link">Nosotros</a></div>
+    <div class="sidenav__item"><a href="contacto.html" class="sidenav__link">Contacto</a></div>
+  </nav>
+  <div class="sidenav__foot">
+    <button class="sidenav__cart" id="openCartDesktop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Pedido <span class="sidenav__cart-badge" id="cartCountDesktop">0</span>
+    </button>
+    <div class="sidenav__social">
+      <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">IG</a>
+      <a href="https://wa.me/525530370317?text=Hola!!%20Estoy%20interesada%20en%20sus%20luminarias%E2%80%A6%20me%20das%20m%C3%A1s%20informaci%C3%B3n%3F">WA</a>
+    </div>
+  </div>
+</aside>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="menu" id="menu">
+  <div class="menu__head"><span class="menu__head-logo">Calero</span><button class="menu__close" id="closeMenu">✕</button></div>
+  <ul class="menu__list">
+    <li class="menu__item menu__item--has-sub" id="tiendaItem">
+      <button class="menu__toggle" id="tiendaToggle">Tienda <span class="menu__chevron">+</span></button>
+      <ul class="menu__sub">
+        <li class="menu__sub-item menu__sub-item--has-sub">
+          <button class="menu__sub-toggle">Luminarias <span class="menu__sub-chevron">+</span></button>
+          <ul class="menu__sub2">
+            <li class="menu__sub-item menu__sub-item--has-sub">
+              <button class="menu__sub-toggle">De mesa <span class="menu__sub-chevron">+</span></button>
+              <ul class="menu__sub3">
+                <li><a href="tienda.html#pantallas" class="menu-close-link">Pantallas</a></li>
+                <li><a href="tienda.html#bases" class="menu-close-link">Bases</a></li>
+              </ul>
+            </li>
+            <li><a href="tienda.html#colgantes" class="menu-close-link">Colgantes</a></li>
+          </ul>
+        </li>
+        <li><a href="tienda.html#mural" class="menu-close-link">Objetos Mural</a></li>
+      </ul>
+    </li>
+    <li class="menu__item"><a href="regalo.html" class="menu__link">Tarjeta regalo</a></li>
+    <li class="menu__item"><a href="b2b.html" class="menu__link">B2B</a></li>
+    <li class="menu__item"><a href="personalizado.html" class="menu__link">Personalizado</a></li>
+    <li class="menu__item"><a href="nosotros.html" class="menu__link">Nosotros</a></li>
+    <li class="menu__item"><a href="contacto.html" class="menu__link">Contacto</a></li>
+  </ul>
+  <div class="menu__footer">
+    <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">@caleromexicano</a>
+    <a href="https://wa.me/525530370317?text=Hola!!%20Estoy%20interesada%20en%20sus%20luminarias%E2%80%A6%20me%20das%20m%C3%A1s%20informaci%C3%B3n%3F">55 3037 0317</a>
+  </div>
+</nav>
+
+<header class="nav">
+  <button class="nav__hamburger" id="openMenu"><span></span><span></span><span></span></button>
+  <a href="index.html" class="nav__logo">Calero</a>
+  <div class="nav__right">
+    <button class="nav__cart-icon" id="openCart">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="nav__cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="label page-hero__eyebrow">Personalizado</span>
+    <h1 class="page-hero__h1">¿Tienes una idea? <em>La hacemos.</em></h1>
+    <p class="page-hero__p">Podemos desarrollar luminarias a la medida: dimensiones, materiales, acabados y formas adaptados a lo que necesitas. Cada pedido personalizado es un proyecto en sí mismo — lo trabajamos contigo desde el boceto hasta la pieza final.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">¿Qué puedes pedir?</span>
+      <h2 class="section__title">Todo es <strong>negociable</strong></h2>
+    </div>
+    <div class="envios__grid reveal">
+      <div class="envios__col">
+        <h3>Tamaños</h3>
+        <p>Bases desde 20 cm hasta 80 cm de altura. Pantallas desde Ø 20 cm hasta Ø 60 cm. Proporciones a tu espacio.</p>
+      </div>
+      <div class="envios__col">
+        <h3>Esmaltes y colores</h3>
+        <p>Trabajamos con una paleta de más de 20 esmaltes. También podemos desarrollar un color específico para tu proyecto.</p>
+      </div>
+      <div class="envios__col">
+        <h3>Telas</h3>
+        <p>Si tienes una tela que quieres usar, la cosemos. O elegimos juntos de nuestra selección de linos y algodones naturales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-warm)">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">El proceso</span>
+      <h2 class="section__title">Cómo <strong>funciona</strong></h2>
+    </div>
+    <div class="envios__grid reveal">
+      <div class="envios__col">
+        <h3>01 · Platiquemos</h3>
+        <p>Cuéntanos qué tienes en mente. Mandamos un WhatsApp o correo y definimos medidas, acabados y tiempos.</p>
+      </div>
+      <div class="envios__col">
+        <h3>02 · Cotización</h3>
+        <p>En 48 horas te enviamos una cotización detallada. El precio varía según tamaño, esmalte y complejidad de la pantalla.</p>
+      </div>
+      <div class="envios__col">
+        <h3>03 · Producción</h3>
+        <p>50% anticipo, 3 a 4 semanas de producción. Te mandamos fotos del proceso. El 50% restante al entregar.</p>
+      </div>
+    </div>
+    <div style="margin-top:56px;text-align:center" class="reveal">
+      <p style="font-size:14px;color:var(--ink-2);margin-bottom:20px;">Para iniciar, escríbenos con una descripción de lo que tienes en mente.<br>Te respondemos con un presupuesto y tiempo estimado de producción.</p>
+      <a href="https://wa.me/525530370317?text=Hola%20Calero%2C%20me%20interesa%20una%20pieza%20personalizada" target="_blank" rel="noopener" class="product__add" style="display:inline-block;padding:14px 36px;font-size:11px;letter-spacing:.26em">
+        Platiquemos →
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__logo">Calero</div>
+    <ul class="footer__links">
+      <li><a href="tienda.html#pantallas">Pantallas</a></li>
+      <li><a href="tienda.html#bases">Bases</a></li>
+      <li><a href="tienda.html#telas">Telas</a></li>
+      <li><a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <div class="footer__credit">© 2026 Calero · CDMX · <a href="mailto:contacto@calero.mx">contacto@calero.mx</a> · <a href="legales.html">Aviso de privacidad</a> · Sitio por <a href="https://brotadigital.mx" target="_blank" rel="noopener">Brota</a></div>
+  </div>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart" id="cart">
+  <div class="cart__head"><div class="cart__title">Tu pedido</div><button class="cart__close" id="closeCart">Cerrar</button></div>
+  <div class="cart__body" id="cartBody"><p class="cart__empty">Aún no has agregado piezas.</p></div>
+  <div class="cart__foot">
+    <div class="cart__total"><span class="cart__total-label">Subtotal</span><span class="cart__total-amount" id="cartTotal">$0 MXN</span></div>
+    <p class="cart__shipping">Hecho a mano bajo pedido · <strong>8–9 días hábiles</strong> · Envío CDMX incluido · Resto del país con costo extra</p>
+    <a href="#" class="cart__checkout disabled" id="checkoutBtn">Enviar pedido por WhatsApp</a>
+  </div>
+</aside>
+
+<script src="calero.js"></script>
+</body>
+</html>

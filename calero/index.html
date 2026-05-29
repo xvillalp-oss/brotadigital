@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Calero — Luminarias y objetos · CDMX</title>
+<meta name="description" content="Bases de cerámica y pantallas hechas a mano en CDMX. Better than your abuela's decor."/>
+<meta name="theme-color" content="#700402"/>
+<link rel="stylesheet" href="calero.css"/>
+</head>
+<body>
+
+<!-- ── SIDEBAR DESKTOP ── -->
+<aside class="sidenav">
+  <a href="index.html" class="sidenav__logo">Calero</a>
+  <nav class="sidenav__nav">
+    <div class="sidenav__item sidenav__item--tienda">
+      <button class="sidenav__link" id="sidenavTiendaBtn">Tienda
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+      </button>
+      <div class="sidenav__sub" id="sidenavTiendaSub">
+        <div class="sidenav__sub-group">
+          <button class="sidenav__sub-toggle" data-target="sn-luminarias">Luminarias
+            <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+          </button>
+          <div class="sidenav__sub2" id="sn-luminarias">
+            <div class="sidenav__sub-group">
+              <button class="sidenav__sub-toggle" data-target="sn-demesa">De mesa
+                <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+              </button>
+              <div class="sidenav__sub3" id="sn-demesa">
+                <a href="tienda.html#pantallas">Pantallas</a>
+                <a href="tienda.html#bases">Bases</a>
+              </div>
+            </div>
+            <a href="tienda.html#colgantes">Colgantes</a>
+          </div>
+        </div>
+        <a href="tienda.html#mural">Objetos Mural</a>
+      </div>
+    </div>
+    <div class="sidenav__divider"></div>
+    <div class="sidenav__item"><a href="regalo.html" class="sidenav__link">Tarjeta regalo</a></div>
+    <div class="sidenav__item"><a href="b2b.html" class="sidenav__link">B2B</a></div>
+    <div class="sidenav__item"><a href="personalizado.html" class="sidenav__link">Personalizado</a></div>
+    <div class="sidenav__item"><a href="nosotros.html" class="sidenav__link">Nosotros</a></div>
+    <div class="sidenav__item"><a href="contacto.html" class="sidenav__link">Contacto</a></div>
+  </nav>
+  <div class="sidenav__foot">
+    <button class="sidenav__cart" id="openCartDesktop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Pedido <span class="sidenav__cart-badge" id="cartCountDesktop">0</span>
+    </button>
+    <div class="sidenav__social">
+      <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">IG</a>
+      <a href="https://wa.me/525530370317?text=Hola!!%20Estoy%20interesada%20en%20sus%20luminarias%E2%80%A6%20me%20das%20m%C3%A1s%20informaci%C3%B3n%3F">WA</a>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MOBILE DRAWER ── -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="menu" id="menu">
+  <div class="menu__head">
+    <span class="menu__head-logo">Calero</span>
+    <button class="menu__close" id="closeMenu">✕</button>
+  </div>
+  <ul class="menu__list">
+    <li class="menu__item menu__item--has-sub" id="tiendaItem">
+      <button class="menu__toggle" id="tiendaToggle">Tienda <span class="menu__chevron">+</span></button>
+      <ul class="menu__sub">
+        <li class="menu__sub-item menu__sub-item--has-sub">
+          <button class="menu__sub-toggle">Luminarias <span class="menu__sub-chevron">+</span></button>
+          <ul class="menu__sub2">
+            <li class="menu__sub-item menu__sub-item--has-sub">
+              <button class="menu__sub-toggle">De mesa <span class="menu__sub-chevron">+</span></button>
+              <ul class="menu__sub3">
+                <li><a href="tienda.html#pantallas" class="menu-close-link">Pantallas</a></li>
+                <li><a href="tienda.html#bases" class="menu-close-link">Bases</a></li>
+              </ul>
+            </li>
+            <li><a href="tienda.html#colgantes" class="menu-close-link">Colgantes</a></li>
+          </ul>
+        </li>
+        <li><a href="tienda.html#mural" class="menu-close-link">Objetos Mural</a></li>
+      </ul>
+    </li>
+    <li class="menu__item"><a href="regalo.html" class="menu__link">Tarjeta regalo</a></li>
+    <li class="menu__item"><a href="b2b.html" class="menu__link">B2B</a></li>
+    <li class="menu__item"><a href="personalizado.html" class="menu__link">Personalizado</a></li>
+    <li class="menu__item"><a href="nosotros.html" class="menu__link">Nosotros</a></li>
+    <li class="menu__item"><a href="contacto.html" class="menu__link">Contacto</a></li>
+    <li class="menu__item"><a href="contacto.html#regalo" class="menu__link">Tarjeta de regalo</a></li>
+  </ul>
+  <div class="menu__footer">
+    <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">@caleromexicano</a>
+    <a href="https://wa.me/525530370317?text=Hola!!%20Estoy%20interesada%20en%20sus%20luminarias%E2%80%A6%20me%20das%20m%C3%A1s%20informaci%C3%B3n%3F">55 3037 0317</a>
+  </div>
+</nav>
+
+<!-- ── MOBILE NAV ── -->
+<header class="nav">
+  <button class="nav__hamburger" id="openMenu"><span></span><span></span><span></span></button>
+  <a href="index.html" class="nav__logo">Calero</a>
+  <div class="nav__right">
+    <button class="nav__cart-icon" id="openCart">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="nav__cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero" id="inicio">
+  <div class="hero__bg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__particles" id="heroParticles"></div>
+  <div class="hero__center">
+    <img src="photos/logo-hero.svg" alt="Calero" class="hero__logo"/>
+    <p class="hero__tagline">Better than your abuela's decor</p>
+    <a href="tienda.html" class="hero__scroll">Ver la colección ↓</a>
+  </div>
+</section>
+
+<!-- ── DESTACADOS ── -->
+<section id="destacados">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">Piezas destacadas</span>
+      <h2 class="section__title">Algunas de nuestras <strong>favoritas</strong></h2>
+      <p class="section__intro">Bases torneadas a mano en CDMX y pantallas cosidas en tela de producción local. Cada nombre es el de una abuela.</p>
+    </div>
+    <div class="products reveal" id="destacadosGrid"></div>
+    <div style="margin-top:56px;text-align:center" class="reveal">
+      <a href="tienda.html" class="product__add" style="display:inline-block;padding:14px 36px;font-size:11px;letter-spacing:.26em">Ver tienda completa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOBRE snippet ── -->
+<section class="sobre" id="quienes">
+  <div class="container sobre__inner">
+    <div class="reveal sobre__seal-wrap">
+      <img src="photos/brand-seal-sm.png" alt="" class="sobre__seal"/>
+      <h2 class="sobre__h2">Better than your <em>abuela's</em> decor.</h2>
+    </div>
+    <div class="reveal">
+      <p class="sobre__p">Calero nació de una idea simple: que los objetos que compramos para habitar nuestra casa deberían tener tanta historia como los que heredamos.</p>
+      <p class="sobre__p">Trabajamos con artesanas y artesanos en CDMX. Cada base se tornea, se cuece y se acaba a mano. Cada pantalla se cose en taller con telas de productores locales.</p>
+      <p class="sobre__sign">— el estudio · CDMX · 2026</p>
+      <a href="nosotros.html" style="display:inline-block;margin-top:28px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--ink-3);padding-bottom:2px;color:var(--ink-2)">Conocer más →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__logo">Calero</div>
+    <ul class="footer__links">
+      <li><a href="tienda.html#pantallas">Pantallas</a></li>
+      <li><a href="tienda.html#bases">Bases</a></li>
+      <li><a href="tienda.html#telas">Telas</a></li>
+      <li><a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <div class="footer__credit">© 2026 Calero · CDMX · <a href="mailto:contacto@calero.mx">contacto@calero.mx</a> · <a href="legales.html">Aviso de privacidad</a> · Sitio por <a href="https://brotadigital.mx" target="_blank" rel="noopener">Brota</a></div>
+  </div>
+</footer>
+
+<!-- ── CART ── -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart" id="cart">
+  <div class="cart__head"><div class="cart__title">Tu pedido</div><button class="cart__close" id="closeCart">Cerrar</button></div>
+  <div class="cart__body" id="cartBody"><p class="cart__empty">Aún no has agregado piezas.</p></div>
+  <div class="cart__foot">
+    <div class="cart__total"><span class="cart__total-label">Subtotal</span><span class="cart__total-amount" id="cartTotal">$0 MXN</span></div>
+    <p class="cart__shipping">Hecho a mano bajo pedido · <strong>8–9 días hábiles</strong> · Envío CDMX incluido · Resto del país con costo extra</p>
+    <a href="#" class="cart__checkout disabled" id="checkoutBtn">Enviar pedido por WhatsApp</a>
+  </div>
+</aside>
+
+<script src="calero.js"></script>
+<script>
+  onDataReady(() => {
+    // Piezas destacadas: visualmente distintas — cónica oscura, plisada cálida, sólo base
+    const dest = [PANTALLAS[0], BASES[0], BASES[BASES.length - 1]].filter(Boolean);
+    renderProducts(dest, 'destacadosGrid', 'pieza');
+  });
+</script>
+<script type="module">
+  import { initParticles } from './particles.js';
+  initParticles(document.getElementById('heroParticles'), {
+    particleCount:       150,
+    particleSpread:      8,
+    speed:               0.06,
+    particleColors:      ['#F2EBE0', '#E8D4BC', '#ffffff'],
+    moveParticlesOnHover: true,
+    particleHoverFactor: 0.4,
+    alphaParticles:      true,
+    particleBaseSize:    90,
+    sizeRandomness:      1.2,
+    cameraDistance:      22,
+    disableRotation:     false,
+  });
+</script>
+</body>
+</html>

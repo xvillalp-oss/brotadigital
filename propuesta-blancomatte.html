@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Redes Sociales — Blanco Matte Box</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#faf8f5;
+  --white:#ffffff;
+  --black:#111010;
+  --rose:#c4967a;
+  --gold:#b08c6e;
+  --mid:#8a8278;
+  --light:#f2ede8;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Jost',sans-serif;
+}
+body{font-family:var(--sans);background:#e8e4de}
+
+.slide{
+  width:210mm;height:297mm;overflow:hidden;position:relative;
+  margin:0 auto 4mm;page-break-after:always;break-after:page;
+}
+@page{size:A4 portrait;margin:0}
+@media print{body{background:none}.slide{margin:0;page-break-after:always;break-after:page}}
+
+/* ══════════════════════════════
+   SLIDE 1 — PORTADA
+══════════════════════════════ */
+.s1{background:var(--black);display:flex;flex-direction:column;justify-content:space-between}
+.s1-deco1{position:absolute;width:320px;height:320px;border-radius:50%;border:1px solid rgba(196,150,122,.1);top:-80px;right:-80px}
+.s1-deco2{position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(196,150,122,.07);top:-30px;right:-30px}
+.s1-deco3{position:absolute;width:240px;height:240px;border-radius:50%;border:1px solid rgba(196,150,122,.08);bottom:30px;left:-100px}
+
+.s1-top{padding:13mm 14mm 0;display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:1}
+.s1-agency{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.s1-date{font-size:8.5px;letter-spacing:.14em;color:rgba(255,255,255,.25)}
+
+.s1-mid{flex:1;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.s1-mid-inner{display:grid;grid-template-columns:1fr 1fr;width:100%;padding:0 14mm;gap:12mm;align-items:center}
+.s1-title{font-family:var(--serif);font-size:72px;font-weight:300;color:var(--white);line-height:.95;letter-spacing:-.02em}
+.s1-title em{font-style:italic;color:var(--rose)}
+.s1-right{display:flex;flex-direction:column;gap:6mm;border-left:1px solid rgba(255,255,255,.08);padding-left:12mm}
+.s1-eyebrow{font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--rose)}
+.s1-desc{font-size:10px;color:rgba(255,255,255,.45);line-height:1.8;letter-spacing:.04em}
+.s1-divider{width:32px;height:1px;background:rgba(196,150,122,.4)}
+.s1-tags{display:flex;flex-direction:column;gap:2mm}
+.s1-tag{font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.1em;text-transform:uppercase}
+
+.s1-bot{padding:0 14mm 10mm;display:flex;justify-content:space-between;align-items:flex-end;position:relative;z-index:1}
+.s1-handle{font-family:var(--serif);font-size:13px;font-style:italic;color:rgba(255,255,255,.35)}
+.s1-logo{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+
+/* ══════════════════════════════
+   SLIDE 2 — DIAGNÓSTICO + ESTRATEGIA
+══════════════════════════════ */
+.s2{background:var(--white);display:flex;flex-direction:column}
+.s2-head{padding:10mm 14mm 7mm;border-bottom:1px solid rgba(17,16,16,.06);display:flex;justify-content:space-between;align-items:flex-end}
+.s2-h{font-family:var(--serif);font-size:34px;font-weight:300;color:var(--black);line-height:1}
+.s2-num{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+.s2-subtitle{font-size:8.5px;color:var(--mid);letter-spacing:.1em;text-transform:uppercase;text-align:right}
+
+/* TOP ROW — 3 columnas de diagnóstico */
+.s2-diag{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:3px 0;background:rgba(17,16,16,.04)}
+.diag{background:var(--white);padding:6mm 7mm;display:flex;flex-direction:column;gap:2mm}
+.diag.dark{background:var(--black)}
+.diag-label{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+.diag-title{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--black);line-height:1.2}
+.diag.dark .diag-title{color:var(--white)}
+.diag-body{font-size:8.5px;color:var(--mid);line-height:1.65}
+.diag.dark .diag-body{color:rgba(255,255,255,.45)}
+.diag-stat{font-family:var(--serif);font-size:30px;font-weight:300;color:var(--rose);line-height:1;margin-top:auto;padding-top:3mm}
+.diag-stat-label{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+.diag.dark .diag-stat-label{color:rgba(255,255,255,.3)}
+
+/* DIVIDER LABEL */
+.section-label{padding:4mm 14mm 3mm;display:flex;align-items:center;gap:4mm}
+.section-label-text{font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);white-space:nowrap}
+.section-label-line{flex:1;height:1px;background:rgba(17,16,16,.07)}
+
+/* ESTRATEGIA — formatos + pilares en una fila */
+.s2-strategy{display:grid;grid-template-columns:repeat(3,1fr) 1.2fr;gap:3px;padding:3px 0;background:rgba(17,16,16,.04)}
+.fmt{background:var(--white);padding:5mm 6mm;display:flex;flex-direction:column;gap:1.5mm}
+.fmt.accent{background:var(--black)}
+.fmt-badge{font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+.fmt-name{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--black);line-height:1}
+.fmt.accent .fmt-name{color:var(--white)}
+.fmt-freq{font-size:8px;color:var(--mid)}
+.fmt.accent .fmt-freq{color:rgba(255,255,255,.4)}
+.fmt-num{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--rose);margin-top:auto;line-height:1}
+.fmt-numlabel{font-size:7px;color:var(--mid);letter-spacing:.08em;text-transform:uppercase}
+.fmt.accent .fmt-numlabel{color:rgba(255,255,255,.3)}
+
+/* Pilares en columna derecha */
+.pilares{background:var(--light);padding:5mm 6mm;display:flex;flex-direction:column;gap:2mm;justify-content:space-between}
+.pilar-item{display:flex;align-items:baseline;gap:3mm}
+.pilar-n{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--rose);line-height:1;flex-shrink:0}
+.pilar-name{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--black);line-height:1.3}
+.pilar-header{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:1mm}
+
+/* CALENDAR */
+.s2-cal{padding:4mm 14mm 5mm;display:grid;grid-template-columns:repeat(7,1fr);gap:3mm}
+.cal-col{display:flex;flex-direction:column;align-items:center;gap:1.5mm}
+.cal-day-label{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+.cal-dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:500;flex-shrink:0}
+.cal-dot.r{background:var(--rose);color:var(--white)}
+.cal-dot.c{background:rgba(196,150,122,.18);color:var(--rose)}
+.cal-dot.f{background:rgba(17,16,16,.07);color:var(--mid)}
+.cal-dot.s{background:var(--black);color:var(--white)}
+.cal-dot.off{background:transparent;border:1px dashed rgba(17,16,16,.15);color:rgba(17,16,16,.2)}
+.cal-type{font-size:6.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);text-align:center}
+
+/* TIMINGS */
+.s2-times{padding:0 14mm 5mm;display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+.time-chip{background:var(--light);padding:3.5mm 4mm;border-radius:1px;text-align:center}
+.time-val{font-family:var(--serif);font-size:18px;font-weight:300;color:var(--black)}
+.time-label{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-top:0.5mm;line-height:1.4}
+
+/* ══════════════════════════════
+   SLIDE 3 — PAQUETES + METODOLOGÍA
+══════════════════════════════ */
+.s3{background:var(--cream);display:flex;flex-direction:column}
+.s3-head{padding:10mm 14mm 7mm;border-bottom:1px solid rgba(17,16,16,.06);display:flex;justify-content:space-between;align-items:flex-end}
+.s3-h{font-family:var(--serif);font-size:34px;font-weight:300;color:var(--black);line-height:1}
+.s3-num{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+.s3-sub{font-size:8.5px;color:var(--mid);letter-spacing:.1em;text-transform:uppercase;text-align:right}
+
+/* PAQUETES */
+.pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:3px 0;background:rgba(17,16,16,.06)}
+.pkg{background:var(--white);padding:7mm 7mm 6mm;display:flex;flex-direction:column;position:relative}
+.pkg.feat{background:var(--black)}
+.pkg-badge{position:absolute;top:6mm;right:6mm;font-size:6.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--rose);color:var(--white);padding:1.5mm 3mm;border-radius:100px}
+.pkg-tier{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:2mm}
+.pkg-name{font-family:var(--serif);font-size:24px;font-weight:300;color:var(--black);line-height:1;margin-bottom:3mm}
+.pkg.feat .pkg-name{color:var(--white)}
+.pkg-price{font-family:var(--serif);font-size:38px;font-weight:300;color:var(--black);line-height:1}
+.pkg.feat .pkg-price{color:var(--rose)}
+.pkg-cur{font-size:11px;color:var(--mid);vertical-align:super;margin-right:.5mm}
+.pkg-period{font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-top:1mm;margin-bottom:4mm}
+.pkg.feat .pkg-period{color:rgba(255,255,255,.35)}
+.pkg-div{height:1px;background:rgba(17,16,16,.07);margin-bottom:4mm}
+.pkg.feat .pkg-div{background:rgba(255,255,255,.1)}
+.pkg-items{list-style:none;display:flex;flex-direction:column;gap:2mm;flex:1}
+.pkg-items li{font-size:8px;color:var(--mid);padding-left:4mm;position:relative;line-height:1.5}
+.pkg-items li::before{content:'✦';position:absolute;left:0;color:var(--rose);font-size:5.5px;top:1.5mm}
+.pkg.feat .pkg-items li{color:rgba(255,255,255,.55)}
+.pkg-cta{margin-top:4mm;padding:2.5mm 0;text-align:center;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);border:1px solid rgba(196,150,122,.35)}
+.pkg.feat .pkg-cta{background:var(--rose);color:var(--white);border-color:var(--rose)}
+
+/* METODOLOGÍA — 4 pilares en una fila */
+.metod{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:3px 0;background:rgba(17,16,16,.06)}
+.met{background:var(--white);padding:5mm 6mm;display:flex;flex-direction:column;gap:1.5mm}
+.met-phase{font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+.met-title{font-family:var(--serif);font-size:17px;font-weight:300;color:var(--black);line-height:1.1}
+.met-items{list-style:none;display:flex;flex-direction:column;gap:1.5mm;margin-top:1mm;flex:1}
+.met-items li{font-size:7.5px;color:var(--mid);padding-left:3.5mm;position:relative;line-height:1.5}
+.met-items li::before{content:'→';position:absolute;left:0;color:var(--rose);font-size:7.5px}
+.met-stat{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--rose);margin-top:auto;padding-top:3mm;line-height:1}
+.met-stat-label{font-size:6.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+
+/* FOOTER CIERRE */
+.s3-footer{padding:5mm 14mm 8mm;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(17,16,16,.06)}
+.s3-cta-label{font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mid)}
+.s3-cta-link{font-family:var(--serif);font-size:20px;font-weight:300;font-style:italic;color:var(--rose);margin-top:1mm}
+.s3-note{font-size:7.5px;color:var(--mid);text-align:right;line-height:1.7}
+.s3-note strong{color:var(--black);font-weight:500}
+.s3-brand{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-top:2mm}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     SLIDE 1 — PORTADA
+══════════════════════════════════ -->
+<div class="slide s1">
+  <div class="s1-deco1"></div>
+  <div class="s1-deco2"></div>
+  <div class="s1-deco3"></div>
+
+  <div class="s1-top">
+    <span class="s1-agency">Brota Digital</span>
+    <span class="s1-date">Mayo 2025</span>
+  </div>
+
+  <div class="s1-mid">
+    <div class="s1-mid-inner">
+      <div>
+        <h1 class="s1-title">Blanco<br><em>Matte</em><br>Box</h1>
+      </div>
+      <div class="s1-right">
+        <div>
+          <p class="s1-eyebrow">Propuesta</p>
+          <p class="s1-desc">Gestión de redes sociales<br>@blancomatte.box</p>
+        </div>
+        <div class="s1-divider"></div>
+        <div class="s1-tags">
+          <p class="s1-tag">Instagram</p>
+          <p class="s1-tag">Contenido & Estrategia</p>
+          <p class="s1-tag">Gestión de Comunidad</p>
+          <p class="s1-tag">Análisis Mensual</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s1-bot">
+    <span class="s1-handle">@blancomatte.box · 200 seguidores · inicio</span>
+    <span class="s1-logo">Brota Digital</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SLIDE 2 — DIAGNÓSTICO + ESTRATEGIA
+══════════════════════════════════ -->
+<div class="slide s2">
+  <div class="s2-head">
+    <div>
+      <p class="s2-num">01 — Diagnóstico & Estrategia</p>
+      <h2 class="s2-h">El plan para crecer</h2>
+    </div>
+    <p class="s2-subtitle">Contexto · Formatos · Pilares · Calendario</p>
+  </div>
+
+  <!-- DIAGNÓSTICO: 3 columnas -->
+  <div class="s2-diag">
+    <div class="diag">
+      <p class="diag-label">La oportunidad</p>
+      <p class="diag-title">Nicho de detallitos sin líder visual</p>
+      <p class="diag-body">El mercado de regalos y detallitos en México es masivo y altamente impulsivo. Una marca con estético claro y contenido consistente puede posicionarse rápido.</p>
+      <p class="diag-stat">$8.3B</p>
+      <p class="diag-stat-label">USD mercado gifting México</p>
+    </div>
+    <div class="diag dark">
+      <p class="diag-label">El perfil ideal</p>
+      <p class="diag-title">Mujeres 18–34 que regalan</p>
+      <p class="diag-body">Instagram México tiene 51% de adultos activos. El 72% de compras de regalo en México se inspira en redes. El contenido de "ideas de regalo" es el más guardado.</p>
+      <p class="diag-stat">72%</p>
+      <p class="diag-stat-label">compras inspiradas en redes</p>
+    </div>
+    <div class="diag">
+      <p class="diag-label">Por qué funciona orgánico</p>
+      <p class="diag-title">Saves = alcance gratuito</p>
+      <p class="diag-body">La gente guarda posts de regalos para "cuando se ofrezca". Cada save le indica al algoritmo que el contenido es valioso y lo muestra a más personas sin pagar.</p>
+      <p class="diag-stat">+30%</p>
+      <p class="diag-stat-label">engagement LATAM vs. global</p>
+    </div>
+  </div>
+
+  <!-- ESTRATEGIA: formatos + pilares -->
+  <div class="section-label">
+    <span class="section-label-text">Formatos & Frecuencia</span>
+    <span class="section-label-line"></span>
+  </div>
+
+  <div class="s2-strategy">
+    <div class="fmt">
+      <p class="fmt-badge">★ Prioridad 1</p>
+      <p class="fmt-name">Reels</p>
+      <p class="fmt-freq">4× por semana</p>
+      <p class="fmt-num">125%</p>
+      <p class="fmt-numlabel">más alcance que fotos</p>
+    </div>
+    <div class="fmt">
+      <p class="fmt-badge">Prioridad 2</p>
+      <p class="fmt-name">Carruseles</p>
+      <p class="fmt-freq">2× por semana</p>
+      <p class="fmt-num">2.1×</p>
+      <p class="fmt-numlabel">más interacciones</p>
+    </div>
+    <div class="fmt">
+      <p class="fmt-badge">Diario</p>
+      <p class="fmt-name">Stories</p>
+      <p class="fmt-freq">5–7 frames / día</p>
+      <p class="fmt-num">24h</p>
+      <p class="fmt-numlabel">comunidad activa</p>
+    </div>
+    <div class="pilares">
+      <p class="pilar-header">4 pilares de contenido</p>
+      <div class="pilar-item"><p class="pilar-n">01</p><p class="pilar-name">Unboxing & Reveal</p></div>
+      <div class="pilar-item"><p class="pilar-n">02</p><p class="pilar-name">Ideas de Regalo</p></div>
+      <div class="pilar-item"><p class="pilar-n">03</p><p class="pilar-name">Aesthetic Flatlay</p></div>
+      <div class="pilar-item"><p class="pilar-n">04</p><p class="pilar-name">Behind the Scenes</p></div>
+    </div>
+  </div>
+
+  <!-- CALENDARIO SEMANAL -->
+  <div class="section-label">
+    <span class="section-label-text">Semana tipo</span>
+    <span class="section-label-line"></span>
+  </div>
+
+  <div class="s2-cal">
+    <div class="cal-col"><p class="cal-day-label">Lun</p><div class="cal-dot r">R</div><p class="cal-type">Reel</p></div>
+    <div class="cal-col"><p class="cal-day-label">Mar</p><div class="cal-dot c">C</div><p class="cal-type">Carrusel</p></div>
+    <div class="cal-col"><p class="cal-day-label">Mié</p><div class="cal-dot r">R</div><p class="cal-type">Reel</p></div>
+    <div class="cal-col"><p class="cal-day-label">Jue</p><div class="cal-dot f">F</div><p class="cal-type">Foto</p></div>
+    <div class="cal-col"><p class="cal-day-label">Vie</p><div class="cal-dot r">R</div><p class="cal-type">Reel</p></div>
+    <div class="cal-col"><p class="cal-day-label">Sáb</p><div class="cal-dot c">C</div><p class="cal-type">Carrusel</p></div>
+    <div class="cal-col"><p class="cal-day-label">Dom</p><div class="cal-dot s">S</div><p class="cal-type">Stories</p></div>
+  </div>
+
+  <!-- MEJORES HORARIOS -->
+  <div class="s2-times">
+    <div class="time-chip"><p class="time-val">11 AM</p><p class="time-label">Mejor hora Lun–Vie</p></div>
+    <div class="time-chip"><p class="time-val">6 PM</p><p class="time-label">Mayor engagement Viernes</p></div>
+    <div class="time-chip"><p class="time-val">7 AM</p><p class="time-label">Primera Stories del día</p></div>
+    <div class="time-chip"><p class="time-val">52%</p><p class="time-label">compras post-unboxing</p></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SLIDE 3 — PAQUETES + METODOLOGÍA
+══════════════════════════════════ -->
+<div class="slide s3">
+  <div class="s3-head">
+    <div>
+      <p class="s3-num">02 — Inversión & Metodología</p>
+      <h2 class="s3-h">Elige tu plan</h2>
+    </div>
+    <p class="s3-sub">Paquetes · Entregables · Proceso</p>
+  </div>
+
+  <!-- PAQUETES -->
+  <div class="pkgs">
+    <div class="pkg">
+      <p class="pkg-tier">Paquete 01</p>
+      <p class="pkg-name">Esencial</p>
+      <p class="pkg-price"><span class="pkg-cur">$</span>3,500</p>
+      <p class="pkg-period">MXN / mes</p>
+      <div class="pkg-div"></div>
+      <ul class="pkg-items">
+        <li>8 posts en feed al mes</li>
+        <li>Stories diarias (diseño + copy)</li>
+        <li>2 Reels por semana</li>
+        <li>Community management básico</li>
+        <li>Reporte mensual</li>
+        <li>Estrategia de hashtags</li>
+        <li>Calendario editorial</li>
+      </ul>
+      <div class="pkg-cta">Comenzar</div>
+    </div>
+
+    <div class="pkg feat">
+      <span class="pkg-badge">Recomendado</span>
+      <p class="pkg-tier">Paquete 02</p>
+      <p class="pkg-name">Profesional</p>
+      <p class="pkg-price"><span class="pkg-cur" style="color:rgba(255,255,255,.35)">$</span>6,500</p>
+      <p class="pkg-period">MXN / mes</p>
+      <div class="pkg-div"></div>
+      <ul class="pkg-items">
+        <li>16 posts en feed (diseño + copy)</li>
+        <li>Stories diarias 5–7 frames</li>
+        <li>4 Reels/semana + subtítulos</li>
+        <li>Community management activo</li>
+        <li>2 microinfluencers/mes coordinados</li>
+        <li>Sesión estratégica mensual</li>
+        <li>Reporte + recomendaciones</li>
+        <li>$1,500 MXN adspend incluido</li>
+      </ul>
+      <div class="pkg-cta">Comenzar</div>
+    </div>
+
+    <div class="pkg">
+      <p class="pkg-tier">Paquete 03</p>
+      <p class="pkg-name">Premium</p>
+      <p class="pkg-price"><span class="pkg-cur">$</span>10,000</p>
+      <p class="pkg-period">MXN / mes</p>
+      <div class="pkg-div"></div>
+      <ul class="pkg-items">
+        <li>25 piezas de contenido/mes</li>
+        <li>Stories animadas + interactivas</li>
+        <li>6 Reels/semana con producción</li>
+        <li>Community management full</li>
+        <li>4 influencers/mes coordinados</li>
+        <li>Gestión de ads + $3K adspend</li>
+        <li>Reportes semanales + mensuales</li>
+        <li>Estrategia de fechas clave</li>
+      </ul>
+      <div class="pkg-cta">Comenzar</div>
+    </div>
+  </div>
+
+  <!-- METODOLOGÍA -->
+  <div class="section-label" style="margin-top:3px">
+    <span class="section-label-text">Cómo trabajamos</span>
+    <span class="section-label-line"></span>
+  </div>
+
+  <div class="metod">
+    <div class="met">
+      <p class="met-phase">Pilar 01</p>
+      <p class="met-title">Producción<br>de contenido</p>
+      <ul class="met-items">
+        <li>Calendario entregado cada mes</li>
+        <li>Diseño, copy y publicación incluidos</li>
+        <li>Aprobación en 48 hrs</li>
+      </ul>
+      <p class="met-stat">Puntual</p>
+      <p class="met-stat-label">cada entrega · cada semana</p>
+    </div>
+    <div class="met">
+      <p class="met-phase">Pilar 02</p>
+      <p class="met-title">Estrategia<br>de saves</p>
+      <ul class="met-items">
+        <li>Reels con hooks de "ideas de regalo"</li>
+        <li>Hashtags y horarios por datos</li>
+        <li>Formatos adaptados al nicho</li>
+      </ul>
+      <p class="met-stat">Data</p>
+      <p class="met-stat-label">driven · sin intuición ciega</p>
+    </div>
+    <div class="met">
+      <p class="met-phase">Pilar 03</p>
+      <p class="met-title">Gestión de<br>comunidad</p>
+      <ul class="met-items">
+        <li>Respuesta a DMs y comentarios</li>
+        <li>Coordinación con microinfluencers</li>
+        <li>Interacción con cuentas del nicho</li>
+      </ul>
+      <p class="met-stat">Diaria</p>
+      <p class="met-stat-label">presencia activa</p>
+    </div>
+    <div class="met">
+      <p class="met-phase">Pilar 04</p>
+      <p class="met-title">Análisis &<br>optimización</p>
+      <ul class="met-items">
+        <li>Reporte mensual de métricas reales</li>
+        <li>Qué funcionó y por qué</li>
+        <li>Plan de acción mes siguiente</li>
+      </ul>
+      <p class="met-stat">Claro</p>
+      <p class="met-stat-label">sin tecnicismos · accionable</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="s3-footer">
+    <div>
+      <p class="s3-cta-label">¿Empezamos?</p>
+      <p class="s3-cta-link">hola@brotadigital.com</p>
+    </div>
+    <div style="text-align:right">
+      <p class="s3-note"><strong>Compromiso mínimo:</strong> 3 meses · Pago mensual por adelantado<br>No incluye producción fotográfica (cotización por separado)</p>
+      <p class="s3-brand">Brota Digital · brotadigital.com</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

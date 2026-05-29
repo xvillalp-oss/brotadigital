@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia Instagram — @sofiaot.eventos</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --blush: #F2DDD5;
+    --blush-deep: #E8C4B8;
+    --dark: #1A1A1A;
+    --mid: #4A4A4A;
+    --soft: #8A8A8A;
+    --cream: #FAF7F4;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,110,0.15) 0%, transparent 70%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,221,213,0.1) 0%, transparent 70%);
+  }
+
+  .cover-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cover-handle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--soft);
+    letter-spacing: 2px;
+    margin-bottom: 60px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .cover-meta-item .label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--soft);
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--soft);
+    text-transform: uppercase;
+  }
+
+  /* ── PAGES ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 72px 80px;
+    page-break-after: always;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  /* ── SECTION HEADER ── */
+  .section-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 40px;
+  }
+
+  /* ── PROFILE TABLE ── */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--blush);
+    border: 1px solid var(--blush-deep);
+    margin-bottom: 32px;
+  }
+
+  .profile-cell {
+    background: var(--white);
+    padding: 18px 24px;
+  }
+
+  .profile-cell .cell-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 4px;
+  }
+
+  .profile-cell .cell-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--dark);
+  }
+
+  .profile-cell.highlight {
+    background: var(--dark);
+  }
+
+  .profile-cell.highlight .cell-label { color: var(--gold); }
+  .profile-cell.highlight .cell-value { color: var(--white); font-size: 24px; font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+
+  /* ── INSIGHT BOX ── */
+  .insight {
+    border-left: 3px solid var(--gold);
+    background: var(--blush);
+    padding: 20px 28px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--mid);
+  }
+
+  .insight strong {
+    color: var(--dark);
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    color: var(--gold);
+  }
+
+  /* ── PILLARS ── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .pilar {
+    border: 1px solid var(--blush-deep);
+    padding: 28px;
+    position: relative;
+  }
+
+  .pilar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--blush-deep);
+    line-height: 1;
+    position: absolute;
+    top: 16px; right: 20px;
+  }
+
+  .pilar-tag {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .pilar-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .pilar-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .pilar-examples {
+    list-style: none;
+    border-top: 1px solid var(--blush-deep);
+    padding-top: 14px;
+  }
+
+  .pilar-examples li {
+    font-size: 11px;
+    color: var(--soft);
+    padding: 3px 0;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .pilar-examples li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* ── CALENDAR ── */
+  .week-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--dark);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--blush-deep);
+  }
+
+  .cal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+    font-size: 12px;
+  }
+
+  .cal-table th {
+    background: var(--dark);
+    color: var(--gold-light);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .cal-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--blush);
+    vertical-align: top;
+  }
+
+  .cal-table tr:last-child td { border-bottom: none; }
+
+  .cal-table tr:nth-child(even) td { background: var(--cream); }
+
+  .format-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .badge-reel { background: #1A1A1A; color: #fff; }
+  .badge-carrusel { background: var(--gold); color: #fff; }
+  .badge-foto { background: var(--blush-deep); color: var(--dark); }
+  .badge-stories { background: var(--blush); color: var(--mid); border: 1px solid var(--blush-deep); }
+
+  /* ── COPY POSTS ── */
+  .post-card {
+    border: 1px solid var(--blush-deep);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .post-card-header {
+    background: var(--dark);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .post-card-header .post-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .post-card-header .post-format {
+    font-size: 10px;
+    color: var(--soft);
+  }
+
+  .post-card-body {
+    padding: 24px;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+
+  .post-hashtags {
+    background: var(--cream);
+    padding: 12px 24px;
+    font-size: 11px;
+    color: var(--gold);
+    font-style: italic;
+    border-top: 1px solid var(--blush);
+  }
+
+  /* ── HASHTAGS ── */
+  .hashtag-layer {
+    margin-bottom: 24px;
+  }
+
+  .hashtag-layer-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 10px;
+  }
+
+  .hashtag-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hashtag-chip {
+    background: var(--white);
+    border: 1px solid var(--blush-deep);
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--mid);
+    border-radius: 2px;
+  }
+
+  .hashtag-chip.primary {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: var(--gold-light);
+  }
+
+  /* ── SCHEDULE TABLE ── */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  .schedule-table th {
+    background: var(--dark);
+    color: var(--gold-light);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    text-align: left;
+  }
+
+  .schedule-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--blush);
+    vertical-align: middle;
+  }
+
+  .schedule-table tr:last-child td { border-bottom: none; }
+
+  .schedule-table .day {
+    font-weight: 600;
+    color: var(--dark);
+    white-space: nowrap;
+  }
+
+  .schedule-table .time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gold);
+  }
+
+  .schedule-table .note {
+    color: var(--soft);
+    font-size: 11px;
+  }
+
+  /* ── KPI TABLE ── */
+  .kpi-section { margin-bottom: 36px; }
+
+  .kpi-section-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--blush-deep);
+  }
+
+  .kpi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .kpi-table th {
+    background: var(--blush);
+    color: var(--mid);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .kpi-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--blush);
+    color: var(--mid);
+  }
+
+  .kpi-table tr:last-child td { border-bottom: none; }
+
+  .kpi-table td:first-child { color: var(--dark); font-weight: 500; }
+
+  .kpi-table td.target {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--gold);
+  }
+
+  /* ── ACCOUNTS ── */
+  .account-card {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border: 1px solid var(--blush-deep);
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+
+  .account-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .account-info .handle {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .account-info .followers {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .account-info .desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .account-tag {
+    margin-left: auto;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    white-space: nowrap;
+    height: fit-content;
+  }
+
+  /* ── GROWTH ACTIONS ── */
+  .action-group { margin-bottom: 28px; }
+
+  .action-group-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .action-group-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--blush-deep);
+  }
+
+  .action-list {
+    list-style: none;
+  }
+
+  .action-list li {
+    padding: 10px 0;
+    padding-left: 20px;
+    border-bottom: 1px solid var(--blush);
+    font-size: 13px;
+    color: var(--mid);
+    position: relative;
+  }
+
+  .action-list li:last-child { border-bottom: none; }
+
+  .action-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    font-size: 6px;
+    color: var(--gold);
+    top: 14px;
+  }
+
+  /* ── FORMAT ROW ── */
+  .format-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--blush-deep);
+    margin-bottom: 32px;
+  }
+
+  .format-cell {
+    background: var(--white);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .format-cell .fmt-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--dark);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .format-cell .fmt-freq {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .format-cell .fmt-goal {
+    font-size: 11px;
+    color: var(--soft);
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid var(--blush-deep);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-top: 60px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .cover { min-height: 100vh; }
+    .page { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ COVER ══════════════════ -->
+<div class="cover">
+  <div class="cover-tag">Estrategia de Contenido · Instagram · 2026</div>
+  <div class="cover-title">Sofia OT<br><em>Eventos</em></div>
+  <div class="cover-handle">@sofiaot.eventos · Ciudad de México</div>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="num">~2K</span>
+      <span class="label">Seguidores</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="num">6</span>
+      <span class="label">Pilares</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="num">4</span>
+      <span class="label">Semanas</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="num">5K</span>
+      <span class="label">Meta 3 meses</span>
+    </div>
+  </div>
+  <div class="cover-footer">Documento preparado por Brota Digital &nbsp;·&nbsp; Mayo 2026</div>
+</div>
+
+<!-- ══════════════════ 01 · DIAGNÓSTICO ══════════════════ -->
+<div class="page">
+  <div class="section-label">Sección 01</div>
+  <div class="section-title">Diagnóstico<br><em>del perfil</em></div>
+
+  <div class="profile-grid">
+    <div class="profile-cell highlight">
+      <div class="cell-label">Seguidores actuales</div>
+      <div class="cell-value">~1,999</div>
+    </div>
+    <div class="profile-cell highlight">
+      <div class="cell-label">Posts publicados</div>
+      <div class="cell-value">~531</div>
+    </div>
+    <div class="profile-cell">
+      <div class="cell-label">Cuenta</div>
+      <div class="cell-value">@sofiaot.eventos</div>
+    </div>
+    <div class="profile-cell">
+      <div class="cell-label">Ubicación</div>
+      <div class="cell-value">Ciudad de México</div>
+    </div>
+    <div class="profile-cell">
+      <div class="cell-label">Categoría</div>
+      <div class="cell-value">Event & Wedding Planner</div>
+    </div>
+    <div class="profile-cell">
+      <div class="cell-label">Contacto</div>
+      <div class="cell-value">100% por DM — sin sitio web</div>
+    </div>
+    <div class="profile-cell" style="grid-column: span 2;">
+      <div class="cell-label">Servicios</div>
+      <div class="cell-value">Bodas · Xv años · Eventos corporativos · Table styling · Mesas de dulces</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Contexto de mercado</strong>
+    Las cuentas de 1K–10K seguidores en el nicho de bodas y eventos tienen el engagement más alto de todos los tiers: entre 4% y 6.23%. Los Reels generan 2.25x más alcance que fotos estáticas. El taggeo de proveedores puede llevar un solo post a 15,000–20,000 personas sin costo alguno.
+  </div>
+
+  <div class="section-label" style="margin-top:32px;">Cliente ideal</div>
+  <div class="section-title" style="font-size:28px; margin-bottom:16px;">¿A quién le habla <em>Sofía?</em></div>
+
+  <div class="insight">
+    Mujeres de 25–45 años en CDMX y área metropolitana que están planeando una boda, xv años o evento social. Buscan en Instagram antes de contratar. Toman decisiones basadas en <strong style="color:var(--dark);font-size:13px;letter-spacing:0;text-transform:none;">confianza + estética + referencias reales.</strong>
+  </div>
+</div>
+
+<!-- ══════════════════ 02 · PILARES ══════════════════ -->
+<div class="page">
+  <div class="section-label">Sección 02</div>
+  <div class="section-title">Pilares de<br><em>contenido</em></div>
+
+  <div class="pillars-grid">
+    <div class="pilar">
+      <span class="pilar-num">01</span>
+      <div class="pilar-tag">Alcance</div>
+      <div class="pilar-name">Inspiración y Estilo Visual</div>
+      <div class="pilar-desc">Contenido aspiracional con tendencias, paletas y moodboards. Posiciona a Sofía como referente de gusto y visión creativa.</div>
+      <ul class="pilar-examples">
+        <li>5 paletas para bodas en otoño 2026</li>
+        <li>Tendencias de iluminación para xv años</li>
+        <li>Detalle de decoración con copy reflexivo</li>
+      </ul>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">02</span>
+      <div class="pilar-tag">Confianza</div>
+      <div class="pilar-name">Detrás de Cámara y Proceso</div>
+      <div class="pilar-desc">Muestra el trabajo real: visitas a salones, montaje, coordinación. Genera confianza y demuestra profesionalismo auténtico.</div>
+      <ul class="pilar-examples">
+        <li>Así se ve el día de una planner a 3 días de la boda</li>
+        <li>Recorrido de salones en tiempo real (Stories)</li>
+        <li>Del boceto a la realidad: decoración de xv años</li>
+      </ul>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">03</span>
+      <div class="pilar-tag">Conversión</div>
+      <div class="pilar-name">Testimonios y Resultados Reales</div>
+      <div class="pilar-desc">Prueba social auténtica. Fotos de eventos realizados, reseñas de clientes, historias reales. Es el pilar que más convierte.</div>
+      <ul class="pilar-examples">
+        <li>Galería del evento con historia de la pareja</li>
+        <li>Video cinematográfico con testimonio real</li>
+        <li>Retrato de novia con cita directa del cliente</li>
+      </ul>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">04</span>
+      <div class="pilar-tag">Guardados</div>
+      <div class="pilar-name">Educación y Valor</div>
+      <div class="pilar-desc">Contenido útil para novias y mamás de quinceañeras. Demuestra expertise. Atrae a gente que ya está planeando un evento.</div>
+      <ul class="pilar-examples">
+        <li>7 errores al planear una boda (y cómo evitarlos)</li>
+        <li>¿Con cuánto tiempo contratar a tu planner?</li>
+        <li>Checklist gratuita: 6 meses antes de tu boda</li>
+      </ul>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">05</span>
+      <div class="pilar-tag">Humanización</div>
+      <div class="pilar-name">Marca Personal de Sofía</div>
+      <div class="pilar-desc">Construye la relación directa entre Sofía y su audiencia. Las personas contratan personas, no logos.</div>
+      <ul class="pilar-examples">
+        <li>Por qué decidí ser wedding planner</li>
+        <li>Foto de Sofía en evento con reflexión</li>
+        <li>Un día en la vida durante temporada alta</li>
+      </ul>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">06</span>
+      <div class="pilar-tag">CTA Directo</div>
+      <div class="pilar-name">Conversión y Llamada a la Acción</div>
+      <div class="pilar-desc">Contenido orientado a generar consultas: proceso de trabajo, disponibilidad, preguntas frecuentes respondidas.</div>
+      <ul class="pilar-examples">
+        <li>¿Cómo trabajamos juntos? Del primer DM al gran día</li>
+        <li>Fechas disponibles para diciembre 2026</li>
+        <li>Nuestros paquetes, sin letra pequeña</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 03 · FORMATOS ══════════════════ -->
+<div class="page">
+  <div class="section-label">Sección 03</div>
+  <div class="section-title">Formatos y<br><em>frecuencia</em></div>
+
+  <div class="format-grid">
+    <div class="format-cell">
+      <span class="fmt-name">Reels</span>
+      <span class="fmt-freq">3 × semana</span>
+      <span class="fmt-goal">Alcance y nuevos seguidores. 2.25x más reach que fotos.</span>
+    </div>
+    <div class="format-cell">
+      <span class="fmt-name">Carruseles</span>
+      <span class="fmt-freq">2 × semana</span>
+      <span class="fmt-goal">Guardados, educación y conversión. Mayor engagement por post.</span>
+    </div>
+    <div class="format-cell">
+      <span class="fmt-name">Foto feed</span>
+      <span class="fmt-freq">1 × semana</span>
+      <span class="fmt-goal">Estética del feed y testimonios visuales.</span>
+    </div>
+    <div class="format-cell">
+      <span class="fmt-name">Stories</span>
+      <span class="fmt-freq">Todos los días</span>
+      <span class="fmt-goal">Conexión diaria, humanización y CTA. Mínimo 3–5 por día.</span>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Dato clave de algoritmo</strong>
+    El mayor salto de crecimiento ocurre al pasar de 1–2 a 3–5 publicaciones por semana. Pasar a 6+ posts/semana multiplica el crecimiento de seguidores por 3.5x comparado con publicar 1–2 veces.
+  </div>
+
+  <div class="section-label" style="margin-top:40px;">Horarios óptimos</div>
+  <div class="section-title" style="font-size:28px; margin-bottom:24px;">Cuándo publicar en <em>CDMX</em></div>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Día</th>
+        <th>Mejor horario</th>
+        <th>Segunda opción</th>
+        <th>Nota</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="day">Lunes</td>
+        <td class="time">7am / 4–8pm</td>
+        <td>11am–2pm</td>
+        <td class="note">Buen arranque de semana</td>
+      </tr>
+      <tr>
+        <td class="day">Martes</td>
+        <td class="time">10am–4pm</td>
+        <td>6pm</td>
+        <td class="note">Alta actividad entre semana</td>
+      </tr>
+      <tr>
+        <td class="day">Miércoles</td>
+        <td class="time">7am–4pm</td>
+        <td>6pm</td>
+        <td class="note">Día más activo de la semana</td>
+      </tr>
+      <tr>
+        <td class="day">Jueves</td>
+        <td class="time">3–6pm</td>
+        <td>11am</td>
+        <td class="note">Pico de tarde</td>
+      </tr>
+      <tr>
+        <td class="day">Viernes</td>
+        <td class="time">6–9pm</td>
+        <td>3pm</td>
+        <td class="note">Inicio de fin de semana</td>
+      </tr>
+      <tr>
+        <td class="day">Sábado</td>
+        <td class="time">10am–12pm</td>
+        <td>7–8pm</td>
+        <td class="note">Navegación relajada</td>
+      </tr>
+      <tr>
+        <td class="day">Domingo</td>
+        <td class="time" style="color:#C9A96E;font-weight:600;">7–9pm</td>
+        <td>11am</td>
+        <td class="note">Pico de inspiración de bodas — el más importante del nicho</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════ 05 · COPIES ══════════════════ -->
+<div class="page">
+  <div class="section-label">Sección 05</div>
+  <div class="section-title">5 Posts listos<br><em>para publicar</em></div>
+
+  <div class="post-card">
+    <div class="post-card-header">
+      <span class="post-title">Post 01 — Detrás de cámara</span>
+      <span class="post-format">Reel · Pilar 2</span>
+    </div>
+    <div class="post-card-body">Había 6 horas para el evento.
+El salón estaba vacío.
+Y nosotros teníamos un sueño enorme por construir.
+
+Esto es lo que nadie ve detrás de una boda perfecta: las horas antes de que llegue la novia, cuando el equipo trabaja en silencio, con precisión y mucho amor.
+
+Cada flor en su lugar. Cada vela encendida a tiempo. Cada detalle revisado dos veces.
+
+Si estás planeando tu boda y quieres que todo ocurra sin que tengas que preocuparte por nada, escríbeme. Eso es exactamente lo que hacemos.
+
+Escríbeme por DM o entra al link en bio para tu primera llamada gratuita.</div>
+    <div class="post-hashtags">#weddingplanner #weddingplannermexico #bodascdmx #organizadoradeeventos #bodas2026 #detrasdelcamaras #sofiaoteventos</div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-card-header">
+      <span class="post-title">Post 02 — Educación</span>
+      <span class="post-format">Carrusel · Pilar 4</span>
+    </div>
+    <div class="post-card-body">El día de tu boda tiene que ser perfecto. Y lo será, si evitas estos errores que el 80% de las novias comete sin saberlo. Guárdate esto.
+
+— Error 1: Contratar el salón antes de definir tu lista de invitados
+— Error 2: Dejar la música "para el final"
+— Error 3: No tener plan B para el clima
+— Error 4: Creer que puedes coordinar todo sola el día del evento
+— Error 5: No contratar a tu planner con suficiente anticipación
+
+¿Cuál casi cometes? Cuéntame en los comentarios.
+
+Si quieres que te acompañe en todo el proceso, escríbeme hoy. Tengo disponibilidad limitada para 2026.</div>
+    <div class="post-hashtags">#bodasmexico #weddingplanner #novias2026 #consejosparabodas #bodascdmx #sofiaoteventos</div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-card-header">
+      <span class="post-title">Post 03 — Testimonio</span>
+      <span class="post-format">Foto feed · Pilar 3</span>
+    </div>
+    <div class="post-card-body">"No hubiera podido hacerlo sin ella."
+
+Eso me dijo Daniela tres días después de su boda.
+
+Cada evento me recuerda por qué estoy en esto: no solo para que todo se vea hermoso, sino para que la novia llegue al altar sin carga, sin estrés. Solo presente en el momento más importante de su vida.
+
+120 invitados. Decoración en terracota y verde olivo. Mariachi sorpresa. Mesa de postres que desapareció en 20 minutos.
+
+Si tu boda o evento está en camino, escríbeme. Me encantaría conocer tu historia.
+DM directo o link en bio.</div>
+    <div class="post-hashtags">#testimonios #weddingplanner #bodasreales #novias2026 #bodasmexico #sofiaoteventos</div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-card-header">
+      <span class="post-title">Post 04 — Marca personal</span>
+      <span class="post-format">Reel a cámara · Pilar 5</span>
+    </div>
+    <div class="post-card-body">Nadie te dice esto cuando decides ser wedding planner:
+
+Que vas a llorar en bodas que no son las tuyas. Que conoces familias en uno de los momentos más vulnerables de su vida. Que hay días en que todo sale mal y tienes que sonreír de todas formas.
+
+Y luego ves a la quinceañera bailar el vals con su papá.
+Y recuerdas exactamente por qué lo haces.
+
+Si buscas a alguien que se involucre de verdad en tu evento, hola, soy Sofía. Escríbeme.</div>
+    <div class="post-hashtags">#weddingplanner #organizadoradeeventos #bodasmexico #xvanos #sofiaoteventos #vocacion</div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-card-header">
+      <span class="post-title">Post 05 — Conversión</span>
+      <span class="post-format">Carrusel · Pilar 6</span>
+    </div>
+    <div class="post-card-body">Una de las preguntas que más me hacen: ¿cómo funciona contratarte?
+Aquí va, sin letra pequeña:
+
+01 — Llamada gratuita de 30 min para conocernos
+02 — Propuesta personalizada (no paquetes rígidos)
+03 — Firma de contrato y acompañamiento desde el día 1
+04 — Coordinación de proveedores, presupuesto y cronograma
+05 — Visitas y pruebas previas al evento
+06 — Día del evento: yo me encargo de todo, tú solo disfrutas
+
+¿Tienes tu fecha? Escríbeme hoy por DM o entra al link en bio.
+Trabajo en CDMX y área metro. Bodas, xv años y eventos sociales.</div>
+    <div class="post-hashtags">#weddingplanner #bodasmexico #xvanos #organizadoradeeventos #sofiaoteventos #novias2026</div>
+  </div>
+</div>
+
+<!-- ══════════════════ 06 · HASHTAGS ══════════════════ -->
+<div class="page">
+  <div class="section-label">Sección 06</div>
+  <div class="section-title">Estrategia de<br><em>hashtags</em></div>
+
+  <div class="insight" style="margin-bottom:36px;">
+    <strong>Regla de uso</strong>
+    Usar 8–12 hashtags por post combinando los 4 niveles. Nunca copiar exactamente los mismos en cada publicación — rotar entre sets preparados para evitar que el algoritmo los clasifique como spam. <strong style="color:var(--dark);font-size:13px;letter-spacing:0;text-transform:none;">Geotag CDMX en todos los Reels y Stories.</strong>
+  </div>
+
+  <div class="hashtag-layer">
+    <div class="hashtag-layer-title">Capa 1 — Nicho local (precisión máxima)</div>
+    <div class="hashtag-chips">
+      <span class="hashtag-chip">#weddingplannermexico</span>
+      <span class="hashtag-chip">#bodascdmx</span>
+      <span class="hashtag-chip">#organizadoradeeventos</span>
+      <span class="hashtag-chip">#plannermexico</span>
+      <span class="hashtag-chip">#bodasestadodemexico</span>
+      <span class="hashtag-chip">#xvanosdmexico</span>
+    </div>
+  </div>
+
+  <div class="hashtag-layer">
+    <div class="hashtag-layer-title">Capa 2 — Tema México (alcance medio)</div>
+    <div class="hashtag-chips">
+      <span class="hashtag-chip">#bodasmexico</span>
+      <span class="hashtag-chip">#novias2026</span>
+      <span class="hashtag-chip">#xvanos</span>
+      <span class="hashtag-chip">#bodas2026</span>
+      <span class="hashtag-chip">#decoracionbodas</span>
+      <span class="hashtag-chip">#fiestaxv</span>
+      <span class="hashtag-chip">#miboda</span>
+    </div>
+  </div>
+
+  <div class="hashtag-layer">
+    <div class="hashtag-layer-title">Capa 3 — Comunidad (descubrimiento amplio)</div>
+    <div class="hashtag-chips">
+      <span class="hashtag-chip">#boda</span>
+      <span class="hashtag-chip">#wedding</span>
+      <span class="hashtag-chip">#weddinginspo</span>
+      <span class="hashtag-chip">#quinceanera</span>
+      <span class="hashtag-chip">#eventosmexico</span>
+      <span class="hashtag-chip">#weddingplanner</span>
+    </div>
+  </div>
+
+  <div class="hashtag-layer">
+    <div class="hashtag-layer-title">Capa 4 — Marca propia (en TODOS los posts)</div>
+    <div class="hashtag-chips">
+      <span class="hashtag-chip primary">#sofiaoteventos</span>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:48px;">Sección 07</div>
+  <div class="section-title" style="font-size:32px; margin-bottom:24px;">Crecimiento<br><em>orgánico</em></div>
+
+  <div class="action-group">
+    <div class="action-group-title">Acciones diarias (20 minutos)</div>
+    <ul class="action-list">
+      <li>Responder comentarios dentro de las primeras 2 horas de publicar — el algoritmo premia la velocidad de respuesta</li>
+      <li>Responder todos los DMs el mismo día, aunque sea con un mensaje breve de acuse</li>
+      <li>Reaccionar a Stories del cliente ideal: novias, mamás de quinceañeras en CDMX</li>
+    </ul>
+  </div>
+
+  <div class="action-group">
+    <div class="action-group-title">Acciones semanales (45 minutos)</div>
+    <ul class="action-list">
+      <li>Buscar #bodas2026 y #xvanos2026 — dejar comentarios genuinos (no solo emojis) en posts de tu audiencia objetivo</li>
+      <li>Comentar en posts de fotógrafos, florerías y salones de eventos → te expone a su audiencia que es exactamente tu cliente potencial</li>
+      <li>Revisar quién interactuó con cuentas de competidores y conectar con esos perfiles</li>
+    </ul>
+  </div>
+
+  <div class="action-group">
+    <div class="action-group-title">Táctica #1 sin costo</div>
+    <ul class="action-list">
+      <li>Etiquetar siempre a proveedores (fotógrafo, florería, venue, DJ, catering) en cada post de evento</li>
+      <li>Un post bien taggeado puede alcanzar 15,000–20,000 personas por el efecto de repost en sus cuentas</li>
+      <li>Crear un grupo de WhatsApp con proveedores aliados para coordinar etiquetado mutuo</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════ 07 · REFERENCIA + KPIs ══════════════════ -->
+<div class="page">
+  <div class="section-label">Sección 08</div>
+  <div class="section-title">Cuentas de<br><em>referencia</em></div>
+
+  <div class="account-card">
+    <div class="account-avatar">M</div>
+    <div class="account-info">
+      <div class="handle">@monicaplanner</div>
+      <div class="followers">~6,800 seguidores</div>
+      <div class="desc">Especialidad en bodas íntimas (hasta 100 invitados) y elopements en México. Modelo directo de lo que funciona en la etapa actual de crecimiento.</div>
+    </div>
+    <div class="account-tag">Modelo actual</div>
+  </div>
+
+  <div class="account-card">
+    <div class="account-avatar">L</div>
+    <div class="account-info">
+      <div class="handle">@lupitatiradowp</div>
+      <div class="followers">~46,000 seguidores</div>
+      <div class="desc">Top 24 Planner Worldwide. Bodas diseñadas con "intención y bienestar". Ejemplo de cómo escalar con nicho definido y posicionamiento de lujo accesible en México.</div>
+    </div>
+    <div class="account-tag">Meta mediano plazo</div>
+  </div>
+
+  <div class="account-card">
+    <div class="account-avatar">N</div>
+    <div class="account-info">
+      <div class="handle">@nataliaortizwed</div>
+      <div class="followers">~111,000 seguidores</div>
+      <div class="desc">15+ años, bodas de lujo y celebridades. Modelo de cómo convertir expertise en múltiples líneas de negocio (bodas + educación) usando Instagram como plataforma central.</div>
+    </div>
+    <div class="account-tag">Meta largo plazo</div>
+  </div>
+
+  <div class="section-label" style="margin-top:48px;">Sección 09</div>
+  <div class="section-title" style="font-size:32px; margin-bottom:24px;">KPIs y metas<br><em>a 3 meses</em></div>
+
+  <div class="insight" style="margin-bottom:28px;">
+    <strong>Nota sobre crecimiento orgánico</strong>
+    Las metas de seguidores reflejan crecimiento 100% orgánico — sin pauta. Para una cuenta de servicios locales en CDMX, el crecimiento sin inversión publicitaria es gradual. El objetivo real de estos primeros 3 meses no es volumen de seguidores, sino <strong style="color:var(--dark);font-size:13px;letter-spacing:0;text-transform:none;">calidad de audiencia y generación de consultas</strong>. Cada seguidor orgánico es un cliente potencial real.
+  </div>
+
+  <div class="kpi-section">
+    <div class="kpi-section-title">Crecimiento (orgánico, sin pauta)</div>
+    <table class="kpi-table">
+      <thead>
+        <tr><th>Métrica</th><th>Mes 1</th><th>Mes 2</th><th>Mes 3</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nuevos seguidores/mes</td><td>+20–40</td><td>+40–80</td><td class="target">+80–150</td></tr>
+        <tr><td>Alcance semanal estimado</td><td>300–800</td><td>800–1,500</td><td class="target">1,500–3,000</td></tr>
+        <tr><td>Impresiones mensuales</td><td>2K–6K</td><td>6K–15K</td><td class="target">15K–30K</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="kpi-section">
+    <div class="kpi-section-title">Engagement</div>
+    <table class="kpi-table">
+      <thead>
+        <tr><th>Métrica</th><th>Meta</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Tasa de engagement general</td><td class="target">4%–8%</td></tr>
+        <tr><td>Comentarios reales por Reel</td><td>Mínimo 3–5</td></tr>
+        <tr><td>Guardados por carrusel educativo</td><td>10–25 por post</td></tr>
+        <tr><td>Respuestas a Stories</td><td>3–8 en mes 1 → 10+ en mes 3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="kpi-section">
+    <div class="kpi-section-title">Conversión y negocio — la métrica que importa</div>
+    <table class="kpi-table">
+      <thead>
+        <tr><th>Métrica</th><th>Mes 1</th><th>Mes 2</th><th>Mes 3</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>DMs de consulta recibidos/mes</td><td>1–3</td><td>3–6</td><td class="target">6–10</td></tr>
+        <tr><td>Cotizaciones enviadas</td><td>1–2</td><td>2–4</td><td class="target">4–6</td></tr>
+        <tr><td>Contratos cerrados</td><td>0–1</td><td>1–2</td><td class="target">2–3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight">
+    <strong>Señales de que la estrategia está funcionando</strong>
+    DMs de personas que dicen "te encontré buscando wedding planners en México" · Posts con 20+ guardados · Clientes nuevos que mencionan haberte seguido antes de escribir
+  </div>
+
+  <div class="doc-footer">
+    Documento preparado por Brota Digital &nbsp;·&nbsp; Mayo 2026 &nbsp;·&nbsp; @sofiaot.eventos
+  </div>
+</div>
+
+<!-- ══════════════════ PAQUETES ══════════════════ -->
+<div class="page">
+  <div class="section-label">Sección 10</div>
+  <div class="section-title">Paquetes de<br><em>servicio</em></div>
+
+  <div class="insight" style="margin-bottom:36px;">
+    <strong>Alcance del servicio</strong>
+    Producción de contenido en tus eventos (teléfono) + edición + estrategia + copies + publicación + gestión completa de la cuenta (feed, stories, DMs y comentarios).
+  </div>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--blush-deep); margin-bottom:32px;">
+
+    <div style="background:var(--white); padding:32px 24px;">
+      <div style="font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--soft);margin-bottom:12px;">Paquete 01</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--dark);margin-bottom:4px;">Esencial</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);margin-bottom:20px;">$4,500–6,000<span style="font-size:14px;color:var(--soft);font-family:'Inter',sans-serif;"> /mes</span></div>
+      <div style="border-top:1px solid var(--blush-deep);padding-top:16px;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:12px;">Incluye</div>
+        <ul style="list-style:none;font-size:12px;color:var(--mid);line-height:2;">
+          <li>— Estrategia mensual</li>
+          <li>— Calendario editorial</li>
+          <li>— Redacción de copies y hashtags</li>
+          <li>— Publicación programada</li>
+          <li style="color:var(--soft);">— Sin producción de contenido</li>
+          <li style="color:var(--soft);">— Sin gestión de DMs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:var(--dark); padding:32px 24px;">
+      <div style="font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Paquete 02 — Recomendado</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);margin-bottom:4px;">Completo</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold-light);margin-bottom:20px;">$9,000–12,000<span style="font-size:14px;color:var(--soft);font-family:'Inter',sans-serif;"> /mes</span></div>
+      <div style="border-top:1px solid #333;padding-top:16px;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Incluye</div>
+        <ul style="list-style:none;font-size:12px;color:#ccc;line-height:2;">
+          <li>— Todo lo del paquete Esencial</li>
+          <li>— Shooting en 2 eventos/mes</li>
+          <li>— Edición de fotos (8–12 por evento)</li>
+          <li>— Edición de 1–2 Reels por evento</li>
+          <li>— Gestión de stories diarias</li>
+          <li style="color:var(--soft);">— Sin gestión de DMs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:var(--white); padding:32px 24px;">
+      <div style="font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--soft);margin-bottom:12px;">Paquete 03</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--dark);margin-bottom:4px;">Premium</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);margin-bottom:20px;">$14,000–18,000<span style="font-size:14px;color:var(--soft);font-family:'Inter',sans-serif;"> /mes</span></div>
+      <div style="border-top:1px solid var(--blush-deep);padding-top:16px;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:12px;">Incluye</div>
+        <ul style="list-style:none;font-size:12px;color:var(--mid);line-height:2;">
+          <li>— Todo lo del paquete Completo</li>
+          <li>— Shooting en 3 eventos/mes</li>
+          <li>— Gestión de DMs y comentarios</li>
+          <li>— Reporte mensual de métricas</li>
+          <li>— Estrategia de crecimiento activa</li>
+          <li>— Sesión de contenido adicional</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="insight">
+    <strong>Importante</strong>
+    Los precios no incluyen presupuesto de pauta publicitaria. Si se decide invertir en anuncios, se maneja como partida separada y acordada previamente. La inversión mínima recomendada para ver resultados con pauta en este nicho es de $1,500–3,000 MXN/mes.
+  </div>
+
+  <div class="doc-footer">
+    Documento preparado por Brota Digital &nbsp;·&nbsp; Mayo 2026 &nbsp;·&nbsp; @sofiaot.eventos
+  </div>
+</div>
+
+</body>
+</html>

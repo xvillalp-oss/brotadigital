@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Viaje de la Oruga — Bienestar & Transformación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:    #faf7f2;
+  --cream-d:  #f0ebe0;
+  --sage:     #6b7c5a;
+  --sage-l:   #8fa07b;
+  --terra:    #c4956a;
+  --terra-l:  #d9b48f;
+  --brown:    #2c2416;
+  --brown-m:  #6b5840;
+  --brown-l:  #a08c72;
+  --white:    #ffffff;
+  --font-d:   'Cormorant Garamond', Georgia, serif;
+  --font-b:   'DM Sans', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-b);
+  background: var(--cream);
+  color: var(--brown);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, 92vw); margin-inline: auto; }
+
+/* ─── REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── NAV ─── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 4vw;
+  transition: background .4s, backdrop-filter .4s, box-shadow .4s;
+}
+#nav.scrolled {
+  background: rgba(250,247,242,.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(44,36,22,.08);
+}
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--brown);
+}
+.nav-links {
+  display: flex; gap: 2rem; list-style: none;
+  font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+}
+.nav-links a { color: var(--brown-m); transition: color .2s; }
+.nav-links a:hover { color: var(--sage); }
+.nav-cta {
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--sage); color: #fff;
+  padding: .55rem 1.4rem; border-radius: 100px;
+  transition: background .2s, transform .2s;
+}
+.nav-cta:hover { background: var(--sage-l); transform: translateY(-1px); }
+
+/* hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--brown); border-radius: 2px; transition: .3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+#mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 99;
+  background: var(--cream); flex-direction: column;
+  align-items: center; justify-content: center; gap: 2.5rem;
+}
+#mobile-menu.open { display: flex; }
+#mobile-menu a { font-family: var(--font-d); font-size: 2.2rem; font-weight: 400; color: var(--brown); }
+#mobile-menu .nav-cta { font-family: var(--font-b); font-size: .85rem; margin-top: 1rem; }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100svh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 7rem 4vw 4rem;
+  gap: 4rem;
+  background: linear-gradient(135deg, var(--cream) 60%, #e8ddd0 100%);
+  position: relative; overflow: hidden;
+}
+.hero-blob {
+  position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35; pointer-events: none;
+}
+.hero-blob-1 { width: 500px; height: 500px; background: var(--terra-l); top: -100px; right: -100px; }
+.hero-blob-2 { width: 400px; height: 400px; background: #b8c9a3; bottom: -80px; left: -80px; }
+
+.hero-text { position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 28px; height: 1px; background: var(--terra);
+}
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+  font-weight: 400; line-height: 1.05;
+  color: var(--brown); margin-bottom: 1.5rem;
+}
+.hero-title em { font-style: italic; color: var(--sage); }
+.hero-sub {
+  font-size: 1.05rem; font-weight: 300; color: var(--brown-m);
+  max-width: 420px; margin-bottom: 2.5rem; line-height: 1.8;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--brown); color: #fff;
+  padding: .8rem 2rem; border-radius: 100px;
+  transition: background .2s, transform .2s;
+  cursor: pointer; border: none;
+}
+.btn-primary:hover { background: var(--brown-m); transform: translateY(-2px); }
+.btn-outline {
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  border: 1.5px solid var(--brown-l); color: var(--brown);
+  padding: .8rem 2rem; border-radius: 100px;
+  transition: border-color .2s, color .2s, transform .2s;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.btn-outline:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-2px); }
+.btn-outline svg { width: 16px; height: 16px; }
+
+.hero-image-wrap {
+  position: relative; z-index: 1;
+  display: flex; justify-content: center;
+}
+.hero-img-frame {
+  width: min(420px, 90%);
+  aspect-ratio: 3/4;
+  border-radius: 240px 240px 160px 160px;
+  overflow: hidden;
+  background: var(--cream-d);
+  position: relative;
+  box-shadow: 0 40px 80px rgba(44,36,22,.12);
+}
+.hero-img-frame img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+}
+.hero-img-frame .hero-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem; color: var(--brown-l);
+}
+.hero-img-frame .hero-placeholder svg { width: 64px; height: 64px; opacity: .4; }
+.hero-img-frame .hero-placeholder span { font-family: var(--font-d); font-size: 1rem; opacity: .6; }
+.hero-badge {
+  position: absolute; bottom: 2rem; left: -1.5rem;
+  background: #fff; border-radius: 16px;
+  padding: .9rem 1.2rem; box-shadow: 0 8px 24px rgba(44,36,22,.1);
+  display: flex; align-items: center; gap: .7rem;
+}
+.hero-badge-icon { font-size: 1.6rem; }
+.hero-badge-text { font-size: .72rem; line-height: 1.3; }
+.hero-badge-text strong { display: block; font-size: .85rem; color: var(--brown); }
+
+/* ─── SECTION COMMONS ─── */
+.section-label {
+  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--terra); display: flex; align-items: center; gap: .7rem;
+  margin-bottom: 1rem;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--terra); opacity: .4; max-width: 60px; }
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 400; line-height: 1.15; color: var(--brown);
+}
+.section-title em { font-style: italic; color: var(--sage); }
+.section-sub { font-size: 1rem; font-weight: 300; color: var(--brown-m); max-width: 520px; }
+
+/* ─── HISTORIA ─── */
+#historia {
+  padding: 7rem 4vw;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+}
+.historia-img-wrap { position: relative; }
+.historia-img-frame {
+  border-radius: 160px 160px 24px 24px;
+  overflow: hidden; aspect-ratio: 4/5;
+  background: var(--cream-d);
+  box-shadow: 0 24px 60px rgba(44,36,22,.1);
+}
+.historia-img-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.historia-img-frame .img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem; color: var(--brown-l);
+}
+.historia-img-frame .img-placeholder svg { width: 56px; height: 56px; opacity: .35; }
+.historia-deco {
+  position: absolute; top: 3rem; right: -2rem;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: var(--cream-d);
+  border: 1.5px solid var(--terra-l);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: 1.5rem; color: var(--terra);
+  box-shadow: 0 8px 24px rgba(44,36,22,.08);
+  text-align: center; line-height: 1.2;
+  z-index: 2;
+}
+.historia-content { display: flex; flex-direction: column; gap: 1.4rem; }
+.historia-text { font-size: 1rem; font-weight: 300; color: var(--brown-m); line-height: 1.9; }
+.historia-quote {
+  font-family: var(--font-d); font-size: 1.4rem; font-style: italic;
+  color: var(--sage); border-left: 2px solid var(--sage);
+  padding-left: 1.2rem; margin: .5rem 0; line-height: 1.5;
+}
+.historia-values {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: .5rem;
+}
+.value-chip {
+  background: var(--cream-d); border-radius: 12px; padding: .8rem 1rem;
+  font-size: .82rem; color: var(--brown-m); display: flex; align-items: center; gap: .5rem;
+}
+.value-chip span { font-size: 1.1rem; }
+
+/* ─── SERVICIOS ─── */
+#servicios {
+  background: var(--brown);
+  padding: 7rem 4vw;
+  color: #fff;
+}
+#servicios .section-label { color: var(--terra-l); }
+#servicios .section-label::after { background: var(--terra-l); }
+#servicios .section-title { color: #fff; }
+#servicios .section-sub { color: rgba(255,255,255,.6); }
+.servicios-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; margin-top: 3.5rem;
+}
+.servicio-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 24px; padding: 2.5rem 2rem;
+  transition: background .3s, transform .3s, border-color .3s;
+  position: relative; overflow: hidden;
+}
+.servicio-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--terra);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s ease;
+}
+.servicio-card:hover { background: rgba(255,255,255,.09); transform: translateY(-4px); border-color: rgba(255,255,255,.2); }
+.servicio-card:hover::after { transform: scaleX(1); }
+.servicio-icon { font-size: 2.4rem; margin-bottom: 1.5rem; }
+.servicio-name {
+  font-family: var(--font-d); font-size: 1.7rem; font-weight: 400;
+  margin-bottom: .8rem; line-height: 1.1;
+}
+.servicio-desc { font-size: .9rem; font-weight: 300; color: rgba(255,255,255,.65); line-height: 1.8; margin-bottom: 1.5rem; }
+.servicio-link {
+  font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--terra-l); display: inline-flex; align-items: center; gap: .4rem;
+  transition: gap .2s;
+}
+.servicio-link:hover { gap: .7rem; }
+
+/* ─── EVENTOS ─── */
+#eventos { padding: 7rem 4vw; }
+.eventos-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+.eventos-grid { display: flex; flex-direction: column; gap: 1.2rem; }
+.evento-card {
+  background: #fff;
+  border-radius: 20px; padding: 2rem 2.5rem;
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 2rem; align-items: center;
+  box-shadow: 0 2px 20px rgba(44,36,22,.06);
+  transition: transform .2s, box-shadow .2s;
+  border: 1px solid rgba(44,36,22,.06);
+}
+.evento-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(44,36,22,.1); }
+.evento-date {
+  text-align: center; min-width: 56px;
+}
+.evento-date .day {
+  font-family: var(--font-d); font-size: 2.4rem; font-weight: 400;
+  color: var(--terra); line-height: 1;
+}
+.evento-date .month {
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--brown-l);
+}
+.evento-info {}
+.evento-type {
+  font-size: .68rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: .3rem;
+}
+.evento-title { font-size: 1.1rem; font-weight: 500; color: var(--brown); margin-bottom: .2rem; }
+.evento-meta { font-size: .82rem; color: var(--brown-l); display: flex; gap: 1rem; flex-wrap: wrap; }
+.evento-meta span { display: flex; align-items: center; gap: .3rem; }
+.evento-cta {
+  font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+  border: 1.5px solid var(--brown-l); color: var(--brown);
+  padding: .55rem 1.2rem; border-radius: 100px; white-space: nowrap;
+  transition: all .2s;
+}
+.evento-cta:hover { background: var(--sage); border-color: var(--sage); color: #fff; }
+
+/* ─── NOTAS ─── */
+#notas {
+  background: var(--cream-d);
+  padding: 7rem 4vw;
+}
+.notas-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+.notas-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.nota-card {
+  background: #fff; border-radius: 20px; overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+  box-shadow: 0 2px 16px rgba(44,36,22,.06);
+}
+.nota-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(44,36,22,.12); }
+.nota-thumb {
+  aspect-ratio: 3/2; background: var(--cream-d);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; overflow: hidden; position: relative;
+}
+.nota-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.nota-thumb .nota-emoji { position: absolute; }
+.nota-body { padding: 1.5rem; }
+.nota-tag {
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: .5rem;
+}
+.nota-title { font-family: var(--font-d); font-size: 1.3rem; font-weight: 500; color: var(--brown); line-height: 1.3; margin-bottom: .5rem; }
+.nota-excerpt { font-size: .85rem; color: var(--brown-m); line-height: 1.7; margin-bottom: 1rem; }
+.nota-footer { display: flex; justify-content: space-between; align-items: center; }
+.nota-date { font-size: .75rem; color: var(--brown-l); }
+.nota-read {
+  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--sage); display: flex; align-items: center; gap: .3rem;
+  transition: gap .2s;
+}
+.nota-read:hover { gap: .6rem; }
+
+/* ─── VIDEOS ─── */
+#videos { padding: 7rem 4vw; }
+.videos-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+.videos-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.video-item { border-radius: 20px; overflow: hidden; position: relative; }
+.video-thumb {
+  aspect-ratio: 16/9;
+  background: var(--cream-d);
+  position: relative; overflow: hidden;
+}
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.video-thumb .play-overlay {
+  position: absolute; inset: 0;
+  background: rgba(44,36,22,.3);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .3s;
+}
+.video-item:hover .play-overlay { opacity: 1; }
+.play-btn {
+  width: 56px; height: 56px; background: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.play-btn svg { width: 20px; height: 20px; color: var(--brown); margin-left: 3px; }
+.video-embed { aspect-ratio: 16/9; }
+.video-embed iframe { width: 100%; height: 100%; border: none; border-radius: 20px; }
+.video-info { padding: 1rem 0 .5rem; }
+.video-tag { font-size: .68rem; letter-spacing: .13em; text-transform: uppercase; color: var(--terra); margin-bottom: .3rem; }
+.video-title { font-family: var(--font-d); font-size: 1.1rem; font-weight: 500; color: var(--brown); line-height: 1.3; }
+
+/* ─── TERAPIA ─── */
+#terapia {
+  background: linear-gradient(160deg, #f4efe7 0%, #e8ddd0 100%);
+  padding: 7rem 4vw;
+}
+.terapia-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: start;
+}
+.terapia-content { display: flex; flex-direction: column; gap: 1.5rem; }
+.terapia-text { font-size: 1rem; font-weight: 300; color: var(--brown-m); line-height: 1.9; }
+.proceso-steps { display: flex; flex-direction: column; gap: .8rem; margin-top: .5rem; }
+.proceso-step {
+  background: #fff; border-radius: 16px; padding: 1.2rem 1.5rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+  box-shadow: 0 2px 12px rgba(44,36,22,.05);
+}
+.step-num {
+  font-family: var(--font-d); font-size: 1.6rem; font-weight: 400;
+  color: var(--terra); min-width: 28px; line-height: 1;
+}
+.step-info {}
+.step-title { font-size: .9rem; font-weight: 500; color: var(--brown); margin-bottom: .15rem; }
+.step-desc { font-size: .82rem; color: var(--brown-m); line-height: 1.6; }
+
+.terapia-side { display: flex; flex-direction: column; gap: 1.5rem; }
+.terapia-card {
+  background: #fff; border-radius: 24px; padding: 2.5rem;
+  box-shadow: 0 4px 24px rgba(44,36,22,.08);
+}
+.terapia-card h3 {
+  font-family: var(--font-d); font-size: 1.5rem; font-weight: 400;
+  color: var(--brown); margin-bottom: 1.2rem;
+}
+.modalidades { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 1.5rem; }
+.modalidad {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .8rem 0; border-bottom: 1px solid var(--cream-d);
+}
+.modalidad:last-child { border-bottom: none; padding-bottom: 0; }
+.modalidad-name { font-size: .92rem; color: var(--brown); }
+.modalidad-tag {
+  font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+  background: var(--cream-d); color: var(--sage);
+  padding: .25rem .7rem; border-radius: 100px;
+}
+.terapia-note { font-size: .82rem; color: var(--brown-l); line-height: 1.7; }
+.btn-terra {
+  width: 100%;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--terra); color: #fff;
+  padding: 1rem; border-radius: 100px; border: none; cursor: pointer;
+  transition: background .2s, transform .2s;
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+}
+.btn-terra:hover { background: #b8865c; transform: translateY(-2px); }
+
+/* ─── INSTAGRAM STRIP ─── */
+#instagram {
+  padding: 5rem 4vw;
+  text-align: center;
+}
+.ig-header { margin-bottom: 2.5rem; }
+.ig-handle {
+  font-family: var(--font-d); font-size: 1.2rem; font-style: italic;
+  color: var(--brown-m); margin-bottom: .5rem;
+}
+.ig-strip {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: .8rem; margin-bottom: 2.5rem;
+}
+.ig-tile {
+  aspect-ratio: 1;
+  background: var(--cream-d);
+  border-radius: 12px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; transition: transform .2s;
+}
+.ig-tile:hover { transform: scale(1.04); }
+.ig-tile img { width: 100%; height: 100%; object-fit: cover; }
+.ig-cta-wrap { display: flex; justify-content: center; }
+.ig-cta {
+  display: inline-flex; align-items: center; gap: .7rem;
+  font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+  border: 1.5px solid var(--brown-l); color: var(--brown);
+  padding: .7rem 1.8rem; border-radius: 100px;
+  transition: all .2s;
+}
+.ig-cta:hover { background: var(--brown); color: #fff; border-color: var(--brown); }
+.ig-cta svg { width: 18px; height: 18px; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--brown);
+  color: rgba(255,255,255,.7);
+  padding: 4rem 4vw 2.5rem;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  margin-bottom: 2rem;
+}
+.footer-brand .brand-name {
+  font-family: var(--font-d); font-size: 1.5rem; font-weight: 400;
+  color: #fff; margin-bottom: .6rem;
+}
+.footer-brand p { font-size: .85rem; font-weight: 300; line-height: 1.7; max-width: 260px; }
+.footer-col h4 { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: #fff; margin-bottom: 1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.footer-col ul li a { font-size: .85rem; transition: color .2s; }
+.footer-col ul li a:hover { color: var(--terra-l); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { font-size: .78rem; }
+.footer-social { display: flex; gap: 1rem; }
+.footer-social a {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.footer-social a:hover { background: var(--terra); }
+.footer-social svg { width: 15px; height: 15px; color: #fff; }
+
+/* ─── NEWSLETTER BANNER ─── */
+#newsletter {
+  background: var(--sage);
+  padding: 4rem 4vw;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+}
+#newsletter .nl-text h2 { font-family: var(--font-d); font-size: 2rem; font-weight: 400; color: #fff; margin-bottom: .3rem; }
+#newsletter .nl-text p { font-size: .9rem; color: rgba(255,255,255,.75); }
+.nl-form { display: flex; gap: .7rem; flex-wrap: wrap; }
+.nl-input {
+  flex: 1; min-width: 240px;
+  background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.3);
+  color: #fff; padding: .8rem 1.4rem; border-radius: 100px;
+  font-family: var(--font-b); font-size: .9rem; outline: none;
+}
+.nl-input::placeholder { color: rgba(255,255,255,.6); }
+.nl-input:focus { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.2); }
+.nl-btn {
+  background: #fff; color: var(--sage);
+  border: none; padding: .8rem 1.8rem; border-radius: 100px;
+  font-family: var(--font-b); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+  cursor: pointer; font-weight: 500; white-space: nowrap;
+  transition: transform .2s, box-shadow .2s;
+}
+.nl-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  #hero { grid-template-columns: 1fr; padding-top: 6rem; text-align: center; }
+  .hero-sub { max-width: 100%; }
+  .hero-actions { justify-content: center; }
+  .hero-image-wrap { order: -1; }
+  .hero-img-frame { width: min(300px, 80%); }
+  .hero-badge { left: 50%; transform: translateX(-50%); }
+  #historia { grid-template-columns: 1fr; gap: 3rem; }
+  .servicios-grid { grid-template-columns: 1fr; }
+  .notas-grid { grid-template-columns: 1fr; }
+  .videos-grid { grid-template-columns: 1fr; }
+  .terapia-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .ig-strip { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .evento-card { grid-template-columns: auto 1fr; }
+  .evento-cta { display: none; }
+  .ig-strip { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; }
+  .historia-values { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Viaje de la Oruga</a>
+  <ul class="nav-links">
+    <li><a href="#historia">Mi Historia</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#notas">Notas</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#terapia">Terapia</a></li>
+  </ul>
+  <a href="#terapia" class="nav-cta">Agenda una sesión</a>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div id="mobile-menu">
+  <a href="#historia" class="mobile-link">Mi Historia</a>
+  <a href="#servicios" class="mobile-link">Servicios</a>
+  <a href="#eventos" class="mobile-link">Eventos</a>
+  <a href="#notas" class="mobile-link">Notas</a>
+  <a href="#videos" class="mobile-link">Videos</a>
+  <a href="#terapia" class="mobile-link">Terapia</a>
+  <a href="#terapia" class="nav-cta">Agenda una sesión</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+
+  <div class="hero-text reveal">
+    <div class="hero-eyebrow">Bienvenida a tu proceso</div>
+    <h1 class="hero-title">
+      Tu <em>transformación</em><br>comienza aquí
+    </h1>
+    <p class="hero-sub">
+      Un espacio seguro para explorar quién eres, sanar lo que duele
+      y florecer en tu propia versión más auténtica.
+    </p>
+    <div class="hero-actions">
+      <a href="#terapia" class="btn-primary">Agenda tu sesión</a>
+      <a href="#historia" class="btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/><path d="M8 12l4-4 4 4M12 8v8"/></svg>
+        Conóceme
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap reveal" style="transition-delay:.2s">
+    <div class="hero-img-frame">
+      <!-- Reemplaza con: <img src="ruta/a/tu-foto.jpg" alt="[Tu nombre]"/> -->
+      <div class="hero-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Tu foto aquí</span>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-icon">🦋</div>
+      <div class="hero-badge-text">
+        <strong>+200 personas</strong>
+        acompañadas en su proceso
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HISTORIA ─── -->
+<section id="historia">
+  <div class="historia-img-wrap reveal">
+    <div class="historia-img-frame">
+      <!-- Reemplaza con: <img src="ruta/a/foto-historia.jpg" alt="Mi historia"/> -->
+      <div class="img-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      </div>
+    </div>
+    <div class="historia-deco">Mi<br>historia</div>
+  </div>
+
+  <div class="historia-content">
+    <div class="reveal">
+      <div class="section-label">Sobre mí</div>
+      <h2 class="section-title">El camino de la <em>oruga</em></h2>
+    </div>
+    <blockquote class="historia-quote reveal" style="transition-delay:.1s">
+      "Toda oruga lleva dentro el código secreto de su propia mariposa."
+    </blockquote>
+    <p class="historia-text reveal" style="transition-delay:.15s">
+      Mi nombre es [Tu nombre] y soy terapeuta, facilitadora y acompañante de procesos de bienestar.
+      Mi propio camino de transformación comenzó cuando me enfrenté a [tu historia personal aquí]. Fue
+      entonces cuando entendí que sanar no es un destino, es un viaje.
+    </p>
+    <p class="historia-text reveal" style="transition-delay:.2s">
+      Me formé como [tus estudios y certificaciones] y hoy combino distintas herramientas terapéuticas
+      para crear espacios donde cada persona pueda encontrar su propio ritmo de transformación.
+      Creo profundamente en que todos tenemos la capacidad de florecer.
+    </p>
+    <div class="historia-values reveal" style="transition-delay:.25s">
+      <div class="value-chip"><span>🌿</span> Presencia plena</div>
+      <div class="value-chip"><span>💛</span> Compasión</div>
+      <div class="value-chip"><span>🔄</span> Proceso continuo</div>
+      <div class="value-chip"><span>🌸</span> Autenticidad</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICIOS ─── -->
+<section id="servicios">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Lo que ofrezco</div>
+      <h2 class="section-title" style="color:#fff">Formas de <em>acompañarte</em></h2>
+      <p class="section-sub" style="margin-top:.8rem">Cada persona es única. Por eso tengo distintas puertas de entrada a tu proceso.</p>
+    </div>
+    <div class="servicios-grid">
+      <div class="servicio-card reveal" style="transition-delay:.1s">
+        <div class="servicio-icon">🧡</div>
+        <h3 class="servicio-name">Terapia<br>Individual</h3>
+        <p class="servicio-desc">Un espacio confidencial y seguro para explorar tu mundo interior, sanar heridas y desarrollar recursos para tu bienestar.</p>
+        <a href="#terapia" class="servicio-link">Conocer más →</a>
+      </div>
+      <div class="servicio-card reveal" style="transition-delay:.2s">
+        <div class="servicio-icon">🌿</div>
+        <h3 class="servicio-name">Talleres<br>&amp; Retiros</h3>
+        <p class="servicio-desc">Espacios grupales de aprendizaje vivencial donde el bienestar se construye en comunidad. Online y presenciales.</p>
+        <a href="#eventos" class="servicio-link">Ver próximos →</a>
+      </div>
+      <div class="servicio-card reveal" style="transition-delay:.3s">
+        <div class="servicio-icon">🎤</div>
+        <h3 class="servicio-name">Conferencias<br>&amp; Charlas</h3>
+        <p class="servicio-desc">Presentaciones para empresas, universidades y eventos sobre bienestar emocional, salud mental y desarrollo personal.</p>
+        <a href="#eventos" class="servicio-link">Solicitar charla →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EVENTOS ─── -->
+<section id="eventos">
+  <div class="container">
+    <div class="eventos-header">
+      <div class="reveal">
+        <div class="section-label">Próximamente</div>
+        <h2 class="section-title">Talleres &amp; <em>Conferencias</em></h2>
+      </div>
+      <a href="#" class="btn-outline reveal" style="transition-delay:.1s">Ver todos →</a>
+    </div>
+
+    <div class="eventos-grid">
+      <div class="evento-card reveal">
+        <div class="evento-date">
+          <div class="day">12</div>
+          <div class="month">Jun</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-type">Taller Online</div>
+          <div class="evento-title">Regulación emocional para el día a día</div>
+          <div class="evento-meta">
+            <span>🕐 10:00 – 13:00 hrs</span>
+            <span>📍 Zoom</span>
+            <span>💰 $450 MXN</span>
+          </div>
+        </div>
+        <a href="#" class="evento-cta">Registrarme</a>
+      </div>
+
+      <div class="evento-card reveal" style="transition-delay:.1s">
+        <div class="evento-date">
+          <div class="day">28</div>
+          <div class="month">Jun</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-type">Conferencia Presencial</div>
+          <div class="evento-title">Ansiedad: entenderla para transformarla</div>
+          <div class="evento-meta">
+            <span>🕐 17:00 – 19:00 hrs</span>
+            <span>📍 Ciudad de México</span>
+            <span>💰 Entrada libre</span>
+          </div>
+        </div>
+        <a href="#" class="evento-cta">Apartar lugar</a>
+      </div>
+
+      <div class="evento-card reveal" style="transition-delay:.2s">
+        <div class="evento-date">
+          <div class="day">19</div>
+          <div class="month">Jul</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-type">Retiro de fin de semana</div>
+          <div class="evento-title">Silencio fértil: retiro de meditación y escritura</div>
+          <div class="evento-meta">
+            <span>🕐 Sábado y domingo</span>
+            <span>📍 Tepoztlán, Morelos</span>
+            <span>💰 $2,800 MXN</span>
+          </div>
+        </div>
+        <a href="#" class="evento-cta">Registrarme</a>
+      </div>
+
+      <div class="evento-card reveal" style="transition-delay:.3s">
+        <div class="evento-date">
+          <div class="day">08</div>
+          <div class="month">Ago</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-type">Taller Online</div>
+          <div class="evento-title">Límites sanos: cómo decir no con amor</div>
+          <div class="evento-meta">
+            <span>🕐 11:00 – 14:00 hrs</span>
+            <span>📍 Zoom</span>
+            <span>💰 $450 MXN</span>
+          </div>
+        </div>
+        <a href="#" class="evento-cta">Registrarme</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NOTAS ─── -->
+<section id="notas">
+  <div class="container">
+    <div class="notas-header">
+      <div class="reveal">
+        <div class="section-label">El blog</div>
+        <h2 class="section-title">Notas del <em>viaje</em></h2>
+      </div>
+      <a href="#" class="btn-outline reveal" style="transition-delay:.1s">Ver todas →</a>
+    </div>
+
+    <div class="notas-grid">
+      <article class="nota-card reveal">
+        <div class="nota-thumb" style="background:#e8ddd0">
+          <span class="nota-emoji">🌱</span>
+        </div>
+        <div class="nota-body">
+          <div class="nota-tag">Autoconocimiento</div>
+          <h3 class="nota-title">Por qué la transformación duele (y está bien que así sea)</h3>
+          <p class="nota-excerpt">El dolor no es la señal de que algo va mal. A veces es exactamente la señal de que algo está cambiando...</p>
+          <div class="nota-footer">
+            <span class="nota-date">Mayo 2026</span>
+            <a href="#" class="nota-read">Leer →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="nota-card reveal" style="transition-delay:.1s">
+        <div class="nota-thumb" style="background:#d8e8d0">
+          <span class="nota-emoji">🌬️</span>
+        </div>
+        <div class="nota-body">
+          <div class="nota-tag">Bienestar</div>
+          <h3 class="nota-title">3 prácticas de respiración para momentos de crisis</h3>
+          <p class="nota-excerpt">Tu cuerpo ya sabe calmarse. Solo necesita que le recuerdes cómo. Estas técnicas te ayudarán a salir del modo alarma...</p>
+          <div class="nota-footer">
+            <span class="nota-date">Abril 2026</span>
+            <a href="#" class="nota-read">Leer →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="nota-card reveal" style="transition-delay:.2s">
+        <div class="nota-thumb" style="background:#f0e0d0">
+          <span class="nota-emoji">💛</span>
+        </div>
+        <div class="nota-body">
+          <div class="nota-tag">Relaciones</div>
+          <h3 class="nota-title">El amor propio no es egoísmo: desmontando el mito</h3>
+          <p class="nota-excerpt">Nos enseñaron a pedir disculpas por ocupar espacio. Hoy te cuento por qué cuidarte es uno de los actos más generosos...</p>
+          <div class="nota-footer">
+            <span class="nota-date">Abril 2026</span>
+            <a href="#" class="nota-read">Leer →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VIDEOS ─── -->
+<section id="videos">
+  <div class="container">
+    <div class="videos-header">
+      <div class="reveal">
+        <div class="section-label">YouTube</div>
+        <h2 class="section-title">Videos del <em>canal</em></h2>
+      </div>
+      <a href="https://www.youtube.com/@viajedelaoruga" target="_blank" rel="noopener" class="btn-outline reveal" style="transition-delay:.1s">Ver canal →</a>
+    </div>
+
+    <div class="videos-grid">
+      <!-- Reemplaza las URLs de YouTube con las de tus videos reales -->
+      <div class="video-item reveal">
+        <div class="video-embed">
+          <!-- Ejemplo: cambia VIDEO_ID_1 por el ID real de tu video de YouTube -->
+          <div style="aspect-ratio:16/9;background:var(--cream-d);border-radius:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:var(--brown-l)">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42C1 8.13 1 12 1 12s0 3.87.46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96C23 15.87 23 12 23 12s0-3.87-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" style="fill:var(--brown-l)"/></svg>
+            <span style="font-size:.82rem;font-family:var(--font-b)">Pega tu embed de YouTube aquí</span>
+          </div>
+          <!-- Para embedear un video real:
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          -->
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Meditación guiada</div>
+          <div class="video-title">Meditación para soltar el control y fluir</div>
+        </div>
+      </div>
+
+      <div class="video-item reveal" style="transition-delay:.15s">
+        <div class="video-embed">
+          <div style="aspect-ratio:16/9;background:var(--cream-d);border-radius:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:var(--brown-l)">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42C1 8.13 1 12 1 12s0 3.87.46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96C23 15.87 23 12 23 12s0-3.87-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" style="fill:var(--brown-l)"/></svg>
+            <span style="font-size:.82rem;font-family:var(--font-b)">Pega tu embed de YouTube aquí</span>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Bienestar emocional</div>
+          <div class="video-title">¿Qué es realmente la ansiedad? Te lo explico sin términos complicados</div>
+        </div>
+      </div>
+
+      <div class="video-item reveal" style="transition-delay:.25s">
+        <div class="video-embed">
+          <div style="aspect-ratio:16/9;background:var(--cream-d);border-radius:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:var(--brown-l)">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42C1 8.13 1 12 1 12s0 3.87.46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96C23 15.87 23 12 23 12s0-3.87-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" style="fill:var(--brown-l)"/></svg>
+            <span style="font-size:.82rem;font-family:var(--font-b)">Pega tu embed de YouTube aquí</span>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Relaciones</div>
+          <div class="video-title">Cómo poner límites sin sentirte mal persona</div>
+        </div>
+      </div>
+
+      <div class="video-item reveal" style="transition-delay:.35s">
+        <div class="video-embed">
+          <div style="aspect-ratio:16/9;background:var(--cream-d);border-radius:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:var(--brown-l)">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42C1 8.13 1 12 1 12s0 3.87.46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96C23 15.87 23 12 23 12s0-3.87-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" style="fill:var(--brown-l)"/></svg>
+            <span style="font-size:.82rem;font-family:var(--font-b)">Pega tu embed de YouTube aquí</span>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Autoconocimiento</div>
+          <div class="video-title">El diario terapéutico: por qué escribir sana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NEWSLETTER ─── -->
+<section id="newsletter">
+  <div class="nl-text reveal">
+    <h2>Recibe notas del viaje</h2>
+    <p>Reflexiones, recursos y eventos directamente en tu correo. Sin spam, solo lo que importa.</p>
+  </div>
+  <form class="nl-form reveal" style="transition-delay:.15s" onsubmit="handleNewsletter(event)">
+    <input type="email" class="nl-input" placeholder="tu@correo.com" required/>
+    <button type="submit" class="nl-btn">Suscribirme</button>
+  </form>
+</section>
+
+<!-- ─── TERAPIA ─── -->
+<section id="terapia">
+  <div class="container">
+    <div class="terapia-inner">
+      <div class="terapia-content">
+        <div class="reveal">
+          <div class="section-label">Terapia individual</div>
+          <h2 class="section-title">Tu espacio <em>seguro</em></h2>
+        </div>
+        <p class="terapia-text reveal" style="transition-delay:.1s">
+          La terapia individual es un proceso confidencial y personalizado donde trabajamos juntos para
+          explorar tu mundo interior, identificar patrones que te limitan y desarrollar nuevos recursos
+          para vivir de manera más plena y auténtica.
+        </p>
+        <p class="terapia-text reveal" style="transition-delay:.15s">
+          Mi enfoque integra distintas corrientes terapéuticas adaptadas a las necesidades únicas de
+          cada persona. Trabajo desde un lugar de profundo respeto, sin juicios y con mucha compasión.
+        </p>
+
+        <div class="proceso-steps reveal" style="transition-delay:.2s">
+          <div class="proceso-step">
+            <div class="step-num">01</div>
+            <div class="step-info">
+              <div class="step-title">Sesión de exploración gratuita</div>
+              <div class="step-desc">30 minutos para conocernos, entender qué buscas y ver si hay afinidad terapéutica.</div>
+            </div>
+          </div>
+          <div class="proceso-step">
+            <div class="step-num">02</div>
+            <div class="step-info">
+              <div class="step-title">Evaluación inicial</div>
+              <div class="step-desc">Primera sesión completa donde exploramos tu historia, necesidades y objetivos.</div>
+            </div>
+          </div>
+          <div class="proceso-step">
+            <div class="step-num">03</div>
+            <div class="step-info">
+              <div class="step-title">Proceso terapéutico</div>
+              <div class="step-desc">Sesiones semanales o quincenales de 50 minutos, online o presenciales.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="terapia-side">
+        <div class="terapia-card reveal" style="transition-delay:.15s">
+          <h3>Modalidades &amp; tarifas</h3>
+          <div class="modalidades">
+            <div class="modalidad">
+              <span class="modalidad-name">Sesión individual (50 min)</span>
+              <span class="modalidad-tag">Online</span>
+            </div>
+            <div class="modalidad">
+              <span class="modalidad-name">Sesión individual (50 min)</span>
+              <span class="modalidad-tag">Presencial</span>
+            </div>
+            <div class="modalidad">
+              <span class="modalidad-name">Paquete 4 sesiones</span>
+              <span class="modalidad-tag">Ahorro</span>
+            </div>
+            <div class="modalidad">
+              <span class="modalidad-name">Exploración gratuita (30 min)</span>
+              <span class="modalidad-tag">Gratis</span>
+            </div>
+          </div>
+          <p class="terapia-note" style="margin-bottom:1.2rem">
+            Los precios se comparten de manera personalizada al hacer contacto. Manejo opciones de deslizamiento según situación económica.
+          </p>
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20gustar%C3%ADa%20agendar%20una%20sesi%C3%B3n%20de%20exploraci%C3%B3n" target="_blank" rel="noopener" class="btn-terra">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            Agendar sesión de exploración
+          </a>
+        </div>
+
+        <div class="terapia-card reveal" style="transition-delay:.25s; background:var(--cream-d)">
+          <h3 style="font-size:1.1rem; margin-bottom:.7rem">Áreas de trabajo</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+            <span class="modalidad-tag" style="background:#fff">Ansiedad</span>
+            <span class="modalidad-tag" style="background:#fff">Depresión</span>
+            <span class="modalidad-tag" style="background:#fff">Duelo</span>
+            <span class="modalidad-tag" style="background:#fff">Vínculos</span>
+            <span class="modalidad-tag" style="background:#fff">Autoestima</span>
+            <span class="modalidad-tag" style="background:#fff">Trauma</span>
+            <span class="modalidad-tag" style="background:#fff">Identidad</span>
+            <span class="modalidad-tag" style="background:#fff">Límites</span>
+            <span class="modalidad-tag" style="background:#fff">Propósito</span>
+            <span class="modalidad-tag" style="background:#fff">Crianza</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INSTAGRAM ─── -->
+<section id="instagram">
+  <div class="container">
+    <div class="ig-header reveal">
+      <p class="ig-handle">@viajedelaoruga</p>
+      <h2 class="section-title" style="font-size:1.8rem">El viaje en <em>imágenes</em></h2>
+    </div>
+    <div class="ig-strip reveal" style="transition-delay:.1s">
+      <!-- Reemplaza estos tiles con fotos reales del Instagram -->
+      <div class="ig-tile">🌿</div>
+      <div class="ig-tile">🦋</div>
+      <div class="ig-tile">🌸</div>
+      <div class="ig-tile">💛</div>
+      <div class="ig-tile">🌊</div>
+      <div class="ig-tile">🌱</div>
+    </div>
+    <div class="ig-cta-wrap reveal" style="transition-delay:.2s">
+      <a href="https://www.instagram.com/viajedelaoruga" target="_blank" rel="noopener" class="ig-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Seguirme en Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">Viaje de la Oruga</div>
+        <p>Un espacio de transformación y bienestar donde acompañamos procesos de crecimiento personal con presencia, compasión y autenticidad.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#historia">Mi historia</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#eventos">Eventos</a></li>
+          <li><a href="#notas">Notas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="#">Podcast</a></li>
+          <li><a href="#">Recursos gratuitos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#terapia">Agenda una sesión</a></li>
+          <li><a href="https://www.instagram.com/viajedelaoruga" target="_blank">Instagram</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Correo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Viaje de la Oruga · Todos los derechos reservados</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/viajedelaoruga" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42C1 8.13 1 12 1 12s0 3.87.46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96C23 15.87 23 12 23 12s0-3.87-.46-5.58z"/></svg>
+        </a>
+        <a href="#" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── NAV SCROLL ───
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ─── HAMBURGER ───
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-link, #mobile-menu .nav-cta').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── NEWSLETTER ───
+function handleNewsletter(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = '¡Listo! 🌿';
+  btn.disabled = true;
+  e.target.querySelector('input').value = '';
+  setTimeout(() => { btn.textContent = 'Suscribirme'; btn.disabled = false; }, 3000);
+}
+</script>
+</body>
+</html>

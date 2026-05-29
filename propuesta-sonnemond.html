@@ -147,6 +147,34 @@
   .footer-social a { font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .3s; }
   .footer-social a:hover { color:var(--gold); }
 
+  /* ── Hero Load Animations ── */
+  /* Image: clip-path wipe from bottom (danielaristizabal.net) */
+  @keyframes heroImgReveal {
+    from { clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%); }
+    to   { clip-path: polygon(0% 0%,   100% 0%,   100% 100%, 0% 100%); }
+  }
+  .hero-img {
+    animation: heroImgReveal 1.2s 0.15s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+  }
+  /* Text items: fade + rise stagger (galarzagroup.com) */
+  .hi-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+                transform 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  }
+  .hi-item.hi-in { opacity: 1; transform: translateY(0); }
+  .hi-1 { transition-delay: 0.30s; }
+  .hi-2 { transition-delay: 0.50s; }
+  .hi-3 { transition-delay: 0.70s; }
+  .hi-4 { transition-delay: 0.90s; }
+  /* Eyebrow line grows in with first item */
+  .hero-eyebrow::before { width: 0; transition: width 0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) 0.28s; }
+  .hero-eyebrow.hi-in::before { width: 40px; }
+  /* Scroll hint: delayed pure fade (nmore.co) */
+  .hi-scroll { opacity: 0; transition: opacity 1s ease 1.5s; }
+  .hi-scroll.hi-in { opacity: 1; }
+
   /* REVEAL */
   .reveal { opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease; }
   .reveal.visible { opacity:1;transform:translateY(0); }
@@ -201,14 +229,14 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <div class="hero-eyebrow">Sonne Mond Agency</div>
-    <h1 class="hero-headline">No hacemos magia,<br>hacemos <em>marketing.</em></h1>
-    <p class="hero-sub">Transformamos ideas en marcas que se sienten, se recuerdan y generan comunidad.</p>
-    <div class="hero-ctas">
+    <div class="hero-eyebrow hi-item hi-1">Sonne Mond Agency</div>
+    <h1 class="hero-headline hi-item hi-2">No hacemos magia,<br>hacemos <em>marketing.</em></h1>
+    <p class="hero-sub hi-item hi-3">Transformamos ideas en marcas que se sienten, se recuerdan y generan comunidad.</p>
+    <div class="hero-ctas hi-item hi-4">
       <a href="sonnemond-servicios.html" class="btn-gold">Descubre cómo trabajamos</a>
       <a href="sonnemond-nosotras.html" class="btn-ghost">Conócenos</a>
     </div>
-    <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+    <div class="hero-scroll hi-scroll"><div class="hero-scroll-line"></div>Scroll</div>
   </div>
   <div class="hero-img">
     <img src="sonnemond/foto-hero.jpg" alt="Tanya y Ana Fer — Sonne Mond Agency" loading="eager">
@@ -390,6 +418,16 @@
     m.classList.toggle('open');
     document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
   }
+
+  // Hero load animations — fire on DOMContentLoaded, no IntersectionObserver needed
+  // Double rAF ensures initial CSS state renders before transitions begin
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.hi-item, .hi-scroll').forEach(el => el.classList.add('hi-in'));
+    });
+  });
+
+  // Scroll-triggered reveals for sections below the hero
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); obs.unobserve(e.target); }

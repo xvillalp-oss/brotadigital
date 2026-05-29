@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Studio Siete 3 — Estudio de diseño de interiores en Polanco, CDMX. Transformamos espacios en experiencias únicas.">
+  <title>Studio Siete 3 — Diseño de Interiores, Polanco CDMX</title>
+  <link rel="stylesheet" href="/studio-siete3/assets/styles.css">
+  <style>
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 92vh;
+      min-height: 500px;
+      overflow: hidden;
+      background-color: var(--dark);
+    }
+    .hero__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.88;
+    }
+    .hero__caption {
+      position: absolute;
+      bottom: var(--space-md);
+      left: var(--space-md);
+      color: var(--bg);
+    }
+    .hero__caption h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5.5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.03;
+      letter-spacing: -0.015em;
+    }
+    .hero__caption h1 em { font-style: italic; }
+    .hero__caption .label {
+      color: rgba(248, 246, 242, 0.55);
+      margin-bottom: 0.6rem;
+    }
+    .hero__scroll {
+      position: absolute;
+      bottom: var(--space-md);
+      right: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(248, 246, 242, 0.4);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .hero__scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, transparent, rgba(248, 246, 242, 0.4));
+    }
+
+    /* ── Intro ── */
+    .intro {
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    .intro .container { padding-block: var(--space-xl); }
+    .intro__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 0;
+      align-items: stretch;
+    }
+    .intro__quote-col {
+      padding-right: var(--space-lg);
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+    }
+    .intro__quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.35;
+    }
+    .intro__text-col {
+      padding-left: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+    .intro__text-col .label { margin-bottom: 0.6rem; }
+    .intro__text-col p {
+      color: rgba(26, 22, 20, 0.62);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ── Portfolio Grid ── */
+    .proj-section { background-color: var(--bg); padding: 0; }
+
+    .proj-section__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: var(--space-lg) var(--space-lg) var(--space-sm);
+    }
+    .proj-section__head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.2vw, 2rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--dark);
+    }
+    .proj-section__head a {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color var(--transition-fast);
+    }
+    .proj-section__head a:hover { color: var(--dark); }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 0 8px 8px;
+    }
+
+    .proj-item {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-alt);
+      cursor: pointer;
+      aspect-ratio: 4 / 3;
+    }
+    .proj-item--tall { aspect-ratio: 3 / 4; }
+
+    .proj-item img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .proj-item:hover img { transform: scale(1.04); }
+
+    .proj-item__overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(248, 246, 242, 0.92);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-md);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .proj-item:hover .proj-item__overlay { opacity: 1; }
+    .proj-item__overlay .label { margin-bottom: 0.4rem; }
+    .proj-item__overlay h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2vw, 2rem);
+      font-weight: 300;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .intro__grid { grid-template-columns: 1fr; }
+      .intro__quote-col { padding-right: 0; border-right: none; padding-bottom: var(--space-md); border-bottom: 1px solid var(--line); }
+      .intro__text-col { padding-left: 0; padding-top: var(--space-md); }
+      .proj-grid { grid-template-columns: 1fr; gap: 6px; padding: 0 6px 6px; }
+      .proj-item, .proj-item--tall { aspect-ratio: 4 / 3; }
+      .proj-section__head { padding: var(--space-md) var(--space-sm) var(--space-sm); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <a href="/studio-siete3/" class="sidebar__logo">
+      <span class="sidebar__logo-mark">S7</span>
+      <span class="sidebar__logo-sub">Studio Siete 3</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="sidebar__nav">
+        <li><a href="/studio-siete3/proyectos/" class="sidebar__link">Proyectos</a></li>
+        <li><a href="/studio-siete3/estudio/" class="sidebar__link">Estudio</a></li>
+        <li><a href="/studio-siete3/contacto/" class="sidebar__link">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar__foot">
+      <a href="https://www.instagram.com/studio.siete3" class="sidebar__social" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:yulirealestateoficial@gmail.com" class="sidebar__social">yulirealestateoficial@gmail.com</a>
+    </div>
+  </aside>
+  <button class="sidebar__burger" id="burger" aria-label="Abrir menú"><span></span><span></span></button>
+
+  <div class="site-body">
+    <main>
+
+      <!-- Hero -->
+      <section class="hero" aria-label="Presentación Studio Siete 3">
+        <img class="hero__img" src="/studio-siete3/assets/img/p10_1.jpeg"
+             alt="Proyecto de diseño de interiores por Studio Siete 3"
+             loading="eager" fetchpriority="high">
+        <div class="hero__caption">
+          <p class="label">Polanco · CDMX · 2025</p>
+          <h1>Diseño de <em>interiores</em><br>con alma propia</h1>
+        </div>
+        <div class="hero__scroll" aria-hidden="true">
+          <div class="hero__scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </section>
+
+      <!-- Intro -->
+      <section class="intro">
+        <div class="container">
+          <div class="intro__grid">
+            <div class="intro__quote-col reveal">
+              <blockquote class="intro__quote">
+                "Cada espacio cuenta una historia.<br>Nosotros la escribimos contigo."
+              </blockquote>
+            </div>
+            <div class="intro__text-col reveal reveal-delay-2">
+              <p class="label">Nuestro enfoque</p>
+              <p>En Studio Siete 3 creamos ambientes residenciales y comerciales que equilibran funcionalidad, estética y detalle, con una firma contemporánea y un alma cálida.</p>
+              <p>Con base en Polanco, CDMX, acompañamos cada proyecto desde el primer boceto hasta el último detalle de la instalación.</p>
+              <a href="/studio-siete3/estudio/" class="btn btn-dark" style="margin-top: 1.5rem; align-self: flex-start;">Conoce el estudio</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Grid -->
+      <section class="proj-section">
+        <div class="proj-section__head">
+          <h2>Proyectos seleccionados</h2>
+          <a href="/studio-siete3/proyectos/">Ver todos →</a>
+        </div>
+        <div class="proj-grid">
+          <article class="proj-item reveal">
+            <img src="/studio-siete3/assets/img/p9_1.jpeg" alt="Casa Tepeyac — Residencial" loading="lazy">
+            <div class="proj-item__overlay">
+              <p class="label">Residencial</p>
+              <h3>Casa Tepeyac</h3>
+            </div>
+          </article>
+          <article class="proj-item reveal reveal-delay-1">
+            <img src="/studio-siete3/assets/img/p9_3.jpeg" alt="Boutique Ámbar — Comercial" loading="lazy">
+            <div class="proj-item__overlay">
+              <p class="label">Comercial</p>
+              <h3>Boutique Ámbar</h3>
+            </div>
+          </article>
+          <article class="proj-item proj-item--tall reveal reveal-delay-1">
+            <img src="/studio-siete3/assets/img/p13_1.jpeg" alt="Penthouse Polanco — Residencial" loading="lazy">
+            <div class="proj-item__overlay">
+              <p class="label">Residencial</p>
+              <h3>Penthouse Polanco</h3>
+            </div>
+          </article>
+          <article class="proj-item proj-item--tall reveal reveal-delay-2">
+            <img src="/studio-siete3/assets/img/p9_4.jpeg" alt="Oficinas Nexo — Consultoría" loading="lazy">
+            <div class="proj-item__overlay">
+              <p class="label">Consultoría</p>
+              <h3>Oficinas Nexo</h3>
+            </div>
+          </article>
+          <article class="proj-item reveal reveal-delay-2">
+            <img src="/studio-siete3/assets/img/p12_1.jpeg" alt="Departamento San Ángel — Residencial" loading="lazy">
+            <div class="proj-item__overlay">
+              <p class="label">Residencial</p>
+              <h3>Departamento San Ángel</h3>
+            </div>
+          </article>
+          <article class="proj-item reveal reveal-delay-3">
+            <img src="/studio-siete3/assets/img/p7_1.jpeg" alt="Restaurante Raíz — Comercial" loading="lazy">
+            <div class="proj-item__overlay">
+              <p class="label">Comercial</p>
+              <h3>Restaurante Raíz</h3>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta-banner">
+        <div class="container">
+          <span class="accent-line accent-line--center reveal" aria-hidden="true"></span>
+          <h2 class="display-md reveal reveal-delay-1">¿Tienes un proyecto en mente?</h2>
+          <p class="reveal reveal-delay-2">Cuéntanos tu idea y agendamos una consulta sin compromiso.</p>
+          <a href="/studio-siete3/contacto/" class="btn reveal reveal-delay-3"
+             style="color: rgba(248,246,242,0.85); border-color: rgba(248,246,242,0.35); margin-top: 0.5rem;">
+            Contáctanos
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-logo">
+            <div class="sidebar__logo-mark">S7</div>
+            <div class="sidebar__logo-sub">Studio Siete 3</div>
+          </div>
+          <p>Estudio de diseño de interiores con sede en Polanco, CDMX.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Navegación</p>
+          <ul class="footer__links">
+            <li><a href="/studio-siete3/">Inicio</a></li>
+            <li><a href="/studio-siete3/proyectos/">Proyectos</a></li>
+            <li><a href="/studio-siete3/estudio/">Estudio</a></li>
+            <li><a href="/studio-siete3/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Servicios</p>
+          <ul class="footer__links">
+            <li><a href="/studio-siete3/contacto/">Diseño Residencial</a></li>
+            <li><a href="/studio-siete3/contacto/">Diseño Comercial</a></li>
+            <li><a href="/studio-siete3/contacto/">Consultoría</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <p class="footer__col-title">Contacto</p>
+          <p>Polanco, Miguel Hidalgo</p>
+          <p>Ciudad de México, CDMX</p>
+          <p style="margin-top: 0.65rem;"><a href="mailto:yulirealestateoficial@gmail.com">yulirealestateoficial@gmail.com</a></p>
+          <p><a href="tel:+525576672987">+52 55 7667 2987</a></p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Studio Siete 3. Todos los derechos reservados.</p>
+        <p>Polanco, CDMX</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const sidebar = document.getElementById('sidebar');
+    burger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+    sidebar.querySelectorAll('.sidebar__link').forEach(l => {
+      l.addEventListener('click', () => { sidebar.classList.remove('open'); burger.classList.remove('open'); });
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

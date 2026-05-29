@@ -109,13 +109,54 @@
   .nav-link { color: rgba(255,255,255,.5); font-size: 13px; font-weight: 500; text-decoration: none; transition: color .2s; }
   .nav-link:hover { color: #fff; }
   .nav-link.active { color: #fff; font-weight: 600; }
+
+  /* ── HAMBURGER ── */
+  .nav-burger { display:none; background:none; border:none; cursor:pointer; padding:6px; color:#fff; }
+  .nav-burger span { display:block; width:22px; height:2px; background:#fff; margin:5px 0; transition:all .3s; }
+  .nav-links-wrap { display:flex; gap:36px; align-items:center; }
+  .nav-cta-wrap { display:block; }
+
+  /* ── MOBILE NAV ── */
+  @media (max-width: 640px) {
+    .nav-links-wrap {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 61px; left: 0; right: 0;
+      background: rgba(10,10,10,.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 16px 0 20px;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      z-index: 49;
+    }
+    .nav-links-wrap.open { display: flex; }
+    .nav-links-wrap .nav-link {
+      padding: 14px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      font-size: 15px;
+    }
+    .nav-cta-wrap { display: none; }
+    .nav-burger { display: block; }
+    /* Nosotros: stack en mobile */
+    #nosotros > div { grid-template-columns: 1fr !important; gap: 40px !important; }
+    #nosotros { padding: 60px 20px !important; }
+    /* page-hero padding */
+    .page-hero { padding: 120px 20px 60px !important; }
+    /* brands grid */
+    .brands-grid { grid-template-columns: 1fr 1fr !important; }
+    /* catalogos section */
+    .catalogos-grid { grid-template-columns: 1fr !important; }
+    #main-nav > div { padding: 16px 20px !important; }
+  }
 </style>
 </head>
 <body>
 
 <!-- ══════════ PRELOADER ══════════ -->
 <div id="preloader">
-  <div class="pre-logo">OLN <span>TIRES</span></div>
+  <img src="oln/logo-white.png" alt="OLN Tires" style="height:80px;width:auto;object-fit:contain;opacity:0;transform:translateY(16px);animation:preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards;"/>
   <div class="pre-bar"></div>
 </div>
 
@@ -123,23 +164,28 @@
 <nav id="main-nav" style="position:fixed;top:0;width:100%;z-index:50;border-bottom:1px solid rgba(255,255,255,.1);transition:background .3s,backdrop-filter .3s,border-bottom-color .3s;">
   <div style="max-width:1400px;margin:0 auto;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;">
     <!-- Logo -->
-    <a href="propuesta-olntires.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
-      <svg viewBox="0 0 18 24" width="13" height="18"><polygon points="0,0 18,12 0,24" fill="#E31E24"/></svg>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:.15em;text-transform:uppercase;color:#fff;">OLN <span style="color:#E31E24;">TIRES</span></span>
+    <a href="propuesta-olntires.html" style="display:flex;align-items:center;text-decoration:none;">
+      <img src="oln/logo-white.png" alt="OLN Tires" style="height:32px;width:auto;object-fit:contain;"/>
     </a>
     <!-- Links -->
-    <div style="display:flex;gap:36px;align-items:center;">
-      <a href="oln-catalogo.html" class="nav-link">Catálogo</a>
+    <div class="nav-links-wrap">
+      <a href="oln-catalogo.html" class="nav-link">Stock</a>
       <a href="oln-marcas.html" class="nav-link active">Marcas</a>
-      <a href="oln-marcas.html#catalogos-pdf" class="nav-link">Catálogos PDF</a>
       <a href="oln-marcas.html#nosotros" class="nav-link">Nosotros</a>
       <a href="oln-contacto.html" class="nav-link">Contacto</a>
     </div>
-    <!-- CTA -->
-    <a href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" class="btn-red" style="padding:10px 22px;font-size:12px;">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
-      WhatsApp
-    </a>
+    <!-- CTA + Hamburger -->
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="nav-cta-wrap">
+        <a href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" class="btn-red" style="padding:10px 22px;font-size:12px;">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <button class="nav-burger" id="nav-burger" aria-label="Menú" onclick="document.querySelector('.nav-links-wrap').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 

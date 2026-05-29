@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Roster — Warm Heart</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream:  #F4F1E2;
+    --brown:  #513229;
+    --salmon: #C8825A;
+    --salmon-dk: #B3704A;
+    --salmon-lt: rgba(200,130,90,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* grain */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 64px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 90;
+    border-bottom: 1px solid rgba(81,50,41,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--brown);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brown);
+    opacity: 0.55;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; }
+  .nav-links a.active { border-bottom: 1.5px solid var(--salmon); padding-bottom: 2px; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 110px 40px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto 40px;
+  }
+
+  .page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--brown);
+    letter-spacing: 0.04em;
+    position: relative;
+  }
+
+  .page-title-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--brown);
+    opacity: 0.45;
+    display: block;
+    margin-top: 4px;
+    transform: rotate(-1deg);
+  }
+
+  .filter-btn {
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid rgba(81,50,41,0.22);
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--brown);
+    transition: border-color 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+  .filter-btn:hover { border-color: var(--salmon); color: var(--salmon); background: var(--salmon-lt); }
+
+  /* ── CAROUSEL ── */
+  .carousel-wrap {
+    position: relative;
+    padding: 0 40px;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 60px 40px 0;
+    scrollbar-width: none;
+    cursor: grab;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-track:active { cursor: grabbing; }
+
+  /* ── CREATOR CARD ── */
+  .creator-card {
+    flex-shrink: 0;
+    width: 268px;
+    background: transparent;
+    scroll-snap-align: start;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .card-photo-wrap {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #E8E3D0;
+  }
+
+  /* oval variant */
+  .creator-card.oval .card-photo-wrap {
+    border-radius: 50% / 44%;
+    height: 340px;
+  }
+
+  .card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.5s ease;
+    filter: contrast(1.02);
+  }
+  .creator-card:hover .card-photo { transform: scale(1.04); }
+
+  /* location badge */
+  .badge-location {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--salmon);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* platform badges */
+  .badges-bottom {
+    position: absolute;
+    bottom: 14px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .badge-platform {
+    background: var(--salmon);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    border-radius: 50px;
+    padding: 5px 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+  }
+
+  /* card handle overlay — centered at bottom of oval */
+  .badge-handle-center {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--salmon);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    border-radius: 50px;
+    padding: 6px 18px;
+    white-space: nowrap;
+  }
+
+  /* ── ARROW BUTTONS ── */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid rgba(81,50,41,0.25);
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--brown);
+    z-index: 10;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  }
+  .carousel-arrow:hover { border-color: var(--salmon); color: var(--salmon); background: var(--salmon-lt); transform: translateY(-60%) scale(1.08); }
+  .carousel-prev { left: 0; }
+  .carousel-next { right: 0; }
+
+  /* ── FOOTER ICONS ── */
+  .footer {
+    padding: 24px 0 36px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .icon-link {
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid var(--salmon);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--salmon);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .icon-link:hover { background: var(--salmon-lt); transform: scale(1.08); }
+
+  /* ── FILTER PANEL (hidden by default) ── */
+  .filter-panel {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    width: 280px;
+    height: calc(100vh - 64px);
+    background: var(--cream);
+    border-left: 1px solid rgba(81,50,41,0.1);
+    z-index: 80;
+    padding: 32px 24px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+  .filter-panel.open { transform: translateX(0); }
+
+  .filter-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--brown);
+    margin-bottom: 24px;
+  }
+
+  .filter-group-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    opacity: 0.45;
+    margin-bottom: 12px;
+    margin-top: 20px;
+  }
+
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter-chip {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--brown);
+    border: 1.5px solid rgba(81,50,41,0.22);
+    border-radius: 50px;
+    padding: 6px 16px;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .filter-chip:hover, .filter-chip.active { background: var(--salmon); border-color: var(--salmon); color: #fff; }
+
+  @media (max-width: 640px) {
+    .nav { padding: 0 20px; }
+    .page-header { padding: 90px 20px 0; }
+    .carousel-wrap { padding: 0 20px; }
+    .carousel-arrow { display: none; }
+    .creator-card { width: 230px; }
+    .card-photo-wrap { height: 300px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <header class="nav" role="banner">
+    <a href="index.html" class="nav-logo">Warm Heart<sup style="font-size:0.55em;opacity:0.45;font-family:Jost,sans-serif;font-weight:400;">®</sup></a>
+    <ul class="nav-links" role="list">
+      <li><a href="roster.html" class="active">Roster</a></li>
+      <li><a href="marcas.html">Para marcas</a></li>
+      <li><a href="marcas.html#contacto">Contacto</a></li>
+    </ul>
+  </header>
+
+  <!-- ─── PAGE HEADER ─── -->
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Roster</h1>
+      <span class="page-title-sub">personas, no perfiles ✦</span>
+    </div>
+    <button class="filter-btn" id="filterToggle" aria-label="Filtrar creadores" aria-expanded="false">
+      <svg width="17" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+        <line x1="1" y1="2" x2="17" y2="2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="4" y1="7" x2="14" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="7" y1="12" x2="11" y2="12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ─── CAROUSEL ─── -->
+  <section class="carousel-wrap" aria-label="Creadores">
+    <button class="carousel-arrow carousel-prev" id="prevBtn" aria-label="Anterior">
+      <svg width="10" height="16" viewBox="0 0 10 16" fill="none"><path d="M8 2L2 8l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="carousel-track" id="carouselTrack" role="list">
+
+      <!-- Card 1 — rectangular -->
+      <article class="creator-card" role="listitem">
+        <div class="card-photo-wrap">
+          <img class="card-photo" src="https://images.unsplash.com/photo-1524504388447-48c96d90da75?w=320&h=420&fit=crop&crop=faces&auto=format&q=82" alt="Sofía R." loading="lazy" width="320" height="420"/>
+          <div class="badge-location">
+            <svg width="8" height="10" viewBox="0 0 10 13" fill="none"><path d="M5 1C2.8 1 1 2.8 1 5c0 3 4 7 4 7s4-4 4-7c0-2.2-1.8-4-4-4Z" stroke="currentColor" stroke-width="1.4"/><circle cx="5" cy="5" r="1.5" fill="currentColor"/></svg>
+            CDMX
+          </div>
+          <div class="badges-bottom">
+            <span class="badge-platform">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              @sofiar · 85K
+            </span>
+            <span class="badge-platform">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.54V6.78a4.85 4.85 0 01-1.01-.09z"/></svg>
+              @sofiar · 42K
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 — oval -->
+      <article class="creator-card oval" role="listitem">
+        <div class="card-photo-wrap">
+          <img class="card-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=320&h=360&fit=crop&crop=faces&auto=format&q=82" alt="Marco T." loading="lazy" width="320" height="360"/>
+          <div class="badge-handle-center">@marcot</div>
+        </div>
+      </article>
+
+      <!-- Card 3 — rectangular -->
+      <article class="creator-card" role="listitem">
+        <div class="card-photo-wrap">
+          <img class="card-photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=320&h=420&fit=crop&crop=faces&auto=format&q=82" alt="Valeria M." loading="lazy" width="320" height="420"/>
+          <div class="badge-location">
+            <svg width="8" height="10" viewBox="0 0 10 13" fill="none"><path d="M5 1C2.8 1 1 2.8 1 5c0 3 4 7 4 7s4-4 4-7c0-2.2-1.8-4-4-4Z" stroke="currentColor" stroke-width="1.4"/><circle cx="5" cy="5" r="1.5" fill="currentColor"/></svg>
+            MTY
+          </div>
+          <div class="badges-bottom">
+            <span class="badge-platform">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              @valeriam · 67K
+            </span>
+            <span class="badge-platform">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.54V6.78a4.85 4.85 0 01-1.01-.09z"/></svg>
+              @valeriam · 180K
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 — rectangular -->
+      <article class="creator-card" role="listitem">
+        <div class="card-photo-wrap">
+          <img class="card-photo" src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=320&h=420&fit=crop&crop=faces&auto=format&q=82" alt="Daniela C." loading="lazy" width="320" height="420"/>
+          <div class="badge-location">
+            <svg width="8" height="10" viewBox="0 0 10 13" fill="none"><path d="M5 1C2.8 1 1 2.8 1 5c0 3 4 7 4 7s4-4 4-7c0-2.2-1.8-4-4-4Z" stroke="currentColor" stroke-width="1.4"/><circle cx="5" cy="5" r="1.5" fill="currentColor"/></svg>
+            GDL
+          </div>
+          <div class="badges-bottom">
+            <span class="badge-platform">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              @danielac · 110K
+            </span>
+            <span class="badge-platform">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.54V6.78a4.85 4.85 0 01-1.01-.09z"/></svg>
+              @danielac · 95K
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5 — oval -->
+      <article class="creator-card oval" role="listitem">
+        <div class="card-photo-wrap">
+          <img class="card-photo" src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=320&h=360&fit=crop&crop=faces&auto=format&q=82" alt="Andrés L." loading="lazy" width="320" height="360"/>
+          <div class="badge-handle-center">@andresl</div>
+        </div>
+      </article>
+
+      <!-- Card 6 — rectangular -->
+      <article class="creator-card" role="listitem">
+        <div class="card-photo-wrap" style="height:360px;">
+          <img class="card-photo" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=320&h=380&fit=crop&crop=faces&auto=format&q=82" alt="Isabella R." loading="lazy" width="320" height="380"/>
+          <div class="badge-location">
+            <svg width="8" height="10" viewBox="0 0 10 13" fill="none"><path d="M5 1C2.8 1 1 2.8 1 5c0 3 4 7 4 7s4-4 4-7c0-2.2-1.8-4-4-4Z" stroke="currentColor" stroke-width="1.4"/><circle cx="5" cy="5" r="1.5" fill="currentColor"/></svg>
+            CDMX
+          </div>
+          <div class="badges-bottom">
+            <span class="badge-platform">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              @isabellr · 230K
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <button class="carousel-arrow carousel-next" id="nextBtn" aria-label="Siguiente">
+      <svg width="10" height="16" viewBox="0 0 10 16" fill="none"><path d="M2 2l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" role="contentinfo">
+    <a href="mailto:hola@warmheart.mx" class="icon-link" aria-label="Correo electrónico">
+      <svg width="16" height="13" viewBox="0 0 18 14" fill="none"><rect x="1" y="1" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M1 3.5l8 5 8-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </a>
+    <a href="https://instagram.com/warmheart" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+    </a>
+  </footer>
+
+  <!-- ─── FILTER PANEL ─── -->
+  <aside class="filter-panel" id="filterPanel" role="complementary" aria-label="Filtros">
+    <h2 class="filter-title">Filtrar</h2>
+
+    <p class="filter-group-label">Categoría</p>
+    <div class="filter-chips">
+      <button class="filter-chip active">Todos</button>
+      <button class="filter-chip">Lifestyle</button>
+      <button class="filter-chip">Moda</button>
+      <button class="filter-chip">Food</button>
+      <button class="filter-chip">Tech</button>
+      <button class="filter-chip">Travel</button>
+      <button class="filter-chip">Wellness</button>
+    </div>
+
+    <p class="filter-group-label">Ciudad</p>
+    <div class="filter-chips">
+      <button class="filter-chip active">Todas</button>
+      <button class="filter-chip">CDMX</button>
+      <button class="filter-chip">MTY</button>
+      <button class="filter-chip">GDL</button>
+    </div>
+
+    <p class="filter-group-label">Plataforma</p>
+    <div class="filter-chips">
+      <button class="filter-chip active">Todas</button>
+      <button class="filter-chip">Instagram</button>
+      <button class="filter-chip">TikTok</button>
+      <button class="filter-chip">YouTube</button>
+    </div>
+  </aside>
+
+<script>
+  // Carousel navigation
+  const track = document.getElementById('carouselTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const SCROLL = 288;
+
+  prevBtn.addEventListener('click', () => track.scrollBy({ left: -SCROLL, behavior: 'smooth' }));
+  nextBtn.addEventListener('click', () => track.scrollBy({ left: SCROLL, behavior: 'smooth' }));
+
+  // Drag to scroll
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+  track.addEventListener('mouseleave', () => isDown = false);
+  track.addEventListener('mouseup', () => isDown = false);
+  track.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX) * 1.4;
+  });
+
+  // Filter panel toggle
+  const filterToggle = document.getElementById('filterToggle');
+  const filterPanel = document.getElementById('filterPanel');
+  filterToggle.addEventListener('click', () => {
+    const open = filterPanel.classList.toggle('open');
+    filterToggle.setAttribute('aria-expanded', open);
+  });
+
+  // Filter chip toggle
+  document.querySelectorAll('.filter-chips').forEach(group => {
+    group.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        group.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+  });
+</script>
+</body>
+</html>

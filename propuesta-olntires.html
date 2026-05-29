@@ -299,24 +299,21 @@
     from { opacity:0; transform: translateY(70px); }
     to   { opacity:1; transform: translateY(0); }
   }
-  .categoria-tile__img,
-  .rin-svg-wrap {
-    width:100%; max-width:320px; height:360px;
+  .categoria-tile__img {
+    width:100%; max-width:300px; height:340px;
     object-fit: contain;
+    object-position: center bottom;
     filter: drop-shadow(0 18px 14px rgba(0,0,0,.22));
     transition: transform .7s cubic-bezier(.22,.61,.36,1), filter .5s ease;
     transform-origin: center bottom;
     will-change: transform;
   }
-  .rin-svg-wrap { display:flex; align-items:center; justify-content:center;
-    transition: transform .7s cubic-bezier(.22,.61,.36,1); }
   @keyframes tireBob {
     0%   { transform: translateY(0)     scale(1);    }
     50%  { transform: translateY(-12px) scale(1.012); }
     100% { transform: translateY(0)     scale(1);    }
   }
-  .categoria-tile:hover .categoria-tile__img,
-  .categoria-tile:hover .rin-svg-wrap {
+  .categoria-tile:hover .categoria-tile__img {
     animation: tireBob 1.8s cubic-bezier(.45,0,.55,1) infinite;
     filter: drop-shadow(0 36px 24px rgba(227,30,36,.34));
   }
@@ -330,10 +327,82 @@
     text-align:center;
   }
   .categoria-tile:hover .categoria-tile__label { color:#E31E24; }
+
+  /* ── HAMBURGER ── */
+  .nav-burger { display:none; background:none; border:none; cursor:pointer; padding:6px; color:#fff; }
+  .nav-burger span { display:block; width:22px; height:2px; background:#fff; margin:5px 0; transition:all .3s; }
+  .nav-cta-wrap { display:block; }
+
+  /* ── MOBILE NAV DROPDOWN ── */
+  @media (max-width: 600px) {
+    .nav-links-wrap {
+      display: none !important;
+      flex-direction: column !important;
+      position: fixed !important;
+      top: 61px; left: 0; right: 0;
+      background: rgba(10,10,10,.98) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 16px 0 20px !important;
+      gap: 0 !important;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      z-index: 49;
+    }
+    .nav-links-wrap.open { display: flex !important; }
+    .nav-links-wrap .nav-link {
+      padding: 14px 24px !important;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      font-size: 15px !important;
+      color: rgba(255,255,255,.75) !important;
+    }
+    .nav-cta-wrap { display: none !important; }
+    .nav-burger { display: block; }
+  }
+
+  /* ── MOBILE: tableta ── */
   @media (max-width: 900px) {
     .categorias-grid { grid-template-columns: repeat(2,1fr); gap: 32px 16px; }
-    .categoria-tile__img, .rin-svg-wrap { max-width:160px; height:200px; }
-    .categoria-tile__label { font-size:1.2rem; margin-top:20px; }
+    .hero-tires-row {
+      grid-template-columns: repeat(3,1fr);
+      padding: 32px 20px 0;
+      gap: 0;
+    }
+    /* 4th y 5th tile centrados en segunda fila */
+    .hero-tires-row .categoria-tile:nth-child(4) { grid-column: 1 / span 1; margin-left: calc(50% - 0px); }
+    .categoria-tile__img { max-width:140px; height:180px; }
+    .categoria-tile__label { font-size:1.1rem; margin-top:16px; }
+    .hero-inner { padding: 0 20px 48px; gap: 24px; }
+    .hero-hud { border-left: none; border-top: 1px solid rgba(255,255,255,.15); padding-left:0; padding-top:20px; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; gap:16px 32px; }
+    .hud-stat { text-align:left; }
+    .hud-stat .big-stat { font-size:2rem; }
+  }
+
+  /* ── MOBILE: teléfono ── */
+  @media (max-width: 600px) {
+    .hero-tires-row {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px 0 0;
+      gap: 0;
+      scrollbar-width: none;
+    }
+    .hero-tires-row::-webkit-scrollbar { display:none; }
+    .hero-tires-row .categoria-tile {
+      flex: 0 0 40vw;
+      scroll-snap-align: center;
+      padding: 0 8px 32px;
+    }
+    .hero-tires-row .categoria-tile:first-child { margin-left: 10vw; }
+    .hero-tires-row .categoria-tile:last-child  { margin-right: 10vw; }
+    .categoria-tile__img { max-width:120px; height:160px; }
+    .categoria-tile__label { font-size:1rem; margin-top:12px; }
+    .hero-inner { flex-direction: column; align-items:flex-start; padding: 0 20px 32px; gap:20px; }
+    .hero-hud { display:none; }
+    #main-nav > div { padding: 16px 20px !important; }
+    .hero-h1 { margin-bottom: 24px; }
+    .hero-ctas { gap: 10px; }
   }
 
   /* ── CTA BLOCKS ── */
@@ -362,7 +431,7 @@
 
 <!-- ══════════ PRELOADER ══════════ -->
 <div id="preloader">
-  <div class="pre-logo">OLN <span>TIRES</span></div>
+  <img src="oln/logo-white.png" alt="OLN Tires" style="height:80px;width:auto;object-fit:contain;opacity:0;transform:translateY(16px);animation:preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards;"/>
   <div class="pre-bar"></div>
 </div>
 
@@ -374,18 +443,24 @@
       <img id="nav-logo-text" src="oln/logo-white.png" alt="OLN Tires" style="height:32px;width:auto;object-fit:contain;"/>
     </a>
     <!-- Links -->
-    <div style="display:flex;gap:36px;align-items:center;">
-      <a class="nav-link" href="oln-catalogo.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Catálogo</a>
+    <div id="nav-links-main" class="nav-links-wrap" style="display:flex;gap:36px;align-items:center;">
+      <a class="nav-link" href="oln-catalogo.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Stock</a>
       <a class="nav-link" href="oln-marcas.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Marcas</a>
-      <a class="nav-link" href="oln-marcas.html#catalogos-pdf" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Catálogos PDF</a>
       <a class="nav-link" href="oln-marcas.html#nosotros" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Nosotros</a>
       <a class="nav-link" href="oln-contacto.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Contacto</a>
     </div>
-    <!-- CTA -->
-    <a id="nav-wa" href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;border-radius:8px;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;text-decoration:none;transition:all .4s ease;">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
-      WhatsApp
-    </a>
+    <!-- CTA + Hamburger -->
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="nav-cta-wrap">
+        <a id="nav-wa" href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;border-radius:8px;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;text-decoration:none;transition:all .4s ease;">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <button class="nav-burger" aria-label="Menú" onclick="document.getElementById('nav-links-main').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -454,39 +529,23 @@
 ">
   <div class="hero-tires-row">
     <button type="button" class="categoria-tile" onclick="goToCat('auto')">
-      <img class="categoria-tile__img" src="oln/rdx/at21.png" alt="Auto" loading="lazy"/>
+      <img class="categoria-tile__img" src="oln/tiles/auto.png" alt="Auto" loading="lazy"/>
       <span class="categoria-tile__label">Auto</span>
     </button>
     <button type="button" class="categoria-tile" onclick="goToCat('camion')">
-      <img class="categoria-tile__img" src="oln/roadx/st355.png" alt="Camión" loading="lazy"/>
+      <img class="categoria-tile__img" src="oln/tiles/camion.png" alt="Camión" loading="lazy"/>
       <span class="categoria-tile__label">Camión</span>
     </button>
     <button type="button" class="categoria-tile" onclick="goToCat('agricola')">
-      <img class="categoria-tile__img" src="oln/allwin/r4.png" alt="Agrícola" loading="lazy"/>
+      <img class="categoria-tile__img" src="oln/tiles/agricola.png" alt="Agrícola" loading="lazy"/>
       <span class="categoria-tile__label">Agrícola</span>
     </button>
     <button type="button" class="categoria-tile" onclick="goToCat('industrial')">
-      <img class="categoria-tile__img" src="oln/allwin/sks4.png" alt="Industrial" loading="lazy"/>
+      <img class="categoria-tile__img" src="oln/tiles/industrial.png" alt="Industrial" loading="lazy"/>
       <span class="categoria-tile__label">Industrial</span>
     </button>
     <button type="button" class="categoria-tile" onclick="goToCat('rin')">
-      <div class="categoria-tile__img rin-svg-wrap">
-        <svg viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="90" stroke="#fff" stroke-width="6"/>
-          <circle cx="100" cy="100" r="62" stroke="rgba(255,255,255,.35)" stroke-width="3"/>
-          <circle cx="100" cy="100" r="20" fill="#E31E24"/>
-          <circle cx="100" cy="100" r="12" fill="#0a0a0a"/>
-          <!-- spokes -->
-          <line x1="100" y1="78" x2="100" y2="10"  stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          <line x1="100" y1="122" x2="100" y2="190" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          <line x1="78"  y1="100" x2="10"  y2="100" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          <line x1="122" y1="100" x2="190" y2="100" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          <line x1="86"  y1="86"  x2="36"  y2="36"  stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          <line x1="114" y1="114" x2="164" y2="164" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          <line x1="114" y1="86"  x2="164" y2="36"  stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-          <line x1="86"  y1="114" x2="36"  y2="164" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-        </svg>
-      </div>
+      <img class="categoria-tile__img" src="oln/tiles/rin.png" alt="Rin" loading="lazy"/>
       <span class="categoria-tile__label">Rin</span>
     </button>
   </div>

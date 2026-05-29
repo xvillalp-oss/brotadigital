@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mira — Consultoría Financiera y Operativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy:      "#0d1b2a",
+          "navy-dk": "#07111b",
+          "navy-md": "#162540",
+          gold:      "#b5874a",
+          "gold-lt": "#f4e8d5",
+          "gold-dk": "#8a6130",
+          cream:     "#fafaf8",
+          muted:     "#6b7280",
+        },
+        fontFamily: {
+          serif: ["Noto Serif", "serif"],
+          sans:  ["Manrope", "sans-serif"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { font-family: 'Manrope', sans-serif; }
+  h1, h2, h3, h4, .font-serif { font-family: 'Noto Serif', serif; }
+  html { scroll-behavior: smooth; }
+
+  .btn-gold {
+    background: #b5874a;
+    color: #fff;
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+  }
+  .btn-gold:hover { background: #8a6130; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: #b5874a;
+    border: 1.5px solid #b5874a;
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+  }
+  .btn-outline:hover { background: #f4e8d5; transform: translateY(-1px); }
+
+  .btn-ghost-light {
+    background: transparent;
+    color: #f4e8d5;
+    border: 1.5px solid rgba(244,232,213,0.35);
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+  }
+  .btn-ghost-light:hover { background: rgba(244,232,213,0.08); transform: translateY(-1px); }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f4e8d5;
+    color: #8a6130;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid #e0c9a0;
+    margin-bottom: 16px;
+    font-family: 'Manrope', sans-serif;
+  }
+  .tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #b5874a;
+    flex-shrink: 0;
+  }
+  .tag-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(181,135,74,0.15);
+    color: #f4c878;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(181,135,74,0.3);
+    margin-bottom: 16px;
+    font-family: 'Manrope', sans-serif;
+  }
+  .tag-dark::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f4c878;
+    flex-shrink: 0;
+  }
+
+  .divider { border-bottom: 1px solid #f0ece4; }
+  .divider:last-child { border-bottom: none; }
+
+  /* Scroll animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-in { opacity: 0; transition: opacity 0.8s ease; }
+  .fade-in.visible { opacity: 1; }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+
+  @keyframes scrollBounce {
+    0%,100% { transform: translateX(-50%) translateY(0); opacity:0.5; }
+    50%      { transform: translateX(-50%) translateY(7px); opacity:1; }
+  }
+  .scroll-hint { animation: scrollBounce 2.2s ease-in-out infinite; }
+</style>
+</head>
+<body class="bg-cream text-[#1a1a1a]">
+
+
+<!-- ============================== HEADER ============================== -->
+<header class="bg-white border-b border-[#ede8e0] px-6 md:px-12 xl:px-20 py-5 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-screen-xl mx-auto flex justify-between items-center">
+
+    <div>
+      <div class="flex items-center gap-2">
+        <div class="w-2 h-2 rounded-full bg-[#b5874a]"></div>
+        <span class="font-serif font-bold text-xl tracking-tight text-[#0d1b2a]">Mira</span>
+      </div>
+      <p class="text-[11px] text-muted tracking-wide">Consultoría Financiera y Operativa</p>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#555]">
+      <a href="#sintomas" class="hover:text-[#b5874a] transition-colors">El problema</a>
+      <a href="#servicios" class="hover:text-[#b5874a] transition-colors">Servicios</a>
+      <a href="#proceso" class="hover:text-[#b5874a] transition-colors">Cómo trabajamos</a>
+      <a href="#contacto" class="btn-gold px-5 py-2.5 text-sm rounded-lg">Llamada gratuita</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<!-- ============================== HERO ============================== -->
+<section class="relative min-h-[90vh] flex items-center overflow-hidden" style="background:#0d1b2a;">
+  <!-- Radial glows -->
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 55% 65% at 8% 70%, rgba(181,135,74,0.10) 0%, transparent 65%), radial-gradient(ellipse 40% 50% at 85% 15%, rgba(181,135,74,0.06) 0%, transparent 55%);"></div>
+  <!-- Subtle grid texture -->
+  <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="relative max-w-screen-xl mx-auto px-6 md:px-12 xl:px-20 py-28 w-full grid md:grid-cols-2 gap-14 items-center">
+
+    <!-- Left: copy -->
+    <div class="space-y-8">
+      <div class="tag-dark fade-up" style="width:fit-content;">Consultoría boutique · México</div>
+      <h1 class="font-serif font-bold text-4xl md:text-5xl xl:text-[3.5rem] leading-[1.06] tracking-tight text-white fade-up delay-1">
+        Vendes bien.<br>¿Por qué <span class="italic" style="color:#f4c878;">nunca sobra dinero?</span>
+      </h1>
+      <p class="text-lg leading-relaxed fade-up delay-2" style="color:#a8b8c8; max-width: 440px;">
+        Identificamos exactamente dónde se pierde tu margen y qué procesos te están costando más de lo que crees.
+      </p>
+      <div class="flex flex-wrap gap-3 fade-up delay-3">
+        <a href="#contacto" class="btn-gold px-7 py-3.5 text-sm rounded-lg">Agendar llamada gratuita</a>
+        <a href="#proceso" class="btn-ghost-light px-7 py-3.5 text-sm rounded-lg">Cómo trabajamos</a>
+      </div>
+      <!-- Mini trust strip -->
+      <div class="flex flex-wrap gap-6 pt-2 fade-up delay-4">
+        <div>
+          <p class="font-extrabold text-2xl text-white">30 min</p>
+          <p class="text-xs" style="color:#6b8c9e;">diagnóstico inicial sin costo</p>
+        </div>
+        <div class="w-px bg-white/10"></div>
+        <div>
+          <p class="font-extrabold text-2xl text-white">3–5</p>
+          <p class="text-xs" style="color:#6b8c9e;">cuellos de botella identificados</p>
+        </div>
+        <div class="w-px bg-white/10"></div>
+        <div>
+          <p class="font-extrabold text-2xl text-white">100%</p>
+          <p class="text-xs" style="color:#6b8c9e;">enfoque en tu caso específico</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: quote card -->
+    <div class="hidden md:block fade-in delay-3">
+      <div class="rounded-2xl p-8 border space-y-6" style="background:rgba(255,255,255,0.04); border-color:rgba(181,135,74,0.2);">
+        <p class="font-serif text-2xl italic leading-snug" style="color:#f4e8d5;">"Vendo bien pero no sé a dónde se va el dinero."</p>
+        <div class="h-px" style="background:rgba(181,135,74,0.2);"></div>
+        <p class="text-sm leading-relaxed" style="color:#8aa0b0;">Si eso resuena contigo, no estás solo. El 98% de las empresas en México reconocen que pueden mejorar su gestión financiera. La diferencia está en quién actúa primero.</p>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:rgba(181,135,74,0.2);">
+            <svg viewBox="0 0 16 16" fill="#b5874a" class="w-4 h-4"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 2a5 5 0 110 10A5 5 0 018 3zm0 2a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1zm0 6a1 1 0 100 2 1 1 0 000-2z"/></svg>
+          </div>
+          <p class="text-xs font-semibold" style="color:#b5874a;">El diagnóstico es el primer paso</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scroll-hint absolute bottom-8 left-1/2 flex flex-col items-center gap-1.5">
+    <span class="text-[10px] uppercase tracking-widest" style="color:rgba(181,135,74,0.5);">scroll</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="rgba(181,135,74,0.45)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+
+<!-- ============================== SÍNTOMAS ============================== -->
+<section id="sintomas" class="py-24 px-6 md:px-12 xl:px-20 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-16 fade-up">
+      <div class="tag mx-auto" style="width:fit-content;">¿Te identificas?</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-[1.1] text-[#0d1b2a] max-w-2xl mx-auto">
+        Señales de que tu negocio <span class="italic text-[#b5874a]">tiene fugas.</span>
+      </h2>
+      <p class="text-muted text-base max-w-lg mx-auto mt-4 leading-relaxed">
+        No hace falta estar en crisis para necesitar un diagnóstico. Estas situaciones cuestan dinero todos los días, aunque no se vean.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="rounded-xl border border-[#ede8e0] bg-cream p-8 space-y-4 fade-up delay-1 hover:shadow-md transition-shadow">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#f4e8d5;">
+          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5"><path d="M12 2v20M2 12h20" stroke="#b5874a" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#b5874a" stroke-width="1.5"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-xl text-[#0d1b2a]">"Vendo bien pero no sé a dónde se va el dinero"</h3>
+        <p class="text-sm text-muted leading-relaxed">Los ingresos entran, pero al final del mes no hay claridad sobre qué sobra ni qué se consumió. El negocio trabaja para ti, pero tú trabajas para el negocio.</p>
+        <div class="h-px bg-[#ede8e0]"></div>
+        <p class="text-xs font-semibold text-[#b5874a]">→ Estructura de costos mal definida</p>
+      </div>
+
+      <div class="rounded-xl border border-[#ede8e0] bg-cream p-8 space-y-4 fade-up delay-2 hover:shadow-md transition-shadow">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#f4e8d5;">
+          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#b5874a" stroke-width="1.5"/><path d="M9 22V12h6v10" stroke="#b5874a" stroke-width="1.5"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-xl text-[#0d1b2a]">"Tengo trabajo pero no tengo dinero"</h3>
+        <p class="text-sm text-muted leading-relaxed">Clientes que pagan a 60 días, proveedores que cobran a 30, inventario acumulado. El flujo de caja colapsa aunque la empresa sea rentable en papel.</p>
+        <div class="h-px bg-[#ede8e0]"></div>
+        <p class="text-xs font-semibold text-[#b5874a]">→ Crisis de liquidez estructural</p>
+      </div>
+
+      <div class="rounded-xl border border-[#ede8e0] bg-cream p-8 space-y-4 fade-up delay-3 hover:shadow-md transition-shadow">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#f4e8d5;">
+          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5"><circle cx="12" cy="12" r="10" stroke="#b5874a" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="#b5874a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-xl text-[#0d1b2a]">"Si yo no estoy, el negocio para"</h3>
+        <p class="text-sm text-muted leading-relaxed">Procesos que solo tú conoces, decisiones que dependen de tu presencia. Crecer es imposible si todo depende de una sola persona. El cuello de botella eres tú.</p>
+        <div class="h-px bg-[#ede8e0]"></div>
+        <p class="text-xs font-semibold text-[#b5874a]">→ Procesos no documentados</p>
+      </div>
+
+      <div class="rounded-xl border border-[#ede8e0] bg-cream p-8 space-y-4 fade-up delay-1 hover:shadow-md transition-shadow">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#f4e8d5;">
+          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5"><path d="M18 20V10M12 20V4M6 20v-6" stroke="#b5874a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-xl text-[#0d1b2a]">"Crecemos pero no ganamos más"</h3>
+        <p class="text-sm text-muted leading-relaxed">Más ventas, más clientes, más empleados — y el margen se mantiene igual o baja. Escalar sin rentabilidad solo magnifica los problemas que ya existían.</p>
+        <div class="h-px bg-[#ede8e0]"></div>
+        <p class="text-xs font-semibold text-[#b5874a]">→ Modelo de negocio sin margen real</p>
+      </div>
+
+      <div class="rounded-xl border border-[#ede8e0] bg-cream p-8 space-y-4 fade-up delay-2 hover:shadow-md transition-shadow">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#f4e8d5;">
+          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#b5874a" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="#b5874a" stroke-width="1.5"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-xl text-[#0d1b2a]">"Mezclo cuentas personales y del negocio"</h3>
+        <p class="text-sm text-muted leading-relaxed">Sin separación clara, es imposible saber la rentabilidad real. Las decisiones se toman por intuición o estado de ánimo, no por datos.</p>
+        <div class="h-px bg-[#ede8e0]"></div>
+        <p class="text-xs font-semibold text-[#b5874a]">→ Control financiero inexistente</p>
+      </div>
+
+      <div class="rounded-xl border border-[#ede8e0] bg-cream p-8 space-y-4 fade-up delay-3 hover:shadow-md transition-shadow">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#f4e8d5;">
+          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#b5874a" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-xl text-[#0d1b2a]">"Estoy tapando hoyos, no construyendo"</h3>
+        <p class="text-sm text-muted leading-relaxed">Cada mes es un ejercicio de apagar incendios. Deuda para operar, no para invertir. Sin un plan financiero claro, el negocio sobrevive en lugar de crecer.</p>
+        <div class="h-px bg-[#ede8e0]"></div>
+        <p class="text-xs font-semibold text-[#b5874a]">→ Deuda operativa sin estrategia</p>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-14 fade-up">
+      <p class="text-base text-muted max-w-md mx-auto mb-6">Si alguna de estas situaciones te describe, el primer paso es un diagnóstico honesto. Sin compromiso.</p>
+      <a href="#contacto" class="btn-gold px-8 py-4 text-sm rounded-lg">Quiero mi diagnóstico gratuito</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================== SERVICIOS ============================== -->
+<section id="servicios" class="py-24 px-6 md:px-12 xl:px-20 bg-[#0d1b2a]">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-16 fade-up">
+      <div class="tag-dark mx-auto" style="width:fit-content;">Servicios</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-[1.1] text-white max-w-2xl mx-auto">
+        Tres formas de <span class="italic" style="color:#f4c878;">trabajar juntos.</span>
+      </h2>
+      <p class="text-base max-w-lg mx-auto mt-4 leading-relaxed" style="color:#8aa0b0;">
+        Todos los compromisos empiezan con un diagnóstico. No vendemos retadores indefinidos — vendemos resultados medibles.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Diagnóstico -->
+      <div class="rounded-2xl border p-8 flex flex-col gap-5 fade-up delay-1" style="background:rgba(255,255,255,0.04); border-color:rgba(181,135,74,0.2);">
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-1" style="color:#b5874a;">Punto de entrada</p>
+          <h3 class="font-serif font-bold text-2xl text-white">Diagnóstico Financiero y Operativo</h3>
+          <p class="text-sm mt-1" style="color:#6b8c9e;">Engagement fijo · 2–4 semanas</p>
+        </div>
+        <p class="text-sm leading-relaxed" style="color:#a8b8c8;">Mapeamos tu operación completa, identificamos los 3–5 cuellos de botella que más te cuestan, y te entregamos un plan de acción priorizado. Sin teoría — solo lo que puedes implementar.</p>
+        <div class="space-y-2 flex-1">
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Análisis de estructura de costos real</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Mapa de procesos con cuellos de botella identificados</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Diagnóstico de flujo de caja 30/60/90 días</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Plan de acción concreto y priorizado</span>
+          </div>
+        </div>
+        <div class="rounded-xl px-4 py-3 mt-2" style="background:rgba(181,135,74,0.1); border:1px solid rgba(181,135,74,0.2);">
+          <p class="text-xs font-semibold" style="color:#f4c878;">Si no identificamos al menos 3 áreas con ahorro potencial, no te cobramos.</p>
+        </div>
+      </div>
+
+      <!-- Implementación -->
+      <div class="rounded-2xl border-2 p-8 flex flex-col gap-5 relative fade-up delay-2" style="background:rgba(181,135,74,0.06); border-color:#b5874a;">
+        <div class="absolute top-0 right-0">
+          <span class="inline-block text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-bl-xl rounded-tr-2xl" style="background:#b5874a; color:#fff;">Más solicitado</span>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-1" style="color:#b5874a;">Transformación</p>
+          <h3 class="font-serif font-bold text-2xl text-white">Implementación y Acompañamiento</h3>
+          <p class="text-sm mt-1" style="color:#6b8c9e;">3–6 meses · resultados medibles</p>
+        </div>
+        <p class="text-sm leading-relaxed" style="color:#a8b8c8;">Implementamos los cambios contigo, no solo te decimos qué hacer. Sistemas de control financiero, procesos documentados, y un tablero que te diga exactamente cómo está tu negocio en tiempo real.</p>
+        <div class="space-y-2 flex-1">
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Todo lo del Diagnóstico incluido</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Sistema de control de costos implementado</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Procesos documentados y delegables</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Modelo de flujo de caja proyectado</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Reporte mensual con métricas reales</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Revisión de estructura de precios y margen</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CFO Fraccionado -->
+      <div class="rounded-2xl border p-8 flex flex-col gap-5 fade-up delay-3" style="background:rgba(255,255,255,0.04); border-color:rgba(181,135,74,0.2);">
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-1" style="color:#b5874a;">Liderazgo continuo</p>
+          <h3 class="font-serif font-bold text-2xl text-white">CFO Fraccionado</h3>
+          <p class="text-sm mt-1" style="color:#6b8c9e;">Mensual recurrente · sin contrato anual</p>
+        </div>
+        <p class="text-sm leading-relaxed" style="color:#a8b8c8;">Dirección financiera y operativa de nivel senior sin contratar un director de tiempo completo. Para empresas que necesitan tomar decisiones importantes y quieren a alguien responsable de los números.</p>
+        <div class="space-y-2 flex-1">
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Sesiones estratégicas mensuales</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Supervisión continua de indicadores clave</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Soporte en decisiones de inversión y financiamiento</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Preparación para crédito o inversión externa</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#b5874a;"></span>
+            <span class="text-sm" style="color:#a8b8c8;">Acceso directo — sin intermediarios</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== PROCESO ============================== -->
+<section id="proceso" class="py-24 px-6 md:px-12 xl:px-20 bg-white border-t border-[#ede8e0]">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-16 fade-up">
+      <div class="tag mx-auto" style="width:fit-content;">Metodología</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-[1.1] text-[#0d1b2a] max-w-2xl mx-auto">
+        Cómo <span class="italic text-[#b5874a]">trabajamos.</span>
+      </h2>
+      <p class="text-muted text-base max-w-md mx-auto mt-4">Sin reportes que nadie lee. Sin teoría que no se implementa.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-0 relative max-w-4xl mx-auto">
+      <div class="hidden md:block absolute top-[28px] left-[calc(16.66%+28px)] right-[calc(16.66%+28px)] h-px bg-[#ede8e0] z-0"></div>
+
+      <div class="relative z-10 flex flex-col items-center text-center px-8 mb-10 md:mb-0 fade-up">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 font-bold text-xl text-white shadow-lg" style="background:#0d1b2a; font-family:'Manrope',sans-serif;">1</div>
+        <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#b5874a;">Semana 1–2</p>
+        <h3 class="font-serif font-bold text-lg text-[#0d1b2a] mb-3">Diagnóstico honesto</h3>
+        <p class="text-sm text-muted leading-relaxed">Revisamos números reales, observamos procesos, y hacemos las preguntas que nadie ha hecho. El objetivo es ver el negocio como es, no como debería ser.</p>
+      </div>
+
+      <div class="relative z-10 flex flex-col items-center text-center px-8 mb-10 md:mb-0 fade-up delay-2">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 font-bold text-xl text-white shadow-lg" style="background:#b5874a; font-family:'Manrope',sans-serif;">2</div>
+        <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#b5874a;">Semana 3–4</p>
+        <h3 class="font-serif font-bold text-lg text-[#0d1b2a] mb-3">Plan concreto</h3>
+        <p class="text-sm text-muted leading-relaxed">Presentamos los hallazgos con números específicos y un plan de acción priorizado. Cada recomendación tiene un dueño, una fecha, y un resultado esperado.</p>
+      </div>
+
+      <div class="relative z-10 flex flex-col items-center text-center px-8 fade-up delay-4">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 font-bold text-xl text-white shadow-lg" style="background:#0d1b2a; font-family:'Manrope',sans-serif;">3</div>
+        <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#b5874a;">Mes 2 en adelante</p>
+        <h3 class="font-serif font-bold text-lg text-[#0d1b2a] mb-3">Implementación y medición</h3>
+        <p class="text-sm text-muted leading-relaxed">Acompañamos la implementación y medimos los resultados mes a mes. Lo que no se mide, se sangra — y nosotros medimos todo.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== POR QUÉ MIRA ============================== -->
+<section class="py-24 px-6 md:px-12 xl:px-20 bg-cream border-t border-[#ede8e0]">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-16 fade-up">
+      <div class="tag mx-auto" style="width:fit-content;">Por qué Mira</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-[1.1] text-[#0d1b2a] max-w-2xl mx-auto">
+        Boutique, no <span class="italic text-[#b5874a]">despacho.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-14 items-start max-w-4xl mx-auto">
+
+      <div class="space-y-5 fade-up">
+        <p class="text-lg text-[#0d1b2a] leading-relaxed">No trabajamos con veinte clientes a la vez ni te asignamos un analista junior. Cada empresa que aceptamos recibe atención directa, diagnóstico personalizado y seguimiento real.</p>
+        <p class="text-muted leading-relaxed">El problema con las consultoras grandes es que te venden metodología genérica. El problema con los freelancers baratos es que no tienen experiencia real. Estamos en el punto medio — y ese es exactamente el espacio donde las pymes mexicanas obtienen resultados.</p>
+
+        <div class="space-y-4 pt-4">
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5" style="background:#f4e8d5;">
+              <svg viewBox="0 0 12 12" fill="#b5874a" class="w-2.5 h-2.5"><path d="M10 3L4.5 8.5 2 6"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Acceso directo a quien hace el trabajo — sin intermediarios</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5" style="background:#f4e8d5;">
+              <svg viewBox="0 0 12 12" fill="#b5874a" class="w-2.5 h-2.5"><path d="M10 3L4.5 8.5 2 6"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Diagnóstico específico para tu empresa — no plantillas genéricas</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5" style="background:#f4e8d5;">
+              <svg viewBox="0 0 12 12" fill="#b5874a" class="w-2.5 h-2.5"><path d="M10 3L4.5 8.5 2 6"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Resultados medibles con número, no solo recomendaciones teóricas</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5" style="background:#f4e8d5;">
+              <svg viewBox="0 0 12 12" fill="#b5874a" class="w-2.5 h-2.5"><path d="M10 3L4.5 8.5 2 6"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Sin contratos anuales forzados — el vínculo se renueva por resultados</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5" style="background:#f4e8d5;">
+              <svg viewBox="0 0 12 12" fill="#b5874a" class="w-2.5 h-2.5"><path d="M10 3L4.5 8.5 2 6"/></svg>
+            </div>
+            <span class="text-sm text-[#374151]">Garantía de diagnóstico: si no encontramos oportunidades de mejora, no cobramos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4 fade-up delay-2">
+        <div class="rounded-xl border border-[#ede8e0] bg-white p-6 space-y-4">
+          <p class="text-xs font-bold tracking-widest uppercase" style="color:#b5874a;">Lo que dicen los números</p>
+          <div class="divider flex justify-between items-center py-3">
+            <span class="text-sm text-muted">4 de cada 10 pymes cierran por problemas de liquidez</span>
+            <span class="font-bold text-[#0d1b2a]">40%</span>
+          </div>
+          <div class="divider flex justify-between items-center py-3">
+            <span class="text-sm text-muted">de empresas sin sistema financiero formal</span>
+            <span class="font-bold text-[#0d1b2a]">23%</span>
+          </div>
+          <div class="divider flex justify-between items-center py-3">
+            <span class="text-sm text-muted">mezclan finanzas personales y del negocio</span>
+            <span class="font-bold text-[#0d1b2a]">70%</span>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <span class="text-sm text-muted">reconocen que pueden mejorar su gestión</span>
+            <span class="font-bold text-[#0d1b2a]">98%</span>
+          </div>
+        </div>
+        <div class="rounded-xl p-6 border" style="background:#f4e8d5; border-color:#e0c9a0;">
+          <p class="font-serif text-base italic text-[#0d1b2a] leading-relaxed">"Tu negocio ya tiene el dinero. Lo que hace falta es encontrar dónde está escondido."</p>
+          <p class="text-xs text-[#8a6130] mt-2 font-semibold">— Principio de trabajo de Mira</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== CTA ============================== -->
+<section id="contacto" class="py-24 px-6 md:px-12 xl:px-20 bg-white border-t border-[#ede8e0]">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="rounded-2xl overflow-hidden text-center px-10 md:px-20 py-16 md:py-20 fade-up" style="background:#0d1b2a;">
+      <div class="tag-dark mx-auto mb-6" style="width:fit-content;">Sin compromiso</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl text-white tracking-tight mb-4 italic">
+        ¿En qué estás parado?
+      </h2>
+      <p class="text-lg mb-10 max-w-lg mx-auto leading-relaxed" style="color:#a8b8c8;">
+        30 minutos de llamada para entender tu negocio. Sin costo, sin presentación de ventas. Solo preguntas directas y un primer diagnóstico honesto.
+      </p>
+      <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20me%20interesa%20agendar%20una%20llamada%20de%20diagn%C3%B3stico" class="btn-gold px-10 py-4 text-sm rounded-lg">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+        Agendar llamada gratuita
+      </a>
+      <p class="mt-6 text-xs" style="color:#5a7a8e;">Mira · Consultoría Financiera y Operativa · México</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="bg-white border-t border-[#ede8e0] py-8 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-2 h-2 rounded-full bg-[#b5874a]"></div>
+      <span class="font-serif font-bold text-sm tracking-tight text-[#0d1b2a]">Mira</span>
+    </div>
+    <p class="text-xs text-center text-muted">Consultoría Financiera y Operativa · México · 2025</p>
+    <span class="text-xs text-muted font-medium">Confidencial</span>
+  </div>
+</footer>
+
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up,.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+
+</body>
+</html>

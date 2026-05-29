@@ -3,510 +3,849 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-
 <title>Calero — Luminarias y objetos · CDMX</title>
 <meta name="description" content="Bases de cerámica y pantallas hechas a mano en CDMX. Better than your abuela's decor."/>
 <meta name="theme-color" content="#700402"/>
-
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Calero — Luminarias y objetos"/>
-<meta property="og:description" content="Arte objeto hecho a mano en CDMX."/>
-<meta property="og:locale" content="es_MX"/>
-
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"/>
 
 <style>
 :root{
   --bg:#E6D9C8;
   --bg-warm:#DDCDB8;
   --ink:#700402;
-  --ink-2:rgba(112,4,2,0.7);
-  --ink-3:rgba(112,4,2,0.5);
+  --ink-2:rgba(112,4,2,.72);
+  --ink-3:rgba(112,4,2,.45);
   --accent:#B32917;
-  --rule:rgba(112,4,2,0.14);
-  --white:#F5EFE3;
+  --rule:rgba(112,4,2,.13);
+  --cream:#F2EBE0;
 }
-
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Inter',sans-serif;font-weight:300;font-size:13px;line-height:1.65;
-  background:var(--bg);color:var(--ink);
+  font-family:'Barlow',sans-serif;font-weight:400;font-size:14px;
+  line-height:1.65;background:var(--bg);color:var(--ink);
   letter-spacing:.01em;-webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none;transition:color .25s ease}
+a{color:inherit;text-decoration:none;transition:color .22s}
 a:hover{color:var(--accent)}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
 
-.container{max-width:1280px;margin:0 auto;padding:0 32px}
-.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400}
+/* ── SHARED ── */
+.container{max-width:1280px;margin:0 auto;padding:0 36px}
+.label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);font-weight:400}
 
-.label{
-  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:400;
-}
-
-/* NAV */
+/* ── NAV BAR (mobile only) ── */
 .nav{
-  position:fixed;top:0;left:0;right:0;z-index:80;
-  background:rgba(230,217,200,.85);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  position:fixed;top:0;left:0;right:0;height:62px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;z-index:80;
+  background:rgba(230,217,200,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--rule);
 }
-.nav__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav__hamburger{
+  font-size:22px;color:var(--ink);padding:4px 6px;
+  display:flex;flex-direction:column;gap:5px;justify-content:center;width:36px;height:36px;
+}
+.nav__hamburger span{display:block;height:1.5px;background:var(--ink);transition:all .25s}
 .nav__logo{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
-  font-size:24px;color:var(--ink);letter-spacing:.02em;line-height:1;
+  position:absolute;left:50%;transform:translateX(-50%);
+  font-size:18px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);
 }
-.nav__links{display:flex;gap:30px;list-style:none}
-.nav__links a{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2)}
-.nav__links a:hover{color:var(--accent)}
-.nav__cart{
-  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--ink);padding:8px 14px;border:1px solid var(--ink);
-  display:inline-flex;align-items:center;gap:8px;
-  transition:all .2s;
-}
-.nav__cart:hover{background:var(--ink);color:var(--bg)}
+.nav__right{display:flex;align-items:center;gap:6px;color:var(--ink)}
+.nav__cart-icon{position:relative;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
 .nav__cart-count{
+  position:absolute;top:2px;right:2px;
   background:var(--accent);color:var(--bg);
-  width:18px;height:18px;border-radius:50%;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:10px;font-weight:500;letter-spacing:0;
+  width:16px;height:16px;border-radius:50%;
+  font-size:9px;font-weight:600;display:flex;align-items:center;justify-content:center;
+  display:none;
+}
+.nav__cart-count.visible{display:flex}
+
+/* ── DESKTOP SIDEBAR ── */
+.sidenav{display:none}
+
+@media(min-width:1024px){
+  /* hide mobile top bar */
+  .nav{display:none}
+  /* push content right */
+  body{padding-left:220px}
+
+  .sidenav{
+    display:flex;flex-direction:column;
+    position:fixed;top:0;left:0;bottom:0;width:220px;
+    background:var(--bg);border-right:1px solid var(--rule);
+    z-index:80;overflow-y:auto;
+  }
+  .sidenav__logo{
+    padding:32px 28px 28px;
+    font-size:17px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink);border-bottom:1px solid var(--rule);
+    text-decoration:none;display:block;
+  }
+  .sidenav__logo:hover{color:var(--accent)}
+
+  .sidenav__nav{flex:1;padding:18px 0}
+
+  .sidenav__item{position:relative}
+  .sidenav__link{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:13px 28px;
+    font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink-2);transition:color .2s;text-decoration:none;
+    cursor:pointer;width:100%;text-align:left;background:none;border:none;font-family:inherit;
+  }
+  .sidenav__link:hover,.sidenav__link.active{color:var(--ink)}
+  .sidenav__link svg{width:10px;height:10px;opacity:.45;transition:transform .25s;flex-shrink:0}
+
+  /* Tienda submenu — expand on hover */
+  .sidenav__item--tienda:hover .sidenav__sub{max-height:260px}
+  .sidenav__item--tienda:hover .sidenav__link svg{transform:rotate(90deg)}
+  .sidenav__sub{
+    max-height:0;overflow:hidden;transition:max-height .32s ease;
+    background:var(--bg-warm);
+  }
+  .sidenav__sub a{
+    display:block;padding:9px 28px 9px 44px;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-3);transition:color .2s;text-decoration:none;
+  }
+  .sidenav__sub a:hover{color:var(--accent)}
+
+  .sidenav__divider{height:1px;background:var(--rule);margin:10px 28px}
+
+  .sidenav__foot{
+    padding:22px 28px;border-top:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .sidenav__cart{
+    display:flex;align-items:center;gap:10px;
+    font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-2);cursor:pointer;background:none;border:none;font-family:inherit;
+    transition:color .2s;
+  }
+  .sidenav__cart:hover{color:var(--accent)}
+  .sidenav__cart svg{width:18px;height:18px}
+  .sidenav__cart-badge{
+    background:var(--accent);color:var(--bg);
+    width:16px;height:16px;border-radius:50%;font-size:9px;font-weight:600;
+    display:none;align-items:center;justify-content:center;
+  }
+  .sidenav__cart-badge.visible{display:flex}
+  .sidenav__social{display:flex;gap:14px;align-items:center}
+  .sidenav__social a{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+  .sidenav__social a:hover{color:var(--accent)}
 }
 
-@media(max-width:768px){
-  .nav__links{display:none}
-  .nav__logo{font-size:22px}
-  .container{padding:0 22px}
+/* ── MENU DRAWER (left) ── */
+.menu-overlay{
+  position:fixed;inset:0;background:rgba(40,10,6,.35);
+  opacity:0;pointer-events:none;transition:opacity .3s;z-index:120;
 }
+.menu-overlay.open{opacity:1;pointer-events:all}
 
-/* HERO */
+.menu{
+  position:fixed;top:0;left:0;bottom:0;width:min(380px,88vw);
+  background:var(--bg);z-index:130;
+  transform:translateX(-100%);transition:transform .38s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;
+  box-shadow:20px 0 60px rgba(40,10,6,.12);
+}
+.menu.open{transform:translateX(0)}
+
+.menu__head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 26px;border-bottom:1px solid var(--rule);
+}
+.menu__head-logo{font-size:16px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.menu__close{font-size:22px;color:var(--ink-2);line-height:1;padding:4px}
+.menu__close:hover{color:var(--accent)}
+
+.menu__list{flex:1;overflow-y:auto;padding:16px 0}
+.menu__item{border-bottom:1px solid var(--rule)}
+.menu__link,.menu__toggle{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;padding:16px 26px;
+  font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink);transition:color .2s;text-align:left;
+}
+.menu__link:hover,.menu__toggle:hover{color:var(--accent)}
+.menu__chevron{
+  font-size:16px;font-weight:300;transition:transform .25s;line-height:1;
+}
+.menu__item--open .menu__chevron{transform:rotate(45deg)}
+
+.menu__sub{
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+  background:var(--bg-warm);
+}
+.menu__item--open .menu__sub{max-height:200px}
+.menu__sub a{
+  display:block;padding:11px 26px 11px 44px;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-2);transition:color .2s;
+}
+.menu__sub a:hover{color:var(--accent)}
+
+.menu__footer{padding:24px 26px;border-top:1px solid var(--rule)}
+.menu__footer a{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.menu__footer a:hover{color:var(--accent)}
+
+/* ── HERO full-screen ── */
 .hero{
-  padding:120px 0 100px;
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;min-height:90vh;
+  position:relative;height:100vh;min-height:600px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
 }
-.hero__copy{padding-bottom:60px;max-width:420px}
-.hero__label{margin-bottom:24px;display:block}
-.hero__h1{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(38px,4.6vw,58px);line-height:1.05;letter-spacing:-.005em;margin-bottom:28px;
+.hero__bg{
+  position:absolute;inset:0;
+  background:url('calero-hero.jpg') center/cover no-repeat;
+  transform:scale(1.04);transition:transform 6s ease;
 }
-.hero__h1 em{font-style:normal;color:var(--accent)}
-.hero__sub{font-size:13px;color:var(--ink-2);max-width:340px;line-height:1.7;margin-bottom:36px}
-.hero__cta{
-  display:inline-block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--ink);padding-bottom:6px;border-bottom:1px solid var(--ink);
+.hero:hover .hero__bg{transform:scale(1.0)}
+.hero__overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(112,4,2,.22) 0%,rgba(40,8,4,.42) 100%);
 }
-.hero__cta:hover{color:var(--accent);border-color:var(--accent)}
+.hero__center{
+  position:relative;z-index:2;text-align:center;color:var(--cream);
+}
+.hero__wordmark{
+  font-size:clamp(72px,14vw,160px);font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;line-height:1;margin-bottom:18px;
+}
+.hero__tagline{
+  font-size:clamp(12px,1.4vw,15px);font-weight:300;letter-spacing:.3em;
+  text-transform:uppercase;opacity:.82;margin-bottom:44px;
+}
+.hero__scroll{
+  display:inline-block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--cream);padding-bottom:5px;border-bottom:1px solid rgba(242,235,224,.5);
+  opacity:.8;transition:opacity .2s;
+}
+.hero__scroll:hover{opacity:1;color:var(--cream);border-color:var(--cream)}
 
-.hero__image{
-  aspect-ratio:4/5;position:relative;overflow:hidden;
-  background:url('calero-base-1.jpg') center/cover no-repeat;
-}
-.hero__image::after{
-  content:'Pieza Margo';position:absolute;top:24px;right:24px;
-  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(245,239,227,.85);
-  text-shadow:0 1px 4px rgba(0,0,0,.4);
-}
-
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:50px;padding:100px 0 70px;min-height:auto}
-  .hero__copy{padding-bottom:0;max-width:100%}
-  .hero__image{aspect-ratio:1/1.1}
-}
-
-/* SECTIONS */
+/* ── SECTION SHELL ── */
 section{padding:110px 0}
-.section__head{
-  display:grid;grid-template-columns:1fr 2fr;gap:60px;
-  margin-bottom:70px;align-items:end;
-}
+.section__head{margin-bottom:70px}
+.section__label{display:block;margin-bottom:18px}
 .section__title{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(32px,3.6vw,48px);line-height:1.1;
+  font-size:clamp(28px,3.2vw,42px);font-weight:300;
+  color:var(--ink);letter-spacing:-.01em;line-height:1.1;
 }
-.section__title em{font-style:normal;color:var(--accent)}
-.section__intro{font-size:13px;color:var(--ink-2);max-width:380px;line-height:1.7}
-@media(max-width:768px){section{padding:80px 0}.section__head{grid-template-columns:1fr;gap:24px;margin-bottom:40px}}
+.section__title strong{font-weight:700;color:var(--accent)}
+.section__intro{
+  font-size:13px;color:var(--ink-2);max-width:420px;line-height:1.75;margin-top:18px;
+}
+@media(max-width:768px){section{padding:80px 0}.section__head{margin-bottom:44px}}
 
-/* PRODUCT GRID */
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:50px 32px}
+/* ── PRODUCT GRID ── */
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 28px}
+@media(min-width:769px) and (max-width:1080px){.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.products{grid-template-columns:1fr;gap:40px}}
+
 .product{display:flex;flex-direction:column}
 .product__image{
-  aspect-ratio:4/5;margin-bottom:16px;position:relative;overflow:hidden;
-  transition:transform .5s ease;
+  aspect-ratio:4/5;margin-bottom:18px;overflow:hidden;position:relative;
+  transition:transform .55s ease;
 }
-.product:hover .product__image{transform:scale(1.01)}
-.product__name{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
-  font-size:18px;color:var(--ink);margin-bottom:4px;
-}
-.product__desc{font-size:11px;color:var(--ink-3);line-height:1.6;margin-bottom:14px;flex:1}
+.product:hover .product__image{transform:scale(1.015)}
+.product__name{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:4px;letter-spacing:.01em}
+.product__desc{font-size:12px;color:var(--ink-3);line-height:1.65;margin-bottom:14px;flex:1}
 .product__row{
   display:flex;justify-content:space-between;align-items:center;
-  padding-top:12px;border-top:1px solid var(--rule);
+  padding-top:14px;border-top:1px solid var(--rule);
 }
-.product__price{font-size:12px;letter-spacing:.06em;color:var(--ink)}
+.product__price{font-size:13px;font-weight:500;letter-spacing:.04em}
 .product__add{
-  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  padding:8px 14px;border:1px solid var(--ink);color:var(--ink);
+  font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  padding:9px 16px;border:1.5px solid var(--ink);color:var(--ink);
   transition:all .2s;
 }
 .product__add:hover{background:var(--ink);color:var(--bg)}
 .product__add.in-cart{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 
-@media(max-width:768px){.products{grid-template-columns:1fr;gap:40px}}
-@media(min-width:769px) and (max-width:1100px){.products{grid-template-columns:repeat(2,1fr)}}
-
-/* Lamp/base photo placeholders (warm gradient bgs) */
-.bg-1{background:radial-gradient(ellipse 50% 35% at 50% 30%,#FFEEC6,#E8B976 30%,#9F5D2F 60%,#3A1A12 100%)}
-.bg-2{background:radial-gradient(ellipse 60% 45% at 50% 40%,#F2D9B4,#C7976B 35%,#7B3E1F 65%,#1F0E08 100%)}
-.bg-3{background:radial-gradient(ellipse 45% 40% at 50% 35%,#FDE8C0,#D8A674 30%,#8B5435 60%,#2C160B 100%)}
-.bg-4{background:radial-gradient(ellipse 55% 38% at 50% 32%,#F8DDB0,#C28A56 32%,#6E3A1F 62%,#251108 100%)}
-.bg-5{background:radial-gradient(ellipse 50% 42% at 50% 38%,#FFE2A8,#D49860 32%,#80411C 64%,#1A0B05 100%)}
-.bg-6{background:radial-gradient(ellipse 60% 35% at 50% 28%,#FCE0AE,#CC9663 30%,#783A1B 60%,#1E0E07 100%)}
-.bg-real-margo{background:url('calero-base-1.jpg') center/cover no-repeat}
+/* Placeholder image gradients */
+.bg-1{background:radial-gradient(ellipse 52% 36% at 50% 30%,#FFEEC6,#E8B976 32%,#9F5D2F 62%,#3A1A12 100%)}
+.bg-2{background:radial-gradient(ellipse 62% 46% at 50% 42%,#F2D9B4,#C7976B 36%,#7B3E1F 66%,#1F0E08 100%)}
+.bg-3{background:radial-gradient(ellipse 46% 42% at 50% 36%,#FDE8C0,#D8A674 30%,#8B5435 60%,#2C160B 100%)}
+.bg-4{background:radial-gradient(ellipse 56% 40% at 50% 34%,#F8DDB0,#C28A56 34%,#6E3A1F 62%,#251108 100%)}
+.bg-5{background:radial-gradient(ellipse 52% 44% at 50% 40%,#FFE2A8,#D49860 34%,#80411C 64%,#1A0B05 100%)}
+.bg-6{background:radial-gradient(ellipse 60% 36% at 50% 28%,#FCE0AE,#CC9663 30%,#783A1B 60%,#1E0E07 100%)}
 .bg-7{background:linear-gradient(160deg,#E6D9C8 0%,#C8B59A 60%,#8C7257 100%)}
 .bg-8{background:linear-gradient(180deg,#F0E0CB 0%,#B3937A 100%)}
 .bg-9{background:linear-gradient(200deg,#E0CDB0 0%,#9B7E5E 100%)}
-.bg-10{background:linear-gradient(165deg,#EAD9C0 0%,#A98869 100%)}
+.bg-t1{background:linear-gradient(165deg,#F5EDE0 0%,#D4B8A0 50%,#A07850 100%)}
+.bg-t2{background:linear-gradient(170deg,#EFE4D4 0%,#C8A884 50%,#8B6040 100%)}
+.bg-t3{background:linear-gradient(175deg,#F2E8D8 0%,#D0B090 50%,#906840 100%)}
+.bg-real-margo{background:url('calero-base-1.jpg') center/cover no-repeat}
 
-/* COMBINA / ARMA TU LÁMPARA */
-.combina{background:var(--bg-warm)}
-.combina__steps{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:30px;
-}
-.combina__step{padding:28px;background:var(--bg);border:1px solid var(--rule)}
-.combina__num{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:36px;
-  color:var(--accent);line-height:1;margin-bottom:14px;
-}
-.combina__step h3{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
-  font-size:20px;margin-bottom:10px;
-}
-.combina__step p{font-size:12px;color:var(--ink-2);line-height:1.7}
-@media(max-width:768px){.combina__steps{grid-template-columns:1fr}}
+/* ── SECTION DARK ── */
+.section--dark{background:var(--ink)}
+.section--dark .section__title{color:var(--bg)}
+.section--dark .section__title strong{color:#E8B976}
+.section--dark .section__intro{color:rgba(230,217,200,.7)}
 
-/* SOBRE */
-.sobre__inner{display:grid;grid-template-columns:5fr 7fr;gap:100px;align-items:start}
-.sobre__h2{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(34px,4vw,52px);line-height:1.1;
+/* ── SOBRE / NOSOTROS ── */
+.sobre{background:var(--bg-warm)}
+.sobre__inner{
+  display:grid;grid-template-columns:5fr 7fr;gap:100px;align-items:start;
 }
+.sobre__h2{font-size:clamp(32px,4vw,50px);font-weight:700;line-height:1.05;margin-bottom:32px}
 .sobre__h2 em{font-style:normal;color:var(--accent)}
-.sobre__p{font-size:13px;color:var(--ink-2);line-height:1.85;margin-bottom:18px;max-width:520px}
-.sobre__sign{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:18px;color:var(--accent);margin-top:30px;
-}
+.sobre__p{font-size:13px;color:var(--ink-2);line-height:1.85;margin-bottom:18px}
+.sobre__sign{font-size:14px;font-style:italic;color:var(--accent);margin-top:28px}
 @media(max-width:900px){.sobre__inner{grid-template-columns:1fr;gap:40px}}
 
-/* ENVIOS */
+/* ── ENVÍOS ── */
 .envios__grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:50px;
   border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
   padding:60px 0;
 }
-.envios__col h3{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
-  font-size:22px;margin-bottom:14px;
-}
+.envios__col h3{font-size:18px;font-weight:600;margin-bottom:14px;letter-spacing:-.01em}
 .envios__col p{font-size:12px;color:var(--ink-2);line-height:1.75}
-.envios__col strong{color:var(--accent);font-weight:500}
+.envios__col strong{color:var(--accent);font-weight:600}
 @media(max-width:768px){.envios__grid{grid-template-columns:1fr;gap:40px}}
 
-/* CONTACT */
-.contacto{text-align:center;padding:140px 0;background:var(--bg-warm)}
-.contacto__label{margin-bottom:28px;display:block}
-.contacto__h2{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(36px,4.6vw,56px);line-height:1.05;margin-bottom:36px;
+/* ── FAQ ── */
+.faq__list{border-top:1px solid var(--rule)}
+.faq__item{border-bottom:1px solid var(--rule)}
+.faq__question{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:22px 0;font-size:14px;font-weight:500;color:var(--ink);text-align:left;
+  letter-spacing:.01em;
 }
+.faq__question:hover{color:var(--accent)}
+.faq__icon{font-size:20px;font-weight:300;color:var(--ink-3);transition:transform .25s;flex-shrink:0}
+.faq__item.open .faq__icon{transform:rotate(45deg)}
+.faq__answer{
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+}
+.faq__item.open .faq__answer{max-height:300px}
+.faq__answer p{padding:0 0 24px;font-size:13px;color:var(--ink-2);line-height:1.75;max-width:680px}
+
+/* ── TARJETA DE REGALO ── */
+.regalo{padding:110px 0;background:var(--bg)}
+.regalo__inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+}
+@media(max-width:760px){.regalo__inner{grid-template-columns:1fr;gap:44px}}
+.regalo__text .label{display:block;margin-bottom:20px}
+.regalo__text h2{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.01em;margin-bottom:16px;line-height:1.1}
+.regalo__text h2 em{font-style:normal;color:var(--accent)}
+.regalo__text p{font-size:14px;line-height:1.8;color:var(--ink-2);max-width:440px;margin-bottom:32px}
+.regalo__cta{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--cream);background:var(--ink);padding:16px 34px;
+  transition:background .2s;
+}
+.regalo__cta:hover{background:var(--accent);color:var(--cream)}
+.regalo__card{
+  background:#2A0C08;border-radius:20px;padding:44px 40px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:240px;position:relative;overflow:hidden;
+}
+.regalo__card::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,41,23,.35) 0%,transparent 70%);
+}
+.regalo__card-top{display:flex;justify-content:space-between;align-items:flex-start}
+.regalo__card-brand{
+  font-size:20px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bg);
+}
+.regalo__card-chip{
+  width:40px;height:30px;border-radius:6px;
+  background:linear-gradient(135deg,rgba(230,217,200,.25),rgba(230,217,200,.08));
+  border:1px solid rgba(230,217,200,.18);
+}
+.regalo__card-mid{
+  font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(230,217,200,.45);
+}
+.regalo__card-bottom{display:flex;justify-content:space-between;align-items:flex-end}
+.regalo__card-value{font-size:30px;font-weight:700;color:var(--bg);letter-spacing:-.01em}
+.regalo__card-label{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(230,217,200,.38)}
+.regalo__card-tag{
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(230,217,200,.35);text-align:right;
+}
+
+/* ── CONTACTO ── */
+.contacto{background:var(--bg-warm);text-align:center;padding:120px 0}
+.contacto__h2{font-size:clamp(32px,4.4vw,52px);font-weight:700;letter-spacing:-.01em;margin-bottom:16px}
 .contacto__h2 em{font-style:normal;color:var(--accent)}
-.contacto__sub{font-size:13px;color:var(--ink-2);max-width:420px;margin:0 auto 44px;line-height:1.75}
-.contacto__btn{
-  display:inline-block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--bg);background:var(--ink);padding:18px 36px;
+.contacto__sub{font-size:13px;color:var(--ink-2);max-width:400px;margin:0 auto 56px;line-height:1.75}
+.contacto__channels{
+  display:flex;justify-content:center;gap:16px;flex-wrap:wrap;
 }
-.contacto__btn:hover{background:var(--accent)}
-.contacto__alt{margin-top:24px;display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
-.contacto__alt a{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px}
+.contacto__ch{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  background:var(--bg);border:1px solid var(--rule);
+  padding:36px 32px;border-radius:14px;
+  min-width:200px;transition:border-color .22s,box-shadow .22s;
+  text-decoration:none;color:var(--ink);
+}
+.contacto__ch:hover{border-color:var(--accent);box-shadow:0 6px 28px rgba(112,4,2,.1);color:var(--ink)}
+.contacto__ch-icon{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.contacto__ch-icon--ig{background:#E1306C}
+.contacto__ch-icon--wa{background:#25D366}
+.contacto__ch-icon--em{background:#EA4335}
+.contacto__ch-icon svg{width:24px;height:24px;fill:white}
+.contacto__ch-name{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+.contacto__ch-handle{font-size:14px;font-weight:600;color:var(--ink)}
 
-/* FOOTER */
-.footer{padding:50px 0 40px}
+/* ── FOOTER ── */
+.footer{padding:50px 0 36px}
 .footer__inner{
-  display:flex;justify-content:space-between;align-items:center;
-  border-top:1px solid var(--rule);padding-top:30px;flex-wrap:wrap;gap:20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;
+  border-top:1px solid var(--rule);padding-top:28px;
 }
-.footer__logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink)}
-.footer__links{display:flex;gap:24px;list-style:none}
-.footer__links a{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
-.footer__credit{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
-.footer__credit a{color:var(--ink-2);border-bottom:1px solid var(--ink-3)}
+.footer__logo{font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.footer__links{display:flex;gap:22px}
+.footer__links a{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.footer__links a:hover{color:var(--accent)}
+.footer__credit{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.footer__credit a{color:var(--ink-2);border-bottom:1px solid currentColor}
 
-/* CART DRAWER */
+/* ── CART DRAWER (right) ── */
 .cart-overlay{
-  position:fixed;inset:0;background:rgba(31,10,5,.45);
-  opacity:0;pointer-events:none;transition:opacity .3s;z-index:90;
+  position:fixed;inset:0;background:rgba(40,10,6,.38);
+  opacity:0;pointer-events:none;transition:opacity .3s;z-index:140;
 }
 .cart-overlay.open{opacity:1;pointer-events:all}
-
 .cart{
   position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);
-  background:var(--bg);z-index:100;
-  transform:translateX(100%);transition:transform .35s cubic-bezier(.4,.0,.2,1);
+  background:var(--bg);z-index:150;
+  transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);
   display:flex;flex-direction:column;
-  box-shadow:-20px 0 60px rgba(31,10,5,.18);
+  box-shadow:-20px 0 60px rgba(40,10,6,.16);
 }
 .cart.open{transform:translateX(0)}
 .cart__head{
   display:flex;justify-content:space-between;align-items:center;
-  padding:24px 30px;border-bottom:1px solid var(--rule);
+  padding:22px 28px;border-bottom:1px solid var(--rule);
 }
-.cart__title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px}
-.cart__close{
-  font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);
-}
+.cart__title{font-size:18px;font-weight:600;letter-spacing:.04em}
+.cart__close{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
 .cart__close:hover{color:var(--accent)}
-
-.cart__body{flex:1;overflow-y:auto;padding:20px 30px}
-.cart__empty{
-  padding:60px 20px;text-align:center;color:var(--ink-3);font-size:13px;
-}
+.cart__body{flex:1;overflow-y:auto;padding:18px 28px}
+.cart__empty{padding:60px 0;text-align:center;color:var(--ink-3);font-size:13px}
 .cart__item{
-  display:grid;grid-template-columns:60px 1fr auto;gap:14px;
-  padding:16px 0;border-bottom:1px solid var(--rule);align-items:center;
+  display:grid;grid-template-columns:56px 1fr auto;gap:14px;
+  padding:16px 0;border-bottom:1px solid var(--rule);align-items:start;
 }
-.cart__item-img{
-  width:60px;aspect-ratio:1;border-radius:2px;
-}
-.cart__item-info{min-width:0}
-.cart__item-name{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink);
-}
-.cart__item-cat{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
-.cart__item-price{font-size:12px;color:var(--ink);text-align:right;white-space:nowrap}
-.cart__item-remove{
-  display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-3);margin-top:4px;
-}
+.cart__item-img{width:56px;aspect-ratio:1}
+.cart__item-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.cart__item-cat{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.cart__item-remove{display:block;margin-top:6px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
 .cart__item-remove:hover{color:var(--accent)}
-
-.cart__addons{
-  border-top:6px double var(--rule);margin-top:20px;padding-top:24px;
-}
-.cart__addons h4{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;
-  margin-bottom:6px;
-}
-.cart__addons-sub{font-size:11px;color:var(--ink-3);margin-bottom:18px}
-.cart__addons-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.cart__addon{
-  display:flex;flex-direction:column;gap:8px;padding:12px;
-  background:var(--bg-warm);border:1px solid transparent;cursor:pointer;
-  transition:all .2s;
-}
-.cart__addon:hover{border-color:var(--accent)}
-.cart__addon-img{aspect-ratio:1;width:100%}
-.cart__addon-name{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);
-}
-.cart__addon-price{font-size:11px;color:var(--ink-2);display:flex;justify-content:space-between;align-items:center}
-.cart__addon-add{
-  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
-  background:var(--ink);color:var(--bg);padding:4px 8px;
-}
-
-.cart__foot{
-  padding:24px 30px;border-top:1px solid var(--rule);
-}
-.cart__total{
-  display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;
-}
-.cart__total-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
-.cart__total-amount{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--ink)}
-.cart__shipping{font-size:11px;color:var(--ink-3);margin-bottom:18px}
-.cart__shipping strong{color:var(--accent)}
+.cart__item-price{font-size:13px;font-weight:500;text-align:right;white-space:nowrap;padding-top:2px}
+.cart__foot{padding:22px 28px;border-top:1px solid var(--rule)}
+.cart__total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.cart__total-label{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.cart__total-amount{font-size:22px;font-weight:600}
+.cart__shipping{font-size:11px;color:var(--ink-3);margin-bottom:18px;line-height:1.6}
+.cart__shipping strong{color:var(--accent);font-weight:600}
 .cart__checkout{
   display:block;width:100%;text-align:center;
-  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-  background:var(--ink);color:var(--bg);padding:18px;
+  font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
+  background:var(--ink);color:var(--cream);padding:17px;transition:background .2s;
 }
 .cart__checkout:hover{background:var(--accent)}
-.cart__checkout.disabled{opacity:.4;pointer-events:none}
+.cart__checkout.disabled{opacity:.38;pointer-events:none}
 
-/* Reveal */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity 1s ease,transform 1s ease}
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- ── DESKTOP SIDEBAR ── -->
+<aside class="sidenav" aria-label="Navegación principal">
+  <a href="#inicio" class="sidenav__logo">Calero</a>
+  <nav class="sidenav__nav">
+
+    <!-- Tienda (con submenú) -->
+    <div class="sidenav__item sidenav__item--tienda">
+      <button class="sidenav__link">
+        Tienda
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+      </button>
+      <div class="sidenav__sub">
+        <a href="#pantallas">Pantallas</a>
+        <a href="#bases">Bases</a>
+        <a href="#telas">Telas</a>
+        <a href="#detalles">Más Detalles</a>
+        <a href="#colecciones">Colecciones</a>
+      </div>
+    </div>
+
+    <div class="sidenav__divider"></div>
+
+    <div class="sidenav__item">
+      <a href="#b2b" class="sidenav__link">B2B</a>
+    </div>
+    <div class="sidenav__item">
+      <a href="#personalizado" class="sidenav__link">Personalizado</a>
+    </div>
+    <div class="sidenav__item">
+      <a href="#nosotros" class="sidenav__link">Nosotros</a>
+    </div>
+    <div class="sidenav__item">
+      <a href="#contacto" class="sidenav__link">Contacto</a>
+    </div>
+  </nav>
+  <div class="sidenav__foot">
+    <button class="sidenav__cart" id="openCartDesktop" aria-label="Ver pedido">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      Pedido
+      <span class="sidenav__cart-badge" id="cartCountDesktop">0</span>
+    </button>
+    <div class="sidenav__social">
+      <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">IG</a>
+      <a href="https://wa.me/525530370317">WA</a>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MENU DRAWER ── -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="menu" id="menu" aria-label="Navegación principal">
+  <div class="menu__head">
+    <span class="menu__head-logo">Calero</span>
+    <button class="menu__close" id="closeMenu" aria-label="Cerrar menú">✕</button>
+  </div>
+  <ul class="menu__list">
+    <li class="menu__item menu__item--has-sub" id="tiendaItem">
+      <button class="menu__toggle" id="tiendaToggle">
+        Tienda
+        <span class="menu__chevron">+</span>
+      </button>
+      <ul class="menu__sub">
+        <li><a href="#pantallas" class="menu-close-link">Pantallas</a></li>
+        <li><a href="#bases" class="menu-close-link">Bases</a></li>
+        <li><a href="#telas" class="menu-close-link">Telas</a></li>
+        <li><a href="#detalles" class="menu-close-link">Más Detalles</a></li>
+        <li><a href="#colecciones" class="menu-close-link">Colecciones</a></li>
+      </ul>
+    </li>
+    <li class="menu__item"><a href="#b2b" class="menu__link menu-close-link">B2B</a></li>
+    <li class="menu__item"><a href="#personalizado" class="menu__link menu-close-link">Personalizado</a></li>
+    <li class="menu__item"><a href="#nosotros" class="menu__link menu-close-link">Nosotros</a></li>
+    <li class="menu__item"><a href="#contacto" class="menu__link menu-close-link">Contacto</a></li>
+    <li class="menu__item"><a href="#regalo" class="menu__link menu-close-link">Tarjeta de regalo</a></li>
+    <li class="menu__item"><a href="#faq" class="menu__link menu-close-link">FAQ</a></li>
+  </ul>
+  <div class="menu__footer">
+    <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">@caleromexicano</a>
+    <a href="https://wa.me/525530370317">55 3037 0317</a>
+  </div>
+</nav>
+
+<!-- ── NAV BAR ── -->
 <header class="nav">
-  <div class="container nav__inner">
-    <a href="#" class="nav__logo">Calero</a>
-    <ul class="nav__links">
-      <li><a href="#bases">Bases</a></li>
-      <li><a href="#pantallas">Pantallas</a></li>
-      <li><a href="#estudio">Estudio</a></li>
-      <li><a href="#envios">Envíos</a></li>
-    </ul>
-    <button class="nav__cart" id="openCart">
-      Pedido <span class="nav__cart-count" id="cartCount">0</span>
+  <button class="nav__hamburger" id="openMenu" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="#" class="nav__logo">Calero</a>
+  <div class="nav__right">
+    <button class="nav__cart-icon" id="openCart" aria-label="Ver pedido">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      <span class="nav__cart-count" id="cartCount">0</span>
     </button>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero container">
-  <div class="hero__copy">
-    <span class="label hero__label">Edición CDMX 2026</span>
-    <h1 class="hero__h1">Luminarias hechas <em>a mano,</em> una a la vez.</h1>
-    <p class="hero__sub">
-      Bases de cerámica torneada y pantallas en lino crudo. Eliges la base, eliges la pantalla.
-      Cada combinación, una pieza única.
-    </p>
-    <a href="#bases" class="hero__cta">Ver las piezas →</a>
-  </div>
-  <div class="hero__image"></div>
-</section>
-
-<!-- BASES -->
-<section id="bases" class="container">
-  <div class="section__head reveal">
-    <h2 class="section__title"><em>Bases</em> de cerámica</h2>
-    <p class="section__intro">
-      Cada base lleva el nombre de una abuela. Torneadas a mano en CDMX, cocidas en horno alto.
-      Edición limitada de cinco por modelo.
-    </p>
-  </div>
-
-  <div class="products" id="basesGrid">
-    <!-- populated by JS for cart wiring -->
+<!-- ── HERO ── -->
+<section class="hero" id="inicio">
+  <div class="hero__bg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__center">
+    <h1 class="hero__wordmark">Calero</h1>
+    <p class="hero__tagline">Better than your abuela's decor</p>
+    <a href="#pantallas" class="hero__scroll">Ver la colección ↓</a>
   </div>
 </section>
 
-<!-- PANTALLAS -->
-<section id="pantallas" class="combina">
+<!-- ── PANTALLAS ── -->
+<section id="pantallas">
   <div class="container">
     <div class="section__head reveal">
-      <h2 class="section__title"><em>Pantallas</em> textiles</h2>
-      <p class="section__intro">
-        Cosidas en taller, en lino crudo y algodón natural. Cada pantalla embona con cualquier base —
-        la combinación es tuya.
-      </p>
+      <span class="label section__label">Tienda · Pantallas</span>
+      <h2 class="section__title">Pantallas <strong>textiles</strong></h2>
+      <p class="section__intro">Cosidas en taller, en lino crudo y algodón natural. Cada pantalla embona con cualquier base.</p>
     </div>
-    <div class="products" id="pantallasGrid"></div>
-
-    <div class="section__head reveal" style="margin-top:90px">
-      <h2 class="section__title">Cómo <em>armarla</em></h2>
-      <p class="section__intro">
-        Tres pasos para tener tu lámpara en casa.
-      </p>
-    </div>
-    <div class="combina__steps reveal">
-      <div class="combina__step">
-        <div class="combina__num">01</div>
-        <h3>Eliges base</h3>
-        <p>Margo, Pepa, Toña... cada una con personalidad propia. Agrégala a tu pedido.</p>
-      </div>
-      <div class="combina__step">
-        <div class="combina__num">02</div>
-        <h3>Eliges pantalla</h3>
-        <p>Cono, cilindro o tambor — en lino crudo o algodón. La que combine con tu espacio.</p>
-      </div>
-      <div class="combina__step">
-        <div class="combina__num">03</div>
-        <h3>Lo confirmamos</h3>
-        <p>Por WhatsApp confirmamos plazo y entrega. CDMX llega en mano sin costo.</p>
-      </div>
-    </div>
+    <div class="products reveal" id="pantallasGrid"></div>
   </div>
 </section>
 
-<!-- SOBRE -->
-<section id="estudio">
-  <div class="container sobre__inner">
-    <div class="reveal">
-      <h2 class="sobre__h2">Better than<br>your <em>abuela's</em><br>decor.</h2>
-    </div>
-    <div class="reveal">
-      <p class="sobre__p">
-        Calero México nació de una idea simple: que los objetos que compramos para
-        habitar nuestra casa deberían tener tanta historia como los que heredamos.
-      </p>
-      <p class="sobre__p">
-        Trabajamos con artesanas y artesanos en CDMX. Cada base se tornea, se cuece y
-        se acaba a mano. Cada pantalla se cose en taller.
-      </p>
-      <p class="sobre__p">
-        Las piezas se nombran por las mujeres que nos enseñaron a cuidar de las cosas
-        bonitas. Cada nombre, una pieza. Cada pieza, una edición de cinco.
-      </p>
-      <p class="sobre__sign">— el estudio</p>
-    </div>
-  </div>
-</section>
-
-<!-- ENVIOS -->
-<section id="envios" style="background:var(--bg-warm)">
+<!-- ── BASES ── -->
+<section id="bases" style="background:var(--bg-warm)">
   <div class="container">
     <div class="section__head reveal">
-      <h2 class="section__title">Envíos y <em>entregas</em></h2>
-      <p class="section__intro">
-        Cada pieza se hace por encargo. Tiempo de producción de 7 a 14 días desde que confirmamos.
-      </p>
+      <span class="label section__label">Tienda · Bases</span>
+      <h2 class="section__title">Bases de <strong>cerámica</strong></h2>
+      <p class="section__intro">Cada base lleva el nombre de una abuela. Torneadas a mano en CDMX. Edición limitada de cinco por modelo.</p>
     </div>
+    <div class="products reveal" id="basesGrid"></div>
+  </div>
+</section>
 
+<!-- ── TELAS ── -->
+<section id="telas">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">Tienda · Telas</span>
+      <h2 class="section__title">Telas <strong>por metro</strong></h2>
+      <p class="section__intro">Las mismas telas que usamos para nuestras pantallas. Disponibles por metro para proyectos personalizados.</p>
+    </div>
+    <div class="products reveal" id="telasGrid"></div>
+  </div>
+</section>
+
+<!-- ── COLECCIONES (placeholder) ── -->
+<section id="colecciones" style="background:var(--bg-warm)">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">Colecciones</span>
+      <h2 class="section__title">Piezas de <strong>edición</strong></h2>
+      <p class="section__intro">Próximamente: ediciones especiales con artistas y artesanas de CDMX.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── DETALLES ── -->
+<section id="detalles">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">Detalles</span>
+      <h2 class="section__title">Cómo se <strong>hace</strong></h2>
+      <p class="section__intro">Cada pieza pasa por torno, horno y taller de costura. De manos a casa.</p>
+    </div>
     <div class="envios__grid reveal">
       <div class="envios__col">
-        <h3>Envío en CDMX</h3>
-        <p>
-          <strong>Sin costo</strong> dentro de Ciudad de México.
-          Entregamos en mano cuando es posible.
-        </p>
+        <h3>La cerámica</h3>
+        <p>Torneada y esmaltada a mano en CDMX. Cada base tiene ligeras variaciones — eso es evidencia de que es de verdad.</p>
+      </div>
+      <div class="envios__col">
+        <h3>Las pantallas</h3>
+        <p>Cosidas en lino crudo y algodón natural. El bastidor es de metal pintado, las telas son de productores locales.</p>
+      </div>
+      <div class="envios__col">
+        <h3>El ensamble</h3>
+        <p>Viene listo para usar. Incluye cable trenzado, portalámparas E27 y guía de armado. El foco es opcional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PERSONALIZADO ── -->
+<section id="personalizado" style="background:var(--bg-warm)">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">Personalizado</span>
+      <h2 class="section__title">Piezas a tu <strong>medida</strong></h2>
+      <p class="section__intro">¿Tienes un proyecto especial? Hacemos piezas únicas por encargo: medidas, colores y acabados de acuerdo a tu espacio.</p>
+    </div>
+    <div style="padding-top:10px" class="reveal">
+      <a href="#contacto" class="product__add" style="display:inline-block">Platiquemos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOSOTROS ── -->
+<section id="nosotros" class="sobre">
+  <div class="container sobre__inner">
+    <div class="reveal">
+      <h2 class="sobre__h2">Better than your <em>abuela's</em> decor.</h2>
+    </div>
+    <div class="reveal">
+      <p class="sobre__p">Calero nació de una idea simple: que los objetos que compramos para habitar nuestra casa deberían tener tanta historia como los que heredamos.</p>
+      <p class="sobre__p">Trabajamos con artesanas y artesanos en CDMX. Cada base se tornea, se cuece y se acaba a mano. Cada pantalla se cose en taller con telas de productores locales.</p>
+      <p class="sobre__p">Las piezas se nombran por las mujeres que nos enseñaron a cuidar de las cosas bonitas. Cada nombre, una pieza. Cada pieza, una edición de cinco.</p>
+      <p class="sobre__sign">— el estudio · CDMX · 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ENVÍOS ── -->
+<section id="envios">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">Envíos y entregas</span>
+      <h2 class="section__title">Lo llevamos a <strong>tu casa</strong></h2>
+      <p class="section__intro">Cada pieza se hace por encargo. Producción de 7 a 14 días desde que confirmamos.</p>
+    </div>
+    <div class="envios__grid reveal">
+      <div class="envios__col">
+        <h3>CDMX</h3>
+        <p>Envío <strong>incluido</strong>. Entrega en mano cuando es posible. Sin costo adicional.</p>
       </div>
       <div class="envios__col">
         <h3>Resto de México</h3>
-        <p>
-          Envío con costo según destino, embalado para piezas frágiles.
-          Cotizamos al confirmar tu pedido.
-        </p>
+        <p>Envío con <strong>costo extra</strong> según destino. Embalado especial para piezas frágiles. Cotizamos al confirmar.</p>
       </div>
       <div class="envios__col">
         <h3>El proceso</h3>
-        <p>
-          1 · Armas tu pedido · 2 · Confirmamos por WhatsApp · 3 · 50% anticipo · 4 · Entrega.
-        </p>
+        <p>1 · Armas tu pedido · 2 · Confirmamos por WhatsApp · 3 · 50% anticipo · 4 · Producción · 5 · Entrega.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── B2B ── -->
+<section id="b2b" style="background:var(--ink)">
+  <div class="container">
+    <div class="section__head reveal" style="border-bottom:1px solid rgba(230,217,200,.1);padding-bottom:48px;margin-bottom:56px">
+      <span class="label" style="color:rgba(230,217,200,.4);display:block;margin-bottom:18px">B2B · Mayoreo</span>
+      <h2 class="section__title" style="color:var(--bg)">Para hoteles, restaurantes<br><strong style="color:#E8B976">y espacios con criterio</strong></h2>
+      <p class="section__intro" style="color:rgba(230,217,200,.65)">Trabajamos con proyectos interioristas, hoteleros y restauranteros que quieren piezas únicas en volumen. Entregas especiales, acabados exclusivos y precios de proyecto.</p>
+    </div>
+    <div class="envios__grid reveal">
+      <div class="envios__col" style="color:var(--bg)">
+        <h3 style="color:var(--bg)">Pedidos mínimos</h3>
+        <p style="color:rgba(230,217,200,.65)">Desde 6 piezas por modelo. Posibilidad de acabados y combinaciones exclusivas para tu proyecto.</p>
+      </div>
+      <div class="envios__col" style="color:var(--bg)">
+        <h3 style="color:var(--bg)">Precios de proyecto</h3>
+        <p style="color:rgba(230,217,200,.65)">Descuentos escalonados según volumen. Cotización personalizada en menos de 48 horas.</p>
+      </div>
+      <div class="envios__col" style="color:var(--bg)">
+        <h3 style="color:var(--bg)">Entrega e instalación</h3>
+        <p style="color:rgba(230,217,200,.65)">Coordinamos entregas en sitio en CDMX. Para proyectos foráneos: embalaje especial incluido.</p>
+      </div>
+    </div>
+    <div style="margin-top:56px;text-align:center" class="reveal">
+      <a href="https://wa.me/525530370317?text=Hola%20Calero%2C%20tengo%20un%20proyecto%20B2B%20que%20me%20gustar%C3%ADa%20platicar" target="_blank" rel="noopener" class="product__add" style="display:inline-block;border-color:rgba(230,217,200,.4);color:var(--bg);font-size:11px;padding:14px 32px;letter-spacing:.26em">
+        Platiquemos tu proyecto →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq" style="background:var(--bg-warm)">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">Preguntas frecuentes</span>
+      <h2 class="section__title">FAQ</h2>
+    </div>
+    <div class="faq__list reveal" id="faqList">
+      <!-- JS rendered -->
+    </div>
+  </div>
+</section>
+
+<!-- ── TARJETA DE REGALO ── -->
+<section id="regalo" class="regalo">
+  <div class="container">
+    <div class="regalo__inner">
+      <div class="regalo__text reveal">
+        <span class="label">Tarjeta de regalo</span>
+        <h2>Dale luz a alguien que <em>quieres</em></h2>
+        <p>¿No sabes qué regalar? Una tarjeta de regalo Calero le da a quien la recibe la libertad de elegir su combinación favorita — la base, la pantalla y el tamaño.</p>
+        <a href="https://wa.me/525530370317?text=Hola%20Calero%2C%20me%20interesa%20una%20tarjeta%20de%20regalo" target="_blank" rel="noopener" class="regalo__cta">
+          Pedir tarjeta de regalo →
+        </a>
+      </div>
+      <div class="reveal">
+        <div class="regalo__card">
+          <div class="regalo__card-top">
+            <div class="regalo__card-brand">Calero</div>
+            <div class="regalo__card-chip"></div>
+          </div>
+          <div class="regalo__card-mid">Tarjeta de regalo · Gift card</div>
+          <div class="regalo__card-bottom">
+            <div>
+              <div class="regalo__card-label">Valor</div>
+              <div class="regalo__card-value">A elegir</div>
+            </div>
+            <div class="regalo__card-tag">Better than your<br>abuela's decor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACTO ── -->
+<section id="contacto" class="contacto">
+  <div class="container">
+    <span class="label" style="display:block;margin-bottom:20px">Contáctanos</span>
+    <h2 class="contacto__h2">Hablemos de tu <em>espacio</em></h2>
+    <p class="contacto__sub">Por WhatsApp, Instagram o correo — con gusto te ayudamos a elegir la combinación perfecta.</p>
+    <div class="contacto__channels">
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/525530370317?text=Hola%20Calero%2C%20me%20interesa%20una%20pieza" target="_blank" rel="noopener" class="contacto__ch">
+        <div class="contacto__ch-icon contacto__ch-icon--wa">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </div>
+        <span class="contacto__ch-name">WhatsApp</span>
+        <span class="contacto__ch-handle">55 3037 0317</span>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener" class="contacto__ch">
+        <div class="contacto__ch-icon contacto__ch-icon--ig">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <span class="contacto__ch-name">Instagram</span>
+        <span class="contacto__ch-handle">@caleromexicano</span>
+      </a>
+
+      <!-- Correo -->
+      <a href="mailto:Calerodecor@gmail.com" class="contacto__ch">
+        <div class="contacto__ch-icon contacto__ch-icon--em">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+        </div>
+        <span class="contacto__ch-name">Correo</span>
+        <span class="contacto__ch-handle">Calerodecor@gmail.com</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__logo">Calero</div>
     <ul class="footer__links">
-      <li><a href="#bases">Bases</a></li>
       <li><a href="#pantallas">Pantallas</a></li>
-      <li><a href="#estudio">Estudio</a></li>
-      <li><a href="https://www.instagram.com/caleromexico/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="#bases">Bases</a></li>
+      <li><a href="#telas">Telas</a></li>
+      <li><a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">Instagram</a></li>
     </ul>
-    <div class="footer__credit">© 2026 Calero · CDMX · Sitio por <a href="https://brotadigital.mx" target="_blank" rel="noopener">Brota</a></div>
+    <div class="footer__credit">© 2026 Calero · CDMX · <a href="mailto:Calerodecor@gmail.com">Calerodecor@gmail.com</a> · Sitio por <a href="https://brotadigital.mx" target="_blank" rel="noopener">Brota</a></div>
   </div>
 </footer>
 
-<!-- CART DRAWER -->
+<!-- ── CART DRAWER ── -->
 <div class="cart-overlay" id="cartOverlay"></div>
-<aside class="cart" id="cart">
+<aside class="cart" id="cart" aria-label="Tu pedido">
   <div class="cart__head">
     <div class="cart__title">Tu pedido</div>
     <button class="cart__close" id="closeCart">Cerrar</button>
@@ -519,36 +858,47 @@ section{padding:110px 0}
       <span class="cart__total-label">Subtotal</span>
       <span class="cart__total-amount" id="cartTotal">$0 MXN</span>
     </div>
-    <p class="cart__shipping">Envío en CDMX <strong>incluido</strong> · resto del país con costo extra</p>
+    <p class="cart__shipping">Envío en CDMX <strong>incluido</strong> · Resto del país con costo extra</p>
     <a href="#" class="cart__checkout disabled" id="checkoutBtn">Enviar pedido por WhatsApp</a>
   </div>
 </aside>
 
 <script>
-// ─── PRODUCT DATA ───────────────────────────────────────────────
-const BASES = [
-  { id:'b1', name:'Margo',   desc:'Cerámica esmaltada miel · 22 cm · incluye foco Edison globe', price:4800, img:'bg-real-margo' },
-  { id:'b2', name:'Pepa',    desc:'Esmaltada en cobre · 42 cm',                price:5400, img:'bg-2' },
-  { id:'b3', name:'Toña',    desc:'Cerámica escultórica · 50 cm',              price:6200, img:'bg-3' },
-  { id:'b4', name:'Concha',  desc:'Barro vidriado, forma de luna · 36 cm',     price:4500, img:'bg-4' },
-  { id:'b5', name:'Lupita',  desc:'Engobe terracota · 44 cm',                  price:5900, img:'bg-5' },
-  { id:'b6', name:'Chela',   desc:'Barro negro, base baja · 32 cm',            price:5200, img:'bg-6' },
-];
+// ─── DATA ──────────────────────────────────────────────────────
 const PANTALLAS = [
-  { id:'p1', name:'Cono Lino', desc:'Lino crudo · cónica · 30 cm',             price:1400, img:'bg-7' },
-  { id:'p2', name:'Tambor',    desc:'Algodón natural · cilíndrica · 35 cm',    price:1600, img:'bg-8' },
-  { id:'p3', name:'Globo',     desc:'Lino · forma esférica · 32 cm',           price:1800, img:'bg-9' },
+  { id:'p1', name:'Cono Lino',   desc:'Lino crudo · cónica · Ø 30 cm',            price:1400, img:'bg-7' },
+  { id:'p2', name:'Tambor',      desc:'Algodón natural · cilíndrica · Ø 35 cm',   price:1600, img:'bg-8' },
+  { id:'p3', name:'Globo',       desc:'Lino · forma esférica · Ø 32 cm',          price:1800, img:'bg-9' },
 ];
-const COMPLEMENTOS = [
-  { id:'m1', name:'Lamparita Margo', desc:'Mini · 18 cm',  price:1200, img:'bg-1' },
-  { id:'m2', name:'Lamparita Pepa',  desc:'Mini · 20 cm',  price:1400, img:'bg-2' },
+const BASES = [
+  { id:'b1', name:'Margo',   desc:'Cerámica esmaltada miel · 22 cm · incluye cable trenzado', price:4800, img:'bg-real-margo' },
+  { id:'b2', name:'Pepa',    desc:'Esmaltada en cobre oscuro · 42 cm',             price:5400, img:'bg-2' },
+  { id:'b3', name:'Toña',    desc:'Cerámica escultórica · 50 cm · edición 5 piezas', price:6200, img:'bg-3' },
+  { id:'b4', name:'Concha',  desc:'Barro vidriado, forma de luna · 36 cm',         price:4500, img:'bg-4' },
+  { id:'b5', name:'Lupita',  desc:'Engobe terracota · 44 cm',                      price:5900, img:'bg-5' },
+  { id:'b6', name:'Chela',   desc:'Barro negro, base baja · 32 cm',                price:5200, img:'bg-6' },
+];
+const TELAS = [
+  { id:'t1', name:'Lino Crudo',    desc:'Lino 100% · tono natural · ancho 150 cm · por metro', price:420, img:'bg-t1' },
+  { id:'t2', name:'Algodón Tela',  desc:'Algodón natural · blanco hueso · ancho 140 cm · por metro', price:380, img:'bg-t2' },
+  { id:'t3', name:'Lino Teñido',   desc:'Lino en tinte vegetal ocre · 150 cm · por metro', price:480, img:'bg-t3' },
+];
+const ALL = [...PANTALLAS, ...BASES, ...TELAS];
+
+const FAQ = [
+  { q:'¿Cuánto tarda mi pedido?', a:'Cada pieza se hace por encargo. El tiempo de producción es de 7 a 14 días hábiles a partir del anticipo. Te avisamos por WhatsApp en cuanto esté lista.' },
+  { q:'¿El envío a CDMX realmente no tiene costo?', a:'Así es. El envío dentro de Ciudad de México está incluido en el precio. Para el resto del país cotizamos el costo de acuerdo al destino y lo confirmamos antes de que pagues.' },
+  { q:'¿Puedo combinar cualquier base con cualquier pantalla?', a:'Sí. Todas las pantallas están diseñadas para embonar con cualquiera de las bases. Si tienes dudas sobre proporciones, con gusto te orientamos por WhatsApp.' },
+  { q:'¿Aceptan pedidos personalizados?', a:'Sí. Hacemos piezas a medida: colores, tamaños y acabados específicos. Escríbenos para platicar tu proyecto.' },
+  { q:'¿Cómo funciona el pago?', a:'50% anticipo al confirmar el pedido, 50% restante antes de la entrega. Aceptamos transferencia (SPEI) y en efectivo para entregas en CDMX.' },
 ];
 
-// ─── RENDER PRODUCTS ───────────────────────────────────────────
+// ─── RENDER ────────────────────────────────────────────────────
 function renderProducts(list, gridId, category) {
   const grid = document.getElementById(gridId);
+  if (!grid) return;
   grid.innerHTML = list.map(p => `
-    <article class="product reveal">
+    <article class="product">
       <div class="product__image ${p.img}"></div>
       <h3 class="product__name">${p.name}</h3>
       <p class="product__desc">${p.desc}</p>
@@ -559,143 +909,130 @@ function renderProducts(list, gridId, category) {
     </article>
   `).join('');
 }
-renderProducts(BASES, 'basesGrid', 'base');
 renderProducts(PANTALLAS, 'pantallasGrid', 'pantalla');
+renderProducts(BASES, 'basesGrid', 'base');
+renderProducts(TELAS, 'telasGrid', 'tela');
+
+// FAQ
+document.getElementById('faqList').innerHTML = FAQ.map((f, i) => `
+  <div class="faq__item">
+    <button class="faq__question" data-faq="${i}">
+      ${f.q}
+      <span class="faq__icon">+</span>
+    </button>
+    <div class="faq__answer"><p>${f.a}</p></div>
+  </div>
+`).join('');
 
 // ─── CART STATE ────────────────────────────────────────────────
-const ALL_PRODUCTS = [...BASES, ...PANTALLAS, ...COMPLEMENTOS];
-let cart = JSON.parse(localStorage.getItem('caleroCart') || '[]');
+let cart = JSON.parse(localStorage.getItem('caleroCart2') || '[]');
 
-function saveCart() {
-  localStorage.setItem('caleroCart', JSON.stringify(cart));
-}
+function saveCart(){ localStorage.setItem('caleroCart2', JSON.stringify(cart)); }
 
 function addToCart(id, category) {
-  const product = ALL_PRODUCTS.find(p => p.id === id);
-  if (!product) return;
-  cart.push({ ...product, category });
-  saveCart();
-  renderCart();
+  const p = ALL.find(x => x.id === id);
+  if (!p) return;
+  cart.push({ ...p, category });
+  saveCart(); renderCart();
 }
-
-function removeFromCart(idx) {
-  cart.splice(idx, 1);
-  saveCart();
-  renderCart();
-}
+function removeFromCart(idx) { cart.splice(idx,1); saveCart(); renderCart(); }
 
 function renderCart() {
-  const body = document.getElementById('cartBody');
-  const totalEl = document.getElementById('cartTotal');
-  const countEl = document.getElementById('cartCount');
-  const checkout = document.getElementById('checkoutBtn');
+  const countEl    = document.getElementById('cartCount');
+  const countDesk  = document.getElementById('cartCountDesktop');
+  const totalEl    = document.getElementById('cartTotal');
+  const body       = document.getElementById('cartBody');
+  const btn        = document.getElementById('checkoutBtn');
 
-  countEl.textContent = cart.length;
-  const subtotal = cart.reduce((s, i) => s + i.price, 0);
-  totalEl.textContent = `$${subtotal.toLocaleString('es-MX')} MXN`;
+  const n = cart.length;
+  countEl.textContent = n;
+  countEl.classList.toggle('visible', n > 0);
+  if (countDesk) { countDesk.textContent = n; countDesk.classList.toggle('visible', n > 0); }
+  const sub = cart.reduce((s,i) => s + i.price, 0);
+  totalEl.textContent = `$${sub.toLocaleString('es-MX')} MXN`;
 
-  // Update product buttons (highlight added ones)
   document.querySelectorAll('.product__add').forEach(b => {
     const inCart = cart.some(i => i.id === b.dataset.id);
     b.classList.toggle('in-cart', inCart);
-    b.textContent = inCart ? '✓ Agregada' : 'Agregar';
+    b.textContent = inCart ? '✓ Agregado' : 'Agregar';
   });
 
-  if (cart.length === 0) {
+  if (!n) {
     body.innerHTML = `<p class="cart__empty">Aún no has agregado piezas.</p>`;
-    checkout.classList.add('disabled');
-    return;
+    btn.classList.add('disabled'); return;
   }
-
-  checkout.classList.remove('disabled');
-  const items = cart.map((it, idx) => `
+  btn.classList.remove('disabled');
+  body.innerHTML = cart.map((it, idx) => `
     <div class="cart__item">
       <div class="cart__item-img ${it.img}"></div>
       <div class="cart__item-info">
         <div class="cart__item-name">${it.name}</div>
-        <div class="cart__item-cat">${it.category || ''}</div>
+        <div class="cart__item-cat">${it.category}</div>
         <button class="cart__item-remove" data-idx="${idx}">Quitar</button>
       </div>
       <div class="cart__item-price">$${it.price.toLocaleString('es-MX')}</div>
     </div>
   `).join('');
-
-  // Complementos suggestions (always visible during checkout)
-  const addons = COMPLEMENTOS.map(a => `
-    <div class="cart__addon" data-id="${a.id}">
-      <div class="cart__addon-img ${a.img}"></div>
-      <div class="cart__addon-name">${a.name}</div>
-      <div class="cart__addon-price">
-        <span>$${a.price.toLocaleString('es-MX')}</span>
-        <span class="cart__addon-add">Agregar</span>
-      </div>
-    </div>
-  `).join('');
-
-  body.innerHTML = items + `
-    <div class="cart__addons">
-      <h4>Complementa con una mini</h4>
-      <p class="cart__addons-sub">Lamparitas pequeñas, perfectas como regalo o para esquinas.</p>
-      <div class="cart__addons-grid">${addons}</div>
-    </div>
-  `;
 }
-
-// ─── EVENT WIRING ──────────────────────────────────────────────
-document.addEventListener('click', (e) => {
-  // Add to cart from product grid
-  const addBtn = e.target.closest('.product__add');
-  if (addBtn) {
-    addToCart(addBtn.dataset.id, addBtn.dataset.cat);
-    openCartDrawer();
-    return;
-  }
-  // Remove from cart
-  const removeBtn = e.target.closest('.cart__item-remove');
-  if (removeBtn) {
-    removeFromCart(parseInt(removeBtn.dataset.idx));
-    return;
-  }
-  // Add complemento
-  const addon = e.target.closest('.cart__addon');
-  if (addon) {
-    addToCart(addon.dataset.id, 'complemento');
-  }
-});
-
-// Cart open/close
-const cartEl = document.getElementById('cart');
-const overlay = document.getElementById('cartOverlay');
-function openCartDrawer() { cartEl.classList.add('open'); overlay.classList.add('open'); }
-function closeCartDrawer() { cartEl.classList.remove('open'); overlay.classList.remove('open'); }
-document.getElementById('openCart').addEventListener('click', openCartDrawer);
-document.getElementById('closeCart').addEventListener('click', closeCartDrawer);
-overlay.addEventListener('click', closeCartDrawer);
-
-// Checkout via WhatsApp
-document.getElementById('checkoutBtn').addEventListener('click', (e) => {
-  e.preventDefault();
-  if (cart.length === 0) return;
-  const lines = cart.map(i => `· ${i.name} (${i.category}) — $${i.price.toLocaleString('es-MX')}`).join('\n');
-  const total = cart.reduce((s, i) => s + i.price, 0);
-  const msg = `Hola Calero, quiero hacer el siguiente pedido:\n\n${lines}\n\nSubtotal: $${total.toLocaleString('es-MX')} MXN\n\nMi zona de entrega:`;
-  window.open(`https://wa.me/525500000000?text=${encodeURIComponent(msg)}`, '_blank');
-});
-
-// Initial render + reveal observer
 renderCart();
-const io = new IntersectionObserver((entries) => {
-  for (const e of entries) {
-    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-  }
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-function observeReveals() {
-  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
-}
-observeReveals();
-// Re-observe after dynamic product rendering
-setTimeout(observeReveals, 100);
-</script>
 
+// ─── EVENTS ────────────────────────────────────────────────────
+document.addEventListener('click', e => {
+  const addBtn = e.target.closest('.product__add');
+  if (addBtn) { addToCart(addBtn.dataset.id, addBtn.dataset.cat); openCart(); return; }
+
+  const rmBtn = e.target.closest('.cart__item-remove');
+  if (rmBtn) { removeFromCart(parseInt(rmBtn.dataset.idx)); return; }
+
+  const faqBtn = e.target.closest('.faq__question');
+  if (faqBtn) {
+    const item = faqBtn.closest('.faq__item');
+    item.classList.toggle('open'); return;
+  }
+});
+
+// Hamburger menu
+const menuEl  = document.getElementById('menu');
+const menuOv  = document.getElementById('menuOverlay');
+function openMenu()  { menuEl.classList.add('open');  menuOv.classList.add('open'); }
+function closeMenu() { menuEl.classList.remove('open'); menuOv.classList.remove('open'); }
+document.getElementById('openMenu').addEventListener('click', openMenu);
+document.getElementById('closeMenu').addEventListener('click', closeMenu);
+menuOv.addEventListener('click', closeMenu);
+document.querySelectorAll('.menu-close-link').forEach(a => a.addEventListener('click', closeMenu));
+
+// Tienda sub-menu toggle
+document.getElementById('tiendaToggle').addEventListener('click', () => {
+  document.getElementById('tiendaItem').classList.toggle('menu__item--open');
+});
+
+// Cart
+const cartEl = document.getElementById('cart');
+const cartOv = document.getElementById('cartOverlay');
+function openCart()  { cartEl.classList.add('open');  cartOv.classList.add('open'); }
+function closeCart() { cartEl.classList.remove('open'); cartOv.classList.remove('open'); }
+document.getElementById('openCart').addEventListener('click', openCart);
+document.getElementById('closeCart').addEventListener('click', closeCart);
+// Desktop sidebar cart button
+const openCartDesk = document.getElementById('openCartDesktop');
+if (openCartDesk) openCartDesk.addEventListener('click', openCart);
+cartOv.addEventListener('click', closeCart);
+
+// WhatsApp checkout
+document.getElementById('checkoutBtn').addEventListener('click', e => {
+  e.preventDefault();
+  if (!cart.length) return;
+  const lines = cart.map(i => `· ${i.name} (${i.category}) — $${i.price.toLocaleString('es-MX')} MXN`).join('\n');
+  const total = cart.reduce((s,i) => s + i.price, 0);
+  const msg = `Hola Calero 👋, me interesa hacer el siguiente pedido:\n\n${lines}\n\nSubtotal: $${total.toLocaleString('es-MX')} MXN\n\nMi zona de entrega es:`;
+  window.open(`https://wa.me/525530370317?text=${encodeURIComponent(msg)}`, '_blank');
+});
+
+// Scroll reveals
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 </body>
 </html>

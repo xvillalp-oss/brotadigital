@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Tarjeta de regalo — Calero · CDMX</title>
+<meta name="description" content="Regala una luminaria Calero. Monto libre, vigencia 1 año."/>
+<meta name="theme-color" content="#700402"/>
+<link rel="stylesheet" href="calero.css"/>
+</head>
+<body>
+
+<aside class="sidenav">
+  <a href="index.html" class="sidenav__logo">Calero</a>
+  <nav class="sidenav__nav">
+    <div class="sidenav__item sidenav__item--tienda">
+      <button class="sidenav__link" id="sidenavTiendaBtn">Tienda
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+      </button>
+      <div class="sidenav__sub" id="sidenavTiendaSub">
+        <div class="sidenav__sub-group">
+          <button class="sidenav__sub-toggle" data-target="sn-luminarias">Luminarias
+            <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+          </button>
+          <div class="sidenav__sub2" id="sn-luminarias">
+            <div class="sidenav__sub-group">
+              <button class="sidenav__sub-toggle" data-target="sn-demesa">De mesa
+                <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5l4 3.5-4 3.5"/></svg>
+              </button>
+              <div class="sidenav__sub3" id="sn-demesa">
+                <a href="tienda.html#pantallas">Pantallas</a>
+                <a href="tienda.html#bases">Bases</a>
+              </div>
+            </div>
+            <a href="tienda.html#colgantes">Colgantes</a>
+          </div>
+        </div>
+        <a href="tienda.html#mural">Objetos Mural</a>
+      </div>
+    </div>
+    <div class="sidenav__divider"></div>
+    <div class="sidenav__item"><a href="b2b.html" class="sidenav__link">B2B</a></div>
+    <div class="sidenav__item"><a href="personalizado.html" class="sidenav__link">Personalizado</a></div>
+    <div class="sidenav__item"><a href="nosotros.html" class="sidenav__link">Nosotros</a></div>
+    <div class="sidenav__item"><a href="contacto.html" class="sidenav__link">Contacto</a></div>
+  </nav>
+  <div class="sidenav__foot">
+    <div class="sidenav__social">
+      <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">IG</a>
+      <a href="https://wa.me/525530370317?text=Hola!!%20Estoy%20interesada%20en%20sus%20luminarias%E2%80%A6%20me%20das%20m%C3%A1s%20informaci%C3%B3n%3F">WA</a>
+    </div>
+  </div>
+</aside>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="menu" id="menu">
+  <div class="menu__head"><span class="menu__head-logo">Calero</span><button class="menu__close" id="closeMenu">✕</button></div>
+  <ul class="menu__list">
+    <li class="menu__item menu__item--has-sub" id="tiendaItem">
+      <button class="menu__toggle" id="tiendaToggle">Tienda <span class="menu__chevron">+</span></button>
+      <ul class="menu__sub">
+        <li class="menu__sub-item menu__sub-item--has-sub">
+          <button class="menu__sub-toggle">Luminarias <span class="menu__sub-chevron">+</span></button>
+          <ul class="menu__sub2">
+            <li class="menu__sub-item menu__sub-item--has-sub">
+              <button class="menu__sub-toggle">De mesa <span class="menu__sub-chevron">+</span></button>
+              <ul class="menu__sub3">
+                <li><a href="tienda.html#pantallas" class="menu-close-link">Pantallas</a></li>
+                <li><a href="tienda.html#bases" class="menu-close-link">Bases</a></li>
+              </ul>
+            </li>
+            <li><a href="tienda.html#colgantes" class="menu-close-link">Colgantes</a></li>
+          </ul>
+        </li>
+        <li><a href="tienda.html#mural" class="menu-close-link">Objetos Mural</a></li>
+      </ul>
+    </li>
+    <li class="menu__item"><a href="b2b.html" class="menu__link">B2B</a></li>
+    <li class="menu__item"><a href="personalizado.html" class="menu__link">Personalizado</a></li>
+    <li class="menu__item"><a href="nosotros.html" class="menu__link">Nosotros</a></li>
+    <li class="menu__item"><a href="contacto.html" class="menu__link">Contacto</a></li>
+  </ul>
+  <div class="menu__footer">
+    <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">@caleromexicano</a>
+    <a href="https://wa.me/525530370317?text=Hola!!%20Estoy%20interesada%20en%20sus%20luminarias%E2%80%A6%20me%20das%20m%C3%A1s%20informaci%C3%B3n%3F">55 3037 0317</a>
+  </div>
+</nav>
+
+<header class="nav">
+  <button class="nav__hamburger" id="openMenu"><span></span><span></span><span></span></button>
+  <a href="index.html" class="nav__logo">Calero</a>
+  <div class="nav__right"></div>
+</header>
+
+<!-- Hero -->
+<div class="regalo-hero">
+  <div class="container">
+    <span class="label" style="display:block;margin-bottom:12px;">Tarjeta de regalo</span>
+    <h1 class="regalo-hero__h1">El regalo<br>que <em>ella</em> quiere.</h1>
+    <p class="regalo-hero__p">Regala una luminaria Calero. El monto es libre — la destinataria elige su pieza. Vigencia 1 año.</p>
+  </div>
+</div>
+
+<!-- Gift card builder -->
+<div class="container">
+  <div class="regalo-grid">
+
+    <!-- Preview tarjeta 3D -->
+    <div class="regalo-card-preview">
+      <div class="regalo-card-3d">
+        <img src="photos/gift-card-3d.png" alt="Tarjeta de regalo Calero · $1,000 MXN" class="regalo-card-3d__img" id="previewCard3d"/>
+        <div class="regalo-card-3d__amount" id="previewAmount">$1,000 <span class="regalo-card-3d__mxn">MXN</span></div>
+      </div>
+      <p style="margin-top:14px;font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-align:center;">El código llega al correo del comprador · canjeable en calero.mx</p>
+    </div>
+
+    <!-- Formulario -->
+    <div class="regalo-form">
+      <p class="label" style="display:block;margin-bottom:10px;">Elige el monto</p>
+      <div class="regalo-amounts">
+        <button class="regalo-amt active" data-amount="1000">$1,000</button>
+        <button class="regalo-amt" data-amount="2000">$2,000</button>
+        <button class="regalo-amt" data-amount="3500">$3,500</button>
+        <button class="regalo-amt" data-amount="5000">$5,000</button>
+      </div>
+
+      <label class="co-modal__label" style="display:block;margin-bottom:6px;" for="regaloCustom">O escribe otro monto</label>
+      <div class="regalo-custom-wrap">
+        <span class="regalo-custom-label">$</span>
+        <input class="regalo-custom" id="regaloCustom" type="number" min="200" step="100" placeholder="ej. 4500"/>
+      </div>
+
+      <p class="regalo-vigencia">✦ Vigencia 1 año a partir de la compra · canjeable en cualquier producto de la tienda</p>
+
+      <label class="co-modal__label" style="display:block;margin-bottom:6px;" for="regaloNombre">Tu nombre</label>
+      <input class="co-modal__input" id="regaloNombre" type="text" placeholder="Nombre del comprador" style="margin-bottom:16px;"/>
+
+      <label class="co-modal__label" style="display:block;margin-bottom:6px;" for="regaloEmail">Tu correo</label>
+      <input class="co-modal__input" id="regaloEmail" type="email" placeholder="Aquí recibirás el código" style="margin-bottom:16px;"/>
+
+      <label class="co-modal__label" style="display:block;margin-bottom:6px;" for="regaloTel">Tu WhatsApp <span style="font-weight:400;text-transform:none;">(opcional)</span></label>
+      <input class="co-modal__input" id="regaloTel" type="tel" placeholder="55 0000 0000" style="margin-bottom:28px;"/>
+
+      <p class="co-modal__error" id="regaloError" hidden></p>
+
+      <button class="co-modal__submit" id="regaloBtn">
+        <span id="regaloBtnText">Comprar tarjeta de regalo</span>
+        <span id="regaloBtnLoad" hidden>Preparando pago…</span>
+      </button>
+
+      <p style="margin-top:14px;font-size:11px;color:var(--ink-3);text-align:center;letter-spacing:.04em;">Pago seguro vía Mercado Pago · El código llega en minutos al correo</p>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__logo">Calero</div>
+    <ul class="footer__links">
+      <li><a href="tienda.html#pantallas">Pantallas</a></li>
+      <li><a href="tienda.html#bases">Bases</a></li>
+      <li><a href="tienda.html#telas">Telas</a></li>
+      <li><a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <div class="footer__credit">© 2026 Calero · CDMX · <a href="mailto:contacto@calero.mx">contacto@calero.mx</a> · <a href="legales.html">Aviso de privacidad</a> · Sitio por <a href="https://brotadigital.mx" target="_blank" rel="noopener">Brota</a></div>
+  </div>
+</footer>
+
+<script src="calero.js"></script>
+<script>
+// ─── TARJETA DE REGALO ───────────────────────────────────────────────────────
+let regaloMonto = 1000;
+
+// Botones de monto predefinido
+document.querySelectorAll('.regalo-amt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.regalo-amt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    regaloMonto = Number(btn.dataset.amount);
+    document.getElementById('regaloCustom').value = '';
+    actualizarPreview();
+  });
+});
+
+// Monto libre
+document.getElementById('regaloCustom').addEventListener('input', e => {
+  const v = Number(e.target.value);
+  if (v >= 200) {
+    regaloMonto = v;
+    document.querySelectorAll('.regalo-amt').forEach(b => b.classList.remove('active'));
+    actualizarPreview();
+  }
+});
+
+function actualizarPreview() {
+  const el = document.getElementById('previewAmount');
+  if (el) el.innerHTML = '$' + regaloMonto.toLocaleString('es-MX') + ' <span class="regalo-card-3d__mxn">MXN</span>';
+}
+
+// Checkout
+document.getElementById('regaloBtn').addEventListener('click', async () => {
+  const nombre = document.getElementById('regaloNombre').value.trim();
+  const email  = document.getElementById('regaloEmail').value.trim();
+  const tel    = document.getElementById('regaloTel').value.trim();
+  const errEl  = document.getElementById('regaloError');
+
+  if (!nombre)                   { showErr('Por favor escribe tu nombre.'); return; }
+  if (!email || !email.includes('@')) { showErr('Por favor escribe un correo válido.'); return; }
+  if (regaloMonto < 200)         { showErr('El monto mínimo es $200.'); return; }
+
+  function showErr(msg) { errEl.textContent = msg; errEl.hidden = false; }
+
+  errEl.hidden = true;
+  const btn  = document.getElementById('regaloBtn');
+  btn.disabled = true;
+  document.getElementById('regaloBtnText').hidden = true;
+  document.getElementById('regaloBtnLoad').hidden = false;
+
+  try {
+    const resp = await fetch('/api/crear-pago', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: [{
+          id:       'regalo',
+          name:     `Tarjeta de regalo Calero · $${regaloMonto.toLocaleString('es-MX')} MXN`,
+          category: 'regalo',
+          price:    regaloMonto,
+          qty:      1,
+        }],
+        customer: { nombre, email, telefono: tel, zona: 'regalo' },
+        isGiftCard: true,
+        giftCardAmount: regaloMonto,
+      }),
+    });
+
+    const data = await resp.json();
+    if (!resp.ok || !data.init_point) throw new Error(data.error || 'Error al crear el pago');
+    window.location.href = data.init_point;
+
+  } catch (err) {
+    showErr(err.message || 'Ocurrió un error. Intenta de nuevo.');
+    btn.disabled = false;
+    document.getElementById('regaloBtnText').hidden = false;
+    document.getElementById('regaloBtnLoad').hidden = true;
+  }
+});
+
+// Nav básico
+document.getElementById('openMenu')?.addEventListener('click', () => {
+  document.getElementById('menu')?.classList.add('open');
+  document.getElementById('menuOverlay')?.classList.add('open');
+});
+document.getElementById('closeMenu')?.addEventListener('click', () => {
+  document.getElementById('menu')?.classList.remove('open');
+  document.getElementById('menuOverlay')?.classList.remove('open');
+});
+document.getElementById('menuOverlay')?.addEventListener('click', () => {
+  document.getElementById('menu')?.classList.remove('open');
+  document.getElementById('menuOverlay')?.classList.remove('open');
+});
+</script>
+</body>
+</html>

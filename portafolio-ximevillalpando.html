@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portafolio — Ximena Villalpando · Marketing Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "dk":   "#0f1923",
+          "dkk":  "#09111a",
+          "grn":  "#059669",
+          "near": "#191c1d",
+          "mid":  "#555555",
+          "lt":   "#f8f9fa",
+        },
+        fontFamily: {
+          serif: ["Noto Serif","serif"],
+          sans:  ["Manrope","sans-serif"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  *{font-family:'Manrope',sans-serif}
+  h1,h2,h3,h4,.serif{font-family:'Noto Serif',serif}
+  html{scroll-behavior:smooth}
+
+  .stat-card{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    padding:32px 28px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .stat-card::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;
+    height:3px;
+    background:linear-gradient(90deg,#059669,#34d399);
+  }
+  .stat-num{
+    font-family:'Noto Serif',serif;
+    font-size:clamp(2.4rem,5vw,3.5rem);
+    font-weight:700;
+    color:#0f1923;
+    line-height:1;
+    letter-spacing:-1px;
+  }
+  .stat-label{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#555;
+    margin-top:8px;
+    display:block;
+  }
+
+  .tag{
+    display:inline-block;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    background:#f0faf5;
+    color:#059669;
+    border:1px solid #a7f3d0;
+    border-radius:100px;
+    padding:4px 12px;
+  }
+
+  .post-card{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    overflow:hidden;
+  }
+
+  .fade-up{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .65s ease, transform .65s ease;
+  }
+  .fade-up.in{opacity:1;transform:translateY(0)}
+  .delay-1{transition-delay:.1s}
+  .delay-2{transition-delay:.2s}
+  .delay-3{transition-delay:.3s}
+  .delay-4{transition-delay:.4s}
+</style>
+</head>
+<body class="bg-[#f8f9fa] text-[#191c1d]">
+
+<!-- ── HERO ── -->
+<section class="bg-[#0f1923] text-white">
+  <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
+    <p class="text-[10px] font-bold tracking-[.22em] uppercase text-[#6ee7b7] mb-6 fade-up in">Portafolio · Resultados reales</p>
+    <h1 class="serif text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up in delay-1">
+      Ximena Villalpando<br>
+      <span class="text-[#6ee7b7] italic font-normal">Marketing Digital</span>
+    </h1>
+    <p class="text-[#a8c4b8] text-base md:text-lg max-w-xl leading-relaxed fade-up in delay-2">
+      Gestión completa de redes sociales — estrategia, producción de contenido, copywriting y publicación orientada a resultados reales.
+    </p>
+    <div class="flex flex-wrap gap-3 mt-8 fade-up in delay-3">
+      <span class="tag" style="background:rgba(110,231,183,.1);color:#6ee7b7;border-color:rgba(110,231,183,.3)">Instagram</span>
+      <span class="tag" style="background:rgba(110,231,183,.1);color:#6ee7b7;border-color:rgba(110,231,183,.3)">TikTok</span>
+      <span class="tag" style="background:rgba(110,231,183,.1);color:#6ee7b7;border-color:rgba(110,231,183,.3)">Facebook</span>
+      <span class="tag" style="background:rgba(110,231,183,.1);color:#6ee7b7;border-color:rgba(110,231,183,.3)">Reels</span>
+      <span class="tag" style="background:rgba(110,231,183,.1);color:#6ee7b7;border-color:rgba(110,231,183,.3)">Copywriting</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDY: CORTIJO ── -->
+<section class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 fade-up">
+    <div>
+      <p class="text-[10px] font-bold tracking-[.2em] uppercase text-[#059669] mb-3">Caso de estudio · 01</p>
+      <h2 class="serif text-3xl md:text-4xl font-bold text-[#0f1923] leading-tight">
+        Cortijo Santa Teresa
+      </h2>
+      <p class="text-[#555] mt-2 text-sm">Venue de eventos premium · CDMX · Tlalpan</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <span class="tag">Jun 2024 – Ene 2025</span>
+      <span class="tag">Gestión completa</span>
+    </div>
+  </div>
+
+  <!-- Servicio prestado -->
+  <div class="bg-white border border-[#e5e7eb] rounded-2xl p-8 mb-10 fade-up delay-1">
+    <h3 class="serif text-xl font-bold text-[#0f1923] mb-5">¿Qué hicimos?</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="flex flex-col items-center text-center p-4 bg-[#f8f9fa] rounded-xl">
+        <span class="text-xs font-600 text-[#0f1923] font-semibold">Grabación</span>
+        <span class="text-[11px] text-[#555] mt-1">en sitio</span>
+      </div>
+      <div class="flex flex-col items-center text-center p-4 bg-[#f8f9fa] rounded-xl">
+        <span class="text-xs font-semibold text-[#0f1923]">Edición</span>
+        <span class="text-[11px] text-[#555] mt-1">Reels y posts</span>
+      </div>
+      <div class="flex flex-col items-center text-center p-4 bg-[#f8f9fa] rounded-xl">
+        <span class="text-xs font-semibold text-[#0f1923]">Copywriting</span>
+        <span class="text-[11px] text-[#555] mt-1">copies + hashtags</span>
+      </div>
+      <div class="flex flex-col items-center text-center p-4 bg-[#f8f9fa] rounded-xl">
+        <span class="text-xs font-semibold text-[#0f1923]">Publicación</span>
+        <span class="text-[11px] text-[#555] mt-1">calendario editorial</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Métricas principales -->
+  <p class="text-[10px] font-bold tracking-[.2em] uppercase text-[#059669] mb-6 fade-up delay-1">Resultados destacados</p>
+
+  <!-- Reel highlight -->
+  <div class="bg-[#0f1923] rounded-2xl p-8 mb-4 fade-up delay-2">
+    <div class="flex flex-col md:flex-row md:items-center gap-3 mb-8">
+      <span class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-[11px] font-bold text-white tracking-wide uppercase">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Reel · Jun 9, 2024
+      </span>
+      <span class="text-[#a8c4b8] text-sm italic">"Creando experiencias inolvidables"</span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="text-center">
+        <div class="serif text-5xl font-bold text-white leading-none">27K</div>
+        <span class="block text-[10px] font-semibold tracking-[.14em] uppercase text-[#6ee7b7] mt-2">Reproducciones</span>
+      </div>
+      <div class="text-center">
+        <div class="serif text-5xl font-bold text-white leading-none">15.8K</div>
+        <span class="block text-[10px] font-semibold tracking-[.14em] uppercase text-[#6ee7b7] mt-2">Alcance</span>
+      </div>
+      <div class="text-center">
+        <div class="serif text-5xl font-bold text-white leading-none">161</div>
+        <span class="block text-[10px] font-semibold tracking-[.14em] uppercase text-[#6ee7b7] mt-2">Nuevos seguidores</span>
+      </div>
+      <div class="text-center">
+        <div class="serif text-5xl font-bold text-white leading-none">42</div>
+        <span class="block text-[10px] font-semibold tracking-[.14em] uppercase text-[#6ee7b7] mt-2">Guardados</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post highlight -->
+  <div class="grid md:grid-cols-2 gap-4 mb-12 fade-up delay-3">
+    <div class="stat-card">
+      <div class="stat-num">21.9K</div>
+      <span class="stat-label">Vistas · Post foto</span>
+      <p class="text-xs text-[#555] mt-3">Post de mesa con montaje floral<br>Ago 5, 2024</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">751</div>
+      <span class="stat-label">Visitas al perfil</span>
+      <p class="text-xs text-[#555] mt-3">Generadas desde ese<br>único post</p>
+    </div>
+  </div>
+
+  <!-- Insight callout -->
+  <div class="border-l-4 border-[#059669] pl-6 py-2 mb-16 fade-up delay-4">
+    <p class="serif text-xl md:text-2xl font-bold text-[#0f1923] italic leading-snug">
+      "Un solo reel generó 161 nuevos seguidores y llegó a más de 15,000 personas sin pauta pagada."
+    </p>
+    <p class="text-xs text-[#555] mt-3 font-medium">— Ximena Villalpando · @cortijosantateresa</p>
+  </div>
+
+  <!-- Divider -->
+  <div class="border-t border-[#e5e7eb] mb-16"></div>
+
+  <!-- ── 3. GRABACIÓN Y EDICIÓN ── -->
+  <div class="fade-up mb-10">
+    <p class="text-[10px] font-bold tracking-[.2em] uppercase text-[#059669] mb-4">Pregunta frecuente · 01</p>
+    <h2 class="serif text-3xl font-bold text-[#0f1923] mb-3">¿Cómo trabajamos la grabación<br>y edición de contenido?</h2>
+    <p class="text-[#555] text-sm max-w-xl leading-relaxed">Sin sesiones complicadas ni equipos de producción — el proceso es simple y funciona desde cualquier lugar.</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-4 mb-6 fade-up delay-1">
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-6">
+      <h4 class="font-bold text-[#0f1923] mb-2 text-sm">Tú grabas, yo produzco</h4>
+      <p class="text-xs text-[#555] leading-relaxed">Me mandas videos cortos de tus productos por WhatsApp o Drive — unboxings, hauls, lo que tengas. Sin guión complicado.</p>
+    </div>
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-6">
+      <h4 class="font-bold text-[#0f1923] mb-2 text-sm">Edición completa</h4>
+      <p class="text-xs text-[#555] leading-relaxed">Corto, agrego texto en pantalla, música trending, transiciones y subtítulos. El video pasa de crudo a Reel listo para publicar.</p>
+    </div>
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-6">
+      <h4 class="font-bold text-[#0f1923] mb-2 text-sm">Imágenes del producto</h4>
+      <p class="text-xs text-[#555] leading-relaxed">Para posts y stories uso fotos que me mandas o imágenes oficiales del producto. Las diseño en plantillas Canva con tu marca.</p>
+    </div>
+  </div>
+
+  <div class="bg-[#f0faf5] border border-[#a7f3d0] rounded-2xl p-6 mb-16 fade-up delay-2">
+    <p class="text-sm text-[#0f1923] font-semibold mb-1">¿Y si no tienes tiempo de grabar?</p>
+    <p class="text-sm text-[#555] leading-relaxed">Sin problema — con fotos del producto, imágenes de Amazon y plantillas animadas creo contenido visual que vende igual. El video ayuda, pero no es indispensable para arrancar.</p>
+  </div>
+
+  <!-- ── 4. STORIES DIARIAS ── -->
+  <div class="border-t border-[#e5e7eb] pt-16 mb-10 fade-up">
+    <p class="text-[10px] font-bold tracking-[.2em] uppercase text-[#059669] mb-4">Pregunta frecuente · 02</p>
+    <h2 class="serif text-3xl font-bold text-[#0f1923] mb-3">¿Qué incluyen exactamente<br>las stories diarias?</h2>
+    <p class="text-[#555] text-sm max-w-xl leading-relaxed">No son stories genéricas — cada una tiene un objetivo concreto orientado a generar mensajes en WhatsApp.</p>
+  </div>
+
+  <div class="space-y-3 mb-8 fade-up delay-1">
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-1">
+        <h4 class="font-bold text-[#0f1923] text-sm">Producto del día</h4>
+        <span class="text-[10px] font-bold text-[#059669] bg-[#f0faf5] border border-[#a7f3d0] rounded-full px-2 py-0.5">Diaria</span>
+      </div>
+      <p class="text-xs text-[#555] leading-relaxed">Foto o video del producto con precio visible, descripción corta y sticker de link directo a WhatsApp. El objetivo es que el cliente escriba ese mismo día.</p>
+    </div>
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-1">
+        <h4 class="font-bold text-[#0f1923] text-sm">Encuesta de producto</h4>
+        <span class="text-[10px] font-bold text-[#059669] bg-[#f0faf5] border border-[#a7f3d0] rounded-full px-2 py-0.5">3× semana</span>
+      </div>
+      <p class="text-xs text-[#555] leading-relaxed">"¿Cuál te llevarías, A o B?" — genera interacción real, activa el algoritmo y da datos de qué productos interesan más.</p>
+    </div>
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-1">
+        <h4 class="font-bold text-[#0f1923] text-sm">Urgencia de stock</h4>
+        <span class="text-[10px] font-bold text-[#059669] bg-[#f0faf5] border border-[#a7f3d0] rounded-full px-2 py-0.5">Según disponibilidad</span>
+      </div>
+      <p class="text-xs text-[#555] leading-relaxed">"Quedan solo 3 piezas" o countdown de oferta. Genera acción inmediata y aumenta la velocidad de decisión de compra.</p>
+    </div>
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-1">
+        <h4 class="font-bold text-[#0f1923] text-sm">CTA directo a WhatsApp</h4>
+        <span class="text-[10px] font-bold text-[#059669] bg-[#f0faf5] border border-[#a7f3d0] rounded-full px-2 py-0.5">Diaria</span>
+      </div>
+      <p class="text-xs text-[#555] leading-relaxed">Cada story termina con sticker de link, número de WhatsApp visible o botón "Pedir info". El objetivo siempre es mover a conversación privada.</p>
+    </div>
+  </div>
+
+  <!-- Atención de mensajes -->
+  <div class="bg-[#0f1923] rounded-2xl p-8 mb-16 fade-up delay-2">
+    <div class="mb-6">
+      <h3 class="serif text-xl font-bold text-white">Atención de mensajes</h3>
+      <p class="text-[#a8c4b8] text-xs mt-0.5">DMs de Instagram y comentarios relacionados a productos</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div>
+        <p class="text-[#6ee7b7] text-[10px] font-bold tracking-widest uppercase mb-2">Horario</p>
+        <p class="text-white text-sm">Lunes a viernes<br>9am – 7pm</p>
+      </div>
+      <div>
+        <p class="text-[#6ee7b7] text-[10px] font-bold tracking-widest uppercase mb-2">Tiempo de respuesta</p>
+        <p class="text-white text-sm">Máximo 2 horas<br>en horario laboral</p>
+      </div>
+      <div>
+        <p class="text-[#6ee7b7] text-[10px] font-bold tracking-widest uppercase mb-2">¿Qué respondo?</p>
+        <p class="text-white text-sm">Preguntas de precio,<br>disponibilidad y envíos</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. PROCESO DE TRABAJO ── -->
+  <div class="border-t border-[#e5e7eb] pt-16 fade-up">
+    <p class="text-[10px] font-bold tracking-[.2em] uppercase text-[#059669] mb-4">Pregunta frecuente · 03</p>
+    <h2 class="serif text-3xl font-bold text-[#0f1923] mb-10">¿Cómo sería el proceso<br>de trabajo contigo?</h2>
+  </div>
+
+  <div class="relative mb-16">
+    <div class="absolute left-5 top-0 bottom-0 w-px bg-[#e5e7eb] hidden md:block"></div>
+    <div class="space-y-4">
+      <div class="flex gap-6 fade-up delay-1">
+        <div class="flex-shrink-0 w-10 h-10 bg-[#059669] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">1</div>
+        <div class="bg-white border border-[#e5e7eb] rounded-2xl p-6 flex-1">
+          <h4 class="font-bold text-[#0f1923] mb-1">Onboarding <span class="text-xs font-normal text-[#555]">— solo primer mes</span></h4>
+          <p class="text-sm text-[#555] leading-relaxed">Llamada de 30 min para entender tus productos, precios, tono de marca y objetivos. Te doy acceso a un Google Drive compartido para material.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 fade-up delay-2">
+        <div class="flex-shrink-0 w-10 h-10 bg-[#059669] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">2</div>
+        <div class="bg-white border border-[#e5e7eb] rounded-2xl p-6 flex-1">
+          <h4 class="font-bold text-[#0f1923] mb-1">Calendario de contenido</h4>
+          <p class="text-sm text-[#555] leading-relaxed">Cada mes te comparto el calendario con todos los posts, reels y stories planeados. Tú apruebas antes de que salga cualquier cosa.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 fade-up delay-3">
+        <div class="flex-shrink-0 w-10 h-10 bg-[#059669] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">3</div>
+        <div class="bg-white border border-[#e5e7eb] rounded-2xl p-6 flex-1">
+          <h4 class="font-bold text-[#0f1923] mb-1">Ejecución semanal</h4>
+          <p class="text-sm text-[#555] leading-relaxed">Publico según calendario. Me mandas material de productos por WhatsApp, yo lo convierto en contenido editado y lo subo. Comunicación diaria por WhatsApp.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 fade-up delay-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-[#059669] rounded-full flex items-center justify-center text-white font-bold text-sm z-10">4</div>
+        <div class="bg-white border border-[#e5e7eb] rounded-2xl p-6 flex-1">
+          <h4 class="font-bold text-[#0f1923] mb-1">Reporte mensual</h4>
+          <p class="text-sm text-[#555] leading-relaxed">Al cierre de cada mes te mando reporte con alcance, interacciones, nuevos seguidores y mensajes de WhatsApp generados desde redes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRUEBA DE 3 DÍAS ── -->
+  <div class="border-t border-[#e5e7eb] pt-16 mb-10 fade-up">
+    <p class="text-[10px] font-bold tracking-[.2em] uppercase text-[#059669] mb-4">Para que lo veas antes de comprometerte</p>
+    <h2 class="serif text-3xl font-bold text-[#0f1923] mb-3">Prueba de 3 días · $700 MXN</h2>
+    <p class="text-[#555] text-sm max-w-xl leading-relaxed">Ejecuto el trabajo real durante 3 días: stories, un Reel editado y atención de DMs. Al final te doy un reporte con alcance, mensajes generados y WhatsApp activados — y decides si continúas con un plan mensual.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-6 fade-up delay-1">
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-7">
+      <h4 class="font-bold text-[#0f1923] mb-4 text-sm uppercase tracking-wide">¿Qué se hace en esos 3 días?</h4>
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#059669" class="w-4 h-4 mt-0.5 flex-shrink-0"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+          <span class="text-sm text-[#555]">3 stories diarias con CTA a WhatsApp</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#059669" class="w-4 h-4 mt-0.5 flex-shrink-0"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+          <span class="text-sm text-[#555]">1 Reel editado de producto (con texto en pantalla, música trending y copywriting)</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#059669" class="w-4 h-4 mt-0.5 flex-shrink-0"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+          <span class="text-sm text-[#555]">Atención de DMs L-V 9am–7pm, respuesta máx. 2 horas</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg viewBox="0 0 16 16" fill="#059669" class="w-4 h-4 mt-0.5 flex-shrink-0"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+          <span class="text-sm text-[#555]">Reporte al día 3: alcance, DMs y WhatsApp activados</span>
+        </li>
+      </ul>
+    </div>
+    <div class="bg-white border border-[#e5e7eb] rounded-2xl p-7">
+      <h4 class="font-bold text-[#0f1923] mb-4 text-sm uppercase tracking-wide">Inversión y condiciones</h4>
+      <div class="flex items-baseline gap-1 mb-5">
+        <span class="serif text-4xl font-bold text-[#0f1923]">$700</span>
+        <span class="text-sm text-[#555]">MXN · 3 días</span>
+      </div>
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-[#059669] font-bold mt-0.5">→</span>
+          <span class="text-sm text-[#555]">Se descuenta íntegro del primer mes si contratas un plan</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-[#059669] font-bold mt-0.5">→</span>
+          <span class="text-sm text-[#555]">Tú provees fotos/videos de los productos</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-[#059669] font-bold mt-0.5">→</span>
+          <span class="text-sm text-[#555]">Definimos juntos qué métricas marcan el éxito antes de arrancar</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-[#059669] font-bold mt-0.5">→</span>
+          <span class="text-sm text-[#555]">Podemos arrancar esta misma semana</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Qué pasa después callout -->
+  <div class="bg-[#f0faf5] border border-[#a7f3d0] rounded-2xl p-6 mb-8 fade-up delay-2">
+    <p class="text-sm font-semibold text-[#0f1923] mb-1">¿Y qué pasa si quiero seguir después de los 3 días?</p>
+    <p class="text-sm text-[#555] leading-relaxed">Al final del día 3 decides sin presión. Si los resultados te convencen, arrancamos con el plan mensual que elijas — Esencial ($3,500), Profesional ($8,000) o Premium ($10,000) — y los $700 ya pagados se descuentan de ese primer mes. Sin contrato de permanencia.</p>
+  </div>
+
+  <!-- ── CTA ── -->
+  <div class="bg-[#0f1923] rounded-2xl p-10 text-center fade-up">
+    <p class="text-[10px] font-bold tracking-[.2em] uppercase text-[#6ee7b7] mb-4">¿Arrancamos?</p>
+    <h2 class="serif text-3xl md:text-4xl font-bold text-white mb-4">Hablemos esta semana</h2>
+    <p class="text-[#a8c4b8] text-sm mb-8 max-w-md mx-auto leading-relaxed">
+      Una llamada de 20 minutos es suficiente para definir los detalles y arrancar la prueba de 3 días.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="https://wa.me/5215559652009?text=Hola%20Ximena%2C%20vi%20tu%20portafolio%20y%20me%20interesa%20la%20prueba%20de%203%20d%C3%ADas"
+         class="inline-flex items-center gap-2 bg-[#059669] text-white font-bold text-sm px-8 py-4 rounded-xl hover:bg-[#047857] transition-colors">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+        Agendar llamada por WhatsApp
+      </a>
+      <a href="https://brota-digital.vercel.app/propuesta-comprasprimes.html" target="_blank"
+         class="inline-flex items-center gap-2 bg-white text-[#0f1923] font-bold text-sm px-8 py-4 rounded-xl hover:bg-[#f0faf5] transition-colors border border-white">
+        Ver propuesta completa →
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="border-t border-[#e5e7eb] bg-white">
+  <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="serif text-[#0f1923] font-bold">Ximena Villalpando</p>
+    <p class="text-xs text-[#555]">Marketing digital · @ximevillalpando</p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in') });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

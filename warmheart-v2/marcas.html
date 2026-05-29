@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Para Marcas — Warm Heart</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F4F1E2;
+    --brown: #513229;
+    --salmon: #C8825A;
+    --salmon-dk: #B3704A;
+    --blue: #D8EBF9;
+    --peach: #FCE6B7;
+    --sage: #D7D4B1;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 64px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 90;
+    border-bottom: 1px solid rgba(81,50,41,0.08);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--brown);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brown);
+    opacity: 0.55;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; }
+  .nav-links a.active { border-bottom: 1.5px solid var(--salmon); padding-bottom: 2px; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 130px 48px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--brown);
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 16px;
+    transform: rotate(-1deg);
+  }
+  .hero-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    color: var(--brown);
+    line-height: 1.08;
+    margin-bottom: 24px;
+  }
+  .hero-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.05rem;
+    color: var(--brown);
+    opacity: 0.65;
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 44px;
+  }
+  .btn-main {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: var(--salmon);
+    color: #fff;
+    border-radius: 50px;
+    padding: 14px 44px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-main:hover { background: var(--salmon-dk); transform: translateY(-2px); }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--brown);
+    padding: 80px 48px 100px;
+  }
+  .services-inner { max-width: 1100px; margin: 0 auto; }
+  .services-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.05rem;
+    color: var(--salmon);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .services-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: #F4F1E2;
+    margin-bottom: 56px;
+    max-width: 560px;
+    line-height: 1.12;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--blue);
+    padding: 32px 28px 40px;
+    position: relative;
+  }
+  .service-card:nth-child(2) { transform: translateY(16px); }
+  .service-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--brown);
+    opacity: 0.1;
+    position: absolute;
+    top: 14px; right: 20px;
+    line-height: 1;
+  }
+  .service-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--brown);
+    margin-bottom: 14px;
+  }
+  .service-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--brown);
+    opacity: 0.72;
+    line-height: 1.7;
+  }
+  .service-note {
+    position: absolute;
+    bottom: 12px; right: 14px;
+    font-family: 'Caveat', cursive;
+    font-size: 0.85rem;
+    color: var(--brown);
+    opacity: 0.45;
+    transform: rotate(1.5deg);
+  }
+
+  /* ── BRANDS ── */
+  .brands {
+    padding: 80px 48px 90px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .brands-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brown);
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 14px;
+  }
+  .brands-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--brown);
+    margin-bottom: 52px;
+  }
+  .brands-collage {
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .brand-name {
+    font-family: 'DM Serif Display', serif;
+    color: var(--brown);
+    display: inline-block;
+    cursor: default;
+    transition: opacity 0.2s;
+  }
+  .brand-name:hover { opacity: 0.5; }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--sage);
+    padding: 90px 48px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--brown);
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 14px;
+  }
+  .contact-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    color: var(--brown);
+    line-height: 1.08;
+    margin-bottom: 20px;
+  }
+  .contact-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    color: var(--brown);
+    opacity: 0.65;
+    max-width: 440px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .contact-email {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--brown);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+    display: block;
+    margin-bottom: 12px;
+    transition: opacity 0.2s;
+  }
+  .contact-email:hover { opacity: 0.6; }
+  .contact-note {
+    font-family: 'Caveat', cursive;
+    font-size: 0.95rem;
+    color: var(--brown);
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 36px;
+    transform: rotate(-1.5deg);
+  }
+  .btn-wa {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: var(--brown);
+    color: var(--cream);
+    border-radius: 50px;
+    padding: 14px 44px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-wa:hover { background: #3a2018; transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brown);
+    padding: 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    color: var(--cream);
+    opacity: 0.45;
+    letter-spacing: 0.06em;
+  }
+  .footer-icons { display: flex; gap: 14px; }
+  .icon-link {
+    width: 34px; height: 34px;
+    border: 1.5px solid rgba(244,241,226,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(244,241,226,0.55);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .icon-link:hover { border-color: var(--cream); color: var(--cream); }
+
+  @media (max-width: 768px) {
+    .hero, .brands { padding-left: 24px; padding-right: 24px; }
+    .services { padding: 60px 24px 80px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card:nth-child(2) { transform: none; }
+    .contact { padding: 70px 24px 80px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="nav" role="banner">
+    <a href="index.html" class="nav-logo">Warm Heart<sup style="font-size:0.55em;opacity:0.45;font-family:Jost,sans-serif;font-weight:400;">®</sup></a>
+    <ul class="nav-links" role="list">
+      <li><a href="roster.html">Roster</a></li>
+      <li><a href="marcas.html" class="active">Para marcas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="hero-label">para marcas</span>
+    <h1 class="hero-headline">Campañas que no<br>parecen campañas.</h1>
+    <p class="hero-sub">Conectamos tu marca con creadores que genuinamente encajan con lo que vendes. Sin scripts armados, sin poses. Contenido que la gente quiere ver.</p>
+    <a href="#contacto" class="btn-main">Cuéntanos tu proyecto</a>
+  </section>
+
+  <!-- Services -->
+  <section class="services">
+    <div class="services-inner">
+      <span class="services-label">lo que hacemos</span>
+      <h2 class="services-headline">Tres formas de trabajar juntos.</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-num" aria-hidden="true">01</span>
+          <h3 class="service-title">Seeding</h3>
+          <p class="service-desc">Enviamos tus productos a creadores que genuinamente los usarían. Sin scripts, sin poses — solo experiencia real.</p>
+          <span class="service-note">↗ el más popular</span>
+        </div>
+        <div class="service-card">
+          <span class="service-num" aria-hidden="true">02</span>
+          <h3 class="service-title">Campañas integradas</h3>
+          <p class="service-desc">Co-creamos contenido donde tu marca aparece como parte natural de la vida del creador. Sin que se note el anuncio.</p>
+          <span class="service-note">↗ nuestro favorito</span>
+        </div>
+        <div class="service-card">
+          <span class="service-num" aria-hidden="true">03</span>
+          <h3 class="service-title">Embajadores</h3>
+          <p class="service-desc">Relaciones de largo plazo. El creador se convierte en la cara humana de tu marca — consistente, auténtico, confiable.</p>
+          <span class="service-note">↗ largo plazo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section class="brands">
+    <span class="brands-label">han confiado en nosotros</span>
+    <h2 class="brands-headline">Marcas que apuestan por lo humano.</h2>
+    <div class="brands-collage" aria-label="Marcas colaboradoras">
+      <span class="brand-name" style="font-size:3rem;transform:rotate(-1.5deg);opacity:0.85;">Oxxo</span>
+      <span class="brand-name" style="font-size:1.6rem;transform:rotate(1deg);margin-left:32px;color:#B3704A;">Starbucks</span>
+      <span class="brand-name" style="font-size:2.4rem;transform:rotate(-0.8deg);margin-left:24px;">Nike MX</span>
+      <br style="width:100%;"/>
+      <span class="brand-name" style="font-size:1.4rem;transform:rotate(2deg);margin-left:60px;opacity:0.7;">Liverpool</span>
+      <span class="brand-name" style="font-size:2.8rem;transform:rotate(-1.2deg);margin-left:20px;">Levi's</span>
+      <span class="brand-name" style="font-size:1.8rem;transform:rotate(0.8deg);margin-left:28px;color:#B3704A;">Spotify</span>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contacto">
+    <span class="contact-label">siguiente paso</span>
+    <h2 class="contact-headline">¿Tu marca quiere<br>sentirse real?</h2>
+    <p class="contact-sub">Sin decks interminables ni formularios eternos. Solo cuéntanos qué quieres lograr y arrancamos.</p>
+    <a href="mailto:hola@warmheart.mx" class="contact-email">hola@warmheart.mx</a>
+    <span class="contact-note">respondemos en menos de 24 horas ☀</span>
+    <a href="https://wa.me/521XXXXXXXXXX" class="btn-wa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+      Escribir por WhatsApp
+    </a>
+  </section>
+
+  <footer role="contentinfo">
+    <p>Warm Heart © 2025 · Agencia de Creadores · México</p>
+    <div class="footer-icons">
+      <a href="mailto:hola@warmheart.mx" class="icon-link" aria-label="Email">
+        <svg width="14" height="11" viewBox="0 0 18 14" fill="none"><rect x="1" y="1" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M1 3.5l8 5 8-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </a>
+      <a href="https://instagram.com/warmheart" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

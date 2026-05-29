@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Propuesta de Servicios — @compras.prime.mx × Ximena Villalpando</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "emerald-dk":  "#0f1923",
+          "emerald-dkk": "#09111a",
+          "emerald":     "#059669",
+          "emerald-lt":  "#6ee7b7",
+          "near-black":  "#191c1d",
+          "gray-mid":    "#555555",
+          "light-bg":    "#f8f9fa",
+        },
+        fontFamily: {
+          serif: ["Noto Serif", "serif"],
+          sans:  ["Manrope", "sans-serif"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { font-family: 'Manrope', sans-serif; }
+  h1, h2, h3, h4, .font-serif { font-family: 'Noto Serif', serif; }
+  html { scroll-behavior: smooth; }
+
+  .btn-primary {
+    background: #0f1923;
+    color: #fff;
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+  }
+  .btn-primary:hover { background: #09111a; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: #0f1923;
+    border: 1.5px solid #0f1923;
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+  }
+  .btn-ghost:hover { background: #f8f9fa; transform: translateY(-1px); }
+
+  .btn-gold {
+    background: #059669;
+    color: #fff;
+    transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+  }
+  .btn-gold:hover { background: #047857; transform: translateY(-1px); }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f0fdf4;
+    color: #059669;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid #a7f3d0;
+    margin-bottom: 16px;
+    font-family: 'Manrope', sans-serif;
+  }
+  .section-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #059669;
+    flex-shrink: 0;
+  }
+
+  .section-label-inline {
+    display: inline-block;
+    color: #059669;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .plan-card {
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .plan-card:hover {
+    box-shadow: 0 8px 32px rgba(15,25,35,0.10);
+    transform: translateY(-4px);
+  }
+  .plan-card.featured {
+    border-color: #0f1923;
+    border-width: 2px;
+    box-shadow: 0 8px 32px rgba(15,25,35,0.14);
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+  }
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f0fdf4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .step-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #0f1923;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(15,25,35,0.25);
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .cred-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease;
+  }
+  .cred-card:hover { box-shadow: 0 4px 20px rgba(15,25,35,0.08); }
+
+  .divider-row { border-bottom: 1px solid #f3f4f6; }
+  .divider-row:last-child { border-bottom: none; }
+
+  @media (max-width: 768px) {
+    .plan-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* ── Scroll animations ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .fade-in.visible { opacity: 1; }
+
+  .slide-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  }
+  .slide-right.visible { opacity: 1; transform: translateX(0); }
+
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+
+  /* ── Float animation for hero stat bubbles ── */
+  @keyframes floatCard {
+    0%,100% { transform: translateY(0px); }
+    50%      { transform: translateY(-10px); }
+  }
+  .float-card { animation: floatCard 3.6s ease-in-out infinite; }
+  .float-card-slow { animation: floatCard 4.4s ease-in-out infinite; animation-delay: 0.8s; }
+
+  /* ── Scroll indicator ── */
+  @keyframes scrollBounce {
+    0%,100% { transform: translateX(-50%) translateY(0); opacity:0.6; }
+    50%      { transform: translateX(-50%) translateY(7px); opacity:1; }
+  }
+  .scroll-indicator { animation: scrollBounce 2s ease-in-out infinite; }
+
+  /* ── Section image ── */
+  .section-img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    display: block;
+  }
+</style>
+</head>
+<body class="bg-white text-[#191c1d]">
+
+
+<!-- ============================== HEADER ============================== -->
+<header class="bg-white border-b border-gray-100 shadow-sm px-6 md:px-12 xl:px-20 py-5">
+  <div class="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+
+    <div class="space-y-0.5">
+      <p class="section-label-inline" style="margin-bottom:4px;">Propuesta de Servicios · Gestión de Redes Sociales</p>
+      <div class="flex items-center gap-2">
+        <div class="w-2 h-2 rounded-full bg-[#059669]"></div>
+        <span class="font-bold text-xl tracking-tight text-[#191c1d]">Ximena Villalpando</span>
+      </div>
+      <p class="text-xs text-[#555]">Marketing digital · @ximevillalpando</p>
+    </div>
+
+    <div class="text-right sm:text-right">
+      <p class="text-xs text-[#555]">Preparado para:</p>
+      <div class="flex items-center gap-1.5 justify-end mt-0.5">
+        <svg viewBox="0 0 20 20" width="11" height="11"><circle cx="10" cy="10" r="10" fill="#0f1923"/><path d="M6 10h8M10 6v8" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="font-serif font-bold text-lg tracking-tight text-[#191c1d]">@compras.prime.mx</span>
+      </div>
+      <p class="text-xs text-[#555]">México · Mayo 2025</p>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ============================== HERO ============================== -->
+<section class="relative min-h-[88vh] flex items-center overflow-hidden" style="background:#0a1520;">
+  <!-- Radial glows -->
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 70% at 15% 60%, rgba(5,150,105,0.10) 0%, transparent 70%), radial-gradient(ellipse 40% 50% at 80% 20%, rgba(110,231,183,0.06) 0%, transparent 60%);"></div>
+
+  <div class="relative max-w-screen-xl mx-auto px-6 md:px-12 xl:px-20 py-28 w-full grid md:grid-cols-2 gap-12 items-center">
+
+    <!-- Left: copy -->
+    <div class="space-y-7">
+      <div class="section-label fade-up" style="background:#1a2e3a;border-color:#a7f3d0;color:#6ee7b7;width:fit-content;">Propuesta de servicios · Mayo 2025</div>
+      <h1 class="font-serif font-bold text-4xl md:text-5xl xl:text-[3.4rem] leading-[1.08] tracking-tight text-white fade-up delay-1">
+        Convierte @compras.prime.mx en un <span class="italic" style="color:#6ee7b7;">canal de ventas real.</span>
+      </h1>
+      <p class="text-lg leading-relaxed fade-up delay-2" style="color:#a8c4b8;">
+        Gestión de Instagram, Facebook y TikTok para tiendas de compras en México — contenido que genera DMs, no solo likes.
+      </p>
+      <div class="flex flex-wrap gap-3 fade-up delay-3">
+        <a href="#planes" class="btn-gold px-7 py-3.5 text-sm rounded-lg">Ver planes y precios</a>
+        <a href="#plan30" class="px-7 py-3.5 text-sm rounded-lg font-bold inline-flex items-center gap-2" style="border:1.5px solid rgba(110,231,183,0.35);color:#6ee7b7;background:transparent;border-radius:8px;text-decoration:none;transition:background 0.2s;">Ver plan de 30 días</a>
+      </div>
+    </div>
+
+    <!-- Right: phone + floating stats -->
+    <div class="hidden md:flex justify-center items-center fade-in delay-3">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=340&h=600&fit=crop&auto=format&q=80"
+             alt="Instagram en teléfono"
+             class="rounded-[2.5rem] w-[210px] shadow-2xl"
+             style="box-shadow:0 40px 90px rgba(0,0,0,0.55),0 0 0 1.5px rgba(110,231,183,0.18);">
+
+        <!-- Floating card 1 -->
+        <div class="float-card absolute -left-20 top-14 bg-white rounded-2xl px-4 py-3 text-center shadow-xl" style="min-width:88px;">
+          <p class="font-extrabold text-[1.6rem] leading-none text-[#0f1923]">+1K</p>
+          <p class="text-[11px] text-[#555] mt-0.5">vistas / Reel</p>
+        </div>
+
+        <!-- Floating card 2 -->
+        <div class="float-card-slow absolute -right-20 bottom-20 rounded-2xl px-4 py-3 text-center shadow-xl" style="background:#059669;min-width:88px;">
+          <p class="font-extrabold text-[1.6rem] leading-none text-white">20</p>
+          <p class="text-[11px] text-white/80 mt-0.5">DMs / sem</p>
+        </div>
+
+        <!-- Floating card 3 -->
+        <div class="float-card absolute -left-16 bottom-10 bg-white rounded-2xl px-4 py-3 text-center shadow-xl" style="min-width:88px;animation-delay:1.4s;">
+          <p class="font-extrabold text-[1.6rem] leading-none text-[#0f1923]">4–8%</p>
+          <p class="text-[11px] text-[#555] mt-0.5">engagement</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator absolute bottom-8 left-1/2 flex flex-col items-center gap-1.5">
+    <span class="text-[10px] uppercase tracking-widest" style="color:rgba(110,231,183,0.5);">scroll</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="rgba(110,231,183,0.45)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+
+<!-- ============================== SITUACIÓN ACTUAL ============================== -->
+<section class="px-6 md:px-12 xl:px-20 py-24 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+
+  <div class="text-center mb-14 fade-up">
+    <div class="section-label mx-auto" style="width:fit-content;">La oportunidad</div>
+    <h1 class="font-serif font-bold text-4xl md:text-5xl xl:text-[3.4rem] leading-[1.1] tracking-tight text-[#191c1d] max-w-3xl mx-auto">
+      La gente ya compra por Instagram. La pregunta es si <span class="italic text-[#059669]">te están encontrando a ti.</span>
+    </h1>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-14 items-start">
+
+    <div class="space-y-4">
+      <p class="text-[#191c1d] text-lg leading-relaxed">
+        Las tiendas que más crecen en México no son las que más invierten en publicidad. Son las que publican con consistencia en Facebook, Instagram y TikTok, muestran el producto con precio visible, y tienen a alguien contestando el WhatsApp.
+      </p>
+      <p class="text-[#555] leading-relaxed">
+        El formato que está funcionando ahorita es Reels cortos: 15 segundos, precio en los primeros 2 segundos, y un hook que detenga el scroll. No es producción cara. Es saber qué decir primero.
+      </p>
+      <p class="text-[#555] leading-relaxed">
+        Lo que hace la diferencia entre una cuenta que crece y una que se queda igual no es la cantidad de posts — es la estrategia detrás de cada uno. Eso es lo que nosotros ponemos.
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-[#f8f9fa] border border-[#a7f3d0] overflow-hidden slide-right delay-3" style="border-left: 4px solid #059669;">
+      <div class="px-6 pt-5 pb-2">
+        <p class="text-xs font-semibold text-[#059669] uppercase tracking-widest">Lo que construimos juntos</p>
+      </div>
+      <div class="px-6 pb-6 space-y-0">
+
+        <div class="divider-row flex justify-between items-center py-3" style="border-color: #a7f3d0;">
+          <span class="text-sm text-[#555]">Serie semanal "Lo que encontré"</span>
+          <span class="font-bold text-sm text-[#059669] bg-[#f0fdf4] border border-[#a7f3d0] px-2 py-0.5 rounded-full">Reel semanal</span>
+        </div>
+        <div class="divider-row flex justify-between items-center py-3" style="border-color: #a7f3d0;">
+          <span class="text-sm text-[#555]">Hauls de producto con precio visible</span>
+          <span class="font-bold text-sm text-[#059669] bg-[#f0fdf4] border border-[#a7f3d0] px-2 py-0.5 rounded-full">Carrusel semanal</span>
+        </div>
+        <div class="divider-row flex justify-between items-center py-3" style="border-color: #a7f3d0;">
+          <span class="text-sm text-[#555]">Stories diarias que activan el DM</span>
+          <span class="font-bold text-sm text-[#059669] bg-[#f0fdf4] border border-[#a7f3d0] px-2 py-0.5 rounded-full">Diario</span>
+        </div>
+        <div class="divider-row flex justify-between items-center py-3" style="border-color: #a7f3d0;">
+          <span class="text-sm text-[#555]">CTA "Comenta INFO" → WhatsApp automático</span>
+          <span class="font-bold text-sm text-[#0f1923] bg-[#eef2ff] border border-[#c7d7f8] px-2 py-0.5 rounded-full">En cada post</span>
+        </div>
+        <div class="flex justify-between items-center py-3">
+          <span class="text-sm text-[#555]">Reporte de métricas reales</span>
+          <span class="font-bold text-sm text-[#0f1923] bg-[#eef2ff] border border-[#c7d7f8] px-2 py-0.5 rounded-full">Mensual</span>
+        </div>
+
+      </div>
+      <div class="mx-6 mb-6 rounded-lg bg-white border border-[#a7f3d0] px-4 py-3">
+        <p class="text-sm text-[#059669]">Cada mes te mostramos exactamente qué funcionó, qué no, y qué cambiamos. Sin números inflados ni reportes vacíos.</p>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+
+<!-- ============================== PLANES ============================== -->
+<section id="planes" class="py-24 px-6 md:px-12 xl:px-20 bg-[#f8f9fa] border-y border-[#a7f3d0]">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-14 fade-up">
+      <div class="section-label mx-auto" style="width:fit-content;">Planes y precios</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight text-[#191c1d] mb-3">
+        Elige tu <span class="italic text-[#059669]">plan</span>
+      </h2>
+      <p class="text-[#555] text-base max-w-md mx-auto">
+        Todos los planes incluyen diseño, copywriting, calendario de contenido y reporte mensual. Plataformas según plan. Precios en MXN, IVA no incluido.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 plan-grid">
+
+      <!-- ── Plan Esencial ── -->
+      <div class="plan-card fade-up delay-1">
+        <div class="h-1 bg-gray-200"></div>
+        <div class="p-8 flex flex-col flex-1">
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-widest uppercase text-[#555] mb-2">Para comenzar</p>
+            <h3 class="font-serif font-bold text-2xl text-[#191c1d] mb-1">Plan Esencial</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="font-extrabold text-[2.6rem] leading-none text-[#0f1923]">$3,500</span>
+              <span class="text-sm text-[#555]">MXN / mes</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#f0faf5] text-[#059669] border border-[#a7f3d0] rounded-full px-2.5 py-0.5">Instagram</span>
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#f0f4ff] text-[#3b5bdb] border border-[#c5d0fa] rounded-full px-2.5 py-0.5">Facebook</span>
+            </div>
+          </div>
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span><strong class="text-[#191c1d]">12 publicaciones al mes</strong> en IG + Facebook</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Stories + posts de catálogo con precio visible</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Copywriting y hashtags estratégicos</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Calendario de contenido mensual</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Reporte mensual de métricas</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>CTA directo a WhatsApp en cada publicación</span>
+            </div>
+          </div>
+          <a href="https://wa.me/5215559652009?text=Hola%20Brota%20Digital%2C%20me%20interesa%20el%20Plan%20Esencial%20para%20%40compras.prime.mx" class="btn-ghost px-6 py-3 text-sm w-full">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+            Seleccionar plan
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Plan Profesional — FEATURED ── -->
+      <div class="plan-card featured relative fade-up delay-2">
+        <div class="absolute top-0 right-0">
+          <span class="inline-block bg-[#059669] text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-bl-lg rounded-tr-[14px]">Recomendado</span>
+        </div>
+        <div class="h-1 bg-[#0f1923]"></div>
+        <div class="p-8 flex flex-col flex-1 bg-gradient-to-b from-white to-[#f8f9fa]/60">
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-widest uppercase text-[#059669] mb-2">Mayor impacto</p>
+            <h3 class="font-serif font-bold text-2xl text-[#191c1d] mb-1">Plan Profesional</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="font-extrabold text-[2.6rem] leading-none text-[#0f1923]">$8,000</span>
+              <span class="text-sm text-[#555]">MXN / mes</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#f0faf5] text-[#059669] border border-[#a7f3d0] rounded-full px-2.5 py-0.5">Instagram</span>
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#f0f4ff] text-[#3b5bdb] border border-[#c5d0fa] rounded-full px-2.5 py-0.5">Facebook</span>
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#fff0f6] text-[#c2255c] border border-[#fcc2d7] rounded-full px-2.5 py-0.5">TikTok</span>
+            </div>
+          </div>
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span><strong class="text-[#191c1d]">20 publicaciones al mes</strong> en IG, Facebook y TikTok</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Stories diarias + encuestas activas de producto</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span><strong class="text-[#191c1d]">4 Reels/videos semanales</strong> para IG + TikTok (serie "Lo que encontré")</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span><strong class="text-[#191c1d]">Posts de venta en Facebook</strong> optimizados para grupos y feed</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Estrategia de contenido mensual personalizada</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span><strong class="text-[#191c1d]">Automatización de CTA</strong> a WhatsApp</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Gestión de comentarios y DMs (L-V)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Reporte mensual con análisis y ajustes</span>
+            </div>
+          </div>
+          <a href="https://wa.me/5215559652009?text=Hola%20Brota%20Digital%2C%20me%20interesa%20el%20Plan%20Profesional%20(%248%2C000)%20para%20%40compras.prime.mx" class="btn-primary px-6 py-3 text-sm w-full">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+            Seleccionar plan
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Plan Premium ── -->
+      <div class="plan-card fade-up delay-3">
+        <div class="h-1 bg-gray-200"></div>
+        <div class="p-8 flex flex-col flex-1">
+          <div class="mb-6">
+            <p class="text-xs font-semibold tracking-widest uppercase text-[#555] mb-2">Máxima presencia</p>
+            <h3 class="font-serif font-bold text-2xl text-[#191c1d] mb-1">Plan Premium</h3>
+            <div class="flex items-baseline gap-1 mt-3">
+              <span class="font-extrabold text-[2.6rem] leading-none text-[#0f1923]">$10,000</span>
+              <span class="text-sm text-[#555]">MXN / mes</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#f0faf5] text-[#059669] border border-[#a7f3d0] rounded-full px-2.5 py-0.5">Instagram</span>
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#f0f4ff] text-[#3b5bdb] border border-[#c5d0fa] rounded-full px-2.5 py-0.5">Facebook</span>
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#fff0f6] text-[#c2255c] border border-[#fcc2d7] rounded-full px-2.5 py-0.5">TikTok</span>
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide uppercase bg-[#fff8e6] text-[#e67700] border border-[#ffd8a8] rounded-full px-2.5 py-0.5">Meta Ads</span>
+            </div>
+          </div>
+          <div class="space-y-3 flex-1 mb-8">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Todo lo del plan Profesional</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span><strong class="text-[#191c1d]">Producción de Reels</strong> con edición profesional</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span><strong class="text-[#191c1d]">Gestión de Meta Ads</strong> (estrategia y configuración incluidas; presupuesto de anuncios por cuenta del cliente)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Automatización completa de WhatsApp</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span><strong class="text-[#191c1d]">Sesión estratégica mensual 1:1</strong> (videollamada)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Análisis de competencia trimestral</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+              <span>Respuesta prioritaria en menos de 24 horas</span>
+            </div>
+          </div>
+          <a href="https://wa.me/5215559652009?text=Hola%20Brota%20Digital%2C%20me%20interesa%20el%20Plan%20Premium%20para%20%40compras.prime.mx" class="btn-ghost px-6 py-3 text-sm w-full">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+            Seleccionar plan
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-center text-xs mt-8 text-[#555]">
+      Planes mensuales sin contrato de permanencia obligatorio. IVA no incluido.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ============================== ESTRATEGIA DE CONTENIDO ============================== -->
+<section class="py-24 px-6 md:px-12 xl:px-20 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-14 fade-up">
+      <div class="section-label mx-auto" style="width:fit-content;">Estrategia de contenido</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-[1.1] text-[#191c1d] max-w-2xl mx-auto">
+        El contenido que <span class="italic text-[#059669]">convierte.</span>
+      </h2>
+      <p class="text-[#555] text-base max-w-xl mx-auto mt-4 leading-relaxed">
+        Las cuentas de compras que más venden en México no tienen el feed más bonito. Tienen precios visibles, publican seguido, y cuando alguien comenta — la respuesta llega rápido. Eso es lo que construimos.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+
+      <div class="rounded-xl border border-[#e5e7eb] bg-[#f8f9fa] p-7 space-y-3 fade-up delay-1">
+        <div class="w-10 h-10 rounded-lg bg-[#f0fdf4] border border-[#a7f3d0] flex items-center justify-center">
+          <svg viewBox="0 0 20 20" fill="none" class="w-5 h-5"><path d="M10 2L3 7v11h5v-4h4v4h5V7L10 2z" stroke="#059669" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-lg text-[#191c1d]">Reels de descubrimiento</h3>
+        <p class="text-sm text-[#555] leading-relaxed">15 segundos, precio en pantalla desde el segundo 1. Hook que detiene el scroll antes de que piensen en deslizar. La producción no importa tanto como qué dices primero.</p>
+      </div>
+
+      <div class="rounded-xl border border-[#e5e7eb] bg-[#f8f9fa] p-7 space-y-3 fade-up delay-2">
+        <div class="w-10 h-10 rounded-lg bg-[#f0fdf4] border border-[#a7f3d0] flex items-center justify-center">
+          <svg viewBox="0 0 20 20" fill="none" class="w-5 h-5"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#059669" stroke-width="1.5"/><path d="M7 4v12M13 4v12" stroke="#059669" stroke-width="1.5"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-lg text-[#191c1d]">Carruseles de haul</h3>
+        <p class="text-sm text-[#555] leading-relaxed">5–8 productos por publicación, precio visible en cada slide, y "comenta INFO" en el último. El formato más guardado del nicho de compras.</p>
+      </div>
+
+      <div class="rounded-xl border border-[#e5e7eb] bg-[#f8f9fa] p-7 space-y-3 fade-up delay-3">
+        <div class="w-10 h-10 rounded-lg bg-[#f0fdf4] border border-[#a7f3d0] flex items-center justify-center">
+          <svg viewBox="0 0 20 20" fill="none" class="w-5 h-5"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="#059669" stroke-width="1.5"/><path d="M10 6v4l3 3" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-lg text-[#191c1d]">Serie "Lo que encontré"</h3>
+        <p class="text-sm text-[#555] leading-relaxed">La misma serie cada semana. Tu audiencia empieza a esperarla. Los formatos recurrentes generan más saves y shares que cualquier post único.</p>
+      </div>
+
+      <div class="rounded-xl border border-[#e5e7eb] bg-[#f8f9fa] p-7 space-y-3 fade-up delay-4">
+        <div class="w-10 h-10 rounded-lg bg-[#f0fdf4] border border-[#a7f3d0] flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="#059669" class="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        </div>
+        <h3 class="font-serif font-bold text-lg text-[#191c1d]">Automatización WhatsApp</h3>
+        <p class="text-sm text-[#555] leading-relaxed">"Comenta INFO" y el lead llega directo a WhatsApp sin que tengas que hacer nada. En México, el 98% de los mensajes de WhatsApp se abren. Ese es tu canal de cierre.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== PLAN 30 DÍAS ============================== -->
+<section id="plan30" class="py-20 px-6 md:px-12 xl:px-20 bg-[#0f1923]">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-12 fade-up">
+      <div class="section-label mx-auto" style="background:#1a2e3a; border-color:#a7f3d0; color:#6ee7b7; width:fit-content;">Plan de trabajo</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-[1.1] text-white max-w-2xl mx-auto">
+        Los primeros <span class="italic text-[#6ee7b7]">30 días.</span>
+      </h2>
+      <p class="text-[#a8c4b8] text-base max-w-xl mx-auto mt-4">
+        Esto es lo que pasa, semana por semana. No es una promesa vaga — es el plan concreto de qué publicamos, qué medimos y qué esperamos ver.
+      </p>
+    </div>
+
+    <!-- 4-week grid -->
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mb-10">
+
+      <!-- Semana 1 -->
+      <div class="rounded-xl p-6 border border-[#1e3a30] bg-[#091318] flex flex-col gap-4">
+        <div>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-[#6ee7b7]">Semana 1</span>
+          <p class="text-xs text-[#5a7a6e] mt-0.5">Días 1–7</p>
+        </div>
+        <h3 class="font-serif font-bold text-lg text-white leading-snug">Arrancamos y publicamos</h3>
+        <div class="space-y-2 flex-1">
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Bio optimizada con link directo a WhatsApp</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Primer Reel: "Lo que encontré esta semana" — presenta la cuenta con personalidad</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Carrusel: 4–5 productos disponibles, precio visible en cada slide</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Stories diarias desde el día 1</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">CTA activo: "Comenta INFO" → WhatsApp automático</span>
+          </div>
+        </div>
+        <div class="rounded-lg bg-[#0d1f18] border border-[#1e3a30] px-3 py-2.5">
+          <p class="text-[10px] font-bold text-[#6ee7b7] uppercase tracking-widest mb-1">Señal que buscamos</p>
+          <p class="text-xs text-[#a8c4b8]">Primeras DMs con preguntas de precio. Una es suficiente para confirmar que el contenido conectó.</p>
+        </div>
+      </div>
+
+      <!-- Semana 2 -->
+      <div class="rounded-xl p-6 border border-[#1e3a30] bg-[#091318] flex flex-col gap-4">
+        <div>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-[#6ee7b7]">Semana 2</span>
+          <p class="text-xs text-[#5a7a6e] mt-0.5">Días 8–14</p>
+        </div>
+        <h3 class="font-serif font-bold text-lg text-white leading-snug">Primeras señales reales</h3>
+        <div class="space-y-2 flex-1">
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Reel de haul con price reveal: "¿Cuánto crees que costó?"</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Reel de prueba social: "Esto se agotó en menos de 24 horas"</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Carrusel: detallitos para regalo bajo $300 — altamente guardable</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Encuestas en Stories: "¿Cuál te llevarías tú?" con A vs. B</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Respuesta a cada DM y comentario en la primera hora de publicación</span>
+          </div>
+        </div>
+        <div class="rounded-lg bg-[#0d1f18] border border-[#1e3a30] px-3 py-2.5">
+          <p class="text-[10px] font-bold text-[#6ee7b7] uppercase tracking-widest mb-1">Señal que buscamos</p>
+          <p class="text-xs text-[#a8c4b8]">Un Reel que pase 1,000 vistas. 3–8 DMs con intención real de compra en la semana.</p>
+        </div>
+      </div>
+
+      <!-- Semana 3 -->
+      <div class="rounded-xl p-6 border border-[#1e3a30] bg-[#091318] flex flex-col gap-4">
+        <div>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-[#6ee7b7]">Semana 3</span>
+          <p class="text-xs text-[#5a7a6e] mt-0.5">Días 15–21</p>
+        </div>
+        <h3 class="font-serif font-bold text-lg text-white leading-snug">El algoritmo empieza a distribuirte</h3>
+        <div class="space-y-2 flex-1">
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Reel de origen: cómo escogen los productos, la historia detrás de la tienda</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Carrusel de proceso: "Así elegimos qué comprar" — genera confianza</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Reel de nuevo inventario con haul completo</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Stories con countdown de stock limitado en un producto específico</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Primer análisis parcial: qué formato está jalando más</span>
+          </div>
+        </div>
+        <div class="rounded-lg bg-[#0d1f18] border border-[#1e3a30] px-3 py-2.5">
+          <p class="text-[10px] font-bold text-[#6ee7b7] uppercase tracking-widest mb-1">Señal que buscamos</p>
+          <p class="text-xs text-[#a8c4b8]">Guardados y compartidos subiendo — eso indica que el contenido vale más allá del scroll.</p>
+        </div>
+      </div>
+
+      <!-- Semana 4 -->
+      <div class="rounded-xl p-6 border border-[#059669]/40 bg-[#091318] flex flex-col gap-4" style="border-color: rgba(5,150,105,0.5);">
+        <div>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-[#6ee7b7]">Semana 4</span>
+          <p class="text-xs text-[#5a7a6e] mt-0.5">Días 22–30</p>
+        </div>
+        <h3 class="font-serif font-bold text-lg text-white leading-snug">Cierre y primer reporte</h3>
+        <div class="space-y-2 flex-1">
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#6ee7b7] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Reel: "Los más vendidos del mes" — prueba social acumulada</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#6ee7b7] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Carrusel: nuevo inventario con precio visible en cada slide</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#6ee7b7] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Stories: "quedan solo 3 piezas" con countdown real</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#6ee7b7] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Reporte del mes: qué funcionó, qué no, plan de mes 2</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#6ee7b7] flex-shrink-0"></span>
+            <span class="text-xs text-[#a8c4b8] leading-relaxed">Llamada de revisión para ajustar estrategia del siguiente mes</span>
+          </div>
+        </div>
+        <div class="rounded-lg bg-[#0d2518] border border-[#059669]/40 px-3 py-2.5">
+          <p class="text-[10px] font-bold text-[#6ee7b7] uppercase tracking-widest mb-1">Meta de cierre</p>
+          <p class="text-xs text-[#a8c4b8]">5–20 conversaciones activas por semana en WhatsApp y al menos una venta confirmada desde redes.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Qué mide el éxito real -->
+    <div class="rounded-xl border border-[#1e3a30] bg-[#091318] px-8 py-6 md:flex items-start gap-10">
+      <div class="mb-4 md:mb-0 md:w-1/3">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#6ee7b7] mb-2">Al día 30</p>
+        <h3 class="font-serif font-bold text-2xl text-white leading-snug">Así se ve un mes 1 exitoso</h3>
+        <p class="text-sm text-[#a8c4b8] mt-2">No medimos el éxito por seguidores. Lo medimos por conversaciones reales.</p>
+        <div class="mt-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 border border-[#059669]/50 bg-[#059669]/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0"></span>
+          <span class="text-[10px] font-bold text-[#6ee7b7] tracking-wide">Con Plan Profesional</span>
+        </div>
+        <p class="text-[11px] text-[#5a7a6e] mt-2 leading-relaxed">Con Plan Esencial los resultados son alcanzables — el ritmo es más gradual (12 posts/mes vs. 20) y la automatización de WhatsApp no está incluida.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-4 md:flex-1">
+        <div class="text-center">
+          <p class="font-extrabold text-3xl text-white">5–20</p>
+          <p class="text-xs text-[#6ee7b7] mt-1">DMs/WA con intención de compra por semana</p>
+        </div>
+        <div class="text-center">
+          <p class="font-extrabold text-3xl text-white counter" data-target="1000" data-prefix="+" data-suffix="">0</p>
+          <p class="text-xs text-[#6ee7b7] mt-1">vistas en al menos un Reel del mes</p>
+        </div>
+        <div class="text-center">
+          <p class="font-extrabold text-3xl text-white">4–8%</p>
+          <p class="text-xs text-[#6ee7b7] mt-1">engagement rate (promedio del nicho es 3.8%)</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================== POR QUÉ BROTA DIGITAL ============================== -->
+<section class="py-24 px-6 md:px-12 xl:px-20 bg-[#f8f9fa] border-t border-[#a7f3d0]">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-14 fade-up">
+      <div class="section-label mx-auto" style="width:fit-content;">Por qué Ximena</div>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-[1.1] text-[#191c1d] max-w-2xl mx-auto">
+        Resultados que <span class="italic text-[#059669]">se miden.</span>
+      </h2>
+      <p class="text-[#555] text-base max-w-xl mx-auto mt-4 leading-relaxed">
+        No te vamos a vender seguidores ni alcance inflado. Lo que sí te podemos decir es cuánta gente llegó a tu WhatsApp desde un post, cuáles Reels jalaron tráfico, y qué cambiar el siguiente mes.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-14 items-start">
+
+      <div class="space-y-5">
+        <p class="text-[#555] leading-relaxed">
+          Si tu hermano te pregunta si sirvió la inversión, quieres poder contestarle con algo concreto. Eso es exactamente lo que te damos cada mes: qué funcionó, qué no, y qué hacemos diferente.
+        </p>
+        <div class="space-y-4 pt-2">
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+            <span class="text-sm text-[#374151]">Contenido diseñado para el nicho de compras en México — no plantillas genéricas</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+            <span class="text-sm text-[#374151]">Copywriting con hooks probados para detener el scroll en 1–2 segundos</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+            <span class="text-sm text-[#374151]">Reporte mensual real: qué funcionó, qué no, y qué ajustamos el próximo mes</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+            <span class="text-sm text-[#374151]">CTA a WhatsApp — el canal de conversión más efectivo para ventas en México</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="check-icon mt-0.5 flex-shrink-0"><svg viewBox="0 0 16 16" fill="#059669" class="w-3 h-3"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg></div>
+            <span class="text-sm text-[#374151]">Sin permanencia forzada — el vínculo se renueva por resultados</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=340&fit=crop&auto=format&q=80"
+             alt="Resultados reales"
+             class="section-img mb-5 fade-in"
+             style="height:200px;">
+        <div class="cred-card p-6 space-y-0">
+          <p class="section-label-inline" style="margin-bottom:12px;">Ximena Villalpando — en números</p>
+          <div class="divider-row flex justify-between items-center py-3">
+            <span class="text-sm text-[#555]">Cuentas gestionadas</span>
+            <span class="font-extrabold text-2xl text-[#0f1923]">8+</span>
+          </div>
+          <div class="divider-row flex justify-between items-center py-3">
+            <span class="text-sm text-[#555]">Sectores</span>
+            <span class="font-bold text-sm text-[#191c1d]">E-commerce · Tiendas · Servicios</span>
+          </div>
+          <div class="divider-row flex justify-between items-center py-3">
+            <span class="text-sm text-[#555]">Posts producidos (histórico)</span>
+            <span class="font-extrabold text-2xl text-[#0f1923]">500+</span>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <span class="text-sm text-[#555]">Tiempo de entrega de contenido</span>
+            <span class="font-bold text-[#191c1d]">48 hrs</span>
+          </div>
+        </div>
+        <div class="rounded-xl p-6 bg-white border border-[#a7f3d0]">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-4 h-4 rounded-full bg-[#f0fdf4] flex items-center justify-center flex-shrink-0">
+              <svg viewBox="0 0 16 16" fill="#059669" class="w-2.5 h-2.5"><path d="M6.5 11.25L3 7.75l1.06-1.06L6.5 9.12l5.44-5.44L13 4.75z"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-[#191c1d]">Garantía de satisfacción</p>
+          </div>
+          <p class="text-sm text-[#555]">
+            Si al primer mes el trabajo no cumple lo que acordamos, hacemos los ajustes sin costo extra — hasta que quede bien. Sin pena de decirlo.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== PRÓXIMOS PASOS ============================== -->
+<section class="py-24 px-6 md:px-12 xl:px-20 bg-white border-t border-gray-100">
+  <div class="max-w-screen-xl mx-auto">
+
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-semibold text-[#059669] uppercase tracking-widest mb-3">Cómo iniciamos</span>
+      <h2 class="font-serif font-bold text-4xl md:text-5xl tracking-tight text-[#191c1d]">
+        Próximos <span class="italic text-[#059669]">pasos</span>
+      </h2>
+      <p class="text-[#555] mt-3 text-base max-w-md mx-auto">
+        Sin contratos largos. Sin papeleo. En menos de una semana tu cuenta ya tiene contenido publicado.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-0 relative">
+      <div class="hidden md:block absolute top-[52px] left-[calc(16.66%+26px)] right-[calc(16.66%+26px)] h-0.5 bg-[#a7f3d0] z-0"></div>
+
+      <div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0 fade-up">
+        <div class="step-circle mb-5">1</div>
+        <p class="text-xs font-semibold tracking-widest uppercase text-[#059669] mb-2">Hoy mismo</p>
+        <h3 class="font-serif font-bold text-lg text-[#191c1d] mb-2">Confirma tu plan</h3>
+        <p class="text-sm text-[#555] leading-relaxed">
+          Nos escribes por WhatsApp con el plan que elegiste. Un mensaje es suficiente — sin papeleo.
+        </p>
+      </div>
+
+      <div class="relative z-10 flex flex-col items-center text-center px-6 mb-10 md:mb-0 fade-up delay-2">
+        <div class="step-circle mb-5">2</div>
+        <p class="text-xs font-semibold tracking-widest uppercase text-[#059669] mb-2">Días 1–3</p>
+        <h3 class="font-serif font-bold text-lg text-[#191c1d] mb-2">Onboarding</h3>
+        <p class="text-sm text-[#555] leading-relaxed">
+          Sesión de brief: qué productos vendes, cuál es tu diferenciador, quién es tu comprador ideal y qué tono quieres para tu marca. Preparamos el plan editorial del primer mes.
+        </p>
+      </div>
+
+      <div class="relative z-10 flex flex-col items-center text-center px-6 fade-up delay-4">
+        <div class="step-circle mb-5">3</div>
+        <p class="text-xs font-semibold tracking-widest uppercase text-[#059669] mb-2">Día 7</p>
+        <h3 class="font-serif font-bold text-lg text-[#191c1d] mb-2">Primer contenido publicado</h3>
+        <p class="text-sm text-[#555] leading-relaxed">
+          En menos de una semana, @compras.prime.mx tiene su primer Reel y carrusel estratégico live — diseñados para crecer y convertir.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== CTA FINAL ============================== -->
+<section class="py-20 px-6 md:px-12 xl:px-20 bg-[#f8f9fa] border-t border-[#a7f3d0]">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="rounded-2xl overflow-hidden text-center px-10 md:px-20 py-16 md:py-20" style="background:#0f1923;">
+      <p class="text-xs font-bold tracking-widest uppercase mb-4" style="color:#6ee7b7;">Demos el siguiente paso</p>
+      <h2 class="font-serif font-bold text-4xl md:text-6xl text-white tracking-tight mb-4 italic">
+        ¿Iniciamos?
+      </h2>
+      <p class="text-lg mb-10 max-w-lg mx-auto" style="color:#a8c4b8;">
+        Un mensaje es suficiente. En menos de 24 horas te decimos fecha de inicio y qué necesitamos de tu parte para arrancar.
+      </p>
+      <a href="https://wa.me/5215559652009?text=Hola%20Brota%20Digital%2C%20quisiera%20iniciar%20la%20gesti%C3%B3n%20de%20redes%20para%20%40compras.prime.mx" class="btn-gold px-10 py-4 text-sm rounded-lg">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
+        Escribir por WhatsApp
+      </a>
+      <p class="mt-6 text-xs" style="color:#6b8c7e;">Ximena Villalpando · @ximevillalpando · Para @compras.prime.mx · Mayo 2025</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="bg-white border-t border-gray-100 py-8 px-6 md:px-12 xl:px-20">
+  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+
+    <div class="flex items-center gap-2">
+      <div class="w-2 h-2 rounded-full bg-[#059669]"></div>
+      <span class="font-bold text-sm tracking-tight text-[#191c1d]">Ximena Villalpando</span>
+    </div>
+
+    <p class="text-xs text-center text-[#555]">
+      Propuesta preparada para @compras.prime.mx · Válida 30 días · Documento confidencial
+    </p>
+
+    <span class="text-xs text-[#555] font-medium">Confidencial</span>
+
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered animations
+  const animObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up,.fade-in,.slide-right').forEach(el => animObserver.observe(el));
+
+  // Counter animation
+  function runCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const dur = 1600;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(target * eased).toLocaleString('es-MX') + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const ctrObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !e.target.dataset.done) {
+        e.target.dataset.done = '1';
+        runCounter(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => ctrObs.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+
+</body>
+</html>

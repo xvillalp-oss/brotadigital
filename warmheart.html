@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warm Heart — Agencia de Creadores · México</title>
+  <meta name="description" content="Warm Heart es una agencia de creadores humana-first. Conectamos marcas mexicanas con creadores auténticos. Donde las marcas se vuelven humanas." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────────
+       RESET + BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F4F1E2;
+      --brown:      #513229;
+      --blue:       #D8EBF9;
+      --peach:      #FCE6B7;
+      --sage:       #D7D4B1;
+      --near-black: #1a1a1a;
+      --white:      #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      background-color: var(--cream);
+      color: var(--brown);
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─────────────────────────────────────────────
+       GRAIN OVERLAY
+    ───────────────────────────────────────────── */
+    .grain {
+      position: relative;
+    }
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ─────────────────────────────────────────────
+       POLAROID CARDS
+    ───────────────────────────────────────────── */
+    .polaroid {
+      background: var(--white);
+      padding: 12px 12px 44px;
+      box-shadow: 3px 4px 18px rgba(81,50,41,0.18), 0 1px 4px rgba(81,50,41,0.08);
+      transform: rotate(-2deg);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+    }
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.025);
+      box-shadow: 6px 8px 28px rgba(81,50,41,0.22);
+    }
+    .polaroid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .polaroid-label {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--brown);
+      opacity: 0.7;
+    }
+
+    /* ─────────────────────────────────────────────
+       ANNOTATIONS
+    ───────────────────────────────────────────── */
+    .annotation {
+      font-family: 'Caveat', cursive;
+      font-size: 1.05rem;
+      color: var(--brown);
+      opacity: 0.72;
+      transform: rotate(-3deg);
+      display: inline-block;
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION LABEL
+    ───────────────────────────────────────────── */
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown);
+      opacity: 0.55;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* ─────────────────────────────────────────────
+       SCROLL ANIMATIONS
+    ───────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rotate-in {
+      opacity: 0;
+      transform: rotate(-5deg) scale(0.96);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .rotate-in.visible {
+      opacity: 1;
+      transform: rotate(var(--base-rotate, -2deg)) scale(1);
+    }
+
+    /* ─────────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(81,50,41,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--brown);
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--brown);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO SECTION
+    ───────────────────────────────────────────── */
+    .hero {
+      min-height: calc(100vh - 64px);
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero-left {
+      width: 60%;
+      padding: 80px 56px 80px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-agency-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--brown);
+      opacity: 0.6;
+      transform: rotate(-2deg);
+      display: inline-block;
+      margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+      line-height: 1.05;
+      color: var(--brown);
+      margin-bottom: 28px;
+      max-width: 560px;
+    }
+    .hero-headline em {
+      font-style: italic;
+    }
+
+    .hero-body {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: var(--brown);
+      opacity: 0.78;
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .btn-primary {
+      background: var(--brown);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 14px 28px;
+      border: 2px solid var(--brown);
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--brown);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--brown);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 14px 28px;
+      border: 2px solid var(--brown);
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      display: inline-block;
+    }
+    .btn-ghost:hover {
+      background: var(--brown);
+      color: var(--cream);
+    }
+
+    .btn-ghost-white {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 14px 28px;
+      border: 2px solid rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      display: inline-block;
+    }
+    .btn-ghost-white:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .btn-wa {
+      background: var(--brown);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 16px 32px;
+      border: 2px solid var(--brown);
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-wa:hover {
+      background: transparent;
+      color: var(--brown);
+    }
+
+    .hero-right {
+      width: 40%;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Collage area - absolutely positioned polaroids */
+    .collage-area {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 580px;
+    }
+
+    .polaroid-hero-1 {
+      position: absolute;
+      top: 48px;
+      left: -30px;
+      width: 200px;
+      height: 260px;
+      --base-rotate: -3deg;
+    }
+    .polaroid-hero-2 {
+      position: absolute;
+      top: 170px;
+      left: 130px;
+      width: 190px;
+      height: 250px;
+      --base-rotate: 2.5deg;
+      z-index: 3;
+    }
+    .polaroid-hero-3 {
+      position: absolute;
+      top: 340px;
+      left: 20px;
+      width: 180px;
+      height: 230px;
+      --base-rotate: -1.5deg;
+    }
+
+    .annotation-hero-1 {
+      position: absolute;
+      top: 38px;
+      left: 210px;
+      transform: rotate(8deg);
+      font-size: 0.95rem;
+    }
+    .annotation-hero-2 {
+      position: absolute;
+      top: 160px;
+      left: -40px;
+      transform: rotate(-12deg);
+      font-size: 0.9rem;
+    }
+    .annotation-hero-3 {
+      position: absolute;
+      bottom: 130px;
+      right: 20px;
+      transform: rotate(5deg);
+      font-size: 0.9rem;
+    }
+
+    /* ─────────────────────────────────────────────
+       MARQUEE TICKER
+    ───────────────────────────────────────────── */
+    .marquee-section {
+      background: var(--brown);
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      color: var(--white);
+      opacity: 0.9;
+      padding: 0 12px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─────────────────────────────────────────────
+       MANIFIESTO
+    ───────────────────────────────────────────── */
+    .manifiesto {
+      background: var(--cream);
+      padding: 120px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .manifiesto-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+    .manifiesto-left {
+      flex: 1.2;
+    }
+    .manifiesto-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+      line-height: 1.12;
+      color: var(--brown);
+      margin-bottom: 28px;
+      max-width: 600px;
+    }
+    .manifiesto-body {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--brown);
+      opacity: 0.78;
+      max-width: 540px;
+      margin-bottom: 56px;
+    }
+    .stats-row {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      text-align: left;
+    }
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      color: var(--brown);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brown);
+      opacity: 0.5;
+    }
+    .manifiesto-right {
+      flex: 0.75;
+      padding-top: 40px;
+    }
+    .torn-card {
+      background: var(--peach);
+      padding: 36px 32px 32px;
+      position: relative;
+      transform: rotate(1.5deg);
+      clip-path: polygon(0 0, 100% 2%, 99% 100%, 1% 98%);
+      box-shadow: 4px 6px 20px rgba(81,50,41,0.12);
+    }
+    .torn-card blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+    .torn-card-annotation {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--brown);
+      opacity: 0.6;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* ─────────────────────────────────────────────
+       ROSTER SECTION
+    ───────────────────────────────────────────── */
+    .roster {
+      background: var(--cream);
+      padding: 100px 40px 120px;
+      border-top: 1px solid rgba(81,50,41,0.08);
+    }
+    .roster-header {
+      max-width: 1160px;
+      margin: 0 auto 56px;
+    }
+    .roster-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3rem);
+      color: var(--brown);
+      margin-bottom: 12px;
+    }
+    .roster-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      color: var(--brown);
+      opacity: 0.65;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+    /* ── Creator Board (Wenzel editorial scrapbook style) ── */
+    .roster-boards {
+      max-width: 1160px;
+      margin: 0 auto 56px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .creator-board {
+      position: relative;
+      background: #F9F7EE;
+      min-height: 540px;
+      padding: 28px;
+      overflow: visible;
+      transition: transform 0.4s ease;
+    }
+    .creator-board:nth-child(1) { transform: rotate(-0.6deg); }
+    .creator-board:nth-child(2) { transform: rotate(0.8deg); }
+    .creator-board:nth-child(3) { transform: rotate(0.4deg); }
+    .creator-board:nth-child(4) { transform: rotate(-0.9deg); }
+    .creator-board:hover { transform: rotate(0deg) translateY(-4px) !important; }
+
+    /* Handwritten name */
+    .board-name {
+      font-family: 'Caveat', cursive;
+      font-size: 2.6rem;
+      color: var(--brown);
+      line-height: 1;
+      display: inline-block;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 3;
+    }
+    /* Main photo */
+    .board-photo-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 0;
+    }
+    .board-photo {
+      width: 52%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(18%) contrast(1.06) sepia(6%);
+      display: block;
+      transition: filter 0.4s ease;
+    }
+    .creator-board:hover .board-photo {
+      filter: grayscale(0%) contrast(1.05);
+    }
+    /* Info panel beside photo */
+    .board-info {
+      flex: 1;
+      padding: 12px 0 12px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .board-niche {
+      font-family: 'Caveat', cursive;
+      font-size: 1.05rem;
+      color: var(--brown);
+      opacity: 0.7;
+      line-height: 1.4;
+      transform: rotate(-1.5deg);
+      display: inline-block;
+    }
+    .board-followers {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown);
+      opacity: 0.38;
+    }
+    .board-tag {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--brown);
+      background: var(--peach);
+      padding: 3px 10px;
+      display: inline-block;
+      transform: rotate(-2deg);
+    }
+    .board-tag-blue {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--brown);
+      background: var(--blue);
+      padding: 3px 10px;
+      display: inline-block;
+      transform: rotate(1.5deg);
+    }
+    /* Scattered absolute doodles */
+    .board-doodle {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .board-annotation-abs {
+      position: absolute;
+      font-family: 'Caveat', cursive;
+      color: var(--brown);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 4;
+      line-height: 1.3;
+    }
+
+    .roster-cta {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ─────────────────────────────────────────────
+       SERVICIOS SECTION
+    ───────────────────────────────────────────── */
+    .servicios {
+      background: var(--brown);
+      padding: 100px 40px 120px;
+      position: relative;
+    }
+    .servicios-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--blue);
+      opacity: 0.85;
+      display: block;
+      margin-bottom: 16px;
+      transform: rotate(-1deg);
+      display: inline-block;
+    }
+    .servicios-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      color: var(--white);
+      margin-bottom: 56px;
+      max-width: 560px;
+      line-height: 1.12;
+    }
+    .servicios-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--blue);
+      padding: 36px 32px 44px;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+    .service-card:nth-child(2) {
+      transform: translateY(12px);
+    }
+    .service-card:nth-child(2):hover {
+      transform: translateY(8px);
+    }
+    .service-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+    .service-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--brown);
+      opacity: 0.78;
+    }
+    .service-annotation {
+      position: absolute;
+      bottom: 14px;
+      right: 16px;
+      font-family: 'Caveat', cursive;
+      font-size: 0.88rem;
+      color: var(--brown);
+      opacity: 0.55;
+      transform: rotate(2deg);
+    }
+    .service-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: var(--brown);
+      opacity: 0.1;
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      line-height: 1;
+    }
+
+    /* ─────────────────────────────────────────────
+       MARCAS / COLABORACIONES
+    ───────────────────────────────────────────── */
+    .marcas {
+      background: var(--cream);
+      padding: 110px 40px 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    .marcas-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .marcas-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      color: var(--brown);
+      margin-bottom: 12px;
+    }
+    .marcas-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      color: var(--brown);
+      opacity: 0.55;
+      margin-bottom: 64px;
+    }
+    .marcas-collage {
+      position: relative;
+      min-height: 380px;
+    }
+    .brand-name {
+      display: inline-block;
+      font-family: 'DM Serif Display', serif;
+      cursor: default;
+      transition: opacity 0.25s;
+    }
+    .brand-name:hover { opacity: 0.6; }
+
+    /* scattered layout via absolute positioning */
+    .brand-oxxo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 4.2rem;
+      color: var(--brown);
+      transform: rotate(-2deg);
+    }
+    .brand-starbucks {
+      position: absolute;
+      top: 20px;
+      left: 280px;
+      font-size: 2.4rem;
+      color: var(--sage);
+      filter: saturate(0.8);
+      transform: rotate(1.5deg);
+    }
+    .brand-nike {
+      position: absolute;
+      top: 120px;
+      left: 60px;
+      font-size: 5.5rem;
+      color: var(--peach);
+      transform: rotate(-1deg);
+    }
+    .brand-liverpool {
+      position: absolute;
+      top: 130px;
+      left: 420px;
+      font-size: 3rem;
+      color: var(--brown);
+      opacity: 0.55;
+      transform: rotate(2deg);
+    }
+    .brand-levis {
+      position: absolute;
+      top: 250px;
+      left: 20px;
+      font-size: 3.8rem;
+      color: var(--sage);
+      transform: rotate(-3deg);
+    }
+    .brand-spotify {
+      position: absolute;
+      top: 255px;
+      left: 340px;
+      font-size: 2.8rem;
+      color: var(--brown);
+      transform: rotate(1deg);
+    }
+
+    .brand-note-1 {
+      position: absolute;
+      top: 72px;
+      left: 610px;
+      font-family: 'Caveat', cursive;
+      font-size: 0.88rem;
+      color: var(--brown);
+      opacity: 0.45;
+      transform: rotate(5deg);
+    }
+    .brand-note-2 {
+      position: absolute;
+      top: 175px;
+      left: 600px;
+      font-family: 'Caveat', cursive;
+      font-size: 0.88rem;
+      color: var(--brown);
+      opacity: 0.45;
+      transform: rotate(-4deg);
+    }
+    .brand-note-3 {
+      position: absolute;
+      top: 292px;
+      left: 590px;
+      font-family: 'Caveat', cursive;
+      font-size: 0.88rem;
+      color: var(--brown);
+      opacity: 0.45;
+      transform: rotate(3deg);
+    }
+    .brand-note-4 {
+      position: absolute;
+      top: 10px;
+      left: 160px;
+      font-family: 'Caveat', cursive;
+      font-size: 0.82rem;
+      color: var(--brown);
+      opacity: 0.38;
+      transform: rotate(-6deg);
+    }
+
+    /* ─────────────────────────────────────────────
+       CTA / CONTACTO
+    ───────────────────────────────────────────── */
+    .contacto {
+      background: var(--sage);
+      padding: 120px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contacto::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .contacto-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .contacto-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      color: var(--brown);
+      margin-bottom: 20px;
+      line-height: 1.08;
+    }
+    .contacto-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.05rem;
+      color: var(--brown);
+      opacity: 0.72;
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .contacto-email {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--brown);
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 1px;
+      display: inline-block;
+      margin-bottom: 40px;
+      transition: opacity 0.25s;
+    }
+    .contacto-email:hover { opacity: 0.65; }
+    .contacto-annotation {
+      display: block;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--brown);
+      opacity: 0.6;
+      transform: rotate(-2deg);
+      margin-bottom: 36px;
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    .footer {
+      background: var(--brown);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      color: var(--cream);
+      opacity: 0.55;
+      letter-spacing: 0.04em;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-socials a {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      opacity: 0.55;
+      transition: opacity 0.2s;
+    }
+    .footer-socials a:hover { opacity: 1; }
+
+    /* ─────────────────────────────────────────────
+       DECORATIVE ELEMENTS
+    ───────────────────────────────────────────── */
+    .deco-line {
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: var(--brown);
+      opacity: 0.25;
+      vertical-align: middle;
+      margin: 0 12px;
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .roster-boards {
+        grid-template-columns: 1fr;
+      }
+      .servicios-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+      }
+      .service-card:nth-child(2) { transform: none; }
+      .marcas-collage {
+        min-height: 600px;
+      }
+      .brand-starbucks { left: 200px; top: 80px; }
+      .brand-nike { top: 160px; font-size: 4rem; }
+      .brand-liverpool { top: 260px; left: 220px; }
+      .brand-levis { top: 320px; }
+      .brand-spotify { top: 420px; left: 20px; }
+      .brand-note-1, .brand-note-2, .brand-note-3, .brand-note-4 { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero {
+        flex-direction: column;
+        min-height: auto;
+      }
+      .hero-left {
+        width: 100%;
+        padding: 60px 24px 40px;
+      }
+      .hero-right {
+        width: 100%;
+        min-height: 400px;
+      }
+      .collage-area {
+        min-height: 380px;
+      }
+      .polaroid-hero-1 {
+        left: 10px;
+        top: 20px;
+        width: 150px;
+        height: 200px;
+      }
+      .polaroid-hero-2 {
+        left: 160px;
+        top: 80px;
+        width: 150px;
+        height: 200px;
+      }
+      .polaroid-hero-3 {
+        display: none;
+      }
+      .annotation-hero-1, .annotation-hero-2, .annotation-hero-3 { display: none; }
+
+      .manifiesto { padding: 80px 24px; }
+      .manifiesto-inner {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .manifiesto-right { padding-top: 0; }
+      .stats-row { gap: 24px; }
+
+      .roster { padding: 80px 24px; }
+      .roster-boards {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .board-photo { width: 48%; }
+
+      .servicios { padding: 80px 24px; }
+      .servicios-grid { grid-template-columns: 1fr; }
+
+      .marcas { padding: 80px 24px; }
+      .marcas-collage {
+        min-height: 520px;
+      }
+      .brand-oxxo { font-size: 3rem; }
+      .brand-starbucks { font-size: 1.8rem; left: 180px; top: 60px; }
+      .brand-nike { font-size: 3.5rem; top: 120px; left: 20px; }
+      .brand-liverpool { font-size: 2.2rem; top: 220px; left: 140px; }
+      .brand-levis { font-size: 2.8rem; top: 300px; left: 10px; }
+      .brand-spotify { font-size: 2rem; top: 370px; left: 10px; }
+
+      .contacto { padding: 90px 24px; }
+      .footer { padding: 24px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 2.6rem; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .roster-boards { grid-template-columns: 1fr; }
+      .board-photo { width: 44%; }
+      .stats-row { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─────────────────────────────── -->
+  <nav class="nav" role="navigation" aria-label="Navegación principal">
+    <a href="#" class="nav-logo" aria-label="Warm Heart — inicio">Warm Heart</a>
+    <ul class="nav-links">
+      <li><a href="#creadores">Creadores</a></li>
+      <li><a href="#marcas-section">Marcas</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Abrir menú" onclick="this.nextElementSibling && document.querySelector('.nav-links').style.display = 'flex'">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── HERO ───────────────────────────────────── -->
+  <section class="hero grain" aria-label="Sección principal">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <span class="hero-agency-label fade-up">Agencia de creadores · México</span>
+
+      <h1 class="hero-headline fade-up" style="transition-delay: 0.1s;">
+        Donde las marcas se vuelven <em>humanas.</em>
+      </h1>
+
+      <p class="hero-body fade-up" style="transition-delay: 0.2s;">
+        Conectamos marcas mexicanas con creadores que no parecen anuncios. Personas reales que hablan a personas reales.
+      </p>
+
+      <div class="hero-ctas fade-up" style="transition-delay: 0.3s;">
+        <a href="#creadores" class="btn-primary">Ver roster</a>
+        <a href="#contacto" class="btn-ghost">Colaborar con nosotros</a>
+      </div>
+
+      <span class="annotation fade-up" style="transition-delay: 0.42s; margin-top: 4px;">↓ sin filtros, sin poses</span>
+    </div>
+
+    <!-- RIGHT — polaroid collage -->
+    <div class="hero-right" aria-hidden="true">
+      <div class="collage-area">
+
+        <div class="polaroid polaroid-hero-1 rotate-in" style="--base-rotate: -3deg; transition-delay: 0.25s;">
+          <img
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=400&fit=crop&auto=format&q=80"
+            alt="Creadora de contenido lifestyle"
+            width="200"
+            height="260"
+          />
+          <span class="polaroid-label">lifestyle</span>
+        </div>
+
+        <div class="polaroid polaroid-hero-2 rotate-in" style="--base-rotate: 2.5deg; transition-delay: 0.4s;">
+          <img
+            src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=400&fit=crop&auto=format&q=80"
+            alt="Creadora de contenido fashion"
+            width="190"
+            height="250"
+          />
+          <span class="polaroid-label">fashion</span>
+        </div>
+
+        <div class="polaroid polaroid-hero-3 rotate-in" style="--base-rotate: -1.5deg; transition-delay: 0.55s;">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&auto=format&q=80"
+            alt="Creador de contenido viajes"
+            width="180"
+            height="230"
+          />
+          <span class="polaroid-label">lifestyle &amp; travel</span>
+        </div>
+
+        <!-- handwritten annotations near photos -->
+        <span class="annotation annotation-hero-1">✦ auténticos</span>
+        <span class="annotation annotation-hero-2">sin scripts →</span>
+        <span class="annotation annotation-hero-3">personas reales ☻</span>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MARQUEE TICKER ─────────────────────────── -->
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Creadores auténticos</span>
+      <span>✦</span>
+      <span>Campañas que conectan</span>
+      <span>✦</span>
+      <span>Contenido que se siente real</span>
+      <span>✦</span>
+      <span>Marcas con alma</span>
+      <span>✦</span>
+      <span>Creadores auténticos</span>
+      <span>✦</span>
+      <span>Campañas que conectan</span>
+      <span>✦</span>
+      <span>Contenido que se siente real</span>
+      <span>✦</span>
+      <span>Marcas con alma</span>
+      <span>✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>Creadores auténticos</span>
+      <span>✦</span>
+      <span>Campañas que conectan</span>
+      <span>✦</span>
+      <span>Contenido que se siente real</span>
+      <span>✦</span>
+      <span>Marcas con alma</span>
+      <span>✦</span>
+      <span>Creadores auténticos</span>
+      <span>✦</span>
+      <span>Campañas que conectan</span>
+      <span>✦</span>
+      <span>Contenido que se siente real</span>
+      <span>✦</span>
+      <span>Marcas con alma</span>
+      <span>✦</span>
+    </div>
+  </div>
+
+  <!-- ─── MANIFIESTO ─────────────────────────────── -->
+  <section class="manifiesto grain" aria-labelledby="manifiesto-heading">
+    <div class="manifiesto-inner">
+      <div class="manifiesto-left">
+        <span class="section-label fade-up">Quiénes somos</span>
+        <h2 class="manifiesto-headline fade-up" id="manifiesto-heading" style="transition-delay: 0.08s;">
+          Las redes se sienten frías. Nosotros creemos en lo opuesto.
+        </h2>
+        <p class="manifiesto-body fade-up" style="transition-delay: 0.16s;">
+          Warm Heart nació de una pregunta sencilla: ¿por qué el contenido patrocinado se siente tan falso? Porque la mayoría de las agencias optimizan para el algoritmo, no para las personas. Nosotros trabajamos diferente.
+        </p>
+        <div class="stats-row fade-up" style="transition-delay: 0.24s;">
+          <div class="stat-item">
+            <div class="stat-number">12</div>
+            <div class="stat-desc">Creadores</div>
+          </div>
+          <div class="stat-item" style="border-left: 1px solid rgba(81,50,41,0.15); padding-left: 40px;">
+            <div class="stat-number">40+</div>
+            <div class="stat-desc">Campañas</div>
+          </div>
+          <div class="stat-item" style="border-left: 1px solid rgba(81,50,41,0.15); padding-left: 40px;">
+            <div class="stat-number">100%</div>
+            <div class="stat-desc">Orgánico</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="manifiesto-right fade-up" style="transition-delay: 0.32s;">
+        <div class="torn-card">
+          <blockquote>
+            "No buscamos influencers. Buscamos personas con algo real que decir."
+          </blockquote>
+          <span class="torn-card-annotation">— el corazón del asunto</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ROSTER ─────────────────────────────────── -->
+  <section class="roster" id="creadores" aria-labelledby="roster-heading">
+    <div class="roster-header">
+      <span class="section-label fade-up">Nuestro roster</span>
+      <h2 class="roster-headline fade-up" id="roster-heading" style="transition-delay: 0.08s;">Personas, no perfiles.</h2>
+      <p class="roster-sub fade-up" style="transition-delay: 0.14s;">Cada creador en Warm Heart tiene algo genuino que decir. Aquí algunos de ellos.</p>
+    </div>
+
+    <div class="roster-boards">
+
+      <!-- ── Creator 1: Sofía ── -->
+      <article class="creator-board fade-up" tabindex="0" style="transition-delay:0.05s;">
+        <!-- scattered doodles -->
+        <svg class="board-doodle" style="top:12px;right:18px;width:70px;opacity:0.18;" viewBox="0 0 80 40" fill="none"><path d="M4 28 C12 8 40 34 58 14 S74 30 76 20" stroke="#513229" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="board-doodle" style="bottom:28px;right:14px;width:52px;opacity:0.14;" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="26" stroke="#513229" stroke-width="1.5"/><circle cx="30" cy="30" r="14" stroke="#513229" stroke-width="1" stroke-dasharray="3 4"/></svg>
+        <svg class="board-doodle" style="top:200px;right:8px;width:44px;opacity:0.2;" viewBox="0 0 50 80" fill="none"><path d="M10 10 L40 10 L40 70 L10 70 Z" stroke="#513229" stroke-width="1.6" stroke-linecap="round"/><line x1="10" y1="24" x2="40" y2="24" stroke="#513229" stroke-width="1"/><line x1="10" y1="38" x2="30" y2="38" stroke="#513229" stroke-width="1"/></svg>
+        <!-- annotation top-right -->
+        <span class="board-annotation-abs" style="top:18px;right:80px;font-size:0.82rem;transform:rotate(2deg);">contenido real ↓</span>
+        <!-- annotation bottom -->
+        <span class="board-annotation-abs" style="bottom:16px;left:28px;font-size:0.8rem;transform:rotate(-2deg);opacity:0.45;">lifestyle · viajes · México</span>
+
+        <div class="board-name">Sofía R.</div>
+        <div class="board-photo-wrap">
+          <img class="board-photo" src="https://images.unsplash.com/photo-1524504388447-48c96d90da75?w=360&h=480&fit=crop&auto=format&q=80" alt="Sofía R. — Lifestyle & Travel" loading="lazy" width="360" height="480"/>
+          <div class="board-info">
+            <div>
+              <span class="board-niche">Lifestyle<br>&amp; Travel</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <span class="board-tag">85K seg.</span>
+              <span class="board-tag-blue">IG · TT</span>
+            </div>
+            <div>
+              <div class="board-followers">Engagement</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--brown);">6.2%</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Creator 2: Marco ── -->
+      <article class="creator-board fade-up" tabindex="0" style="transition-delay:0.12s;background:#F2EFE3;">
+        <!-- doodles -->
+        <svg class="board-doodle" style="top:8px;right:12px;width:80px;opacity:0.15;" viewBox="0 0 90 50" fill="none"><path d="M6 40 Q20 10 45 25 Q65 38 84 12" stroke="#513229" stroke-width="2.4" stroke-linecap="round"/><path d="M10 44 Q22 18 50 32" stroke="#513229" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg>
+        <svg class="board-doodle" style="bottom:40px;right:10px;width:48px;opacity:0.18;" viewBox="0 0 60 60" fill="none"><rect x="6" y="6" width="48" height="48" rx="2" stroke="#513229" stroke-width="1.8"/><rect x="14" y="14" width="32" height="32" rx="1" stroke="#513229" stroke-width="1" stroke-dasharray="4 3"/></svg>
+        <svg class="board-doodle" style="top:190px;right:6px;width:42px;opacity:0.13;" viewBox="0 0 50 30" fill="none"><path d="M5 25 C15 5 35 25 45 5" stroke="#513229" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="board-annotation-abs" style="top:16px;right:88px;font-size:0.85rem;transform:rotate(-1.5deg);">moda sin filtros</span>
+        <span class="board-annotation-abs" style="bottom:14px;left:28px;font-size:0.8rem;transform:rotate(1.5deg);opacity:0.42;">CDMX · cultura urbana</span>
+
+        <div class="board-name">Marco T.</div>
+        <div class="board-photo-wrap">
+          <img class="board-photo" src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=360&h=480&fit=crop&auto=format&q=80" alt="Marco T. — Moda & Cultura" loading="lazy" width="360" height="480"/>
+          <div class="board-info">
+            <div>
+              <span class="board-niche">Moda<br>&amp; Cultura</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <span class="board-tag">120K seg.</span>
+              <span class="board-tag-blue">IG · YT</span>
+            </div>
+            <div>
+              <div class="board-followers">Engagement</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--brown);">4.8%</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Creator 3: Valeria ── -->
+      <article class="creator-board fade-up" tabindex="0" style="transition-delay:0.19s;background:#EEF2E8;">
+        <svg class="board-doodle" style="top:10px;right:14px;width:64px;opacity:0.16;" viewBox="0 0 70 70" fill="none"><path d="M35 8 C52 8 62 20 62 35 S52 62 35 62 8 52 8 35 18 8 35 8Z" stroke="#513229" stroke-width="1.8" stroke-dasharray="5 3"/><path d="M35 18 C44 18 52 26 52 35 S44 52 35 52 18 44 18 35 26 18 35 18Z" stroke="#513229" stroke-width="1"/></svg>
+        <svg class="board-doodle" style="bottom:32px;right:12px;width:50px;opacity:0.15;" viewBox="0 0 60 40" fill="none"><path d="M5 35 L15 10 L30 28 L42 12 L55 35" stroke="#513229" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="board-annotation-abs" style="top:18px;right:76px;font-size:0.82rem;transform:rotate(3deg);">100% orgánico ✦</span>
+        <span class="board-annotation-abs" style="bottom:14px;left:28px;font-size:0.8rem;transform:rotate(-1deg);opacity:0.42;">food · bienestar · recetas</span>
+
+        <div class="board-name">Valeria M.</div>
+        <div class="board-photo-wrap">
+          <img class="board-photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=360&h=480&fit=crop&auto=format&q=80" alt="Valeria M. — Food & Wellness" loading="lazy" width="360" height="480"/>
+          <div class="board-info">
+            <div>
+              <span class="board-niche">Food<br>&amp; Wellness</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <span class="board-tag">67K seg.</span>
+              <span class="board-tag-blue">IG · TT</span>
+            </div>
+            <div>
+              <div class="board-followers">Engagement</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--brown);">8.1%</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Creator 4: Andrés ── -->
+      <article class="creator-board fade-up" tabindex="0" style="transition-delay:0.26s;background:#EDE8F5;">
+        <svg class="board-doodle" style="top:12px;right:16px;width:72px;opacity:0.14;" viewBox="0 0 80 60" fill="none"><path d="M8 50 C25 20 55 40 72 10" stroke="#513229" stroke-width="2.5" stroke-linecap="round"/><path d="M12 54 C30 28 58 46 74 18" stroke="#513229" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/></svg>
+        <svg class="board-doodle" style="bottom:28px;right:10px;width:46px;opacity:0.17;" viewBox="0 0 55 55" fill="none"><path d="M8 8 L47 8 L47 47 L8 47 Z" stroke="#513229" stroke-width="1.8" stroke-linecap="round"/><path d="M18 20 L37 20 M18 28 L32 28 M18 36 L28 36" stroke="#513229" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span class="board-annotation-abs" style="top:16px;right:82px;font-size:0.84rem;transform:rotate(-2deg);">tech · humor · honesto</span>
+        <span class="board-annotation-abs" style="bottom:14px;left:28px;font-size:0.8rem;transform:rotate(2deg);opacity:0.42;">200K · alcance nacional</span>
+
+        <div class="board-name">Andrés L.</div>
+        <div class="board-photo-wrap">
+          <img class="board-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=360&h=480&fit=crop&auto=format&q=80" alt="Andrés L. — Tech & Humor" loading="lazy" width="360" height="480"/>
+          <div class="board-info">
+            <div>
+              <span class="board-niche">Tech<br>&amp; Humor</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <span class="board-tag">200K seg.</span>
+              <span class="board-tag-blue">YT · IG</span>
+            </div>
+            <div>
+              <div class="board-followers">Engagement</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--brown);">5.4%</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="roster-cta fade-up">
+      <a href="#contacto" class="btn-ghost">Ver todos los creadores →</a>
+    </div>
+  </section>
+
+  <!-- ─── SERVICIOS ──────────────────────────────── -->
+  <section class="servicios grain" id="servicios" aria-labelledby="servicios-heading">
+    <div class="servicios-inner">
+      <span class="servicios-label fade-up">para marcas</span>
+      <h2 class="servicios-headline fade-up" id="servicios-heading" style="transition-delay: 0.08s;">
+        Campañas que no parecen campañas.
+      </h2>
+
+      <div class="servicios-grid">
+
+        <div class="service-card fade-up" style="transition-delay: 0.12s;">
+          <span class="service-number" aria-hidden="true">01</span>
+          <h3 class="service-title">Seeding</h3>
+          <p class="service-desc">Enviamos tus productos a creadores que genuinamente los usarían. Sin scripts, sin poses. Solo contenido que nace de la experiencia real.</p>
+          <span class="service-annotation">↗ el más popular</span>
+        </div>
+
+        <div class="service-card fade-up" style="transition-delay: 0.2s;">
+          <span class="service-number" aria-hidden="true">02</span>
+          <h3 class="service-title">Campañas integradas</h3>
+          <p class="service-desc">Co-creamos contenido donde tu marca aparece como parte natural de la vida del creador. No una interrupción, sino una invitación.</p>
+          <span class="service-annotation">↗ nuestro favorito</span>
+        </div>
+
+        <div class="service-card fade-up" style="transition-delay: 0.28s;">
+          <span class="service-number" aria-hidden="true">03</span>
+          <h3 class="service-title">Embajadores</h3>
+          <p class="service-desc">Relaciones de largo plazo. El creador se convierte en la cara humana de tu marca — alguien que la gente ya conoce y en quien confía.</p>
+          <span class="service-annotation">↗ largo plazo</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MARCAS / COLABORACIONES ───────────────── -->
+  <section class="marcas" id="marcas-section" aria-labelledby="marcas-heading">
+    <div class="marcas-inner">
+      <span class="section-label fade-up">Han confiado en nosotros</span>
+      <h2 class="marcas-headline fade-up" id="marcas-heading" style="transition-delay: 0.06s;">Marcas que apuestan por lo humano.</h2>
+      <p class="marcas-sub fade-up" style="transition-delay: 0.12s;">Algunos de nuestros colaboradores</p>
+
+      <div class="marcas-collage fade-up" style="transition-delay: 0.2s;" aria-label="Marcas colaboradoras: Oxxo, Starbucks México, Nike MX, Liverpool, Levi's, Spotify">
+
+        <span class="brand-name brand-oxxo">Oxxo</span>
+        <span class="brand-name brand-starbucks">Starbucks México</span>
+        <span class="brand-name brand-nike">Nike MX</span>
+        <span class="brand-name brand-liverpool">Liverpool</span>
+        <span class="brand-name brand-levis">Levi's</span>
+        <span class="brand-name brand-spotify">Spotify</span>
+
+        <!-- handwritten notes -->
+        <span class="brand-note-1">2024 ✓</span>
+        <span class="brand-note-2">campaña viral →</span>
+        <span class="brand-note-3">ongoing ♡</span>
+        <span class="brand-note-4">desde 2023</span>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA / CONTACTO ─────────────────────────── -->
+  <section class="contacto" id="contacto" aria-labelledby="contacto-heading">
+    <div class="contacto-inner">
+      <span class="section-label fade-up" style="display: block; text-align: center; margin-bottom: 20px;">Hablemos</span>
+      <h2 class="contacto-headline fade-up" id="contacto-heading" style="transition-delay: 0.08s;">
+        ¿Tu marca quiere sentirse real?
+      </h2>
+      <p class="contacto-sub fade-up" style="transition-delay: 0.14s;">
+        Cuéntanos sobre tu proyecto. Sin decks ni formularios eternos — solo una conversación.
+      </p>
+      <a href="mailto:hola@warmheart.mx" class="contacto-email fade-up" style="transition-delay: 0.2s;">
+        hola@warmheart.mx
+      </a>
+      <span class="contacto-annotation fade-up" style="transition-delay: 0.26s;">respondemos en menos de 24 horas ☀</span>
+      <div class="fade-up" style="transition-delay: 0.32s;">
+        <a href="https://wa.me/5215500000000?text=Hola%20Warm%20Heart%2C%20me%20gustar%C3%ADa%20platicar%20sobre%20una%20colaboraci%C3%B3n" class="btn-wa" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <p class="footer-copy">Warm Heart © 2025 · Agencia de creadores · México</p>
+    <nav class="footer-socials" aria-label="Redes sociales">
+      <a href="#" aria-label="Instagram de Warm Heart">IG</a>
+      <a href="#" aria-label="TikTok de Warm Heart">TT</a>
+      <a href="#" aria-label="LinkedIn de Warm Heart">LI</a>
+    </nav>
+  </footer>
+
+  <!-- ─── SCROLL ANIMATIONS ──────────────────────── -->
+  <script>
+    (function () {
+      'use strict';
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.fade-up, .rotate-in').forEach(function (el) {
+        observer.observe(el);
+      });
+
+      // Trigger hero elements immediately since they're in view
+      document.querySelectorAll('.hero .fade-up, .hero .rotate-in').forEach(function (el) {
+        setTimeout(function () {
+          el.classList.add('visible');
+        }, 120);
+      });
+    })();
+  </script>
+
+</body>
+</html>

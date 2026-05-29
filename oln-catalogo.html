@@ -168,7 +168,7 @@
 
 <!-- ══════════ PRELOADER ══════════ -->
 <div id="preloader">
-  <div class="pre-logo">OLN <span>TIRES</span></div>
+  <img src="oln/logo-white.png" alt="OLN Tires" style="height:80px;width:auto;object-fit:contain;opacity:0;transform:translateY(16px);animation:preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards;"/>
   <div class="pre-bar"></div>
 </div>
 
@@ -176,15 +176,13 @@
 <nav id="main-nav">
   <div class="nav-inner">
     <!-- Logo -->
-    <a href="propuesta-olntires.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
-      <svg viewBox="0 0 18 24" width="13" height="18"><polygon points="0,0 18,12 0,24" fill="#E31E24"/></svg>
-      <span id="nav-logo-text" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:.15em;text-transform:uppercase;color:#fff;">OLN <span style="color:#E31E24;">TIRES</span></span>
+    <a href="propuesta-olntires.html" style="display:flex;align-items:center;text-decoration:none;">
+      <img src="oln/logo-white.png" alt="OLN Tires" style="height:32px;width:auto;object-fit:contain;"/>
     </a>
     <!-- Links -->
     <div style="display:flex;gap:36px;align-items:center;">
-      <a href="oln-catalogo.html" class="nav-link nav-link-active">Catálogo</a>
+      <a href="oln-catalogo.html" class="nav-link nav-link-active">Stock</a>
       <a href="oln-marcas.html" class="nav-link">Marcas</a>
-      <a href="oln-marcas.html#catalogos-pdf" class="nav-link">Catálogos PDF</a>
       <a href="oln-marcas.html#nosotros" class="nav-link">Nosotros</a>
       <a href="oln-contacto.html" class="nav-link">Contacto</a>
     </div>
@@ -443,7 +441,7 @@
     </div>
 
     <div class="prod" data-id="r1" data-cat="agricola">
-      <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:#1a1a1a;"><svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="#555" stroke-width="3"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22"/><circle cx="50" cy="50" r="6" fill="#555"/><line x1="50" y1="14" x2="50" y2="28"/><line x1="50" y1="72" x2="50" y2="86"/><line x1="14" y1="50" x2="28" y2="50"/><line x1="72" y1="50" x2="86" y2="50"/></svg></div>
+      <img src="oln/agricola-r1.png" alt="ALLWIN R1 - Llanta Agrícola" class="prod-img">
       <div class="prod-body">
         <span class="prod-brand-label">ALLWIN</span>
         <span class="prod-name">R1</span>
@@ -542,14 +540,42 @@
     </div>
 
     <!-- ── RINES ── -->
-    <div class="prod" data-cat="rin" style="grid-column:span 2;background:linear-gradient(135deg,#111 0%,#1a1020 100%);border:1px solid rgba(168,85,247,.2);">
-      <div class="prod-body" style="padding:32px;">
-        <span class="prod-brand-label" style="color:#c084fc;">OLN · Rines</span>
-        <span class="prod-name" style="font-size:1.7rem;">Acero · Aluminio · Pedido</span>
-        <span class="prod-desc" style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.45);margin-top:8px;">Surtimos rines de acero y aluminio en medidas para auto, camioneta y camión. Disponibilidad inmediata o sobre pedido — solicita medida exacta y nosotros te confirmamos stock y precio.</span>
-        <div class="prod-footer" style="margin-top:18px;">
-          <span class="prod-badge badge-rin">Cotización directa</span>
-          <a href="https://wa.me/525633880151?text=Hola!%20Necesito%20cotizar%20rines.%20Medida:" target="_blank" rel="noopener" class="prod-link" style="color:#c084fc;">WhatsApp →</a>
+    <!-- ── RINES · UNEMON ── -->
+    <div class="prod" data-id="unemon-x" data-cat="rin">
+      <img src="oln/rines-productos/unemon-x.png" alt="UNEMON RIN" class="prod-img">
+      <div class="prod-body">
+        <span class="prod-brand-label">UNEMON</span>
+        <span class="prod-name">RIN ACERO</span>
+        <span class="prod-desc">Rines de acero para auto, camioneta y camión.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-rin">Rín</span>
+          <a href="https://wa.me/525633880151?text=Hola!%20Necesito%20cotizar%20rines%20UNEMON" target="_blank" rel="noopener" class="prod-link" style="color:#c084fc;">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="unemon-y" data-cat="rin">
+      <img src="oln/rines-productos/unemon-y.png" alt="UNEMON RIN ALUMINIO" class="prod-img">
+      <div class="prod-body">
+        <span class="prod-brand-label">UNEMON</span>
+        <span class="prod-name">RIN ALUMINIO</span>
+        <span class="prod-desc">Rines de aluminio para auto, camioneta y camión.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-rin">Rín</span>
+          <a href="https://wa.me/525633880151?text=Hola!%20Necesito%20cotizar%20rines%20UNEMON%20aluminio" target="_blank" rel="noopener" class="prod-link" style="color:#c084fc;">Cotizar →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod" data-id="unemon-z" data-cat="rin">
+      <img src="oln/rines-productos/unemon-z.png" alt="UNEMON RIN ESPECIAL" class="prod-img">
+      <div class="prod-body">
+        <span class="prod-brand-label">UNEMON</span>
+        <span class="prod-name">RIN ESPECIAL</span>
+        <span class="prod-desc">Rines especiales para aplicaciones industriales.</span>
+        <div class="prod-footer">
+          <span class="prod-badge badge-rin">Rín</span>
+          <a href="https://wa.me/525633880151?text=Hola!%20Necesito%20cotizar%20rines%20especiales" target="_blank" rel="noopener" class="prod-link" style="color:#c084fc;">Cotizar →</a>
         </div>
       </div>
     </div>
@@ -559,6 +585,69 @@
   <div class="reveal reveal-d2" style="text-align:center;margin-top:40px;">
     <p style="color:rgba(255,255,255,.45);font-size:13px;margin-bottom:16px;">¿No encuentras tu medida? Tenemos acceso a cientos de SKUs.</p>
     <a href="oln-contacto.html" class="btn-red">Consultar disponibilidad</a>
+  </div>
+</section>
+
+<!-- ══════════ CATÁLOGOS POR MARCA ══════════ -->
+<section id="catalogos-pdf" style="padding:80px 40px;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.06);">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="section-label reveal">Catálogos por marca</div>
+    <h2 class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);text-transform:uppercase;line-height:.95;color:#fff;margin-bottom:48px;">
+      Explora el catálogo <span style="color:#E31E24;">técnico</span>
+    </h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;">
+
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:all .3s cubic-bezier(.2,.8,.2,1);" onmouseover="this.style.borderColor='rgba(227,30,36,.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)';this.style.transform='none'">
+        <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:600;">Auto · Camioneta · SUV</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;color:#fff;">RDX <span style="color:#E31E24;">AUTO</span></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.55;flex:1;">Llantas de pasajero y camioneta. Modelos H/T, DH y AT para carretera, ciudad y todo terreno.</p>
+        <a href="oln-catalogo-rdx.html" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E31E24;padding:10px 14px;border:1px solid rgba(227,30,36,.3);border-radius:8px;transition:all .2s;text-decoration:none;align-self:flex-start;" onmouseover="this.style.background='#E31E24';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#E31E24'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:all .3s cubic-bezier(.2,.8,.2,1);" onmouseover="this.style.borderColor='rgba(227,30,36,.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)';this.style.transform='none'">
+        <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:600;">Camión · Carga regional</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;color:#fff;">LANVI<span style="color:#E31E24;">GATOR</span></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.55;flex:1;">Línea TBR para camión carretero. Modelos S201, WIDER S207 y D808 — alta densidad y kilometraje.</p>
+        <a href="oln-catalogo-lanvigator.html" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E31E24;padding:10px 14px;border:1px solid rgba(227,30,36,.3);border-radius:8px;transition:all .2s;text-decoration:none;align-self:flex-start;" onmouseover="this.style.background='#E31E24';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#E31E24'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:all .3s cubic-bezier(.2,.8,.2,1);" onmouseover="this.style.borderColor='rgba(227,30,36,.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)';this.style.transform='none'">
+        <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:600;">Camión · Larga distancia</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;color:#fff;">ROAD<span style="color:#E31E24;">X</span></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.55;flex:1;">Eje direccional y de tracción. Líneas ST 355, D871, RH 620 y RH 621 para reparto y carretera.</p>
+        <a href="oln-catalogo-roadx.html" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E31E24;padding:10px 14px;border:1px solid rgba(227,30,36,.3);border-radius:8px;transition:all .2s;text-decoration:none;align-self:flex-start;" onmouseover="this.style.background='#E31E24';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#E31E24'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:all .3s cubic-bezier(.2,.8,.2,1);" onmouseover="this.style.borderColor='rgba(227,30,36,.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)';this.style.transform='none'">
+        <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:600;">Camión · Flotillas</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;color:#fff;">EMPI<span style="color:#E31E24;">RE</span></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.55;flex:1;">Llantas de flotilla con diseño anti-desgaste irregular. Modelos EM698 (tracción) y EM699 (dirección).</p>
+        <a href="oln-catalogo-empire.html" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E31E24;padding:10px 14px;border:1px solid rgba(227,30,36,.3);border-radius:8px;transition:all .2s;text-decoration:none;align-self:flex-start;" onmouseover="this.style.background='#E31E24';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#E31E24'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:all .3s cubic-bezier(.2,.8,.2,1);" onmouseover="this.style.borderColor='rgba(227,30,36,.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)';this.style.transform='none'">
+        <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:600;">Industrial · Agrícola</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;color:#fff;">ALL<span style="color:#E31E24;">WIN</span></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.55;flex:1;">Maquinaria pesada, montacargas y agricultura. Series SKS, F2/F3, E-3/L-3, G2/L2, R1 y R4.</p>
+        <a href="oln-catalogo-allwin.html" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E31E24;padding:10px 14px;border:1px solid rgba(227,30,36,.3);border-radius:8px;transition:all .2s;text-decoration:none;align-self:flex-start;" onmouseover="this.style.background='#E31E24';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#E31E24'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver Catálogo
+        </a>
+      </div>
+
+    </div>
   </div>
 </section>
 

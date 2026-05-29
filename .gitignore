@@ -24,3 +24,4 @@ node_modules/
 oln/cache_*.jpg
 oln/*.pdf
 ellen/
+.vercel

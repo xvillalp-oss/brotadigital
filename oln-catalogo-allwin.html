@@ -11,6 +11,19 @@
   h1,h2,h3 { font-family:'Barlow Condensed',sans-serif; }
   a { text-decoration:none; color:inherit; }
 
+  /* PRELOADER */
+  #preloader {
+    position: fixed; inset: 0; z-index: 9999; background: #0a0a0a;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #preloader.done { opacity: 0; visibility: hidden; }
+  .pre-bar {
+    width: 0; height: 2px; background: #E31E24;
+    animation: preBar .8s cubic-bezier(.4,0,.2,1) .3s forwards;
+  }
+  @keyframes preBar { to { width: 120px; } }
+
   /* NAV */
   .nav { position:fixed; top:0; width:100%; z-index:50; transition:background .4s ease, border-color .4s ease; border-bottom:1px solid rgba(255,255,255,.1); }
   .nav-inner { max-width:1400px; margin:0 auto; padding:18px 40px; display:flex; justify-content:space-between; align-items:center; }
@@ -49,6 +62,29 @@
 </style>
 </head>
 <body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <img src="oln/logo-white.png" alt="OLN Tires" style="height:80px;width:auto;object-fit:contain;opacity:0;transform:translateY(16px);animation:preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards;"/>
+  <div class="pre-bar"></div>
+</div>
+
+<style>
+  @keyframes preIn { to { opacity: 1; transform: translateY(0); } }
+</style>
+
+<script>
+  (function() {
+    window.addEventListener('load', function() {
+      var preloader = document.getElementById('preloader');
+      if (preloader) {
+        setTimeout(function() {
+          preloader.classList.add('done');
+        }, 1200);
+      }
+    });
+  })();
+</script>
 
 <!-- NAV -->
 <nav class="nav" id="main-nav" style="background:transparent;">

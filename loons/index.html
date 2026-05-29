@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loons Balloons | Decoración con Globos en CDMX</title>
+  <meta name="description" content="Decoración con globos para eventos en CDMX. Baby showers, bautizos, empresas, arcos y mamparas. Cotiza por WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: var(--dark); position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero__balloons {
+      position: absolute; inset: 0; z-index: 0;
+      display: flex; align-items: flex-end; padding: 0 5%;
+      gap: 2%; opacity: 0.15;
+    }
+    .balloon {
+      flex: 1; min-height: 120px;
+      border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+      position: relative;
+    }
+    .balloon::after {
+      content: ''; position: absolute; bottom: -20px; left: 50%;
+      transform: translateX(-50%); width: 1px; height: 28px;
+      background: rgba(255,255,255,.4);
+    }
+    .b1 { background: var(--pink); height: 42vh; }
+    .b2 { background: var(--yellow); height: 56vh; }
+    .b3 { background: var(--lilac); height: 36vh; }
+    .b4 { background: var(--mint); height: 64vh; }
+    .b5 { background: var(--coral); height: 44vh; }
+    .b6 { background: var(--pink); height: 70vh; }
+    .b7 { background: var(--yellow); height: 38vh; }
+    .b8 { background: var(--lilac); height: 50vh; }
+    .hero__content {
+      position: relative; z-index: 1;
+      max-width: var(--max); margin: 0 auto;
+      padding: 0 clamp(24px,5vw,80px); width: 100%;
+    }
+    .hero__tag {
+      display: inline-block; background: var(--yellow); color: var(--black);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero__h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px,10vw,130px); font-weight: 300;
+      line-height: 0.95; color: var(--white); letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .hero__h1 em { font-style: italic; color: var(--pink); }
+    .hero__sub {
+      font-size: clamp(15px,1.5vw,18px); color: rgba(255,255,255,.5);
+      max-width: 500px; line-height: 1.7; margin-bottom: 44px;
+    }
+    .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* ── SERVICIOS PREVIEW ── */
+    .svc-preview { padding: var(--py) 0; }
+    .svc-preview .container { display: flex; flex-direction: column; gap: 48px; }
+    .svc-preview__header { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+    .svc-strip {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+    }
+    @media (max-width: 900px) { .svc-strip { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 540px) { .svc-strip { grid-template-columns: 1fr 1fr; } }
+    .svc-tile {
+      background: var(--white); padding: 32px 24px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: transform .2s;
+    }
+    .svc-tile:hover { transform: translateY(-3px); }
+    .svc-tile__dot { width: 40px; height: 40px; border-radius: 50%; }
+    .svc-tile__name {
+      font-family: var(--font-display); font-size: 18px;
+      font-weight: 400; font-style: italic; letter-spacing: -0.01em;
+    }
+    .svc-tile__desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+    .t1 .svc-tile__dot { background: var(--pink); }
+    .t2 .svc-tile__dot { background: var(--yellow); }
+    .t3 .svc-tile__dot { background: var(--lilac); }
+    .t4 .svc-tile__dot { background: var(--mint); }
+    .t5 .svc-tile__dot { background: var(--coral); }
+
+    /* ── GALERIA PREVIEW ── */
+    .galeria-preview { background: var(--dark); padding: var(--py) 0; }
+    .galeria-preview .container { display: flex; flex-direction: column; gap: 48px; }
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 8px;
+    }
+    @media (max-width: 768px) {
+      .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
+      .gm-main { grid-column: span 2; }
+    }
+    .gallery-mosaic__item {
+      border-radius: 6px; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; position: relative;
+    }
+    .gm-main { grid-row: span 2; }
+    .gallery-mosaic__item .icon {
+      width: 52px; height: 66px;
+      border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+      position: relative;
+    }
+    .gallery-mosaic__item .icon::after {
+      content: ''; position: absolute; bottom: -12px; left: 50%;
+      transform: translateX(-50%); width: 1px; height: 16px;
+      background: rgba(255,255,255,.3);
+    }
+    .gallery-mosaic__item .lbl {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,.4);
+      margin-top: 8px;
+    }
+    .gm1 { background: rgba(242,167,195,.15); }
+    .gm1 .icon { background: var(--pink); }
+    .gm2 { background: rgba(249,224,75,.12); }
+    .gm2 .icon { background: var(--yellow); }
+    .gm3 { background: rgba(201,184,240,.15); }
+    .gm3 .icon { background: var(--lilac); }
+    .gm4 { background: rgba(168,221,196,.12); }
+    .gm4 .icon { background: var(--mint); }
+    .gm5 { background: rgba(240,122,106,.15); }
+    .gm5 .icon { background: var(--coral); }
+
+    /* ── PROCESO ── */
+    .proceso { padding: var(--py) 0; }
+    .proceso .container { display: flex; flex-direction: column; gap: 56px; }
+    .steps {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    }
+    @media (max-width: 768px) { .steps { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    .step {
+      padding-right: 32px;
+      border-right: 1px solid rgba(0,0,0,.08);
+    }
+    .step:last-child { border-right: none; padding-right: 0; }
+    .step__num {
+      font-family: var(--font-display); font-size: 60px; font-weight: 300;
+      font-style: italic; color: rgba(0,0,0,.07); line-height: 1; margin-bottom: 6px;
+    }
+    .step__title {
+      font-family: var(--font-display); font-size: 19px;
+      font-weight: 400; font-style: italic; margin-bottom: 10px;
+    }
+    .step__desc { font-size: 13px; color: var(--gray); line-height: 1.65; }
+  </style>
+</head>
+<body>
+  <a href="#main" style="position:absolute;top:-100px;left:16px;z-index:9999;background:var(--yellow);color:var(--black);padding:8px 16px;font-size:14px;border-radius:4px;transition:top .2s;" onfocus="this.style.top='16px'" onblur="this.style.top='-100px'">Saltar al contenido</a>
+
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <div class="nav__inner">
+      <a href="/loons/" class="nav__logo" aria-label="Loons Balloons inicio">Loons <em>Balloons</em></a>
+      <ul class="nav__links" role="list">
+        <li><a href="/loons/servicios/">Servicios</a></li>
+        <li><a href="/loons/galeria/">Galería</a></li>
+        <li><a href="/loons/contacto/">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="nav__cta">Cotiza aquí</a>
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" id="burger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu" role="menu">
+      <a href="/loons/servicios/">Servicios</a>
+      <a href="/loons/galeria/">Galería</a>
+      <a href="/loons/contacto/">Contacto</a>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="nav__mobile-cta">Cotiza aquí</a>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__balloons" aria-hidden="true">
+        <div class="balloon b1"></div><div class="balloon b2"></div>
+        <div class="balloon b3"></div><div class="balloon b4"></div>
+        <div class="balloon b5"></div><div class="balloon b6"></div>
+        <div class="balloon b7"></div><div class="balloon b8"></div>
+      </div>
+      <div class="hero__content">
+        <span class="hero__tag">🎈 CDMX · Decoración con globos</span>
+        <h1 class="hero__h1" id="hero-heading">
+          Party<br><em>Rockers</em>
+        </h1>
+        <p class="hero__sub">Arcos, mamparas y decoraciones con globos para que tu evento sea inolvidable. Baby showers, bautizos, empresas y más.</p>
+        <div class="hero__actions">
+          <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="btn-yellow">Cotiza tu evento →</a>
+          <a href="/loons/galeria/" class="btn-ghost-dark">Ver trabajos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS PREVIEW -->
+    <section class="svc-preview reveal" aria-labelledby="svc-heading">
+      <div class="container">
+        <div class="svc-preview__header">
+          <div>
+            <p class="section-label">Servicios</p>
+            <h2 class="section-h2" id="svc-heading">Todo para tu <em>fiesta perfecta</em></h2>
+          </div>
+          <a href="/loons/servicios/" class="btn-outline">Ver todos →</a>
+        </div>
+        <div class="svc-strip">
+          <div class="svc-tile t1 reveal">
+            <div class="svc-tile__dot"></div>
+            <p class="svc-tile__name">Baby Shower</p>
+            <p class="svc-tile__desc">Decoraciones delicadas y personalizadas para dar la bienvenida.</p>
+          </div>
+          <div class="svc-tile t2 reveal">
+            <div class="svc-tile__dot"></div>
+            <p class="svc-tile__name">Bautizos</p>
+            <p class="svc-tile__desc">Ambientaciones elegantes para el día más especial.</p>
+          </div>
+          <div class="svc-tile t3 reveal">
+            <div class="svc-tile__dot"></div>
+            <p class="svc-tile__name">Empresas</p>
+            <p class="svc-tile__desc">Decoraciones corporativas con branding y colores de tu marca.</p>
+          </div>
+          <div class="svc-tile t4 reveal">
+            <div class="svc-tile__dot"></div>
+            <p class="svc-tile__name">Arcos</p>
+            <p class="svc-tile__desc">Arcos orgánicos y geométricos en todos los tamaños.</p>
+          </div>
+          <div class="svc-tile t5 reveal">
+            <div class="svc-tile__dot"></div>
+            <p class="svc-tile__name">Mamparas</p>
+            <p class="svc-tile__desc">Fondos decorados para fotos y escenarios de tu evento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA PREVIEW -->
+    <section class="galeria-preview" aria-labelledby="gal-heading">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px;">
+          <div>
+            <p class="section-label section-label--light">Galería</p>
+            <h2 class="section-h2 light" id="gal-heading">Trabajos <em>recientes</em></h2>
+          </div>
+          <a href="/loons/galeria/" class="btn-ghost-dark">Ver todo →</a>
+        </div>
+        <div class="gallery-mosaic">
+          <div class="gallery-mosaic__item gm1 gm-main">
+            <div class="icon"></div><span class="lbl">Baby Shower</span>
+          </div>
+          <div class="gallery-mosaic__item gm2">
+            <div class="icon"></div><span class="lbl">Arco</span>
+          </div>
+          <div class="gallery-mosaic__item gm3">
+            <div class="icon"></div><span class="lbl">Empresas</span>
+          </div>
+          <div class="gallery-mosaic__item gm4">
+            <div class="icon"></div><span class="lbl">Bautizo</span>
+          </div>
+          <div class="gallery-mosaic__item gm5">
+            <div class="icon"></div><span class="lbl">Mampara</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="proceso reveal" aria-labelledby="proc-heading">
+      <div class="container">
+        <div>
+          <p class="section-label">¿Cómo funciona?</p>
+          <h2 class="section-h2" id="proc-heading">Simple y <em>sin complicaciones</em></h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">01</div>
+            <h3 class="step__title">Cuéntanos tu evento</h3>
+            <p class="step__desc">Escríbenos por WhatsApp con la fecha, lugar y tipo de evento.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">02</div>
+            <h3 class="step__title">Diseñamos tu propuesta</h3>
+            <p class="step__desc">Te enviamos opciones de decoración y colores adaptadas a tu presupuesto.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">03</div>
+            <h3 class="step__title">Confirmamos y apartamos</h3>
+            <p class="step__desc">Con un anticipo reservamos tu fecha.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">04</div>
+            <h3 class="step__title">Llegamos a montar</h3>
+            <p class="step__desc">El día de tu evento llegamos a tiempo y dejamos todo listo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner reveal">
+      <span class="cta-banner__deco" aria-hidden="true">🎈</span>
+      <h2 class="cta-banner__h2">¿Ya tienes fecha?<br>Cuéntanos tu evento.</h2>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="btn-dark">Cotiza por WhatsApp →</a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">Loons <em>Balloons</em></div>
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="/loons/servicios/">Servicios</a>
+        <a href="/loons/galeria/">Galería</a>
+        <a href="/loons/contacto/">Contacto</a>
+      </nav>
+      <span>© 2025 Loons Balloons · CDMX</span>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.style.borderBottomColor = window.scrollY > 40 ? 'rgba(0,0,0,.1)' : ''; }, { passive: true });
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); io.unobserve(x.target); } }), { threshold: 0.08 });
+      reveals.forEach(el => io.observe(el));
+    } else { reveals.forEach(el => el.classList.add('visible')); }
+  </script>
+</body>
+</html>

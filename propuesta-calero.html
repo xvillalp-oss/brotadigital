@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Calero — Propuesta Sitio Web · Brota Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap"/>
+<style>
+:root{
+  --bg:#E6D9C8;
+  --bg-warm:#DDCDB8;
+  --bg-dark:#F5EDE2;
+  --ink:#700402;
+  --ink-2:rgba(112,4,2,.72);
+  --ink-3:rgba(112,4,2,.42);
+  --accent:#B32917;
+  --rule:rgba(112,4,2,.12);
+  --cream:#FBF6EF;
+  --dark:#2A0C08;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;font-weight:400;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;letter-spacing:.01em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+.container{max-width:1100px;margin:0 auto;padding:0 40px}
+.label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:var(--dark);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:80px 40px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url('calero-hero.jpg') center/cover no-repeat;
+  opacity:.22;
+}
+.hero__eyebrow{
+  font-size:11px;letter-spacing:.4em;text-transform:uppercase;
+  color:rgba(230,217,200,.55);margin-bottom:32px;
+  position:relative;
+}
+.hero__logo{
+  font-size:clamp(80px,15vw,160px);font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;line-height:.9;
+  color:var(--bg);position:relative;
+  margin-bottom:28px;
+}
+.hero__logo span{color:var(--accent)}
+.hero__sub{
+  font-size:clamp(13px,1.6vw,16px);font-weight:300;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(230,217,200,.7);
+  position:relative;margin-bottom:56px;
+}
+.hero__pill{
+  display:inline-block;border:1px solid rgba(230,217,200,.28);
+  padding:12px 28px;border-radius:100px;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(230,217,200,.7);position:relative;
+}
+.hero__scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(230,217,200,.4);
+  animation:bounce 2.2s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ── INTRO ── */
+.intro{padding:120px 0 80px;text-align:center}
+.intro__title{font-size:clamp(32px,5vw,58px);font-weight:700;line-height:1.1;margin-bottom:24px}
+.intro__title em{font-style:normal;color:var(--accent)}
+.intro__p{font-size:17px;font-weight:300;line-height:1.75;color:var(--ink-2);max-width:640px;margin:0 auto}
+
+/* ── MOCKUP ── */
+.mockup-wrap{
+  padding:0 0 100px;display:flex;justify-content:center;
+}
+.mockup{
+  width:min(860px,100%);
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 32px 80px rgba(42,12,8,.18),0 8px 24px rgba(42,12,8,.1);
+  border:1px solid var(--rule);
+  background:var(--dark);
+}
+.mockup__bar{
+  background:#1C0907;height:40px;display:flex;align-items:center;padding:0 18px;gap:7px;
+}
+.mockup__dot{width:11px;height:11px;border-radius:50%}
+.mockup__dot:nth-child(1){background:#E74C3C}
+.mockup__dot:nth-child(2){background:#E67E22}
+.mockup__dot:nth-child(3){background:#2ECC71}
+.mockup__url{
+  margin:0 auto;background:rgba(255,255,255,.07);
+  border-radius:6px;padding:4px 16px;
+  font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.04em;
+}
+.mockup__screen{
+  width:100%;aspect-ratio:16/9;
+  background:var(--dark);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.mockup__screen::before{
+  content:'';position:absolute;inset:0;
+  background:url('calero-hero.jpg') center/cover;opacity:.25;
+}
+.mockup__inner{position:relative;z-index:2;text-align:center}
+.mockup__wordmark{
+  font-size:clamp(36px,7vw,84px);font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--bg);line-height:1;margin-bottom:14px;
+}
+.mockup__tag{
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(230,217,200,.55);
+}
+.mockup__nav{
+  position:absolute;top:0;left:0;right:0;height:44px;
+  background:rgba(42,12,8,.7);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;z-index:3;
+}
+.mockup__nav-logo{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--bg)}
+.mockup__nav-icon{font-size:16px;color:rgba(230,217,200,.6)}
+.mockup__badge{
+  position:absolute;bottom:20px;right:20px;z-index:3;
+  background:var(--accent);color:#fff;
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  padding:6px 14px;border-radius:100px;
+  font-weight:600;
+}
+
+/* ── FEATURES ── */
+.features{padding:100px 0}
+.features__head{text-align:center;margin-bottom:72px}
+.features__head h2{font-size:clamp(28px,4vw,48px);font-weight:700;margin-bottom:16px}
+.features__head p{font-size:15px;color:var(--ink-2);font-weight:300;max-width:500px;margin:0 auto}
+.features__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:768px){.features__grid{grid-template-columns:1fr}}
+.feat{
+  background:var(--bg-dark);padding:44px 36px;
+  transition:background .25s;
+}
+.feat:hover{background:var(--bg-warm)}
+.feat__icon{font-size:28px;margin-bottom:22px}
+.feat__title{font-size:18px;font-weight:600;margin-bottom:10px}
+.feat__p{font-size:13px;line-height:1.75;color:var(--ink-2);font-weight:300}
+.feat__list{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.feat__list li{
+  font-size:12px;color:var(--ink-2);padding-left:16px;position:relative;
+}
+.feat__list li::before{
+  content:'—';position:absolute;left:0;color:var(--accent);font-size:11px;
+}
+
+/* ── PAGES ── */
+.pages{padding:0 0 100px;background:var(--bg-warm)}
+.pages .container{padding-top:80px;padding-bottom:80px}
+.pages__head{margin-bottom:56px}
+.pages__head h2{font-size:clamp(26px,4vw,44px);font-weight:700;margin-bottom:12px}
+.pages__head p{font-size:15px;color:var(--ink-2);font-weight:300}
+.pages__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.pages__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.pages__grid{grid-template-columns:1fr}}
+.page-card{
+  background:var(--bg);border-radius:12px;padding:28px 24px;
+  border:1px solid var(--rule);
+}
+.page-card__num{
+  font-size:11px;letter-spacing:.25em;color:var(--ink-3);
+  text-transform:uppercase;margin-bottom:10px;
+}
+.page-card__name{font-size:17px;font-weight:600;margin-bottom:6px}
+.page-card__p{font-size:12px;color:var(--ink-2);line-height:1.65}
+.page-card--accent{background:var(--ink);color:var(--bg)}
+.page-card--accent .page-card__num{color:rgba(230,217,200,.5)}
+.page-card--accent .page-card__p{color:rgba(230,217,200,.7)}
+
+/* ── CART SPOTLIGHT ── */
+.cart-spot{padding:100px 0;text-align:center}
+.cart-spot__title{font-size:clamp(30px,5vw,56px);font-weight:700;line-height:1.1;margin-bottom:20px}
+.cart-spot__title em{font-style:normal;color:var(--accent)}
+.cart-spot__sub{font-size:16px;font-weight:300;color:var(--ink-2);max-width:520px;margin:0 auto 56px}
+.cart-demo{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  max-width:700px;margin:0 auto;border-radius:16px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(42,12,8,.12);
+}
+@media(max-width:600px){.cart-demo{grid-template-columns:1fr}}
+.cart-step{
+  background:var(--bg-dark);padding:36px 32px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:12px;
+}
+.cart-step__n{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--ink);color:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;flex-shrink:0;
+}
+.cart-step__title{font-size:15px;font-weight:600}
+.cart-step__p{font-size:12px;color:var(--ink-2);line-height:1.65}
+.cart-step--accent{background:var(--ink);color:var(--bg)}
+.cart-step--accent .cart-step__n{background:var(--bg);color:var(--ink)}
+.cart-step--accent .cart-step__p{color:rgba(230,217,200,.72)}
+.cart-spot__note{
+  margin-top:36px;font-size:13px;color:var(--ink-3);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.cart-spot__note strong{color:var(--ink-2)}
+
+/* ── PROCESO ── */
+.proceso{padding:100px 0;background:var(--bg-warm)}
+.proceso .container{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:768px){.proceso .container{grid-template-columns:1fr;gap:48px}}
+.proceso__left h2{font-size:clamp(28px,4vw,46px);font-weight:700;margin-bottom:20px}
+.proceso__left p{font-size:15px;font-weight:300;color:var(--ink-2);line-height:1.75}
+.proceso__steps{display:flex;flex-direction:column;gap:0}
+.step{
+  display:flex;gap:24px;padding:28px 0;
+  border-bottom:1px solid var(--rule);
+}
+.step:last-child{border-bottom:none}
+.step__n{
+  flex-shrink:0;width:36px;height:36px;border-radius:50%;
+  border:1.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;color:var(--ink);
+}
+.step__content h4{font-size:15px;font-weight:600;margin-bottom:5px}
+.step__content p{font-size:13px;color:var(--ink-2);line-height:1.65}
+
+/* ── PAGO ONLINE ── */
+.pago{padding:100px 0;background:var(--bg-warm)}
+.pago .container{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+@media(max-width:768px){.pago .container{grid-template-columns:1fr}}
+.pago__head{grid-column:1/-1;text-align:center;padding-bottom:64px}
+.pago__head h2{font-size:clamp(26px,4vw,44px);font-weight:700;margin-bottom:14px}
+.pago__head p{font-size:15px;color:var(--ink-2);font-weight:300;max-width:520px;margin:0 auto}
+.plat{background:var(--bg-dark);padding:44px 40px}
+.plat__logo{font-size:22px;font-weight:800;letter-spacing:.02em;margin-bottom:8px}
+.plat__logo span{color:var(--accent)}
+.plat__badge{
+  display:inline-block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  background:var(--ink);color:var(--bg);
+  padding:4px 12px;border-radius:100px;margin-bottom:20px;
+}
+.plat__p{font-size:13px;color:var(--ink-2);line-height:1.75;margin-bottom:24px}
+.plat__fees{display:flex;flex-direction:column;gap:8px}
+.plat__fee{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;padding-bottom:8px;border-bottom:1px solid var(--rule);
+}
+.plat__fee:last-child{border-bottom:none}
+.plat__fee-label{color:var(--ink-2)}
+.plat__fee-val{font-weight:600;color:var(--ink)}
+.plat__fee-val.green{color:#2e7d32}
+.plat--rec{background:var(--ink);color:var(--bg)}
+.plat--rec .plat__p{color:rgba(230,217,200,.72)}
+.plat--rec .plat__fee-label{color:rgba(230,217,200,.6)}
+.plat--rec .plat__fee-val{color:var(--bg)}
+.plat--rec .plat__fee-val.green{color:#81c784}
+.plat--rec .plat__fee{border-bottom-color:rgba(230,217,200,.15)}
+.pago__note{
+  grid-column:1/-1;text-align:center;
+  padding:32px 40px;background:rgba(112,4,2,.06);
+  font-size:13px;color:var(--ink-2);line-height:1.75;
+}
+.pago__note strong{color:var(--ink)}
+
+/* ── INVERSION ── */
+.inversion{padding:120px 0;text-align:center}
+.inv__label{font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--ink-3);margin-bottom:24px}
+.inv__title{font-size:clamp(30px,5vw,56px);font-weight:700;margin-bottom:16px}
+.inv__sub{font-size:16px;font-weight:300;color:var(--ink-2);max-width:440px;margin:0 auto 64px}
+.inv__plans{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  max-width:900px;margin:0 auto;
+}
+@media(max-width:700px){.inv__plans{grid-template-columns:1fr}}
+.inv__card{
+  background:var(--bg-dark);color:var(--ink);
+  border-radius:20px;padding:48px 40px;text-align:left;
+  border:1px solid var(--rule);position:relative;
+}
+.inv__card--dark{
+  background:var(--ink);color:var(--bg);
+  border-color:var(--ink);
+}
+.inv__card--dark .inv__currency{color:rgba(230,217,200,.55)}
+.inv__card--dark .inv__list li{color:rgba(230,217,200,.8)}
+.inv__card--dark .inv__note-inner{color:rgba(230,217,200,.5)}
+@media(max-width:500px){.inv__card{padding:36px 28px}}
+.inv__recommended{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:#fff;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  padding:5px 16px;border-radius:100px;white-space:nowrap;
+}
+.inv__card-label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.inv__card--dark .inv__card-label{color:rgba(230,217,200,.5)}
+.inv__price{font-size:52px;font-weight:800;line-height:1;margin-bottom:6px}
+.inv__price sub{font-size:16px;font-weight:400;vertical-align:middle}
+.inv__currency{font-size:13px;color:var(--ink-3);margin-bottom:28px}
+.inv__list{display:flex;flex-direction:column;gap:9px;margin-bottom:36px}
+.inv__list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:13px;color:var(--ink-2);line-height:1.5;
+}
+.inv__list li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+.inv__list li.extra::before{content:'＋';color:#2e7d32}
+.inv__cta{
+  display:block;width:100%;
+  background:var(--ink);color:var(--bg);
+  font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:15px 20px;border-radius:100px;
+  text-align:center;cursor:pointer;
+  transition:background .2s,color .2s;border:none;
+}
+.inv__card--dark .inv__cta{background:var(--bg);color:var(--ink)}
+.inv__cta:hover{background:var(--accent);color:#fff}
+.inv__card--dark .inv__cta:hover{background:var(--accent);color:#fff}
+.inv__note-inner{margin-top:16px;font-size:11px;color:var(--ink-3);line-height:1.6;text-align:center}
+.inv__note{margin-top:40px;font-size:12px;color:var(--ink-3);line-height:1.65}
+.inv__note strong{color:var(--ink-2)}
+
+/* ── FOOTER ── */
+.footer{background:var(--dark);color:var(--bg);padding:60px 0;text-align:center}
+.footer__logo{font-size:14px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;opacity:.9}
+.footer__p{font-size:12px;color:rgba(230,217,200,.4);letter-spacing:.05em}
+</style>
+</head>
+<body>
+
+<!-- REVEAL OBSERVER -->
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
+</script>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <p class="hero__eyebrow">Brota Digital · Propuesta</p>
+  <h1 class="hero__logo">C<span>a</span>lero</h1>
+  <p class="hero__sub">Sitio web con tienda y carrito</p>
+  <div class="hero__pill">caleromexico.mx</div>
+  <p class="hero__scroll">↓</p>
+</section>
+
+<!-- ── INTRO ── -->
+<section class="intro">
+  <div class="container">
+    <p class="label reveal" style="margin-bottom:16px">La propuesta</p>
+    <h2 class="intro__title reveal">Un sitio <em>hecho para vender</em><br>desde el primer día</h2>
+    <p class="intro__p reveal">Tu marca ya tiene identidad, estética y productos únicos. Lo que sigue es llevarla a un sitio web que la refleje y que tus clientas puedan usar fácil — desde el celular, en 2 minutos, con carrito y checkout directo a WhatsApp.</p>
+  </div>
+</section>
+
+<!-- ── MOCKUP ── -->
+<div class="mockup-wrap reveal">
+  <div class="mockup container">
+    <div class="mockup__bar">
+      <div class="mockup__dot"></div>
+      <div class="mockup__dot"></div>
+      <div class="mockup__dot"></div>
+      <div class="mockup__url">caleromexico.mx</div>
+    </div>
+    <div class="mockup__screen">
+      <div class="mockup__nav">
+        <span class="mockup__nav-icon">☰</span>
+        <span class="mockup__nav-logo">CALERO</span>
+        <span class="mockup__nav-icon">🛍</span>
+      </div>
+      <div class="mockup__inner">
+        <div class="mockup__wordmark">CALERO</div>
+        <div class="mockup__tag">Luminarias · CDMX</div>
+      </div>
+      <div class="mockup__badge">En vivo ahora</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="features">
+  <div class="container">
+    <div class="features__head reveal">
+      <p class="label" style="margin-bottom:14px">Lo que incluye</p>
+      <h2>Todo lo que necesitas,<br>nada que no necesitas</h2>
+      <p>Diseño minimalista, estructura clara, y las funciones exactas que pidió la clienta.</p>
+    </div>
+    <div class="features__grid reveal">
+
+      <div class="feat">
+        <div class="feat__icon">🛒</div>
+        <h3 class="feat__title">Tienda con carrito</h3>
+        <p class="feat__p">Las clientas agregan productos, ven su resumen y envían el pedido directo a tu WhatsApp. Sin plataformas externas, sin comisiones.</p>
+        <ul class="feat__list">
+          <li>Sección Pantallas</li>
+          <li>Sección Bases de cerámica</li>
+          <li>Sección Telas por metro</li>
+          <li>Carrito deslizable lateral</li>
+          <li>Checkout vía WhatsApp</li>
+        </ul>
+      </div>
+
+      <div class="feat">
+        <div class="feat__icon">🎨</div>
+        <h3 class="feat__title">Diseño de marca</h3>
+        <p class="feat__p">Colores exactos de Calero, tipografía Barlow, y un hero de pantalla completa con foto de producto y logotipo centrado.</p>
+        <ul class="feat__list">
+          <li>Paleta #E6D9C8 / #700402 / #B32917</li>
+          <li>Fondo neutro y cálido</li>
+          <li>Microanimaciones al hacer scroll</li>
+          <li>Hover effects en productos</li>
+          <li>100% a tu imagen</li>
+        </ul>
+      </div>
+
+      <div class="feat">
+        <div class="feat__icon">📱</div>
+        <h3 class="feat__title">Totalmente responsive</h3>
+        <p class="feat__p">El sitio se ve perfecto en celular, tablet y escritorio. La mayoría de tus clientas van a llegar desde Instagram en el teléfono.</p>
+        <ul class="feat__list">
+          <li>Mobile-first</li>
+          <li>Menú hamburguesa (☰)</li>
+          <li>Imágenes adaptables</li>
+          <li>Botones táctiles grandes</li>
+          <li>Carga rápida</li>
+        </ul>
+      </div>
+
+      <div class="feat">
+        <div class="feat__icon">📦</div>
+        <h3 class="feat__title">Lógica de envíos</h3>
+        <p class="feat__p">El sitio comunica claramente la política de envíos tal como la definiste: CDMX incluido, resto de México con costo extra cotizado.</p>
+        <ul class="feat__list">
+          <li>CDMX — envío incluido</li>
+          <li>Resto del país — costo extra</li>
+          <li>Mensaje claro en el carrito</li>
+          <li>Confirmación por WhatsApp</li>
+        </ul>
+      </div>
+
+      <div class="feat">
+        <div class="feat__icon">✍️</div>
+        <h3 class="feat__title">7 secciones completas</h3>
+        <p class="feat__p">Todo lo que pediste en el menú, construido y listo para editar con tu contenido real.</p>
+        <ul class="feat__list">
+          <li>Tienda (Pantallas · Bases · Telas)</li>
+          <li>Colecciones</li>
+          <li>Detalles del proceso</li>
+          <li>Pedidos personalizados</li>
+          <li>Contáctanos · Nosotros · FAQ</li>
+        </ul>
+      </div>
+
+      <div class="feat">
+        <div class="feat__icon">🚀</div>
+        <h3 class="feat__title">Entrega lista para publicar</h3>
+        <p class="feat__p">Archivo HTML autónomo, listo para subir a cualquier hosting. Sin WordPress, sin mantenimiento mensual obligatorio.</p>
+        <ul class="feat__list">
+          <li>Sin base de datos</li>
+          <li>Sin plugins que actualizar</li>
+          <li>Hosting desde ~$100 MXN/mes</li>
+          <li>Dominio tu eliges</li>
+          <li>Velocidad máxima</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PAGES ── -->
+<section class="pages">
+  <div class="container">
+    <div class="pages__head reveal">
+      <p class="label" style="margin-bottom:12px">Estructura del menú</p>
+      <h2>7 secciones en el menú ≡</h2>
+      <p>Exactamente lo que pediste. Cada una con su propio espacio y contenido.</p>
+    </div>
+    <div class="pages__grid reveal">
+      <div class="page-card page-card--accent">
+        <p class="page-card__num">01</p>
+        <h3 class="page-card__name">Tienda</h3>
+        <p class="page-card__p">Submenú con Pantallas, Bases y Telas. Cada producto con foto, precio y botón de agregar al carrito.</p>
+      </div>
+      <div class="page-card">
+        <p class="page-card__num">02</p>
+        <h3 class="page-card__name">Colecciones</h3>
+        <p class="page-card__p">Para ediciones especiales, colaboraciones y lanzamientos futuros.</p>
+      </div>
+      <div class="page-card">
+        <p class="page-card__num">03</p>
+        <h3 class="page-card__name">Detalles</h3>
+        <p class="page-card__p">Materiales, técnica artesanal, cuidados y la historia detrás de cada pieza.</p>
+      </div>
+      <div class="page-card">
+        <p class="page-card__num">04</p>
+        <h3 class="page-card__name">Personalizado</h3>
+        <p class="page-card__p">Sección para pedidos a medida: colores, tamaños y acabados especiales.</p>
+      </div>
+      <div class="page-card">
+        <p class="page-card__num">05</p>
+        <h3 class="page-card__name">Contáctanos</h3>
+        <p class="page-card__p">Botón directo a WhatsApp y correo. Simple y efectivo.</p>
+      </div>
+      <div class="page-card">
+        <p class="page-card__num">06</p>
+        <h3 class="page-card__name">Nosotros</h3>
+        <p class="page-card__p">La historia de Calero, quién lo hace y desde dónde.</p>
+      </div>
+      <div class="page-card">
+        <p class="page-card__num">07</p>
+        <h3 class="page-card__name">FAQ</h3>
+        <p class="page-card__p">Respuestas a las preguntas más frecuentes. Acordeón interactivo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CART SPOTLIGHT ── -->
+<section class="cart-spot">
+  <div class="container">
+    <p class="label reveal" style="margin-bottom:16px">El carrito</p>
+    <h2 class="cart-spot__title reveal">De tu Instagram<br>a tu <em>WhatsApp</em></h2>
+    <p class="cart-spot__sub reveal">Sin pasarela de pago, sin comisiones. La clienta arma su pedido en el sitio y lo envía directo a tu WhatsApp con todos los detalles.</p>
+    <div class="cart-demo reveal">
+      <div class="cart-step">
+        <div class="cart-step__n">1</div>
+        <h4 class="cart-step__title">Explora la tienda</h4>
+        <p class="cart-step__p">La clienta navega Pantallas, Bases y Telas con fotos y precios.</p>
+      </div>
+      <div class="cart-step">
+        <div class="cart-step__n">2</div>
+        <h4 class="cart-step__title">Agrega al carrito</h4>
+        <p class="cart-step__p">Un clic en "Agregar". El carrito lateral se actualiza en tiempo real.</p>
+      </div>
+      <div class="cart-step cart-step--accent">
+        <div class="cart-step__n">3</div>
+        <h4 class="cart-step__title">Revisa su pedido</h4>
+        <p class="cart-step__p">Ve el resumen, subtotal y la nota de envío (CDMX incluido).</p>
+      </div>
+      <div class="cart-step cart-step--accent">
+        <div class="cart-step__n">4</div>
+        <h4 class="cart-step__title">Envía por WhatsApp</h4>
+        <p class="cart-step__p">Un botón manda el pedido completo a tu número. Tú confirmas y cobras anticipo.</p>
+      </div>
+    </div>
+    <p class="cart-spot__note reveal">
+      <span>Sin Shopify · Sin Stripe · Sin comisiones por venta</span>
+      <strong>·</strong>
+      <span>100% tuyo</span>
+    </p>
+  </div>
+</section>
+
+<!-- ── PROCESO ── -->
+<section class="proceso">
+  <div class="container">
+    <div class="proceso__left reveal">
+      <p class="label" style="margin-bottom:14px">Cómo trabajamos</p>
+      <h2>Del zoom<br>al sitio publicado</h2>
+      <p>Proceso claro, sin sorpresas. Tú apruebas en cada paso.</p>
+    </div>
+    <div class="proceso__steps reveal">
+      <div class="step">
+        <div class="step__n">1</div>
+        <div class="step__content">
+          <h4>Arranque y contenido</h4>
+          <p>Nos compartes fotos reales de tus productos, precios actualizados, texto de cada sección y tu número de WhatsApp para el carrito.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">2</div>
+        <div class="step__content">
+          <h4>Primera revisión</h4>
+          <p>En 5–7 días hábiles te compartimos el sitio en vivo para que lo revises en tu celular y computadora. Ajustes incluidos.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">3</div>
+        <div class="step__content">
+          <h4>Ajustes y aprobación</h4>
+          <p>Hasta 2 rondas de cambios. Texto, colores, fotos, precios, lo que necesites afinar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">4</div>
+        <div class="step__content">
+          <h4>Entrega y publicación</h4>
+          <p>Te ayudamos a subir el sitio a tu dominio. Antes de apagar Zoom ya está en línea.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PAGO ONLINE ── -->
+<section class="pago">
+  <div class="container">
+    <div class="pago__head reveal">
+      <p class="label" style="margin-bottom:14px">Si quieres cobrar directo en el sitio</p>
+      <h2>Pago en línea integrado</h2>
+      <p>En lugar de confirmar por WhatsApp, la clienta paga con tarjeta, OXXO o transferencia en el momento. Nosotros integramos la plataforma que elijas.</p>
+    </div>
+
+    <div class="plat plat--rec reveal">
+      <div class="plat__logo">Mercado<span>Pago</span></div>
+      <div class="plat__badge">Recomendado para México</div>
+      <p class="plat__p">La plataforma de pagos más usada en México. Tus clientas ya la conocen y confían en ella. Acepta tarjetas, OXXO y transferencia SPEI. Se registra gratis y los pagos llegan directo a tu cuenta.</p>
+      <div class="plat__fees">
+        <div class="plat__fee">
+          <span class="plat__fee-label">Tarjeta de crédito</span>
+          <span class="plat__fee-val">3.29% + IVA por venta</span>
+        </div>
+        <div class="plat__fee">
+          <span class="plat__fee-label">Tarjeta de débito</span>
+          <span class="plat__fee-val">1.9% + IVA por venta</span>
+        </div>
+        <div class="plat__fee">
+          <span class="plat__fee-label">OXXO Pay</span>
+          <span class="plat__fee-val">3.29% + IVA por venta</span>
+        </div>
+        <div class="plat__fee">
+          <span class="plat__fee-label">Mensualidad</span>
+          <span class="plat__fee-val green">Gratis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat reveal">
+      <div class="plat__logo">Stripe</div>
+      <div class="plat__badge">Internacional</div>
+      <p class="plat__p">Muy popular a nivel mundial, interfaz muy limpia. Acepta todas las tarjetas. Requiere RFC/datos fiscales para activar la cuenta. Ideal si planeas vender fuera de México también.</p>
+      <div class="plat__fees">
+        <div class="plat__fee">
+          <span class="plat__fee-label">Tarjeta de crédito</span>
+          <span class="plat__fee-val">3.6% + $3 MXN por venta</span>
+        </div>
+        <div class="plat__fee">
+          <span class="plat__fee-label">Tarjeta de débito</span>
+          <span class="plat__fee-val">3.6% + $3 MXN por venta</span>
+        </div>
+        <div class="plat__fee">
+          <span class="plat__fee-label">OXXO</span>
+          <span class="plat__fee-val">No disponible</span>
+        </div>
+        <div class="plat__fee">
+          <span class="plat__fee-label">Mensualidad</span>
+          <span class="plat__fee-val green">Gratis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pago__note reveal">
+      <strong>Importante:</strong> las comisiones son de la plataforma de pagos, no de Brota Digital. En ambos casos, la cuenta la abres tú y los pagos llegan directo a tu banco. Para una base de $4,800 MXN con MercadoPago crédito pagarías ~$158 MXN de comisión.
+    </div>
+  </div>
+</section>
+
+<!-- ── INVERSIÓN ── -->
+<section class="inversion" id="inversion">
+  <div class="container">
+    <p class="inv__label reveal">Elige tu paquete</p>
+    <h2 class="inv__title reveal">Dos caminos,<br>el mismo sitio</h2>
+    <p class="inv__sub reveal">Ambos incluyen diseño completo. La diferencia está en cómo cobras.</p>
+
+    <div class="inv__plans reveal">
+
+      <!-- BÁSICO -->
+      <div class="inv__card">
+        <p class="inv__card-label">Paquete Básico</p>
+        <div class="inv__price">$8,000 <sub>MXN</sub></div>
+        <p class="inv__currency">pago único · IVA incluido</p>
+        <ul class="inv__list">
+          <li>Diseño y desarrollo completo</li>
+          <li>Tienda con carrito</li>
+          <li>Checkout por WhatsApp</li>
+          <li>7 secciones</li>
+          <li>Versión móvil y escritorio</li>
+          <li>2 rondas de ajustes</li>
+          <li>Ayuda con la publicación</li>
+        </ul>
+        <a href="https://wa.me/525500000000?text=Hola%2C%20me%20interesa%20el%20paquete%20b%C3%A1sico%20para%20Calero" class="inv__cta">
+          Quiero este
+        </a>
+        <p class="inv__note-inner">Sin comisiones por venta</p>
+      </div>
+
+      <!-- PLUS -->
+      <div class="inv__card inv__card--dark">
+        <div class="inv__recommended">Pago en línea</div>
+        <p class="inv__card-label">Paquete Plus</p>
+        <div class="inv__price">$15,500 <sub>MXN</sub></div>
+        <p class="inv__currency">pago único · IVA incluido</p>
+        <ul class="inv__list">
+          <li>Todo lo del Básico</li>
+          <li class="extra">Pago con tarjeta en el sitio</li>
+          <li class="extra">OXXO Pay integrado</li>
+          <li class="extra">Transferencia SPEI</li>
+          <li class="extra">Integración MercadoPago</li>
+          <li class="extra">Confirmación automática del pedido</li>
+          <li class="extra">Panel para ver tus ventas</li>
+        </ul>
+        <a href="https://wa.me/525500000000?text=Hola%2C%20me%20interesa%20el%20paquete%20Plus%20con%20pago%20en%20l%C3%ADnea%20para%20Calero" class="inv__cta">
+          Quiero este
+        </a>
+        <p class="inv__note-inner">+ comisión MercadoPago por venta</p>
+      </div>
+
+    </div>
+
+    <p class="inv__note reveal">
+      Anticipo 50% al arrancar · 50% al aprobar el sitio.<br>
+      <strong>Hosting:</strong> Hostinger o similar (~$1,200 MXN/año) · <strong>Dominio:</strong> ~$200 MXN/año<br>
+      <strong>Cuenta MercadoPago</strong> (Plus): la abres tú gratis en mercadopago.com.mx
+    </p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer__logo">Brota Digital</p>
+    <p class="footer__p">Sitios web para marcas que valen la pena · CDMX</p>
+  </div>
+</footer>
+
+</body>
+</html>

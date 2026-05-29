@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()" />
@@ -389,7 +389,7 @@
       --py: clamp(80px,10vw,140px);
     }
     html{scroll-behavior:smooth}
-    body{font-family:var(--font-body);background:var(--cream);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--font-body);background:var(--cream);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background-color .75s ease}
     a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%}
     .container{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,56px)}
@@ -416,7 +416,7 @@
     .nav__mobile a{padding:12px clamp(20px,4vw,56px);font-size:14px;font-weight:500;color:rgba(255,255,255,.6)}
 
     /* HERO */
-    .hero{min-height:100vh;display:flex;align-items:center;padding-top:clamp(88px,10vw,120px);padding-bottom:clamp(64px,8vw,100px);background:var(--cream);position:relative;overflow:hidden}
+    .hero{min-height:100vh;display:flex;align-items:center;padding-top:clamp(88px,10vw,120px);padding-bottom:clamp(64px,8vw,100px);background:transparent;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;top:-120px;right:-80px;width:min(600px,90vw);height:min(600px,90vw);background:radial-gradient(circle,rgba(232,93,58,.12) 0%,transparent 70%);pointer-events:none}
     .hero::after{content:'';position:absolute;bottom:-60px;left:-40px;width:300px;height:300px;background:radial-gradient(circle,rgba(245,201,122,.15) 0%,transparent 70%);pointer-events:none}
     .hero__inner{display:grid;grid-template-columns:1.15fr 0.85fr;gap:80px;align-items:center;position:relative;z-index:1}
@@ -482,7 +482,7 @@
     .serv-list li::before{content:'';width:16px;height:1.5px;background:var(--coral);flex-shrink:0;border-radius:2px}
 
     /* PROCESO */
-    .proceso{padding:var(--py) 0;background:var(--black)}
+    .proceso{padding:var(--py) 0;background:transparent}
     .proceso__top{text-align:center;margin-bottom:64px}
     .proceso__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
     .paso{background:rgba(255,255,255,.04);padding:36px 24px;position:relative;transition:background .25s}
@@ -494,7 +494,7 @@
     .paso:last-child .paso__arrow{display:none}
 
     /* PAQUETES */
-    .paquetes{padding:var(--py) 0;background:var(--cream-2)}
+    .paquetes{padding:var(--py) 0;background:transparent}
     .paquetes__top{text-align:center;border-top:1px solid rgba(26,26,26,.12);padding-top:48px;margin-bottom:64px}
     .paquetes__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
     .pkg{background:var(--white);border-radius:20px;padding:36px 28px;border:1.5px solid transparent;transition:border-color .25s,box-shadow .25s}
@@ -652,7 +652,7 @@
     }
 
     /* TESTIMONIOS */
-    .testimonios{padding:var(--py) 0;background:var(--black)}
+    .testimonios{padding:var(--py) 0;background:transparent}
     .testimonios__top{text-align:center;margin-bottom:56px}
     .testimonios .h2{color:#fff}
     .testimonios .label{color:var(--coral)}
@@ -667,7 +667,7 @@
     .testi__biz{font-size:11px;color:rgba(255,255,255,.5)}
 
     /* CTA FINAL */
-    .cta-final{padding:var(--py) 0;background:var(--black);text-align:center}
+    .cta-final{padding:var(--py) 0;background:transparent;text-align:center}
     .cta-final h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(40px,6vw,80px);font-weight:400;color:#fff;margin-bottom:20px;font-style:italic;letter-spacing:-.01em}
     .cta-final p{color:rgba(255,255,255,.55);font-size:16px;margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
     .btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--coral);font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:16px 36px;border-radius:2px;transition:.2s;min-height:52px}
@@ -738,6 +738,13 @@
     .word{display:inline-block;will-change:transform,opacity}
     @media(prefers-reduced-motion:no-preference){
       .word{opacity:0;transform:translateY(38px)}
+    }
+
+    /* Word-split for paragraphs */
+    .p-word{display:inline-block;overflow:hidden;vertical-align:bottom}
+    .p-word>span{display:inline-block;will-change:transform,opacity}
+    @media(prefers-reduced-motion:no-preference){
+      .p-word>span{opacity:0;transform:translateY(10px)}
     }
 
     /* HERO ambient glows */
@@ -1216,7 +1223,7 @@
     .clip-reveal.is-revealed{clip-path:inset(0 0 0 0)}
 
     /* STICKY SCROLL PROCESO — el momento "wow" */
-    .proceso.sticky-mode{padding:0;background:var(--black)}
+    .proceso.sticky-mode{padding:0;background:transparent}
     .proceso.sticky-mode .proceso-stage{
       position:relative;height:380vh;
     }
@@ -1317,6 +1324,261 @@
   </style>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { FontLoader }       from 'three/addons/loaders/FontLoader.js';
+    import { TextGeometry }     from 'three/addons/geometries/TextGeometry.js';
+    import { RoomEnvironment }  from 'three/addons/environments/RoomEnvironment.js';
+    import { EffectComposer }   from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass }       from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass }  from 'three/addons/postprocessing/UnrealBloomPass.js';
+    import { OutputPass }       from 'three/addons/postprocessing/OutputPass.js';
+
+    const canvas = document.getElementById('brota3d');
+    if (canvas) {
+      const W = canvas.offsetWidth || 520;
+      const H = canvas.offsetHeight || 480;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setSize(W, H);
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.toneMapping = THREE.NoToneMapping;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.setClearColor(0x000000, 0);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      const scene = new THREE.Scene();
+
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+      pmrem.dispose();
+
+      const cam = new THREE.PerspectiveCamera(45, W / H, 0.1, 100);
+      cam.position.set(0, 0, 5.8);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      // Lighting — dramatic premium setup
+      scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+
+      // Key — bright top-right with sharp shadow
+      const key = new THREE.DirectionalLight(0xffffff, 2.6);
+      key.position.set(3.5, 5, 4);
+      key.castShadow = true;
+      key.shadow.mapSize.set(2048, 2048);
+      key.shadow.camera.left   = -4;
+      key.shadow.camera.right  = 4;
+      key.shadow.camera.top    = 3;
+      key.shadow.camera.bottom = -3;
+      key.shadow.camera.near   = 0.1;
+      key.shadow.camera.far    = 20;
+      key.shadow.bias          = -0.0005;
+      key.shadow.radius        = 6;
+      scene.add(key);
+
+      // Warm fill from left — adds depth without losing the coral
+      const fill = new THREE.DirectionalLight(0xffe5cc, 0.7);
+      fill.position.set(-4, 2, 3);
+      scene.add(fill);
+
+      // Cool rim from behind for separation
+      const rim = new THREE.DirectionalLight(0xcfd8ff, 1.6);
+      rim.position.set(-1, -0.5, -4);
+      scene.add(rim);
+
+      // Accent point light — warm coral glow near letters
+      const accent = new THREE.PointLight(0xff8a55, 1.2, 5);
+      accent.position.set(1.2, 0.8, 1.5);
+      scene.add(accent);
+
+      // Ground plane — receives shadows only
+      const ground = new THREE.Mesh(
+        new THREE.PlaneGeometry(20, 20),
+        new THREE.ShadowMaterial({ opacity: 0.32, transparent: true })
+      );
+      ground.rotation.x = -Math.PI / 2;
+      ground.position.y = -0.78;
+      ground.receiveShadow = true;
+      scene.add(ground);
+
+      // Premium matte black ceramic for the letters
+      const glassMat = new THREE.MeshPhysicalMaterial({
+        color: 0x0a0a0a,
+        metalness: 0,
+        roughness: 0.5,
+        clearcoat: 0.4,
+        clearcoatRoughness: 0.4,
+        envMapIntensity: 0.5,
+        sheen: 0.3,
+        sheenRoughness: 0.7,
+        sheenColor: 0x222222,
+      });
+
+      // Letters — built individually for assembly animation
+      const letters = [];
+      const LETTERS_STR = 'brota';
+
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+      new FontLoader().load(
+        'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/fonts/helvetiker_regular.typeface.json',
+        (font) => {
+          // Compute per-letter widths and total
+          const opts = {
+            font, size: 1.0, height: 0.32, curveSegments: 18,
+            bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.035, bevelSegments: 6,
+          };
+
+          // First pass: build geometries, keep original baseline-relative Y
+          const geos = [];
+          let totalW = 0;
+          let minY = Infinity, maxY = -Infinity;
+          const kernGap = 0.05;
+          for (const ch of LETTERS_STR) {
+            const g = new TextGeometry(ch, opts);
+            g.computeBoundingBox();
+            const bb = g.boundingBox;
+            const w = bb.max.x - bb.min.x;
+            // Shift to start each letter at x=0 and z=center; preserve Y baseline
+            g.translate(-bb.min.x, 0, -bb.min.z - 0.16);
+            geos.push({ geo: g, w });
+            if (bb.min.y < minY) minY = bb.min.y;
+            if (bb.max.y > maxY) maxY = bb.max.y;
+            totalW += w + kernGap;
+          }
+          totalW -= kernGap;
+          const yShift = -(minY + maxY) / 2;
+
+          // Place letters horizontally on the same baseline, vertically centered as a row
+          let cursor = -totalW / 2;
+          geos.forEach(({ geo, w }, i) => {
+            const finalX = cursor;
+            cursor += w + kernGap;
+
+            const mesh = new THREE.Mesh(geo, glassMat);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+
+            // Random scattered start
+            const angle = (i / LETTERS_STR.length) * Math.PI * 2 + Math.random();
+            const dist = 4 + Math.random() * 3;
+            const startPos = new THREE.Vector3(
+              Math.cos(angle) * dist,
+              (Math.random() - 0.5) * 4,
+              Math.sin(angle) * dist - 2
+            );
+            const finalPos = new THREE.Vector3(finalX, 0, 0);
+            const startRot = new THREE.Euler(
+              (Math.random() - 0.5) * Math.PI,
+              (Math.random() - 0.5) * Math.PI * 2,
+              (Math.random() - 0.5) * Math.PI
+            );
+
+            // Vertically center the row using yShift
+            finalPos.y += yShift;
+
+            mesh.position.copy(startPos);
+            mesh.rotation.copy(startRot);
+
+            letters.push({ mesh, startPos, finalPos, startRot, delay: i * 0.08 });
+            group.add(mesh);
+          });
+        }
+      );
+
+      // Assembly animation state
+      const ASSEMBLY_DURATION = 1.6; // seconds
+      const assemblyStart = performance.now() / 1000;
+      let assemblyDone = false;
+
+      // Orbiting spheres — elliptical paths around the logo
+      const orbiters = [];
+      const NUM_ORBITERS = 4;
+      const orbitMat = new THREE.MeshPhysicalMaterial({
+        color: 0xE85D3A,
+        roughness: 0.5,
+        metalness: 0,
+        clearcoat: 0.4,
+        clearcoatRoughness: 0.4,
+        sheen: 0.3,
+        sheenColor: 0xff9a72,
+        envMapIntensity: 0.6,
+      });
+      for (let i = 0; i < NUM_ORBITERS; i++) {
+        const radius = 0.10 + Math.random() * 0.05;
+        const sphere = new THREE.Mesh(new THREE.SphereGeometry(radius, 32, 32), orbitMat);
+        sphere.castShadow = true;
+        sphere.receiveShadow = true;
+        scene.add(sphere);
+        orbiters.push({
+          mesh: sphere,
+          rx: 1.35 + Math.random() * 0.2,                         // safely inside frame width
+          ry: 0.5  + Math.random() * 0.2,                         // safely inside frame height
+          rz: 0.7  + Math.random() * 0.3,                         // depth for parallax
+          speed: (0.55 + Math.random() * 0.35) * (i % 2 ? 1 : -1),
+          phase: (i / NUM_ORBITERS) * Math.PI * 2,
+          tilt: (Math.random() - 0.5) * 0.5,
+        });
+      }
+
+      // Interaction
+      let dragging = false, prevX = 0;
+      canvas.addEventListener('pointerdown', e => { dragging = true; prevX = e.clientX; canvas.style.cursor = 'grabbing'; });
+      window.addEventListener('pointerup',   () => { dragging = false; canvas.style.cursor = 'grab'; });
+      window.addEventListener('pointermove', e => { if (dragging) { group.rotation.y += (e.clientX - prevX) * 0.012; prevX = e.clientX; } });
+
+      (function animate() {
+        requestAnimationFrame(animate);
+        const now = performance.now() / 1000;
+
+        if (!assemblyDone && letters.length) {
+          let allDone = true;
+          for (const L of letters) {
+            const t = Math.max(0, Math.min(1, (now - assemblyStart - L.delay) / ASSEMBLY_DURATION));
+            const e = easeOutCubic(t);
+            L.mesh.position.lerpVectors(L.startPos, L.finalPos, e);
+            L.mesh.rotation.x = L.startRot.x * (1 - e);
+            L.mesh.rotation.y = L.startRot.y * (1 - e);
+            L.mesh.rotation.z = L.startRot.z * (1 - e);
+            if (t < 1) allDone = false;
+          }
+          if (allDone) assemblyDone = true;
+        } else if (assemblyDone && !dragging) {
+          group.rotation.y += 0.018;
+        }
+
+        // Update orbiting spheres — tilted elliptical orbits around origin
+        for (const o of orbiters) {
+          const a = now * o.speed + o.phase;
+          const x =  Math.cos(a) * o.rx;
+          const yBase = Math.sin(a) * o.ry;
+          const zBase = Math.sin(a) * o.rz;
+          // Apply tilt around X axis
+          const y = yBase * Math.cos(o.tilt) - zBase * Math.sin(o.tilt);
+          const z = yBase * Math.sin(o.tilt) + zBase * Math.cos(o.tilt);
+          o.mesh.position.set(x, y, z);
+        }
+
+        renderer.render(scene, cam);
+      })();
+
+      window.addEventListener('resize', () => {
+        const w = canvas.offsetWidth, h = canvas.offsetHeight;
+        cam.aspect = w / h; cam.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      });
+    }
+  </script>
 </head>
 <body>
   <div id="preloader" aria-hidden="true">
@@ -1353,7 +1615,7 @@
 
   <main id="main">
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" data-bg="#FDFAF5">
       <div class="hero__glow hero__glow--coral" aria-hidden="true"></div>
       <div class="hero__glow hero__glow--gold" aria-hidden="true"></div>
       <div class="container">
@@ -1370,7 +1632,7 @@
                 <span class="word-wrap"><span class="word">línea.</span></span>
               </em>
             </h1>
-            <p class="hero__sub">
+            <p class="hero__sub" data-words data-words-delay="820">
               Creamos páginas web, identidad de marca y estrategia digital
               para pequeños negocios que quieren verse profesionales sin gastar una fortuna.
             </p>
@@ -1390,23 +1652,7 @@
             </div>
           </div>
           <div class="hero__visual">
-            <div class="hero__work-grid">
-              <div class="hero__work-item hero__work-item--large hero__work-ph hero__work-ph--1">
-                <div class="hero__work-ph-inner">
-                  <span class="hero__work-ph-tag">Branding</span>
-                </div>
-              </div>
-              <div class="hero__work-item hero__work-ph hero__work-ph--2">
-                <div class="hero__work-ph-inner">
-                  <span class="hero__work-ph-tag">Web</span>
-                </div>
-              </div>
-              <div class="hero__work-item hero__work-ph hero__work-ph--3">
-                <div class="hero__work-ph-inner">
-                  <span class="hero__work-ph-tag">Estrategia</span>
-                </div>
-              </div>
-            </div>
+            <canvas id="brota3d" style="width:100%;height:480px;display:block;border-radius:4px;cursor:grab" aria-label="Logo Brota Digital girando en 3D"></canvas>
           </div>
         </div>
       </div>
@@ -1445,7 +1691,7 @@
     </div>
 
     <!-- SERVICIOS -->
-    <section class="servicios" id="servicios">
+    <section class="servicios" id="servicios" data-bg="#FDFAF5">
       <span class="sec-num" aria-hidden="true">01</span>
       <div class="container">
         <div class="servicios__top">
@@ -1453,7 +1699,7 @@
             <p class="label"><span class="des-mark" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>Lo que hacemos</p>
             <h2 class="h2">Todo lo que tu negocio<br>necesita para crecer</h2>
           </div>
-          <p class="lead reveal" data-impulse="slide" style="max-width:320px">Sin complicaciones, sin tecnicismos. Tú enfócate en tu negocio, nosotros en lo digital.</p>
+          <p class="lead reveal" data-impulse="slide" data-words style="max-width:320px">Sin complicaciones, sin tecnicismos. Tú enfócate en tu negocio, nosotros en lo digital.</p>
         </div>
         <div class="servicios__grid">
           <div class="serv-card reveal" data-impulse="rise" data-stagger="0">
@@ -1504,7 +1750,7 @@
     <div class="thin-cross" aria-hidden="true"></div>
 
     <!-- PROCESO (sticky scroll experience) -->
-    <section class="proceso sticky-mode" id="proceso">
+    <section class="proceso sticky-mode" id="proceso" data-bg="#1A1A1A">
       <span class="sec-num" aria-hidden="true">02</span>
       <div class="proceso-stage" id="procesoStage">
         <div class="proceso-sticky">
@@ -1513,7 +1759,7 @@
             <div class="proceso__top reveal" data-impulse="rise">
               <p class="label" style="justify-content:center"><span class="des-mark" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>Cómo funciona</p>
               <h2 class="h2 light">Simple, rápido y sin sorpresas</h2>
-              <p class="lead light" style="margin:0 auto">Tu página lista en menos de una semana.</p>
+              <p class="lead light" data-words style="margin:0 auto">Tu página lista en menos de una semana.</p>
             </div>
             <div class="proceso__grid" id="procesoGrid">
               <div class="proceso__line" id="procesoLine" aria-hidden="true"></div>
@@ -1552,13 +1798,13 @@
     <div class="thin-cross" aria-hidden="true"></div>
 
     <!-- PAQUETES -->
-    <section class="paquetes" id="paquetes">
+    <section class="paquetes" id="paquetes" data-bg="#F5EFE4">
       <span class="sec-num" aria-hidden="true">03</span>
       <div class="container">
         <div class="paquetes__top reveal" data-impulse="rise">
           <p class="label" style="justify-content:center"><span class="des-mark" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>Precios</p>
           <h2 class="h2">Planes para cada etapa</h2>
-          <p class="lead" style="margin:0 auto">Sin letra chica. Sin costos ocultos.</p>
+          <p class="lead" data-words style="margin:0 auto">Sin letra chica. Sin costos ocultos.</p>
         </div>
         <div class="paquetes__grid">
           <div class="pkg semilla reveal" data-impulse="rise" data-stagger="0">
@@ -1674,7 +1920,7 @@
     </section>
 
     <!-- TESTIMONIOS -->
-    <section class="testimonios" id="clientes">
+    <section class="testimonios" id="clientes" data-bg="#1A1A1A">
       <span class="sec-num" aria-hidden="true">04</span>
       <div class="container">
         <div class="testimonios__top reveal" data-impulse="rise">
@@ -1721,7 +1967,7 @@
 
     <div class="thin-cross" aria-hidden="true"></div>
     <!-- CTA FINAL -->
-    <section class="cta-final" id="contacto">
+    <section class="cta-final" id="contacto" data-bg="#1A1A1A">
       <span class="sec-num" aria-hidden="true">05</span>
       <div class="container">
         <h2 class="reveal" data-split>
@@ -1732,7 +1978,7 @@
           <span class="word-wrap"><span class="word">negocio</span></span>
           <em><span class="word-wrap"><span class="word">brote?</span></span></em>
         </h2>
-        <p class="reveal">Escríbenos hoy y en menos de 24 hrs tienes tu propuesta.</p>
+        <p class="reveal" data-words>Escríbenos hoy y en menos de 24 hrs tienes tu propuesta.</p>
         <a href="https://wa.me/525564131634" class="btn-white reveal" target="_blank" rel="noopener noreferrer" data-magnetic>
           Escribir por WhatsApp 💬
         </a>
@@ -2228,6 +2474,76 @@
         pasos[0].classList.add('is-focus');
       }
 
+      // ------- SECTION COLOR CROSSFADE -------
+      (function(){
+        const bgSections = document.querySelectorAll('[data-bg]');
+        if (!bgSections.length || !('IntersectionObserver' in window)) return;
+        const bgIO = new IntersectionObserver((entries) => {
+          entries.forEach(en => {
+            if (en.isIntersecting) {
+              document.body.style.backgroundColor = en.target.dataset.bg;
+            }
+          });
+        }, {threshold: 0, rootMargin: '-42% 0px -42% 0px'});
+        bgSections.forEach(s => bgIO.observe(s));
+      })();
+
+      // ------- PARAGRAPH WORD STAGGER -------
+      whenAnime((anime) => {
+        const pEls = document.querySelectorAll('[data-words]');
+        if (!pEls.length) return;
+
+        pEls.forEach(el => {
+          const raw = el.textContent.replace(/\s+/g,' ').trim();
+          el.setAttribute('aria-label', raw);
+          el.innerHTML = raw.split(' ').map(w =>
+            `<span class="p-word" aria-hidden="true"><span>${w}</span></span>`
+          ).join(' ');
+        });
+
+        if (reduced) {
+          document.querySelectorAll('.p-word>span').forEach(s => {
+            s.style.opacity = 1; s.style.transform = 'none';
+          });
+          return;
+        }
+
+        const heroSub = document.querySelector('.hero__sub[data-words]');
+        const restEls = [...pEls].filter(el => el !== heroSub);
+
+        // Hero paragraph — fires immediately with delay after heading
+        if (heroSub) {
+          const startDelay = parseInt(heroSub.dataset.wordsDelay || '600', 10);
+          anime({
+            targets: heroSub.querySelectorAll('.p-word>span'),
+            translateY: [10, 0],
+            opacity: [0, 1],
+            duration: 700,
+            delay: anime.stagger(30, {start: startDelay}),
+            easing: 'cubicBezier(.2,.8,.2,1)'
+          });
+        }
+
+        // Remaining paragraphs — trigger on scroll
+        if (restEls.length) {
+          const pIO = new IntersectionObserver((entries) => {
+            entries.forEach(en => {
+              if (!en.isIntersecting) return;
+              pIO.unobserve(en.target);
+              anime({
+                targets: en.target.querySelectorAll('.p-word>span'),
+                translateY: [10, 0],
+                opacity: [0, 1],
+                duration: 650,
+                delay: anime.stagger(32, {start: 60}),
+                easing: 'cubicBezier(.2,.8,.2,1)'
+              });
+            });
+          }, {threshold: 0.2});
+          restEls.forEach(el => pIO.observe(el));
+        }
+      });
+
       // ------- PARALLAX hero glows (subtle, transform only) -------
       const glows = document.querySelectorAll('.hero__glow');
       if (glows.length && !reduced && fineCursor){
@@ -2244,6 +2560,7 @@
           });
         }, {passive:true});
       }
+
     })();
   </script>
 </body>

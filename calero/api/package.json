@@ -1,0 +1,8 @@
+{
+  "name": "calero-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "mercadopago": "^2.4.0",
+    "node-fetch": "^2.7.0"
+  }
+}

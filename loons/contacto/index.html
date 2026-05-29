@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Loons Balloons · Decoración con Globos CDMX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <style>
+    .page-hero {
+      background: var(--dark); padding: clamp(120px,15vw,180px) 0 clamp(64px,8vw,100px);
+      position: relative; overflow: hidden;
+    }
+    .page-hero__dots {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__tag {
+      display: inline-block; background: var(--mint); color: var(--black);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .page-hero__h1 {
+      font-family: var(--font-display);
+      font-size: clamp(44px,7vw,88px); font-weight: 300;
+      color: var(--white); letter-spacing: -0.03em; line-height: 1.0;
+    }
+    .page-hero__h1 em { font-style: italic; color: var(--coral); }
+    .page-hero__sub {
+      font-size: clamp(15px,1.5vw,17px); color: rgba(255,255,255,.5);
+      max-width: 480px; margin-top: 20px; line-height: 1.7;
+    }
+
+    /* Contact section */
+    .contacto { padding: var(--py) 0; }
+    .contacto__grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    @media (max-width: 900px) { .contacto__grid { grid-template-columns: 1fr; gap: 48px; } }
+
+    /* Left: info */
+    .contact-info { display: flex; flex-direction: column; gap: 36px; }
+    .contact-info__h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px,3.5vw,44px); font-weight: 400; font-style: italic;
+      letter-spacing: -0.02em; line-height: 1.15;
+    }
+    .contact-block { display: flex; flex-direction: column; gap: 6px; }
+    .contact-block__label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--coral);
+    }
+    .contact-block__val { font-size: 16px; font-weight: 500; }
+    .contact-block__val a { color: var(--black); transition: color .2s; }
+    .contact-block__val a:hover { color: var(--coral); }
+
+    .wa-big {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--black); color: var(--white);
+      padding: 20px 28px; border-radius: 12px;
+      transition: background .2s, transform .15s;
+    }
+    .wa-big:hover { background: #075e54; transform: translateY(-2px); }
+    .wa-big__icon {
+      width: 40px; height: 40px; background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-size: 20px;
+    }
+    .wa-big__text strong { display: block; font-size: 15px; font-weight: 700; }
+    .wa-big__text span { font-size: 12px; color: rgba(255,255,255,.6); }
+
+    /* Right: form */
+    .cotiza-form {
+      background: var(--white); padding: clamp(36px,4vw,56px);
+      border-radius: 4px;
+    }
+    .cotiza-form__h3 {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 400; font-style: italic;
+      margin-bottom: 28px; letter-spacing: -0.01em;
+    }
+    .form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .form-field label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(0,0,0,.5);
+    }
+    .form-field input, .form-field select, .form-field textarea {
+      border: 1.5px solid rgba(0,0,0,.12); border-radius: 6px;
+      padding: 12px 16px; font-family: var(--font-body);
+      font-size: 14px; color: var(--black); background: var(--cream);
+      transition: border-color .2s; outline: none;
+      width: 100%;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+      border-color: var(--coral);
+    }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-submit {
+      width: 100%; padding: 15px; border: none; border-radius: 100px;
+      background: var(--black); color: var(--white);
+      font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      letter-spacing: 0.04em; cursor: pointer; transition: background .2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--coral); }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <div class="nav__inner">
+      <a href="/loons/" class="nav__logo">Loons <em>Balloons</em></a>
+      <ul class="nav__links" role="list">
+        <li><a href="/loons/servicios/">Servicios</a></li>
+        <li><a href="/loons/galeria/">Galería</a></li>
+        <li><a href="/loons/contacto/" class="active">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="nav__cta">Cotiza aquí</a>
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" id="burger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu" role="menu">
+      <a href="/loons/servicios/">Servicios</a>
+      <a href="/loons/galeria/">Galería</a>
+      <a href="/loons/contacto/">Contacto</a>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="nav__mobile-cta">Cotiza aquí</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="page-hero__dots" aria-hidden="true"></div>
+      <div class="page-hero__content container">
+        <span class="page-hero__tag">Contacto</span>
+        <h1 class="page-hero__h1">Cuéntanos tu <em>evento</em></h1>
+        <p class="page-hero__sub">Sin compromisos. Te respondemos rápido con opciones y precios para tu fecha.</p>
+      </div>
+    </section>
+
+    <section class="contacto">
+      <div class="container">
+        <div class="contacto__grid">
+
+          <!-- Info -->
+          <div class="contact-info reveal">
+            <h2 class="contact-info__h2">¿Listo para crear algo <em>increíble</em>?</h2>
+
+            <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="wa-big">
+              <div class="wa-big__icon">💬</div>
+              <div class="wa-big__text">
+                <strong>Escríbenos por WhatsApp</strong>
+                <span>La forma más rápida de cotizar</span>
+              </div>
+            </a>
+
+            <div class="contact-block">
+              <p class="contact-block__label">Teléfono</p>
+              <p class="contact-block__val"><a href="tel:5214194887171">419 488 7171</a></p>
+            </div>
+            <div class="contact-block">
+              <p class="contact-block__label">Instagram</p>
+              <p class="contact-block__val"><a href="https://www.instagram.com/loons_balloons" target="_blank" rel="noopener">@loons_balloons</a></p>
+            </div>
+            <div class="contact-block">
+              <p class="contact-block__label">Ciudad</p>
+              <p class="contact-block__val">Ciudad de México</p>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="cotiza-form reveal">
+            <h3 class="cotiza-form__h3">Pide tu cotización</h3>
+            <form action="https://wa.me/5214194887171" method="get" target="_blank">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+                </div>
+                <div class="form-field">
+                  <label for="telefono">WhatsApp</label>
+                  <input type="tel" id="telefono" name="telefono" placeholder="55 1234 5678" required />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="tipo">Tipo de evento</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="" disabled selected>Selecciona…</option>
+                  <option>Baby Shower</option>
+                  <option>Bautizo</option>
+                  <option>Evento corporativo</option>
+                  <option>Arco</option>
+                  <option>Mampara</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="fecha">Fecha del evento</label>
+                <input type="date" id="fecha" name="fecha" />
+              </div>
+              <div class="form-field">
+                <label for="mensaje">Cuéntanos más (opcional)</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Colores, tamaño, lugar del evento…"></textarea>
+              </div>
+              <button type="submit" class="form-submit">Enviar cotización →</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">Loons <em>Balloons</em></div>
+      <nav class="footer__links"><a href="/loons/servicios/">Servicios</a><a href="/loons/galeria/">Galería</a><a href="/loons/contacto/">Contacto</a></nav>
+      <span>© 2025 Loons Balloons · CDMX</span>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); io.unobserve(x.target); } }), { threshold: 0.08 });
+      reveals.forEach(el => io.observe(el));
+    } else { reveals.forEach(el => el.classList.add('visible')); }
+  </script>
+</body>
+</html>

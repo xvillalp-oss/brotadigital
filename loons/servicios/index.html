@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios | Loons Balloons · Decoración con Globos CDMX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <style>
+    .page-hero {
+      background: var(--dark); padding: clamp(120px,15vw,180px) 0 clamp(64px,8vw,100px);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .page-hero__dots {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__tag {
+      display: inline-block; background: var(--yellow); color: var(--black);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .page-hero__h1 {
+      font-family: var(--font-display);
+      font-size: clamp(44px,7vw,88px); font-weight: 300;
+      color: var(--white); letter-spacing: -0.03em; line-height: 1.0;
+    }
+    .page-hero__h1 em { font-style: italic; color: var(--pink); }
+    .page-hero__sub {
+      font-size: clamp(15px,1.5vw,18px); color: rgba(255,255,255,.5);
+      max-width: 520px; margin: 20px auto 0; line-height: 1.7;
+    }
+
+    .servicios-detail { padding: var(--py) 0; }
+    .svc-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      margin-bottom: 2px;
+    }
+    @media (max-width: 768px) { .svc-row { grid-template-columns: 1fr; } }
+    .svc-card {
+      background: var(--white); padding: clamp(40px,5vw,64px);
+      display: flex; flex-direction: column; gap: 20px;
+      transition: transform .2s;
+    }
+    .svc-card:hover { transform: translateY(-3px); }
+    .svc-card--full { grid-column: span 2; }
+    @media (max-width: 768px) { .svc-card--full { grid-column: span 1; } }
+    .svc-card__color {
+      width: 56px; height: 56px; border-radius: 50%;
+    }
+    .svc-card__h3 {
+      font-family: var(--font-display); font-size: clamp(24px,3vw,36px);
+      font-weight: 400; font-style: italic; letter-spacing: -0.02em;
+    }
+    .svc-card__desc { font-size: 15px; color: var(--gray); line-height: 1.7; max-width: 480px; }
+    .svc-card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
+      border: 1.5px solid rgba(0,0,0,.12); color: rgba(0,0,0,.6);
+    }
+    .sc1 .svc-card__color { background: var(--pink); }
+    .sc2 .svc-card__color { background: var(--yellow); }
+    .sc3 .svc-card__color { background: var(--lilac); }
+    .sc4 .svc-card__color { background: var(--mint); }
+    .sc5 .svc-card__color { background: var(--coral); }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <div class="nav__inner">
+      <a href="/loons/" class="nav__logo">Loons <em>Balloons</em></a>
+      <ul class="nav__links" role="list">
+        <li><a href="/loons/servicios/" class="active">Servicios</a></li>
+        <li><a href="/loons/galeria/">Galería</a></li>
+        <li><a href="/loons/contacto/">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="nav__cta">Cotiza aquí</a>
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" id="burger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu" role="menu">
+      <a href="/loons/servicios/">Servicios</a>
+      <a href="/loons/galeria/">Galería</a>
+      <a href="/loons/contacto/">Contacto</a>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="nav__mobile-cta">Cotiza aquí</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="page-hero__dots" aria-hidden="true"></div>
+      <div class="page-hero__content container">
+        <span class="page-hero__tag">Servicios</span>
+        <h1 class="page-hero__h1">Para cada <em>ocasión</em></h1>
+        <p class="page-hero__sub">Desde una decoración íntima hasta un evento corporativo. Siempre personalizado.</p>
+      </div>
+    </section>
+
+    <section class="servicios-detail">
+      <div class="svc-row reveal">
+        <div class="svc-card sc1">
+          <div class="svc-card__color"></div>
+          <h2 class="svc-card__h3">Baby Shower</h2>
+          <p class="svc-card__desc">Decoraciones en los colores que elijas para dar la bienvenida al bebé. Arcos orgánicos, centros de mesa, mamparas y globos temáticos que hacen del momento algo especial.</p>
+          <div class="svc-card__tags">
+            <span class="tag">Arcos</span><span class="tag">Mamparas</span><span class="tag">Centros de mesa</span><span class="tag">Globos temáticos</span>
+          </div>
+        </div>
+        <div class="svc-card sc2">
+          <div class="svc-card__color"></div>
+          <h2 class="svc-card__h3">Bautizos</h2>
+          <p class="svc-card__desc">Ambientaciones elegantes y delicadas para celebrar el día más especial de tu bebé. Diseños personalizados en tonos suaves o los colores que prefieras.</p>
+          <div class="svc-card__tags">
+            <span class="tag">Decoración de entrada</span><span class="tag">Mesas de dulces</span><span class="tag">Globos con helio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal">
+        <div class="svc-card sc4">
+          <div class="svc-card__color"></div>
+          <h2 class="svc-card__h3">Arcos</h2>
+          <p class="svc-card__desc">El detalle que transforma cualquier espacio. Arcos orgánicos, geométricos o en espiral en todos los tamaños, colores y combinaciones que imagines.</p>
+          <div class="svc-card__tags">
+            <span class="tag">Orgánicos</span><span class="tag">Geométricos</span><span class="tag">Con flores</span><span class="tag">Personalizados</span>
+          </div>
+        </div>
+        <div class="svc-card sc5">
+          <div class="svc-card__color"></div>
+          <h2 class="svc-card__h3">Mamparas</h2>
+          <p class="svc-card__desc">Fondos decorados para fotos, entradas y escenarios de tu evento. Personalizables con tu tema, colores y nombre. El fondo perfecto para los recuerdos.</p>
+          <div class="svc-card__tags">
+            <span class="tag">Con globos</span><span class="tag">Con flores</span><span class="tag">Personalizadas</span><span class="tag">Con letras</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal">
+        <div class="svc-card sc3 svc-card--full">
+          <div class="svc-card__color"></div>
+          <h2 class="svc-card__h3">Empresas</h2>
+          <p class="svc-card__desc">Decoraciones corporativas para lanzamientos de producto, aniversarios de empresa, inauguraciones y eventos de team building. Usamos los colores y branding de tu empresa para que todo se vea cohesivo y profesional.</p>
+          <div class="svc-card__tags">
+            <span class="tag">Lanzamientos</span><span class="tag">Aniversarios</span><span class="tag">Inauguraciones</span><span class="tag">Branding con globos</span><span class="tag">Eventos corporativos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-banner reveal">
+      <span class="cta-banner__deco" aria-hidden="true">🎈</span>
+      <h2 class="cta-banner__h2">¿Tienes un evento en mente?<br>Platícanos.</h2>
+      <a href="https://wa.me/5214194887171" target="_blank" rel="noopener noreferrer" class="btn-dark">Cotiza por WhatsApp →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">Loons <em>Balloons</em></div>
+      <nav class="footer__links"><a href="/loons/servicios/">Servicios</a><a href="/loons/galeria/">Galería</a><a href="/loons/contacto/">Contacto</a></nav>
+      <span>© 2025 Loons Balloons · CDMX</span>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); io.unobserve(x.target); } }), { threshold: 0.08 });
+      reveals.forEach(el => io.observe(el));
+    } else { reveals.forEach(el => el.classList.add('visible')); }
+  </script>
+</body>
+</html>

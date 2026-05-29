@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milaa — Fine Line Tattoo · Roma Norte CDMX</title>
+<meta name="description" content="Micaela Montaño — Tatuadora fine line y botánico en Roma Norte, CDMX. @milaa__tatto">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:     #f8f5f0;
+  --surface:#eeebe4;
+  --dark:   #1c1610;
+  --muted:  #6e6158;
+  --accent: #a0694f;
+  --accent2:#7a9a6c;
+  --line:   rgba(28,22,16,.09);
+  --serif:  'Cormorant Garamond',Georgia,serif;
+  --sans:   'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--dark);font-family:var(--sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:28px 60px;
+  transition:all .4s ease;
+}
+nav.s{background:rgba(248,245,240,.97);backdrop-filter:blur(16px);padding:18px 60px;border-bottom:1px solid var(--line)}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:.12em;color:var(--dark)}
+.nav-links{display:flex;gap:40px;align-items:center}
+.nav-links a{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(28,22,16,.45);transition:color .3s}
+.nav-links a:hover{color:var(--dark)}
+.nav-ig{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border:1px solid rgba(160,105,79,.35);border-radius:100px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);transition:all .3s}
+.nav-ig:hover{background:var(--accent);color:var(--bg)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;color:var(--dark);padding:4px}
+
+/* Mobile menu */
+.mob{position:fixed;inset:0;background:var(--bg);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;opacity:0;pointer-events:none;transition:opacity .4s}
+.mob.open{opacity:1;pointer-events:all}
+.mob a{font-family:var(--serif);font-size:clamp(36px,8vw,64px);font-weight:300;letter-spacing:.06em;color:var(--dark);transition:color .3s}
+.mob a:hover{color:var(--accent)}
+.mob-close{position:absolute;top:28px;right:32px;background:none;border:none;color:var(--dark);font-size:24px;cursor:pointer}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+}
+.hero-left{
+  background:var(--bg);
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:80px 60px;
+  position:relative;z-index:1;
+}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+  animation:fadeRise .8s cubic-bezier(.21,.47,.32,.98) .2s both;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--accent)}
+.hero-name{
+  font-family:var(--serif);
+  font-size:clamp(64px,7vw,110px);
+  font-weight:300;line-height:.95;
+  letter-spacing:-.01em;
+  color:var(--dark);
+  margin-bottom:8px;
+  animation:fadeRise .8s cubic-bezier(.21,.47,.32,.98) .35s both;
+}
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-sub{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:56px;
+  animation:fadeRise .8s cubic-bezier(.21,.47,.32,.98) .5s both;
+}
+.hero-ctas{
+  display:flex;gap:16px;flex-wrap:wrap;
+  animation:fadeRise .8s cubic-bezier(.21,.47,.32,.98) .65s both;
+}
+.btn-fill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;background:var(--accent);color:var(--bg);
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  transition:background .3s,transform .3s;
+}
+.btn-fill:hover{background:#c08060;transform:translateY(-2px)}
+.btn-line{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;border:1px solid rgba(28,22,16,.2);
+  color:var(--muted);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  transition:all .3s;
+}
+.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+.hero-scroll{
+  position:absolute;bottom:40px;left:60px;
+  display:flex;align-items:center;gap:10px;
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(28,22,16,.25);
+  animation:fadeIn 1s ease 1.4s both;
+}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(28,22,16,.2))}
+
+.hero-right{
+  position:relative;overflow:hidden;
+  animation:imgReveal 1.2s .15s cubic-bezier(.645,.045,.355,1) both;
+}
+@keyframes imgReveal{
+  from{clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}
+  to{clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)}
+}
+.hero-right img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  transition:transform 8s ease;
+  filter:sepia(8%) saturate(90%);
+}
+.hero-right:hover img{transform:scale(1.04)}
+.hero-right::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(248,245,240,.5) 0%,transparent 35%);
+}
+.hero-counter{
+  position:absolute;bottom:32px;right:32px;
+  font-family:var(--serif);font-size:48px;font-weight:300;
+  color:rgba(28,22,16,.07);letter-spacing:-.02em;line-height:1;
+  pointer-events:none;
+}
+
+/* ── PORTFOLIO ── */
+.portfolio{padding:0 0 4px}
+.portfolio-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  padding:80px 60px 48px;
+  border-top:1px solid var(--line);
+}
+.portfolio-header h2{
+  font-family:var(--serif);font-size:clamp(32px,3.5vw,52px);font-weight:300;
+  color:var(--dark);letter-spacing:-.01em;
+}
+.portfolio-header a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .3s}
+.portfolio-header a:hover{color:var(--accent)}
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-auto-rows:380px;
+  gap:3px;padding:0 3px 3px;
+}
+.port-item{
+  position:relative;overflow:hidden;
+  background:var(--surface);cursor:pointer;
+  height:100%;
+}
+.port-item--tall{grid-row:span 2}
+.port-item--wide{grid-column:span 2}
+.port-item-img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  transition:transform .7s cubic-bezier(.25,.46,.45,.94);
+  filter:sepia(6%) saturate(85%);
+}
+.port-item:hover .port-item-img{transform:scale(1.05);filter:sepia(0%) saturate(100%)}
+.port-item-overlay{
+  position:absolute;inset:0;
+  background:rgba(248,245,240,.88);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:28px 24px;
+  opacity:0;transition:opacity .3s ease;
+  border-top:2px solid var(--accent);
+}
+.port-item:hover .port-item-overlay{opacity:1}
+.port-item-overlay .tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.port-item-overlay h3{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--dark)}
+
+/* Staggered reveal for grid items */
+.port-item:nth-child(1){--delay:.05s}
+.port-item:nth-child(2){--delay:.15s}
+.port-item:nth-child(3){--delay:.25s}
+.port-item:nth-child(4){--delay:.1s}
+.port-item:nth-child(5){--delay:.2s}
+.port-item:nth-child(6){--delay:.3s}
+
+/* ── ABOUT ── */
+.about{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+  min-height:70vh;
+}
+.about-img{position:relative;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:center top;min-height:500px;filter:sepia(8%) saturate(85%)}
+.about-text{
+  padding:80px 72px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid var(--line);
+}
+.section-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:32px}
+.about-text h2{
+  font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;
+  line-height:1.15;margin-bottom:28px;
+}
+.about-text h2 em{font-style:italic;color:var(--accent)}
+.about-text p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:16px;max-width:440px}
+.about-stats{display:flex;gap:40px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+.stat strong{display:block;font-family:var(--serif);font-size:40px;font-weight:300;color:var(--dark);line-height:1}
+.stat span{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block}
+
+/* ── STYLES ── */
+.styles{padding:100px 60px;border-top:1px solid var(--line)}
+.styles-header{margin-bottom:64px}
+.styles-header h2{font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;margin-bottom:12px;color:var(--dark)}
+.styles-header p{font-size:13px;color:var(--muted);max-width:460px;line-height:1.7}
+.styles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.style-card{
+  background:var(--surface);padding:48px 36px 40px;
+  border:1px solid transparent;
+  transition:border-color .3s,transform .3s,background .3s;
+  position:relative;overflow:hidden;
+}
+.style-card::before{
+  content:'';position:absolute;bottom:0;left:0;right:100%;height:2px;
+  background:var(--accent);transition:right .4s ease;
+}
+.style-card:hover::before{right:0}
+.style-card:hover{transform:translateY(-4px);background:#fff;border-color:rgba(160,105,79,.12)}
+.style-num{font-family:var(--serif);font-size:11px;color:var(--accent);letter-spacing:.12em;margin-bottom:20px;display:block}
+.style-card h3{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--dark);margin-bottom:12px;line-height:1.2}
+.style-card p{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* ── BOOKING ── */
+.booking{
+  padding:120px 60px;
+  border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.booking-text h2{font-family:var(--serif);font-size:clamp(42px,5vw,72px);font-weight:300;line-height:1.05;margin-bottom:20px;color:var(--dark)}
+.booking-text h2 em{font-style:italic;color:var(--accent)}
+.booking-text p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:400px}
+.booking-form{display:flex;flex-direction:column;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.form-field input,.form-field select,.form-field textarea{
+  background:#fff;border:1px solid var(--line);
+  padding:14px 16px;font-family:var(--sans);font-size:13px;color:var(--dark);
+  outline:none;transition:border-color .3s;
+  -webkit-appearance:none;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--accent)}
+.form-field select option{background:var(--bg)}
+.form-field textarea{resize:vertical;min-height:100px}
+.form-submit{
+  width:100%;padding:16px;background:var(--accent);color:var(--bg);
+  border:none;font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+  cursor:pointer;transition:background .3s,transform .3s;margin-top:4px;
+}
+.form-submit:hover{background:#c08060;transform:translateY(-1px)}
+
+/* ── CTA BANNER ── */
+.cta-banner{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:100px 60px;text-align:center;
+  background:radial-gradient(ellipse at center,rgba(160,105,79,.07) 0%,transparent 70%);
+}
+.cta-banner h2{font-family:var(--serif);font-size:clamp(44px,7vw,96px);font-weight:300;line-height:1.05;margin-bottom:28px;color:var(--dark)}
+.cta-banner h2 em{font-style:italic;color:var(--accent)}
+.cta-banner p{font-size:13px;color:var(--muted);margin-bottom:48px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{padding:60px;border-top:1px solid var(--line);background:var(--surface)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.footer-logo{font-family:var(--serif);font-size:20px;font-weight:300;letter-spacing:.08em;color:var(--muted)}
+.footer-links{display:flex;gap:32px}
+.footer-links a{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .3s}
+.footer-links a:hover{color:var(--accent)}
+.footer-ig{font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:11px;color:rgba(28,22,16,.3);letter-spacing:.06em}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeRise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+
+/* Scroll reveal */
+.r{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.r.in{opacity:1;transform:translateY(0)}
+.r-l{opacity:0;transform:translateX(-28px);transition:opacity .75s ease,transform .75s ease}
+.r-l.in{opacity:1;transform:translateX(0)}
+.r-s{opacity:0;transform:scale(.95);transition:opacity .7s ease,transform .7s ease}
+.r-s.in{opacity:1;transform:scale(1)}
+
+/* Stagger delays */
+.d1{transition-delay:.08s}.d2{transition-delay:.18s}.d3{transition-delay:.28s}
+.d4{transition-delay:.12s}.d5{transition-delay:.22s}.d6{transition-delay:.32s}
+
+/* Image parallax container */
+.parallax-wrap{overflow:hidden;position:relative}
+.parallax-img{transition:transform .1s linear;will-change:transform}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:22px 24px}
+  nav.s{padding:16px 24px}
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .hero{grid-template-columns:1fr}
+  .hero-right{height:70vw}
+  .hero-left{padding:120px 24px 60px}
+  .hero-scroll{display:none}
+  .portfolio-header{padding:60px 24px 40px}
+  .portfolio-grid{grid-template-columns:1fr 1fr;gap:2px;padding:0 2px 2px}
+  .port-item--wide{grid-column:span 1}
+  .about{grid-template-columns:1fr}
+  .about-img{display:none}
+  .about-text{padding:60px 24px;border-left:none}
+  .styles{padding:60px 24px}
+  .styles-grid{grid-template-columns:1fr}
+  .booking{grid-template-columns:1fr;padding:80px 24px;gap:48px}
+  .form-row{grid-template-columns:1fr}
+  .cta-banner{padding:80px 24px}
+  footer{padding:40px 24px}
+  .footer-inner{flex-direction:column;text-align:center;gap:20px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo">Milaa</a>
+  <div class="nav-links">
+    <a href="#portfolio">Portafolio</a>
+    <a href="#estilos">Estilos</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="https://instagram.com/milaa__tatto" target="_blank" rel="noopener" class="nav-ig">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @milaa__tatto
+    </a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <svg width="22" height="14" viewBox="0 0 22 14" fill="none"><rect y="0" width="22" height="1.5" fill="currentColor"/><rect y="6" width="22" height="1.5" fill="currentColor"/><rect y="12" width="22" height="1.5" fill="currentColor"/></svg>
+  </button>
+</nav>
+
+<div class="mob" id="mob">
+  <button class="mob-close" onclick="toggleMenu()">✕</button>
+  <a href="#portfolio" onclick="toggleMenu()">Portafolio</a>
+  <a href="#estilos" onclick="toggleMenu()">Estilos</a>
+  <a href="#sobre-mi" onclick="toggleMenu()">Sobre mí</a>
+  <a href="#reserva" onclick="toggleMenu()">Reservar</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Fine Line · Roma Norte · CDMX</p>
+    <h1 class="hero-name">Milaa</h1>
+    <p class="hero-sub">Un pedacito de ti en la piel</p>
+    <div class="hero-ctas">
+      <a href="#reserva" class="btn-fill">Reservar cita</a>
+      <a href="#portfolio" class="btn-line">Ver portafolio</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+  <div class="hero-right parallax-wrap">
+    <img class="parallax-img" src="https://images.unsplash.com/photo-1635527948959-1b47e7903cb9?auto=format&fit=crop&w=900&q=80" alt="Fine line tattoo art by Milaa" loading="eager">
+    <div class="hero-counter">01</div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <h2 class="r">Portafolio</h2>
+    <a href="https://instagram.com/milaa__tatto" target="_blank" rel="noopener" class="r d2">Ver Instagram →</a>
+  </div>
+  <div class="portfolio-grid">
+
+    <!-- 1: tall left — fine line portrait piece -->
+    <div class="port-item port-item--tall r-s d1">
+      <img class="port-item-img" src="https://images.unsplash.com/photo-1634958086072-9afdf5531b27?auto=format&fit=crop&w=600&h=900&q=80" alt="Tatuaje fine line retrato" loading="lazy">
+      <div class="port-item-overlay">
+        <p class="tag">Fine Line</p>
+        <h3>Retrato delicado</h3>
+      </div>
+    </div>
+
+    <!-- 2 — "music" fine line script -->
+    <div class="port-item r-s d2">
+      <img class="port-item-img" src="https://images.unsplash.com/photo-1547754145-ef9ff306e3f3?auto=format&fit=crop&w=600&h=400&q=80" alt="Tatuaje script fine line" loading="lazy">
+      <div class="port-item-overlay">
+        <p class="tag">Script</p>
+        <h3>Fine line lettering</h3>
+      </div>
+    </div>
+
+    <!-- 3 — minimalist wrist tattoo warm light -->
+    <div class="port-item r-s d3">
+      <img class="port-item-img" src="https://images.unsplash.com/photo-1611763123076-b4277e3d8e24?auto=format&fit=crop&w=600&h=400&q=80" alt="Tatuaje minimalista muñeca" loading="lazy">
+      <div class="port-item-overlay">
+        <p class="tag">Minimalista</p>
+        <h3>Línea fina</h3>
+      </div>
+    </div>
+
+    <!-- 4: wide — tattooing process close-up -->
+    <div class="port-item port-item--wide r-s d4">
+      <img class="port-item-img" src="https://images.unsplash.com/photo-1736594635582-7f60e14604cc?auto=format&fit=crop&w=900&h=500&q=80" alt="Proceso de tatuaje" loading="lazy">
+      <div class="port-item-overlay">
+        <p class="tag">Proceso</p>
+        <h3>Detalle de aguja</h3>
+      </div>
+    </div>
+
+    <!-- 5 — mountain wrist fine line -->
+    <div class="port-item r-s d5">
+      <img class="port-item-img" src="https://images.unsplash.com/photo-1576904394143-8cfeacabde55?auto=format&fit=crop&w=600&h=400&q=80" alt="Tatuaje montañas muñeca" loading="lazy">
+      <div class="port-item-overlay">
+        <p class="tag">Naturaleza</p>
+        <h3>Paisaje minimalista</h3>
+      </div>
+    </div>
+
+    <!-- 6 — butterfly/floral arm -->
+    <div class="port-item r-s d6">
+      <img class="port-item-img" src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=600&h=400&q=80" alt="Tatuaje floral botánico brazo" loading="lazy">
+      <div class="port-item-overlay">
+        <p class="tag">Botánico</p>
+        <h3>Floral en brazo</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-mi">
+  <div class="about-img parallax-wrap">
+    <img class="parallax-img" src="https://images.unsplash.com/photo-1753259524627-81c9f1a15a95?auto=format&fit=crop&w=800&q=80" alt="Micaela Montaño — tatuadora" loading="lazy">
+  </div>
+  <div class="about-text">
+    <p class="section-label r">Sobre mí</p>
+    <h2 class="r d1">El tatuaje<br>como <em>arte</em></h2>
+    <p class="r d2">Soy Micaela, tatuadora e ilustradora con base en Roma Norte, CDMX. Creo piezas de fine line y botánico que cuentan historias únicas — abstracciones que viven en la piel.</p>
+    <p class="r d3">Aprendiz en <strong style="color:var(--dark)">@inksulina.studios</strong>. También ilustradora en <strong style="color:var(--dark)">@losojosdemilaa</strong>.</p>
+    <div class="about-stats r d4">
+      <div class="stat">
+        <strong>Fine</strong>
+        <span>Line</span>
+      </div>
+      <div class="stat">
+        <strong>Botánico</strong>
+        <span>Estilo</span>
+      </div>
+      <div class="stat">
+        <strong>Roma Nte</strong>
+        <span>CDMX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STYLES -->
+<section class="styles" id="estilos">
+  <div class="styles-header">
+    <h2 class="r">Estilos</h2>
+    <p class="r d1">Especialidades en las que trabajo y me apasionan.</p>
+  </div>
+  <div class="styles-grid">
+    <div class="style-card r d1">
+      <span class="style-num">01</span>
+      <h3>Fine Line</h3>
+      <p>Trazos delicados, precisos y eternamente limpios. La técnica que define mi trabajo: líneas finas que hablan sin gritar.</p>
+    </div>
+    <div class="style-card r d2">
+      <span class="style-num">02</span>
+      <h3>Botánico &amp; Floral</h3>
+      <p>Flores, plantas, hojas y naturaleza orgánica. Piezas que se sienten vivas y crecen contigo con el tiempo.</p>
+    </div>
+    <div class="style-card r d3">
+      <span class="style-num">03</span>
+      <h3>Ilustrativo</h3>
+      <p>Diseños con alma de ilustración. Animales, retratos delicados y composiciones que mezclan arte y tatuaje.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="reserva">
+  <div class="booking-text r-l">
+    <h2>Agenda<br>tu <em>cita</em></h2>
+    <p>Cuéntame tu idea y la hacemos realidad. Respondo en menos de 24 horas con disponibilidad y cotización.</p>
+    <a href="https://wa.me/52XXXXXXXXXX?text=Hola%20Milaa%2C%20quiero%20agendar%20un%20tatuaje" class="btn-fill" style="width:fit-content" target="_blank" rel="noopener">
+      Escribir por WhatsApp
+    </a>
+  </div>
+  <div class="booking-form r d2">
+    <div class="form-row">
+      <div class="form-field">
+        <label>Nombre</label>
+        <input type="text" placeholder="Tu nombre">
+      </div>
+      <div class="form-field">
+        <label>WhatsApp</label>
+        <input type="tel" placeholder="55 1234 5678">
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Estilo</label>
+      <select>
+        <option value="" disabled selected>¿Qué estilo te interesa?</option>
+        <option>Fine Line</option>
+        <option>Botánico / Floral</option>
+        <option>Ilustrativo</option>
+        <option>Geométrico</option>
+        <option>No sé, quiero asesoría</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Zona del cuerpo</label>
+        <input type="text" placeholder="Ej. antebrazo, espalda...">
+      </div>
+      <div class="form-field">
+        <label>Tamaño aprox.</label>
+        <select>
+          <option value="" disabled selected>Tamaño</option>
+          <option>Pequeño (5–8 cm)</option>
+          <option>Mediano (10–15 cm)</option>
+          <option>Grande (20+ cm)</option>
+          <option>Manga / pieza grande</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Cuéntame tu idea</label>
+      <textarea placeholder="Describe el diseño que tienes en mente, referencias, significado..."></textarea>
+    </div>
+    <button class="form-submit" onclick="sendWA(event)">Enviar solicitud →</button>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2 class="r">¿Lista para<br>tu próximo <em>tatuaje?</em></h2>
+  <p class="r d1">Cada pieza es única. Diseño personalizado para ti.</p>
+  <div class="cta-btns r d2">
+    <a href="https://wa.me/52XXXXXXXXXX" target="_blank" rel="noopener" class="btn-fill">Reservar ahora</a>
+    <a href="https://instagram.com/milaa__tatto" target="_blank" rel="noopener" class="btn-line">Ver Instagram</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Milaa</div>
+    <nav class="footer-links">
+      <a href="#portfolio">Portafolio</a>
+      <a href="#estilos">Estilos</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#reserva">Reservar</a>
+    </nav>
+    <p class="footer-ig">@milaa__tatto · Roma Norte · CDMX</p>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Milaa · Micaela Montaño · Todos los derechos reservados.</p>
+    <p>Roma Norte · Ciudad de México</p>
+  </div>
+</footer>
+
+<script>
+/* ── Nav shrink ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('s', scrollY > 60), {passive:true});
+
+/* ── Mobile menu ── */
+function toggleMenu(){
+  document.getElementById('mob').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mob').classList.contains('open') ? 'hidden' : '';
+}
+
+/* ── Scroll reveals ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.r, .r-l, .r-s').forEach(el => io.observe(el));
+
+/* ── Parallax on hero & about images ── */
+(function initParallax(){
+  const items = document.querySelectorAll('.parallax-wrap');
+  if(!items.length) return;
+
+  function tick(){
+    const sy = window.scrollY;
+    items.forEach(wrap => {
+      const rect = wrap.getBoundingClientRect();
+      const visTop = rect.top + sy;
+      const progress = (sy - visTop + window.innerHeight) / (rect.height + window.innerHeight);
+      const shift = (progress - 0.5) * 60; // ±30px parallax
+      const img = wrap.querySelector('.parallax-img');
+      if(img) img.style.transform = `translateY(${shift}px)`;
+    });
+    rafId = requestAnimationFrame(tick);
+  }
+
+  let rafId = requestAnimationFrame(tick);
+})();
+
+/* ── Portfolio stagger on reveal ── */
+const portObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const items = e.target.querySelectorAll('.port-item');
+      items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('in'), i * 100);
+      });
+      portObserver.unobserve(e.target);
+    }
+  });
+}, {threshold:.05});
+const grid = document.querySelector('.portfolio-grid');
+if(grid) portObserver.observe(grid);
+
+/* ── WhatsApp form submit ── */
+function sendWA(e){
+  e.preventDefault();
+  const nombre  = document.querySelector('input[placeholder="Tu nombre"]').value;
+  const estilo  = document.querySelector('select').value;
+  const zona    = document.querySelector('input[placeholder="Ej. antebrazo, espalda..."]').value;
+  const idea    = document.querySelector('textarea').value;
+  const msg = `Hola Milaa! 🌿 Quiero agendar un tatuaje.\n\nNombre: ${nombre}\nEstilo: ${estilo}\nZona: ${zona}\nIdea: ${idea}`;
+  window.open(`https://wa.me/52XXXXXXXXXX?text=${encodeURIComponent(msg)}`, '_blank');
+}
+</script>
+</body>
+</html>

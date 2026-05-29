@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyectos de diseño de interiores por Studio Siete 3. Residencial, comercial y consultoría en CDMX.">
+  <title>Proyectos — Studio Siete 3</title>
+  <link rel="stylesheet" href="/studio-siete3/assets/styles.css">
+  <style>
+    /* ── Filter Bar ── */
+    .filter-bar {
+      background-color: var(--bg);
+      padding-block: var(--space-md);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .filter-bar__inner {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 1.1rem;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background-color: transparent;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border-radius: 0;
+    }
+    .filter-btn:hover { border-color: var(--dark); color: var(--dark); }
+    .filter-btn.active { background-color: var(--dark); border-color: var(--dark); color: var(--bg); }
+
+    /* ── Projects Grid ── */
+    .projects-section { background-color: var(--bg); padding: 0; }
+
+    .proj-grid-full {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 8px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-alt);
+      cursor: pointer;
+      aspect-ratio: 4 / 3;
+    }
+    .project-card--featured { grid-column: span 2; aspect-ratio: 16 / 7; }
+
+    .project-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .project-card:hover img { transform: scale(1.04); }
+
+    .project-card__overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(248, 246, 242, 0.92);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-md);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .project-card:hover .project-card__overlay { opacity: 1; }
+    .project-card__overlay .label { margin-bottom: 0.4rem; }
+    .project-card__overlay h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.2vw, 2rem);
+      font-weight: 300;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+    .project-card__overlay p {
+      font-size: 0.82rem;
+      color: rgba(26, 22, 20, 0.55);
+      margin-top: 0.3rem;
+    }
+
+    /* Year badge */
+    .project-card__year {
+      position: absolute;
+      top: var(--space-sm);
+      right: var(--space-sm);
+      background-color: rgba(248, 246, 242, 0.88);
+      color: var(--dark);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.65rem;
+    }
+
+    /* Visible label (non-hover) */
+    .project-card__label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.1rem;
+      background: linear-gradient(to top, rgba(26,22,20,0.65) 0%, transparent 100%);
+    }
+    .project-card__label .label { color: rgba(248,246,242,0.65); margin-bottom: 0.2rem; }
+    .project-card__label h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--bg);
+    }
+
+    /* ── Showcase strip ── */
+    .showcase-strip {
+      width: 100%;
+      height: clamp(260px, 38vw, 500px);
+      overflow: hidden;
+      position: relative;
+    }
+    .showcase-strip img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .showcase-strip__text {
+      position: absolute;
+      bottom: clamp(20px, 3vw, 44px);
+      left: clamp(20px, 5vw, 72px);
+      color: var(--bg);
+    }
+    .showcase-strip__text p {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+    }
+    .showcase-strip__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(26,22,20,0.5) 0%, transparent 60%);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .proj-grid-full { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .proj-grid-full { grid-template-columns: 1fr; gap: 6px; padding: 6px; }
+      .project-card--featured { grid-column: span 1; aspect-ratio: 4/3; }
+      .project-card__overlay { opacity: 1; }
+      .filter-bar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <a href="/studio-siete3/" class="sidebar__logo">
+      <span class="sidebar__logo-mark">S7</span>
+      <span class="sidebar__logo-sub">Studio Siete 3</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="sidebar__nav">
+        <li><a href="/studio-siete3/proyectos/" class="sidebar__link active">Proyectos</a></li>
+        <li><a href="/studio-siete3/estudio/" class="sidebar__link">Estudio</a></li>
+        <li><a href="/studio-siete3/contacto/" class="sidebar__link">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar__foot">
+      <a href="https://www.instagram.com/studio.siete3" class="sidebar__social" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:yulirealestateoficial@gmail.com" class="sidebar__social">yulirealestateoficial@gmail.com</a>
+    </div>
+  </aside>
+  <button class="sidebar__burger" id="burger" aria-label="Abrir menú"><span></span><span></span></button>
+
+  <div class="site-body">
+    <main>
+
+      <!-- Page Header -->
+      <header class="page-hero" aria-labelledby="page-title">
+        <div class="container">
+          <p class="label page-hero__eyebrow reveal">Portafolio</p>
+          <h1 class="display-xl reveal reveal-delay-1" id="page-title">Proyectos</h1>
+          <p class="reveal reveal-delay-2">Una selección de nuestros trabajos residenciales, comerciales y consultorías en Ciudad de México.</p>
+        </div>
+      </header>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar" role="navigation" aria-label="Filtrar proyectos">
+        <div class="container filter-bar__inner">
+          <button class="filter-btn active" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="filter-btn" data-filter="residencial" aria-pressed="false">Residencial</button>
+          <button class="filter-btn" data-filter="comercial" aria-pressed="false">Comercial</button>
+          <button class="filter-btn" data-filter="consultoria" aria-pressed="false">Consultoría</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <section class="projects-section" aria-label="Listado de proyectos">
+        <div class="proj-grid-full" id="projectsGrid">
+
+          <!-- Featured -->
+          <article class="project-card project-card--featured reveal" data-category="residencial">
+            <img src="/studio-siete3/assets/img/p10_1.jpeg" alt="Casa Tepeyac" loading="lazy">
+            <span class="project-card__year">2024</span>
+            <div class="project-card__label">
+              <p class="label">Residencial</p>
+              <h3>Casa Tepeyac</h3>
+            </div>
+            <div class="project-card__overlay">
+              <p class="label">Residencial &mdash; 2024</p>
+              <h3>Casa Tepeyac</h3>
+              <p>Reforma integral de 420 m² en Lomas de Chapultepec</p>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="project-card reveal reveal-delay-1" data-category="comercial">
+            <img src="/studio-siete3/assets/img/p9_2.jpeg" alt="Boutique Ámbar" loading="lazy">
+            <span class="project-card__year">2024</span>
+            <div class="project-card__label">
+              <p class="label">Comercial</p>
+              <h3>Boutique Ámbar</h3>
+            </div>
+            <div class="project-card__overlay">
+              <p class="label">Comercial &mdash; 2024</p>
+              <h3>Boutique Ámbar</h3>
+              <p>Diseño de retail de lujo en Presidente Masaryk</p>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="project-card reveal reveal-delay-2" data-category="residencial">
+            <img src="/studio-siete3/assets/img/p8_1.jpeg" alt="Penthouse Polanco" loading="lazy">
+            <span class="project-card__year">2023</span>
+            <div class="project-card__label">
+              <p class="label">Residencial</p>
+              <h3>Penthouse Polanco</h3>
+            </div>
+            <div class="project-card__overlay">
+              <p class="label">Residencial &mdash; 2023</p>
+              <h3>Penthouse Polanco</h3>
+              <p>Diseño de interiores de un piso completo</p>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="project-card reveal reveal-delay-1" data-category="consultoria">
+            <img src="/studio-siete3/assets/img/p11_1.jpeg" alt="Oficinas Nexo" loading="lazy">
+            <span class="project-card__year">2023</span>
+            <div class="project-card__label">
+              <p class="label">Consultoría</p>
+              <h3>Oficinas Nexo</h3>
+            </div>
+            <div class="project-card__overlay">
+              <p class="label">Consultoría &mdash; 2023</p>
+              <h3>Oficinas Nexo</h3>
+              <p>Consultoría de espacios corporativos 280 m²</p>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="project-card reveal reveal-delay-2" data-category="residencial">
+            <img src="/studio-siete3/assets/img/p13_2.jpeg" alt="Departamento San Ángel" loading="lazy">
+            <span class="project-card__year">2023</span>
+            <div class="project-card__label">
+              <p class="label">Residencial</p>
+              <h3>Departamento San Ángel</h3>
+            </div>
+            <div class="project-card__overlay">
+              <p class="label">Residencial &mdash; 2023</p>
+              <h3>Departamento San Ángel</h3>
+              <p>Remodelación de estilo contemporáneo cálido</p>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="project-card reveal reveal-delay-3" data-category="comercial">
+            <img src="/studio-siete3/assets/img/p12_1.jpeg" alt="Restaurante Raíz" loading="lazy">
+            <span class="project-card__year">2022</span>
+            <div class="project-card__label">
+              <p class="label">Comercial</p>
+              <h3>Restaurante Raíz</h3>
+            </div>
+            <div class="project-card__overlay">
+              <p class="label">Comercial &mdash; 2022</p>
+              <h3>Restaurante Raíz</h3>
+              <p>Concepto gastronómico 180 m² en la Colonia Roma</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Showcase strip -->
+      <div class="showcase-strip">
+        <img src="/studio-siete3/assets/img/p7_1.jpeg" alt="Interior por Studio Siete 3" loading="lazy">
+        <div class="showcase-strip__overlay"></div>
+        <div class="showcase-strip__text">
+          <p class="label" style="color:rgba(248,246,242,0.55); margin-bottom:0.5rem;">Proceso de diseño</p>
+          <p>Cada espacio, una historia única</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-banner">
+        <div class="container">
+          <span class="accent-line accent-line--center reveal" aria-hidden="true"></span>
+          <h2 class="display-md reveal reveal-delay-1">¿Tienes un proyecto en mente?</h2>
+          <p class="reveal reveal-delay-2">Cuéntanos sobre tu espacio y agendamos una consulta inicial sin compromiso.</p>
+          <a href="/studio-siete3/contacto/" class="btn reveal reveal-delay-3"
+             style="color: rgba(248,246,242,0.85); border-color: rgba(248,246,242,0.35); margin-top: 0.5rem;">
+            Contáctanos
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-logo">
+            <div class="sidebar__logo-mark">S7</div>
+            <div class="sidebar__logo-sub">Studio Siete 3</div>
+          </div>
+          <p>Estudio de diseño de interiores con sede en Polanco, CDMX.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Navegación</p>
+          <ul class="footer__links">
+            <li><a href="/studio-siete3/">Inicio</a></li>
+            <li><a href="/studio-siete3/proyectos/">Proyectos</a></li>
+            <li><a href="/studio-siete3/estudio/">Estudio</a></li>
+            <li><a href="/studio-siete3/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Servicios</p>
+          <ul class="footer__links">
+            <li><a href="/studio-siete3/contacto/">Diseño Residencial</a></li>
+            <li><a href="/studio-siete3/contacto/">Diseño Comercial</a></li>
+            <li><a href="/studio-siete3/contacto/">Consultoría</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <p class="footer__col-title">Contacto</p>
+          <p>Polanco, Miguel Hidalgo</p>
+          <p>Ciudad de México, CDMX</p>
+          <p style="margin-top: 0.65rem;"><a href="mailto:yulirealestateoficial@gmail.com">yulirealestateoficial@gmail.com</a></p>
+          <p><a href="tel:+525576672987">+52 55 7667 2987</a></p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Studio Siete 3. Todos los derechos reservados.</p>
+        <p>Polanco, CDMX</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Sidebar
+    const burger = document.getElementById('burger');
+    const sidebar = document.getElementById('sidebar');
+    burger.addEventListener('click', () => { sidebar.classList.toggle('open'); burger.classList.toggle('open'); });
+    sidebar.querySelectorAll('.sidebar__link').forEach(l => l.addEventListener('click', () => { sidebar.classList.remove('open'); burger.classList.remove('open'); }));
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+        cards.forEach(card => {
+          const show = filter === 'todos' || card.dataset.category === filter;
+          card.style.display = show ? '' : 'none';
+          if (show && card.classList.contains('project-card--featured') && filter !== 'todos') {
+            card.classList.remove('project-card--featured');
+          }
+        });
+      });
+    });
+
+    // Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

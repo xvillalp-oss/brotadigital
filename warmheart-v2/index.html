@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Warm Heart — Agencia de Creadores</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream:  #F4F1E2;
+    --brown:  #513229;
+    --salmon: #C8825A;
+    --salmon-dk: #B3704A;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  /* subtle doodle corners */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 0 24px;
+  }
+
+  .logo-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+    letter-spacing: 0.01em;
+    color: var(--brown);
+    line-height: 1;
+    display: inline-block;
+  }
+
+  .logo sup {
+    font-size: 0.28em;
+    vertical-align: super;
+    opacity: 0.45;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  .tagline {
+    font-family: 'Jost', sans-serif;
+    font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+    letter-spacing: 0.28em;
+    color: var(--brown);
+    opacity: 0.5;
+    margin-bottom: 52px;
+    text-transform: uppercase;
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-main {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: var(--salmon);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 44px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-main:hover { background: var(--salmon-dk); transform: translateY(-2px); }
+
+  .btn-ghost {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--brown);
+    border: 1.5px solid rgba(81,50,41,0.3);
+    border-radius: 50px;
+    padding: 14px 44px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover { border-color: var(--brown); background: rgba(81,50,41,0.04); transform: translateY(-2px); }
+
+  /* decorative handwritten accent */
+  .accent-text {
+    position: absolute;
+    font-family: 'Caveat', cursive;
+    color: var(--brown);
+    opacity: 0.22;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* footer icons */
+  .footer-icons {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .icon-link {
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid var(--salmon);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--salmon);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .icon-link:hover { background: rgba(200,130,90,0.12); transform: scale(1.08); }
+
+  /* scattered svg doodles */
+  .deco-svg {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.07;
+  }
+
+  @media (max-width: 480px) {
+    .nav-buttons { flex-direction: column; align-items: center; }
+    .btn-main, .btn-ghost { width: 200px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- decorative SVG scribbles in corners -->
+  <svg class="deco-svg" style="top:30px;left:30px;width:120px;" viewBox="0 0 130 80" fill="none">
+    <path d="M8 60 C25 20 65 55 90 25 S118 42 124 18" stroke="#513229" stroke-width="2" stroke-linecap="round"/>
+    <path d="M12 68 C30 32 68 62 95 34" stroke="#513229" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+  </svg>
+
+  <svg class="deco-svg" style="bottom:80px;right:28px;width:90px;" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="42" stroke="#513229" stroke-width="1.8" stroke-dasharray="6 4"/>
+    <circle cx="50" cy="50" r="24" stroke="#513229" stroke-width="1" stroke-dasharray="3 5"/>
+  </svg>
+
+  <svg class="deco-svg" style="top:50%;right:40px;width:60px;transform:translateY(-50%);" viewBox="0 0 70 120" fill="none">
+    <path d="M35 8 L35 112 M20 25 L35 8 L50 25 M20 95 L35 112 L50 95" stroke="#513229" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <svg class="deco-svg" style="top:50%;left:36px;width:55px;transform:translateY(-50%);" viewBox="0 0 60 80" fill="none">
+    <rect x="6" y="6" width="48" height="68" rx="3" stroke="#513229" stroke-width="1.8"/>
+    <line x1="14" y1="22" x2="46" y2="22" stroke="#513229" stroke-width="1.2"/>
+    <line x1="14" y1="34" x2="38" y2="34" stroke="#513229" stroke-width="1"/>
+    <line x1="14" y1="46" x2="42" y2="46" stroke="#513229" stroke-width="1"/>
+  </svg>
+
+  <!-- handwritten accents -->
+  <span class="accent-text" style="top:22px;right:160px;font-size:1.1rem;transform:rotate(-3deg);">creadores reales ↓</span>
+  <span class="accent-text" style="bottom:100px;left:60px;font-size:1rem;transform:rotate(2deg);">100% auténtico</span>
+
+  <main>
+    <div class="logo-wrap">
+      <div class="logo">WARM HEART<sup>®</sup></div>
+    </div>
+    <p class="tagline">Auténtico &nbsp;|&nbsp; Humano &nbsp;|&nbsp; Influyente</p>
+    <div class="nav-buttons">
+      <a href="roster.html" class="btn-main">Roster</a>
+      <a href="marcas.html" class="btn-ghost">Para marcas</a>
+    </div>
+  </main>
+
+  <nav class="footer-icons" aria-label="Redes sociales">
+    <a href="mailto:hola@warmheart.mx" class="icon-link" aria-label="Correo electrónico">
+      <svg width="16" height="13" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M1 3.5l8 5 8-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <a href="https://instagram.com/warmheart" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/>
+      </svg>
+    </a>
+  </nav>
+
+</body>
+</html>
