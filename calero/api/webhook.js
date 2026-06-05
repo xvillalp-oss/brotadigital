@@ -1,26 +1,29 @@
 // api/webhook.js
-// Recibe notificaciones de Mercado Pago y envía emails de confirmación
-// Variables de entorno requeridas: MP_ACCESS_TOKEN, BREVO_API_KEY
+// Recibe notificaciones de Mercado Pago y envía emails de confirmación vía Resend
+// Variables de entorno requeridas: MP_ACCESS_TOKEN, RESEND_API_KEY, RESEND_FROM
 
 const { MercadoPagoConfig, Payment } = require('mercadopago');
 const https = require('https');
 
-// ─── Helper Brevo (sin SDK extra) ────────────────────────────────────────────
-function brevoSend({ toEmail, toName, fromEmail, fromName, subject, html }) {
+// ─── Helper Resend (sin SDK extra) ───────────────────────────────────────────
+// RESEND_FROM  → dirección verificada en resend.com, ej: "Calero <pedidos@calero.mx>"
+// Para pruebas antes de verificar dominio: "Calero <onboarding@resend.dev>"
+function resendSend({ toEmail, toName, subject, html }) {
   return new Promise((resolve, reject) => {
+    const from = process.env.RESEND_FROM || 'Calero <onboarding@resend.dev>';
     const body = JSON.stringify({
-      sender:      { name: fromName || 'Calero', email: fromEmail },
-      to:          [{ email: toEmail, name: toName || '' }],
+      from,
+      to:      [`${toName ? toName + ' <' : ''}${toEmail}${toName ? '>' : ''}`],
       subject,
-      htmlContent: html,
+      html,
     });
 
     const req = https.request({
-      hostname: 'api.brevo.com',
-      path:     '/v3/smtp/email',
+      hostname: 'api.resend.com',
+      path:     '/emails',
       method:   'POST',
       headers: {
-        'api-key':       process.env.BREVO_API_KEY,
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
         'Content-Type':  'application/json',
         'Content-Length': Buffer.byteLength(body),
       },
@@ -28,8 +31,8 @@ function brevoSend({ toEmail, toName, fromEmail, fromName, subject, html }) {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
-        if (res.statusCode >= 400) reject(new Error(`Brevo ${res.statusCode}: ${data}`));
-        else resolve({ status: res.statusCode, data });
+        if (res.statusCode >= 400) reject(new Error(`Resend ${res.statusCode}: ${data}`));
+        else resolve(JSON.parse(data || '{}'));
       });
     });
 
@@ -220,8 +223,8 @@ module.exports = async (req, res) => {
     if (giftCode) metadata.giftCode = giftCode;
 
     // ── Envío de emails ──────────────────────────────────────────────────────
-    if (!process.env.BREVO_API_KEY) {
-      console.warn('BREVO_API_KEY no configurado — saltando emails');
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY no configurado — saltando emails');
       return res.status(200).json({ ok: true, warn: 'no_email' });
     }
 
@@ -231,9 +234,7 @@ module.exports = async (req, res) => {
     const [emailA, emailB] = await Promise.all([
       // Email al cliente (regalo o pedido normal)
       customerEmail
-        ? brevoSend({
-            fromEmail: 'pedidos@calero.mx',
-            fromName:  'Calero',
+        ? resendSend({
             toEmail:   customerEmail,
             toName:    customerName,
             subject:   esRegalo
@@ -246,9 +247,7 @@ module.exports = async (req, res) => {
         : Promise.resolve({ skip: true }),
 
       // Notificación interna a Calero
-      brevoSend({
-        fromEmail: 'pedidos@calero.mx',
-        fromName:  'Calero Sistema',
+      resendSend({
         toEmail:   'contacto@calero.mx',
         toName:    'Calero',
         subject:   esRegalo

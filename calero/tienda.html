@@ -11,7 +11,7 @@
 <body>
 
 <aside class="sidenav">
-  <a href="index.html" class="sidenav__logo">Calero</a>
+  <a href="index.html" class="sidenav__logo"><img src="photos/calero-logo.jpg" alt="Calero" class="sidenav__logo-img"/></a>
   <nav class="sidenav__nav">
     <div class="sidenav__item sidenav__item--tienda">
       <button class="sidenav__link active" id="sidenavTiendaBtn">Tienda
@@ -30,6 +30,7 @@
               <div class="sidenav__sub3" id="sn-demesa">
                 <a href="#pantallas">Pantallas</a>
                 <a href="#bases">Bases</a>
+                <a href="#esmaltes">Esmaltes</a>
               </div>
             </div>
             <a href="#colgantes">Colgantes</a>
@@ -39,11 +40,12 @@
       </div>
     </div>
     <div class="sidenav__divider"></div>
-    <div class="sidenav__item"><a href="regalo.html" class="sidenav__link">Tarjeta regalo</a></div>
     <div class="sidenav__item"><a href="b2b.html" class="sidenav__link">B2B</a></div>
     <div class="sidenav__item"><a href="personalizado.html" class="sidenav__link">Personalizado</a></div>
+    <div class="sidenav__item"><a href="regalo.html" class="sidenav__link">Tarjeta regalo</a></div>
     <div class="sidenav__item"><a href="nosotros.html" class="sidenav__link">Nosotros</a></div>
     <div class="sidenav__item"><a href="contacto.html" class="sidenav__link">Contacto</a></div>
+    <div class="sidenav__item"><a href="donde.html" class="sidenav__link sidenav__link--donde">¿Dónde encontrarnos?</a></div>
   </nav>
   <div class="sidenav__foot">
     <button class="sidenav__cart" id="openCartDesktop">
@@ -52,7 +54,7 @@
     </button>
     <div class="sidenav__social">
       <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">IG</a>
-      <a href="https://wa.me/525530370317?text=Hola!!%20Estoy%20interesada%20en%20sus%20luminarias%E2%80%A6%20me%20das%20m%C3%A1s%20informaci%C3%B3n%3F">WA</a>
+      <a href="https://wa.me/525530370317?text=Hola%E2%80%A6%20estoy%20interesad%40%20en%E2%80%A6%20me%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F">WA</a>
     </div>
   </div>
 </aside>
@@ -72,6 +74,7 @@
               <ul class="menu__sub3">
                 <li><a href="#pantallas" class="menu-close-link">Pantallas</a></li>
                 <li><a href="#bases" class="menu-close-link">Bases</a></li>
+                <li><a href="#esmaltes" class="menu-close-link">Esmaltes</a></li>
               </ul>
             </li>
             <li><a href="#colgantes" class="menu-close-link">Colgantes</a></li>
@@ -80,15 +83,15 @@
         <li><a href="#mural" class="menu-close-link">Objetos Mural</a></li>
       </ul>
     </li>
-    <li class="menu__item"><a href="regalo.html" class="menu__link">Tarjeta regalo</a></li>
     <li class="menu__item"><a href="b2b.html" class="menu__link">B2B</a></li>
     <li class="menu__item"><a href="personalizado.html" class="menu__link">Personalizado</a></li>
+    <li class="menu__item"><a href="regalo.html" class="menu__link">Tarjeta regalo</a></li>
     <li class="menu__item"><a href="nosotros.html" class="menu__link">Nosotros</a></li>
     <li class="menu__item"><a href="contacto.html" class="menu__link">Contacto</a></li>
   </ul>
   <div class="menu__footer">
     <a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">@caleromexicano</a>
-    <a href="https://wa.me/525530370317?text=Hola!!%20Estoy%20interesada%20en%20sus%20luminarias%E2%80%A6%20me%20das%20m%C3%A1s%20informaci%C3%B3n%3F">55 3037 0317</a>
+    <a href="https://wa.me/525530370317?text=Hola%E2%80%A6%20estoy%20interesad%40%20en%E2%80%A6%20me%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F">55 3037 0317</a>
   </div>
 </nav>
 
@@ -144,8 +147,20 @@
   </div>
 </section>
 
+<!-- ESMALTES -->
+<section id="esmaltes">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="label section__label">Tienda · Esmaltes</span>
+      <h2 class="section__title">Esmaltes de <strong>cerámica</strong></h2>
+      <p class="section__intro">Cada pieza es única. Los esmaltes, al combinarse con óxidos y someterse a las altas temperaturas del horno, reaccionan de manera distinta en cada quema — generando variaciones naturales en color, textura y acabado. Las piezas que recibes pueden diferir de las fotografías en nuestras redes sociales, y eso es precisamente lo que las hace irrepetibles.</p>
+    </div>
+    <div class="products reveal" id="esmalatesGrid"></div>
+  </div>
+</section>
+
 <!-- TELAS -->
-<section id="telas">
+<section id="telas" style="background:var(--bg-warm)">
   <div class="container">
     <div class="section__head reveal">
       <span class="label section__label">Tienda · Telas</span>
@@ -197,7 +212,8 @@
     <div class="footer__logo">Calero</div>
     <ul class="footer__links">
       <li><a href="#pantallas">Pantallas</a></li>
-      <li><a href="#bases">Bases</a></li>
+      <li><a href="#bases">Bases</a>
+                <a href="#esmaltes">Esmaltes</a></li>
       <li><a href="#telas">Telas</a></li>
       <li><a href="https://www.instagram.com/caleromexicano/" target="_blank" rel="noopener">Instagram</a></li>
     </ul>
@@ -216,11 +232,12 @@
   </div>
 </aside>
 
-<script src="calero.js"></script>
+<script src="calero.js?v=mayo26-esmaltes-v3"></script>
 <script>
   onDataReady(() => {
     renderProducts(PANTALLAS, 'pantallasGrid', 'pantalla');
     renderProducts(BASES,     'basesGrid',     'base');
+    renderProducts(ESMALTES,  'esmalatesGrid', 'esmalte');
     renderProducts(TELAS,     'telasGrid',     'tela');
     renderFAQ();
   });

@@ -24,47 +24,72 @@ const SHEET_ID = '';
 // ── IMPORTANTE: las imágenes deben estar compartidas públicamente en Drive
 const _DRV = id => `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
 
+const _IMG = f => `photos/${f}`;
+
 const _DEF_PANTALLAS = [
-  { id:'p1',  name:'Cónica Rafia',          desc:'Pantalla hecha a mano · rafia · cónica · base dorada · Ø 30 cm',           price:1800, img:_DRV('1iXP-OVNf6iR3tI6o_iR08yXdnvTj_-GH') },
-  { id:'p2',  name:'Tambor Borgoña',         desc:'Pantalla hecha a mano · tela · cilíndrica · borgoña · Ø 35 cm',            price:1800, img:_DRV('1n3oibEM1FCkWcmK-zS55OShgj1vYi-P2')  },
-  { id:'p3',  name:'Tambor Natural',         desc:'Pantalla hecha a mano · yute · cilíndrica · tono crudo · Ø 35 cm',        price:1800, img:_DRV('1_nSaeKjVcb1zqSWIuMw6gNt74OgZVTTk') },
-  { id:'p4',  name:'Tambor Blanco',          desc:'Pantalla hecha a mano · tela · cilíndrica · blanco liso · Ø 35 cm',       price:1800, img:_DRV('1cYmJ0LI4SbK9XuAVdlM6ynjZtNO6NRhm') },
-  { id:'p5',  name:'Tambor Flecos Rojo',     desc:'Pantalla hecha a mano · tela · cilíndrica · rojo · flecos dorados',       price:1800, img:_DRV('1-7SSLI5-VSYqE4SJal8UkpJga6F_MSb-')  },
-  { id:'p6',  name:'Cónica Navy',            desc:'Pantalla hecha a mano · tela · cónica · azul marino · Ø 30 cm',           price:1800, img:_DRV('171JhXjkZw_EOOQycKxrpW9h0dyqxWSIB')  },
-  { id:'p7',  name:'Tambor Flecos Borgoña',  desc:'Pantalla hecha a mano · tela · cilíndrica · borgoña · flecos en capas',  price:1800, img:_DRV('19DAXPEe1gA9bwDUMs-qWel3xg6AAlfkT')  },
-  { id:'p8',  name:'Cónica Azul',            desc:'Pantalla hecha a mano · tela · cónica · azul pálido · Ø 30 cm',          price:1800, img:_DRV('14Fujwr9FFhDYccMafu49Idv45FcP8dZQ')  },
-  { id:'p9',  name:'Tambor Plisado Blanco',  desc:'Pantalla hecha a mano · plisada · cilíndrica · blanco · Ø 35 cm',        price:1800, img:_DRV('1eMMDMlOggmTiBpDJ4z7ZI0Bs94v8zwH2')  },
-  { id:'p10', name:'Tambor Plisado Verde',   desc:'Pantalla hecha a mano · plisada · cilíndrica · verde · Ø 35 cm',         price:1800, img:_DRV('1T5jzF0H1J5AYAmL-gCkAtFBQGU6C8iwT')  },
-  { id:'p11', name:'Tambor Plisado Rosa',    desc:'Pantalla hecha a mano · plisada · cilíndrica · rosa · Ø 35 cm',          price:1800, img:_DRV('1A3L4BEw9xMpAw817eZkaa1hX-uXjUerX')  },
-  { id:'p12', name:'Tambor Plisado Mostaza', desc:'Pantalla hecha a mano · plisada · cilíndrica · mostaza · Ø 35 cm',       price:1800, img:_DRV('1w0RkzJMcrS0LNVkMxbJd4aDFu_CgOEsL')  },
-  { id:'p13', name:'Tambor Plisado Teal',    desc:'Pantalla hecha a mano · plisada · cilíndrica · verde azulado · Ø 35 cm', price:1800, img:_DRV('1M_s5LSXAmjmZ5MK9TD8xxdrYwA7dmBNr')  },
-  { id:'p14', name:'Tambor Plisado Azul',    desc:'Pantalla hecha a mano · plisada · cilíndrica · azul · Ø 35 cm',          price:1800, img:_DRV('1Y8u_RmI5jhC6LO1tgvI1NTNYRYMx4Cl0')  },
-  { id:'p15', name:'Tambor Plisado Coral',   desc:'Pantalla hecha a mano · plisada · cilíndrica · coral · Ø 35 cm',         price:1800, img:_DRV('1soxAgUXpnyBEVLksz0xafqykrMua9z99')   },
-  { id:'p16', name:'Tambor Plisado Rayas',   desc:'Pantalla hecha a mano · plisada · cilíndrica · rayas · Ø 35 cm',         price:1800, img:_DRV('1EcuWyHQdne7vYwm5yil-xCbK0_7sEff7')  },
-  { id:'p17', name:'Tambor Plisado Teal 2',  desc:'Pantalla hecha a mano · plisada · cilíndrica · teal bicolor · Ø 35 cm', price:1800, img:_DRV('1juXBMD8wdRL3PwX0CKh6jotpEEgdpMQj')  },
-  { id:'p18', name:'Tambor Plisado Azul 2',  desc:'Pantalla hecha a mano · plisada · cilíndrica · azul bicolor · Ø 35 cm', price:1800, img:_DRV('1aXi_fEs-Cmift5vkVhPGndHoRCHtXM9Z')  },
-  { id:'p19', name:'Tambor Flecos Blanco',   desc:'Pantalla hecha a mano · tela · cilíndrica · blanco · flecos dorados',   price:1800, img:_DRV('1Z-iAHl64nvpn-iU4cVDJ5QBBP019LmZ2')  },
-  { id:'p20', name:'Tambor Marino',          desc:'Pantalla hecha a mano · tela · cilíndrica · azul marino · Ø 35 cm',     price:1800, img:_DRV('1qn3rv7y8T0QRLHAZSTLWSkc0h4qbnX6w')  },
+  // ── Sin flecos $1,800 MXN ──
+  { id:'p1',  name:'Cordón Ladrillo',                    desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · cordón · tono ladrillo · hecha a mano',              spec:'Cilíndrica', price:1800, img:_IMG('Cordón Ladrillo.png') },
+  { id:'p2',  name:'Lino Vino',                          desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · lino · color vino · hecha a mano',                   spec:'Cilíndrica', price:1800, img:_IMG('Lino Vino.png') },
+  { id:'p3',  name:'Efecto Mimbre',                      desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · tejido efecto mimbre · hecha a mano',                spec:'Cilíndrica', price:1800, img:_IMG('Efecto Mimbre.png') },
+  { id:'p4',  name:'Lino Hueso',                         desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · lino · color hueso · hecha a mano',                  spec:'Cilíndrica', price:1800, img:_IMG('Lino Hueso.png') },
+  { id:'p5',  name:'Lino Azul Rey',                      desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · lino · azul rey · hecha a mano',                     spec:'Cilíndrica', price:1800, img:_IMG('Lino Azul Rey.png') },
+  { id:'p6',  name:'Lino Azul Cielo',                    desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · lino · azul cielo · hecha a mano',                   spec:'Cilíndrica', price:1800, img:_IMG('Lino Azul Cielo.png') },
+  { id:'p7',  name:'Lino Azul Marino',                   desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · lino · azul marino · hecha a mano',                  spec:'Cilíndrica', price:1800, img:_IMG('Lino Azul Marino.png') },
+  { id:'p8',  name:'Algodón Rayas',                      desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · hecha a mano',                      spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayas.png') },
+  { id:'p9',  name:'Algodón Rayado Verde',               desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · verde · hecha a mano',             spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayado Verde.png') },
+  { id:'p10', name:'Algodón Rayado Rosa con Rojo',       desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · rosa con rojo · hecha a mano',     spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayado Rosa con Rojo.png') },
+  { id:'p11', name:'Algodón Rayado Azul',                desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · azul · hecha a mano',              spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayado Azul.png') },
+  { id:'p12', name:'Algodón Rayado Mostaza',             desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · mostaza · hecha a mano',           spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayado Mostaza.png') },
+  { id:'p13', name:'Algodón Rayado Azul y Vino',         desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · azul y vino · hecha a mano',       spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayado Azul y Vino.png') },
+  { id:'p14', name:'Algodón Rayado Mostaza y Azul',      desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · mostaza y azul · hecha a mano',    spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayado Mostaza y Azul.png') },
+  { id:'p15', name:'Algodón Rayado Rosa Grueso',         desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · rosa grueso · hecha a mano',       spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayado Rosa Grueso.png') },
+  { id:'p16', name:'Algodón Rayado Rosa y Naranja',      desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · algodón rayado · rosa y naranja · hecha a mano',    spec:'Cilíndrica', price:1800, img:_IMG('Algodón Rayado Rosa y Naranja.png') },
+  // ── Con flecos $2,000 MXN ──
+  { id:'p17', name:'Lino Terracota Fleco Dorado',        desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · lino terracota · flecos dorados · hecha a mano',    spec:'Cilíndrica', price:2000, img:_IMG('Lino Terracota Fleco Dorado.png') },
+  { id:'p18', name:'Lino Hueso con Fleco Dorado',        desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · lino hueso · flecos dorados · hecha a mano',       spec:'Cilíndrica', price:2000, img:_IMG('Lino Hueso con Fleco Dorado.png') },
+  { id:'p19', name:'Flecos Vino',                        desc:'Cónica · 18–30 cm Ø × 20 cm alt. · flecos en capas · color vino · hecha a mano',        spec:'Icónica', price:2000, img:_IMG('Flecos Vino.png') },
+  { id:'p20', name:'Fleco Perla',                        desc:'Cónica · 18–30 cm Ø × 20 cm alt. · tela · flecos perla · hecha a mano',                 spec:'Icónica', price:2000, img:_IMG('Fleco Perla.png') },
+  { id:'p21', name:'Photoroom',                          desc:'Cilíndrica · 28 cm Ø × 25 cm alt. · hecha a mano',                                     spec:'Cilíndrica', price:1800, img:_IMG('Photoroom_20260527_201851.png') },
 ];
 const _DEF_BASES = [
-  { id:'b1', name:'Margo',  desc:'Cerámica alta temperatura · 21cm Ø × 35cm alt. · 3kg',                         price:4600, img:_DRV('1zAAuNQdsHVO008e_eOgQts6IRgI0udGh') },
-  { id:'b2', name:'Pepa',   desc:'Cerámica alta temperatura · 24cm Ø × 24cm alt. · 2.8kg',                       price:4100, img:_DRV('1JDPtUXwqITceHp3D4DheqqlGrGSqSGLp') },
-  { id:'b3', name:'Toña',   desc:'Cerámica alta temperatura · 16cm Ø × 34cm alt. · 3.3kg · edición 5 piezas',   price:5100, img:'ph ph-7298' },
-  { id:'b4', name:'Concha', desc:'Cerámica alta temperatura · hecha a mano CDMX · 36cm',                         price:4500, img:'ph ph-7304' },
-  { id:'b5', name:'Lupita', desc:'Cerámica alta temperatura · engobe terracota · 44cm',                          price:5900, img:'ph ph-7322' },
-  { id:'b6', name:'Chela',  desc:'Cerámica alta temperatura · barro negro · base baja · 32cm',                   price:5200, img:'ph ph-7414' },
+  // ── Toña — Tres esferas apiladas · 16 cm Ø × 34 cm alt. · 3.3 kg · $5,100 ──
+  { id:'b1',  name:'Toña Beige',               desc:'Toña · tres esferas apiladas · 16 cm Ø × 34 cm alt. · cerámica alta temperatura',  spec:'Toña · 3 esferas · 3.3 kg', price:5100, img:_IMG('Toña Beige.png') },
+  { id:'b2',  name:'Toña Café Sólido',         desc:'Toña · tres esferas apiladas · 16 cm Ø × 34 cm alt. · cerámica alta temperatura',  spec:'Toña · 3 esferas · 3.3 kg', price:5100, img:_IMG('Toña Café Sólido.png') },
+  { id:'b3',  name:'Toña Esmeralda Sólido',    desc:'Toña · tres esferas apiladas · 16 cm Ø × 34 cm alt. · cerámica alta temperatura',  spec:'Toña · 3 esferas · 3.3 kg', price:5100, img:_IMG('Toña Esmeralda Sólido_.png') },
+  { id:'b4',  name:'Toña Rojo Intenso',        desc:'Toña · tres esferas apiladas · 16 cm Ø × 34 cm alt. · cerámica alta temperatura',  spec:'Toña · 3 esferas · 3.3 kg', price:5100, img:_IMG('Toña Rojo Intenso.png') },
+  // ── Margo — Forma de gota · 21 cm Ø × 35 cm alt. · 3 kg · $4,600 ──
+  { id:'b5',  name:'Margo Piel',               desc:'Margo · forma de gota · 21 cm Ø × 35 cm alt. · cerámica alta temperatura',        spec:'Margo · forma gota · 3 kg', price:4600, img:_IMG('Margo Piel.png') },
+  { id:'b6',  name:'Margo Lila Sólido',        desc:'Margo · forma de gota · 21 cm Ø × 35 cm alt. · cerámica alta temperatura',        spec:'Margo · forma gota · 3 kg', price:4600, img:_IMG('Margo Lila Sólido_.png') },
+  { id:'b7',  name:'Margo Café Sólido',        desc:'Margo · forma de gota · 21 cm Ø × 35 cm alt. · cerámica alta temperatura',        spec:'Margo · forma gota · 3 kg', price:4600, img:_IMG('Margo Café Sólido_.png') },
+  // ── Pepa — Base esférica · 24 cm Ø × 24 cm alt. · 2.8 kg · $4,100 ──
+  { id:'b8',  name:'Pepa Blanco Dálmata',      desc:'Pepa · base esférica · 24 cm Ø × 24 cm alt. · cerámica alta temperatura',        spec:'Pepa · esférica · 2.8 kg', price:4100, img:_IMG('Pepa Blanco Dálmata.png') },
+  { id:'b9',  name:'Pepa Blueberry Sólido',    desc:'Pepa · base esférica · 24 cm Ø × 24 cm alt. · cerámica alta temperatura',        spec:'Pepa · esférica · 2.8 kg', price:4100, img:_IMG('Pepa Blueberry Sólido_.png') },
+  { id:'b10', name:'Pepa Esmeralda Sólido',    desc:'Pepa · base esférica · 24 cm Ø × 24 cm alt. · cerámica alta temperatura',        spec:'Pepa · esférica · 2.8 kg', price:4100, img:_IMG('Pepa Esmeralda Sólido_.png') },
+  { id:'b11', name:'Pepa Pistache',            desc:'Pepa · base esférica · 24 cm Ø × 24 cm alt. · cerámica alta temperatura',        spec:'Pepa · esférica · 2.8 kg', price:4100, img:_IMG('Pepa Pistache.png') },
 ];
 const _DEF_TELAS = [
   { id:'t1', name:'Lino Crudo',    desc:'Lino 100% · tono natural · ancho 150 cm · por metro',       price:420, img:'bg-t1' },
   { id:'t2', name:'Algodón Tela',  desc:'Algodón natural · blanco hueso · ancho 140 cm · por metro', price:380, img:'bg-t2' },
   { id:'t3', name:'Lino Teñido',   desc:'Lino en tinte vegetal ocre · 150 cm · por metro',           price:480, img:'bg-t3' },
 ];
+const _DEF_ESMALTES = [
+  { id:'e1',  name:'Beige Sólido',           desc:'Esmalte sólido · tono arena · cerámica',    img:_IMG('Beige Sólido_.png') },
+  { id:'e2',  name:'Blanco con Esquirlas',   desc:'Esmalte blanco · con efecto esquirlas',     img:_IMG('Blanco con Esquirlas.png') },
+  { id:'e3',  name:'Blueberry',              desc:'Esmalte azul profundo · sólido',            img:_IMG('Blueberry.png') },
+  { id:'e4',  name:'Café Castaño',           desc:'Esmalte marrón · tono castaño cálido',      img:_IMG('Café Castaño.png') },
+  { id:'e5',  name:'Esmeralda Oscuro',       desc:'Esmalte verde oscuro · intenso',            img:_IMG('Esmeralda Oscuro.png') },
+  { id:'e6',  name:'Esmeralda Claro',        desc:'Esmalte verde · tono claro y luminoso',     img:_IMG('Esmeralda claro.png') },
+  { id:'e7',  name:'Lila',                   desc:'Esmalte púrpura · tono pastel',             img:_IMG('Lila.png') },
+  { id:'e8',  name:'Pistache',               desc:'Esmalte verde pálido · suave y delicado',   img:_IMG('Pistache.png') },
+  { id:'e9',  name:'Rojo Intenso',           desc:'Esmalte rojo profundo · vibrante',          img:_IMG('Rojo I.png') },
+];
 
 // ─── DATOS VIVOS (se reemplazan al cargar el Sheet) ──────────────────────────
-let PANTALLAS = [..._DEF_PANTALLAS];
-let BASES     = [..._DEF_BASES];
-let TELAS     = [..._DEF_TELAS];
-let ALL       = [...PANTALLAS, ...BASES, ...TELAS];
+let PANTALLAS = _DEF_PANTALLAS.slice();
+let BASES     = _DEF_BASES.slice();
+let TELAS     = _DEF_TELAS.slice();
+let ESMALTES  = _DEF_ESMALTES.slice();
+let ALL       = [].concat(PANTALLAS, BASES, TELAS, ESMALTES);
 
 const FAQ = [
   { q:'¿Cuánto tarda mi pedido?', a:'Cada pieza se hace por encargo. El tiempo de producción es de 7 a 14 días hábiles a partir del anticipo. Te avisamos por WhatsApp en cuanto esté lista.' },
@@ -86,6 +111,7 @@ function onDataReady(fn) {
 
 function _fireReady() {
   _ready = true;
+  console.log('🔥 DATOS LISTOS:', { PANTALLAS: PANTALLAS.length, BASES: BASES.length, TELAS: TELAS.length, ESMALTES: ESMALTES.length });
   _readyCallbacks.forEach(fn => fn());
 }
 
@@ -146,11 +172,17 @@ async function _loadSheet() {
       const v = (r.activo || '').toUpperCase();
       return v !== 'FALSE' && v !== '0';
     });
-    PANTALLAS = active.filter(r => r.categoria === 'pantalla').map(_rowToProduct);
-    BASES     = active.filter(r => r.categoria === 'base').map(_rowToProduct);
-    TELAS     = active.filter(r => r.categoria === 'tela').map(_rowToProduct);
-    ALL       = [...PANTALLAS, ...BASES, ...TELAS];
-    console.info(`✓ Catálogo cargado desde Sheet: ${PANTALLAS.length} pantallas, ${BASES.length} bases, ${TELAS.length} telas`);
+    const sheetPantallas = active.filter(r => r.categoria === 'pantalla').map(_rowToProduct);
+    const sheetBases     = active.filter(r => r.categoria === 'base').map(_rowToProduct);
+    const sheetTelas     = active.filter(r => r.categoria === 'tela').map(_rowToProduct);
+    const sheetEsmaltes  = active.filter(r => r.categoria === 'esmalte').map(_rowToProduct);
+
+    if (sheetPantallas.length > 0) PANTALLAS = sheetPantallas;
+    if (sheetBases.length > 0)     BASES     = sheetBases;
+    if (sheetTelas.length > 0)     TELAS     = sheetTelas;
+    if (sheetEsmaltes.length > 0)  ESMALTES  = sheetEsmaltes;
+    ALL       = [...PANTALLAS, ...BASES, ...TELAS, ...ESMALTES];
+    console.info(`✓ Catálogo cargado desde Sheet: ${PANTALLAS.length} pantallas, ${BASES.length} bases, ${TELAS.length} telas, ${ESMALTES.length} esmaltes`);
   } catch (e) {
     console.info('Catálogo: usando datos locales (Sheet no disponible):', e.message);
   }
@@ -162,19 +194,31 @@ function renderProducts(list, gridId, category) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
   grid.innerHTML = list.map(p => {
-    // Soporte para URL de imagen (Drive, externa) o nombre de clase CSS
-    const isUrl = p.img && (p.img.startsWith('http') || p.img.startsWith('//'));
+    // Soporte para URL de imagen (Drive, externa, relativa photos/) o nombre de clase CSS
+    const isUrl = p.img && (p.img.startsWith('http') || p.img.startsWith('//') || p.img.startsWith('photos/'));
     const imgAttr = isUrl
       ? `class="product__image ph" style="background-image:url('${p.img}')"`
       : `class="product__image ${p.img}"`;
+    // Mostrar ficha técnica si existe
+    const specHtml = p.spec ? `<p class="product__spec">${p.spec}</p>` : '';
+    // Esmaltes: solo muestran nombre y foto, sin precio ni botón
+    if (category === 'esmalte') {
+      return `
+      <article class="product product--esmalte">
+        <div ${imgAttr}></div>
+        <h3 class="product__name">${p.name}</h3>
+        <p class="product__desc">${p.desc}</p>
+      </article>`;
+    }
     return `
     <article class="product">
       <div ${imgAttr}></div>
       <h3 class="product__name">${p.name}</h3>
       <p class="product__desc">${p.desc}</p>
+      ${specHtml}
       <div class="product__row">
         <span class="product__price">$${p.price.toLocaleString('es-MX')} MXN</span>
-        <button class="product__add" data-id="${p.id}" data-cat="${category}">Agregar</button>
+        <button class="product__add" data-id="${p.id}" data-cat="${category}">Cotizar</button>
       </div>
     </article>`;
   }).join('');
@@ -223,7 +267,7 @@ function renderCart() {
   document.querySelectorAll('.product__add').forEach(b => {
     const inCart = cart.some(i => i.id === b.dataset.id);
     b.classList.toggle('in-cart', inCart);
-    b.textContent = inCart ? '✓ Agregado' : 'Agregar';
+    b.textContent = inCart ? '✓ Cotizado' : 'Cotizar';
   });
 
   if (!body) return;
