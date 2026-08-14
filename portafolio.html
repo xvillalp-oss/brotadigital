@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Portafolio | Brota Digital — proyectos que ya brotaron</title>
+  <meta name="description" content="Portafolio de Brota Digital: sitios web y web apps para pymes mexicanas — despachos, salud, alimentos, fotografía y más. Diseño que convierte."/>
+  <link rel="canonical" href="https://brotadigital.mx/portafolio.html"/>
+  <meta property="og:title" content="Portafolio | Brota Digital"/>
+  <meta property="og:description" content="Proyectos reales para pymes mexicanas en 2026. Mira lo que podemos hacer por tu negocio."/>
+  <meta name="theme-color" content="#E85D3A"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --coral:#E85D3A; --coral-d:#C94828; --black:#1A1A1A; --cream:#FDFAF5; --cream-2:#F5EFE4;
+      --gold:#C9962E; --gray:#6B6B6B; --line:#E7DfD0;
+      --serif:'Cormorant Garamond',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--cream);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(253,250,245,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .topbar__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .topbar__logo{font-family:var(--serif);font-size:24px;font-weight:600}
+    .topbar__logo span{color:var(--coral)}
+    .topbar__cta{background:var(--coral);color:#fff;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:11px 22px;border-radius:2px;transition:background .2s}
+    .topbar__cta:hover{background:var(--coral-d)}
+
+    .hero{padding:clamp(56px,9vw,110px) 0 clamp(32px,5vw,56px)}
+    .hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
+    .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7vw,76px);line-height:1.02;letter-spacing:-.015em;max-width:14ch;text-wrap:balance}
+    .hero h1 em{font-style:italic;color:var(--coral)}
+    .hero .sub{margin-top:20px;font-size:17px;color:var(--gray);max-width:52ch}
+    .hero .stats{display:flex;flex-wrap:wrap;gap:10px 36px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+    .stat b{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--black);font-variant-numeric:tabular-nums}
+    .stat span{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+
+    .filters{display:flex;flex-wrap:wrap;gap:8px;padding:8px 0 26px}
+    .chip{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--gray);background:none;border:1px solid var(--line);border-radius:999px;padding:8px 18px;cursor:pointer;transition:.18s}
+    .chip:hover{border-color:var(--coral);color:var(--coral)}
+    .chip.active{background:var(--black);border-color:var(--black);color:var(--cream)}
+    .chip:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(18px,2.5vw,30px);padding-bottom:80px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:transform .28s cubic-bezier(.22,.9,.35,1),box-shadow .28s;position:relative}
+    .card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(26,26,26,.10)}
+    .card.hide{display:none}
+    .card .shot{aspect-ratio:1440/1000;overflow:hidden;background:var(--cream-2);border-bottom:1px solid var(--line)}
+    .card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 2.8s ease}
+    .card:hover .shot img{transform:translateY(-4%) scale(1.02)}
+    .card .body{padding:16px 18px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+    .card h3{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.15}
+    .card .giro{font-size:12.5px;color:var(--gray);margin-top:2px}
+    .card .go{flex:none;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--coral);transition:.2s;font-size:15px}
+    .card:hover .go{background:var(--coral);border-color:var(--coral);color:#fff;transform:rotate(-45deg)}
+    .badge{position:absolute;top:12px;left:12px;background:var(--black);color:var(--gold);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+    .card .panel-link{font-size:12px;color:var(--coral);border-bottom:1px solid transparent}
+    .card .panel-link:hover{border-color:var(--coral)}
+
+    .cta-final{background:var(--black);color:#fff;text-align:center;padding:clamp(64px,9vw,110px) 0}
+    .cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,54px);line-height:1.08;letter-spacing:-.01em}
+    .cta-final h2 em{font-style:italic;color:var(--gold)}
+    .cta-final p{color:rgba(255,255,255,.55);margin:16px auto 34px;max-width:44ch}
+    .btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--coral);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:16px 36px;border-radius:2px;transition:.2s}
+    .btn-white:hover{background:var(--cream);transform:translateY(-2px)}
+    .cta-mail{margin-top:22px;font-size:14px;color:rgba(255,255,255,.55)}
+    .cta-mail a{color:var(--gold);border-bottom:1px solid rgba(201,150,46,.4)}
+    .cta-mail a:hover{color:#fff;border-color:#fff}
+
+    footer{background:var(--black);text-align:center;padding:20px 0;font-size:12px;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.08)}
+    footer span{color:var(--coral)}
+
+    @media(prefers-reduced-motion:no-preference){
+      .card{opacity:0;transform:translateY(14px);animation:up .55s cubic-bezier(.22,.9,.35,1) forwards}
+      .card:nth-child(2n){animation-delay:.06s}
+      .card:nth-child(3n){animation-delay:.12s}
+      @keyframes up{to{opacity:1;transform:none}}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a href="https://brotadigital.mx" class="topbar__logo">brota<span>.</span> digital</a>
+      <a class="topbar__cta" href="https://wa.me/525564131634?text=Hola%20Brota%2C%20vi%20su%20portafolio%20y%20quiero%20mi%20p%C3%A1gina" target="_blank" rel="noopener">Quiero la mía</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Portafolio · 2026</p>
+      <h1>Negocios reales que ya <em>brotaron</em> en línea.</h1>
+      <p class="sub">Cada proyecto es un negocio mexicano que decidió verse tan bien en internet como en persona. Haz clic en cualquiera — todos están vivos.</p>
+      <div class="stats">
+        <div class="stat"><b>21</b><span>proyectos</span></div>
+        <div class="stat"><b>2026</b><span>todos de este año</span></div>
+        <div class="stat"><b>10+</b><span>giros distintos</span></div>
+        <div class="stat"><b>3–14</b><span>días de entrega</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="filters" role="tablist" aria-label="Filtrar por giro">
+      <button class="chip active" data-f="todos">Todos</button>
+      <button class="chip" data-f="producto">Alimentos y bienestar</button>
+      <button class="chip" data-f="b2b">Despachos y empresas</button>
+      <button class="chip" data-f="creativos">Creativos y agencias</button>
+    </div>
+
+    <div class="grid" id="grid">
+      <!-- B2B / despachos -->
+      <a class="card" data-c="b2b" href="https://olntires.com/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/olntires.jpg" alt="Sitio web de OLN Tires"></div><div class="body"><div><h3>OLN Tires</h3><p class="giro">Distribuidora de llantas · Catálogo B2B</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="b2b" href="https://mejialuna.mx" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/mejialuna.jpg" alt="Sitio web de Mejía Luna Abogados"></div><div class="body"><div><h3>Mejía Luna</h3><p class="giro">Despacho de abogados</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="b2b" href="https://pagaza-abogados.vercel.app/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/pagaza.jpg" alt="Sitio web de Pagaza Abogados"></div><div class="body"><div><h3>Pagaza Abogados</h3><p class="giro">Despacho de abogados</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="b2b" href="https://lavartind.vercel.app/index.html" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/lavartind.jpg" alt="Sitio web de Lavartind"></div><div class="body"><div><h3>Lavartind</h3><p class="giro">Lavadoras industriales</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="b2b" href="https://estradaautomatic.com.mx" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/estrada.jpg" alt="Sitio web de Estrada Automatic"></div><div class="body"><div><h3>Estrada Automatic</h3><p class="giro">Taller mecánico</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="b2b" href="https://galarzagroup.com/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/galarza.jpg" alt="Sitio web de Galarza Group"></div><div class="body"><div><h3>Galarza Group</h3><p class="giro">Arquitectura y desarrollo</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="b2b" href="http://rotoestudio.mx" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/rotoestudio.jpg" alt="Sitio web de Roto Estudio"></div><div class="body"><div><h3>Roto Estudio</h3><p class="giro">Mobiliario e interiores</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="b2b" href="https://somoscolmena.vercel.app/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/colmena.jpg" alt="Sitio web de Somos Colmena"></div><div class="body"><div><h3>Somos Colmena</h3><p class="giro">Cultura organizacional</p></div><span class="go">→</span></div></a>
+
+      <!-- Alimentos y producto -->
+      <a class="card" data-c="producto" href="https://lappecocina.com" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/lappe.jpg" alt="Sitio web de Lappe"></div><div class="body"><div><h3>Lappe</h3><p class="giro">Cocina empacada</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="producto" href="https://xvillalp-oss.github.io/brotadigital/bakingroom.html" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/bakingroom.jpg" alt="Sitio web de The Baking Room"></div><div class="body"><div><h3>The Baking Room</h3><p class="giro">Pastelería</p></div><span class="go">→</span></div></a>
+
+      <!-- Salud y bienestar -->
+      <a class="card" data-c="producto" href="https://www.nutrigigden.com" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/nutrigigden.jpg" alt="Sitio web de Nutri Gigden"></div><div class="body"><div><h3>Nutri Gigden</h3><p class="giro">Nutrición</p></div><span class="go">→</span></div></a>
+
+      <!-- Creativos y agencias -->
+      <a class="card" data-c="creativos" href="http://www.sonnemondagency.com" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/sonnemond.jpg" alt="Sitio web de Sonne Mond Agency"></div><div class="body"><div><h3>Sonne Mond</h3><p class="giro">Agencia de marketing</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://lupa-agency.vercel.app/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/lupa.jpg" alt="Sitio web de Lupa Agency"></div><div class="body"><div><h3>Lupa Agency</h3><p class="giro">Agencia de marketing</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://adcafe-publicidad.vercel.app/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/adcafe.jpg" alt="Sitio web de Ad Café"></div><div class="body"><div><h3>Ad Café</h3><p class="giro">Publicidad y comunicación</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://arquitecto-site.vercel.app/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/aramoni.jpg" alt="Sitio web de Aramoni Studio"></div><div class="body"><div><h3>Aramoni Studio</h3><p class="giro">Arquitectura y escultura</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://ceciliacortina.com/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/ceciliacortina.jpg" alt="Sitio web de Cecilia Cortina"></div><div class="body"><div><h3>Cecilia Cortina</h3><p class="giro">Fotografía de bodas</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://photoculto.vercel.app/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/photoculto.jpg" alt="Sitio web de Photoculto"></div><div class="body"><div><h3>Photoculto</h3><p class="giro">Fotografía</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://keeper-by-posber.vercel.app/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/keeper.jpg" alt="Sitio web de Keeper by Posber"></div><div class="body"><div><h3>Keeper by Posber</h3><p class="giro">Fotografía</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://studiovivo.com.mx/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/studiovivo.jpg" alt="Sitio web de Studio Vivo"></div><div class="body"><div><h3>Studio Vivo</h3><p class="giro">Estudio de arte</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://andreaescribe.com" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/andreaescribe.jpg" alt="Sitio web de Andrea Escribe"></div><div class="body"><div><h3>Andrea Escribe</h3><p class="giro">Escritora</p></div><span class="go">→</span></div></a>
+      <a class="card" data-c="creativos" href="https://ale4-mixology.vercel.app/" target="_blank" rel="noopener"><div class="shot"><img loading="lazy" src="portafolio/ale4.jpg" alt="Sitio web de Ale4 Mixology"></div><div class="body"><div><h3>Ale4 Mixology</h3><p class="giro">Mixología y eventos</p></div><span class="go">→</span></div></a>
+    </div>
+  </main>
+
+  <section class="cta-final">
+    <div class="container">
+      <h2>El siguiente proyecto puede ser <em>el tuyo.</em></h2>
+      <p>Cuéntanos de tu negocio y en menos de 24 horas tienes propuesta con precio cerrado.</p>
+      <a class="btn-white" href="https://wa.me/525564131634?text=Hola%20Brota%2C%20vi%20su%20portafolio%20y%20quiero%20mi%20p%C3%A1gina" target="_blank" rel="noopener">Escribir por WhatsApp 💬</a>
+      <p class="cta-mail">o escríbenos a <a href="mailto:contacto@brotadigital.mx">contacto@brotadigital.mx</a></p>
+    </div>
+  </section>
+
+  <footer>© 2026 <span>Brota Digital</span> · CDMX, México</footer>
+
+  <script>
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('.card');
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      ch.classList.add('active');
+      const f = ch.dataset.f;
+      cards.forEach(card => card.classList.toggle('hide', f !== 'todos' && card.dataset.c !== f));
+    }));
+  </script>
+</body>
+</html>
