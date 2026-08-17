@@ -92,6 +92,65 @@
     });
   }
 
+  /* ── atmósfera: resplandor ambiental en secciones oscuras ── */
+  var oscuras = document.querySelectorAll('.criterio, .contacto, .manifiesto, .contacto-full');
+  oscuras.forEach(function (sec) {
+    sec.setAttribute('data-glow', '');
+    var g = document.createElement('div');
+    g.className = 'glow';
+    g.setAttribute('aria-hidden', 'true');
+    sec.prepend(g);
+    if (fino && !reduced) {
+      sec.addEventListener('mousemove', function (e) {
+        var r = sec.getBoundingClientRect();
+        sec.style.setProperty('--gx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        sec.style.setProperty('--gy', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+        sec.style.setProperty('--gop', '.4');
+      });
+      sec.addEventListener('mouseleave', function () { sec.style.setProperty('--gop', '.28'); });
+    }
+  });
+
+  /* ── parallax de scroll: el showcase y los titulares flotan a distinta profundidad ── */
+  if (!reduced) {
+    var capas = [];
+    var sc = document.getElementById('showcase');
+    if (sc) capas.push({ el: sc, f: 0.055 });
+    document.querySelectorAll('h2.sec, .page-head h1, .manifiesto h1, .contacto h2, .contacto-full h1').forEach(function (t) {
+      t.classList.add('pz');
+      if (t.classList.contains('rv')) {
+        t.addEventListener('transitionend', function marcar(e) {
+          if (e.propertyName === 'transform') {
+            t.classList.add('pz-live');
+            t.removeEventListener('transitionend', marcar);
+            if (typeof aplicar === 'function') requestAnimationFrame(aplicar);
+          }
+        });
+      } else {
+        t.classList.add('pz-live');
+      }
+      capas.push({ el: t, f: 0.028 });
+    });
+    if (capas.length) {
+      var ticking = false;
+      var aplicar = function () {
+        ticking = false;
+        var vh = window.innerHeight;
+        capas.forEach(function (c) {
+          if (c.el.classList.contains('pz') && c.el.classList.contains('rv') && !c.el.classList.contains('pz-live')) return;
+          var r = c.el.getBoundingClientRect();
+          if (r.bottom < -80 || r.top > vh + 80) return;
+          var d = (vh / 2 - (r.top + r.height / 2)) * c.f;
+          c.el.style.transform = 'translateY(' + d.toFixed(1) + 'px)';
+        });
+      };
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(aplicar); }
+      }, { passive: true });
+      aplicar();
+    }
+  }
+
   /* ── showcase del hero (solo inicio) ── */
   var frame = document.getElementById('scFrame');
   if (frame) {
