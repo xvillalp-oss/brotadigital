@@ -23,7 +23,22 @@
     .lead{font-size:17.5px;color:#4a443d;max-width:60ch}
 
     /* NAV */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:900;background:color-mix(in srgb,var(--papel) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid var(--tinta)}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:900;background:color-mix(in srgb,var(--papel) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid var(--tinta);transition:box-shadow .3s ease}
+    .nav.scrolled{box-shadow:0 10px 28px -14px rgba(27,25,22,.28)}
+    .nav__cta,.btn{will-change:transform;transition:transform .18s cubic-bezier(.22,.9,.35,1),background .2s,color .2s}
+    .caso,.ficha{transition:transform .35s cubic-bezier(.22,.9,.35,1),box-shadow .35s ease}
+    .caso:hover,.ficha:hover{box-shadow:0 22px 40px -20px rgba(27,25,22,.32)}
+
+    /* contadores */
+    .stats-row{display:flex;gap:clamp(20px,4vw,44px);flex-wrap:wrap;margin-top:24px}
+    .stat-mini{display:flex;flex-direction:column}
+    .stat-mini b{font-family:var(--mono);font-size:clamp(22px,3.4vw,30px);font-weight:500;color:var(--coral);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+    .stat-mini span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:lowercase;color:var(--burdeos)}
+
+    /* imagen del showcase respira un poco al mostrarse */
+    .showcase .frame a.on img{animation:kb 4.2s ease-out both}
+    @keyframes kb{from{transform:scale(1.015)}to{transform:scale(1)}}
+    @media (prefers-reduced-motion:reduce){.showcase .frame a.on img{animation:none}}
     .nav__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
     .nav__logo{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:-.02em;font-variation-settings:'opsz' 144}
     .nav__logo span{color:var(--coral)}

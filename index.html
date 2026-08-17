@@ -161,7 +161,12 @@
         <div class="hero-top">
           <h1>No hacemos contenido. Hacemos que tu negocio <em>tenga algo</em> <span class="sub-line">que decir.</span></h1>
           <div>
-            <p class="dek">Webs, marcas y redes con criterio — 40+ proyectos en nuestro primer año, todos por recomendación.</p>
+            <p class="dek">Webs, marcas y redes con criterio, en nuestro primer año.</p>
+            <div class="stats-row">
+              <div class="stat-mini"><b data-count="40" data-suffix="+">0</b><span>proyectos</span></div>
+              <div class="stat-mini"><b data-count="21" data-suffix="">0</b><span>casos vivos</span></div>
+              <div class="stat-mini"><b data-count="100" data-suffix="%">0</b><span>por recomendación</span></div>
+            </div>
             <div class="acciones">
               <a href="https://wa.me/525564131634" class="btn solid" target="_blank" rel="noopener">escríbenos</a>
               <a href="portafolio.html" class="btn ghost">los 21 casos</a>
@@ -329,40 +334,6 @@
     </div>
   </footer>
 
-  <script>
-    (function(){
-      // burger
-      var burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
-      burger.addEventListener('click',function(){var open=mm.classList.toggle('open');burger.setAttribute('aria-expanded',open)});
-      mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open')})});
-      // reveals
-      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-      document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-      // subrayado del hero
-      requestAnimationFrame(function(){document.getElementById('hero').classList.add('in')});
-      // showcase del hero
-      var frame=document.getElementById('scFrame'),cap=document.getElementById('scCap'),dots=document.getElementById('scDots');
-      var slides=[].slice.call(frame.querySelectorAll('a')),idx=0,timer=null;
-      var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-      slides.forEach(function(s,i){
-        var b=document.createElement('button');
-        b.setAttribute('aria-label','Ver caso '+(i+1));
-        if(i===0)b.classList.add('on');
-        b.addEventListener('click',function(){go(i);restart()});
-        dots.appendChild(b);
-      });
-      function go(i){
-        slides[idx].classList.remove('on');dots.children[idx].classList.remove('on');
-        idx=i;
-        slides[idx].classList.add('on');dots.children[idx].classList.add('on');
-        cap.textContent=slides[idx].getAttribute('data-cap');
-      }
-      function next(){go((idx+1)%slides.length)}
-      function restart(){if(timer)clearInterval(timer);if(!reduced)timer=setInterval(next,4200)}
-      frame.addEventListener('mouseenter',function(){if(timer)clearInterval(timer)});
-      frame.addEventListener('mouseleave',restart);
-      restart();
-    })();
-  </script>
+  <script src="estudio.js" defer></script>
 </body>
 </html>

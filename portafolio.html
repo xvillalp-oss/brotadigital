@@ -97,17 +97,6 @@
     </div></div>
   </footer>
 
-  <script>
-    (function(){
-      var burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
-      burger.addEventListener('click',function(){var o=mm.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
-      var chips=document.querySelectorAll('.chip'),casos=document.querySelectorAll('.caso');
-      chips.forEach(function(ch){ch.addEventListener('click',function(){
-        chips.forEach(function(c){c.classList.remove('on')});ch.classList.add('on');
-        var f=ch.getAttribute('data-f');
-        casos.forEach(function(k){k.classList.toggle('hide',f!=='todos'&&k.getAttribute('data-c')!==f)});
-      })});
-    })();
-  </script>
+  <script src="estudio.js" defer></script>
 </body>
 </html>
