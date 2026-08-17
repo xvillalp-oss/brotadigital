@@ -126,181 +126,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-  <style>
-    :root{
-      --papel:#F6F1E7; --tinta:#1B1916; --coral:#E85D3A; --burdeos:#7A2E2E; --salvia:#A8AD9C;
-      --papel-2:#EFE8DA;
-      --serif:'Fraunces',Georgia,serif;
-      --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
-      --mono:'JetBrains Mono',Menlo,monospace;
-      --max:1120px;
-      --py:clamp(72px,10vw,130px);
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--sans);background:var(--papel);color:var(--tinta);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
-    a{text-decoration:none;color:inherit}
-    img{display:block;max-width:100%}
-    .container{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,52px)}
-    .skip{position:absolute;top:-100px;left:16px;z-index:9999;background:var(--tinta);color:var(--papel);padding:8px 16px;font-size:14px;transition:top .2s}
-    .skip:focus{top:16px}
-
-    .mono{font-family:var(--mono)}
-    .cap{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:lowercase;color:var(--burdeos);border-top:2px solid var(--tinta);padding-top:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    h2.sec{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.5vw,54px);letter-spacing:-.02em;line-height:1.05;margin:18px 0 16px;text-wrap:balance;font-variation-settings:'opsz' 144}
-    h2.sec em{font-style:italic;color:var(--coral)}
-    .lead{font-size:17.5px;color:#4a443d;max-width:60ch}
-
-    /* NAV */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:900;background:color-mix(in srgb,var(--papel) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid var(--tinta)}
-    .nav__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .nav__logo{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:-.02em;font-variation-settings:'opsz' 144}
-    .nav__logo span{color:var(--coral)}
-    .nav__links{display:flex;gap:26px;list-style:none;align-items:center}
-    .nav__links a{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:lowercase;color:var(--tinta);opacity:.75;transition:.2s}
-    .nav__links a:hover{opacity:1;color:var(--coral)}
-    .nav__cta{font-family:var(--mono);font-size:12px;letter-spacing:.1em;background:var(--tinta);color:var(--papel);padding:10px 18px;transition:background .2s;min-height:42px;display:inline-flex;align-items:center}
-    .nav__cta:hover{background:var(--coral)}
-    .nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;align-items:center;justify-content:center}
-    .nav__burger span{display:block;width:22px;height:2px;background:var(--tinta)}
-    .nav__mobile{display:none;flex-direction:column;background:var(--papel);border-top:2px solid var(--tinta);padding:12px 0}
-    .nav__mobile.open{display:flex}
-    .nav__mobile a{padding:12px clamp(20px,4vw,52px);font-family:var(--mono);font-size:14px;letter-spacing:.08em}
-
-    /* HERO */
-    .hero{display:flex;flex-direction:column;justify-content:flex-start;padding-top:104px;padding-bottom:0}
-    .hero .folio{font-family:var(--mono);font-size:12.5px;letter-spacing:.2em;text-transform:lowercase;margin-bottom:22px;display:flex;gap:18px;flex-wrap:wrap;color:var(--burdeos)}
-    .hero h1{font-family:var(--serif);font-weight:560;font-size:clamp(34px,5.4vw,66px);line-height:1.03;letter-spacing:-.025em;max-width:22ch;font-variation-settings:'opsz' 144;text-wrap:balance}
-    .hero h1 em{font-style:italic;color:var(--coral)}
-    .hero h1 .sub-line{position:relative;display:inline-block}
-    .hero h1 .sub-line::after{content:'';position:absolute;left:-1%;bottom:.06em;height:.09em;background:var(--coral);opacity:.45;width:0;transform:skewY(-.5deg)}
-    .hero.in h1 .sub-line::after{width:102%;transition:width .9s cubic-bezier(.22,.9,.35,1) .7s}
-    .hero .hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
-    .hero .dek{margin-top:18px;font-size:clamp(15.5px,1.9vw,17.5px);max-width:44ch;color:#4a443d}
-    .hero .acciones{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:22px 0 0}
-
-    /* HERO SHOWCASE — el portafolio en grande */
-    .showcase{margin-top:34px;border:2px solid var(--tinta);position:relative;background:var(--papel-2)}
-    .showcase .frame{position:relative;aspect-ratio:900/625;overflow:hidden}
-    .showcase .frame a{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
-    .showcase .frame a.on{opacity:1;pointer-events:auto}
-    .showcase .frame img{width:100%;height:100%;object-fit:contain;background:var(--papel-2)}
-    .showcase .barra{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:2px solid var(--tinta);padding:12px 18px;font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:lowercase;background:var(--papel)}
-    .showcase .barra .etiqueta{color:var(--burdeos);min-height:1.4em}
-    .showcase .barra .puntos{display:flex;gap:8px}
-    .showcase .barra .puntos button{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--tinta);background:transparent;cursor:pointer;padding:0}
-    .showcase .barra .puntos button.on{background:var(--coral);border-color:var(--coral)}
-    .showcase .barra .puntos button:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
-    .btn{font-family:var(--mono);font-size:13px;letter-spacing:.08em;padding:15px 26px;border:2px solid var(--tinta);display:inline-flex;align-items:center;gap:8px;min-height:50px;transition:.2s}
-    .btn.solid{background:var(--tinta);color:var(--papel)}
-    .btn.solid:hover{background:var(--coral);border-color:var(--coral)}
-    .btn.ghost:hover{background:var(--tinta);color:var(--papel)}
-    .hero .nota{margin-top:30px;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--burdeos)}
-
-    /* TICKER */
-    .ticker{border-top:2px solid var(--tinta);border-bottom:2px solid var(--tinta);overflow:hidden;background:var(--papel)}
-    .ticker__track{display:flex;gap:0;white-space:nowrap;font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:lowercase;padding:12px 0;animation:tick 36s linear infinite;width:max-content}
-    .ticker__track span{padding:0 18px;border-right:1px solid var(--salvia)}
-    @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    @media (prefers-reduced-motion:reduce){.ticker__track{animation:none}}
-
-    section{padding:var(--py) 0 0}
-    section:last-of-type{padding-bottom:var(--py)}
-
-    /* CASOS */
-    .casos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:34px}
-    .caso{border:2px solid var(--tinta);background:#FBF8F1;display:flex;flex-direction:column;transition:transform .25s ease}
-    .caso:hover{transform:translateY(-4px)}
-    .caso .shot{aspect-ratio:3/2;overflow:hidden;border-bottom:2px solid var(--tinta);background:var(--papel-2)}
-    .caso .shot img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1) contrast(1.05);transition:filter .4s ease,transform .6s ease}
-    .caso:hover .shot img{filter:grayscale(0);transform:scale(1.02)}
-    .caso .info{padding:16px 18px 18px}
-    .caso .num{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--burdeos);text-transform:lowercase}
-    .caso h3{font-family:var(--serif);font-size:22px;font-weight:600;margin:6px 0 2px}
-    .caso .giro{font-size:13.5px;color:#5C534B}
-    .casos-mas{margin-top:30px;display:flex;justify-content:center}
-
-    /* CRITERIO */
-    .criterio{background:var(--tinta);color:var(--papel)}
-    .criterio .cap{color:var(--salvia);border-color:var(--papel)}
-    .criterio h2.sec em{color:var(--coral)}
-    .opiniones{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px;padding-bottom:var(--py)}
-    @media(max-width:720px){.opiniones{grid-template-columns:1fr}}
-    .opinion{border:2px solid var(--papel);padding:26px 26px 20px}
-    .opinion p{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.4vw,23px);line-height:1.4;font-variation-settings:'opsz' 100}
-    .opinion .firma{font-family:var(--mono);font-size:12px;letter-spacing:.14em;margin-top:16px;color:var(--salvia);text-transform:lowercase}
-
-    /* SERVICIOS */
-    .servicios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;margin-top:34px}
-    .ficha{border:2px solid var(--tinta);background:#FBF8F1}
-    .ficha .f-head{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:lowercase;padding:10px 18px;border-bottom:2px solid var(--tinta);display:flex;justify-content:space-between;gap:8px}
-    .ficha .f-body{padding:20px 18px}
-    .ficha h3{font-family:var(--serif);font-size:24px;font-weight:600;margin:0 0 8px}
-    .ficha p{font-size:14.5px;color:#4a443d;margin:0 0 12px}
-    .ficha ul{list-style:none;margin:0 0 16px}
-    .ficha li{font-size:14px;padding:7px 0;border-bottom:1px solid var(--papel-2);display:flex;gap:10px}
-    .ficha li::before{content:'—';color:var(--coral);flex:none}
-    .ficha .precio{font-family:var(--mono);font-size:13.5px;color:var(--burdeos)}
-    .ficha .f-cta{display:block;text-align:center;font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;border-top:2px solid var(--tinta);padding:13px;transition:.2s}
-    .ficha .f-cta:hover{background:var(--tinta);color:var(--papel)}
-    .ficha.destacada{background:var(--burdeos);color:var(--papel);border-color:var(--burdeos)}
-    .ficha.destacada .f-head{border-color:color-mix(in srgb,var(--papel) 30%,transparent)}
-    .ficha.destacada p{color:color-mix(in srgb,var(--papel) 80%,transparent)}
-    .ficha.destacada li{border-color:color-mix(in srgb,var(--papel) 18%,transparent)}
-    .ficha.destacada .precio{color:#E8C9B0}
-    .ficha.destacada .f-cta{border-color:color-mix(in srgb,var(--papel) 30%,transparent)}
-    .ficha.destacada .f-cta:hover{background:var(--papel);color:var(--burdeos)}
-
-    /* PROCESO */
-    .pasos{margin-top:34px;counter-reset:p}
-    .paso{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--salvia);counter-increment:p}
-    .paso::before{content:counter(p,decimal-leading-zero);font-family:var(--serif);font-size:34px;font-weight:600;color:var(--coral);line-height:1}
-    .paso h3{font-family:var(--serif);font-size:21px;font-weight:600}
-    .paso p{font-size:15px;color:#4a443d;max-width:56ch}
-    .paso .mono-nota{font-family:var(--mono);font-size:12px;color:var(--burdeos);margin-top:4px}
-
-    /* TESTIMONIOS */
-    .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;margin-top:34px}
-    .quote{border-left:3px solid var(--coral);padding:6px 0 6px 22px}
-    .quote p{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.45}
-    .quote .quien{font-family:var(--mono);font-size:12px;letter-spacing:.12em;margin-top:12px;color:var(--burdeos);text-transform:lowercase}
-
-    /* CONTACTO */
-    .contacto{background:var(--burdeos);color:var(--papel)}
-    .contacto .inner{padding:var(--py) 0;text-align:left}
-    .contacto .cap{color:#E8C9B0;border-color:var(--papel)}
-    .contacto h2{font-family:var(--serif);font-weight:560;font-size:clamp(36px,6.5vw,72px);line-height:1.04;letter-spacing:-.02em;margin:18px 0 20px;font-variation-settings:'opsz' 144;max-width:16ch;text-wrap:balance}
-    .contacto h2 em{font-style:italic;color:#E8C9B0}
-    .contacto .btn{border-color:var(--papel);color:var(--papel)}
-    .contacto .btn.solid{background:var(--papel);color:var(--burdeos)}
-    .contacto .btn.solid:hover{background:var(--coral);border-color:var(--coral);color:var(--papel)}
-    .contacto .btn.ghost:hover{background:var(--papel);color:var(--burdeos)}
-    .contacto .mail{margin-top:26px;font-family:var(--mono);font-size:14px;letter-spacing:.06em}
-    .contacto .mail a{border-bottom:1px solid #E8C9B0;padding-bottom:2px;transition:.2s}
-    .contacto .mail a:hover{color:#E8C9B0}
-
-    /* FOOTER */
-    footer{background:var(--tinta);color:var(--papel);padding:34px 0}
-    .foot-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:lowercase}
-    .foot-row .fm{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.02em;text-transform:none}
-    .foot-row .fm span{color:var(--coral)}
-    .foot-row a{opacity:.8;transition:.2s}
-    .foot-row a:hover{opacity:1;color:var(--coral)}
-
-    /* reveals — motion de imprenta */
-    .rv{opacity:0;transform:translateY(14px)}
-    .rv.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.22,.9,.35,1)}
-    @media (prefers-reduced-motion:reduce){
-      .rv{opacity:1;transform:none}
-      .hero h1 .sub-line::after{width:102%}
-      *{transition:none!important;animation:none!important}
-    }
-
-    @media(max-width:840px){
-      .nav__links{display:none}
-      .nav__burger{display:flex}
-    }
-  </style>
+  <link rel="stylesheet" href="estudio.css"/>
 </head>
 <body>
   <a href="#main" class="skip">Saltar al contenido</a>
@@ -310,22 +136,20 @@
       <div class="nav__inner">
         <a href="#" class="nav__logo">brota<span>.</span></a>
         <ul class="nav__links">
-          <li><a href="#casos">casos</a></li>
-          <li><a href="#criterio">criterio</a></li>
-          <li><a href="#servicios">servicios</a></li>
-          <li><a href="#proceso">proceso</a></li>
-          <li><a href="#contacto">contacto</a></li>
+          <li><a href="portafolio.html">casos</a></li>
+          <li><a href="servicios.html">servicios</a></li>
+          <li><a href="criterio.html">criterio</a></li>
+          <li><a href="contacto.html">contacto</a></li>
         </ul>
         <a href="https://wa.me/525564131634" class="nav__cta" target="_blank" rel="noopener">escríbenos →</a>
         <button class="nav__burger" id="burger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
     <div class="nav__mobile" id="mobileMenu">
-      <a href="#casos">casos</a>
-      <a href="#criterio">criterio</a>
-      <a href="#servicios">servicios</a>
-      <a href="#proceso">proceso</a>
-      <a href="#contacto">contacto</a>
+      <a href="portafolio.html">casos</a>
+      <a href="servicios.html">servicios</a>
+      <a href="criterio.html">criterio</a>
+      <a href="contacto.html">contacto</a>
     </div>
   </nav>
 
@@ -443,7 +267,7 @@
               </ul>
               <div class="precio">desde $3,500 mxn · planes de 1 a 10 páginas</div>
             </div>
-            <a class="f-cta" href="https://wa.me/525564131634?text=Hola%20Estudio%20Brota%2C%20quiero%20info%20de%20p%C3%A1gina%20web" target="_blank" rel="noopener">cotizar web →</a>
+            <a class="f-cta" href="servicios.html" target="_blank" rel="noopener">cotizar web →</a>
           </div>
           <div class="ficha destacada rv">
             <div class="f-head"><span>servicio 02</span><span>marca</span></div>
@@ -479,46 +303,11 @@
       </div>
     </section>
 
-    <!-- PROCESO -->
-    <section id="proceso">
-      <div class="container">
-        <div class="cap rv"><span>04 — proceso</span><span>simple y sin sorpresas</span></div>
-        <h2 class="sec rv">Así trabajamos <em>contigo</em></h2>
-        <div class="pasos">
-          <div class="paso rv">
-            <div><h3>Nos cuentas tu negocio</h3><p>Qué vendes, a quién, y qué quieres lograr. Una llamada o un chat — sin formularios eternos.</p></div>
-          </div>
-          <div class="paso rv">
-            <div><h3>Te decimos qué haríamos</h3><p>Propuesta con criterio: qué incluye, qué no, cuánto cuesta y cuándo se entrega. Por escrito.</p><p class="mono-nota">con el 50% de anticipo arrancamos</p></div>
-          </div>
-          <div class="paso rv">
-            <div><h3>Diseñamos y ajustamos</h3><p>Primera versión en días, no meses. Rondas de revisión incluidas — tus comentarios, todos juntos, una vez por ronda.</p></div>
-          </div>
-          <div class="paso rv">
-            <div><h3>Entregamos y te acompañamos</h3><p>Tu proyecto queda en línea, con accesos, capacitación y 30 días de garantía.</p><p class="mono-nota">el 50% restante se liquida contra entrega</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIOS -->
-    <section id="clientes">
-      <div class="container">
-        <div class="cap rv"><span>05 — clientes</span><span>lo que dicen, textual</span></div>
-        <h2 class="sec rv">Negocios que ya <em>tienen voz</em></h2>
-        <div class="quotes">
-          <div class="quote rv"><p>"Mi restaurante duplicó las llamadas el primer mes de tener la página. Vale cada peso."</p><div class="quien">luis c. — restaurante, cdmx</div></div>
-          <div class="quote rv"><p>"Súper rápidas y profesionales. En 5 días ya tenía mi página y mis clientes no podían creer lo bonita."</p><div class="quien">mariana r. — boutique, guadalajara</div></div>
-          <div class="quote rv"><p>"Por fin mi negocio se ve tan bueno como el servicio que doy. Recomendado al 100%."</p><div class="quien">andrea p. — salón de belleza, monterrey</div></div>
-        </div>
-      </div>
-    </section>
-
     <!-- CONTACTO -->
     <section class="contacto" id="contacto" style="margin-top:var(--py)">
       <div class="container">
         <div class="inner">
-          <div class="cap rv"><span>06 — contacto</span><span>respondemos el mismo día</span></div>
+          <div class="cap rv"><span>04 — contacto</span><span>respondemos el mismo día</span></div>
           <h2 class="rv">¿Tu negocio ya tiene algo que decir? <em>Nosotras lo decimos bien.</em></h2>
           <div class="acciones rv" style="display:flex;gap:14px;flex-wrap:wrap">
             <a href="https://wa.me/525564131634" class="btn solid" target="_blank" rel="noopener">escríbenos por whatsapp</a>
@@ -535,7 +324,7 @@
       <div class="foot-row">
         <span class="fm">brota<span>.</span></span>
         <span>estudio brota — cdmx · © 2026</span>
-        <span><a href="portafolio.html">casos</a> · <a href="https://www.instagram.com/brotadigital" target="_blank" rel="noopener">instagram</a> · <a href="mailto:contacto@brotadigital.mx">correo</a></span>
+        <span><a href="portafolio.html">casos</a> · <a href="servicios.html">servicios</a> · <a href="criterio.html">criterio</a> · <a href="https://www.instagram.com/brotadigital" target="_blank" rel="noopener">instagram</a></span>
       </div>
     </div>
   </footer>
