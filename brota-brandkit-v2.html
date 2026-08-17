@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex"/>
+<title>Estudio Brota — Guía de marca v2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --papel:#F6F1E7; --tinta:#1B1916; --coral:#E85D3A; --burdeos:#7A2E2E; --salvia:#A8AD9C;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
+    --mono:'JetBrains Mono',Menlo,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--sans);line-height:1.65;font-size:16px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 clamp(20px,5vw,52px) 120px}
+  a{color:var(--coral)}
+
+  /* portada */
+  .cover{min-height:88vh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,5vw,56px) 0}
+  .cover .folio{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:lowercase;display:flex;justify-content:space-between;border-top:2px solid var(--tinta);padding-top:12px}
+  .cover .mark{font-family:var(--serif);font-weight:560;font-size:clamp(88px,20vw,220px);letter-spacing:-.03em;line-height:.9;font-variation-settings:'opsz' 144}
+  .cover .mark span{color:var(--coral)}
+  .cover .sub{font-family:var(--mono);font-size:clamp(12px,1.6vw,15px);letter-spacing:.22em;margin-top:22px;text-transform:lowercase}
+  .cover .edition{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.6vw,24px);max-width:30ch}
+
+  section{margin-top:clamp(64px,10vw,120px)}
+  .cap{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:lowercase;color:var(--burdeos);border-top:2px solid var(--tinta);padding-top:12px;display:flex;justify-content:space-between}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.5vw,52px);letter-spacing:-.02em;line-height:1.04;margin:18px 0 16px;text-wrap:balance;font-variation-settings:'opsz' 144}
+  h2 em{font-style:italic;color:var(--coral)}
+  h3{font-family:var(--serif);font-size:21px;font-weight:600;margin:32px 0 8px}
+  p{margin:0 0 14px;max-width:66ch}
+  .lead{font-size:18px;line-height:1.6;color:#4a443d}
+  strong{font-weight:650}
+  ul{padding-left:20px;margin:10px 0 16px}
+  li{margin:6px 0}
+  .regla{background:#EFE8DA;border-left:3px solid var(--coral);padding:14px 20px;margin:20px 0}
+  .regla p{margin:0}
+  .mono{font-family:var(--mono);font-size:13px}
+
+  /* wordmark specimens */
+  .spec{background:var(--tinta);color:var(--papel);padding:clamp(36px,7vw,72px) clamp(24px,5vw,56px);margin:20px 0;text-align:center}
+  .spec .mk{font-family:var(--serif);font-weight:560;font-size:clamp(64px,12vw,120px);letter-spacing:-.03em;line-height:1;font-variation-settings:'opsz' 144}
+  .spec .mk span{color:var(--coral)}
+  .spec .firma{font-family:var(--mono);font-size:12px;letter-spacing:.22em;margin-top:18px;text-transform:lowercase;opacity:.85}
+  .spec.claro{background:var(--papel);color:var(--tinta);border:2px solid var(--tinta)}
+  .spec-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.spec-row{grid-template-columns:1fr}}
+  .spec-row .spec{margin:0}
+  .spec-row .spec .mk{font-size:clamp(40px,7vw,64px)}
+
+  /* tipografía */
+  .type-card{border:2px solid var(--tinta);margin:16px 0}
+  .type-card .head{padding:10px 18px;border-bottom:2px solid var(--tinta);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
+  .type-card .head b{font-size:14px}
+  .type-card .head span{font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+  .type-card .body{padding:22px 18px}
+  .tp-fraunces{font-family:var(--serif);font-size:clamp(26px,4.5vw,40px);line-height:1.15;font-variation-settings:'opsz' 144}
+  .tp-fraunces em{font-style:italic;color:var(--coral)}
+  .tp-jakarta{font-size:16px;max-width:60ch}
+  .tp-mono{font-family:var(--mono);font-size:13.5px;color:var(--burdeos)}
+
+  /* color */
+  .pal{display:grid;grid-template-columns:repeat(5,1fr);margin:20px 0;border:2px solid var(--tinta)}
+  @media(max-width:640px){.pal{grid-template-columns:1fr 1fr}}
+  .pal div{aspect-ratio:1;position:relative;min-width:0}
+  .pal i{position:absolute;left:10px;bottom:8px;font-style:normal;font-family:var(--mono);font-size:10.5px;padding:2px 6px;background:rgba(246,241,231,.92);color:var(--tinta)}
+  .pal .rol{position:absolute;left:10px;top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:2px 6px;background:rgba(27,25,22,.75);color:var(--papel)}
+  .props{display:flex;height:34px;border:2px solid var(--tinta);margin:8px 0 20px;overflow:hidden}
+  .props div{height:100%}
+
+  /* casos */
+  .caso{border:2px solid var(--tinta);margin:20px 0;background:#FBF8F1}
+  .caso .c-head{font-family:var(--mono);font-size:12px;letter-spacing:.14em;padding:10px 18px;border-bottom:2px solid var(--tinta);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+  .caso .c-body{padding:20px 18px}
+  .caso .c-body h4{font-family:var(--serif);font-size:24px;font-weight:600;margin:0 0 8px}
+  .caso .c-dato{font-family:var(--mono);font-size:13px;color:var(--burdeos);margin-top:12px}
+
+  /* voz */
+  .voz-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+  @media(max-width:640px){.voz-grid{grid-template-columns:1fr}}
+  .voz{border:2px solid var(--tinta);padding:16px 18px}
+  .voz.no{border-style:dashed;opacity:.75}
+  .voz small{font-family:var(--mono);font-size:11px;letter-spacing:.14em;display:block;margin-bottom:8px;text-transform:lowercase}
+  .voz.si small{color:var(--coral)}
+  .voz p{font-family:var(--serif);font-size:17px;font-style:italic;margin:0}
+
+  .subrayado{position:relative;white-space:nowrap}
+  .subrayado::after{content:'';position:absolute;left:-2px;right:-2px;bottom:2px;height:6px;background:var(--coral);opacity:.5;transform:skewY(-.6deg)}
+  .foot{margin-top:100px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;border-top:2px solid var(--tinta);padding-top:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;text-transform:lowercase}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="cover">
+    <div class="folio"><span>guía de marca — v2.0</span><span>agosto 2026</span></div>
+    <div>
+      <div class="mark">brota<span>.</span></div>
+      <div class="sub">estudio brota — cdmx</div>
+    </div>
+    <p class="edition">Un estudio con algo que decir. Esta guía es la marca usándose a sí misma: retícula visible, datos en mono, serif con opinión.</p>
+  </div>
+
+  <section id="idea">
+    <div class="cap"><span>01 — la idea</span><span>por qué existe este rebrand</span></div>
+    <h2>De agencia que sirve a <em>estudio que firma</em></h2>
+    <p class="lead">Brota nació diciendo "accesible para negocios chiquitos" — y funcionó: 42 clientes en 4 meses, puro referido. Pero el negocio ya vende proyectos de $23,000 y la marca seguía cobrando $3,500 con la mirada. Este rebrand desacopla la calidez del precio bajo: <strong>seguimos hablando de tú; ahora también decimos lo que pensamos.</strong></p>
+    <ul>
+      <li><strong>Qué se queda:</strong> el nombre, el punto, el coral, el trato cálido uno a uno.</li>
+      <li><strong>Qué cambia:</strong> el género — de proveedor amable a estudio editorial. El cliente compra criterio, no horas. Ximena y Romina firman con nombre.</li>
+      <li><strong>Por qué así:</strong> el look anterior (crema + serif elegante + terracota suave) hoy se lee como plantilla de IA. El contraste editorial, la monoespaciada y la opinión con firma son territorio que la IA no puede fingir.</li>
+    </ul>
+  </section>
+
+  <section id="wordmark">
+    <div class="cap"><span>02 — wordmark</span><span>la palabra es el logo</span></div>
+    <h2>brota, compuesto como <em>cabecera de revista</em></h2>
+    <div class="spec">
+      <div class="mk">brota<span>.</span></div>
+      <div class="firma">estudio brota — cdmx</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec claro"><div class="mk">brota<span>.</span></div></div>
+      <div class="spec" style="background:var(--burdeos)"><div class="mk">brota<span style="color:var(--papel)">.</span></div></div>
+    </div>
+    <ul>
+      <li><strong>Composición:</strong> Fraunces en óptica display (opsz 144), peso 560, tracking −3%. Siempre en minúsculas. El punto es coral sobre fondos claros y oscuros; sobre burdeos, el punto es papel.</li>
+      <li><strong>El punto ya no es semilla: es punto final de una afirmación.</strong> En motion, se traza un subrayado coral bajo la palabra y el punto cae al final — como quien termina de decir algo.</li>
+      <li><strong>Firma secundaria</strong> (solo acompañando al wordmark o en pies de página): <span class="mono">estudio brota — cdmx</span> en JetBrains Mono, tracking +22%, minúsculas.</li>
+      <li><strong>Prohibido:</strong> el 🌱, el wordmark en color coral completo, gradientes, contornos, y cualquier versión con hoja o brote dibujado.</li>
+    </ul>
+  </section>
+
+  <section id="tipografia">
+    <div class="cap"><span>03 — tipografía</span><span>tres voces, un sistema</span></div>
+    <h2>La serif opina, la sans trabaja, <em>la mono mide</em></h2>
+    <div class="type-card">
+      <div class="head"><b>Fraunces</b><span>display · titulares · wordmark — Google Fonts, variable</span></div>
+      <div class="body"><p class="tp-fraunces">No hacemos contenido. Hacemos que tu negocio <em>tenga algo que decir.</em></p></div>
+    </div>
+    <div class="type-card">
+      <div class="head"><b>Plus Jakarta Sans</b><span>texto corrido · UI · 400/500/600</span></div>
+      <div class="body"><p class="tp-jakarta">El texto de trabajo se queda en Jakarta — es el hilo de continuidad con la marca anterior. Regular para leer, SemiBold para destacar. Nunca en titulares grandes: ese lugar es de Fraunces.</p></div>
+    </div>
+    <div class="type-card">
+      <div class="head"><b>JetBrains Mono</b><span>datos · folios · fichas técnicas · pies</span></div>
+      <div class="body"><p class="tp-mono">caso 017 — restaurante · entrega: 14 días · +38 reservas en marzo · inversión $12,000 mxn</p></div>
+    </div>
+    <div class="regla"><p><strong>Regla de oro tipográfica:</strong> todo número que importa va en mono. Es el detalle que dice "aquí se mide lo que se hace" — y nadie más en el mercado de pymes lo está haciendo.</p></div>
+  </section>
+
+  <section id="color">
+    <div class="cap"><span>04 — color</span><span>papel, tinta y un solo acento</span></div>
+    <h2>El coral se vuelve <em>escaso</em> — y por eso más caro</h2>
+    <div class="pal">
+      <div style="background:#F6F1E7"><span class="rol">base</span><i>#F6F1E7 papel</i></div>
+      <div style="background:#1B1916"><span class="rol">texto</span><i>#1B1916 tinta</i></div>
+      <div style="background:#E85D3A"><span class="rol">acento</span><i>#E85D3A coral</i></div>
+      <div style="background:#7A2E2E"><span class="rol">peso</span><i>#7A2E2E burdeos</i></div>
+      <div style="background:#A8AD9C"><span class="rol">neutro 2°</span><i>#A8AD9C salvia</i></div>
+    </div>
+    <p class="mono" style="margin-bottom:6px">proporción aproximada de uso:</p>
+    <div class="props">
+      <div style="background:#F6F1E7;width:55%"></div>
+      <div style="background:#1B1916;width:25%"></div>
+      <div style="background:#7A2E2E;width:9%"></div>
+      <div style="background:#A8AD9C;width:6%"></div>
+      <div style="background:#E85D3A;width:5%"></div>
+    </div>
+    <ul>
+      <li><strong>Un acento coral por pieza.</strong> Un subrayado, un punto, una palabra — no tres. La escasez es la estrategia.</li>
+      <li><strong>Burdeos</strong> para portadas de propuesta, cierres y momentos de peso. <strong>Salvia</strong> solo como neutro de apoyo (fondos de ficha, bordes suaves).</li>
+      <li><strong>El dorado se retira.</strong> En clave editorial estorba; si un proyecto lo pide (fotografía cálida), vive en la foto, no en la interfaz.</li>
+      <li>Contraste AA mínimo siempre: tinta sobre papel 13.8:1, papel sobre burdeos 8.1:1, papel sobre tinta 13.8:1. Coral sobre papel solo en tamaños display o elementos gráficos, nunca texto chico.</li>
+    </ul>
+  </section>
+
+  <section id="sistema">
+    <div class="cap"><span>05 — sistema gráfico</span><span>la retícula se muestra</span></div>
+    <h2>Casos numerados, líneas visibles, <em>subrayados a mano</em></h2>
+    <ul>
+      <li><strong>Retícula editorial visible:</strong> filetes de 2px en tinta separan secciones (como en esta guía). Los folios en mono arriba de cada bloque.</li>
+      <li><strong>Todo proyecto es un caso numerado.</strong> La numeración continúa la historia real del estudio: los 21 del portafolio actual son los casos 001–021.</li>
+      <li><strong>Fotografía documental:</strong> blanco y negro con un solo elemento a color coral (un plato, un letrero, una mano). Nada de mockups de iPhone flotando ni stock.</li>
+      <li><strong>Sin iconos ilustrativos.</strong> Se sustituyen por palabras, números y <span class="subrayado">subrayados a mano</span> — el trazo humano es el antídoto contra el look IA.</li>
+      <li><strong>Motion de imprenta:</strong> textos que se componen, subrayados que se trazan, páginas que pasan. Nada rebota.</li>
+    </ul>
+    <div class="caso">
+      <div class="c-head"><span>caso 017 — restaurante</span><span>plantilla de ficha</span></div>
+      <div class="c-body">
+        <h4>De menú en PDF a 38 reservas al mes</h4>
+        <p style="font-size:15px">Un párrafo de historia: el problema como lo contaba el cliente, la decisión de diseño que lo resolvió, y qué pasó después. Sin adjetivos que no se puedan probar.</p>
+        <p class="c-dato">entrega: 14 días · inversión: $12,000 · resultado: +38 reservas/mes vía whatsapp</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="voz">
+    <div class="cap"><span>06 — voz</span><span>criterio, no contenido</span></div>
+    <h2>Decimos lo que pensamos, <em>con cariño</em></h2>
+    <p class="lead">Seguimos hablando de tú, coloquial-claro mexicano — sin memes de temporada, sin diminutivos, sin humor godín. La honestidad es amable pero no se disculpa. Ximena y Romina firman las opiniones con su nombre.</p>
+    <div class="voz-grid">
+      <div class="voz si"><small>sí — opinión con firma</small><p>"Opinión impopular: tu restaurante no necesita más reels de tendencia. Necesita que quien te encuentra a las 9 pm sepa por qué tú." — Romina</p></div>
+      <div class="voz no"><small>no — proveedor genérico</small><p>"¡Creamos contenido de calidad para hacer crecer tu marca! 🚀✨"</p></div>
+      <div class="voz si"><small>sí — honestidad comercial</small><p>"Antes de cotizar te vamos a decir qué haríamos distinto en tu marca. Si no estás de acuerdo con nuestro criterio, mejor saberlo ahora."</p></div>
+      <div class="voz no"><small>no — complacencia</small><p>"¡Claro! Podemos hacer todo lo que necesites, como tú lo prefieras 😊"</p></div>
+    </div>
+    <ul>
+      <li><strong>Recursos de la voz:</strong> "Opinión impopular:", "Te lo decimos directo:", fichas técnicas con números, posdatas con firma.</li>
+      <li><strong>En WhatsApp la voz no cambia</strong> — Romina ya vende así; el rebrand solo le quita el "disculpa que insista" y le pone datos al lado.</li>
+      <li><strong>Lo que el estudio se permite decir:</strong> "eso no lo hacemos", "ese precio no da para eso", "esa idea no la firmaríamos". Cada no de estos vale más que diez síes.</li>
+    </ul>
+  </section>
+
+  <section id="aplicaciones">
+    <div class="cap"><span>07 — aplicaciones</span><span>dónde vive primero</span></div>
+    <h2>Orden de <em>despliegue</em></h2>
+    <ul>
+      <li><strong>Semana 1 — Instagram propio:</strong> nueva bio ("estudio brota — cdmx · marcas y webs con criterio · caso nuevo cada semana"), plantillas de post: ficha de caso (papel/tinta con dato en mono), opinión firmada (tinta con serif grande), y foto documental B/N + coral. El anuncio del rebrand ES el primer caso: "Caso 000 — nosotras".</li>
+      <li><strong>Semana 2 — plantillas comerciales:</strong> propuesta (portada burdeos, folios mono, alcance como ficha), reporte mensual (números en mono, un insight con firma), firma de correo (wordmark + firma mono).</li>
+      <li><strong>Semana 3-4 — sitio:</strong> brotadigital.mx migra a la retícula editorial: hero de afirmación, casos numerados con el portafolio existente, página "criterio" (las opiniones). El dev del equipo ya tiene este kit como spec.</li>
+      <li><strong>El dominio se queda</strong> (brotadigital.mx) — "Estudio Brota" es denominación de marca, no cambio legal ni de dominio. En IMPI se registra "Brota" / "Estudio Brota" según recomiende el abogado (clases 42 + 35, ver plan de formalización).</li>
+    </ul>
+    <div class="regla"><p><strong>Regla de transición:</strong> nada de "próximamente nueva imagen". El rebrand se estrena usándose — un día el feed amanece distinto y el primer post lo explica con la voz nueva. Las marcas con criterio no piden permiso.</p></div>
+  </section>
+
+  <div class="foot"><span>estudio brota — cdmx</span><span>guía v2.0 · agosto 2026 · se revisa cada trimestre</span></div>
+</div>
+</body>
+</html>
