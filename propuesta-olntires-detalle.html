@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta name="robots" content="noindex, nofollow"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Detalle de producto · OLN Tires</title>
@@ -16,14 +17,10 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px;
     transition: opacity .6s ease, visibility .6s ease; }
   #preloader.done { opacity:0; visibility:hidden; }
-  .pre-logo { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:3.5rem;
-    letter-spacing:.2em; text-transform:uppercase; color:#fff;
-    opacity:0; transform:translateY(16px);
-    animation: preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards; }
-  .pre-logo span { color:#E31E24; }
+  #preloader img { height:80px; width:auto; object-fit:contain; }
   .pre-bar { width:0; height:2px; background:#E31E24;
     animation: preBar .8s cubic-bezier(.4,0,.2,1) .3s forwards; }
-  @keyframes preIn { to { opacity:1; transform:none; } }
+  @keyframes preIn { to { opacity:1; transform:translateY(0); } }
   @keyframes preBar { to { width:160px; } }
 
   /* NAV */
@@ -164,10 +161,12 @@
     <div class="nav-links">
       <a href="propuesta-olntires.html#catalogo">Catálogo</a>
       <a href="propuesta-olntires.html#marcas">Marcas</a>
+      <a href="oln-marcas.html#catalogos-pdf">Catálogo</a>
       <a href="propuesta-olntires.html#nosotros">Nosotros</a>
       <a href="propuesta-olntires.html#contacto">Contacto</a>
     </div>
-    <a href="https://wa.me/525633880151" target="_blank" rel="noopener" class="btn-red">
+    <div class="nav-social" style="display:inline-flex;align-items:center;gap:10px;margin-right:2px;"><a href="https://www.instagram.com/olntires" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;transition:all .25s ease;" onmouseover="this.style.background='#E31E24';this.style.borderColor='#E31E24'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,.35)'"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-.92.04-1.42.2-1.75.33-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.13.33-.29.83-.33 1.75-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.92.2 1.42.33 1.75.17.44.37.75.7 1.08.33.33.64.53 1.08.7.33.13.83.29 1.75.33 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.92-.04 1.42-.2 1.75-.33.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.13-.33.29-.83.33-1.75.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.92-.2-1.42-.33-1.75-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.33-.13-.83-.29-1.75-.33-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 1.62a3.84 3.84 0 100 7.68 3.84 3.84 0 000-7.68zm5.65-2.91a1.28 1.28 0 110 2.56 1.28 1.28 0 010-2.56z"/></svg></a><a href="https://www.facebook.com/share/1BVRy8JWUq/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;transition:all .25s ease;" onmouseover="this.style.background='#E31E24';this.style.borderColor='#E31E24'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,.35)'"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></div>
+      <a href="https://wa.me/525633880151" target="_blank" rel="noopener" class="btn-red">
       <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
       WhatsApp
     </a>
@@ -182,7 +181,7 @@
     <span>+10 años de experiencia</span><span>▶</span>
     <span>Asesoría especializada</span><span>▶</span>
     <span>Logística eficiente y confiable</span><span>▶</span>
-    <span>Entrega inmediata</span><span>▶</span>
+    <span>Amplio inventario</span><span>▶</span>
     <span>Precios directos de fábrica</span><span>▶</span>
     <span>Sin intermediarios</span><span>▶</span>
     <span>+10 años de experiencia</span><span>▶</span>
@@ -287,7 +286,7 @@
     </div>
     <p>Outlet Llantas del Norte S.A. de C.V. — Auto · Camión · Agrícola · Industrial · Rin</p>
     <div style="display:flex;gap:20px;">
-      <a href="https://www.instagram.com/olntires" target="_blank" rel="noopener">@olntires</a>
+      <a href="https://www.instagram.com/olntires" target="_blank" rel="noopener" aria-label="Instagram @olntires" style="display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s;"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-.92.04-1.42.2-1.75.33-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.13.33-.29.83-.33 1.75-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.92.2 1.42.33 1.75.17.44.37.75.7 1.08.33.33.64.53 1.08.7.33.13.83.29 1.75.33 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.92-.04 1.42-.2 1.75-.33.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.13-.33.29-.83.33-1.75.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.92-.2-1.42-.33-1.75-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.33-.13-.83-.29-1.75-.33-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 1.62a3.84 3.84 0 100 7.68 3.84 3.84 0 000-7.68zm5.65-2.91a1.28 1.28 0 110 2.56 1.28 1.28 0 010-2.56z"/></svg>@olntires</a>
       <a href="https://olntires.com">olntires.com</a>
     </div>
   </div>
@@ -664,7 +663,7 @@ window.addEventListener('hashchange', () => { render(); window.scrollTo(0,0); })
 render();
 
 // ── PRELOADER ──
-window.addEventListener('load', function(){ setTimeout(function(){ document.getElementById('preloader').classList.add('done'); }, 900); });
+window.addEventListener('load', function(){ setTimeout(function(){ document.getElementById('preloader').classList.add('done'); }, 1500); });
 
 // ── SCROLL REVEAL ──
 (function() {

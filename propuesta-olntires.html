@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta name="robots" content="noindex, nofollow"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>OLN Tires — Diseño Web Propuesta | Brota Digital</title>
@@ -41,14 +42,11 @@
     transition: opacity .6s ease, visibility .6s ease;
   }
   #preloader.done { opacity: 0; visibility: hidden; }
-  .pre-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900; font-size: 3.5rem;
-    letter-spacing: .2em; text-transform: uppercase; color: #fff;
-    opacity: 0; transform: translateY(16px);
-    animation: preIn .5s cubic-bezier(.2,.8,.2,1) .15s forwards;
+  #preloader img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
   }
-  .pre-logo span { color: #E31E24; }
   .pre-bar {
     width: 0; height: 2px; background: #E31E24;
     animation: preBar .8s cubic-bezier(.4,0,.2,1) .3s forwards;
@@ -85,8 +83,8 @@
     position: relative;
     min-height: 100vh;
     background:
-      linear-gradient(to top, rgba(0,0,0,.96) 0%, rgba(0,0,0,.65) 42%, rgba(0,0,0,.22) 100%),
-      url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=80&auto=format&fit=crop') center 30%/cover no-repeat;
+      linear-gradient(to top, rgba(0,0,0,.96) 0%, rgba(0,0,0,.55) 42%, rgba(0,0,0,.15) 100%),
+      url('oln/hero/portada.jpg?v=1') center center/cover no-repeat;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -127,12 +125,12 @@
     display: flex;
     flex-direction: column;
     gap: 22px;
-    align-items: flex-end;
+    align-items: flex-start;
     border-left: 1px solid rgba(255,255,255,.15);
     padding-left: 40px;
     flex-shrink: 0;
   }
-  .hud-stat { text-align: right; }
+  .hud-stat { text-align: left; }
   .hud-stat .big-stat { font-size: 3rem; }
   .hud-stat p {
     font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
@@ -150,10 +148,25 @@
 
   /* ── CARDS ── */
   .glass-card {
-    background:#111; border:1px solid rgba(255,255,255,.08); border-radius:14px;
+    background:
+      repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.01) 35px, rgba(255,255,255,.01) 70px),
+      linear-gradient(135deg, rgba(227,30,36,.08) 0%, transparent 50%),
+      #111;
+    border:1px solid rgba(255,255,255,.12); border-radius:14px;
     transition: all .22s ease;
+    position: relative;
   }
-  .glass-card:hover { border-color:rgba(227,30,36,.4); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.4); }
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(227,30,36,.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(227,30,36,.04) 0%, transparent 50%);
+    border-radius: 14px;
+    pointer-events: none;
+  }
+  .glass-card:hover { border-color:rgba(227,30,36,.5); transform:translateY(-4px); box-shadow:0 20px 60px rgba(227,30,36,.15), 0 8px 16px rgba(0,0,0,.5); }
 
   .brand-pill {
     background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:8px; transition:all .2s;
@@ -162,10 +175,16 @@
 
   /* ── PRODUCT CARDS ── */
   .prod {
-    background:#111; border:1px solid rgba(255,255,255,.08); border-radius:12px; overflow:hidden;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,.005) 2px, rgba(255,255,255,.005) 4px),
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.005) 2px, rgba(255,255,255,.005) 4px),
+      linear-gradient(135deg, rgba(227,30,36,.06) 0%, transparent 60%),
+      #111;
+    border:1px solid rgba(255,255,255,.1); border-radius:12px; overflow:hidden;
     transition:all .2s ease; display:flex; flex-direction:column;
+    box-shadow: 0 4px 12px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.05);
   }
-  .prod:hover { border-color:rgba(227,30,36,.4); transform:translateY(-10px); box-shadow:0 24px 48px rgba(0,0,0,.5); }
+  .prod:hover { border-color:rgba(227,30,36,.5); transform:translateY(-10px); box-shadow:0 24px 60px rgba(227,30,36,.2), 0 8px 16px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.1); }
   .prod-img {
     width:100%; height:180px; object-fit:contain; display:block;
     background:#1a1a1a; padding:20px;
@@ -200,10 +219,25 @@
 
   /* ── BRAND CARDS ── */
   .brand-card {
-    background:#111; border:1px solid rgba(255,255,255,.08); border-radius:14px;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(227,30,36,.1) 0%, transparent 50%),
+      linear-gradient(to bottom, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%),
+      repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(227,30,36,.02) 35px, rgba(227,30,36,.02) 70px),
+      #111;
+    border:1px solid rgba(227,30,36,.2); border-radius:14px;
     padding:24px; transition:all .3s cubic-bezier(.2,.8,.2,1); display:flex; flex-direction:column; gap:14px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
   }
-  .brand-card:hover { border-color:rgba(227,30,36,.4); transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,.5); }
+  .brand-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background-image: radial-gradient(circle at 80% 20%, rgba(227,30,36,.08) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .brand-card:hover { border-color:rgba(227,30,36,.6); transform:translateY(-6px); box-shadow:0 24px 64px rgba(227,30,36,.2), 0 8px 16px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12); }
   .brand-card__name {
     font-family:'Barlow Condensed',sans-serif;
     font-weight:900; font-size:1.6rem;
@@ -408,10 +442,31 @@
   /* ── CTA BLOCKS ── */
   .cta-block {
     display:flex; flex-direction:column; gap:16px;
-    background:#111; border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:36px 32px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 1px,
+        rgba(227,30,36,.03) 1px,
+        rgba(227,30,36,.03) 2px
+      ),
+      linear-gradient(135deg, rgba(227,30,36,.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 100% 0%, rgba(227,30,36,.06) 0%, transparent 50%),
+      #111;
+    border:1px solid rgba(227,30,36,.15); border-radius:16px; padding:36px 32px;
     text-decoration:none; transition:all .25s cubic-bezier(.2,.8,.2,1);
+    box-shadow: 0 12px 32px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+    position: relative;
   }
-  .cta-block:hover { border-color:rgba(227,30,36,.4); transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,.5); }
+  .cta-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: radial-gradient(circle at 20% 80%, rgba(227,30,36,.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .cta-block:hover { border-color:rgba(227,30,36,.5); transform:translateY(-6px); box-shadow:0 24px 64px rgba(227,30,36,.25), 0 8px 16px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.1); }
   .cta-block__eyebrow {
     font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:#E31E24;
   }
@@ -446,11 +501,13 @@
     <div id="nav-links-main" class="nav-links-wrap" style="display:flex;gap:36px;align-items:center;">
       <a class="nav-link" href="oln-catalogo.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Stock</a>
       <a class="nav-link" href="oln-marcas.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Marcas</a>
+      <a class="nav-link" href="oln-marcas.html#catalogos-pdf" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Catálogo</a>
       <a class="nav-link" href="oln-marcas.html#nosotros" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Nosotros</a>
       <a class="nav-link" href="oln-contacto.html" style="font-size:13px;font-weight:500;text-decoration:none;transition:color .4s ease;color:rgba(255,255,255,.75);">Contacto</a>
     </div>
     <!-- CTA + Hamburger -->
     <div style="display:flex;align-items:center;gap:10px;">
+      <div class="nav-social" style="display:inline-flex;align-items:center;gap:10px;margin-right:2px;"><a href="https://www.instagram.com/olntires" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;transition:all .25s ease;" onmouseover="this.style.background='#E31E24';this.style.borderColor='#E31E24'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,.35)'"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-.92.04-1.42.2-1.75.33-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.13.33-.29.83-.33 1.75-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.92.2 1.42.33 1.75.17.44.37.75.7 1.08.33.33.64.53 1.08.7.33.13.83.29 1.75.33 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.92-.04 1.42-.2 1.75-.33.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.13-.33.29-.83.33-1.75.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.92-.2-1.42-.33-1.75-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.33-.13-.83-.29-1.75-.33-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 1.62a3.84 3.84 0 100 7.68 3.84 3.84 0 000-7.68zm5.65-2.91a1.28 1.28 0 110 2.56 1.28 1.28 0 010-2.56z"/></svg></a><a href="https://www.facebook.com/share/1BVRy8JWUq/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;transition:all .25s ease;" onmouseover="this.style.background='#E31E24';this.style.borderColor='#E31E24'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,.35)'"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></div>
       <div class="nav-cta-wrap">
         <a id="nav-wa" href="https://wa.me/525633880151?text=Hola!%20Quiero%20cotizar%20llantas." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;border-radius:8px;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;text-decoration:none;transition:all .4s ease;">
           <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.531 5.856L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.728.887.924-3.634-.235-.374A9.781 9.781 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818z"/></svg>
@@ -472,13 +529,13 @@
     <span>+10 años de experiencia</span><span style="opacity:.5;margin:0 4px;">▶</span>
     <span>Asesoría especializada</span><span style="opacity:.5;margin:0 4px;">▶</span>
     <span>Logística eficiente y confiable</span><span style="opacity:.5;margin:0 4px;">▶</span>
-    <span>Entrega inmediata</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Amplio inventario</span><span style="opacity:.5;margin:0 4px;">▶</span>
     <span>Precios directos de fábrica</span><span style="opacity:.5;margin:0 4px;">▶</span>
     <span>Sin intermediarios</span><span style="opacity:.5;margin:0 4px;">▶</span>
     <span>+10 años de experiencia</span><span style="opacity:.5;margin:0 4px;">▶</span>
     <span>Asesoría especializada</span><span style="opacity:.5;margin:0 4px;">▶</span>
     <span>Logística eficiente y confiable</span><span style="opacity:.5;margin:0 4px;">▶</span>
-    <span>Entrega inmediata</span><span style="opacity:.5;margin:0 4px;">▶</span>
+    <span>Amplio inventario</span><span style="opacity:.5;margin:0 4px;">▶</span>
   </div>
 </div>
 
@@ -503,17 +560,33 @@
 
     <!-- RIGHT: HUD stats -->
     <div class="hero-hud">
-      <div class="hud-stat">
-        <div class="big-stat">10+</div>
-        <p>Años en el mercado</p>
+      <div class="hud-stat" style="display:flex;align-items:center;gap:16px;text-align:left;">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#E31E24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;text-transform:uppercase;line-height:.95;color:#fff;">Calidad</div>
+          <p style="margin-top:1px;">Garantizada</p>
+        </div>
       </div>
-      <div class="hud-stat">
-        <div class="big-stat">24h</div>
-        <p>Entrega inmediata</p>
+      <div class="hud-stat" style="display:flex;align-items:center;gap:16px;text-align:left;">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#E31E24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M21 14v3a2 2 0 0 1-2 2h-3"/><rect x="2" y="13" width="4" height="6" rx="1"/><rect x="18" y="13" width="4" height="6" rx="1"/></svg>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;text-transform:uppercase;line-height:.95;color:#fff;">Atención</div>
+          <p style="margin-top:1px;">Eficiente</p>
+        </div>
       </div>
-      <div class="hud-stat">
-        <div class="big-stat">$0</div>
-        <p>Sin intermediarios</p>
+      <div class="hud-stat" style="display:flex;align-items:center;gap:16px;text-align:left;">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#E31E24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;text-transform:uppercase;line-height:.95;color:#fff;">Soluciones</div>
+          <p style="margin-top:1px;">Ágiles</p>
+        </div>
+      </div>
+      <div class="hud-stat" style="display:flex;align-items:center;gap:16px;text-align:left;">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#E31E24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;text-transform:uppercase;line-height:.95;color:#fff;">Experiencia</div>
+          <p style="margin-top:1px;">Comprobada</p>
+        </div>
       </div>
     </div>
 
@@ -602,7 +675,7 @@
     </div>
     <p style="font-size:12px;text-align:center;color:rgba(255,255,255,.3);">Outlet Llantas del Norte S.A. de C.V. — Auto · Camión · Agrícola · Industrial · Rin</p>
     <div style="display:flex;gap:20px;align-items:center;">
-      <a href="https://www.instagram.com/olntires" style="color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='rgba(255,255,255,.4)'">@olntires</a>
+      <a href="https://www.instagram.com/olntires" target="_blank" rel="noopener" aria-label="Instagram @olntires" style="display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='rgba(255,255,255,.4)'"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-.92.04-1.42.2-1.75.33-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.13.33-.29.83-.33 1.75-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.92.2 1.42.33 1.75.17.44.37.75.7 1.08.33.33.64.53 1.08.7.33.13.83.29 1.75.33 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.92-.04 1.42-.2 1.75-.33.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.13-.33.29-.83.33-1.75.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.92-.2-1.42-.33-1.75-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.33-.13-.83-.29-1.75-.33-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 1.62a3.84 3.84 0 100 7.68 3.84 3.84 0 000-7.68zm5.65-2.91a1.28 1.28 0 110 2.56 1.28 1.28 0 010-2.56z"/></svg>@olntires</a>
       <a href="https://olntires.com" style="color:rgba(255,255,255,.4);font-size:13px;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E31E24'" onmouseout="this.style.color='rgba(255,255,255,.4)'">olntires.com</a>
     </div>
   </div>
@@ -617,7 +690,7 @@
   window.addEventListener('load', function() {
     setTimeout(function() {
       document.getElementById('preloader').classList.add('done');
-    }, 900);
+    }, 1500);
   });
 
   /* ── SCROLL REVEAL ── */
